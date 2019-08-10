@@ -23,12 +23,23 @@
 
                                 <form action="#">
                                     <div class="form-group pt-4">
-                                        <label class="label">Username or Email</label>
+                                        <label class="label">Email Address</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="netkas@intellivoid.info">
+                                            <input type="text" class="form-control" placeholder="Email Address">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                  <i class="mdi mdi-check-circle-outline"></i>
+                                                  <i class="mdi mdi-email"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">Username</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Username">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                  <i class="mdi mdi-account"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -39,23 +50,32 @@
                                             <input type="password" class="form-control" placeholder="*********">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                  <i class="mdi mdi-check-circle-outline"></i>
+                                                  <i class="mdi mdi-textbox-password"></i>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary submit-btn btn-block">Login</button>
+                                        <p class="text-small">
+                                            By creating an account you agree to the Terms of Service and Privacy
+                                            Policies placed by Intellivoid
+                                        </p>
                                     </div>
                                     <div class="form-group d-flex justify-content-between">
+
                                         <div class="form-check form-check-flat mt-0">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" checked> Trust this device </label>
+                                                <input type="checkbox" class="form-check-input"> I agree
+                                            </label>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary submit-btn btn-block">Create Account</button>
+                                    </div>
+
                                     <div class="text-block text-center my-3">
-                                        <span class="text-small font-weight-semibold">Don't have an account?</span>
-                                        <a href="/register" class="text-black text-small">Create one</a>
+                                        <span class="text-small font-weight-semibold">Already have an account?</span>
+                                        <a href="/login" class="text-black text-small">Login</a>
                                     </div>
                                 </form>
                             </div>
