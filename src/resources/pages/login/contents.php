@@ -25,10 +25,10 @@
                                     <div class="form-group pt-4">
                                         <label for="username_email" class="label">Username or Email</label>
                                         <div class="input-group">
-                                            <input name="username_email" id="username_email" type="text" class="form-control" placeholder="netkas@intellivoid.info">
+                                            <input name="username_email" id="username_email" type="text" class="form-control" placeholder="netkas@intellivoid.info" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                  <i class="mdi mdi-check-circle-outline"></i>
+                                                  <i class="mdi mdi-account"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -36,10 +36,10 @@
                                     <div class="form-group">
                                         <label for="password" class="label">Password</label>
                                         <div class="input-group">
-                                            <input name="password" id="password" type="password" class="form-control" placeholder="*********">
+                                            <input name="password" id="password" type="password" class="form-control" placeholder="*********" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                  <i class="mdi mdi-check-circle-outline"></i>
+                                                  <i class="mdi mdi-textbox-password"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -50,7 +50,7 @@
                                     <div class="form-group d-flex justify-content-between">
                                         <div class="form-check form-check-flat mt-0">
                                             <label class="form-check-label">
-                                                <input name="trusted_device" id="trusted_device" type="checkbox" class="form-check-input" checked>
+                                                <input name="trusted_device" id="trusted_device" type="checkbox" class="form-check-input">
                                                 Trust this device
                                             </label>
                                         </div>

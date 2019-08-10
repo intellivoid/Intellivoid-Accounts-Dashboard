@@ -21,11 +21,11 @@
                                 </h1>
                                 <div class="border-bottom pt-3"></div>
 
-                                <form action="#">
+                                <form action="/register" method="POST">
                                     <div class="form-group pt-4">
-                                        <label class="label">Email Address</label>
+                                        <label for="email" class="label">Email Address</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Email Address">
+                                            <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="mdi mdi-email"></i>
@@ -34,9 +34,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="label">Username</label>
+                                        <label for="username" class="label">Username</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Username">
+                                            <input name="username" id="username" type="text" class="form-control" placeholder="Username" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="mdi mdi-account"></i>
@@ -45,9 +45,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="label">Password</label>
+                                        <label for="password" class="label">Password</label>
                                         <div class="input-group">
-                                            <input type="password" class="form-control" placeholder="*********">
+                                            <input name="password" id="password" type="password" class="form-control" placeholder="*********" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="mdi mdi-textbox-password"></i>
@@ -65,12 +65,12 @@
 
                                         <div class="form-check form-check-flat mt-0">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input"> I agree
+                                                <input name="tos_agree" id="tos_agree" type="checkbox" class="form-check-input" required> I agree
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary submit-btn btn-block">Create Account</button>
+                                        <input type="submit" value="Create Account" class="btn btn-primary submit-btn btn-block">
                                     </div>
 
                                     <div class="text-block text-center my-3">
