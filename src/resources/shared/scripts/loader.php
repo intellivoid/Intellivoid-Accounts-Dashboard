@@ -20,6 +20,11 @@
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                     Intelli<b>void</b>
                                 </h1>
+                                <div class="dot-opacity-loader">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
                                 <div class="pb-4"></div>
                             </div>
                         </div>
