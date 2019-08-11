@@ -1,5 +1,7 @@
 <?PHP
     use DynamicalWeb\HTML;
+
+    HTML::importScript('auth.login');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -15,13 +17,18 @@
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-4 mx-auto">
                             <div class="auto-form-wrapper">
-                                <h1>
+                                <h1 class="text-center">
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                     Intelli<b>void</b>
+                                    <p>Login to an existing Intellivoid Account</p>
                                 </h1>
+                                <div name="callback_alert" id="callback_alert">
+                                    <?PHP HTML::importScript('callbacks'); ?>
+                                </div>
+
                                 <div class="border-bottom pt-3"></div>
 
-                                <form action="/login" method="POST">
+                                <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
                                         <label for="username_email" class="label">Username or Email</label>
                                         <div class="input-group">
@@ -70,6 +77,6 @@
             <!-- page-body-wrapper ends -->
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-
+        <script src="/assets/js/auth_login.js"></script>
     </body>
 </html>

@@ -4,10 +4,25 @@
         "iso_639-1": "en"
     },
     "pages": {
-        "index": {
+        "login": {
             "PAGE_TITLE": "DynamicalWeb",
-            "HEADER": "DynamicalWeb Example",
-            "CONTENT": "This example contains various uses for Dynamical Web with Bootstrap"
+            "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
+            "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff.",
+            "CALLBACK_102": "The Username/Email is doesn't exist",
+            "CALLBACK_103": "The login credentials are incorrect",
+            "CALLBACK_104": "Your account has been suspended, if you think this was a mistake, you can contact us.",
+            "CALLBACK_105": "You are not authorized to login to this account due to suspicious activities"
+        },
+        "register": {
+            "PAGE_TITLE": "DynamicalWeb",
+            "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
+            "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff.",
+            "CALLBACK_102": "The given username is invalid",
+            "CALLBACK_103": "The Email Address is invalid",
+            "CALLBACK_104": "The password is considered unsafe, please choose another",
+            "CALLBACK_105": "The Username is already used by another account",
+            "CALLBACK_106": "The Email is already used by another account",
+            "CALLBACK_107": "You must agree to our Terms of Service to create a Intellivoid Account"
         }
     },
     "sections": {

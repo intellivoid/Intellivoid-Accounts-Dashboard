@@ -4,6 +4,7 @@
 
     use acm\acm;
     use Exception;
+    use IntellivoidAccounts\Classes\LoginProcessor;
     use IntellivoidAccounts\Exceptions\ConfigurationNotFoundException;
     use IntellivoidAccounts\Managers\AccountManager;
     use IntellivoidAccounts\Managers\KnownHostsManager;
@@ -121,6 +122,11 @@
         private $KnownHostsManager;
 
         /**
+         * @var LoginProcessor
+         */
+        private $LoginProcessor;
+
+        /**
          * IntellivoidAccounts constructor.
          * @throws ConfigurationNotFoundException
          * @throws Exception
@@ -142,6 +148,7 @@
             $this->KnownHostsManager = new KnownHostsManager($this);
             $this->LoginRecordManager = new LoginRecordManager($this);
             $this->TransactionRecordManager = new TransactionRecordManager($this);
+            $this->LoginProcessor = new LoginProcessor($this);
         }
 
         /**
@@ -174,6 +181,14 @@
         public function getKnownHostsManager(): KnownHostsManager
         {
             return $this->KnownHostsManager;
+        }
+
+        /**
+         * @return LoginProcessor
+         */
+        public function getLoginProcessor(): LoginProcessor
+        {
+            return $this->LoginProcessor;
         }
 
     }
