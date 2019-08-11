@@ -74,6 +74,9 @@
                                 <a class="nav-link " href="/login_history">Login History</a>
                             </li>
                             <li class="nav-item ">
+                                <a class="nav-link " href="/services">Services</a>
+                            </li>
+                            <li class="nav-item ">
                                 <a class="nav-link " href="/2fa">Login Security</a>
                             </li>
                             <li class="nav-item ">
