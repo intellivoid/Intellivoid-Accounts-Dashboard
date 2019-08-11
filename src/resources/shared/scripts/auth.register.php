@@ -26,7 +26,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         {
             register_account();
 
-            header('Location: /register?mode=success');
+            header('Location: /login?callback=106');
             exit();
         }
         catch(InvalidUsernameException $invalidUsernameException)

@@ -220,9 +220,7 @@
         else
         {
             /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::getMemoryObject(
-                "intellivoid_accounts", DynamicalWeb::getMemoryObject("intellivoid_accounts")
-            );
+            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
         }
 
         $IntellivoidAccounts->getLoginProcessor()->verifyCredentials(

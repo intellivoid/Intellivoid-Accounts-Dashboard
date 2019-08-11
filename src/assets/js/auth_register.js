@@ -27,7 +27,11 @@ $('#authentication_form').on('submit', function () {
     $("#authentication_form").empty();
     $("#authentication_form").html(
         "<div class=\"pt-3\"></div>" +
-        "<div class=\"pixel-loader\"></div>" +
+        "<div class=\"dot-opacity-loader\">\n" +
+        "<span></span>\n" +
+        "<span></span>\n" +
+        "<span></span>\n" +
+        "</div>" +
         "<div class=\"pb-3\"></div>"
     );
 
