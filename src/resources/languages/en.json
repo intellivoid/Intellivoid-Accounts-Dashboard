@@ -30,7 +30,9 @@
             "CALLBACK_101": "The given First Name is invalid",
             "CALLBACK_102": "The given Last Name is invalid",
             "CALLBACK_103": "Your name has been updated",
-            "CALLBACK_104": "There was an issue while trying to update your information"
+            "CALLBACK_104": "There was an issue while trying to update your information",
+            "CALLBACK_105": "The given date is invalid",
+            "CALLBACK_106": "Your birthday has been updated"
         }
     },
     "sections": {

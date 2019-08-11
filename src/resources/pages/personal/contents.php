@@ -4,6 +4,7 @@
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('update.name');
+    HTML::importScript('update.birthday');
     HTML::importScript('define.information');
 
 ?>
@@ -74,10 +75,10 @@
                                                             <p class="card-description text-muted">
                                                                 When you were born
                                                             </p>
-                                                            <form class="forms-sample">
+                                                            <form action="/personal?action=update_birthday" method="POST">
                                                                 <div class="form-group">
                                                                     <label for="dob_year">Year</label>
-                                                                    <select class="form-control border-primary" id="dob_year" name="dob_year" required>
+                                                                    <select class="form-control border-primary" val id="dob_year" name="dob_year" required>
                                                                         <?PHP
                                                                             $FirstYear = 1970;
                                                                             $CurrentYear = (int)date('Y') - 13;
@@ -89,7 +90,14 @@
                                                                                 {
                                                                                     break;
                                                                                 }
-                                                                                HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
+                                                                                if(USER_BOD_YEAR == $CurrentCount)
+                                                                                {
+                                                                                    HTML::print("<option value=\"" . $CurrentCount . "\" selected=\"selected\">" . $CurrentCount . "</option>", false);
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
+                                                                                }
                                                                                 $CurrentCount += 1;
                                                                             }
                                                                         ?>
@@ -98,18 +106,18 @@
                                                                 <div class="form-group">
                                                                     <label for="dob_month">Month</label>
                                                                     <select class="form-control border-primary" id="dob_month" name="dob_month" required>
-                                                                        <option value="1">January</option>
-                                                                        <option value="2">February</option>
-                                                                        <option value="3">March</option>
-                                                                        <option value="4">April</option>
-                                                                        <option value="5">May</option>
-                                                                        <option value="6">June</option>
-                                                                        <option value="7">July</option>
-                                                                        <option value="8">Agust</option>
-                                                                        <option value="9">September</option>
-                                                                        <option value="10">October</option>
-                                                                        <option value="11">November</option>
-                                                                        <option value="12">December</option>
+                                                                        <option value="1"<?PHP if(USER_BOD_MONTH == 1){ HTML::print("selected=\selected\"", false); } ?>>January</option>
+                                                                        <option value="2"<?PHP if(USER_BOD_MONTH == 2){ HTML::print("selected=\selected\"", false); } ?>>February</option>
+                                                                        <option value="3"<?PHP if(USER_BOD_MONTH == 3){ HTML::print("selected=\selected\"", false); } ?>>March</option>
+                                                                        <option value="4"<?PHP if(USER_BOD_MONTH == 4){ HTML::print("selected=\selected\"", false); } ?>>April</option>
+                                                                        <option value="5"<?PHP if(USER_BOD_MONTH == 5){ HTML::print("selected=\selected\"", false); } ?>>May</option>
+                                                                        <option value="6"<?PHP if(USER_BOD_MONTH == 6){ HTML::print("selected=\selected\"", false); } ?>>June</option>
+                                                                        <option value="7"<?PHP if(USER_BOD_MONTH == 7){ HTML::print("selected=\selected\"", false); } ?>>July</option>
+                                                                        <option value="8"<?PHP if(USER_BOD_MONTH == 8){ HTML::print("selected=\selected\"", false); } ?>>Agust</option>
+                                                                        <option value="9"<?PHP if(USER_BOD_MONTH == 9){ HTML::print("selected=\selected\"", false); } ?>>September</option>
+                                                                        <option value="10<?PHP if(USER_BOD_MONTH == 10){ HTML::print("selected=\selected\"", false); } ?>">October</option>
+                                                                        <option value="11"<?PHP if(USER_BOD_MONTH == 11){ HTML::print("selected=\selected\"", false); } ?>>November</option>
+                                                                        <option value="12"<?PHP if(USER_BOD_MONTH == 12){ HTML::print("selected=\selected\"", false); } ?>>December</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
@@ -126,7 +134,14 @@
                                                                             {
                                                                                 break;
                                                                             }
-                                                                            HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
+                                                                            if(USER_BOD_DAY == $CurrentCount)
+                                                                            {
+                                                                                HTML::print("<option value=\"" . $CurrentCount . "\"  selected=\"selected\">" . $CurrentCount . "</option>", false);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
+                                                                            }
                                                                             $CurrentCount += 1;
                                                                         }
                                                                         ?>

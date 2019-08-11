@@ -35,3 +35,30 @@
     {
         define("USER_LAST_NAME", "value=\"" . htmlspecialchars($Account->PersonalInformation->LastName, ENT_QUOTES, 'UTF-8') . "\"", false);
     }
+
+    if($Account->PersonalInformation->BirthDate->Year == 0)
+    {
+        define("USER_BOD_YEAR", "", false);
+    }
+    else
+    {
+        define("USER_BOD_YEAR", $Account->PersonalInformation->BirthDate->Year, false);
+    }
+
+    if($Account->PersonalInformation->BirthDate->Month == 0)
+    {
+        define("USER_BOD_MONTH", "", false);
+    }
+    else
+    {
+        define("USER_BOD_MONTH", $Account->PersonalInformation->BirthDate->Month, false);
+    }
+
+    if($Account->PersonalInformation->BirthDate->Day == 0)
+    {
+        define("USER_BOD_DAY", "", false);
+    }
+    else
+    {
+        define("USER_BOD_DAY", $Account->PersonalInformation->BirthDate->Day, false);
+    }
