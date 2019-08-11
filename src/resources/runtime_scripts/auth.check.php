@@ -71,7 +71,6 @@
     define('WEB_SUDO_MODE', $Cookie->Data['sudo_mode'], false);
     define('WEB_VERIFICATION_REQUIRED', $Cookie->Data['verification_required'], false);
 
-
     if(WEB_SESSION_ACTIVE == false)
     {
         $redirect = true;
@@ -87,6 +86,24 @@
         if($redirect == true)
         {
             header('Location: /login');
+            exit();
+        }
+    }
+    else
+    {
+        $redirect = false;
+
+        foreach($unauthorized_pages as $page)
+        {
+            if(APP_CURRENT_PAGE == $page)
+            {
+                $redirect = true;
+            }
+        }
+
+        if($redirect == true)
+        {
+            header('Location: /');
             exit();
         }
     }

@@ -12,6 +12,7 @@
     use IntellivoidAccounts\Exceptions\InvalidIpException;
     use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
     use IntellivoidAccounts\IntellivoidAccounts;
+    use sws\sws;
 
     Runtime::import('IntellivoidAccounts');
 
@@ -21,7 +22,24 @@
         {
             check_login();
 
-            header('Location: /login?mode=success');
+            /** @var IntellivoidAccounts $IntellivoidAccounts */
+            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+            $Account = $IntellivoidAccounts->getAccountManager()->getAccountByAuth($_POST['username_email'], $_POST['password']);
+
+            /** @var sws $sws */
+            $sws = DynamicalWeb::getMemoryObject('sws');
+
+            $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+            $Cookie->Data["session_active"] = true;
+            $Cookie->Data["account_pubid"] = $Account->PublicID;
+            $Cookie->Data["account_id"] = $Account->ID;
+            $Cookie->Data["account_email"] = $Account->Email;
+            $Cookie->Data["account_username"] = $Account->Username;
+            $Cookie->Data["sudo_mode"] = false;
+            $Cookie->Data["verification_required"] = false;
+            $sws->CookieManager()->updateCookie($Cookie);
+
+            header('Location: /');
             exit();
         }
         catch(AccountNotFoundException $accountNotFoundException)
@@ -49,6 +67,7 @@
             header('Location: /login?callback=101');
             exit();
         }
+
     }
 
     /**
@@ -122,6 +141,22 @@
     }
 
     /**
+     * Makes the IP Safe to use for the system
+     *
+     * @param string $input
+     * @return string
+     */
+    function safe_ip(string $input): string
+    {
+        if($input == "::1")
+        {
+            return "127.0.0.1";
+        }
+
+        return $input;
+    }
+
+    /**
      * Gets the checkbox's input
      *
      * @param string $name
@@ -191,7 +226,7 @@
         }
 
         $IntellivoidAccounts->getLoginProcessor()->verifyCredentials(
-            detectClientIp(), $_POST['username_email'], $_POST['password']
+            safe_ip(detectClientIp()), $_POST['username_email'], $_POST['password']
         );
 
         return True;

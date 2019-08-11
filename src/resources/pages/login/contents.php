@@ -72,9 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
         <script src="/assets/js/auth_login.js"></script>
