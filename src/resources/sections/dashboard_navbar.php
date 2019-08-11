@@ -77,7 +77,7 @@
                                 <a class="nav-link " href="/services">Services</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link " href="/2fa">Login Security</a>
+                                <a class="nav-link " href="/login_security">Login Security</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link " href="/update_password">Update Password</a>
