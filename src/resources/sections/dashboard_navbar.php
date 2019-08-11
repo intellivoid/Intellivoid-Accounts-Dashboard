@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/information" class="nav-link">
+                    <a href="/personal" class="nav-link">
                         <i class="link-icon mdi mdi-account"></i>
                         <span class="menu-title">Personal</span>
                     </a>
