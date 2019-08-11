@@ -1,12 +1,11 @@
 <?PHP
     use DynamicalWeb\HTML;
+    use DynamicalWeb\Runtime;
 
-    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
-    if(strlen($UsernameSafe) > 16)
-    {
-        $UsernameSafe = substr($UsernameSafe, 0 ,16);
-        $UsernameSafe .= "...";
-    }
+    Runtime::import('IntellivoidAccounts');
+    HTML::importScript('update.name');
+    HTML::importScript('define.information');
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -36,6 +35,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div id="alert-area" class="pt-4">
+                                            <?PHP HTML::importScript('callbacks'); ?>
+                                        </div>
                                         <div class="profile-body">
                                             <div class="row">
 
@@ -44,18 +46,20 @@
                                                         <div class="col-12 grid-margin">
                                                             <div class="card">
                                                                 <div class="card-body">
-                                                                    <h4 class="card-title">Personal Information</h4>
-                                                                    <p class="card-description text-muted"> Basic information about you </p>
-                                                                    <form class="forms-sample">
+                                                                    <h4 class="card-title">Name</h4>
+                                                                    <p class="card-description text-muted">
+                                                                        Your legal name
+                                                                    </p>
+                                                                    <form action="/personal?action=update_name" method="POST">
                                                                         <div class="form-group">
                                                                             <label for="first_name">First Name</label>
-                                                                            <input type="text" class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
+                                                                            <input type="text"<?PHP HTML::print(USER_FIRST_NAME, false); ?> class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="last_name">Last Name</label>
-                                                                            <input type="text" class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
+                                                                            <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
                                                                         </div>
-                                                                        <button type="submit" class="btn btn-success mr-2">Update</button>
+                                                                        <input type="submit" class="btn btn-success mr-2" value="Update">
                                                                     </form>
                                                                 </div>
                                                             </div>

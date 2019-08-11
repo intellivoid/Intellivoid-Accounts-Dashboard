@@ -24,6 +24,13 @@
             "CALLBACK_105": "The Username is already used by another account",
             "CALLBACK_106": "The Email is already used by another account",
             "CALLBACK_107": "You must agree to our Terms of Service to create a Intellivoid Account"
+        },
+        "personal": {
+            "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
+            "CALLBACK_101": "The given First Name is invalid",
+            "CALLBACK_102": "The given Last Name is invalid",
+            "CALLBACK_103": "Your name has been updated",
+            "CALLBACK_104": "There was an issue while trying to update your information"
         }
     },
     "sections": {
