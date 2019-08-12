@@ -60,7 +60,7 @@
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-info btn-block">Setup</button>
+                                        <button class="btn btn-info btn-block" onclick="location.href='/setup_mobile_verification';">Setup</button>
                                     </div>
                                 </div>
                             </div>

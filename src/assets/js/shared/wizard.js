@@ -40,7 +40,7 @@
       alert("Submitted!");
     }
   });
-  var verticalForm = $("#example-vertical-wizard");
+  var verticalForm = $("#mobile-verification-wizard");
   verticalForm.children("div").steps({
     headerTag: "h3",
     bodyTag: "section",
