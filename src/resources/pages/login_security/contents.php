@@ -45,7 +45,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="wrapper d-flex align-items-center media-info text-info">
                                                 <i class="mdi mdi-cellphone-iphone icon-md"></i>
-                                                <h2 class="card-title ml-3">Mobile Authentication</h2>
+                                                <h2 class="card-title ml-3">Mobile Verification</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +70,19 @@
                                             Using Google Authenticator on your phone, you can enter a one-time password
                                             to verify it's you
                                         </p>
-                                        <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
+                                        <?PHP
+                                            HTML::print("<small class=\"d-block mt-4 text-center posted-date\">", false);
+                                            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                            {
+                                                $LastUpdated = $Account->Configuration->VerificationMethods->TwoFactorAuthentication->LastUpdated;
+                                                HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $LastUpdated), "Last Updated: %s"));
+                                            }
+                                            else
+                                            {
+                                                HTML::print(str_ireplace("%s", "Not Activated", "Last Updated: %s"));
+                                            }
+                                            HTML::print("</small>", false);
+                                        ?>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
                                         <?PHP
@@ -82,7 +94,7 @@
                                         }
                                         else
                                         {
-                                            HTML::print("<button class=\"btn btn-info btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
+                                            HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
                                             HTML::print("Setup");
                                             HTML::print("</button>", false);
                                         }
@@ -112,7 +124,7 @@
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-info btn-block">Setup</button>
+                                        <button class="btn btn-primary btn-block">Setup</button>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +149,7 @@
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-info btn-block">Setup</button>
+                                        <button class="btn btn-primary btn-block">Setup</button>
                                     </div>
                                 </div>
                             </div>
