@@ -33,6 +33,14 @@
             "CALLBACK_104": "There was an issue while trying to update your information",
             "CALLBACK_105": "The given date is invalid",
             "CALLBACK_106": "Your birthday has been updated"
+        },
+        "login_security":
+        {
+            "CALLBACK_100": "Mobile verification has been enabled on your account",
+            "CALLBACK_101": "You cannot set up Mobile Verification because it is already enabled, you must disable it first."
+        },
+        "setup_mobile_verification": {
+            "CALLBACK_100": "The given verification code was incorrect / has expired"
         }
     },
     "sections": {

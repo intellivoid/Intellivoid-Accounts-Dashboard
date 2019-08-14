@@ -1,12 +1,14 @@
 <?php
 
-    use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
 
-    Runtime::import('IntellivoidAccounts');
-    $IntellivoidAccounts = new IntellivoidAccounts();
-    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+    /** @var IntellivoidAccounts $IntellivoidAccounts */
+    $IntellivoidAccounts = DynamicalWeb::getMemoryObject('intellivoid_accounts');
+
+    /** @var Account $Account */
+    $Account = DynamicalWeb::getMemoryObject('account');
 
     $Account->Configuration->VerificationMethods->TwoFactorAuthentication->enable();
     $IntellivoidAccounts->getAccountManager()->updateAccount($Account);

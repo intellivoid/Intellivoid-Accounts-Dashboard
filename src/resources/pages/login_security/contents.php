@@ -1,12 +1,11 @@
 <?PHP
     use DynamicalWeb\HTML;
 
-    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
-    if(strlen($UsernameSafe) > 16)
-    {
-        $UsernameSafe = substr($UsernameSafe, 0 ,16);
-        $UsernameSafe .= "...";
-    }
+    HTML::importScript('check');
+
+
+    /** @var \IntellivoidAccounts\Objects\Account $Account */
+    $Account = \DynamicalWeb\DynamicalWeb::getMemoryObject('account');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -21,6 +20,7 @@
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
+                        <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
                             <div class="col-lg-12 grid-margin stretch-card">
                                 <!--weather card-->
@@ -51,7 +51,20 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center pb-3">
-                                            <div class="badge badge-lg badge-outline-danger badge-pill">Disabled</div>
+                                            <?PHP
+                                                if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                                {
+                                                    HTML::print("<div class=\"badge badge-lg badge-outline-success badge-pill\">", false);
+                                                    HTML::print("Enabled");
+                                                    HTML::print("</div>", false);
+                                                }
+                                                else
+                                                {
+                                                    HTML::print("<div class=\"badge badge-lg badge-outline-danger badge-pill\">", false);
+                                                    HTML::print("Disabled");
+                                                    HTML::print("</div>", false);
+                                                }
+                                            ?>
                                         </div>
                                         <p class="text-center mb-2 comment">
                                             Using Google Authenticator on your phone, you can enter a one-time password
@@ -60,7 +73,20 @@
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-info btn-block" onclick="location.href='/setup_mobile_verification';">Setup</button>
+                                        <?PHP
+                                        if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                        {
+                                            HTML::print("<button class=\"btn btn-danger btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
+                                            HTML::print("Disable");
+                                            HTML::print("</button>", false);
+                                        }
+                                        else
+                                        {
+                                            HTML::print("<button class=\"btn btn-info btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
+                                            HTML::print("Setup");
+                                            HTML::print("</button>", false);
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +112,7 @@
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-primary btn-block">Setup</button>
+                                        <button class="btn btn-info btn-block">Setup</button>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +137,7 @@
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-danger btn-block">Setup</button>
+                                        <button class="btn btn-info btn-block">Setup</button>
                                     </div>
                                 </div>
                             </div>

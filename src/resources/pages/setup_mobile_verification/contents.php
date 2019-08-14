@@ -2,6 +2,8 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
 
+    HTML::importScript('check');
+    HTML::importScript('verify');
     HTML::importScript('setup');
 ?>
 <!doctype html>
@@ -17,8 +19,7 @@
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
-
-
+                        <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
                             <div class="col-12 grid-margin">
                                 <div class="card">
