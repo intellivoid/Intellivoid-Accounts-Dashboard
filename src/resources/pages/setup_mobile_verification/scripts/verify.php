@@ -40,7 +40,7 @@
 
         $Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled = true;
 
-        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
+        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
         {
             $Account->Configuration->VerificationMethods->RecoveryCodes->enable();
             $Account->Configuration->VerificationMethods->RecoveryCodesEnabled = true;

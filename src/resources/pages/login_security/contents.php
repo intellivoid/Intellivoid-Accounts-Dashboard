@@ -165,13 +165,13 @@
                                             HTML::print("<small class=\"d-block mt-4 text-center posted-date\">", false);
                                             if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
                                             {
-                                                //$LastUpdated = $Account->Configuration->VerificationMethods->RecoveryCodes->LastUpdated;
+                                                $LastUpdated = $Account->Configuration->VerificationMethods->RecoveryCodes->LastUpdated;
                                                 HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $LastUpdated), "Last Updated: %s"));
                                             }
                                             else
                                             {
                                                 HTML::print(str_ireplace("%s", "Not Activated", "Last Updated: %s"));
-                                            }\
+                                            }
                                             HTML::print("</small>", false);
                                         ?>
                                     </div>
