@@ -87,18 +87,18 @@
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
                                         <?PHP
-                                        if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
-                                        {
-                                            HTML::print("<button class=\"btn btn-danger btn-block\" data-toggle=\"modal\" data-target=\"#disable-mv\">", false);
-                                            HTML::print("Disable");
-                                            HTML::print("</button>", false);
-                                        }
-                                        else
-                                        {
-                                            HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
-                                            HTML::print("Setup");
-                                            HTML::print("</button>", false);
-                                        }
+                                            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                            {
+                                                HTML::print("<button class=\"btn btn-danger btn-block\" data-toggle=\"modal\" data-target=\"#disable-mv\">", false);
+                                                HTML::print("Disable");
+                                                HTML::print("</button>", false);
+                                            }
+                                            else
+                                            {
+                                                HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
+                                                HTML::print("Setup");
+                                                HTML::print("</button>", false);
+                                            }
                                         ?>
                                     </div>
                                 </div>
@@ -141,16 +141,116 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center pb-3">
-                                            <div class="badge badge-lg badge-outline-danger badge-pill">Disabled</div>
+                                            <?PHP
+                                            if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                            {
+                                                HTML::print("<div class=\"badge badge-lg badge-outline-success badge-pill\">", false);
+                                                HTML::print("Enabled");
+                                                HTML::print("</div>", false);
+                                            }
+                                            else
+                                            {
+                                                HTML::print("<div class=\"badge badge-lg badge-outline-danger badge-pill\">", false);
+                                                HTML::print("Disabled");
+                                                HTML::print("</div>", false);
+                                            }
+                                            ?>
                                         </div>
                                         <p class="text-center mb-2 comment">
                                             If you lost your phone, or cannot access it. You can use one-time recovery
                                             codes to gain access to your account
                                         </p>
-                                        <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
+                                        <?PHP
+                                            HTML::print("<small class=\"d-block mt-4 text-center posted-date\">", false);
+                                            if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                            {
+                                                //$LastUpdated = $Account->Configuration->VerificationMethods->RecoveryCodes->LastUpdated;
+                                                HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $LastUpdated), "Last Updated: %s"));
+                                            }
+                                            else
+                                            {
+                                                HTML::print(str_ireplace("%s", "Not Activated", "Last Updated: %s"));
+                                            }
+                                            HTML::print("</small>", false);
+                                        ?>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-primary btn-block">Setup</button>
+                                        <?PHP
+                                            if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                            {
+                                                if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                                {
+                                                    HTML::print("<button class=\"btn btn-danger btn-block\" data-toggle=\"modal\" data-target=\"#disable-rc-mv\">", false);
+                                                    HTML::print("Disable");
+                                                    HTML::print("</button>", false);
+                                                }
+                                                else
+                                                {
+                                                    HTML::print("<button class=\"btn btn-danger btn-block\" data-toggle=\"modal\" data-target=\"#disable-rc\">", false);
+                                                    HTML::print("Disable");
+                                                    HTML::print("</button>", false);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='/setup_recovery_codes';\">", false);
+                                                HTML::print("Setup");
+                                                HTML::print("</button>", false);
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="disable-rc-mv" tabindex="-1" role="dialog" aria-labelledby="disable-rc-mv-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="disable-rc-mv-label">Disable Recovery Codes</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <i class="mdi mdi-close"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Please confirm that you want to disable recovery codes, since you have
+                                                Mobile Verification enabled as well, you may risk losing access to your
+                                                account  if you lose your device and have no other way to recover your
+                                                account. Your old recovery codes will become invalid and you will
+                                                no longer be prompted for a recovery code when trying to verify
+                                                your login
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_mv';">Disable</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="disable-rc" tabindex="-1" role="dialog" aria-labelledby="disable-rc-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="disable-rc-label">Disable Recovery Codes</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <i class="mdi mdi-close"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Please confirm that you want to disable recovery codes. Your old recovery
+                                                codes will become invalid and you will  no longer be prompted for a
+                                                recovery code when trying to verify  your login
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_mv';">Disable</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

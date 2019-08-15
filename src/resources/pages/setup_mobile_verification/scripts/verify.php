@@ -40,12 +40,12 @@
 
         $Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled = true;
 
-        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
+        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
         {
             $Account->Configuration->VerificationMethods->RecoveryCodes->enable();
             $Account->Configuration->VerificationMethods->RecoveryCodesEnabled = true;
         }
-        
+
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
         header('Location: /login_security?callback=100');
         exit();
