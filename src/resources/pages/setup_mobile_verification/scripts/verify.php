@@ -43,7 +43,7 @@
         $Account->Configuration->VerificationMethods->RecoveryCodesEnabled = true;
 
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
-        header('Location: /login_security?callback=101');
+        header('Location: /login_security?callback=100');
         exit();
 
     }

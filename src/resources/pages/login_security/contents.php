@@ -2,6 +2,7 @@
     use DynamicalWeb\HTML;
 
     HTML::importScript('check');
+    HTML::importScript('disable_mobile_verification');
 
 
     /** @var \IntellivoidAccounts\Objects\Account $Account */
@@ -88,7 +89,7 @@
                                         <?PHP
                                         if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
                                         {
-                                            HTML::print("<button class=\"btn btn-danger btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
+                                            HTML::print("<button class=\"btn btn-danger btn-block\" onclick=\"location.href='/login_security?action=disable_mv';\">", false);
                                             HTML::print("Disable");
                                             HTML::print("</button>", false);
                                         }

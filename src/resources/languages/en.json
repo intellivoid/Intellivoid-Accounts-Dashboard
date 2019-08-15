@@ -37,7 +37,9 @@
         "login_security":
         {
             "CALLBACK_100": "Mobile verification has been enabled on your account",
-            "CALLBACK_101": "You cannot set up Mobile Verification because it is already enabled, you must disable it first."
+            "CALLBACK_101": "You cannot set up Mobile Verification because it is already enabled, you must disable it first.",
+            "CALLBACK_102": "Mobile Verification cannot be disabled since it's not enabled.",
+            "CALLBACK_103": "Mobile Verification has been disabled."
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"
