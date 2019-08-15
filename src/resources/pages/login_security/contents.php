@@ -89,7 +89,7 @@
                                         <?PHP
                                         if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
                                         {
-                                            HTML::print("<button class=\"btn btn-danger btn-block\" onclick=\"location.href='/login_security?action=disable_mv';\">", false);
+                                            HTML::print("<button class=\"btn btn-danger btn-block\" data-toggle=\"modal\" data-target=\"#disable-mv\">", false);
                                             HTML::print("Disable");
                                             HTML::print("</button>", false);
                                         }
@@ -100,6 +100,31 @@
                                             HTML::print("</button>", false);
                                         }
                                         ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="disable-mv" tabindex="-1" role="dialog" aria-labelledby="disable-mv-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="disable-mv-label">Dsiable Mobile Verification</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <i class="mdi mdi-close"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Please confirm that you want to disable Mobile Verification, this will
+                                                not disable the other methods of verification such as Recovery Codes.
+                                                Those must be disabled separately
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_mv';">Disable</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
