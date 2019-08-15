@@ -31,7 +31,7 @@
                                     Intelli<b>void</b>
                                     <p>To prevent unauthorized changes, enter your password</p>
                                 </h1>
-                                <div name="callback_alert" id="callback_alert">
+                                <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 

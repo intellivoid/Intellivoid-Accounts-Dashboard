@@ -4,6 +4,7 @@
     HTML::importScript('check_sudo');
     HTML::importScript('check');
     HTML::importScript('disable_mobile_verification');
+    HTML::importScript('disable_recovery_codes');
 
 
     /** @var \IntellivoidAccounts\Objects\Account $Account */
@@ -225,7 +226,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_mv';">Disable</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_rc';">Disable</button>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +251,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_mv';">Disable</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_rc';">Disable</button>
                                         </div>
                                     </div>
                                 </div>
