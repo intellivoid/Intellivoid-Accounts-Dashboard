@@ -49,7 +49,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group pb-2 pt-2">
                                         <input type="submit" class="btn btn-danger submit-btn btn-block" value="Enter sudo mode">
                                     </div>
                                 </form>
