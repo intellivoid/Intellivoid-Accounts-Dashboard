@@ -27,6 +27,7 @@
             'account_email' => null,
             'account_username' => null,
             'sudo_mode' => false,
+            'sudo_expires' => 0,
             'verification_required' => false,
             'cache' => array(),
             'cache_refresh' => 0
@@ -69,6 +70,7 @@
     define('WEB_ACCOUNT_EMAIL', $Cookie->Data['account_email'], false);
     define('WEB_ACCOUNT_USERNAME', $Cookie->Data['account_username'], false);
     define('WEB_SUDO_MODE', $Cookie->Data['sudo_mode'], false);
+    define('WEB_SUDO_EXPIRES', $Cookie->Data['sudo_expires'], false);
     define('WEB_VERIFICATION_REQUIRED', $Cookie->Data['verification_required'], false);
 
     if(WEB_SESSION_ACTIVE == false)

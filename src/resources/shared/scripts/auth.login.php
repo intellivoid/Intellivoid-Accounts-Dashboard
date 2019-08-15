@@ -36,6 +36,7 @@
             $Cookie->Data["account_email"] = $Account->Email;
             $Cookie->Data["account_username"] = $Account->Username;
             $Cookie->Data["sudo_mode"] = false;
+            $Cookie->Data["sudo_expires"] = 0;
             $Cookie->Data["verification_required"] = false;
             $sws->CookieManager()->updateCookie($Cookie);
 

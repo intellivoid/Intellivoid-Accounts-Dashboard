@@ -43,6 +43,10 @@
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"
+        },
+        "sudo": {
+            "CALLBACK_100": "There was an error while trying to enter sudo mode, please contact support.",
+            "CALLBACK_101": "The password is incorrect"
         }
     },
     "sections": {

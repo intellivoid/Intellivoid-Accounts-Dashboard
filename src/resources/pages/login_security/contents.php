@@ -1,6 +1,7 @@
 <?PHP
     use DynamicalWeb\HTML;
 
+    HTML::importScript('check_sudo');
     HTML::importScript('check');
     HTML::importScript('disable_mobile_verification');
 

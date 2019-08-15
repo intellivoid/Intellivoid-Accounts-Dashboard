@@ -18,6 +18,8 @@
         $Cookie->Data["verification_required"] = false;
         $sws->CookieManager()->updateCookie($Cookie);
 
+        $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
+
         header('Location: /login');
         exit();
     }
