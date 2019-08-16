@@ -6,7 +6,6 @@
     HTML::importScript('disable_mobile_verification');
     HTML::importScript('disable_recovery_codes');
 
-
     /** @var \IntellivoidAccounts\Objects\Account $Account */
     $Account = \DynamicalWeb\DynamicalWeb::getMemoryObject('account');
 ?>
