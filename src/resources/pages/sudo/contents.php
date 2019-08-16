@@ -3,6 +3,8 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
 
+    HTML::importScript('check');
+
     Runtime::import('IntellivoidAccounts');
 
     HTML::importScript('enter_sudo_mode');

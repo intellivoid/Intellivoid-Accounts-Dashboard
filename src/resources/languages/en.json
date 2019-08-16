@@ -41,7 +41,8 @@
             "CALLBACK_102": "Mobile Verification cannot be disabled since it's not enabled.",
             "CALLBACK_103": "Mobile Verification has been disabled.",
             "CALLBACK_104": "Recovery Codes cannot be disabled since it's not enabled.",
-            "CALLBACK_105": "Recovery Codes verification has been disabled."
+            "CALLBACK_105": "Recovery Codes verification has been disabled.",
+            "CALLBACK_106": "You cannot setup Recovery Codes Verification since it's already enabled"
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"

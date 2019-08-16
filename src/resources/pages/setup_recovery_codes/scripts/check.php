@@ -12,3 +12,9 @@
 
     DynamicalWeb::setMemoryObject('intellivoid_accounts', $IntellivoidAccounts);
     DynamicalWeb::setMemoryObject('account', $Account);
+
+    if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
+    {
+        header('/Location: /login_security?callback=106');
+        exit();
+    }

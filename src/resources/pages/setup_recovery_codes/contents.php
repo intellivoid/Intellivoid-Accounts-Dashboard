@@ -1,10 +1,13 @@
 <?PHP
+
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 
+    HTML::importScript('check_sudo');
     HTML::importScript('check');
+    HTML::importScript('setup');
 
-    /** @var \IntellivoidAccounts\Objects\Account $Account */
-    $Account = \DynamicalWeb\DynamicalWeb::getMemoryObject('account');
+    $Account = DynamicalWeb::getMemoryObject('account');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -76,13 +79,37 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button class="btn btn-success">Confirm</button>
+                                        <button class="btn btn-success" data-toggle="modal" data-target="#confirm">Confirm</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
+                        <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirm-label" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirm-label">Confirmation</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <i class="mdi mdi-close"></i>
+                                                </span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            You can generate these codes again by disabling Recovery Codes and Enabling
+                                            it again, but each code can only be used once! Make sure you wrote them down
+                                            somewhere or saved it in a safe place.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='/setup_recovery_codes?action=confirm';">Yes, i saved them</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
