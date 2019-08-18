@@ -15,6 +15,6 @@
 
     if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
     {
-        header('/Location: /login_security?callback=106');
+        header('Location: /login_security?callback=106');
         exit();
     }
