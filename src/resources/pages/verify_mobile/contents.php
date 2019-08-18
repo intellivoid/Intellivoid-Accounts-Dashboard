@@ -19,10 +19,10 @@
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
                 <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-                    <div class="row w-100 mx-auto">
+                    <div class="row w-100 mx-auto animated slideInRight" id="input_dialog">
                         <div class="col-lg-4 mx-auto">
                             <div class="auto-form-wrapper">
-                                <button class="btn btn-rounded btn-inverse-light grid-margin" onclick="location.href='/verify';">
+                                <button class="btn btn-rounded btn-inverse-light grid-margin" onclick="animate_dialog(); location.href='/verify';">
                                     <i class="mdi mdi-arrow-left"></i>
                                 </button>
                                 <h1 class="text-center">
@@ -60,6 +60,13 @@
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <script src="/assets/js/auth_login.js"></script>
+        <script>
+            function animate_dialog()
+            {
+                $("#input_dialog").removeClass("animated");
+                $("#input_dialog").removeClass("slideInRight");
+                $("#input_dialog").addClass("animated slideOutRight");
+            }
+        </script>
     </body>
 </html>

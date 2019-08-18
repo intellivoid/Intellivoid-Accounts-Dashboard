@@ -6,3 +6,4 @@
 <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.addons.css">
 <link rel="stylesheet" href="/assets/css/shared/style.css">
 <link rel="stylesheet" href="/assets/css/demo_2/style.css">
+<link rel="stylesheet" href="/assets/css/animate.css">

@@ -54,6 +54,9 @@
                 $Cookie->Data["auto_logout"] = 0;
             }
 
+            $Cookie->Data["verification_required"] = false;
+            $Cookie->Data["auto_logout"] = 0;
+
             $sws->CookieManager()->updateCookie($Cookie);
 
             header('Location: /');
