@@ -13,6 +13,11 @@
         'register'
     ];
 
+    $verification_pages = [
+        'verify',
+        'logout'
+    ];
+
     /** @var sws $sws */
     $sws = DynamicalWeb::setMemoryObject('sws', new sws());
 
@@ -93,19 +98,41 @@
     }
     else
     {
-        $redirect = false;
-
-        foreach($unauthorized_pages as $page)
+        if(WEB_VERIFICATION_REQUIRED == true)
         {
-            if(APP_CURRENT_PAGE == $page)
+            $redirect = true;
+
+            foreach($verification_pages as $page)
             {
-                $redirect = true;
+                if(APP_CURRENT_PAGE == $page)
+                {
+                    $redirect = false;
+                }
+            }
+
+            if($redirect == true)
+            {
+                header('Location: /verify');
+                exit();
+            }
+        }
+        else
+        {
+            $redirect = false;
+
+            foreach($unauthorized_pages as $page)
+            {
+                if(APP_CURRENT_PAGE == $page)
+                {
+                    $redirect = true;
+                }
+            }
+
+            if($redirect == true)
+            {
+                header('Location: /');
+                exit();
             }
         }
 
-        if($redirect == true)
-        {
-            header('Location: /');
-            exit();
-        }
     }

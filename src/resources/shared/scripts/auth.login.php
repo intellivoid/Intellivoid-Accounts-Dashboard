@@ -37,7 +37,20 @@
             $Cookie->Data["account_username"] = $Account->Username;
             $Cookie->Data["sudo_mode"] = false;
             $Cookie->Data["sudo_expires"] = 0;
-            $Cookie->Data["verification_required"] = false;
+
+            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
+            {
+                $Cookie->Data["verification_required"] = true;
+            }
+            elseif($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
+            {
+                $Cookie->Data["verification_required"] = true;
+            }
+            else
+            {
+                $Cookie->Data["verification_required"] = false;
+            }
+
             $sws->CookieManager()->updateCookie($Cookie);
 
             header('Location: /');
