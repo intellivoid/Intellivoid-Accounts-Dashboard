@@ -41,14 +41,17 @@
             if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
             {
                 $Cookie->Data["verification_required"] = true;
+                $Cookie->Data["auto_logout"] = time() + 600;
             }
             elseif($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
             {
                 $Cookie->Data["verification_required"] = true;
+                $Cookie->Data["auto_logout"] = time() + 600;
             }
             else
             {
                 $Cookie->Data["verification_required"] = false;
+                $Cookie->Data["auto_logout"] = 0;
             }
 
             $sws->CookieManager()->updateCookie($Cookie);

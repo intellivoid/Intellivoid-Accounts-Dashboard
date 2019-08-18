@@ -36,7 +36,7 @@
                                 <form id="authentication_form" name="authentication_form">
 
                                     <div class="form-group pt-4">
-                                        <a class="d-flex align-items-center py-1 text-black" href="/verify" style="text-decoration: none;">
+                                        <a class="d-flex align-items-center py-1 text-black" href="/verify_mobile" style="text-decoration: none;">
                                             <span class="mdi mdi-cellphone-iphone"></span>
                                             <p class="mb-0 ml-3">Verify using your Phone</p>
                                             <p class="ml-auto mb-0 text-muted">

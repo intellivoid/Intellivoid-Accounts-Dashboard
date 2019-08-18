@@ -12,7 +12,8 @@
             "CALLBACK_103": "The login credentials are incorrect",
             "CALLBACK_104": "Your account has been suspended, if you think this was a mistake, you can contact us.",
             "CALLBACK_105": "You are not authorized to login to this account due to suspicious activities",
-            "CALLBACK_106": "Your account has been created, you can login now."
+            "CALLBACK_106": "Your account has been created, you can login now.",
+            "CALLBACK_107": "Your session has expired, please login again"
         },
         "register": {
             "PAGE_TITLE": "DynamicalWeb",

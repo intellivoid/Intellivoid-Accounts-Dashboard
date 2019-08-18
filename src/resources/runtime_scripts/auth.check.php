@@ -15,6 +15,7 @@
 
     $verification_pages = [
         'verify',
+        'verify_mobile',
         'logout'
     ];
 
@@ -34,6 +35,7 @@
             'sudo_mode' => false,
             'sudo_expires' => 0,
             'verification_required' => false,
+            'auto_logout' => 0,
             'cache' => array(),
             'cache_refresh' => 0
         );
@@ -47,7 +49,14 @@
             exit();
         }
 
-        header('Refresh: 2; URL=/');
+        if(isset($_GET['callback']))
+        {
+            header('Refresh: 2; URL=/login?callback=' . urlencode($_GET['callback']));
+        }
+        else
+        {
+            header('Refresh: 2; URL=/login');
+        }
         HTML::importScript('loader');
         exit();
 
@@ -77,6 +86,7 @@
     define('WEB_SUDO_MODE', $Cookie->Data['sudo_mode'], false);
     define('WEB_SUDO_EXPIRES', $Cookie->Data['sudo_expires'], false);
     define('WEB_VERIFICATION_REQUIRED', $Cookie->Data['verification_required'], false);
+    define('WEB_AUTO_LOGOUT', $Cookie->Data['auto_logout'], false);
 
     if(WEB_SESSION_ACTIVE == false)
     {
@@ -100,6 +110,18 @@
     {
         if(WEB_VERIFICATION_REQUIRED == true)
         {
+            if(time() > WEB_AUTO_LOGOUT)
+            {
+                $Cookie->Data['session_active'] = false;
+                $Cookie->Data['verification_required'] = false;
+                $Cookie->Data['auto_logout'] = 0;
+                $sws->CookieManager()->updateCookie($Cookie);
+                $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
+
+                header('Location: /login?callback=107');
+                exit();
+            }
+
             $redirect = true;
 
             foreach($verification_pages as $page)
