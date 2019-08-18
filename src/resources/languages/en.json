@@ -42,7 +42,8 @@
             "CALLBACK_103": "Mobile Verification has been disabled.",
             "CALLBACK_104": "Recovery Codes cannot be disabled since it's not enabled.",
             "CALLBACK_105": "Recovery Codes verification has been disabled.",
-            "CALLBACK_106": "You cannot setup Recovery Codes Verification since it's already enabled"
+            "CALLBACK_106": "You cannot setup Recovery Codes Verification since it's already enabled",
+            "CALLBACK_107": "Recovery Codes has been enabled"
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"
@@ -50,6 +51,9 @@
         "sudo": {
             "CALLBACK_100": "There was an error while trying to enter sudo mode, please contact support.",
             "CALLBACK_101": "The password is incorrect"
+        },
+        "setup_recovery_codes": {
+            "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         }
     },
     "sections": {

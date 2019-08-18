@@ -5,6 +5,7 @@
 
     HTML::importScript('check_sudo');
     HTML::importScript('check');
+    HTML::importScript('confirm');
     HTML::importScript('setup');
 
     $Account = DynamicalWeb::getMemoryObject('account');
