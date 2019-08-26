@@ -72,19 +72,17 @@
          * @param int $unix_timestamp
          * @param int $status
          * @param string $origin
-         * @param string $ip_address
          * @return string
          */
-        public static function loginPublicID(int $account_id, int $unix_timestamp, int $status, string $origin, string $ip_address)
+        public static function loginPublicID(int $account_id, int $unix_timestamp, int $status, string $origin)
         {
             $account_id = hash('haval256,5', $account_id);
             $unix_timestamp = hash('haval256,5', $unix_timestamp);
             $status = hash('haval256,5', $status);
             $origin = hash('haval256,5', $origin);
-            $ip_address = hash('haval256,5', $ip_address);
 
             $crc1 = hash('sha256', $account_id . $unix_timestamp . $status);
-            $crc2 = hash('sha256', $origin, $ip_address);
+            $crc2 = hash('sha256', $origin . $crc1);
 
             return $crc1 . $crc2;
         }
@@ -134,20 +132,79 @@
         /**
          * Creates a Public ID for a known host record
          *
-         * @param int $account_id
          * @param string $ip_address
+         * @param string $user_agent
          * @param int $unix_timestamp
          * @return string
          */
-        public static function knownHostPublicID(int $account_id, string $ip_address, int $unix_timestamp): string
+        public static function knownHostPublicID(string $ip_address, string $user_agent, int $unix_timestamp): string
         {
             $builder = self::pepper($ip_address);
 
             $builder .= hash('haval256,5', $ip_address);
-            $builder .= hash('crc32', $account_id . $builder);
+            $builder .= hash('crc32', $user_agent . $builder);
             $builder .= hash('crc32', $unix_timestamp . $builder);
 
             return $builder;
+        }
+
+        /**
+         * Creates a magic key that can be use to calculate the client side
+         *
+         * @return string
+         * @throws BadLengthException
+         * @throws SecuredRandomProcessorNotFoundException
+         */
+        public static function magicKey(): string
+        {
+            $builder = self::pepper(hash('sha256', time())) . self::recoveryCode();
+            return hash('haval256,5', $builder . self::recoveryCode());
+        }
+
+        /**
+         * Calculates the public key for cURL
+         *
+         * @param string $magic_key
+         * @return string
+         */
+        public static function curlPublicKey(string $magic_key): string
+        {
+            return self::pepper($magic_key) . "-intellivoid-iauth";
+        }
+
+        /**
+         * Creates a unique cURL Challenge
+         *
+         * @param string $magic_key
+         * @return string
+         */
+        public static function curlCreateChallenge(string $magic_key): string
+        {
+            return self::pepper($magic_key) .  hash('sha256', self::pepper($magic_key) . time());
+        }
+
+        /**
+         * Calculates the answer to the challenge
+         *
+         * @param string $challenge
+         * @param $private_key
+         * @return string
+         */
+        public static function curlChallengeAnswer(string $challenge, $private_key): string
+        {
+            return hash('sha256', $challenge . $private_key);
+        }
+
+        /**
+         * Calculates the private key for cURL
+         *
+         * @param string $public_key
+         * @param string $magic_key
+         * @return string
+         */
+        public static function curlPrivateKey(string $public_key, string $magic_key): string
+        {
+            return hash('sha256', $public_key . '-' . $magic_key);
         }
 
         /**
@@ -180,5 +237,22 @@
         public static function recoveryCode(): string
         {
             return hash('adler32', self::pepper(Crypto::BuildSecretSignature(16) . time()));
+        }
+
+        /**
+         * Creates a unique public telegram client ID
+         *
+         * @param string $chat_id
+         * @param int $timestamp
+         * @return string
+         */
+        public static function telegramClientPublicID(string $chat_id, int $timestamp): string
+        {
+            $builder = "TEL-";
+
+            $builder .= hash('sha256', $chat_id);
+            $builder .= hash('crc32', $timestamp);
+
+            return $builder;
         }
     }

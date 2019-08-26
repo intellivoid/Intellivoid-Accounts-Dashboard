@@ -28,20 +28,6 @@
         public $IpAddress;
 
         /**
-         * The account ID associated with this host
-         *
-         * @var int
-         */
-        public $AccountID;
-
-        /**
-         * Indicates if this host is verified and marked as safe by the user
-         *
-         * @var bool
-         */
-        public $Verified;
-
-        /**
          * Indicates if this host was blocked by the user
          *
          * @var bool
@@ -54,6 +40,20 @@
          * @var int
          */
         public $LastUsed;
+
+        /**
+         * The location data associated with this host
+         *
+         * @var LocationData
+         */
+        public $LocationData;
+
+        /**
+         * Array of user agents associated with this host
+         *
+         * @var array
+         */
+        public $UserAgents;
 
         /**
          * The Unix Timestamp for when this host was registered into the system
@@ -69,14 +69,24 @@
          */
         public function toArray(): array
         {
+            $UserAgentsArray = [];
+            if($this->UserAgents !== null)
+            {
+                /** @var UserAgent $userAgent */
+                foreach($this->UserAgents as $userAgent)
+                {
+                    $UserAgentsArray[] = $userAgent->toArray();
+                }
+            }
+
             return array(
                 'id' => (int)$this->ID,
                 'public_id' => $this->PublicID,
                 'ip_address' => $this->IpAddress,
-                'account_id' => (int)$this->AccountID,
-                'verified' => (bool)$this->Verified,
                 'blocked' => (bool)$this->Blocked,
                 'last_used' => (int)$this->LastUsed,
+                'location_data' => $this->LocationData->toArray(),
+                'user_agents' => $UserAgentsArray,
                 'created' => $this->LastUsed
             );
         }
@@ -106,16 +116,6 @@
                 $KnownHostObject->IpAddress = $data['ip_address'];
             }
 
-            if(isset($data['account_id']))
-            {
-                $KnownHostObject->AccountID = (int)$data['account_id'];
-            }
-
-            if(isset($data['verified']))
-            {
-                $KnownHostObject->Verified = (bool)$data['verified'];
-            }
-
             if(isset($data['blocked']))
             {
                 $KnownHostObject->Blocked = (bool)$data['blocked'];
@@ -124,6 +124,28 @@
             if(isset($data['last_used']))
             {
                 $KnownHostObject->LastUsed = (int)$data['last_used'];
+            }
+
+            if(isset($data['location_data']))
+            {
+                $KnownHostObject->LocationData = LocationData::fromArray($data['location_data']);
+            }
+            else
+            {
+                $KnownHostObject->LocationData = new LocationData();
+            }
+
+            if(isset($data['user_agents']))
+            {
+                $KnownHostObject->UserAgents = [];
+                foreach($data['user_agents'] as $userAgent)
+                {
+                    $KnownHostObject->UserAgents[] = UserAgent::fromArray($userAgent);
+                }
+            }
+            else
+            {
+                $KnownHostObject->UserAgents = [];
             }
 
             if(isset($data['created']))
