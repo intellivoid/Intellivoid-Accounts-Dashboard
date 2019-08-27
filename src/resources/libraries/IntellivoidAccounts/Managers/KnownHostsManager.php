@@ -71,12 +71,18 @@
         {
             if($this->hostKnown($ip_address) == true)
             {
-                $KnownHost = $this->getHost(KnownHostsSearchMethod::byPublicId, $ip_address);
+                $KnownHost = $this->getHost(KnownHostsSearchMethod::byIpAddress, $ip_address);
                 $KnownHost->LastUsed = time();
                 if((time() - $KnownHost->LocationData->LastUpdated) > 172800)
                 {
                     $KnownHost->LocationData = $this->getLocationData($ip_address);
                 }
+
+                if(isset($KnownHost->UserAgents[$user_agent]) == false)
+                {
+                    $KnownHost->UserAgents[] = $user_agent;
+                }
+
                 $this->updateKnownHost($KnownHost);
                 return $KnownHost;
             }
@@ -97,21 +103,8 @@
             $location_data = ZiProto::encode($location_data->toArray());
             $location_data = $this->intellivoidAccounts->database->real_escape_string($location_data);
 
-            // Parse the user agent if available
-            $user_agent = null;
-
-            if(Validate::userAgent($user_agent) == false)
-            {
-                $user_agent = new UserAgent();
-                $user_agent->UserAgentString = "None";
-            }
-            else
-            {
-                $user_agent = UserAgent::fromString($user_agent);
-            }
-
             $user_agents = [];
-            $user_agents[] = $user_agent->toArray();
+            $user_agents[] = $user_agent;
             $user_agents = ZiProto::encode($user_agents);
             $user_agents = $this->intellivoidAccounts->database->real_escape_string($user_agents);
 
@@ -120,7 +113,7 @@
 
             if($QueryResults)
             {
-                return $this->getHost(KnownHostsSearchMethod::byPublicId, $ip_address);
+                return $this->getHost(KnownHostsSearchMethod::byPublicId, $public_id);
             }
 
             throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
@@ -201,6 +194,8 @@
                 }
 
                 $Row = $QueryResults->fetch_array(MYSQLI_ASSOC);
+                $Row['location_data'] = ZiProto::decode($Row['location_data']);
+                $Row['user_agents'] = ZiProto::decode($Row['user_agents']);
                 return KnownHost::fromArray($Row);
             }
         }
@@ -231,7 +226,7 @@
             $blocked = (int)$knownHost->Blocked;
             $location_data = ZiProto::encode($knownHost->LocationData->toArray());
             $location_data = $this->intellivoidAccounts->database->real_escape_string($location_data);
-            $user_agents = ZiProto::encode($knownHost->toArray()['user_agents']);
+            $user_agents = ZiProto::encode($knownHost->UserAgents);
             $user_agents = $this->intellivoidAccounts->database->real_escape_string($user_agents);
             $last_used = (int)$knownHost->LastUsed;
 

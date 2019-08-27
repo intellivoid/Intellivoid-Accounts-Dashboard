@@ -19,7 +19,7 @@
     },
     "runtime_scripts": {
         "initialize": [],
-        "on_page_load": ["auth.check.php"],
+        "on_page_load": ["auth.check.php", "check.host.php"],
         "page_loaded": [],
         "after_request": [],
         "on_request": [],

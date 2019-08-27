@@ -36,6 +36,9 @@
             'sudo_expires' => 0,
             'verification_required' => false,
             'auto_logout' => 0,
+            'host_id' => 0,
+            'host_cache_ip' => null,
+            'host_cache_ua' => null,
             'cache' => array(),
             'cache_refresh' => 0
         );

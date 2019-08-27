@@ -2,16 +2,21 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
+    use IntellivoidAccounts\Abstracts\LoginStatus;
+use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
-    use IntellivoidAccounts\Exceptions\ConfigurationNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
-    use IntellivoidAccounts\Exceptions\HostBlockedFromAccountException;
     use IntellivoidAccounts\Exceptions\HostNotKnownException;
     use IntellivoidAccounts\Exceptions\IncorrectLoginDetailsException;
     use IntellivoidAccounts\Exceptions\InvalidIpException;
     use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
     use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
+    use IntellivoidAccounts\Objects\KnownHost;
+use IntellivoidAccounts\Utilities\Validate;
+use sws\Objects\Cookie;
     use sws\sws;
 
     Runtime::import('IntellivoidAccounts');
@@ -20,16 +25,58 @@
     {
         try
         {
-            check_login();
-
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-            $Account = $IntellivoidAccounts->getAccountManager()->getAccountByAuth($_POST['username_email'], $_POST['password']);
+            // Define the important parts
+            if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+            {
+                /** @var IntellivoidAccounts $IntellivoidAccounts */
+                $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
+                    "intellivoid_accounts", new IntellivoidAccounts()
+                );
+            }
+            else
+            {
+                /** @var IntellivoidAccounts $IntellivoidAccounts */
+                $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+            }
 
             /** @var sws $sws */
             $sws = DynamicalWeb::getMemoryObject('sws');
-
             $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+            DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);
+
+            $Host = get_host();
+        }
+        catch(Exception $exception)
+        {
+            header('Location: /login?callback=101?type=internal');
+            exit();
+        }
+
+        try
+        {
+            $VerificationAccount = get_account();
+            $Account = check_login();
+
+            if($Host->Blocked == true)
+            {
+                try
+                {
+                    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+                        $Account->ID, $Host->ID,
+                        LoginStatus::UntrustedIpBlocked, 'Intellivoid Accounts',
+                        CLIENT_USER_AGENT
+                    );
+
+                    header('Location: /login?callback=105');
+                    exit();
+                }
+                catch(Exception $exception)
+                {
+                    header('Location: /login?callback=101?type=blocked');
+                    exit();
+                }
+            }
+
             $Cookie->Data["session_active"] = true;
             $Cookie->Data["account_pubid"] = $Account->PublicID;
             $Cookie->Data["account_id"] = $Account->ID;
@@ -50,6 +97,25 @@
             }
             else
             {
+                try
+                {
+                    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+                        $Account->ID, $Host->ID,
+                        LoginStatus::Successful, 'Intellivoid Accounts',
+                        CLIENT_USER_AGENT
+                    );
+                }
+                catch(Exception $exception)
+                {
+                    header('Location: /login?callback=101?type=no_verification');
+                    exit();
+                }
+
+                if($Account->Configuration->KnownHosts->addHostId($Host->ID) == true)
+                {
+                    $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
+                }
+
                 $Cookie->Data["verification_required"] = false;
                 $Cookie->Data["auto_logout"] = 0;
             }
@@ -69,17 +135,29 @@
         }
         catch(IncorrectLoginDetailsException $incorrectLoginDetailsException)
         {
+            if($VerificationAccount !== null)
+            {
+                try
+                {
+                    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+                        $VerificationAccount->ID, $Host->ID,
+                        LoginStatus::IncorrectCredentials, 'Intellivoid Accounts',
+                        CLIENT_USER_AGENT
+                    );
+                }
+                catch(Exception $exception)
+                {
+                    header('Location: /login?callback=101?type=ilde');
+                    exit();
+                }
+            }
+
             header('Location: /login?callback=103');
             exit();
         }
         catch(AccountSuspendedException $accountSuspendedException)
         {
             header('Location: /login?callback=104');
-            exit();
-        }
-        catch(HostBlockedFromAccountException $hostBlockedFromAccountException)
-        {
-            header('Location: /login?callback=105');
             exit();
         }
         catch(Exception $exception)
@@ -205,18 +283,14 @@
     /**
      * Check's if the given login information is correct or not
      *
-     * @return bool
+     * @return Account
      * @throws AccountNotFoundException
      * @throws AccountSuspendedException
-     * @throws ConfigurationNotFoundException
      * @throws DatabaseException
-     * @throws HostBlockedFromAccountException
-     * @throws HostNotKnownException
      * @throws IncorrectLoginDetailsException
-     * @throws InvalidIpException
      * @throws InvalidSearchMethodException
      */
-    function check_login(): bool
+    function check_login(): Account
     {
         if(isset($_POST['username_email']) == false)
         {
@@ -230,22 +304,62 @@
             exit();
         }
 
-        if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+
+        return $IntellivoidAccounts->getAccountManager()->getAccountByAuth($_POST['username_email'], $_POST['password']);
+    }
+
+    /**
+     * Returns an account if the entered username/email exists
+     *
+     * @return Account|null
+     * @throws AccountNotFoundException
+     * @throws DatabaseException
+     * @throws InvalidSearchMethodException
+     */
+    function get_account()
+    {
+        if(isset($_POST['username_email']) == false)
         {
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
-                "intellivoid_accounts", new IntellivoidAccounts()
-            );
-        }
-        else
-        {
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+            header('Location: /login?callback=100');
+            exit();
         }
 
-        $IntellivoidAccounts->getLoginProcessor()->verifyCredentials(
-            safe_ip(detectClientIp()), $_POST['username_email'], $_POST['password']
-        );
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
-        return True;
+        if(Validate::email($_POST['username_email']))
+        {
+            if($IntellivoidAccounts->getAccountManager()->emailExists($_POST['username_email']))
+            {
+                return $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byEmail, $_POST['username_email']);
+            }
+        }
+
+        if($IntellivoidAccounts->getAccountManager()->usernameExists($_POST['username_email']))
+        {
+            return $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byUsername, $_POST['username_email']);
+        }
+
+        return null;
+    }
+
+    /**
+     * Get's the known host associated with this client
+     *
+     * @return KnownHost
+     * @throws DatabaseException
+     * @throws HostNotKnownException
+     * @throws InvalidIpException
+     */
+    function get_host(): KnownHost
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+
+        /** @var Cookie $Cookie */
+        $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+
+        return $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
     }
