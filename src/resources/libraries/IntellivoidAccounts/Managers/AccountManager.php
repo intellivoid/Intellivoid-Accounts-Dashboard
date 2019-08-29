@@ -175,11 +175,10 @@
          * @return bool
          * @throws AccountNotFoundException
          * @throws DatabaseException
+         * @throws InvalidAccountStatusException
          * @throws InvalidEmailException
-         * @throws InvalidPasswordException
          * @throws InvalidSearchMethodException
          * @throws InvalidUsernameException
-         * @throws InvalidAccountStatusException
          */
         public function updateAccount(Account $account): bool
         {

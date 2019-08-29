@@ -2,9 +2,10 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
+    use IntellivoidAccounts\Abstracts\AccountStatus;
     use IntellivoidAccounts\Abstracts\LoginStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
@@ -15,8 +16,8 @@ use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\KnownHost;
-use IntellivoidAccounts\Utilities\Validate;
-use sws\Objects\Cookie;
+    use IntellivoidAccounts\Utilities\Validate;
+    use sws\Objects\Cookie;
     use sws\sws;
 
     Runtime::import('IntellivoidAccounts');
@@ -52,10 +53,21 @@ use sws\Objects\Cookie;
             exit();
         }
 
+        if(isset($_POST['password']) == false)
+        {
+            header('Location: /login?callback=100');
+            exit();
+        }
+
         try
         {
-            $VerificationAccount = get_account();
-            $Account = check_login();
+            $Account = get_account();
+
+            if($Account == null)
+            {
+                header('Location: /login?callback=103');
+                exit();
+            }
 
             if($Host->Blocked == true)
             {
@@ -75,6 +87,32 @@ use sws\Objects\Cookie;
                     header('Location: /login?callback=101?type=blocked');
                     exit();
                 }
+            }
+
+            if(Validate::verifyHashedPassword($_POST['password'], $Account->Password) == false)
+            {
+                try
+                {
+                    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+                        $Account->ID, $Host->ID,
+                        LoginStatus::IncorrectCredentials, 'Intellivoid Accounts',
+                        CLIENT_USER_AGENT
+                    );
+                }
+                catch(Exception $exception)
+                {
+                    header('Location: /login?callback=101?type=verify_ps');
+                    exit();
+                }
+
+                header('Location: /login?callback=103');
+                exit();
+            }
+
+            if($Account->Status == AccountStatus::Suspended)
+            {
+                header('Location: /login?callback=104');
+                exit();
             }
 
             $Cookie->Data["session_active"] = true;
@@ -131,33 +169,6 @@ use sws\Objects\Cookie;
         catch(AccountNotFoundException $accountNotFoundException)
         {
             header('Location: /login?callback=102');
-            exit();
-        }
-        catch(IncorrectLoginDetailsException $incorrectLoginDetailsException)
-        {
-            if($VerificationAccount !== null)
-            {
-                try
-                {
-                    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
-                        $VerificationAccount->ID, $Host->ID,
-                        LoginStatus::IncorrectCredentials, 'Intellivoid Accounts',
-                        CLIENT_USER_AGENT
-                    );
-                }
-                catch(Exception $exception)
-                {
-                    header('Location: /login?callback=101?type=ilde');
-                    exit();
-                }
-            }
-
-            header('Location: /login?callback=103');
-            exit();
-        }
-        catch(AccountSuspendedException $accountSuspendedException)
-        {
-            header('Location: /login?callback=104');
             exit();
         }
         catch(Exception $exception)
@@ -283,6 +294,7 @@ use sws\Objects\Cookie;
     /**
      * Check's if the given login information is correct or not
      *
+     * @deprecated
      * @return Account
      * @throws AccountNotFoundException
      * @throws AccountSuspendedException
