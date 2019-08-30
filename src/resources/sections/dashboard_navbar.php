@@ -71,16 +71,16 @@
                     <div class="submenu ">
                         <ul class="submenu-item ">
                             <li class="nav-item ">
-                                <a class="nav-link " href="/login_history">Login History</a>
+                                <a class="nav-link" href="/login_history">Login History</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link " href="/services">Services</a>
+                                <a class="nav-link" href="/services">Services</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link " href="/login_security">Login Security</a>
+                                <a class="nav-link" href="/login_security">Login Security</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link " href="/update_password">Update Password</a>
+                                <a class="nav-link" data-toggle="modal" data-target="#password-reset-dialog" href="#">Update Password</a>
                             </li>
                         </ul>
                     </div>
@@ -95,3 +95,4 @@
         </div>
     </div>
 </nav>
+<?PHP HTML::importSection('reset_password_modal'); ?>
