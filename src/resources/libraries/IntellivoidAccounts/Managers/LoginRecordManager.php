@@ -4,6 +4,7 @@
 
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\LoginRecordMultiSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\LoginRecordSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
@@ -17,6 +18,7 @@
     use IntellivoidAccounts\Objects\UserLoginRecord;
     use IntellivoidAccounts\Utilities\Hashing;
     use IntellivoidAccounts\Utilities\Validate;
+    use msqg\Abstracts\SortBy;
     use msqg\QueryBuilder;
     use ZiProto\ZiProto;
 
@@ -151,7 +153,7 @@
                     throw new InvalidSearchMethodException();
             }
 
-            $Query = QueryBuilder::select("user_logins", [
+            $Query = QueryBuilder::select("users_logins", [
                 'id',
                 'public_id',
                 'origin',
@@ -196,12 +198,12 @@
         {
             switch($search_method)
             {
-                case LoginRecordSearchMethod::byPublicId:
+                case LoginRecordMultiSearchMethod::byIpAddress:
                     $search_method = $this->intellivoidAccounts->database->real_escape_string($search_method);
                     $value = $this->intellivoidAccounts->database->real_escape_string($value);
                     break;
 
-                case LoginRecordSearchMethod::byId:
+                case LoginRecordMultiSearchMethod::byAccountId:
                     $search_method = $this->intellivoidAccounts->database->real_escape_string($search_method);
                     $value = (int)$value;
                     break;
@@ -210,7 +212,7 @@
                     throw new InvalidSearchMethodException();
             }
 
-            $Query = QueryBuilder::select("user_logins", [
+            $Query = QueryBuilder::select("users_logins", [
                 'id',
                 'public_id',
                 'origin',
@@ -219,7 +221,7 @@
                 'account_id',
                 'status',
                 'timestamp'
-            ], $search_method, $value, null, null, $limit, $offset);
+            ], $search_method, $value, 'timestamp', SortBy::descending, $limit, $offset);
 
             $QueryResults = $this->intellivoidAccounts->database->query($Query);
             if($QueryResults == false)
