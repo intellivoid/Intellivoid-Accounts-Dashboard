@@ -43,6 +43,7 @@ use IntellivoidAccounts\Objects\Account;
                                         ?>
                                     </div>
                                 </div>
+                                <?PHP HTML::importScript('render_navigation'); ?>
                             </div>
                         </div>
 
