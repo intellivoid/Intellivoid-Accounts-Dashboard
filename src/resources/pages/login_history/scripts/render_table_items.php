@@ -22,7 +22,7 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
-    foreach($IntellivoidAccounts->getLoginRecordManager()->searchRecords(LoginRecordMultiSearchMethod::byAccountId, WEB_ACCOUNT_ID) as $loginRecord)
+    foreach(DynamicalWeb::getArray('search_results') as $loginRecord)
     {
         /** @var UserLoginRecord $loginRecord */
         $loginRecord = UserLoginRecord::fromArray($loginRecord);
@@ -97,7 +97,17 @@
                 ?>
             </td>
             <td data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<?PHP HTML::print($LocationDetails); ?>">
-                <i class="flag-icon flag-icon-cl" title="ae"></i>
+                <?PHP
+                    if($KnownHost->LocationData->CountryName == null)
+                    {
+                        HTML::print("<i class=\"mdi mdi-help\"></i>", false);
+                    }
+                    else
+                    {
+                        $CountryCode = strtolower($KnownHost->LocationData->CountryCode);
+                        HTML::print("<i class=\"flag-icon flag-icon-$CountryCode\" title=\"$CountryCode\"></i>", false);
+                    }
+                ?>
                 <span class="pl-1">
                     <?PHP
                     /** @var KnownHost $KnowHost */

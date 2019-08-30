@@ -1,8 +1,13 @@
 <?PHP
-    use DynamicalWeb\HTML;
 
-    /** @var \IntellivoidAccounts\Objects\Account $Account */
-    $Account = \DynamicalWeb\DynamicalWeb::getMemoryObject('account');
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
+use IntellivoidAccounts\Objects\Account;
+
+/** @var Account $Account */
+    $Account = DynamicalWeb::getMemoryObject('account');
+
+    HTML::importScript('get_records');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -26,24 +31,17 @@
                                     <h4 class="card-title">Login History</h4>
                                     <p class="card-description"> Review what devices you logged in with and when </p>
                                     <div class="row">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th> Origin </th>
-                                                    <th> Browser </th>
-                                                    <th> IP Address </th>
-                                                    <th> Status </th>
-                                                    <th> Date </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?PHP HTML::importScript('render_table_items'); ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <?PHP
+                                            if(count(DynamicalWeb::getArray('search_results')) == 0)
+                                            {
+                                                HTML::importScript('no_items_msg');
+                                            }
+                                            else
+                                            {
+                                                HTML::importScript('render_table');
+                                            }
+                                        ?>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
