@@ -26,7 +26,6 @@
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>

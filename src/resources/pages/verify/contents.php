@@ -1,12 +1,19 @@
 <?PHP
-    use DynamicalWeb\HTML;
 
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
+    use IntellivoidAccounts\Objects\Account;
+
+    HTML::importScript('get_account');
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
         $UsernameSafe = substr($UsernameSafe, 0 ,16);
         $UsernameSafe .= "...";
     }
+
+    /** @var Account $Account */
+    $Account = DynamicalWeb::getMemoryObject('account');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -27,57 +34,48 @@
                                     Verification
                                     <p>To protect your account from unauthorized access, verify your login</p>
                                 </h1>
-                                <div name="callback_alert" id="callback_alert">
+                                <div id="callback_alert" class="pb-3" id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 
-                                <div class="border-bottom pb-4"></div>
-
-                                <form id="authentication_form" name="authentication_form">
-
-                                    <div class="form-group pt-4">
-                                        <a class="d-flex align-items-center py-1 text-black" href="/verify_mobile" onclick="animate_next();" style="text-decoration: none;">
-                                            <span class="mdi mdi-cellphone-iphone"></span>
-                                            <p class="mb-0 ml-3">Verify using your Phone</p>
-                                            <p class="ml-auto mb-0 text-muted">
-                                                <i class="mdi mdi-arrow-right"></i>
-                                            </p>
-                                        </a>
+                                <form id="authentication_form" class="border-top pb-4" name="authentication_form">
+                                    <div class="pt-4">
                                     </div>
+                                    <?PHP
+                                        if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                        {
+                                            ?>
+                                            <div class="form-group">
+                                                <a class="d-flex align-items-center py-1 text-black" href="/verify_mobile" onclick="animate_next();" style="text-decoration: none;">
+                                                    <span class="mdi mdi-cellphone-iphone"></span>
+                                                    <p class="mb-0 ml-3">Verify using your Phone</p>
+                                                    <p class="ml-auto mb-0 text-muted">
+                                                        <i class="mdi mdi-arrow-right"></i>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <?PHP
+                                        }
 
-                                    <div class="form-group">
-                                        <a class="d-flex align-items-center py-1 text-black" onclick="animate_next();" style="text-decoration: none;">
-                                            <span class="mdi mdi-reload"></span>
-                                            <p class="mb-0 ml-3">Use a recovery code</p>
-                                            <p class="ml-auto mb-0 text-muted">
-                                                <i class="mdi mdi-arrow-right"></i>
-                                            </p>
-                                        </a>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <a class="d-flex align-items-center py-1 text-black" href="/verify" style="text-decoration: none;">
-                                            <span class="mdi mdi-telegram"></span>
-                                            <p class="mb-0 ml-3">Verify using your Telegram</p>
-                                            <p class="ml-auto mb-0 text-muted">
-                                                <i class="mdi mdi-arrow-right"></i>
-                                            </p>
-                                        </a>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <a class="d-flex align-items-center py-1 text-black" href="/verify" style="text-decoration: none;">
-                                            <span class="mdi mdi-server"></span>
-                                            <p class="mb-0 ml-3">Verify using OpenSSL</p>
-                                            <p class="ml-auto mb-0 text-muted">
-                                                <i class="mdi mdi-arrow-right"></i>
-                                            </p>
-                                        </a>
-                                    </div>
+                                        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                        {
+                                            ?>
+                                            <div class="form-group">
+                                                <a class="d-flex align-items-center py-1 text-black" href="/verify_recovery_code" onclick="animate_next();" style="text-decoration: none;">
+                                                    <span class="mdi mdi-reload"></span>
+                                                    <p class="mb-0 ml-3">Use a recovery code</p>
+                                                    <p class="ml-auto mb-0 text-muted">
+                                                        <i class="mdi mdi-arrow-right"></i>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <?PHP
+                                        }
+                                    ?>
 
                                     <div class="border-bottom pb-1"></div>
 
-                                    <div class="text-block text-center my-3">
+                                    <div class="text-block text-center my-3 pt-4">
                                         <span class="text-small font-weight-semibold">Not <?php HTML::print($UsernameSafe); ?>?</span>
                                         <a href="/logout" class="text-black text-small">Logout</a>
                                     </div>
