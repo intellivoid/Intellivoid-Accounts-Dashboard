@@ -16,6 +16,7 @@
     $verification_pages = [
         'verify',
         'verify_mobile',
+        'verify_recovery_code',
         'logout'
     ];
 
