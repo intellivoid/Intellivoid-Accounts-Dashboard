@@ -4,6 +4,12 @@
         "iso_639-1": "en"
     },
     "pages": {
+        "index": {
+            "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
+            "CALLBACK_101": "The current password you've entered is incorrect",
+            "CALLBACK_102": "The confirmation password does not match the new password",
+            "CALLBACK_103": "Your password was updated successfully"
+        },
         "login": {
             "PAGE_TITLE": "DynamicalWeb",
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",

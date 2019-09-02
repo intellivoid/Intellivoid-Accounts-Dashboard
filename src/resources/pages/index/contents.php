@@ -1,6 +1,7 @@
 <?PHP
     use DynamicalWeb\HTML;
 
+    HTML::importScript('update_password');
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
@@ -21,7 +22,7 @@
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
-
+                        <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
                             <div class="col-12 grid-margin d-none d-lg-block">
                                 <div class="intro-banner">
