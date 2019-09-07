@@ -53,11 +53,12 @@ use sws\sws;
 
         /** @var Account $Account */
         $Account = DynamicalWeb::getMemoryObject('account');
-
         $Host = get_host();
-
         /** @var IntellivoidAccounts $IntellivoidAccounts */
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+        /** @var sws $sws */
+        $sws = DynamicalWeb::getMemoryObject('sws');
+        $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
 
         if($Account->Configuration->VerificationMethods->TwoFactorAuthentication->verifyCode($_POST['code']) == false)
         {
@@ -67,14 +68,12 @@ use sws\sws;
                 CLIENT_USER_AGENT
             );
 
-            // TODO: Add auto-lockout
+            $Cookie->Data["verification_attempts"] += 1;
+            $sws->CookieManager()->updateCookie($Cookie);
+
             header('Location: /verify_mobile?callback=101&incorrect_auth=1');
             exit();
         }
-
-        /** @var sws $sws */
-        $sws = DynamicalWeb::getMemoryObject('sws');
-        $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
 
         $Cookie->Data["verification_required"] = false;
         $Cookie->Data["auto_logout"] = 0;
