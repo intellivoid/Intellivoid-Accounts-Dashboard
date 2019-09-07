@@ -39,5 +39,9 @@
             case 107:
                 RenderAlert(TEXT_CALLBACK_107, "warning", "mdi-alert-circle");
                 break;
+
+            case 108:
+                RenderAlert(TEXT_CALLBACK_108, "warning", "mdi-alert-circle");
+                break;
         }
     }

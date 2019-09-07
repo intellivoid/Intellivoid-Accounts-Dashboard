@@ -38,6 +38,7 @@
             'verification_required' => false,
             'auto_logout' => 0,
             'host_id' => 0,
+            'verification_attempts' => 0,
             'host_cache_ip' => null,
             'host_cache_ua' => null,
             'cache' => array(),
@@ -91,6 +92,7 @@
     define('WEB_SUDO_EXPIRES', $Cookie->Data['sudo_expires'], false);
     define('WEB_VERIFICATION_REQUIRED', $Cookie->Data['verification_required'], false);
     define('WEB_AUTO_LOGOUT', $Cookie->Data['auto_logout'], false);
+    define('WEB_VERIFICATION_ATTEMPTS', $Cookie->Data['verification_attempts'], false);
 
     if(WEB_SESSION_ACTIVE == false)
     {
@@ -114,16 +116,26 @@
     {
         if(WEB_VERIFICATION_REQUIRED == true)
         {
-            if(time() > WEB_AUTO_LOGOUT)
+            if(time() > WEB_AUTO_LOGOUT || WEB_VERIFICATION_ATTEMPTS > 3)
             {
                 $Cookie->Data['session_active'] = false;
                 $Cookie->Data['verification_required'] = false;
                 $Cookie->Data['auto_logout'] = 0;
+                $Cookie->Data['verification_attempts'] = 0;
                 $sws->CookieManager()->updateCookie($Cookie);
                 $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
 
-                header('Location: /login?callback=107');
-                exit();
+                if(time() > WEB_AUTO_LOGOUT)
+                {
+                    header('Location: /login?callback=107');
+                    exit();
+                }
+
+                if(WEB_VERIFICATION_ATTEMPTS > 3)
+                {
+                    header('Location: /login?callback=108');
+                    exit();
+                }
             }
 
             $redirect = true;
