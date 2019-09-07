@@ -30,7 +30,7 @@
         {
             // TODO: Log incorrect verification code here.
             // TODO: Add auto-lockout
-            header('Location: /verify_mobile?callback=101');
+            header('Location: /verify_mobile?callback=101&incorrect_auth=1');
             exit();
         }
 
