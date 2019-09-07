@@ -1,16 +1,19 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\LoginStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
-use IntellivoidAccounts\Exceptions\DatabaseException;
-use IntellivoidAccounts\Exceptions\HostNotKnownException;
-use IntellivoidAccounts\Exceptions\InvalidIpException;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\Account;
-use IntellivoidAccounts\Objects\KnownHost;
-use sws\Objects\Cookie;
-use sws\sws;
+    use IntellivoidAccounts\Abstracts\LoginStatus;
+    use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Exceptions\AccountNotFoundException;
+    use IntellivoidAccounts\Exceptions\DatabaseException;
+    use IntellivoidAccounts\Exceptions\HostNotKnownException;
+    use IntellivoidAccounts\Exceptions\InvalidIpException;
+    use IntellivoidAccounts\Exceptions\InvalidLoginStatusException;
+    use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
+    use IntellivoidAccounts\Objects\KnownHost;
+    use sws\Objects\Cookie;
+    use sws\sws;
 
     if(isset($_GET['action']))
     {
@@ -43,6 +46,16 @@ use sws\sws;
     }
 
 
+    /**
+     * Executes the verification method
+     *
+     * @throws DatabaseException
+     * @throws HostNotKnownException
+     * @throws InvalidIpException
+     * @throws AccountNotFoundException
+     * @throws InvalidLoginStatusException
+     * @throws InvalidSearchMethodException
+     */
     function execute_verification()
     {
         if(isset($_POST['code']) == false)
