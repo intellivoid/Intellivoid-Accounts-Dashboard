@@ -61,6 +61,10 @@
         },
         "setup_recovery_codes": {
             "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
+        },
+        "verify_mobile": {
+            "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
+            "CALLBACK_101": "Incorrect verification code"
         }
     },
     "sections": {
