@@ -5,23 +5,27 @@
     use IntellivoidAccounts\IntellivoidAccounts;
     use sws\Objects\Cookie;
     use sws\sws;
-
     Runtime::import('IntellivoidAccounts');
 
-    /** @var Cookie $Cookie */
-    $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
-
-    if($Cookie !== null)
+    if(defined('AUTHENTICATION_SKIPPED'))
     {
-        if(isset($Cookie->Data['host_id']))
+        if(AUTHENTICATION_SKIPPED == false)
         {
-            if($Cookie->Data['host_id'] == 0)
+            /** @var Cookie $Cookie */
+            $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+
+            if($Cookie !== null)
             {
-                establish_host();
+                if(isset($Cookie->Data['host_id']))
+                {
+                    if($Cookie->Data['host_id'] == 0)
+                    {
+                        establish_host();
+                    }
+                }
             }
         }
     }
-
 
     function establish_host()
     {
@@ -62,3 +66,5 @@
         $sws->CookieManager()->updateCookie($Cookie);
         DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);
     }
+
+

@@ -10,6 +10,7 @@
     use IntellivoidAccounts\Managers\TelegramClientManager;
     use IntellivoidAccounts\Managers\TransactionRecordManager;
     use mysqli;
+    use udp\udp;
 
     include_once(__DIR__ . DIRECTORY_SEPARATOR . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'AccountSearchMethod.php');
     include_once(__DIR__ . DIRECTORY_SEPARATOR . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'KnownHostsSearchMethod.php');
@@ -116,6 +117,11 @@
         include_once(__DIR__ . DIRECTORY_SEPARATOR . 'acm' . DIRECTORY_SEPARATOR . 'acm.php');
     }
 
+    if(class_exists('udp\udp') == false)
+    {
+        include_once(__DIR__ . DIRECTORY_SEPARATOR . 'udp' . DIRECTORY_SEPARATOR . 'udp.php');
+    }
+
     include(__DIR__ . DIRECTORY_SEPARATOR . 'AutoConfig.php');
 
     /**
@@ -171,6 +177,16 @@
         private $IpStackConfiguration;
 
         /**
+         * @var mixed
+         */
+        private $SystemConfiguration;
+
+        /**
+         * @var udp
+         */
+        private $udp;
+
+        /**
          * IntellivoidAccounts constructor.
          * @throws Exception
          */
@@ -179,6 +195,7 @@
             $this->acm = new acm(__DIR__, 'Intellivoid Accounts');
             $this->DatabaseConfiguration = $this->acm->getConfiguration('Database');
             $this->IpStackConfiguration = $this->acm->getConfiguration('IpStack');
+            $this->SystemConfiguration = $this->acm->getConfiguration('System');
 
             $this->database = new mysqli(
                 $this->DatabaseConfiguration['Host'],
@@ -193,6 +210,14 @@
             $this->LoginRecordManager = new LoginRecordManager($this);
             $this->TransactionRecordManager = new TransactionRecordManager($this);
             $this->TelegramClientManager = new TelegramClientManager($this);
+            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+            {
+                $this->udp = new udp($this->SystemConfiguration['ProfilesLocation_Windows']);
+            }
+            else
+            {
+                $this->udp = new udp($this->SystemConfiguration['ProfilesLocation_Unix']);
+            }
         }
 
         /**
@@ -249,6 +274,22 @@
         public function getIpStackConfiguration()
         {
             return $this->IpStackConfiguration;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getSystemConfiguration()
+        {
+            return $this->SystemConfiguration;
+        }
+
+        /**
+         * @return udp
+         */
+        public function getUdp(): udp
+        {
+            return $this->udp;
         }
 
     }
