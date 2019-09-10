@@ -1,6 +1,7 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
     use IntellivoidAccounts\Abstracts\LoginStatus;
@@ -161,6 +162,7 @@
             }
 
             $sws->CookieManager()->updateCookie($Cookie);
+            HTML::importScript('sync_avatar');
 
             header('Location: /');
             exit();

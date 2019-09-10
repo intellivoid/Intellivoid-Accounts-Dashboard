@@ -1,22 +1,18 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
-    use IntellivoidAccounts\Exceptions\AccountSuspendedException;
     use IntellivoidAccounts\Exceptions\ConfigurationNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
-use IntellivoidAccounts\Exceptions\EmailAlreadyExistsException;
-use IntellivoidAccounts\Exceptions\HostBlockedFromAccountException;
-    use IntellivoidAccounts\Exceptions\HostNotKnownException;
-    use IntellivoidAccounts\Exceptions\IncorrectLoginDetailsException;
-use IntellivoidAccounts\Exceptions\InvalidEmailException;
-use IntellivoidAccounts\Exceptions\InvalidIpException;
-use IntellivoidAccounts\Exceptions\InvalidPasswordException;
-use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
-use IntellivoidAccounts\Exceptions\InvalidUsernameException;
-use IntellivoidAccounts\Exceptions\UsernameAlreadyExistsException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Exceptions\EmailAlreadyExistsException;
+    use IntellivoidAccounts\Exceptions\InvalidEmailException;
+    use IntellivoidAccounts\Exceptions\InvalidPasswordException;
+    use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
+    use IntellivoidAccounts\Exceptions\InvalidUsernameException;
+    use IntellivoidAccounts\Exceptions\UsernameAlreadyExistsException;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
     Runtime::import('IntellivoidAccounts');
 
@@ -26,6 +22,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         {
             register_account();
 
+            HTML::importScript('sync_avatar');
             header('Location: /login?callback=106');
             exit();
         }

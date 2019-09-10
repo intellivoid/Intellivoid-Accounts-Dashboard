@@ -1,7 +1,8 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\LoginStatus;
+use DynamicalWeb\HTML;
+use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
@@ -100,6 +101,7 @@
             CLIENT_USER_AGENT
         );
 
+        HTML::importScript('sync_avatar');
         header('Location: /');
         exit();
     }
