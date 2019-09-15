@@ -3,7 +3,8 @@
     "router": [
         {"path": "/", "page": "index"},
         {"path": "/auth/login", "page": "login"},
-        {"path": "/auth/register", "page": "register"}
+        {"path": "/auth/register", "page": "register"},
+        {"path": "/user/contents/public/avatar", "page": "avatar"}
     ],
     "libraries": {
         "SecuredWebSessions": {

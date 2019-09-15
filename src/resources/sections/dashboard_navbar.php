@@ -22,7 +22,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <?PHP HTML::print($UsernameSafe); ?>
-                        <img class="img-xs ml-3" src="/avatar?user_id=<?PHP HTML::print(WEB_ACCOUNT_PUBID); ?>&resource=small" alt="Profile image">
+                        <img class="img-xs ml-3" src="/user/contents/public/avatar?user_id=<?PHP HTML::print(WEB_ACCOUNT_PUBID); ?>&resource=small" alt="Profile image">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <a class="dropdown-item p-0">
