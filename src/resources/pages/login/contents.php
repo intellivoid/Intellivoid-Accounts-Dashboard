@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="text-block text-center my-3">
                                         <span class="text-small font-weight-semibold">Don't have an account?</span>
-                                        <a href="/register" class="text-black text-small">Create one</a>
+                                        <a href="/auth/register" class="text-black text-small">Create one</a>
                                     </div>
                                 </form>
                             </div>

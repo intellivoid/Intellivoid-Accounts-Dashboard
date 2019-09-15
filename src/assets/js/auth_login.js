@@ -34,7 +34,7 @@ $('#authentication_form').on('submit', function () {
         "<div class=\"pb-3\"></div>"
     );
 
-    $.redirectPost("/login",
+    $.redirectPost("/auth/login",
         {
             "username_email": username_email,
             "password": password,

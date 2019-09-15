@@ -77,11 +77,11 @@
 
             if(isset($_GET['callback']))
             {
-                header('Refresh: 2; URL=/login?callback=' . urlencode($_GET['callback']));
+                header('Refresh: 2; URL=/auth/login?callback=' . urlencode($_GET['callback']));
             }
             else
             {
-                header('Refresh: 2; URL=/login');
+                header('Refresh: 2; URL=/auth/login');
             }
             HTML::importScript('loader');
             exit();
@@ -129,7 +129,7 @@
 
             if($redirect == true)
             {
-                header('Location: /login');
+                header('Location: /auth/login');
                 exit();
             }
         }
@@ -148,13 +148,13 @@
 
                     if(time() > WEB_AUTO_LOGOUT)
                     {
-                        header('Location: /login?callback=107');
+                        header('Location: /auth/login?callback=107');
                         exit();
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
                     {
-                        header('Location: /login?callback=108');
+                        header('Location: /auth/login?callback=108');
                         exit();
                     }
                 }
@@ -171,7 +171,7 @@
 
                 if($redirect == true)
                 {
-                    header('Location: /verify');
+                    header('Location: /auth/verify');
                     exit();
                 }
             }

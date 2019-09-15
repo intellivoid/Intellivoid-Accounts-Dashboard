@@ -47,7 +47,7 @@ $('#authentication_form').on('submit', function () {
         "<div class=\"pb-3\"></div>"
     );
 
-    $.redirectPost("/sudo",
+    $.redirectPost("/auth/sudo",
         {
             "password": password,
             "redirect": getUrlParameter('redirect')

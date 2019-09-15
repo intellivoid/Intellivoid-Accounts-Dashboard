@@ -1,12 +1,12 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use sws\sws;
 
     if(WEB_SUDO_MODE == false)
     {
-        header('Location: /sudo?redirect=' . urlencode(APP_CURRENT_PAGE));
-        exit();
+        Actions::redirect('/auth/sudo?redirect=' . urlencode(APP_CURRENT_PAGE));
     }
     else
     {
@@ -20,8 +20,7 @@
             $Cookie->Data["sudo_expires"] = 0;
 
             $sws->CookieManager()->updateCookie($Cookie);
-            header('Location: /sudo?redirect=' . urlencode(APP_CURRENT_PAGE));
-            exit();
+            Actions::redirect('/auth/sudo?redirect=' . urlencode(APP_CURRENT_PAGE));
         }
         else
         {

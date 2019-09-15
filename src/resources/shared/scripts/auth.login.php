@@ -1,6 +1,7 @@
 <?php
 
-    use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\Actions;
+use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
@@ -50,14 +51,12 @@
         }
         catch(Exception $exception)
         {
-            header('Location: /login?callback=101?type=internal');
-            exit();
+            Actions::redirect('/auth/login?callback=101&type=internal');
         }
 
         if(isset($_POST['password']) == false)
         {
-            header('Location: /login?callback=100');
-            exit();
+            Actions::redirect('/auth/login?callback=100');
         }
 
         try
@@ -66,8 +65,7 @@
 
             if($Account == null)
             {
-                header('Location: /login?callback=103');
-                exit();
+                Actions::redirect('/auth/login?callback=103');
             }
 
             if($Host->Blocked == true)
@@ -80,13 +78,11 @@
                         CLIENT_USER_AGENT
                     );
 
-                    header('Location: /login?callback=105');
-                    exit();
+                    Actions::redirect('/auth/login?callback=105');
                 }
                 catch(Exception $exception)
                 {
-                    header('Location: /login?callback=101?type=blocked');
-                    exit();
+                    Actions::redirect('/auth/login?callback=101&type=blocked');
                 }
             }
 
@@ -102,18 +98,15 @@
                 }
                 catch(Exception $exception)
                 {
-                    header('Location: /login?callback=101?type=verify_ps');
-                    exit();
+                    Actions::redirect('/auth/login?callback=101&type=verify_ps');
                 }
 
-                header('Location: /login?callback=103');
-                exit();
+                Actions::redirect('/auth/login?callback=103');
             }
 
             if($Account->Status == AccountStatus::Suspended)
             {
-                header('Location: /login?callback=104');
-                exit();
+                Actions::redirect('/auth/login?callback=104');
             }
 
             $Cookie->Data["session_active"] = true;
@@ -148,8 +141,7 @@
                 }
                 catch(Exception $exception)
                 {
-                    header('Location: /login?callback=101?type=no_verification');
-                    exit();
+                    Actions::redirect('/auth/login?callback=101&type=no_verification');
                 }
 
                 if($Account->Configuration->KnownHosts->addHostId($Host->ID) == true)
@@ -164,18 +156,15 @@
             $sws->CookieManager()->updateCookie($Cookie);
             HTML::importScript('sync_avatar');
 
-            header('Location: /');
-            exit();
+            Actions::redirect('/');
         }
         catch(AccountNotFoundException $accountNotFoundException)
         {
-            header('Location: /login?callback=102');
-            exit();
+            Actions::redirect('/auth/login?callback=102');
         }
         catch(Exception $exception)
         {
-            header('Location: /login?callback=101');
-            exit();
+            Actions::redirect('/auth/login?callback=101');
         }
 
     }
@@ -211,12 +200,11 @@
 
         switch(strtolower($_POST[$name]))
         {
-            case "false":
-                return false;
 
             case "true":
                 return true;
 
+            case "false":
             default:
                 return false;
         }
@@ -237,19 +225,16 @@
     {
         if(isset($_POST['username_email']) == false)
         {
-            header('Location: /login?callback=100');
-            exit();
+            Actions::redirect('/auth/login?callback=100');
         }
 
         if(isset($_POST['password']) == false)
         {
-            header('Location: /login?callback=100');
-            exit();
+            Actions::redirect('/auth/login?callback=100');
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-
         return $IntellivoidAccounts->getAccountManager()->getAccountByAuth($_POST['username_email'], $_POST['password']);
     }
 
@@ -265,8 +250,7 @@
     {
         if(isset($_POST['username_email']) == false)
         {
-            header('Location: /login?callback=100');
-            exit();
+            Actions::redirect('/auth/login?callback=100');
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */

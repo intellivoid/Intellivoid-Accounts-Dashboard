@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
@@ -24,20 +25,17 @@
     {
         if(isset($_POST['current_password']) == false)
         {
-            header('Location: /?callback=100');
-            exit();
+            Actions::redirect('/?callback=100');
         }
 
         if(isset($_POST['new_password']) == false)
         {
-            header('Location: /?callback=100');
-            exit();
+            Actions::redirect('/?callback=100');
         }
 
         if(isset($_POST['confirm_password']) == false)
         {
-            header('Location: /?callback=100');
-            exit();
+            Actions::redirect('/?callback=100');
         }
 
         // Define the important parts
@@ -58,19 +56,15 @@
 
         if(Validate::verifyHashedPassword($_POST['current_password'], $AccountObject->Password) == false)
         {
-            header('Location: /?callback=101');
-            exit();
+            Actions::redirect('/?callback=101');
         }
 
         if(Hashing::password($_POST['new_password']) !== Hashing::password($_POST['confirm_password']))
         {
-            header('Location: /?callback=102');
-            exit();
+            Actions::redirect('/?callback=102');
         }
 
         $AccountObject->updatePassword($_POST['new_password']);
         $IntellivoidAccounts->getAccountManager()->updateAccount($AccountObject);
-
-        header('Location: /?callback=103');
-        exit();
+        Actions::redirect('/?callback=103');
     }

@@ -1,6 +1,10 @@
 {
-    "home_page": "index",
     "primary_language": "en",
+    "router": [
+        {"path": "/", "page": "index"},
+        {"path": "/auth/login", "page": "login"},
+        {"path": "/auth/register", "page": "register"}
+    ],
     "libraries": {
         "SecuredWebSessions": {
             "directory_name": "sws",

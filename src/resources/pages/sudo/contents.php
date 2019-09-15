@@ -3,11 +3,11 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
 
-    HTML::importScript('check');
-
     Runtime::import('IntellivoidAccounts');
 
+    HTML::importScript('check');
     HTML::importScript('enter_sudo_mode');
+
     if(isset($_GET['redirect']) == false)
     {
         header('Location: /');

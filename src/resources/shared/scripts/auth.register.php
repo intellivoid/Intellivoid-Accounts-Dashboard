@@ -1,10 +1,10 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
-    use IntellivoidAccounts\Exceptions\ConfigurationNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\Exceptions\EmailAlreadyExistsException;
     use IntellivoidAccounts\Exceptions\InvalidEmailException;
@@ -23,38 +23,31 @@
             register_account();
 
             HTML::importScript('sync_avatar');
-            header('Location: /login?callback=106');
-            exit();
+            Actions::redirect('/auth/login?callback=106');
         }
         catch(InvalidUsernameException $invalidUsernameException)
         {
-            header('Location: /register?callback=102');
-            exit();
+            Actions::redirect('/auth/register?callback=102');
         }
         catch(InvalidEmailException $invalidEmailException)
         {
-            header('Location: /register?callback=103');
-            exit();
+            Actions::redirect('/auth/register?callback=103');
         }
         catch(InvalidPasswordException $invalidPasswordException)
         {
-            header('Location: /register?callback=104');
-            exit();
+            Actions::redirect('/auth/register?callback=104');
         }
         catch(UsernameAlreadyExistsException $usernameAlreadyExistsException)
         {
-            header('Location: /register?callback=105');
-            exit();
+            Actions::redirect('/auth/register?callback=105');
         }
         catch(EmailAlreadyExistsException $emailAlreadyExistsException)
         {
-            header('Location: /register?callback=106');
-            exit();
+            Actions::redirect('/auth/register?callback=106');
         }
         catch(Exception $exception)
         {
-            header('Location: /register?callback=101');
-            exit();
+            Actions::redirect('/auth/register?callback=101');
         }
     }
 
@@ -73,12 +66,11 @@
 
         switch(strtolower($_POST[$name]))
         {
-            case "false":
-                return false;
 
             case "true":
                 return true;
 
+            case "false":
             default:
                 return false;
         }
@@ -90,12 +82,11 @@
      *
      * @return bool
      * @throws AccountNotFoundException
-     * @throws ConfigurationNotFoundException
      * @throws DatabaseException
-     * @throws InvalidSearchMethodException
      * @throws EmailAlreadyExistsException
      * @throws InvalidEmailException
      * @throws InvalidPasswordException
+     * @throws InvalidSearchMethodException
      * @throws InvalidUsernameException
      * @throws UsernameAlreadyExistsException
      */
@@ -103,26 +94,22 @@
     {
         if(isset($_POST['email']) == false)
         {
-            header('Location: /register?callback=100');
-            exit();
+            Actions::redirect('/auth/register?callback=100');
         }
 
         if(isset($_POST['password']) == false)
         {
-            header('Location: /register?callback=100');
-            exit();
+            Actions::redirect('/auth/register?callback=100');
         }
 
         if(isset($_POST['password']) == false)
         {
-            header('Location: /register?callback=100');
-            exit();
+            Actions::redirect('/auth/register?callback=100');
         }
 
         if(get_checkbox_input("tos_agree") == false)
         {
-            header('Location: /register?callback=107');
-            exit();
+            Actions::redirect('/auth/register?callback=107');
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
