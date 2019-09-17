@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
@@ -20,8 +21,9 @@
 
         if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
         {
-            header('Location: /login_security?callback=104');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+                'callback' => '104'
+            )));
         }
 
         $Account->Configuration->VerificationMethods->RecoveryCodes->disable();
@@ -31,6 +33,7 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject('intellivoid_accounts');
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
-        header('Location: /login_security?callback=105');
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            'callback' => '105'
+        )));
     }
