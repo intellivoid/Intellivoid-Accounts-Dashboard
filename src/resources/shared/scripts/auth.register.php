@@ -21,33 +21,46 @@
         try
         {
             register_account();
-
             HTML::importScript('sync_avatar');
-            Actions::redirect('/auth/login?callback=106');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '106'
+            )));
         }
         catch(InvalidUsernameException $invalidUsernameException)
         {
-            Actions::redirect('/auth/register?callback=102');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '102'
+            )));
         }
         catch(InvalidEmailException $invalidEmailException)
         {
-            Actions::redirect('/auth/register?callback=103');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '103'
+            )));
         }
         catch(InvalidPasswordException $invalidPasswordException)
         {
-            Actions::redirect('/auth/register?callback=104');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '104'
+            )));
         }
         catch(UsernameAlreadyExistsException $usernameAlreadyExistsException)
         {
-            Actions::redirect('/auth/register?callback=105');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '105'
+            )));
         }
         catch(EmailAlreadyExistsException $emailAlreadyExistsException)
         {
-            Actions::redirect('/auth/register?callback=106');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '106'
+            )));
         }
         catch(Exception $exception)
         {
-            Actions::redirect('/auth/register?callback=101');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '101'
+            )));
         }
     }
 
@@ -66,7 +79,6 @@
 
         switch(strtolower($_POST[$name]))
         {
-
             case "true":
                 return true;
 
@@ -94,22 +106,30 @@
     {
         if(isset($_POST['email']) == false)
         {
-            Actions::redirect('/auth/register?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect('/auth/register?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect('/auth/register?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '100'
+            )));
         }
 
         if(get_checkbox_input("tos_agree") == false)
         {
-            Actions::redirect('/auth/register?callback=107');
+            Actions::redirect(DynamicalWeb::getRoute('register', array(
+                'callback' => '107'
+            )));
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -122,9 +142,7 @@
         else
         {
             /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::getMemoryObject(
-                "intellivoid_accounts", DynamicalWeb::getMemoryObject("intellivoid_accounts")
-            );
+            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
         }
 
         $IntellivoidAccounts->getAccountManager()->registerAccount(
