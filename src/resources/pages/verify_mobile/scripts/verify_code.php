@@ -1,8 +1,9 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
-use IntellivoidAccounts\Abstracts\LoginStatus;
+    use DynamicalWeb\HTML;
+    use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
@@ -61,8 +62,9 @@ use IntellivoidAccounts\Abstracts\LoginStatus;
     {
         if(isset($_POST['code']) == false)
         {
-            header('Location: /verify_mobile?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('verify_mobile', array(
+                'callback' => '100'
+            )));
         }
 
         /** @var Account $Account */
@@ -85,8 +87,10 @@ use IntellivoidAccounts\Abstracts\LoginStatus;
             $Cookie->Data["verification_attempts"] += 1;
             $sws->CookieManager()->updateCookie($Cookie);
 
-            header('Location: /verify_mobile?callback=101&incorrect_auth=1');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('verify_mobile', array(
+                'callback' => '101',
+                'incorrect_auth' => '1'
+            )));
         }
 
         $Cookie->Data["verification_required"] = false;
@@ -102,6 +106,6 @@ use IntellivoidAccounts\Abstracts\LoginStatus;
         );
 
         HTML::importScript('sync_avatar');
-        header('Location: /');
+        Actions::redirect(DynamicalWeb::getRoute('index'));
         exit();
     }
