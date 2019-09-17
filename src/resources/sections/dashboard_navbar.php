@@ -75,7 +75,7 @@ use DynamicalWeb\HTML;
                     <div class="submenu ">
                         <ul class="submenu-item ">
                             <li class="nav-item ">
-                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('personal', [], true) ?>">Login History</a>
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_history', [], true) ?>">Login History</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#">Services</a>
