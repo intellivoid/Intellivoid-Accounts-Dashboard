@@ -1,6 +1,6 @@
 <?php
 
-
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
@@ -15,6 +15,7 @@
 
     if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == true)
     {
-        header('Location: /login_security?callback=106');
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            'callback' => '106'
+        )));
     }

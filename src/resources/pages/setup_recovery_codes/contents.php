@@ -34,9 +34,7 @@
                                             important if you lose access to your phone or cannot verify using other
                                             methods. These codes are meant to be written down, and are case-sensitive.
                                         </p>
-                                        <?PHP
-                                            $RecoveryCodes = $Account->Configuration->VerificationMethods->RecoveryCodes->RecoveryCodes;
-                                        ?>
+                                        <?PHP $RecoveryCodes = $Account->Configuration->VerificationMethods->RecoveryCodes->RecoveryCodes; ?>
                                         <div class="row border-top pt-3 mt-auto">
                                             <div class="col-2">
                                                 <h6 class="font-weight-medium"><?PHP HTML::print($RecoveryCodes[0]); ?></h6>
@@ -106,7 +104,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-success" onclick="location.href='/setup_recovery_codes?action=confirm';">Yes, i saved them</button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='<?PHP DynamicalWeb::getRoute('setup_recovery_codes', array('action' => 'confirm'), true); ?>';">Yes, i saved them</button>
                                     </div>
                                 </div>
                             </div>
