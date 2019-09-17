@@ -1,13 +1,16 @@
 <?PHP
+
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+    use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('check_sudo');
     HTML::importScript('check');
     HTML::importScript('disable_mobile_verification');
     HTML::importScript('disable_recovery_codes');
 
-    /** @var \IntellivoidAccounts\Objects\Account $Account */
-    $Account = \DynamicalWeb\DynamicalWeb::getMemoryObject('account');
+    /** @var Account $Account */
+    $Account = DynamicalWeb::getMemoryObject('account');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -96,7 +99,8 @@
                                             }
                                             else
                                             {
-                                                HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='/setup_mobile_verification';\">", false);
+                                                $Href = DynamicalWeb::getRoute('setup_mobile_verification');
+                                                HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='$Href';\">", false);
                                                 HTML::print("Setup");
                                                 HTML::print("</button>", false);
                                             }
@@ -124,7 +128,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_mv';">Disable</button>
+                                            <?PHP $Href = DynamicalWeb::getRoute('login_security', array('action' => 'disable_mv')); ?>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';">Disable</button>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +199,8 @@
                                             }
                                             else
                                             {
-                                                HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='/setup_recovery_codes';\">", false);
+                                                $Href = DynamicalWeb::getRoute('setup_recovery_codes');
+                                                HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='$Href';\">", false);
                                                 HTML::print("Setup");
                                                 HTML::print("</button>", false);
                                             }
@@ -224,8 +230,9 @@
                                             </p>
                                         </div>
                                         <div class="modal-footer">
+                                            <?PHP $Href = DynamicalWeb::getRoute('login_security', array('action' => 'disable_rc')); ?>
                                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_rc';">Disable</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';">Disable</button>
                                         </div>
                                     </div>
                                 </div>
@@ -249,8 +256,9 @@
                                             </p>
                                         </div>
                                         <div class="modal-footer">
+                                            <?PHP $Href = DynamicalWeb::getRoute('login_security', array('action' => 'disable_rc')); ?>
                                             <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="location.href='/login_security?action=disable_rc';">Disable</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';">Disable</button>
                                         </div>
                                     </div>
                                 </div>
