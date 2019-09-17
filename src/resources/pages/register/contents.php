@@ -1,5 +1,8 @@
 <?PHP
+
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+
     HTML::importScript('auth.register');
 ?>
 <!doctype html>
@@ -81,7 +84,7 @@
 
                                     <div class="text-block text-center my-3">
                                         <span class="text-small font-weight-semibold">Already have an account?</span>
-                                        <a href="/auth/login" class="text-black text-small">Login</a>
+                                        <a href="<?PHP DynamicalWeb::getRoute('login', [], true); ?>" class="text-black text-small">Login</a>
                                     </div>
                                 </form>
                             </div>

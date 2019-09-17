@@ -1,5 +1,6 @@
 <?PHP
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use sws\sws;
 
@@ -20,6 +21,5 @@
 
         $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
 
-        header('Location: /login');
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('login'));
     }

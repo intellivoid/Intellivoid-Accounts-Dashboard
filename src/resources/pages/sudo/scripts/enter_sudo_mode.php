@@ -1,6 +1,7 @@
 <?php
 
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Exceptions\IncorrectLoginDetailsException;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -46,50 +47,55 @@
                 switch($_POST['redirect'])
                 {
                     case 'login_security':
-                        header('Location: /login_security');
-                        exit();
+                        Actions::redirect(DynamicalWeb::getRoute('login_security'));
+                        break;
 
                     case 'setup_mobile_verification':
-                        header('Location: /setup_mobile_verification');
-                        exit();
+                        Actions::redirect(DynamicalWeb::getRoute('setup_mobile_verification'));
+                        break;
 
                     case 'setup_recovery_codes':
-                        header('Location: /setup_recovery_codes');
-                        exit();
+                        Actions::redirect(DynamicalWeb::getRoute('setup_recovery_codes'));
+                        break;
 
                     default:
-                        header('Location: /');
-                        exit();
+                        Actions::redirect(DynamicalWeb::getRoute('index'));
+                        break;
                 }
             }
             else
             {
-                header('Location: /');
-                exit();
+                Actions::redirect(DynamicalWeb::getRoute('index'));
             }
         }
         catch(IncorrectLoginDetailsException $incorrectLoginDetailsException )
         {
             if(isset($_POST['redirect']))
             {
-                header('Location: /sudo?callback=101&redirect=' . urlencode($_POST['redirect']));
+                Actions::redirect(DynamicalWeb::getRoute('sudo',
+                    array('callback' => '101', 'redirect' => urlencode($_POST['redirect']))
+                ));
             }
             else
             {
-                header('Location: /sudo?callback=101');
+                Actions::redirect(DynamicalWeb::getRoute('sudo',
+                    array('callback' => '101')
+                ));
             }
-            exit();
         }
         catch(Exception $exception)
         {
             if(isset($_POST['redirect']))
             {
-                header('Location: /sudo?callback=100&redirect=' . urlencode($_POST['redirect']));
+                Actions::redirect(DynamicalWeb::getRoute('sudo',
+                    array('callback' => '100', 'redirect' => urlencode($_POST['redirect']))
+                ));
             }
             else
             {
-                header('Location: /sudo?callback=100');
+                Actions::redirect(DynamicalWeb::getRoute('sudo',
+                    array('callback' => '100')
+                ));
             }
-            exit();
         }
     }

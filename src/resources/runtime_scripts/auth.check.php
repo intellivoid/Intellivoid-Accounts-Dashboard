@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Page;
@@ -83,9 +84,9 @@
             {
                 header('Refresh: 2; URL=/auth/login');
             }
+
             HTML::importScript('loader');
             exit();
-
         }
 
         try
@@ -129,8 +130,7 @@
 
             if($redirect == true)
             {
-                header('Location: /auth/login');
-                exit();
+                Actions::redirect(DynamicalWeb::getRoute('login'));
             }
         }
         else
@@ -148,14 +148,16 @@
 
                     if(time() > WEB_AUTO_LOGOUT)
                     {
-                        header('Location: /auth/login?callback=107');
-                        exit();
+                        Actions::redirect(DynamicalWeb::getRoute('login', array(
+                            'callback' => '107'
+                        )));
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
                     {
-                        header('Location: /auth/login?callback=108');
-                        exit();
+                        Actions::redirect(DynamicalWeb::getRoute('login', array(
+                            'callback' => '108'
+                        )));
                     }
                 }
 
@@ -171,8 +173,7 @@
 
                 if($redirect == true)
                 {
-                    header('Location: /auth/verify');
-                    exit();
+                    Actions::redirect(DynamicalWeb::getRoute('verify'));
                 }
             }
             else
@@ -189,8 +190,7 @@
 
                 if($redirect == true)
                 {
-                    header('Location: /');
-                    exit();
+                    Actions::redirect(DynamicalWeb::getRoute('index'));
                 }
             }
 

@@ -1,5 +1,8 @@
 <?php
 
+    use DynamicalWeb\Actions;
+    use DynamicalWeb\DynamicalWeb;
+
     if(isset($_GET['action']))
     {
         if($_GET['action'] == 'disable_mv')
@@ -16,8 +19,9 @@
 
         if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == false)
         {
-            header('Location: /login_security?callback=102');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+                'callback' => '102'
+            )));
         }
 
         $Account->Configuration->VerificationMethods->TwoFactorAuthentication->disable();
@@ -27,6 +31,7 @@
         $IntellivoidAccounts = \DynamicalWeb\DynamicalWeb::getMemoryObject('intellivoid_accounts');
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
-        header('Location: /login_security?callback=103');
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            'callback' => '103'
+        )));
     }

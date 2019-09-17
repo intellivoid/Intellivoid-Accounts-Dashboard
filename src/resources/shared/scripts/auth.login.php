@@ -1,7 +1,7 @@
 <?php
 
-use DynamicalWeb\Actions;
-use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Actions;
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
@@ -51,12 +51,17 @@ use DynamicalWeb\DynamicalWeb;
         }
         catch(Exception $exception)
         {
-            Actions::redirect('/auth/login?callback=101&type=internal');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '106',
+                'type' => 'internal'
+            )));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         try
@@ -65,7 +70,9 @@ use DynamicalWeb\DynamicalWeb;
 
             if($Account == null)
             {
-                Actions::redirect('/auth/login?callback=103');
+                Actions::redirect(DynamicalWeb::getRoute('login', array(
+                    'callback' => '103'
+                )));
             }
 
             if($Host->Blocked == true)
@@ -78,11 +85,16 @@ use DynamicalWeb\DynamicalWeb;
                         CLIENT_USER_AGENT
                     );
 
-                    Actions::redirect('/auth/login?callback=105');
+                    Actions::redirect(DynamicalWeb::getRoute('login', array(
+                        'callback' => '105'
+                    )));
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect('/auth/login?callback=101&type=blocked');
+                    Actions::redirect(DynamicalWeb::getRoute('login', array(
+                        'callback' => '106',
+                        'type' => 'blocked'
+                    )));
                 }
             }
 
@@ -98,15 +110,22 @@ use DynamicalWeb\DynamicalWeb;
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect('/auth/login?callback=101&type=verify_ps');
+                    Actions::redirect(DynamicalWeb::getRoute('login', array(
+                        'callback' => '101',
+                        'type' => 'verify_ps'
+                    )));
                 }
 
-                Actions::redirect('/auth/login?callback=103');
+                Actions::redirect(DynamicalWeb::getRoute('login', array(
+                    'callback' => '103'
+                )));
             }
 
             if($Account->Status == AccountStatus::Suspended)
             {
-                Actions::redirect('/auth/login?callback=104');
+                Actions::redirect(DynamicalWeb::getRoute('login', array(
+                    'callback' => '104'
+                )));
             }
 
             $Cookie->Data["session_active"] = true;
@@ -141,7 +160,10 @@ use DynamicalWeb\DynamicalWeb;
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect('/auth/login?callback=101&type=no_verification');
+                    Actions::redirect(DynamicalWeb::getRoute('login', array(
+                        'callback' => '105',
+                        'type' => 'no_verification'
+                    )));
                 }
 
                 if($Account->Configuration->KnownHosts->addHostId($Host->ID) == true)
@@ -156,15 +178,19 @@ use DynamicalWeb\DynamicalWeb;
             $sws->CookieManager()->updateCookie($Cookie);
             HTML::importScript('sync_avatar');
 
-            Actions::redirect('/');
+            Actions::redirect(DynamicalWeb::getRoute('index'));
         }
         catch(AccountNotFoundException $accountNotFoundException)
         {
-            Actions::redirect('/auth/login?callback=102');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '102'
+            )));
         }
         catch(Exception $exception)
         {
-            Actions::redirect('/auth/login?callback=101');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '101'
+            )));
         }
 
     }
@@ -225,12 +251,16 @@ use DynamicalWeb\DynamicalWeb;
     {
         if(isset($_POST['username_email']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -250,7 +280,9 @@ use DynamicalWeb\DynamicalWeb;
     {
         if(isset($_POST['username_email']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */

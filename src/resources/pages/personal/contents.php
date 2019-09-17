@@ -1,5 +1,7 @@
 <?PHP
-    use DynamicalWeb\HTML;
+
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
 
     Runtime::import('IntellivoidAccounts');
@@ -51,7 +53,7 @@
                                                                     <p class="card-description text-muted">
                                                                         Your legal name
                                                                     </p>
-                                                                    <form action="/personal?action=update_name" method="POST">
+                                                                    <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
                                                                         <div class="form-group">
                                                                             <label for="first_name">First Name</label>
                                                                             <input type="text"<?PHP HTML::print(USER_FIRST_NAME, false); ?> class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
@@ -75,10 +77,10 @@
                                                             <p class="card-description text-muted">
                                                                 When you were born
                                                             </p>
-                                                            <form action="/personal?action=update_birthday" method="POST">
+                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_birthday'), true) ?>" method="POST">
                                                                 <div class="form-group">
                                                                     <label for="dob_year">Year</label>
-                                                                    <select class="form-control border-primary" val id="dob_year" name="dob_year" required>
+                                                                    <select class="form-control border-primary" id="dob_year" name="dob_year" required>
                                                                         <?PHP
                                                                             $FirstYear = 1970;
                                                                             $CurrentYear = (int)date('Y') - 13;

@@ -1,7 +1,5 @@
 <?php
 
-
-
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
