@@ -251,12 +251,16 @@
     {
         if(isset($_POST['username_email']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -276,7 +280,9 @@
     {
         if(isset($_POST['username_email']) == false)
         {
-            Actions::redirect('/auth/login?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('login', array(
+                'callback' => '100'
+            )));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
