@@ -1,4 +1,6 @@
 <?PHP
+
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 
     HTML::importScript('auth.login');
@@ -32,7 +34,7 @@
                                     <div class="form-group pt-4">
                                         <label for="username_email" class="label">Username or Email</label>
                                         <div class="input-group">
-                                            <input name="username_email" id="username_email" type="text" class="form-control" placeholder="netkas@intellivoid.info" required>
+                                            <input name="username_email" id="username_email" type="text" class="form-control" placeholder="example@intellivoid.info" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="mdi mdi-account"></i>
@@ -64,7 +66,7 @@
                                     </div>
                                     <div class="text-block text-center my-3">
                                         <span class="text-small font-weight-semibold">Don't have an account?</span>
-                                        <a href="/auth/register" class="text-black text-small">Create one</a>
+                                        <a href="<?PHP DynamicalWeb::getRoute('register', [], true); ?>" class="text-black text-small">Create one</a>
                                     </div>
                                 </form>
                             </div>
