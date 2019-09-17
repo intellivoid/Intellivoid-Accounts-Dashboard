@@ -39,7 +39,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--weather card ends-->
                             </div>
                         </div>
                         <div class="row">
