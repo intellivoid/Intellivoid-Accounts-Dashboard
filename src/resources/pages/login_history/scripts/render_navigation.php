@@ -11,9 +11,12 @@
                 <?PHP
                     if(DynamicalWeb::getInt32('current_page') > 1)
                     {
+                        $PreviousHref = DynamicalWeb::getRoute('login_history', array(
+                            'current_page' => DynamicalWeb::getInt32('current_page') - 1
+                        ));
                         ?>
                         <div class="p-2 bd-highlight">
-                            <button class="btn btn-sm btn-primary" onclick="location.href='/login_history?page=<?PHP HTML::print(DynamicalWeb::getInt32('current_page') - 1); ?>'">
+                            <button class="btn btn-sm btn-primary" onclick="location.href='<?PHP HTML::print($PreviousHref); ?>'">
                                 <i class="pl-2 mdi mdi-chevron-left"></i>
                             </button>
                         </div>
@@ -32,9 +35,12 @@
 
                     if(DynamicalWeb::getInt32('current_page') < DynamicalWeb::getInt32('total_pages'))
                     {
+                        $NextHref = DynamicalWeb::getRoute('login_history', array(
+                            'current_page' => DynamicalWeb::getInt32('current_page') + 1
+                        ));
                         ?>
                         <div class="p-2 bd-highlight">
-                            <button class="btn btn-sm btn-primary" onclick="location.href='/login_history?page=<?PHP HTML::print(DynamicalWeb::getInt32('current_page') + 1); ?>'">
+                            <button class="btn btn-sm btn-primary" onclick="location.href='<?PHP HTML::print($PreviousHref); ?>'">
                                 <i class="pl-2 mdi mdi-chevron-right"></i>
                             </button>
                         </div>
