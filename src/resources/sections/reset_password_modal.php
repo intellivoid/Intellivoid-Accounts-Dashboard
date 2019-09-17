@@ -1,7 +1,10 @@
+<?PHP
+    use DynamicalWeb\DynamicalWeb;
+?>
 <div class="modal fade" id="password-reset-dialog" tabindex="-1" role="dialog" aria-labelledby="prd" aria-hidden="true" style="display: none;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="/?action=update_password" method="POST">
+            <form action="<?PHP DynamicalWeb::getRoute('index', array('action' => 'update_password'), true) ?>" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="prd">Update Password</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
