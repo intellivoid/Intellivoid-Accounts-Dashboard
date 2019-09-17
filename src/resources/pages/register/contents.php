@@ -2,7 +2,7 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    
+
     HTML::importScript('auth.register');
 ?>
 <!doctype html>

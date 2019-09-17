@@ -46,7 +46,7 @@
                                         {
                                             ?>
                                             <div class="form-group">
-                                                <a class="d-flex align-items-center py-1 text-black" href="/verify_mobile" onclick="animate_next();" style="text-decoration: none;">
+                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_mobile', [], true); ?>" onclick="animate_next();" style="text-decoration: none;">
                                                     <span class="mdi mdi-cellphone-iphone"></span>
                                                     <p class="mb-0 ml-3">Verify using your Phone</p>
                                                     <p class="ml-auto mb-0 text-muted">
@@ -61,7 +61,7 @@
                                         {
                                             ?>
                                             <div class="form-group">
-                                                <a class="d-flex align-items-center py-1 text-black" href="/verify_recovery_code" onclick="animate_next();" style="text-decoration: none;">
+                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_recovery_codes', [], true); ?>" onclick="animate_next();" style="text-decoration: none;">
                                                     <span class="mdi mdi-reload"></span>
                                                     <p class="mb-0 ml-3">Use a recovery code</p>
                                                     <p class="ml-auto mb-0 text-muted">
@@ -77,7 +77,7 @@
 
                                     <div class="text-block text-center my-3 pt-4">
                                         <span class="text-small font-weight-semibold">Not <?php HTML::print($UsernameSafe); ?>?</span>
-                                        <a href="/logout" class="text-black text-small">Logout</a>
+                                        <a href="<?PHP DynamicalWeb::getRoute('logout', [], true); ?>" class="text-black text-small">Logout</a>
                                     </div>
                                 </form>
                             </div>
