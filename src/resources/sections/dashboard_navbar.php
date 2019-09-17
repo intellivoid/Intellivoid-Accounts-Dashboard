@@ -1,6 +1,7 @@
 <?PHP
 
-    use DynamicalWeb\HTML;
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
 
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
@@ -13,16 +14,16 @@
     <div class="container d-flex flex-row nav-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top">
             <a class="navbar-brand brand-logo" href="/">
-                <img src="../assets/images/logo_2.png" alt="logo" /> </a>
+                <img src="/assets/images/logo_2.png" alt="logo" /> </a>
             <a class="navbar-brand brand-logo-mini" href="/">
-                <img src="../assets/images/iv_logo.svg" alt="logo" /> </a>
+                <img src="/assets/images/iv_logo.svg" alt="logo" /> </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <?PHP HTML::print($UsernameSafe); ?>
-                        <img class="img-xs ml-3" src="/user/contents/public/avatar?user_id=<?PHP HTML::print(WEB_ACCOUNT_PUBID); ?>&resource=small" alt="Profile image">
+                        <img class="img-xs ml-3" src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small'), true) ?>"  alt="Profile image">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <a class="dropdown-item p-0">
@@ -50,7 +51,7 @@
             </button>
         </div>
     </div>
-    <div class="nav-bottom" id="navigation_bar" name="navigation_bar">
+    <div class="nav-bottom" id="navigation_bar">
         <div class="container">
             <ul class="nav page-navigation">
                 <li class="nav-item">
@@ -60,7 +61,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/personal" class="nav-link">
+                    <a href="<?PHP DynamicalWeb::getRoute('personal', [], true) ?>" class="nav-link">
                         <i class="link-icon mdi mdi-account"></i>
                         <span class="menu-title">Personal</span>
                     </a>
@@ -68,19 +69,19 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="link-icon mdi mdi-lock"></i>
-                        <span class="menu-title ">Security</span>
-                        <i class="menu-arrow "></i>
+                        <span class="menu-title">Security</span>
+                        <i class="menu-arrow"></i>
                     </a>
                     <div class="submenu ">
                         <ul class="submenu-item ">
                             <li class="nav-item ">
-                                <a class="nav-link" href="/login_history">Login History</a>
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('personal', [], true) ?>">Login History</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/services">Services</a>
+                                <a class="nav-link" href="#">Services</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/login_security">Login Security</a>
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_security', [], true) ?>">Login Security</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" data-toggle="modal" data-target="#password-reset-dialog" href="#">Update Password</a>
@@ -89,7 +90,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="/balance" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="link-icon mdi mdi-bank"></i>
                         <span class="menu-title">Balance</span>
                     </a>

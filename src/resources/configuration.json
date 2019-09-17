@@ -11,6 +11,7 @@
         {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_codes"},
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
+        {"path": "/user/personal", "page": "personal"},
 
         {"path": "/security", "page": "login_security"},
         {"path": "/security/login_history", "page": "login_history"},
