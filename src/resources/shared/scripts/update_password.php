@@ -25,17 +25,23 @@
     {
         if(isset($_POST['current_password']) == false)
         {
-            Actions::redirect('/?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('index', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['new_password']) == false)
         {
-            Actions::redirect('/?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('index', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['confirm_password']) == false)
         {
-            Actions::redirect('/?callback=100');
+            Actions::redirect(DynamicalWeb::getRoute('index', array(
+                'callback' => '100'
+            )));
         }
 
         // Define the important parts
@@ -53,18 +59,23 @@
         }
 
         $AccountObject = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
-
         if(Validate::verifyHashedPassword($_POST['current_password'], $AccountObject->Password) == false)
         {
-            Actions::redirect('/?callback=101');
+            Actions::redirect(DynamicalWeb::getRoute('index', array(
+                'callback' => '101'
+            )));
         }
 
         if(Hashing::password($_POST['new_password']) !== Hashing::password($_POST['confirm_password']))
         {
-            Actions::redirect('/?callback=102');
+            Actions::redirect(DynamicalWeb::getRoute('index', array(
+                'callback' => '102'
+            )));
         }
 
         $AccountObject->updatePassword($_POST['new_password']);
         $IntellivoidAccounts->getAccountManager()->updateAccount($AccountObject);
-        Actions::redirect('/?callback=103');
+        Actions::redirect(DynamicalWeb::getRoute('index', array(
+            'callback' => '103'
+        )));
     }

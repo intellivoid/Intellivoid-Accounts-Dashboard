@@ -1,10 +1,12 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Page;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\IntellivoidAccounts;
     use sws\Objects\Cookie;
     use sws\sws;
+
     Runtime::import('IntellivoidAccounts');
 
     if(defined('AUTHENTICATION_SKIPPED'))

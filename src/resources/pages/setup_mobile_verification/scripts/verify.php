@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -22,8 +23,9 @@
     {
         if(isset($_POST['verification_code']) == false)
         {
-            header('Location: /setup_mobile_verification?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('setup_mobile_verification', array(
+                'callback' => '100'
+            )));;
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -34,8 +36,9 @@
 
         if($Account->Configuration->VerificationMethods->TwoFactorAuthentication->verifyCode($_POST['verification_code']) == false)
         {
-            header('Location: /setup_mobile_verification?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('setup_mobile_verification', array(
+                'callback' => '100'
+            )));
         }
 
         $Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled = true;
@@ -43,13 +46,15 @@
 
         if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
         {
-            header('Location: /setup_recovery_codes?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('setup_recovery_codes', array(
+                'callback' => '100'
+            )));
         }
         else
         {
-            header('Location: /login_security?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+                'callback' => '100'
+            )));
         }
 
     }

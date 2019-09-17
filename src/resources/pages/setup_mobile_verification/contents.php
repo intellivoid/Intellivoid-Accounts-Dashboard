@@ -1,6 +1,7 @@
 <?PHP
+
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
 
     HTML::importScript('check');
     HTML::importScript('verify');
@@ -25,7 +26,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Mobile Verification Setup</h4>
-                                        <form id="mobile-verification-wizard" action="/setup_mobile_verification?action=verify" method="POST">
+                                        <form id="mobile-verification-wizard" action="<?PHP DynamicalWeb::getRoute('setup_mobile_verification', array('action' => 'verify'), true); ?>" method="POST">
                                             <div>
                                                 <h3>Download</h3>
                                                 <section>
@@ -124,7 +125,7 @@
                 bodyTag: "section",
                 transitionEffect: "slideLeft",
                 onFinished: function (event, currentIndex) {
-                    $.redirectPost("/setup_mobile_verification?action=verify",
+                    $.redirectPost("<?PHP DynamicalWeb::getRoute('setup_mobile_verification', array('action' => 'verify'), true); ?>",
                         {
                             "verification_code": $("#verification_code").val()
                         }
