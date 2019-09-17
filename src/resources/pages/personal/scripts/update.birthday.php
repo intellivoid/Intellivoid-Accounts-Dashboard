@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
 
@@ -15,8 +16,9 @@
                 }
                 catch(Exception $exception)
                 {
-                    header('Location: /personal?callback=104');
-                    exit();
+                    Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                        'callback' => '104'
+                    )));
                 }
             }
         }
@@ -26,20 +28,23 @@
     {
         if(isset($_POST['dob_year']) == false)
         {
-            header('Location: /personal?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['dob_month']) == false)
         {
-            header('Location: /personal?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['dob_day']) == false)
         {
-            header('Location: /personal?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '100'
+            )));
         }
 
         $DOB_Year = (int)$_POST['dob_year'];
@@ -48,38 +53,44 @@
 
         if($DOB_Year < 1970)
         {
-            header('Location: /personal?callback=105');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '105'
+            )));
         }
 
         if($DOB_Year > ((int)date('Y') - 13))
         {
-            header('Location: /personal?callback=105');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '105'
+            )));
         }
 
         if($DOB_Month < 1)
         {
-            header('Location: /personal?callback=105');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '105'
+            )));
         }
 
         if($DOB_Month > 12)
         {
-            header('Location: /personal?callback=105');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '105'
+            )));
         }
 
         if($DOB_Day < 1)
         {
-            header('Location: /personal?callback=105');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '105'
+            )));
         }
 
         if($DOB_Day > 31)
         {
-            header('Location: /personal?callback=105');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '105'
+            )));
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -101,6 +112,7 @@
         $Account->PersonalInformation->BirthDate->Day = $DOB_Day;
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
-        header('Location: /personal?callback=106');
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('personal', array(
+            'callback' => '106'
+        )));
     }
