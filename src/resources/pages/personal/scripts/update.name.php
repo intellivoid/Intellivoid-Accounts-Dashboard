@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
 
@@ -15,8 +16,9 @@
                 }
                 catch(Exception $exception)
                 {
-                    header('Location: /personal?callback=104');
-                    exit();
+                    Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                        'callback' => '104'
+                    )));
                 }
             }
         }
@@ -26,50 +28,58 @@
     {
         if(isset($_POST['first_name']) == false)
         {
-            header('Location: /personal?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '100'
+            )));
         }
 
         if(isset($_POST['last_name']) == false)
         {
-            header('Location: /personal?callback=100');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '100'
+            )));
         }
 
         if(preg_match("/^([a-zA-Z' ]+)$/",$_POST['first_name']) == false)
         {
-            header('Location: /personal?callback=101');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '104'
+            )));
         }
 
         if(strlen($_POST['first_name']) > 46)
         {
-            header('Location: /personal?callback=101');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '101'
+            )));
         }
 
         if(strlen($_POST['first_name']) < 1)
         {
-            header('Location: /personal?callback=101');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '101'
+            )));
         }
 
         if(preg_match("/^([a-zA-Z' ]+)$/",$_POST['last_name']) == false)
         {
-            header('Location: /personal?callback=102');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '102'
+            )));
         }
 
         if(strlen($_POST['last_name']) > 64)
         {
-            header('Location: /personal?callback=102');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '102'
+            )));
         }
 
         if(strlen($_POST['last_name']) < 1)
         {
-            header('Location: /personal?callback=102');
-            exit();
+            Actions::redirect(DynamicalWeb::getRoute('personal', array(
+                'callback' => '102'
+            )));
         }
 
 
@@ -91,6 +101,7 @@
         $Account->PersonalInformation->LastName = $_POST['last_name'];
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
-        header('Location: /personal?callback=103');
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('personal', array(
+            'callback' => '103'
+        )));
     }
