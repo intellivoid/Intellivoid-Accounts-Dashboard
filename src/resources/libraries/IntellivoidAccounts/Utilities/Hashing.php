@@ -2,6 +2,7 @@
 
     namespace IntellivoidAccounts\Utilities;
 
+    use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
     use tsa\Classes\Crypto;
     use tsa\Exceptions\BadLengthException;
     use tsa\Exceptions\SecuredRandomProcessorNotFoundException;
@@ -254,5 +255,75 @@
             $builder .= hash('crc32', $timestamp);
 
             return $builder;
+        }
+
+        /**
+         * Creates a unique public id for the application
+         *
+         * @param string $name
+         * @param int $timestamp
+         * @return string
+         */
+        public static function applicationPublicId(string $name, int $timestamp): string
+        {
+            $builder = "APP";
+            $builder .= hash('sha256', $name . $timestamp);
+            $builder .= hash('crc32', $timestamp);
+            return $builder;
+        }
+
+        /**
+         * Builds a secret key for the application
+         *
+         * @param string $public_key
+         * @param int $timestamp
+         * @return string
+         */
+        public static function applicationSecretKey(string $public_key, int $timestamp): string
+        {
+            return hash('sha256', self::pepper($public_key) . $timestamp) . hash('crc32', self::pepper($timestamp));
+        }
+
+        /**
+         * Creates an authentication request token
+         *
+         * @param int $application_id
+         * @param string $application_name
+         * @param int $host_id
+         * @param int $timestamp
+         * @return string
+         */
+        public static function authenticationRequestToken(int $application_id, string $application_name, int $host_id, int $timestamp): string
+        {
+            $application_id = hash('crc32', $application_id);
+            $application_name = hash('crc32', $application_name);
+            $host_id = hash('crc32', $host_id);
+            $timestamp = hash('crc32', $timestamp);
+
+            $hash = hash('sha256', $application_id . $application_name . $host_id . $timestamp);
+            $ending = hash('crc32', self::pepper($hash));
+
+            return $hash . $ending;
+        }
+
+        /**
+         * Creates an Authentication Access Token
+         *
+         * @param int $request_id
+         * @param string $request_token
+         * @param int $timestamp
+         * @param int $account_id
+         * @param int $host_id
+         * @return string
+         */
+        public static function authenticationAccessToken(int $request_id, string $request_token, int $timestamp, int $account_id, int $host_id): string
+        {
+            $request_id = hash('crc32', $request_id);
+            $request_token = self::pepper($request_token);
+            $timestamp = hash('crc32', $timestamp);
+            $account_id = hash('crc32', $account_id);
+            $host_id = hash('crc32', $host_id);
+
+            return hash('sha256', $request_id . $request_token . $timestamp . $account_id . $host_id);
         }
     }

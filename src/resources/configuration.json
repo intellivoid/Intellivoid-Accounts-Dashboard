@@ -2,9 +2,20 @@
     "primary_language": "en",
     "router": [
         {"path": "/", "page": "index"},
+
         {"path": "/auth/login", "page": "login"},
         {"path": "/auth/register", "page": "register"},
-        {"path": "/user/contents/public/avatar", "page": "avatar"}
+        {"path": "/auth/verify", "page": "verify"},
+        {"path": "/auth/sudo", "page": "sudo"},
+        {"path": "/auth/verify/mobile", "page": "verify_mobile"},
+        {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_codes"},
+
+        {"path": "/user/contents/public/avatar", "page": "avatar"},
+
+        {"path": "/security", "page": "login_security"},
+        {"path": "/security/login_history", "page": "login_history"},
+        {"path": "/security/setup/mobile", "page": "setup_mobile_verification"},
+        {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"}
     ],
     "libraries": {
         "SecuredWebSessions": {
