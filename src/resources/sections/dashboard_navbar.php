@@ -26,23 +26,9 @@ use DynamicalWeb\HTML;
                         <img class="img-xs ml-3" src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small'), true) ?>"  alt="Profile image">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <a class="dropdown-item p-0">
-                            <div class="d-flex border-bottom">
-                                <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
-                                </div>
-                                <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
-                                </div>
-                                <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item mt-2"> Manage Accounts </a>
-                        <a class="dropdown-item"> Change Password </a>
-                        <a class="dropdown-item"> Check Inbox </a>
-                        <a class="dropdown-item"> Sign Out </a>
+                        <a class="dropdown-item mt-4" href="<?PHP DynamicalWeb::getRoute('applications', [], true); ?>"> Manage Applications </a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#password-reset-dialog" href="#"> Change Password </a>
+                        <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('logout', [], true); ?>"> Logout </a>
                     </div>
                 </li>
             </ul>
