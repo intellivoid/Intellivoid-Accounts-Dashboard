@@ -7,7 +7,8 @@
 use IntellivoidAccounts\Abstracts\LoginStatus;
 use IntellivoidAccounts\Abstracts\OtlStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\OtlSearchMethod;
+use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+use IntellivoidAccounts\Abstracts\SearchMethods\OtlSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\OtlNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -32,6 +33,18 @@ Runtime::import('IntellivoidAccounts');
         $Response = array(
             "status" => false,
             "message" => "Missing parameter 'vendor'",
+            "code" => 1000
+        );
+        header('Content-Type: application/json');
+        print(json_encode($Response));
+        exit();
+    }
+
+    if(isset($_GET['host_id']) == false)
+    {
+        $Response = array(
+            "status" => false,
+            "message" => "Missing parameter 'host_id'",
             "code" => 1000
         );
         header('Content-Type: application/json');
@@ -181,12 +194,40 @@ Runtime::import('IntellivoidAccounts');
         exit();
     }
 
+    try
+    {
+        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byPublicId, $_GET['host_id']);
+    }
+    catch (\IntellivoidAccounts\Exceptions\HostNotKnownException $e)
+    {
+        $Response = array(
+            "status" => false,
+            "message" => "Invalid Host ID",
+            "code" => 1009
+        );
+        header('Content-Type: application/json');
+        print(json_encode($Response));
+        exit();
+    }
+    catch (Exception $e)
+    {
+        $Response = array(
+            "status" => false,
+            "message" => "Internal Server Error",
+            "error_code" => $exception->getCode(),
+            "code" => 1002
+        );
+        header('Content-Type: application/json');
+        print(json_encode($Response));
+        exit();
+    }
+
     $VerificationCode->Status = OtlStatus::Used;
     $VerificationCode->Vendor = $_GET['vendor'];
     $IntellivoidAccounts->getOtlManager()->updateOtlRecord($VerificationCode);
 
     $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
-        $Account->ID, $Host->ID,
+        $Account->ID, $KnownHost->ID,
         LoginStatus::Successful, $VerificationCode->Vendor,
         CLIENT_USER_AGENT
     );
