@@ -131,7 +131,7 @@ use DynamicalWeb\HTML;
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-success">Submit</button>
+                                        <button type="button" class="btn btn-success">Create Application</button>
                                     </div>
                                 </form>
                             </div>

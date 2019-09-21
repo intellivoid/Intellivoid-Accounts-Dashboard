@@ -1,5 +1,6 @@
 {
     "primary_language": "en",
+    "debugging_mode": true,
     "router": [
         {"path": "/", "page": "index"},
 
@@ -10,6 +11,7 @@
         {"path": "/auth/sudo", "page": "sudo"},
         {"path": "/auth/verify/mobile", "page": "verify_mobile"},
         {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_codes"},
+        {"path": "/auth/internal", "page": "internal_authentication"},
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/personal", "page": "personal"},
