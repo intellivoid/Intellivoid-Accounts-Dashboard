@@ -19,7 +19,7 @@
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('json_response');
 
-    if(isset($_GET['code']) == false)
+    if(isset($_GET['auth_code']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
@@ -62,7 +62,7 @@
 
     try
     {
-        $VerificationCode = $IntellivoidAccounts->getOtlManager()->getOtlRecord(OtlSearchMethod::byCode, Request::getParameter('code'));
+        $VerificationCode = $IntellivoidAccounts->getOtlManager()->getOtlRecord(OtlSearchMethod::byCode, Request::getParameter('auth_code'));
     }
     catch (OtlNotFoundException $e)
     {

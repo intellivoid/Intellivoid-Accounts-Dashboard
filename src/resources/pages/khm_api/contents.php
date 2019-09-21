@@ -10,26 +10,20 @@
 
     if(isset($_GET['remote_host']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Missing parameter 'remote_host'",
-            "code" => 1000
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 100,
+            'message' => 'Missing GET parameter \'remote_host\''
+        ));
     }
 
     if(isset($_GET['user_agent']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Missing parameter 'user_agent'",
-            "code" => 1000
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 101,
+            'message' => 'Missing GET parameter \'user_agent\''
+        ));
     }
 
     // Define the important parts
@@ -48,14 +42,11 @@
 
     if(Validate::userAgent($_GET['user_agent']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "UserAgent is invalid",
-            "code" => 1001
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 102,
+            'message' => 'The given user agent is invalid'
+        ));
     }
 
     try
@@ -64,45 +55,32 @@
     }
     catch(InvalidIpException $invalidIpException)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "IP Address is invalid",
-            "code" => 1002
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 103,
+            'message' => 'The given IP Address is invalid'
+        ));
     }
     catch(Exception $exception)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Internal Server Error",
-            "code" => 1003,
-            "error_code" => $exception->getCode()
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 104,
+            'error_code' => $exception->getCode(),
+            'message' => 'Internal Server Error'
+        ));
     }
 
     if($KnownHost->Blocked == true)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "This IP Address has been blocked for security reasons",
-            "code" => 1004,
-            "error_code" => $exception->getCode()
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 105,
+            'message' => 'The IP Address is blocked for security reasons'
+        ));
     }
 
-    $Response = array(
-        "status" => true,
-        "host_id" => $KnownHost->PublicID
-    );
-    header('Content-Type: application/json');
-    print(json_encode($Response));
-    exit();
+    returnJsonResponse(array(
+        'status' => true,
+        'host_id' => $KnownHost->PublicID
+    ));
