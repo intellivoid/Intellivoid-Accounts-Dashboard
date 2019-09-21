@@ -4,20 +4,34 @@
     use DynamicalWeb\Request;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
-    use IntellivoidAccounts\Abstracts\OtlStatus;
+use IntellivoidAccounts\Abstracts\LoginStatus;
+use IntellivoidAccounts\Abstracts\OtlStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\OtlSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\OtlNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Utilities\Validate;
 
-    Runtime::import('IntellivoidAccounts');
+Runtime::import('IntellivoidAccounts');
 
     if(isset($_GET['code']) == false)
     {
         $Response = array(
             "status" => false,
             "message" => "Missing parameter 'code'",
+            "code" => 1000
+        );
+        header('Content-Type: application/json');
+        print(json_encode($Response));
+        exit();
+    }
+
+    if(isset($_GET['vendor']) == false)
+    {
+        $Response = array(
+            "status" => false,
+            "message" => "Missing parameter 'vendor'",
             "code" => 1000
         );
         header('Content-Type: application/json');
@@ -155,8 +169,27 @@
         exit();
     }
 
+    if(Validate::vendor($_GET['vendor']) == false)
+    {
+        $Response = array(
+            "status" => false,
+            "message" => "The vendor name is invalid",
+            "code" => 1009
+        );
+        header('Content-Type: application/json');
+        print(json_encode($Response));
+        exit();
+    }
+
     $VerificationCode->Status = OtlStatus::Used;
+    $VerificationCode->Vendor = $_GET['vendor'];
     $IntellivoidAccounts->getOtlManager()->updateOtlRecord($VerificationCode);
+
+    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+        $Account->ID, $Host->ID,
+        LoginStatus::Successful, $VerificationCode->Vendor,
+        CLIENT_USER_AGENT
+    );
 
     $ResponseObject = array(
         'id' => $Account->PublicID,
