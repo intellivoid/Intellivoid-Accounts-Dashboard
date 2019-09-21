@@ -10,7 +10,8 @@
     Runtime::import('SecuredWebSessions');
 
     $public_pages = [
-        'avatar'
+        'avatar',
+        'otl_api'
     ];
 
     $unauthorized_pages = [

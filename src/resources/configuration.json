@@ -4,6 +4,8 @@
     "router": [
         {"path": "/", "page": "index"},
 
+        {"path": "/auth/otl", "page": "otl_api"},
+
         {"path": "/auth/login", "page": "login"},
         {"path": "/auth/register", "page": "register"},
         {"path": "/auth/logout", "page": "logout"},
