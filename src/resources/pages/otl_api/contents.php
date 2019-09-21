@@ -1,55 +1,49 @@
 <?PHP
 
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
     use DynamicalWeb\Request;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
-use IntellivoidAccounts\Abstracts\LoginStatus;
-use IntellivoidAccounts\Abstracts\OtlStatus;
+    use IntellivoidAccounts\Abstracts\LoginStatus;
+    use IntellivoidAccounts\Abstracts\OtlStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\OtlSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\OtlSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
+    use IntellivoidAccounts\Exceptions\HostNotKnownException;
     use IntellivoidAccounts\Exceptions\OtlNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Utilities\Validate;
+    use IntellivoidAccounts\Utilities\Validate;
 
-Runtime::import('IntellivoidAccounts');
+    Runtime::import('IntellivoidAccounts');
+    HTML::importScript('json_response');
 
     if(isset($_GET['code']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Missing parameter 'code'",
-            "code" => 1000
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 100,
+            'message' => 'Missing GET parameter \'auth_code\''
+        ));
     }
 
     if(isset($_GET['vendor']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Missing parameter 'vendor'",
-            "code" => 1000
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 101,
+            'message' => 'Missing GET parameter \'vendor\''
+        ));
     }
 
     if(isset($_GET['host_id']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Missing parameter 'host_id'",
-            "code" => 1000
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 102,
+            'message' => 'Missing GET parameter \'host_id\''
+        ));
     }
 
     // Define the important parts
@@ -72,63 +66,49 @@ Runtime::import('IntellivoidAccounts');
     }
     catch (OtlNotFoundException $e)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Invalid authentication code",
-            "code" => 1001
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 103,
+            'message' => 'Invalid Authentication Code'
+        ));
     }
     catch(Exception $exception)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Internal Server Error",
-            "error_code" => $exception->getCode(),
-            "code" => 1002
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 104,
+            'error_code' => $exception->getCode(),
+            'message' => 'Internal Server Error'
+        ));
     }
 
     if($VerificationCode->Status == OtlStatus::Used)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Token already used",
-            "code" => 1004
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
-    }
-
-    if(time() > $VerificationCode->ExpiresTimestamp)
-    {
-        $Response = array(
-            "status" => false,
-            "message" => "Expired Token",
-            "code" => 1003
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 105,
+            'message' => 'The authentication code was already used'
+        ));
     }
 
     if($VerificationCode->Status == OtlStatus::Unavailable)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Token unavailable",
-            "code" => 1005
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 106,
+            'message' => 'The authentication code is unavailable at this time'
+        ));
     }
+
+    if(time() > $VerificationCode->ExpiresTimestamp)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 107,
+            'message' => 'The authentication code has expired'
+        ));
+    }
+
 
     try
     {
@@ -136,90 +116,69 @@ Runtime::import('IntellivoidAccounts');
     }
     catch(AccountNotFoundException $accountNotFoundException)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Account does not exist",
-            "code" => 1006
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 108,
+            'message' => 'The account was not found'
+        ));
     }
     catch(Exception $exception)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Internal Server Error",
-            "error_code" => $exception->getCode(),
-            "code" => 1002
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 104,
+            'error_code' => $exception->getCode(),
+            'message' => 'Internal Server Error'
+        ));
     }
 
     if($Account->Status == AccountStatus::Suspended)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "The account is unavailable because it has been suspended",
-            "code" => 1007
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 109,
+            'message' => 'The account has been suspended'
+        ));
     }
 
     if($Account->Status == AccountStatus::VerificationRequired)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "The account is unavailable because the owner needs to verify the account",
-            "code" => 1008
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 110,
+            'message' => 'The account needs to be verified before it can be used'
+        ));
     }
 
     if(Validate::vendor($_GET['vendor']) == false)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "The vendor name is invalid",
-            "code" => 1009
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 111,
+            'message' => 'The vendor name is invalid'
+        ));
     }
 
     try
     {
         $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byPublicId, $_GET['host_id']);
     }
-    catch (\IntellivoidAccounts\Exceptions\HostNotKnownException $e)
+    catch (HostNotKnownException $e)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Invalid Host ID",
-            "code" => 1009
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 112,
+            'message' => 'Invalid Host ID'
+        ));
     }
     catch (Exception $e)
     {
-        $Response = array(
-            "status" => false,
-            "message" => "Internal Server Error",
-            "error_code" => $exception->getCode(),
-            "code" => 1002
-        );
-        header('Content-Type: application/json');
-        print(json_encode($Response));
-        exit();
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 104,
+            'error_code' => $exception->getCode(),
+            'message' => 'Internal Server Error'
+        ));
     }
 
     $VerificationCode->Status = OtlStatus::Used;
@@ -251,10 +210,7 @@ Runtime::import('IntellivoidAccounts');
         $ResponseObject['avatars'][$item . '_direct'] = 'user/contents/public/avatar?user_id=' . $Account->PublicID . '&resource=' . urlencode($item);
     }
 
-    $Response = array(
-        "status" => true,
-        "account" => $ResponseObject
-    );
-    header('Content-Type: application/json');
-    print(json_encode($Response));
-    exit();
+    returnJsonResponse(array(
+        'status' => true,
+        'account' => $ResponseObject
+    ));
