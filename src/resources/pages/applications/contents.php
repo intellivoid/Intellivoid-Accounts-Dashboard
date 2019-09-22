@@ -1,7 +1,24 @@
 <?PHP
 
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
+    use DynamicalWeb\Runtime;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
+
+    Runtime::import('IntellivoidAccounts');
+
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        if(isset($_GET['action']))
+        {
+            if($_GET['action'] == 'create-application')
+            {
+                HTML::importScript('register_application');
+            }
+        }
+    }
 
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
@@ -28,8 +45,30 @@ use DynamicalWeb\HTML;
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Applicationsy</h4>
-                                        <p class="card-description"> Review what devices you logged in with and when </p>
+                                        <h4 class="card-title">Applications</h4>
+                                        <p class="card-description"> Create and manage Applications for services & authentication </p>
+                                        <?PHP
+
+                                            if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+                                            {
+                                                /** @var IntellivoidAccounts $IntellivoidAccounts */
+                                                $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
+                                                    "intellivoid_accounts", new IntellivoidAccounts()
+                                                );
+                                            }
+                                            else
+                                            {
+                                                /** @var IntellivoidAccounts $IntellivoidAccounts */
+                                                $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+                                            }
+
+                                            $TotalRecords = $IntellivoidAccounts->getApplicationManager()->getRecords(WEB_ACCOUNT_ID);
+
+                                            if(count($TotalRecords) == 0)
+                                            {
+                                                HTML::importScript('ren.no_contents');
+                                            }
+                                        ?>
                                         <div class="row">
 
                                         </div>
@@ -53,7 +92,7 @@ use DynamicalWeb\HTML;
 
                         <div class="modal fade" id="create-application" tabindex="-1" role="dialog" aria-labelledby="create-application-label" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
-                                <form class="modal-content" action="<?PHP DynamicalWeb::getRoute('applications', array('action' => 'create-application'), true); ?>">
+                                <form class="modal-content" method="POST" action="<?PHP DynamicalWeb::getRoute('applications', array('action' => 'create-application'), true); ?>">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="create-application-label">Create Application</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -78,10 +117,10 @@ use DynamicalWeb\HTML;
 
                                         <div class="form-group pt-2">
                                             <label for="authentication_type">Authentication Type</label>
-                                            <select class="form-control" id="authentication_type">
-                                                <option value="1">Redirect</option>
-                                                <option value="2">Application Placeholder</option>
-                                                <option value="3">Code</option>
+                                            <select class="form-control" name="authentication_type" id="authentication_type">
+                                                <option value="redirect">Redirect</option>
+                                                <option value="placeholder">Application Placeholder</option>
+                                                <option value="code">Code</option>
                                             </select>
                                         </div>
 
@@ -91,7 +130,7 @@ use DynamicalWeb\HTML;
                                                <div class="col-md-6">
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" class="form-check-input"> View Personal Information
+                                                           <input type="checkbox" name="perm_view_personal_information" class="form-check-input"> View Personal Information
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
@@ -99,18 +138,16 @@ use DynamicalWeb\HTML;
 
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" class="form-check-input">  Make purchases
+                                                           <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input">  Make purchases
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
                                                    <p class="text-muted text-small">Make purchases or activate paid subscriptions on users behalf</p>
-
-
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" class="form-check-input"> Edit Personal Information
+                                                           <input type="checkbox" name="perm_edit_personal_information" id="perm_edit_personal_information" class="form-check-input"> Edit Personal Information
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
@@ -118,7 +155,7 @@ use DynamicalWeb\HTML;
 
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" class="form-check-input"> Telegram Notifications
+                                                           <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"> Telegram Notifications
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
@@ -131,7 +168,7 @@ use DynamicalWeb\HTML;
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-success">Create Application</button>
+                                        <input type="submit" class="btn btn-success" value="Create Application">
                                     </div>
                                 </form>
                             </div>
