@@ -1,12 +1,14 @@
 <?PHP
 
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Exceptions\InvalidIpException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Utilities\Validate;
 
     Runtime::import('IntellivoidAccounts');
+    HTML::importScript('json_response');
 
     if(isset($_GET['remote_host']) == false)
     {

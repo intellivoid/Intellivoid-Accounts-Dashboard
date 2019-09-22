@@ -11,7 +11,8 @@
 
     $public_pages = [
         'avatar',
-        'otl_api'
+        'otl_api',
+        'khm_api'
     ];
 
     $unauthorized_pages = [

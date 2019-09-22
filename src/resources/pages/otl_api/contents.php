@@ -46,6 +46,24 @@
         ));
     }
 
+    if(isset($_GET['user_agent']) == false)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 113,
+            'message' => 'Missing GET parameter \'user_agent\''
+        ));
+    }
+
+    if(Validate::userAgent($_GET['user_agent']) == false)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 114,
+            'message' => 'Missing GET parameter \'user_agent\''
+        ));
+    }
+
     // Define the important parts
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
@@ -188,7 +206,7 @@
     $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
         $Account->ID, $KnownHost->ID,
         LoginStatus::Successful, $VerificationCode->Vendor,
-        CLIENT_USER_AGENT
+        $_GET['user_agent']
     );
 
     $ResponseObject = array(
