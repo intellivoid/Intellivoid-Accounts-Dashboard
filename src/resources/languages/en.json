@@ -42,6 +42,16 @@
             "CALLBACK_105": "The given date is invalid",
             "CALLBACK_106": "Your birthday has been updated"
         },
+        "applications": {
+            "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
+            "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff",
+            "CALLBACK_102": "The application name is invalid",
+            "CALLBACK_103": "The authentication type is invalid or no longer supported",
+            "CALLBACK_104": "The Application already exists in the system",
+            "CALLBACK_105": "One or more permissions are not supported or is invalid",
+            "CALLBACK_106": "Your application was created successfully",
+            "CALLBACK_107": "The application was not found"
+        },
         "login_security":
         {
             "CALLBACK_100": "Mobile verification has been enabled on your account",

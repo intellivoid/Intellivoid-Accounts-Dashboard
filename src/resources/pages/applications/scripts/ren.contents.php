@@ -21,13 +21,13 @@ use DynamicalWeb\HTML;
                             <?PHP HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $application['creation_timestamp']), "Created at %s")); ?>
                         </small>
                         <div class="dropdown ml-auto">
-                            <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenuIconButton1"
+                            <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdown-<?PHP HTML::print($application['last_updated_timestamp']); ?>"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="mdi mdi-dots-vertical"></i>
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                <a class="dropdown-item" href="#">Today</a>
-                                <a class="dropdown-item" href="#">Yesterday</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-<?PHP HTML::print($application['last_updated_timestamp']); ?>">
+                                <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id']), true); ?>">Manage Application</a>
+                                <a class="dropdown-item" href="#">Disable</a>
                             </div>
                         </div>
                     </div>

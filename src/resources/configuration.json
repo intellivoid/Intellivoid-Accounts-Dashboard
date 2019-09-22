@@ -20,6 +20,7 @@
         {"path": "/user/contents/public/application", "page": "application_icon"},
         {"path": "/user/personal", "page": "personal"},
 		{"path": "/applications", "page": "applications"},
+		{"path": "/applications/manage", "page": "manage_application"},
 
         {"path": "/security", "page": "login_security"},
         {"path": "/security/login_history", "page": "login_history"},
