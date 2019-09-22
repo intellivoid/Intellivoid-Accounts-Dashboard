@@ -68,14 +68,16 @@
                                             {
                                                 HTML::importScript('ren.no_contents');
                                             }
+                                            else
+                                            {
+                                                HTML::importScript('ren.contents');
+                                                render_items($TotalRecords);
+                                            }
                                         ?>
-                                        <div class="row">
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 grid-margin stretch-card">
+                            <div class="col-md-4 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Actions</h4>
