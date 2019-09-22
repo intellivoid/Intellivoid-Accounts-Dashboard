@@ -1,11 +1,10 @@
 <?PHP
 
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
 
     function render_items(array $items)
     {
-        //HTML::print("<div class=\"row\">", false);
         HTML::print("<div class=\"card-body no-gutter\">", false);
         foreach($items as $application)
         {
@@ -41,5 +40,4 @@ use DynamicalWeb\HTML;
             <?PHP
         }
         HTML::print("</div>", false);
-        //HTML::print("</div>", false);
     }
