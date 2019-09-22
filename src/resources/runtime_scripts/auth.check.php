@@ -11,6 +11,7 @@
 
     $public_pages = [
         'avatar',
+        'application_icon',
         'otl_api',
         'khm_api'
     ];

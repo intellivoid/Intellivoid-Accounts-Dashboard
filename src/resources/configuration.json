@@ -17,6 +17,7 @@
         {"path": "/auth/internal", "page": "internal_authentication"},
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
+        {"path": "/user/contents/public/application", "page": "application_icon"},
         {"path": "/user/personal", "page": "personal"},
 		{"path": "/applications", "page": "applications"},
 
