@@ -3,8 +3,10 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-    use IntellivoidAccounts\Exceptions\AccountNotFoundException;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+use IntellivoidAccounts\Exceptions\AccountNotFoundException;
+use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
+use IntellivoidAccounts\IntellivoidAccounts;
 
     Runtime::import('IntellivoidAccounts');
 
@@ -36,9 +38,9 @@
 
     try
     {
-        $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byPublicID, $_GET['app_id']);
+        $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(ApplicationSearchMethod::byApplicationId, $_GET['app_id']);
     }
-    catch(AccountNotFoundException $accountNotFoundException)
+    catch(ApplicationNotFoundException $applicationNotFoundException)
     {
         $Response = array(
             "status" => false,
@@ -59,12 +61,12 @@
         exit();
     }
 
-    if($IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->avatar_exists($Account->PublicID) == false)
+    if($IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->avatar_exists($Application->PublicAppId) == false)
     {
-        $IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->generate_avatar($Account->PublicID);
+        $IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->generate_avatar($Application->PublicAppId);
     }
 
-    $Avatar = $IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->get_avatar($Account->PublicID);
+    $Avatar = $IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->get_avatar($Application->PublicAppId);
 
     if(isset($_GET["resource"]))
     {

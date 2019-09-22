@@ -1,6 +1,7 @@
 <?PHP
 
-    use DynamicalWeb\HTML;
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
 
     function render_items(array $items)
     {
@@ -11,7 +12,7 @@
             ?>
             <div class="list-item">
                 <div class="preview-image">
-                    <img class="img-sm" src="http://localhost/user/contents/public/avatar?user_id=de577f937381363a527690f71a10faf568f944834193f69f422f0379c916109cd3f5a36c6cc63ca7&resource=small" alt="profile image">
+                    <img class="img-sm" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $application['public_app_id'], 'resource' => 'small'), true); ?>" alt="profile image">
                 </div>
                 <div class="content">
                     <div class="d-flex align-items-center">
