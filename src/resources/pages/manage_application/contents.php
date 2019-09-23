@@ -20,6 +20,9 @@
                 case 'change-logo':
                    HTML::importScript('change_logo');
                    break;
+
+                case 'update-auth-mode':
+                    HTML::importScript('update_auth_mode');
             }
         }
     }
@@ -84,7 +87,7 @@
 
                                     <div class="card-body">
                                         <h4 class="card-title text-muted">Settings</h4>
-                                        <form>
+                                        <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('action' => 'update-auth-mode'), true); ?>" method="POST">
                                             <div class="form-group">
                                                 <label for="authentication_type">Authentication Type</label>
                                                 <select class="form-control" name="authentication_type" id="authentication_type" onchange="this.form.submit();">

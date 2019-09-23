@@ -4,8 +4,13 @@
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
+use udp\Exceptions\FileUploadException;
+use udp\Exceptions\ImageTooSmallException;
+use udp\Exceptions\InvalidImageException;
+use udp\Exceptions\SystemException;
+use udp\Exceptions\UnsupportedFileTypeException;
 
-    /** @var Application $Application */
+/** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -16,21 +21,35 @@
     {
         $file = $IntellivoidAccounts->getAppUdp()->getTemporaryFileManager()->accept_upload();
     }
+    catch (FileUploadException $e)
+    {
+    }
+    catch (SystemException $e)
+    {
+    }
+    catch (UnsupportedFileTypeException $e)
+    {
+    }
     catch(Exception $exception)
     {
-        var_dump($exception);
-        exit();
+
     }
+
 
     try
     {
         $IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->apply_avatar($file, $Application->PublicAppId);
     }
-    catch(Exception $exception)
+    catch (ImageTooSmallException $e)
     {
-        var_dump($exception);
-        exit();
     }
+    catch (InvalidImageException $e)
+    {
+    }
+    catch (UnsupportedFileTypeException $e)
+    {
+    }
+
 
     Actions::redirect(DynamicalWeb::getRoute('manage_application', array(
         'pub_id' => $Application->PublicAppId
