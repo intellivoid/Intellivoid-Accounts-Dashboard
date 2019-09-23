@@ -63,7 +63,9 @@
             "CALLBACK_107": "The authentication type is invalid or is no longer supported",
             "CALLBACK_108": "Authentication mode has been updated successfully",
             "CALLBACK_109": "The given permissions are invalid or is no longer supported",
-            "CALLBACK_110": "Changes applied successfully"
+            "CALLBACK_110": "Changes applied successfully",
+            "CALLBACK_111": "Secret key updated successfully",
+            "CALLBACK_112": "The logo has been changed successfully"
         },
         "login_security":
         {

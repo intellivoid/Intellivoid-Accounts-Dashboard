@@ -23,15 +23,27 @@ use udp\Exceptions\UnsupportedFileTypeException;
     }
     catch (FileUploadException $e)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '101'))
+        );
     }
     catch (SystemException $e)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '102'))
+        );
     }
     catch (UnsupportedFileTypeException $e)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '103'))
+        );
     }
     catch(Exception $exception)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '100'))
+        );
 
     }
 
@@ -42,15 +54,25 @@ use udp\Exceptions\UnsupportedFileTypeException;
     }
     catch (ImageTooSmallException $e)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '104'))
+        );
     }
     catch (InvalidImageException $e)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '105'))
+        );
     }
     catch (UnsupportedFileTypeException $e)
     {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '103'))
+        );
     }
 
 
     Actions::redirect(DynamicalWeb::getRoute('manage_application', array(
-        'pub_id' => $Application->PublicAppId
+        'pub_id' => $Application->PublicAppId,
+        'callback' => '112'
     )));
