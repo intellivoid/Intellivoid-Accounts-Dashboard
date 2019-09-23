@@ -10,7 +10,7 @@ use udp\Exceptions\InvalidImageException;
 use udp\Exceptions\SystemException;
 use udp\Exceptions\UnsupportedFileTypeException;
 
-/** @var Application $Application */
+    /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */

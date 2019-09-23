@@ -2,7 +2,8 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\AuthenticationMode;
+use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
 
     HTML::importScript('check_application');
@@ -22,7 +23,7 @@
                    break;
 
                 case 'update-auth-mode':
-                    HTML::importScript('update_auth_mode');
+                    HTML::importScript('update_authentication_mode');
             }
         }
     }
@@ -72,14 +73,21 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title text-muted">Application Keys</h4>
-                                        <form class="border-bottom">
+                                        <form class="border-bottom" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-secret-key'), true) ?>">
                                             <div class="form-group pb-3">
                                                 <label for="public_app_id">Public Application ID</label>
                                                 <input type="text" class="form-control bg-white" id="public_app_id" data-toggle="tooltip" data-placement="bottom" title="This is used for getting the public Application Logo and information" value="<?PHP HTML::print($Application->PublicAppId); ?>" aria-readonly="true" readonly>
                                             </div>
                                             <div class="form-group pb-3">
                                                 <label for="app_secret_key">Secret Key</label>
-                                                <input type="text" class="form-control border-danger bg-white" id="app_secret_key" data-toggle="tooltip" data-placement="bottom" title="This is for creating authentication requests, don't share it!" value="<?PHP HTML::print($Application->SecretKey); ?>" aria-readonly="true" readonly>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control border-danger bg-white" id="app_secret_key" data-toggle="tooltip" data-placement="bottom" title="This is for creating authentication requests, don't share it!" value="<?PHP HTML::print($Application->SecretKey); ?>" aria-readonly="true" readonly>
+                                                    <div class="input-group-append">
+                                                        <button class="input-group-btn btn btn-light border-danger">
+                                                            <i class="mdi mdi-reload"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
 
@@ -87,13 +95,13 @@
 
                                     <div class="card-body">
                                         <h4 class="card-title text-muted">Settings</h4>
-                                        <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('action' => 'update-auth-mode'), true); ?>" method="POST">
+                                        <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-auth-mode'), true); ?>" method="POST">
                                             <div class="form-group">
                                                 <label for="authentication_type">Authentication Type</label>
                                                 <select class="form-control" name="authentication_type" id="authentication_type" onchange="this.form.submit();">
-                                                    <option value="redirect">Redirect</option>
-                                                    <option value="placeholder">Application Placeholder</option>
-                                                    <option value="code">Code</option>
+                                                    <option value="redirect"<?PHP if($Application->AuthenticationMode == AuthenticationMode::Redirect){ HTML::print(" selected", false); } ?>>Redirect</option>
+                                                    <option value="placeholder"<?PHP if($Application->AuthenticationMode == AuthenticationMode::ApplicationPlaceholder){ HTML::print(" selected", false); } ?>>Application Placeholder</option>
+                                                    <option value="code"<?PHP if($Application->AuthenticationMode == AuthenticationMode::Code){ HTML::print(" selected", false); } ?>>Code</option>
                                                 </select>
                                             </div>
                                         </form>
