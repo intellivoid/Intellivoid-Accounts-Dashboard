@@ -24,6 +24,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                 case 'update-auth-mode':
                     HTML::importScript('update_authentication_mode');
+                    break;
+
+                case 'update-secret-key':
+                    HTML::importScript('update_secret_key');
+                    break;
             }
         }
     }
@@ -73,7 +78,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title text-muted">Application Keys</h4>
-                                        <form class="border-bottom" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-secret-key'), true) ?>">
+                                        <form class="border-bottom" method="POST" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-secret-key'), true) ?>">
                                             <div class="form-group pb-3">
                                                 <label for="public_app_id">Public Application ID</label>
                                                 <input type="text" class="form-control bg-white" id="public_app_id" data-toggle="tooltip" data-placement="bottom" title="This is used for getting the public Application Logo and information" value="<?PHP HTML::print($Application->PublicAppId); ?>" aria-readonly="true" readonly>

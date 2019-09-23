@@ -20,7 +20,7 @@
     {
         $IntellivoidAccounts->getApplicationManager()->updateApplication($Application);
         Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $_GET['pub_id'], 'callback' => '108')
+            array('pub_id' => $_GET['pub_id'], 'callback' => '111')
         ));
     }
     catch(Exception $exception)
