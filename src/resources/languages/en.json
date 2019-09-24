@@ -65,7 +65,9 @@
             "CALLBACK_109": "The given permissions are invalid or is no longer supported",
             "CALLBACK_110": "Changes applied successfully",
             "CALLBACK_111": "Secret key updated successfully",
-            "CALLBACK_112": "The logo has been changed successfully"
+            "CALLBACK_112": "The logo has been changed successfully",
+			"CALLBACK_113": "The Application has been disabled successfully",
+			"CALLBACK_114": "The Application has been enabled successfully"
         },
         "login_security":
         {

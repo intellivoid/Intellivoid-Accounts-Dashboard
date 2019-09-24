@@ -3,6 +3,7 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+use IntellivoidAccounts\Abstracts\ApplicationStatus;
 use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
@@ -33,6 +34,22 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                 case 'update-permissions':
                     HTML::importScript('update_permissions');
+                    break;
+            }
+        }
+    }
+    else
+    {
+        if(isset($_GET['action']))
+        {
+            switch($_GET['action'])
+            {
+                case 'disable-application':
+                    HTML::importScript('disable_application');
+                    break;
+
+                case 'enable-application':
+                    HTML::importScript('enable_application');
                     break;
             }
         }
@@ -71,8 +88,21 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <button class="btn btn-block btn-danger mt-3"  data-toggle="tooltip" data-placement="bottom" title="This action will prevent users from authenticating to your Application"">Disable Application</button>
                                                 </form>
+                                                <?PHP
+                                                    if($Application->Status == ApplicationStatus::Active)
+                                                    {
+                                                        ?>
+                                                        <button class="btn btn-block btn-danger mt-3" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'disable-application'), true); ?>'">Disable Application</button>
+                                                        <?PHP
+                                                    }
+                                                    else
+                                                    {
+                                                        ?>
+                                                        <button class="btn btn-block btn-success mt-3" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'enable-application'), true); ?>'">Enable Application</button>
+                                                        <?PHP
+                                                    }
+                                                ?>
 
                                             </div>
                                         </div>
