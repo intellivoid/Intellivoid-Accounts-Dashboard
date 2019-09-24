@@ -13,7 +13,8 @@
         'avatar',
         'application_icon',
         'otl_api',
-        'khm_api'
+        'khm_api',
+        'coa_api'
     ];
 
     $unauthorized_pages = [

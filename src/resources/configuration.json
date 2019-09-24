@@ -6,6 +6,7 @@
 
         {"path": "/auth/otl", "page": "otl_api"},
         {"path": "/auth/khm", "page": "khm_api"},
+        {"path": "/auth/coa", "page": "coa_api"},
 
         {"path": "/auth/login", "page": "login"},
         {"path": "/auth/register", "page": "register"},
