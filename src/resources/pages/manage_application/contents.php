@@ -2,6 +2,7 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
 use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
@@ -28,6 +29,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                 case 'update-secret-key':
                     HTML::importScript('update_secret_key');
+                    break;
+
+                case 'update-permissions':
+                    HTML::importScript('update_permissions');
                     break;
             }
         }
@@ -110,13 +115,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 </select>
                                             </div>
                                         </form>
-                                        <div class="form-group pt-2">
+                                        <form class="form-group pt-2" id="permissions-form" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-permissions'), true); ?>" method="POST">
                                             <label>Permissions</label>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_view_personal_information" class="form-check-input"> View Personal Information
+                                                            <input type="checkbox" name="perm_view_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?>> View Personal Information
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -124,7 +129,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input">  Make purchases
+                                                            <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::MakePurchases, $Application->Permissions)){HTML::print(' checked'); } ?>>  Make purchases
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -133,7 +138,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_edit_personal_information" id="perm_edit_personal_information" class="form-check-input"> Edit Personal Information
+                                                            <input type="checkbox" name="perm_edit_personal_information" id="perm_edit_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::EditPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?>> Edit Personal Information
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -141,7 +146,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"> Telegram Notifications
+                                                            <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::TelegramNotifications, $Application->Permissions)){HTML::print(' checked'); } ?>> Telegram Notifications
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -149,13 +154,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </form>
 
 
                                     </div>
                                     <div class="card-footer">
                                         <div class="row align-items-center">
-                                            <button class="btn btn-success ml-auto mr-2">Save Changes</button>
+                                            <button class="btn btn-success ml-auto mr-2" onclick="$('#permissions-form').submit();">Save Changes</button>
                                         </div>
                                     </div>
                                 </div>
