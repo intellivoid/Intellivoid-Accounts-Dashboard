@@ -42,6 +42,33 @@
             "CALLBACK_105": "The given date is invalid",
             "CALLBACK_106": "Your birthday has been updated"
         },
+        "applications": {
+            "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
+            "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff",
+            "CALLBACK_102": "The application name is invalid",
+            "CALLBACK_103": "The authentication type is invalid or no longer supported",
+            "CALLBACK_104": "The Application already exists in the system",
+            "CALLBACK_105": "One or more permissions are not supported or is invalid",
+            "CALLBACK_106": "Your application was created successfully",
+            "CALLBACK_107": "The application was not found"
+        },
+        "manage_application": {
+            "CALLBACK_100": "There was an error while trying to process your request, the error was reported to our staff",
+            "CALLBACK_101": "There was an error with your upload, please try again",
+            "CALLBACK_102": "The system cannot process your upload at this time, please contact our staff about this",
+            "CALLBACK_103": "The given file type is unsupported, supported formats are JPEG and PNG",
+            "CALLBACK_104": "The image is too small to be processed",
+            "CALLBACK_105": "The file cannot be processed because it's invalid or corrupted",
+            "CALLBACK_106": "There was an issue with your request, please make sure you are using an up to date browser",
+            "CALLBACK_107": "The authentication type is invalid or is no longer supported",
+            "CALLBACK_108": "Authentication mode has been updated successfully",
+            "CALLBACK_109": "The given permissions are invalid or is no longer supported",
+            "CALLBACK_110": "Changes applied successfully",
+            "CALLBACK_111": "Secret key updated successfully",
+            "CALLBACK_112": "The logo has been changed successfully",
+			"CALLBACK_113": "The Application has been disabled successfully",
+			"CALLBACK_114": "The Application has been enabled successfully"
+        },
         "login_security":
         {
             "CALLBACK_100": "Mobile verification has been enabled on your account",

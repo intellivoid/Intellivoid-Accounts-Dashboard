@@ -326,4 +326,52 @@
 
             return hash('sha256', $request_id . $request_token . $timestamp . $account_id . $host_id);
         }
+
+        /**
+         * Generates a Telegram Verifrication Code
+         *
+         * @param int $telegram_client_id
+         * @param int $timestamp
+         * @return string
+         */
+        public static function telegramVerificationCode(int $telegram_client_id, int $timestamp): string
+        {
+            $telegram_client_id = hash('crc32', $telegram_client_id);
+            $timestamp = hash('sha256', $timestamp);
+
+            return hash('sha256', $telegram_client_id . $timestamp);
+        }
+
+        /**
+         * Calculates the tracking ID from the user_agent_string and host_id
+         *
+         * @param string $user_agent_string
+         * @param int $host_id
+         * @return string
+         */
+        public static function uaTrackingId(string $user_agent_string, int $host_id): string
+        {
+            return hash ('sha256', $user_agent_string . $host_id);
+        }
+
+        /**
+         * Builds a unique, one-time login code used for authentication
+         *
+         * @param int $account_id
+         * @param int $timestamp
+         * @param int $expires
+         * @return string
+         */
+        public static function OneTimeLoginCode(int $account_id, int $timestamp, int $expires): string
+        {
+            $account = hash('sha256', $account_id);
+            $timestamp = hash('sha256', $timestamp . $expires);
+            $expires = hash('sha256', $expires . $timestamp);
+
+            $seed = hash('adler32', self::pepper($account));
+            $timestamp_arc = hash('crc32b', $account . $timestamp);
+            $expires_arc = hash('crc32b', $account . $expires);
+
+            return $timestamp_arc . $expires_arc . hash('crc32b', $timestamp_arc . $expires_arc . $seed);
+        }
     }

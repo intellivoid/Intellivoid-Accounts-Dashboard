@@ -9,6 +9,7 @@
     use IntellivoidAccounts\Exceptions\ApplicationAlreadyExistsException;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
+    use IntellivoidAccounts\Exceptions\InvalidApplicationNameException;
     use IntellivoidAccounts\Exceptions\InvalidRequestPermissionException;
     use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -45,38 +46,47 @@
          * Registers an existing application to the database
          *
          * @param string $name
+         * @param int $account_id
          * @param int $authentication_mode
          * @param array $permissions
          * @return Application
          * @throws ApplicationAlreadyExistsException
          * @throws ApplicationNotFoundException
          * @throws DatabaseException
+         * @throws ImageTooSmallException
+         * @throws InvalidApplicationNameException
+         * @throws InvalidImageException
          * @throws InvalidRequestPermissionException
          * @throws InvalidSearchMethodException
-         * @throws ImageTooSmallException
-         * @throws InvalidImageException
          * @throws UnsupportedFileTypeException
          */
-        public function registerApplication(string $name, int $authentication_mode, array $permissions): Application
+        public function registerApplication(string $name, int $account_id, int $authentication_mode, array $permissions): Application
         {
             $ApplicationExists = false;
+
+            if(Validate::applicationName($name) == false)
+            {
+                throw new InvalidApplicationNameException();
+            }
 
             try
             {
                 $this->getApplication(ApplicationSearchMethod::byName, $name);
+                $ApplicationExists = true;
             }
             catch(ApplicationNotFoundException $applicationNotFoundException)
             {
-                $ApplicationExists = true;
+                unset($applicationNotFoundException);
             }
 
             try
             {
                 $this->getApplication(ApplicationSearchMethod::byNameSafe, str_ireplace(' ', '_', strtolower($name)));
+                $ApplicationExists = true;
             }
             catch(ApplicationNotFoundException $applicationNotFoundException)
             {
-                $ApplicationExists = true;
+                unset($applicationNotFoundException);
             }
 
             if($ApplicationExists)
@@ -105,7 +115,7 @@
             $Permissions = $this->intellivoidAccounts->database->real_escape_string(ZiProto::encode($Permissions));
             $Status = (int)ApplicationStatus::Active;
             $AuthenticationMode = (int)$authentication_mode;
-            $AccountID = 0;
+            $AccountID = (int)$account_id;
             $LastUpdatedTimestamp = $CreatedTimestamp;
 
             $Query = QueryBuilder::insert_into('applications', array(
@@ -232,6 +242,89 @@
             else
             {
                 throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
+            }
+        }
+
+        /**
+         * Counts the total amount of records that are found
+         *
+         * @param int $account_id
+         * @return int
+         * @throws DatabaseException
+         */
+        public function getTotalRecords(int $account_id): int
+        {
+            $account_id = (int)$account_id;
+            $Query = "SELECT COUNT(id) AS total FROM `applications` WHERE account_id=$account_id";
+
+            $QueryResults = $this->intellivoidAccounts->database->query($Query);
+            if($QueryResults == false)
+            {
+                throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
+            }
+            else
+            {
+                $QueryResults = $this->intellivoidAccounts->database->query($Query);
+                if($QueryResults == false)
+                {
+                    throw new DatabaseException($this->intellivoidAccounts->database->error, $Query);
+                }
+                else
+                {
+                    return (int)$QueryResults->fetch_array()['total'];
+                }
+            }
+        }
+
+        /**
+         * Returns an array of Applications
+         *
+         * @param int $account_id
+         * @return array
+         * @throws DatabaseException
+         */
+        public function getRecords(int $account_id): array
+        {
+            $account_id = (int)$account_id;
+
+            $Query = QueryBuilder::select('applications', [
+                'id',
+                'public_app_id',
+                'secret_key',
+                'name',
+                'name_safe',
+                'permissions',
+                'status',
+                'authentication_mode',
+                'account_id',
+                'creation_timestamp',
+                'last_updated_timestamp'
+            ], 'account_id', $account_id);
+
+            $QueryResults = $this->intellivoidAccounts->database->query($Query);
+            if($QueryResults == false)
+            {
+                throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
+            }
+            else
+            {
+                $QueryResults = $this->intellivoidAccounts->database->query($Query);
+                if($QueryResults == false)
+                {
+                    throw new DatabaseException($this->intellivoidAccounts->database->error, $Query);
+                }
+                else
+                {
+                    $ResultsArray = [];
+
+                    while($Row = $QueryResults->fetch_assoc())
+                    {
+                        $Row['permissions'] = ZiProto::decode($Row['permissions']);
+                        $ResultsArray[] = $Row;
+                    }
+
+                    return $ResultsArray;
+                }
             }
         }
     }
