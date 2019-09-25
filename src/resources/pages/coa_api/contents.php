@@ -9,17 +9,27 @@
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('json_response');
+    HTML::importScript('request_parser');
 
-    // Define the important parts
-    if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+    if(get_parameter('action') == null)
     {
-        /** @var IntellivoidAccounts $IntellivoidAccounts */
-        $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
-            "intellivoid_accounts", new IntellivoidAccounts()
-        );
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 100,
+            'message' => 'Missing parameter \'action\''
+        ));
     }
-    else
+
+    switch(strtolower(get_parameter('action')))
     {
-        /** @var IntellivoidAccounts $IntellivoidAccounts */
-        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+        case 'request_authentication':
+            HTML::importScript('request_authentication');
+            break;
+
+        default:
+            returnJsonResponse(array(
+                'status' => false,
+                'response_code' => 101,
+                'message' => 'Invalid Action'
+            ));
     }
