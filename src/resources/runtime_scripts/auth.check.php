@@ -80,15 +80,29 @@
                 exit();
             }
 
-            if(isset($_GET['callback']))
+            $Location =  null;
+
+            if(isset($_GET['redirect']))
             {
-                header('Refresh: 2; URL=/auth/login?callback=' . urlencode($_GET['callback']));
+                switch(strtolower($_GET['redirect']))
+                {
+
+                    case 'register':
+                        $Location = DynamicalWeb::getRoute('register', $_GET);
+                        break;
+
+                    case 'login':
+                    default:
+                        $Location = DynamicalWeb::getRoute('login', $_GET);
+                        break;
+                }
             }
             else
             {
-                header('Refresh: 2; URL=/auth/login');
+                $Location = DynamicalWeb::getRoute('login', $_GET);
             }
 
+            header('Refresh: 2; URL=' . $Location);
             HTML::importScript('loader');
             exit();
         }
