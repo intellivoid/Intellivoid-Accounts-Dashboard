@@ -24,7 +24,7 @@
                         <div class="col-lg-4 mx-auto">
 
                             <div class="linear-activity">
-                                <div id="linear-spinner" class="indeterminate"></div>
+                                <div id="linear-spinner" class="indeterminate-none"></div>
                             </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h1 class="text-center">
@@ -37,36 +37,35 @@
                                 </div>
 
                                 <div class="border-bottom pt-3"></div>
-                                <button class="btn btn-primary" onclick="toggle_anim();">test</button>
-                                <form id="authentication_form" name="authentication_form" action="<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>" method="POST">
+                                <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
-                                        <label for="username_email" class="label">Username or Email</label>
+                                        <label for="username_email" id="label_1" class="label">Username or Email</label>
                                         <div class="input-group">
                                             <input name="username_email" id="username_email" type="text" class="form-control" placeholder="example@intellivoid.info" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                  <i class="mdi mdi-account"></i>
+                                                    <i class="mdi mdi-account text-black" id="username_group_ico"></i>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password" class="label">Password</label>
+                                        <label for="password" id="label_2" class="label">Password</label>
                                         <div class="input-group">
                                             <input name="password" id="password" type="password" class="form-control" placeholder="*********" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                  <i class="mdi mdi-textbox-password"></i>
+                                                    <i class="mdi mdi-textbox-password text-black" id="password_group_ico"></i>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-primary submit-btn btn-block" value="Login">
+                                        <input type="submit" id="submit_button" class="btn btn-primary submit-btn btn-block" value="Login">
                                     </div>
                                     <div class="form-group d-flex justify-content-between">
                                         <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                            <label class="form-check-label" id="label_3">
                                                 <input name="trusted_device" id="trusted_device" type="checkbox" class="form-check-input">
                                                 Trust this device
                                             </label>
@@ -86,10 +85,74 @@
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
         <script>
+            $.extend({
+                redirectPost: function(location, args)
+                {
+                    var form = $('<form></form>');
+                    form.attr("method", "post");
+                    form.attr("action", location);
+
+                    $.each( args, function( key, value ) {
+                        var field = $('<input></input>');
+
+                        field.attr("type", "hidden");
+                        field.attr("name", key);
+                        field.attr("value", value);
+
+                        form.append(field);
+                    });
+                    $(form).appendTo('body').submit();
+                }
+            });
             function toggle_anim()
             {
-                $("#linear-spinner").toggleClass("indeterminate")
+                if($("#linear-spinner").hasClass("indeterminate") === true)
+                {
+                    $("#linear-spinner").removeClass("indeterminate");
+                    $("#linear-spinner").addClass("indeterminate-none");
+                    $("#username_email").prop("disabled", false);
+                    $("#label_1").removeClass("text-muted");
+                    $("#label_2").removeClass("text-muted");
+                    $("#submit_button").prop("disabled", false);
+                    $("#trusted_device").prop("disabled", false);
+                    $("#label_3").removeClass("text-muted");
+                    $("#password_group_ico").removeClass("text-muted");
+                    $("#password_group_ico").addClass("text-black");
+                    $("#username_group_ico").removeClass("text-muted");
+                    $("#username_group_ico").addClass("text-black");
+                }
+                else
+                {
+                    $("#linear-spinner").removeClass("indeterminate-none");
+                    $("#linear-spinner").addClass("indeterminate");
+                    $("#username_email").prop("disabled", true);
+                    $("#label_1").addClass("text-muted");
+                    $("#label_2").addClass("text-muted");
+                    $("#submit_button").prop("disabled", true);
+                    $("#trusted_device").prop("disabled", true);
+                    $("#label_3").addClass("text-muted");
+                    $("#password_group_ico").addClass("text-muted");
+                    $("#password_group_ico").removeClass("text-black");
+                    $("#username_group_ico").addClass("text-muted");
+                    $("#username_group_ico").removeClass("text-black");
+                }
             }
+            $('#authentication_form').on('submit', function () {
+                var username_email = $("#username_email").val();
+                var password = $("#password").val();
+                var trusted_device = $("#trusted_device").is(":checked");
+                $("#callback_alert").empty();
+                toggle_anim();
+
+                $.redirectPost("/auth/login",
+                    {
+                        "username_email": username_email,
+                        "password": password,
+                        "trusted_device": trusted_device
+                    }
+                );
+                return false;
+            });
         </script>
     </body>
 </html>
