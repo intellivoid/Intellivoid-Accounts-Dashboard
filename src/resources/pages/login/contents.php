@@ -3,12 +3,16 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 
+    $GetParameters = $_GET;
+    unset($GetParameters['callback']);
+
     HTML::importScript('auth.login');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('headers'); ?>
+        <link rel="stylesheet" href="/assets/css/extra.css">
         <title>Intellivoid Accounts - Authentication</title>
     </head>
 
@@ -18,7 +22,11 @@
                 <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-4 mx-auto">
-                            <div class="auto-form-wrapper">
+
+                            <div class="linear-activity">
+                                <div id="linear-spinner" class="indeterminate"></div>
+                            </div>
+                            <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h1 class="text-center">
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                     Intelli<b>void</b>
@@ -29,8 +37,8 @@
                                 </div>
 
                                 <div class="border-bottom pt-3"></div>
-
-                                <form id="authentication_form" name="authentication_form">
+                                <button class="btn btn-primary" onclick="toggle_anim();">test</button>
+                                <form id="authentication_form" name="authentication_form" action="<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>" method="POST">
                                     <div class="form-group pt-4">
                                         <label for="username_email" class="label">Username or Email</label>
                                         <div class="input-group">
@@ -66,7 +74,7 @@
                                     </div>
                                     <div class="text-block text-center my-3">
                                         <span class="text-small font-weight-semibold">Don't have an account?</span>
-                                        <a href="<?PHP DynamicalWeb::getRoute('register', [], true); ?>" class="text-black text-small">Create one</a>
+                                        <a href="<?PHP DynamicalWeb::getRoute('register', $GetParameters, true); ?>" class="text-black text-small">Create one</a>
                                     </div>
                                 </form>
                             </div>
@@ -77,6 +85,11 @@
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <script src="/assets/js/auth_login.js"></script>
+        <script>
+            function toggle_anim()
+            {
+                $("#linear-spinner").toggleClass("indeterminate")
+            }
+        </script>
     </body>
 </html>
