@@ -144,7 +144,7 @@
                 $("#callback_alert").empty();
                 toggle_anim();
 
-                $.redirectPost("/auth/login",
+                $.redirectPost("<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>",
                     {
                         "username_email": username_email,
                         "password": password,

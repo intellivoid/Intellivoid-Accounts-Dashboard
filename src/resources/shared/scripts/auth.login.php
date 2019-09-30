@@ -24,6 +24,9 @@
 
     Runtime::import('IntellivoidAccounts');
 
+    $GetParameters = $_GET;
+    unset($GetParameters['callback']);
+
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         try
@@ -51,17 +54,15 @@
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '106',
-                'type' => 'internal'
-            )));
+            $GetParameters['callback'] = '106';
+            $GetParameters['type'] = 'internal';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
 
         try
@@ -70,9 +71,8 @@
 
             if($Account == null)
             {
-                Actions::redirect(DynamicalWeb::getRoute('login', array(
-                    'callback' => '103'
-                )));
+                $GetParameters['callback'] = '103';
+                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
             if($Host->Blocked == true)
@@ -85,16 +85,14 @@
                         CLIENT_USER_AGENT
                     );
 
-                    Actions::redirect(DynamicalWeb::getRoute('login', array(
-                        'callback' => '105'
-                    )));
+                    $GetParameters['callback'] = '105';
+                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('login', array(
-                        'callback' => '106',
-                        'type' => 'blocked'
-                    )));
+                    $GetParameters['callback'] = '106';
+                    $GetParameters['type'] = 'blocked';
+                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                 }
             }
 
@@ -110,22 +108,19 @@
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('login', array(
-                        'callback' => '101',
-                        'type' => 'verify_ps'
-                    )));
+                    $GetParameters['callback'] = '101';
+                    $GetParameters['type'] = 'verify_ps';
+                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                 }
 
-                Actions::redirect(DynamicalWeb::getRoute('login', array(
-                    'callback' => '103'
-                )));
+                $GetParameters['callback'] = '103';
+                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
             if($Account->Status == AccountStatus::Suspended)
             {
-                Actions::redirect(DynamicalWeb::getRoute('login', array(
-                    'callback' => '104'
-                )));
+                $GetParameters['callback'] = '104';
+                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
             $Cookie->Data["session_active"] = true;
@@ -160,10 +155,9 @@
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('login', array(
-                        'callback' => '105',
-                        'type' => 'no_verification'
-                    )));
+                    $GetParameters['callback'] = '105';
+                    $GetParameters['type'] = 'no_verification';
+                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                 }
 
                 if($Account->Configuration->KnownHosts->addHostId($Host->ID) == true)
@@ -182,15 +176,13 @@
         }
         catch(AccountNotFoundException $accountNotFoundException)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '102'
-            )));
+            $GetParameters['callback'] = '102';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '101'
-            )));
+            $GetParameters['callback'] = '101';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
 
     }
@@ -249,18 +241,20 @@
      */
     function check_login(): Account
     {
+
+        $GetParameters = $_GET;
+        unset($GetParameters['callback']);
+
         if(isset($_POST['username_email']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -278,11 +272,13 @@
      */
     function get_account()
     {
+        $GetParameters = $_GET;
+        unset($GetParameters['callback']);
+
         if(isset($_POST['username_email']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
