@@ -19,7 +19,7 @@
                 <div class="content-wrapper d-flex align-items-center auth area theme-one">
                     <?PHP HTML::importSection('background_animations'); ?>
                     <div class="row w-100 mx-auto">
-                        <div class="col-lg-4 mx-auto">
+                        <div class="col-lg-5 mx-auto">
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h1 class="text-center">
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
