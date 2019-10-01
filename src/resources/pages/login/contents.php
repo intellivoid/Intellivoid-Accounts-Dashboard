@@ -16,10 +16,24 @@
         <title>Intellivoid Accounts - Authentication</title>
     </head>
 
-    <body>
+    <body >
+
         <div class="container-scroller">
+
             <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+                <div class="content-wrapper d-flex align-items-center auth area theme-one">
+                    <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-4 mx-auto">
 
