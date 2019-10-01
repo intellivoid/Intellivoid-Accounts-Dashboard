@@ -16,7 +16,7 @@
         <title>Intellivoid Accounts - Authentication</title>
     </head>
 
-    <body >
+    <body>
 
         <div class="container-scroller">
 
