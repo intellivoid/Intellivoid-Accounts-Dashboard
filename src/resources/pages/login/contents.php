@@ -22,20 +22,9 @@
 
             <div class="container-fluid page-body-wrapper full-page-wrapper">
                 <div class="content-wrapper d-flex align-items-center auth area theme-one">
-                    <ul class="circles">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                    <?PHP HTML::importSection('background_animations'); ?>
                     <div class="row w-100 mx-auto">
-                        <div class="col-lg-4 mx-auto">
+                        <div class="col-lg-5 mx-auto">
 
                             <div class="linear-activity">
                                 <div id="linear-spinner" class="indeterminate-none"></div>

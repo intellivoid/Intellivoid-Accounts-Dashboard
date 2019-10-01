@@ -9,16 +9,18 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('headers'); ?>
+        <link rel="stylesheet" href="/assets/css/extra.css">
         <title>Intellivoid Accounts - Authentication</title>
     </head>
 
     <body>
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+                <div class="content-wrapper d-flex align-items-center auth area theme-one">
+                    <?PHP HTML::importSection('background_animations'); ?>
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-4 mx-auto">
-                            <div class="auto-form-wrapper">
+                            <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h1 class="text-center">
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                     Intelli<b>void</b>
