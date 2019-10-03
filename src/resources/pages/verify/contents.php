@@ -2,7 +2,8 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use IntellivoidAccounts\Objects\Account;
+use DynamicalWeb\Javascript;
+use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('get_account');
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
@@ -12,6 +13,23 @@
         $UsernameSafe .= "...";
     }
 
+    function getAnimationStyle()
+    {
+        if(isset($_GET['anim']))
+        {
+            switch($_GET['anim'])
+            {
+                case 'previous':
+                    return " animated slideInLeft";
+            }
+        }
+
+        return " animated fadeInUp";
+    }
+
+    $GetParameters = $_GET;
+    unset($GetParameters['callback']);
+
     /** @var Account $Account */
     $Account = DynamicalWeb::getMemoryObject('account');
 ?>
@@ -19,15 +37,17 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('headers'); ?>
+        <link rel="stylesheet" href="/assets/css/extra.css">
         <title>Intellivoid Accounts - Verify</title>
     </head>
 
     <body>
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-                    <div class="row w-100 mx-auto animated slideInLeft" id="verification_dialog">
-                        <div class="col-lg-4 mx-auto">
+                <div class="content-wrapper d-flex align-items-center auth area theme-one">
+                    <?PHP HTML::importSection('background_animations'); ?>
+                    <div class="row w-100 mx-auto<?PHP HTML::print(getAnimationStyle()); ?>" id="verification_dialog">
+                        <div class="col-lg-5 mx-auto">
                             <div class="auto-form-wrapper">
                                 <h1 class="text-center">
                                     <i class="mdi mdi-lock"></i>
@@ -46,7 +66,7 @@
                                         {
                                             ?>
                                             <div class="form-group">
-                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_mobile', [], true); ?>" onclick="animate_next();" style="text-decoration: none;">
+                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_mobile', $GetParameters, true); ?>" onclick="animate_next();" style="text-decoration: none;">
                                                     <span class="mdi mdi-cellphone-iphone"></span>
                                                     <p class="mb-0 ml-3">Verify using your Phone</p>
                                                     <p class="ml-auto mb-0 text-muted">
@@ -61,7 +81,7 @@
                                         {
                                             ?>
                                             <div class="form-group">
-                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_recovery_codes', [], true); ?>" onclick="animate_next();" style="text-decoration: none;">
+                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_recovery_codes', $GetParameters, true); ?>" onclick="animate_next();" style="text-decoration: none;">
                                                     <span class="mdi mdi-reload"></span>
                                                     <p class="mb-0 ml-3">Use a recovery code</p>
                                                     <p class="ml-auto mb-0 text-muted">
@@ -77,7 +97,7 @@
 
                                     <div class="text-block text-center my-3 pt-4">
                                         <span class="text-small font-weight-semibold">Not <?php HTML::print($UsernameSafe); ?>?</span>
-                                        <a href="<?PHP DynamicalWeb::getRoute('logout', [], true); ?>" class="text-black text-small">Logout</a>
+                                        <a href="<?PHP DynamicalWeb::getRoute('logout', $GetParameters, true); ?>" class="text-black text-small">Logout</a>
                                     </div>
                                 </form>
                             </div>
@@ -88,13 +108,6 @@
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <script>
-            function animate_next()
-            {
-                $("#verification_dialog").removeClass("animated");
-                $("#verification_dialog").removeClass("slideInLeft");
-                $("#verification_dialog").addClass("animated slideOutLeft")
-            }
-        </script>
+        <?PHP Javascript::importScript('verify'); ?>
     </body>
 </html>

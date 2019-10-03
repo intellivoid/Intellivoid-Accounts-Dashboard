@@ -46,6 +46,9 @@
 
     function execute_authentication_check(array $unauthorized_pages, array $verification_pages)
     {
+        $GetParameters = $_GET;
+        unset($GetParameters['callback']);
+
         /** @var sws $sws */
         $sws = DynamicalWeb::setMemoryObject('sws', new sws());
 
@@ -148,7 +151,7 @@
 
             if($redirect == true)
             {
-                Actions::redirect(DynamicalWeb::getRoute('login'));
+                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
         }
         else
@@ -166,16 +169,14 @@
 
                     if(time() > WEB_AUTO_LOGOUT)
                     {
-                        Actions::redirect(DynamicalWeb::getRoute('login', array(
-                            'callback' => '107'
-                        )));
+                        $GetParameters['callback'] = '107';
+                        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
                     {
-                        Actions::redirect(DynamicalWeb::getRoute('login', array(
-                            'callback' => '108'
-                        )));
+                        $GetParameters['callback'] = '108';
+                        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                     }
                 }
 
@@ -191,7 +192,7 @@
 
                 if($redirect == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('verify'));
+                    Actions::redirect(DynamicalWeb::getRoute('verify', $GetParameters));
                 }
             }
             else
@@ -208,7 +209,7 @@
 
                 if($redirect == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('index'));
+                    Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
                 }
             }
 
