@@ -16,51 +16,47 @@
 
     Runtime::import('IntellivoidAccounts');
 
+    $GetParameters = $_GET;
+    unset($GetParameters['callback']);
+
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         try
         {
             register_account();
             HTML::importScript('sync_avatar');
-            Actions::redirect(DynamicalWeb::getRoute('login', array(
-                'callback' => '106'
-            )));
+            $GetParameters['callback'] = '106';
+            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
         }
         catch(InvalidUsernameException $invalidUsernameException)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '102'
-            )));
+            $GetParameters['callback'] = '102';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
         catch(InvalidEmailException $invalidEmailException)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '103'
-            )));
+            $GetParameters['callback'] = '103';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
         catch(InvalidPasswordException $invalidPasswordException)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '104'
-            )));
+            $GetParameters['callback'] = '104';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
         catch(UsernameAlreadyExistsException $usernameAlreadyExistsException)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '105'
-            )));
+            $GetParameters['callback'] = '105';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
         catch(EmailAlreadyExistsException $emailAlreadyExistsException)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '106'
-            )));
+            $GetParameters['callback'] = '106';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '101'
-            )));
+            $GetParameters['callback'] = '101';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
     }
 
@@ -106,30 +102,26 @@
     {
         if(isset($_POST['email']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
 
         if(isset($_POST['password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
 
         if(get_checkbox_input("tos_agree") == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('register', array(
-                'callback' => '107'
-            )));
+            $GetParameters['callback'] = '107';
+            Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)

@@ -2,8 +2,12 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+    use DynamicalWeb\Javascript;
 
     HTML::importScript('auth.register');
+
+    $GetParameters = $_GET;
+    unset($GetParameters['callback']);
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -20,13 +24,16 @@
                     <?PHP HTML::importSection('background_animations'); ?>
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-5 mx-auto">
+                            <div class="linear-activity">
+                                <div id="linear-spinner" class="indeterminate-none"></div>
+                            </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h1 class="text-center">
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                     Intelli<b>void</b>
                                     <p>Create a new Intellivoid Account</p>
                                 </h1>
-                                <div name="callback_alert" id="callback_alert">
+                                <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 
@@ -34,40 +41,19 @@
 
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
-                                        <label for="email" class="label">Email Address</label>
-                                        <div class="input-group">
-                                            <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                  <i class="mdi mdi-email"></i>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <label for="email" class="label" id="label_1">Email Address</label>
+                                        <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" aria-autocomplete="none" on required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="username" class="label">Username</label>
-                                        <div class="input-group">
-                                            <input name="username" id="username" type="text" class="form-control" placeholder="Username" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                  <i class="mdi mdi-account"></i>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <label for="username" class="label" id="label_2">Username</label>
+                                        <input name="username" id="username" type="text" class="form-control" aria-autocomplete="none" autocomplete="off" placeholder="Username" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password" class="label">Password</label>
-                                        <div class="input-group">
-                                            <input name="password" id="password" type="password" class="form-control" placeholder="*********" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                  <i class="mdi mdi-textbox-password"></i>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <label for="password" class="label" id="label_3">Password</label>
+                                        <input name="password" id="password" type="password" class="form-control"  autocomplete="new-password" placeholder="*********" required>
                                     </div>
                                     <div class="form-group">
-                                        <p class="text-small">
+                                        <p class="text-small" id="tos_label">
                                             By creating an account you agree to the Terms of Service and Privacy
                                             Policies placed by Intellivoid
                                         </p>
@@ -75,18 +61,18 @@
                                     <div class="form-group d-flex justify-content-between">
 
                                         <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
+                                            <label id="tos_check_label" class="form-check-label">
                                                 <input name="tos_agree" id="tos_agree" type="checkbox" class="form-check-input" required> I agree
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" value="Create Account" class="btn btn-primary submit-btn btn-block">
+                                        <input type="submit" id="submit_button" value="Create Account" class="btn btn-primary submit-btn btn-block">
                                     </div>
 
                                     <div class="text-block text-center my-3">
-                                        <span class="text-small font-weight-semibold">Already have an account?</span>
-                                        <a href="<?PHP DynamicalWeb::getRoute('login', [], true); ?>" class="text-black text-small">Login</a>
+                                        <span class="text-small font-weight-semibold" id="ca_label">Already have an account?</span>
+                                        <a id="ca_link" href="<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>" class="text-black text-small">Login</a>
                                     </div>
                                 </form>
                             </div>
@@ -99,54 +85,6 @@
             <!-- page-body-wrapper ends -->
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <script>
-            $.extend(
-                {
-                    redirectPost: function(location, args)
-                    {
-                        var form = $('<form></form>');
-                        form.attr("method", "post");
-                        form.attr("action", location);
-
-                        $.each( args, function( key, value ) {
-                            var field = $('<input></input>');
-
-                            field.attr("type", "hidden");
-                            field.attr("name", key);
-                            field.attr("value", value);
-
-                            form.append(field);
-                        });
-                        $(form).appendTo('body').submit();
-                    }
-                });
-            $('#authentication_form').on('submit', function () {
-                var username = $("#username").val();
-                var email = $("#email").val();
-                var password = $("#password").val();
-                var tos_agree = $("#tos_agree").is(":checked");
-                $("#callback_alert").empty();
-                $("#authentication_form").empty();
-                $("#authentication_form").html(
-                    "<div class=\"pt-3\"></div>" +
-                    "<div class=\"dot-opacity-loader\">\n" +
-                    "<span></span>\n" +
-                    "<span></span>\n" +
-                    "<span></span>\n" +
-                    "</div>" +
-                    "<div class=\"pb-3\"></div>"
-                );
-
-                $.redirectPost("/auth/register",
-                    {
-                        "username": username,
-                        "email": email,
-                        "password": password,
-                        "tos_agree": tos_agree
-                    }
-                );
-                return false;
-            });
-        </script>
+        <?PHP Javascript::importScript('register', $GetParameters); ?>
     </body>
 </html>
