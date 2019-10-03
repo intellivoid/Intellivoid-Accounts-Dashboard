@@ -29,6 +29,7 @@ use IntellivoidAccounts\Objects\Account;
 
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
+    unset($GetParameters['anim']);
 
     /** @var Account $Account */
     $Account = DynamicalWeb::getMemoryObject('account');
@@ -66,7 +67,7 @@ use IntellivoidAccounts\Objects\Account;
                                         {
                                             ?>
                                             <div class="form-group">
-                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_mobile', $GetParameters, true); ?>" onclick="animate_next();" style="text-decoration: none;">
+                                                <a class="d-flex align-items-center py-1 text-black" href="#" onclick="verify_mobile();" style="text-decoration: none;">
                                                     <span class="mdi mdi-cellphone-iphone"></span>
                                                     <p class="mb-0 ml-3">Verify using your Phone</p>
                                                     <p class="ml-auto mb-0 text-muted">
@@ -108,6 +109,6 @@ use IntellivoidAccounts\Objects\Account;
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <?PHP Javascript::importScript('verify'); ?>
+        <?PHP Javascript::importScript('verify', $GetParameters); ?>
     </body>
 </html>

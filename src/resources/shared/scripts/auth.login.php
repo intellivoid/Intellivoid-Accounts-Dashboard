@@ -172,7 +172,7 @@
             $sws->CookieManager()->updateCookie($Cookie);
             HTML::importScript('sync_avatar');
 
-            Actions::redirect(DynamicalWeb::getRoute('index'));
+            Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
         }
         catch(AccountNotFoundException $accountNotFoundException)
         {
