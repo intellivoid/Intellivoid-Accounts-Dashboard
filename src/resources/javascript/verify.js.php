@@ -17,3 +17,10 @@ function verify_mobile()
         window.location.href='<?PHP DynamicalWeb::getRoute('verify_mobile', $GetParameters, true); ?>'
     }, 800);
 }
+function verify_recovery_codes()
+{
+    animate_next();
+    setTimeout(function() {
+        window.location.href='<?PHP DynamicalWeb::getRoute('verify_recovery_code', $GetParameters, true); ?>'
+    }, 800);
+}

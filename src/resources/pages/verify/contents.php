@@ -82,7 +82,7 @@ use IntellivoidAccounts\Objects\Account;
                                         {
                                             ?>
                                             <div class="form-group">
-                                                <a class="d-flex align-items-center py-1 text-black" href="<?PHP DynamicalWeb::getRoute('verify_recovery_codes', $GetParameters, true); ?>" onclick="animate_next();" style="text-decoration: none;">
+                                                <a class="d-flex align-items-center py-1 text-black" href="#" onclick="verify_recovery_codes();" style="text-decoration: none;">
                                                     <span class="mdi mdi-reload"></span>
                                                     <p class="mb-0 ml-3">Use a recovery code</p>
                                                     <p class="ml-auto mb-0 text-muted">
@@ -102,7 +102,6 @@ use IntellivoidAccounts\Objects\Account;
                                     </div>
                                 </form>
                             </div>
-                            <?PHP HTML::importSection('auth_footer'); ?>
                         </div>
                     </div>
                 </div>
