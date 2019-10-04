@@ -17,6 +17,8 @@
         {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_code"},
         {"path": "/auth/internal", "page": "internal_authentication"},
 
+        {"path": "/auth/coa/error", "page": "application_error"},
+
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},
         {"path": "/user/personal", "page": "personal"},
