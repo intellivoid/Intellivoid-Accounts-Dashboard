@@ -2,8 +2,9 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
+use IntellivoidAccounts\Abstracts\AuditEventType;
 
-    if(isset($_GET['action']))
+if(isset($_GET['action']))
     {
         if($_GET['action'] == 'disable_mv')
         {
@@ -29,6 +30,7 @@
 
         /** @var \IntellivoidAccounts\IntellivoidAccounts $IntellivoidAccounts */
         $IntellivoidAccounts = \DynamicalWeb\DynamicalWeb::getMemoryObject('intellivoid_accounts');
+        $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::MobileVerificationDisabled);
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
         Actions::redirect(DynamicalWeb::getRoute('login_security', array(
