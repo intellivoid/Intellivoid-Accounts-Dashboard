@@ -2,7 +2,9 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\AuditEventType;
+use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+use IntellivoidAccounts\IntellivoidAccounts;
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -96,10 +98,11 @@
             $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
         }
 
-        $Account = $IntellivoidAccounts->getAccountManager()->getAccount(\IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+        $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
         $Account->PersonalInformation->FirstName = $_POST['first_name'];
         $Account->PersonalInformation->LastName = $_POST['last_name'];
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
+        $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::PersonalInformationUpdated);
 
         Actions::redirect(DynamicalWeb::getRoute('personal', array(
             'callback' => '103'
