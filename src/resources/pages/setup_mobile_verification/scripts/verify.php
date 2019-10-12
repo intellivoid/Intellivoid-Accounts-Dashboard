@@ -3,7 +3,8 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\AuditEventType;
+use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
 
     Runtime::import('IntellivoidAccounts');
@@ -42,6 +43,7 @@
         }
 
         $Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled = true;
+        $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::MobileVerificationEnabled);
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
         if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)

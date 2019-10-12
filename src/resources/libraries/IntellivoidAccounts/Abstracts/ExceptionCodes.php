@@ -83,4 +83,8 @@
         const OtlNotFoundException = 135;
 
         const InvalidApplicationNameException = 136;
+
+        const InvalidEventTypeException = 137;
+
+        const ApplicationAccessNotFoundException = 138;
     }
