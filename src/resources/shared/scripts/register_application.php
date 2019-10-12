@@ -121,5 +121,3 @@ use IntellivoidAccounts\Abstracts\AuthenticationMode;
     {
         Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '100')));
     }
-
-

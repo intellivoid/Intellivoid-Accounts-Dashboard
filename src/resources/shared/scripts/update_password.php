@@ -3,7 +3,8 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+use IntellivoidAccounts\Abstracts\AuditEventType;
+use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Utilities\Hashing;
     use IntellivoidAccounts\Utilities\Validate;
@@ -75,6 +76,7 @@
 
         $AccountObject->updatePassword($_POST['new_password']);
         $IntellivoidAccounts->getAccountManager()->updateAccount($AccountObject);
+        $IntellivoidAccounts->getAuditLogManager()->logEvent($AccountObject->ID, AuditEventType::PasswordUpdated);
         Actions::redirect(DynamicalWeb::getRoute('index', array(
             'callback' => '103'
         )));
