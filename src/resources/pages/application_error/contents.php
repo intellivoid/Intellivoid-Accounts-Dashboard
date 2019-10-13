@@ -1,43 +1,48 @@
 <?PHP
-    use DynamicalWeb\HTML;
+use DynamicalWeb\HTML;
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
-        <?PHP HTML::importSection('generic_headers'); ?>
-        <title>Intellivoid Accounts - Application Error</title>
+        <?PHP HTML::importSection('gen_dashboard_headers'); ?>
+        <title>Intellivoid Accounts - COA Error</title>
+    </head>
+
     <body>
         <div class="container-scroller">
-            <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center text-center error-page bg-danger">
-                    <div class="row flex-grow">
-                        <div class="col-lg-7 mx-auto text-white">
-                            <div class="row align-items-center d-flex flex-row">
-                                <div class="col-lg-6 text-lg-right pr-lg-4">
-                                    <h1 class="display-1 mb-0 animated slow fadeInLeft">505</h1>
-                                </div>
-                                <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                                    <h2 class="animated fadeInDown">SORRY!</h2>
-                                    <h3 class="font-weight-light animated fadeInRight">The server does not support the HTTP protocol version used in the request.</h3>
-                                </div>
-                            </div>
-                            <div class="row mt-5">
-                                <div class="col-12 text-center mt-xl-2">
-                                    <a class="text-white font-weight-medium animated slower fadeIn" href="<?PHP DynamicalWeb::getRoute('index', array(), true); ?>">Back to home</a>
-                                </div>
-                            </div>
-                            <div class="row mt-5 animated fadeInUp">
-                                <div class="col-12 mt-xl-2">
-                                    <p class="text-white font-weight-medium text-center">Copyright &copy; 2017-<?PHP HTML::print(date('Y')); ?> Intellivoid Technologies All rights reserved.</p>
+            <?PHP HTML::importSection("gen_dashboard_navbar"); ?>
+            <div class="container-fluid page-body-wrapper">
+                <div class="main-panel container">
+                    <div class="content-wrapper">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row ml-4 mr-4 mt-3">
+                                            <div class="d-flex">
+                                                <i class="mdi mdi-alert icon-lg text-warning d-flex align-items-center"></i>
+                                                <div class="d-flex flex-column ml-4">
+                                                    <h4 class="font-weight-bold">COA Error</h4>
+                                                    <small class="text-muted">
+                                                        There was an error while trying to process your authentication request
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-5 ml-4 mr-4 mb-3">
+                                            <label for="error_details">Error Details</label>
+                                            <textarea class="form-control" id="error_details" rows="2"><?PHP HTML::importScript('resolve_error_code'); ?></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
+
         </div>
-        <?PHP HTML::importSection('generic_js'); ?>
+        <?PHP HTML::importSection('gen_dashboard_js'); ?>
     </body>
 </html>
