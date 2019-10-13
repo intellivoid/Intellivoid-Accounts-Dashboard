@@ -7,6 +7,7 @@
     use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\Exceptions\InvalidEventTypeException;
     use IntellivoidAccounts\IntellivoidAccounts;
+    use msqg\Abstracts\SortBy;
     use msqg\QueryBuilder;
 
     /**
@@ -131,6 +132,51 @@
                 'event_type',
                 'timestamp'
             ], 'account_id', $account_id, null, null, $limit, $offset);
+
+            $QueryResults = $this->intellivoidAccounts->database->query($Query);
+            if($QueryResults == false)
+            {
+                throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
+            }
+            else
+            {
+                $QueryResults = $this->intellivoidAccounts->database->query($Query);
+                if($QueryResults == false)
+                {
+                    throw new DatabaseException($this->intellivoidAccounts->database->error, $Query);
+                }
+                else
+                {
+                    $ResultsArray = [];
+
+                    while($Row = $QueryResults->fetch_assoc())
+                    {
+                        $ResultsArray[] = $Row;
+                    }
+
+                    return $ResultsArray;
+                }
+            }
+        }
+
+        /**
+         * Returns the newer recent audit records
+         *
+         * @param int $account_id
+         * @param int $limit
+         * @return array
+         * @throws DatabaseException
+         */
+        public function getNewRecords(int $account_id, $limit = 50): array
+        {
+            $account_id = (int)$account_id;
+
+            $Query = QueryBuilder::select('users_audit', [
+                'id',
+                'account_id',
+                'event_type',
+                'timestamp'
+            ], 'account_id', $account_id, 'timestamp', SortBy::descending, $limit);
 
             $QueryResults = $this->intellivoidAccounts->database->query($Query);
             if($QueryResults == false)
