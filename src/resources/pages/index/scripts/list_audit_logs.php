@@ -4,8 +4,8 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\AuditEventType;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\AuditRecord;
 
     Runtime::import('IntellivoidAccounts');
@@ -121,5 +121,15 @@ use IntellivoidAccounts\IntellivoidAccounts;
     }
     else
     {
-        HTML::print("No Items");
+        ?>
+        <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
+            <div class="p-2 my-flex-item">
+                <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
+            </div>
+            <div class="p-2 my-flex-item">
+                <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+            </div>
+
+        </div>
+        <?PHP
     }
