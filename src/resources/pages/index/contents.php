@@ -41,9 +41,19 @@
 
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-header header-sm d-flex justify-content-between align-items-center">
                                         <h4 class="card-title">Recent Actions</h4>
-                                        <div class="wrapper mt-4">
+                                        <div class="dropdown">
+                                            <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="recentActionsDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="mdi mdi-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="recentActionsDropDown">
+                                                <a class="dropdown-item" href="<?PHP \DynamicalWeb\DynamicalWeb::getRoute('audit_logs', array(), true); ?>">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="wrapper">
                                             <?PHP HTML::importScript('list_audit_logs'); ?>
                                         </div>
                                     </div>

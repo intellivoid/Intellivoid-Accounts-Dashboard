@@ -129,7 +129,6 @@
             <div class="p-2 my-flex-item">
                 <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
             </div>
-
         </div>
         <?PHP
     }
