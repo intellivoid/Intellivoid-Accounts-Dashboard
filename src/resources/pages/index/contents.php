@@ -27,7 +27,8 @@
                             <div class="col-12 grid-margin d-none d-lg-block">
                                 <div class="intro-banner">
                                     <div class="banner-image">
-                                        <img src="../assets/images/dashboard/banner_img.png" alt="banner image"> </div>
+                                        <img src="/assets/images/dashboard/banner_img.png" alt="banner image">
+                                    </div>
                                     <div class="content-area">
                                         <h3 class="mb-0">Welcome back, <?PHP HTML::print($UsernameSafe); ?>!</h3>
                                         <p class="mb-0">Need anything more to know more? Feel free to contact us at any point.</p>
@@ -41,24 +42,9 @@
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Account Checkup</h4>
+                                        <h4 class="card-title">Recent Actions</h4>
                                         <div class="wrapper mt-4">
-                                            <div class="d-flex align-items-center py-3 border-bottom">
-                                                <i class="mdi mdi-telegram text-info"></i>
-                                                <p class="mb-0 ml-3">Setup Telegram Authentication</p>
-                                            </div>
-                                            <div class="d-flex align-items-center py-3 border-bottom">
-                                                <i class="mdi mdi-key text-info"></i>
-                                                <p class="mb-0 ml-3">Setup Two Factor Authentication</p>
-                                            </div>
-                                            <div class="d-flex align-items-center py-3 border-bottom">
-                                                <i class="mdi mdi-reload text-info"></i>
-                                                <p class="mb-0 ml-3">Renew Recovery Codes</p>
-                                            </div>
-                                            <div class="d-flex align-items-center py-3 border-bottom">
-                                                <i class="mdi mdi-account-alert text-info"></i>
-                                                <p class="mb-0 ml-3">Review Recent Logins</p>
-                                            </div>
+                                            <?PHP HTML::importScript('list_audit_logs'); ?>
                                         </div>
                                     </div>
                                 </div>
