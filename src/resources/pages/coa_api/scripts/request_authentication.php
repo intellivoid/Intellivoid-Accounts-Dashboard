@@ -5,19 +5,16 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Page;
 use IntellivoidAccounts\Abstracts\ApplicationStatus;
+use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
     if(get_parameter('application_id') == null)
-        {
-            returnJsonResponse(array(
-                'status' => false,
-                'response_code' => 103,
-                'message' => 'Invalid Action'
-            ));
-        }
+    {
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '1')));
+    }
 
     // Define the important parts
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -41,38 +38,30 @@ use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     }
     catch (ApplicationNotFoundException $e)
     {
-        returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 104,
-            'message' => 'Invalid public Application ID'
-        ));
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '2')));
     }
     catch(Exception $exception)
     {
-        returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 102,
-            'message' => 'Internal Server Error'
-        ));
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
     }
 
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
-        Page::staticResponse(
-            'Intellivoid Accounts', 'Authentication unavailable',
-            "The Application that's trying to authenticate you has been suspended."
-        );
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '3')));
     }
 
     if($Application->Status == ApplicationStatus::Disabled)
     {
-        Page::staticResponse(
-            'Intellivoid Accounts', 'Authentication unavailable',
-            "The Application that's trying to authenticate you is unavailable at the moment."
-        );
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '4')));
+    }
+
+    if($Application->AuthenticationMode == AuthenticationMode::Redirect)
+    {
+        if(get_parameter('redirect') == null)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '6')));
+        }
     }
 
     try
@@ -81,11 +70,7 @@ use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     }
     catch(Exception $exception)
     {
-        Page::staticResponse(
-            'Security Error', 'Security Verification Failure',
-            "The server cannot verify your browser or IP Address, please contact support."
-        );
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '5')));
     }
 
     try
@@ -96,13 +81,18 @@ use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     }
     catch (DatabaseException $e)
     {
-        Page::staticResponse(
-            'Server Error', 'Internal Server Error',
-            "There was an issue while trying to process your request."
-        );
-        exit();
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
     }
 
-    Actions::redirect(DynamicalWeb::getRoute('login',
-        array('auth' => 'application', 'application_id' => $Application->PublicAppId, 'request_token' => $AuthRequestToken->RequestToken)
-    ));
+    if($Application->AuthenticationMode == AuthenticationMode::Redirect)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('login',
+            array('auth' => 'application', 'redirect' => get_parameter('redirect'), 'application_id' => $Application->PublicAppId, 'request_token' => $AuthRequestToken->RequestToken)
+        ));
+    }
+    else
+    {
+        Actions::redirect(DynamicalWeb::getRoute('login',
+            array('auth' => 'application', 'application_id' => $Application->PublicAppId, 'request_token' => $AuthRequestToken->RequestToken)
+        ));
+    }
