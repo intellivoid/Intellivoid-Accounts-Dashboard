@@ -42,7 +42,7 @@
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
                                         <label for="email" class="label" id="label_1">Email Address</label>
-                                        <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" aria-autocomplete="none" on required>
+                                        <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" aria-autocomplete="none" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="username" class="label" id="label_2">Username</label>
