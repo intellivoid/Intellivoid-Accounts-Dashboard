@@ -9174,7 +9174,9 @@ pre {
   display: flex; }
   .image-grouped img {
     border-radius: 100%;
-    margin-left: -5px;
+    margin-left: -15px;
+    width: 60px;
+    height: 60px;
     border: 2px solid #ffffff; }
     .image-grouped img:first-child {
       margin-left: 0; }

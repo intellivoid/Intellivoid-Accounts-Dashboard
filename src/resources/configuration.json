@@ -18,6 +18,7 @@
         {"path": "/auth/internal", "page": "internal_authentication"},
 
         {"path": "/auth/coa/error", "page": "application_error"},
+        {"path": "/auth/coa/request", "page": "application_authenticate"},
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},

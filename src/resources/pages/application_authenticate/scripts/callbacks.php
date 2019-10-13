@@ -8,5 +8,12 @@
 
         switch((int)$_GET['callback'])
         {
+            case 100:
+                RenderAlert(TEXT_CALLBACK_100, "danger", "mdi-alert-circle");
+                break;
+
+            case 101:
+                RenderAlert(TEXT_CALLBACK_101, "danger", "mdi-alert-circle");
+                break;
         }
     }
