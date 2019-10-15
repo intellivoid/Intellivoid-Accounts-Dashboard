@@ -1,11 +1,12 @@
 <?PHP
 
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
-use DynamicalWeb\Javascript;
-use DynamicalWeb\Runtime;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
+    use DynamicalWeb\Javascript;
+    use DynamicalWeb\Runtime;
 
     Runtime::import('IntellivoidAccounts');
+    HTML::importScript('validate_coa');
 
 ?>
 <!doctype html>
@@ -13,7 +14,7 @@ use DynamicalWeb\Runtime;
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Au</title>
+        <title>Intellivoid Accounts - Authenticqte</title>
     </head>
 
     <body>
@@ -54,7 +55,7 @@ use DynamicalWeb\Runtime;
                                             <p class="mb-0 ml-3">View your personal information</p>
                                             <div class="form-check ml-auto mb-0 mt-0">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" checked> Allow Access
+                                                    <input type="checkbox" class="form-check-input" checked> Allow
                                                     <i class="input-helper"></i>
                                                 </label>
                                             </div>
@@ -66,7 +67,7 @@ use DynamicalWeb\Runtime;
                                             <p class="mb-0 ml-3">Edit your personal information</p>
                                             <div class="form-check ml-auto mb-0 mt-0">
                                                 <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" checked> Allow Access
+                                                    <input type="checkbox" class="form-check-input" checked> Allow
                                                     <i class="input-helper"></i>
                                                 </label>
                                             </div>

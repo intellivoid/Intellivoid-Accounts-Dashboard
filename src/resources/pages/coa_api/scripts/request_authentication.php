@@ -3,10 +3,9 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Page;
-use IntellivoidAccounts\Abstracts\ApplicationStatus;
-use IntellivoidAccounts\Abstracts\AuthenticationMode;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\Abstracts\ApplicationStatus;
+    use IntellivoidAccounts\Abstracts\AuthenticationMode;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -79,7 +78,7 @@ use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
             $Application, $KnownHost->ID
         );
     }
-    catch (DatabaseException $e)
+    catch (Exception $e)
     {
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
     }
