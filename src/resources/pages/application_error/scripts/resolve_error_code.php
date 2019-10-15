@@ -66,6 +66,14 @@
                 HTML::print("ERROR CODE 14: MISSING PARAMETER 'redirect' IN AUTH PROMPT");
                 break;
 
+            case 15:
+                HTML::print("ERROR CODE 15: UNSUPPORTED AUTHENTICATION TYPE");
+                break;
+
+            case 16:
+                HTML::print("ERROR CODE 16: INVALID REDIRECT URL");
+                break;
+
             default:
                 HTML::print("ERROR CODE " . (int)$_GET['error_code'] . ': UNKNOWN');
                 break;
