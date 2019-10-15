@@ -82,7 +82,7 @@
         }
 
         // Validate the URL
-        if (filter_var($_GET['redirect'], FILTER_VALIDATE_URL) !== false)
+        if (filter_var($_GET['redirect'], FILTER_VALIDATE_URL) == false)
         {
             Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '17')));
         }

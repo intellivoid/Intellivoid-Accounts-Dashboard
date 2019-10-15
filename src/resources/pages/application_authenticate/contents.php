@@ -4,9 +4,17 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
     use DynamicalWeb\Runtime;
+use IntellivoidAccounts\Objects\COA\Application;
+use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('validate_coa');
+
+    /** @var Application $Application */
+    $Application = DynamicalWeb::getMemoryObject('application');
+
+    /** @var AuthenticationRequest $AuthenticationRequest */
+    $AuthenticationRequest = DynamicalWeb::getMemoryObject('auth_request');
 
 ?>
 <!doctype html>
@@ -35,11 +43,11 @@
                                 <div class="d-flex mb-2">
                                     <div class="image-grouped mx-auto d-block">
                                         <img src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="User Avatar">
-                                        <img src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $_GET['application_id'], 'resource' => 'normal'), true) ?>" alt="Application Loggo">
+                                        <img src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'normal'), true) ?>" alt="Application Logo">
                                     </div>
                                 </div>
 
-                                <h4 class="text-center">CoffeeHouse</h4>
+                                <h4 class="text-center"><?PHP HTML::print($Application->Name); ?></h4>
 
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
@@ -48,6 +56,9 @@
                                 <div class="border-bottom pt-3"></div>
 
                                 <form id="authentication_form" name="authentication_form" class="pt-4">
+                                    <?PHP
+
+                                    ?>
                                     <h6 class="mb-5">This application would like to have access to</h6>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center py-1 text-black" >
