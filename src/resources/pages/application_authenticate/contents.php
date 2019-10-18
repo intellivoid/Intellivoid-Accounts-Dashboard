@@ -6,11 +6,13 @@
     use DynamicalWeb\Runtime;
 use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
 use IntellivoidAccounts\Abstracts\ApplicationFlags;
+use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\Objects\COA\Application;
 use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('validate_coa');
+    HTML::importScript('process_authentication');
     HTML::importScript('render_alert');
 
     /** @var Application $Application */
@@ -19,13 +21,30 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
     /** @var AuthenticationRequest $AuthenticationRequest */
     $AuthenticationRequest = DynamicalWeb::getMemoryObject('auth_request');
 
+    $VerificationToken = hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId);
+
+    $ReqParameters = array(
+        'auth' => 'application',
+        'action' => 'authenticate',
+        'application_id' => $_GET['application_id'],
+        'request_token' => $_GET['request_token'],
+        'exp' => $AuthenticationRequest->ExpiresTimestamp,
+        'verification_token' => $VerificationToken,
+    );
+
+    if($Application->AuthenticationMode == AuthenticationMode::Redirect)
+    {
+        $ReqParameters['redirect'] = $_GET['redirect'];
+    }
+
+    $AuthenticateRoute = DynamicalWeb::getRoute('application_authenticate', $ReqParameters);
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Authenticqte</title>
+        <title>Intellivoid Accounts - Authenticate</title>
     </head>
 
     <body>
@@ -81,7 +100,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
                                 <div class="border-bottom pt-3"></div>
 
-                                <form id="authentication_form" name="authentication_form" class="pt-4">
+                                <form id="authentication_form" action="<?PHP HTML::print($AuthenticateRoute, false); ?>" method="POST" name="authentication_form" class="pt-4">
                                     <h6 class="mb-5"><?PHP HTML::print(str_ireplace("%s", $Application->Name, '%s would like to have access to')); ?></h6>
                                     <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can view your Username and Avatar which is public by default">
                                         <div class="d-flex align-items-center py-1 text-black" >
@@ -100,7 +119,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                                     <p class="mb-0 ml-3">View your personal information</p>
                                                     <div class="form-check ml-auto mb-0 mt-0">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <input type="checkbox" name="view_personal_information" id="view_personal_information" class="form-check-input" checked> Allow
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -118,7 +137,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                                     <p class="mb-0 ml-3">Edit your personal information</p>
                                                     <div class="form-check ml-auto mb-0 mt-0">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <input type="checkbox" name="edit_personal_information" id="edit_personal_information" class="form-check-input" checked> Allow
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -136,7 +155,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                                     <p class="mb-0 ml-3">Send notifications via Telegram</p>
                                                     <div class="form-check ml-auto mb-0 mt-0">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <input type="checkbox" name="telegram_notifications" id="telegram_notifications" class="form-check-input" checked> Allow
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -154,7 +173,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                                     <p class="mb-0 ml-3">Make purchases on your behalf</p>
                                                     <div class="form-check ml-auto mb-0 mt-0">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <input type="checkbox" name="make_purchases" id="make_purchases" class="form-check-input" checked> Allow
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -195,6 +214,5 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
         <script src="/assets/js/shared/tooltips.js"></script>
-        <?PHP Javascript::importScript('sudo'); ?>
     </body>
 </html>

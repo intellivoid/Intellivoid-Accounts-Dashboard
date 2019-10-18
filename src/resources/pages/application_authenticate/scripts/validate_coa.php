@@ -89,5 +89,7 @@
 
     }
 
+    // TODO: Check if auth request has expired or is already used
+
     DynamicalWeb::setMemoryObject('application', $Application);
     DynamicalWeb::setMemoryObject('auth_request', $AuthenticationRequest);

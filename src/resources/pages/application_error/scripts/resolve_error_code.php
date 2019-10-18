@@ -74,6 +74,26 @@
                 HTML::print("ERROR CODE 16: INVALID REDIRECT URL");
                 break;
 
+            case 17:
+                HTML::print("ERROR CODE 17: MISSING PARAMETER 'verification_token' IN AUTH PROMPT->ACTION");
+                break;
+
+            case 18:
+                HTML::print("ERROR CODE 18: CANNOT VERIFY REQUEST");
+                break;
+
+            case 19:
+                HTML::print("ERROR CODE 19: AUTHENTICATION ACCESS DOES NOT EXIST");
+                break;
+
+            case 20:
+                HTML::print("ERROR CODE 20: ALREADY AUTHENTICATED");
+                break;
+
+            case 21:
+                HTML::print("ERROR CODE 21: INTERNAL SERVER ERROR WHILE TRYING TO AUTHENTICATE USER");
+                break;
+
             default:
                 HTML::print("ERROR CODE " . (int)$_GET['error_code'] . ': UNKNOWN');
                 break;
