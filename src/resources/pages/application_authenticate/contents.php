@@ -4,11 +4,14 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
     use DynamicalWeb\Runtime;
+use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+use IntellivoidAccounts\Abstracts\ApplicationFlags;
 use IntellivoidAccounts\Objects\COA\Application;
 use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('validate_coa');
+    HTML::importScript('render_alert');
 
     /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
@@ -47,43 +50,139 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                     </div>
                                 </div>
 
-                                <h4 class="text-center"><?PHP HTML::print($Application->Name); ?></h4>
+                                <h4 class="text-center">
+                                    <?PHP HTML::print($Application->Name); ?>
+                                    <?PHP
+                                        if(in_array(ApplicationFlags::Official, $Application->Flags))
+                                        {
+                                            HTML::print("<i class=\"mdi mdi-verified text-success\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is verified & trusted\"></i>", false);
+                                        }
+                                        elseif(in_array(ApplicationFlags::Verified, $Application->Flags))
+                                        {
+                                            HTML::print("<i class=\"mdi mdi-verified text-primary\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is an official Intellivoid Application/Service\"></i>", false);
+                                        }
+                                        elseif(in_array(ApplicationFlags::Untrusted, $Application->Flags))
+                                        {
+                                            HTML::print("<i class=\"mdi mdi-alert text-danger\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is untrusted and unsafe\"></i>", false);
+                                        }
+
+                                    ?>
+
+                                </h4>
 
                                 <div id="callback_alert">
-                                    <?PHP HTML::importScript('callbacks'); ?>
+                                    <?PHP
+                                        if(in_array(ApplicationFlags::Untrusted, $Application->Flags))
+                                        {
+                                            RenderAlert("This application/service is considered untrusted and unsafe. Please be cautious about the information and permissions you choose to share.", "danger", "mdi-alert-circle");
+                                        }
+                                    ?>
                                 </div>
 
                                 <div class="border-bottom pt-3"></div>
 
                                 <form id="authentication_form" name="authentication_form" class="pt-4">
-                                    <?PHP
+                                    <h6 class="mb-5"><?PHP HTML::print(str_ireplace("%s", $Application->Name, '%s would like to have access to')); ?></h6>
+                                    <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can view your Username and Avatar which is public by default">
+                                        <div class="d-flex align-items-center py-1 text-black" >
+                                            <span class="mdi mdi-account-card-details"></span>
+                                            <p class="mb-0 ml-3">Your username and avatar</p>
+                                        </div>
+                                    </div>
 
+                                    <?PHP
+                                        if(in_array(AccountRequestPermissions::ReadPersonalInformation, $AuthenticationRequest->RequestedPermissions))
+                                        {
+                                            ?>
+                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can view information like your First Name, Last name and Birthday if you made them available">
+                                                <div class="d-flex align-items-center py-1 text-black">
+                                                    <span class="mdi mdi-account"></span>
+                                                    <p class="mb-0 ml-3">View your personal information</p>
+                                                    <div class="form-check ml-auto mb-0 mt-0">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <i class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?PHP
+                                        }
+
+                                        if(in_array(AccountRequestPermissions::EditPersonalInformation, $AuthenticationRequest->RequestedPermissions))
+                                        {
+                                            ?>
+                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can edit your information like your First Name, Last name and Birthday. This does not mean the information can be viewed if allowed">
+                                                <div class="d-flex align-items-center py-1 text-black">
+                                                    <span class="mdi mdi-account-edit"></span>
+                                                    <p class="mb-0 ml-3">Edit your personal information</p>
+                                                    <div class="form-check ml-auto mb-0 mt-0">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <i class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?PHP
+                                        }
+
+                                        if(in_array(AccountRequestPermissions::TelegramNotifications, $AuthenticationRequest->RequestedPermissions))
+                                        {
+                                            ?>
+                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can send you notifications via Telegram if you linked a Telegram Account to your Account">
+                                                <div class="d-flex align-items-center py-1 text-black">
+                                                    <span class="mdi mdi-telegram"></span>
+                                                    <p class="mb-0 ml-3">Send notifications via Telegram</p>
+                                                    <div class="form-check ml-auto mb-0 mt-0">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <i class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?PHP
+                                        }
+
+                                        if(in_array(AccountRequestPermissions::MakePurchases, $AuthenticationRequest->RequestedPermissions))
+                                        {
+                                            ?>
+                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Allows you to make purchases or activate subscriptions using your Account Balance (Intellivoid Only)">
+                                                <div class="d-flex align-items-center py-1 text-black">
+                                                    <span class="mdi mdi-shopping"></span>
+                                                    <p class="mb-0 ml-3">Make purchases on your behalf</p>
+                                                    <div class="form-check ml-auto mb-0 mt-0">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" checked> Allow
+                                                            <i class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?PHP
+                                        }
                                     ?>
-                                    <h6 class="mb-5">This application would like to have access to</h6>
-                                    <div class="form-group">
-                                        <div class="d-flex align-items-center py-1 text-black" >
-                                            <span class="mdi mdi-account"></span>
-                                            <p class="mb-0 ml-3">View your personal information</p>
-                                            <div class="form-check ml-auto mb-0 mt-0">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" checked> Allow
-                                                    <i class="input-helper"></i>
-                                                </label>
-                                            </div>
-                                        </div>
+
+                                    <div class="form-group pt-4">
+                                        <p class="text-muted">
+                                        <?PHP
+                                            if(in_array(ApplicationFlags::Verified, $Application->Flags))
+                                            {
+                                                HTML::print(str_ireplace("%s", $Application->Name, "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This is an official Intellivoid Application/Service, whatever information or permissions you grant will be used via Intellivoid's terms of service and privacy policies which can be reviewed on our official website. You can revoke access at any time via Intellivoid Accounts"));
+                                            }
+                                            elseif(in_array(ApplicationFlags::Official, $Application->Flags))
+                                            {
+                                                HTML::print(str_ireplace("%s", $Application->Name, "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This Application has been verified to be official by Intellivoid, however this is not an official Intellivoid Application/Service, whatever information or permissions you grant will be used in their terms of service and privacy policies if they have one. You can revoke access at any time via Intellivoid Accounts"));
+                                            }
+                                            else
+                                            {
+                                                HTML::print(str_ireplace("%s", $Application->Name, "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This is not an official Intellivoid Application/Service, whatever information or permissions you grant will be used in their terms of service and privacy policies if they have one. You can revoke access at any time via Intellivoid Accounts"));
+                                            }
+                                        ?>
+                                        </p>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="d-flex align-items-center py-1 text-black" >
-                                            <span class="mdi mdi-account-edit"></span>
-                                            <p class="mb-0 ml-3">Edit your personal information</p>
-                                            <div class="form-check ml-auto mb-0 mt-0">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input" checked> Allow
-                                                    <i class="input-helper"></i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="form-group pb-2 mt-5">
                                         <input id="submit_button" type="submit" class="btn btn-primary submit-btn btn-block" value="Authenticate">
                                     </div>
@@ -95,6 +194,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
+        <script src="/assets/js/shared/tooltips.js"></script>
         <?PHP Javascript::importScript('sudo'); ?>
     </body>
 </html>
