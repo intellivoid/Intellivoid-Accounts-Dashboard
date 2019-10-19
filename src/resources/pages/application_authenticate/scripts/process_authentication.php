@@ -68,35 +68,48 @@
             $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
         }
 
-        if(in_array(AccountRequestPermissions::ReadPersonalInformation, $AuthenticationRequest->RequestedPermissions))
+        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ViewEmailAddress))
+        {
+            if(check_permission('view_email') == false)
+            {
+                $Index = array_search(AccountRequestPermissions::ViewEmailAddress, $AuthenticationRequest->RequestedPermissions);
+                unset($AuthenticationRequest->RequestedPermissions[$Index]);
+            }
+        }
+
+        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ReadPersonalInformation))
         {
             if(check_permission('view_personal_information') == false)
             {
-                unset($AuthenticationRequest->RequestedPermissions[AccountRequestPermissions::ReadPersonalInformation]);
+                $Index = array_search(AccountRequestPermissions::ReadPersonalInformation, $AuthenticationRequest->RequestedPermissions);
+                unset($AuthenticationRequest->RequestedPermissions[$Index]);
             }
         }
 
-        if(in_array(AccountRequestPermissions::EditPersonalInformation, $AuthenticationRequest->RequestedPermissions))
+        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::EditPersonalInformation))
         {
             if(check_permission('edit_personal_information') == false)
             {
-                unset($AuthenticationRequest->RequestedPermissions[AccountRequestPermissions::EditPersonalInformation]);
+                $Index = array_search(AccountRequestPermissions::EditPersonalInformation, $AuthenticationRequest->RequestedPermissions);
+                unset($AuthenticationRequest->RequestedPermissions[$Index]);
             }
         }
 
-        if(in_array(AccountRequestPermissions::TelegramNotifications, $AuthenticationRequest->RequestedPermissions))
+        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::TelegramNotifications))
         {
             if(check_permission('telegram_notifications') == false)
             {
-                unset($AuthenticationRequest->RequestedPermissions[AccountRequestPermissions::TelegramNotifications]);
+                $Index = array_search(AccountRequestPermissions::TelegramNotifications, $AuthenticationRequest->RequestedPermissions);
+                unset($AuthenticationRequest->RequestedPermissions[$Index]);
             }
         }
 
-        if(in_array(AccountRequestPermissions::MakePurchases, $AuthenticationRequest->RequestedPermissions))
+        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::MakePurchases))
         {
             if(check_permission('make_purchases') == false)
             {
-                unset($AuthenticationRequest->RequestedPermissions[AccountRequestPermissions::MakePurchases]);
+                $Index = array_search(AccountRequestPermissions::MakePurchases, $AuthenticationRequest->RequestedPermissions);
+                unset($AuthenticationRequest->RequestedPermissions[$Index]);
             }
         }
 

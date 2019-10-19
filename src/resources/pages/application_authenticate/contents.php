@@ -72,7 +72,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                 <h4 class="text-center">
                                     <?PHP HTML::print($Application->Name); ?>
                                     <?PHP
-                                        if(!in_array(ApplicationFlags::Official, $Application->Flags))
+                                        if(in_array(ApplicationFlags::Official, $Application->Flags))
                                         {
                                             HTML::print("<i class=\"mdi mdi-verified text-success\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is verified & trusted\"></i>", false);
                                         }
