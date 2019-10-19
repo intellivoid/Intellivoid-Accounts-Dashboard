@@ -72,7 +72,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                 <h4 class="text-center">
                                     <?PHP HTML::print($Application->Name); ?>
                                     <?PHP
-                                        if(in_array(ApplicationFlags::Official, $Application->Flags))
+                                        if(!in_array(ApplicationFlags::Official, $Application->Flags))
                                         {
                                             HTML::print("<i class=\"mdi mdi-verified text-success\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is verified & trusted\"></i>", false);
                                         }
@@ -110,10 +110,28 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                     </div>
 
                                     <?PHP
+                                        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ViewEmailAddress))
+                                        {
+                                            ?>
+                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can view your Email Address">
+                                                <div class="d-flex align-items-center py-1 text-black">
+                                                    <span class="mdi mdi-email"></span>
+                                                    <p class="mb-0 ml-3">View your Email Address</p>
+                                                    <div class="form-check ml-auto mb-0 mt-0">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="view_email" id="view_email" class="form-check-input" checked> Allow
+                                                            <i class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?PHP
+                                        }
+
                                         if(in_array(AccountRequestPermissions::ReadPersonalInformation, $AuthenticationRequest->RequestedPermissions))
                                         {
                                             ?>
-                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can view information like your First Name, Last name and Birthday if you made them available">
+                                            <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="Can view information like your First Name, Last name, and Birthday if you made them available">
                                                 <div class="d-flex align-items-center py-1 text-black">
                                                     <span class="mdi mdi-account"></span>
                                                     <p class="mb-0 ml-3">View your personal information</p>

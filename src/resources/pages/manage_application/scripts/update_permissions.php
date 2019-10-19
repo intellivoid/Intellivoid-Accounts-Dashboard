@@ -53,6 +53,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $Application->apply_permission(AccountRequestPermissions::TelegramNotifications);
     }
 
+    if(is_checked('perm_view_email_address'))
+    {
+        $Application->apply_permission(AccountRequestPermissions::ViewEmailAddress);
+    }
+
     $Timestamp = (int)time();
     $Application->LastUpdatedTimestamp = $Timestamp;
 

@@ -94,6 +94,22 @@
                 HTML::print("ERROR CODE 21: INTERNAL SERVER ERROR WHILE TRYING TO AUTHENTICATE USER");
                 break;
 
+            case 22:
+                HTML::print("ERROR CODE 22: MISSING PARAMETER 'secret_key'");
+                break;
+
+            case 23:
+                HTML::print("ERROR CODE 23: ACCESS DENIED, INCORRECT SECRET KEY");
+                break;
+
+            case 24:
+                HTML::print("ERROR CODE 24: MISSING PARAMETER 'access_token'");
+                break;
+
+            case 25:
+                HTML::print("ERROR CODE 25: ACCESS DENIED, INCORRECT ACCESS TOKEN");
+                break;
+
             default:
                 HTML::print("ERROR CODE " . (int)$_GET['error_code'] . ': UNKNOWN');
                 break;

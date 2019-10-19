@@ -26,6 +26,10 @@
             HTML::importScript('request_authentication');
             break;
 
+        case 'access_account':
+            HTML::importScript('access_account');
+            break;
+
         default:
             returnJsonResponse(array(
                 'status' => false,

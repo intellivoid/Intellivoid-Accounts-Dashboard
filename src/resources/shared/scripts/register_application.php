@@ -97,6 +97,11 @@ use IntellivoidAccounts\Abstracts\AuthenticationMode;
         $Permissions[] = AccountRequestPermissions::TelegramNotifications;
     }
 
+    if(is_checked('perm_view_email_address'))
+    {
+        $Permissions[] = AccountRequestPermissions::ViewEmailAddress;
+    }
+
     try
     {
         $IntellivoidAccounts->getApplicationManager()->registerApplication(
