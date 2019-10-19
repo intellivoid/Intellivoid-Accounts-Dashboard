@@ -1,136 +1,24 @@
 <?php
 
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\ApplicationStatus;
-    use IntellivoidAccounts\Abstracts\AuthenticationMode;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationAccessSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationRequestSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
-use IntellivoidAccounts\Exceptions\DatabaseException;
-use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use DynamicalWeb\HTML;
+    use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+    use IntellivoidAccounts\Objects\Account;
+    use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
+    use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
-    if(get_parameter('application_id') == null)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 400,
-            'error_code' => 1,
-            'message' => "MISSING PARAMETER 'application_id'"
-        ));
-    }
+    HTML::importScript('check_access');
 
-    if(get_parameter('secret_key') == null)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 400,
-            'error_code' => 22,
-            'message' => "MISSING PARAMETER 'secret_key'"
-        ));
-    }
+    /** @var AuthenticationRequest $AuthenticationRequest */
+    $AuthenticationRequest = DynamicalWeb::getMemoryObject('authentication_request');
 
-    if(get_parameter('access_token') == null)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 400,
-            'error_code' => 24,
-            'message' => "MISSING PARAMETER 'access_token'"
-        ));
-    }
+    /** @var AuthenticationAccess $AuthenticationRequest */
+    $AuthenticationAccess = DynamicalWeb::getMemoryObject('authentication_access');
 
-    // Define the important parts
-    if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
-    {
-        /** @var IntellivoidAccounts $IntellivoidAccounts */
-        $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
-            "intellivoid_accounts", new IntellivoidAccounts()
-        );
-    }
-    else
-    {
-        /** @var IntellivoidAccounts $IntellivoidAccounts */
-        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-    }
+    /** @var Account $Account */
+    $Account = DynamicalWeb::getMemoryObject('account');
 
-    try
-    {
-        $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(
-            ApplicationSearchMethod::byApplicationId, get_parameter('application_id')
-        );
-    }
-    catch (ApplicationNotFoundException $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 400,
-            'error_code' => 2,
-            'message' => "INVALID APPLICATION ID"
-        ));
-    }
-    catch(Exception $exception)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 500,
-            'error_code' => -1,
-            'message' => "INTERNAL SERVER ERROR"
-        ));
-    }
-
-    if(get_parameter('secret_key') !== $Application->SecretKey)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 401,
-            'error_code' => 23,
-            'message' => "ACCESS DENIED, INCORRECT SECRET KEY"
-        ));
-    }
-
-    if($Application->Status == ApplicationStatus::Suspended)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 403,
-            'error_code' => 3,
-            'message' => "APPLICATION SUSPENDED"
-        ));
-    }
-
-    try
-    {
-        $AuthenticationAccess = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationAccessManager()->getAuthenticationAccess(AuthenticationAccessSearchMethod::byAccessToken, get_parameter('access_token'));
-        $AuthenticationRequest = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationRequestManager()->getAuthenticationRequest(AuthenticationRequestSearchMethod::byId, $AuthenticationAccess->RequestId);
-    }
-    catch (AuthenticationAccessNotFoundException $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 401,
-            'error_code' => 25,
-            'message' => "ACCESS DENIED, INCORRECT ACCESS TOKEN"
-        ));
-    }
-    catch (Exception $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'status_code' => 500,
-            'error_code' => -1,
-            'message' => "INTERNAL SERVER ERROR"
-        ));
-    }
-
-    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, $AuthenticationAccess->AccountId);
-    
     $Response = array(
         'status' => true,
         'status_code' => 200,
