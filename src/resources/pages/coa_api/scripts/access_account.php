@@ -91,11 +91,11 @@
     $Response['user']['public_id'] = $Account->PublicID;
     $Response['user']['username'] = $Account->Username;
     $Response['user']['avatar'] = array(
-        'normal' =>     $Domain .  DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'normal')),
-        'original' =>   $Domain  .  DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'original')),
-        'preview' =>    $Domain .  DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'preview')),
-        'small' =>      $Domain .  DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'small')),
-        'tiny' =>       $Domain .  DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'tiny')),
+        'normal' =>     $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'normal')),
+        'original' =>   $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'original')),
+        'preview' =>    $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'preview')),
+        'small' =>      $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'small')),
+        'tiny' =>       $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'tiny')),
     );
 
     if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ViewEmailAddress))

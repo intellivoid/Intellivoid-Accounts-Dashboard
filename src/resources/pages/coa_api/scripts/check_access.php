@@ -1,12 +1,14 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\ApplicationStatus;
+use IntellivoidAccounts\Abstracts\AccountStatus;
+use IntellivoidAccounts\Abstracts\ApplicationStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationAccessSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationRequestSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationAccessSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationRequestSearchMethod;
+    use IntellivoidAccounts\Exceptions\AccountNotFoundException;
+    use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
@@ -16,7 +18,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 400,
             'error_code' => 1,
-            'message' => "MISSING PARAMETER 'application_id'"
+            'message' => resolve_error_code(1)
         ));
     }
 
@@ -26,7 +28,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 400,
             'error_code' => 22,
-            'message' => "MISSING PARAMETER 'secret_key'"
+            'message' => resolve_error_code(22)
         ));
     }
 
@@ -36,7 +38,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 400,
             'error_code' => 24,
-            'message' => "MISSING PARAMETER 'access_token'"
+            'message' => resolve_error_code(24)
         ));
     }
 
@@ -66,7 +68,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 400,
             'error_code' => 2,
-            'message' => "INVALID APPLICATION ID"
+            'message' => resolve_error_code(2)
         ));
     }
     catch(Exception $exception)
@@ -75,7 +77,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 500,
             'error_code' => -1,
-            'message' => "INTERNAL SERVER ERROR"
+            'message' => resolve_error_code(-1)
         ));
     }
 
@@ -85,7 +87,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 401,
             'error_code' => 23,
-            'message' => "ACCESS DENIED, INCORRECT SECRET KEY"
+            'message' => resolve_error_code(23)
         ));
     }
 
@@ -95,7 +97,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 403,
             'error_code' => 3,
-            'message' => "APPLICATION SUSPENDED"
+            'message' => resolve_error_code(3)
         ));
     }
 
@@ -110,7 +112,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 401,
             'error_code' => 25,
-            'message' => "ACCESS DENIED, INCORRECT ACCESS TOKEN"
+            'message' => resolve_error_code(25)
         ));
     }
     catch (Exception $e)
@@ -119,11 +121,69 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
             'status' => false,
             'status_code' => 500,
             'error_code' => -1,
-            'message' => "INTERNAL SERVER ERROR"
+            'message' => resolve_error_code(-1)
         ));
     }
 
-    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, $AuthenticationAccess->AccountId);
+    if((int)time() > $AuthenticationAccess->ExpiresTimestamp)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 401,
+            'error_code' => 27,
+            'message' => resolve_error_code(27)
+        ));
+    }
+
+    try
+    {
+        $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, $AuthenticationAccess->AccountId);
+    }
+    catch (AccountNotFoundException $e)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 404,
+            'error_code' => 26,
+            'message' => resolve_error_code(26)
+        ));
+    }
+    catch (Exception $e)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 500,
+            'error_code' => -1,
+            'message' => resolve_error_code(-1)
+        ));
+    }
+
+    if($Account->Status == AccountStatus::Suspended)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 410,
+            'error_code' => 28,
+            'message' => resolve_error_code(28)
+        ));
+    }
+
+    $AuthenticationAccess->ExpiresTimestamp = (int)time() + 43200;
+    $AuthenticationAccess->LastUsedTimestamp = (int)time();
+
+    try
+    {
+        $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationAccessManager()->updateAuthenticationAccess($AuthenticationAccess);
+    }
+    catch(Exception $e)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 500,
+            'error_code' => -1,
+            'message' => resolve_error_code(-1)
+        ));
+    }
 
     DynamicalWeb::setMemoryObject('authentication_access', $AuthenticationAccess);
     DynamicalWeb::setMemoryObject('authentication_request', $AuthenticationRequest);

@@ -1,13 +1,11 @@
 <?PHP
 
-    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\Exceptions\InvalidIpException;
-    use IntellivoidAccounts\IntellivoidAccounts;
-    use IntellivoidAccounts\Utilities\Validate;
 
     Runtime::import('IntellivoidAccounts');
+
+    HTML::importScript('resolve_coa_error');
     HTML::importScript('json_response');
     HTML::importScript('request_parser');
 
