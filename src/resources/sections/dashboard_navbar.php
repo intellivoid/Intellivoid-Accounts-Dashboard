@@ -14,9 +14,11 @@ use DynamicalWeb\HTML;
     <div class="container d-flex flex-row nav-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top">
             <a class="navbar-brand brand-logo" href="/">
-                <img src="/assets/images/logo_2.png" alt="logo" /> </a>
+                <img src="/assets/images/logo_2.svg" alt="logo"/>
+            </a>
             <a class="navbar-brand brand-logo-mini" href="/">
-                <img src="/assets/images/iv_logo.svg" alt="logo" /> </a>
+                <img src="/assets/images/iv_logo.svg" alt="logo"/>
+            </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
             <ul class="navbar-nav ml-auto">

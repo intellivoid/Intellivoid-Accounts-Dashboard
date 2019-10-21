@@ -15,7 +15,8 @@
         'otl_api',
         'khm_api',
         'coa_api',
-        'application_error'
+        'application_error',
+        'landing_page'
     ];
 
     $unauthorized_pages = [
@@ -55,6 +56,11 @@
 
         if($sws->WebManager()->isCookieValid('intellivoid_secured_web_session') == false)
         {
+            if(APP_CURRENT_PAGE == 'index')
+            {
+                Actions::redirect(DynamicalWeb::getRoute('landing_page'));
+            }
+
             $Cookie = $sws->CookieManager()->newCookie('intellivoid_secured_web_session', 86400, false);
 
             $Cookie->Data = array(
@@ -140,6 +146,11 @@
 
         if(WEB_SESSION_ACTIVE == false)
         {
+            if(APP_CURRENT_PAGE == 'index')
+            {
+                Actions::redirect(DynamicalWeb::getRoute('landing_page'));
+            }
+
             $redirect = true;
 
             foreach($unauthorized_pages as $page)
