@@ -5,13 +5,16 @@
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
 use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+use IntellivoidAccounts\Abstracts\LoginStatus;
+use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
 use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthenticationRequestAlreadyUsedException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
+use sws\Objects\Cookie;
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
+if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_GET['action']))
         {
@@ -155,6 +158,17 @@ use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
         {
             Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
         }
+
+        /** @var Cookie $Cookie */
+        $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+
+        $Host = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
+
+        $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+            WEB_ACCOUNT_ID, $Host->ID,
+            LoginStatus::Successful, $Application->Name,
+            CLIENT_USER_AGENT
+        );
 
         HTML::importScript('redirect_url_function');
         Actions::redirect(create_redirect_location($_GET['redirect'], array('access_token' => $Access->AccessToken)));
