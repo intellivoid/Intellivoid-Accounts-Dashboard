@@ -42,7 +42,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                         <h6 class="mb-0">
                                             <?PHP HTML::print($Application->Name); ?>
                                         </h6>
-                                        <small class="text-muted">Last Authenticated:</small>
+                                        <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp), 'Last Authenticated: %s')); ?></small>
                                     </div>
                                     <div class="ml-auto mr-3 mt-auto mb-auto">
                                         <i class="mdi mdi-account-card-details"></i>
@@ -131,7 +131,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
 
                                         </div>
                                         <div class="col-lg-3 mt-auto mb-2">
-                                            <button class="btn btn-block btn-primary">Remove Access</button>
+                                            <button class="btn btn-block btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('services', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Revoke Access</button>
                                         </div>
                                     </div>
                                 </div>

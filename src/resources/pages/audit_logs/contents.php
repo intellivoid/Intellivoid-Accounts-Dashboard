@@ -126,7 +126,7 @@
                                                             $EventIcon = "mdi mdi-help text-muted";
                                                             break;
                                                     }
-                                                    $Timestamp = gmdate("j/m/y g:i a", $AuditRecordObject->Timestamp)
+                                                    $Timestamp = gmdate("j/m/y g:i a", $AuditRecordObject->Timestamp);
 
                                                     ?>
                                                     <li>
