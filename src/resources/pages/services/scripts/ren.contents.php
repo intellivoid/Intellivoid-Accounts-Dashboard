@@ -1,13 +1,12 @@
 <?PHP
 
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
-use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\ApplicationAccess;
-    use IntellivoidAccounts\Objects\COA\Application;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
+    use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\ApplicationAccess;
 
     function list_authorized_services(array $application_access_records)
     {
@@ -47,23 +46,23 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                     <div class="ml-auto mr-3 mt-auto mb-auto">
                                         <i class="mdi mdi-account-card-details"></i>
                                         <?PHP
-                                            if(in_array(AccountRequestPermissions::ViewEmailAddress ,$Application->Permissions))
+                                            if(in_array(AccountRequestPermissions::ViewEmailAddress ,$ApplicationAccess->Permissions))
                                             {
                                                 HTML::print("<i class=\"mdi mdi-email\"></i>", false);
                                             }
-                                            if(in_array(AccountRequestPermissions::ReadPersonalInformation ,$Application->Permissions))
+                                            if(in_array(AccountRequestPermissions::ReadPersonalInformation ,$ApplicationAccess->Permissions))
                                             {
                                                 HTML::print("<i class=\"mdi mdi-account\"></i>", false);
                                             }
-                                            if(in_array(AccountRequestPermissions::EditPersonalInformation ,$Application->Permissions))
+                                            if(in_array(AccountRequestPermissions::EditPersonalInformation ,$ApplicationAccess->Permissions))
                                             {
                                                 HTML::print("<i class=\"mdi mdi-account-edit\"></i>", false);
                                             }
-                                            if(in_array(AccountRequestPermissions::MakePurchases ,$Application->Permissions))
+                                            if(in_array(AccountRequestPermissions::MakePurchases ,$ApplicationAccess->Permissions))
                                             {
                                                 HTML::print("<i class=\"mdi mdi-shopping\"></i>", false);
                                             }
-                                            if(in_array(AccountRequestPermissions::TelegramNotifications ,$Application->Permissions))
+                                            if(in_array(AccountRequestPermissions::TelegramNotifications ,$ApplicationAccess->Permissions))
                                             {
                                                 HTML::print("<i class=\"mdi mdi-telegram\"></i>", false);
                                             }
@@ -82,7 +81,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                                 <p class="mb-0 ml-3">Your username and avatar</p>
                                             </div>
                                             <?PHP
-                                                if(in_array(AccountRequestPermissions::ViewEmailAddress ,$Application->Permissions))
+                                                if(in_array(AccountRequestPermissions::ViewEmailAddress, $ApplicationAccess->Permissions))
                                                 {
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
@@ -91,7 +90,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                                     </div>
                                                     <?PHP
                                                 }
-                                                if(in_array(AccountRequestPermissions::ReadPersonalInformation ,$Application->Permissions))
+                                                if(in_array(AccountRequestPermissions::ReadPersonalInformation, $ApplicationAccess->Permissions))
                                                 {
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
@@ -100,7 +99,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                                     </div>
                                                     <?PHP
                                                 }
-                                                if(in_array(AccountRequestPermissions::EditPersonalInformation ,$Application->Permissions))
+                                                if(in_array(AccountRequestPermissions::EditPersonalInformation, $ApplicationAccess->Permissions))
                                                 {
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
@@ -109,7 +108,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                                     </div>
                                                     <?PHP
                                                 }
-                                                if(in_array(AccountRequestPermissions::MakePurchases ,$Application->Permissions))
+                                                if(in_array(AccountRequestPermissions::MakePurchases, $ApplicationAccess->Permissions))
                                                 {
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
@@ -118,7 +117,7 @@ use IntellivoidAccounts\Objects\ApplicationAccess;
                                                     </div>
                                                     <?PHP
                                                 }
-                                                if(in_array(AccountRequestPermissions::TelegramNotifications ,$Application->Permissions))
+                                                if(in_array(AccountRequestPermissions::TelegramNotifications, $ApplicationAccess->Permissions))
                                                 {
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">

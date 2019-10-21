@@ -2,10 +2,10 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
+    HTML::importScript('revoke_access');
     HTML::importScript('ren.contents');
 
 ?>
@@ -29,6 +29,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                         <h4 class="card-title">Services</h4>
                                         <p class="card-description text-muted">Services and Applications you've authenticated to using this Intellivoid Account</p>
                                         <div class="wrapper mt-4">
+                                            <?PHP HTML::importScript('callbacks'); ?>
 
                                             <?PHP
                                                 if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -61,6 +62,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 if($TotalAccessCount > 0)
                                                 {
                                                     list_authorized_services($ApplicationAccessRecords);
+                                                }
+                                                else
+                                                {
+                                                    HTML::importScript('ren.no_contents');
                                                 }
                                             ?>
 
