@@ -1,8 +1,9 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\AccountStatus;
-use IntellivoidAccounts\Abstracts\ApplicationStatus;
+    use IntellivoidAccounts\Abstracts\AccountStatus;
+    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+    use IntellivoidAccounts\Abstracts\ApplicationStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationAccessSearchMethod;
@@ -165,6 +166,30 @@ use IntellivoidAccounts\Abstracts\ApplicationStatus;
             'status_code' => 410,
             'error_code' => 28,
             'message' => resolve_error_code(28)
+        ));
+    }
+
+    try
+    {
+        $ApplicationAccess = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->syncApplicationAccess($Application->ID, $Account->ID);
+    }
+    catch(Exception $e)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 500,
+            'error_code' => -1,
+            'message' => resolve_error_code(-1)
+        ));
+    }
+
+    if($ApplicationAccess->Status == ApplicationAccessStatus::Unauthorized)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 403,
+            'error_code' => 29,
+            'message' => resolve_error_code(29)
         ));
     }
 

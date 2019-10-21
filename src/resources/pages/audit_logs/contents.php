@@ -27,13 +27,14 @@
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
-                        <div class="col-lg-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Audit Logs History</h4>
-                                    <p class="card-description text-muted">Last security events associated with your account</p>
-                                    <div class="wrapper mt-4">
-                                        <?PHP
+                        <div class="row">
+                            <div class="col-lg-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Audit Logs History</h4>
+                                        <p class="card-description text-muted">Last security events associated with your account</p>
+                                        <div class="wrapper mt-4">
+                                            <?PHP
                                             if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
                                             {
                                                 /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -156,7 +157,8 @@
                                                 </div>
                                                 <?PHP
                                             }
-                                        ?>
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -59,14 +59,14 @@ use DynamicalWeb\HTML;
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="submenu ">
-                        <ul class="submenu-item ">
-                            <li class="nav-item ">
+                        <ul class="submenu-item">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('services', [], true) ?>">Services</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_history', [], true) ?>">Login History</a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">Services</a>
-                            </li>
-                            <li class="nav-item ">
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_security', [], true) ?>">Login Security</a>
                             </li>
                             <li class="nav-item ">

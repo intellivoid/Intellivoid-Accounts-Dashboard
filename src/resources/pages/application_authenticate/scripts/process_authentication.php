@@ -4,7 +4,8 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-    use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
+use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthenticationRequestAlreadyUsedException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
@@ -130,6 +131,29 @@
         catch (Exception $e)
         {
             Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '21')));
+        }
+
+        try
+        {
+            $ApplicationAccess = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->syncApplicationAccess($Application->ID, WEB_ACCOUNT_ID);
+        }
+        catch(Exception $exception)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        }
+
+        /** @noinspection PhpUndefinedVariableInspection */
+        $ApplicationAccess->LastAuthenticatedTimestamp = (int)time();
+        $ApplicationAccess->Status = ApplicationAccessStatus::Authorized;
+        $ApplicationAccess->Permissions = $AuthenticationRequest->RequestedPermissions;
+
+        try
+        {
+            $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->updateApplicationAccess($ApplicationAccess);
+        }
+        catch(Exception $exception)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
         }
 
         HTML::importScript('redirect_url_function');

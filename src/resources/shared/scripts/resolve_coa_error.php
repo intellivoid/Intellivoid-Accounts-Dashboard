@@ -97,6 +97,9 @@
             case 28:
                 return("ACCOUNT SUSPENDED");
 
+            case 29:
+                return("ACCESS DENIED, USER DISABLED ACCESS");
+
             default:
                 return("UNKNOWN ERROR");
         }

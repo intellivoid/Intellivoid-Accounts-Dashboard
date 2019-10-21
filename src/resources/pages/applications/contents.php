@@ -41,6 +41,19 @@
                     <div class="content-wrapper">
                         <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
+                            <div class="col-md-4 grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Actions</h4>
+                                        <div class="wrapper mt-4">
+                                            <a class="d-flex align-items-center py-3 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
+                                                <i class="mdi mdi-plus text-danger"></i>
+                                                <p class="mb-0 ml-3">Create Application</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
@@ -73,19 +86,6 @@
                                                 render_items($TotalRecords);
                                             }
                                         ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Actions</h4>
-                                        <div class="wrapper mt-4">
-                                            <a class="d-flex align-items-center py-3 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
-                                                <i class="mdi mdi-plus text-danger"></i>
-                                                <p class="mb-0 ml-3">Create Application</p>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
