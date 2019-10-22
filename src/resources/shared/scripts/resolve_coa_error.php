@@ -100,6 +100,18 @@
             case 29:
                 return("ACCESS DENIED, USER DISABLED ACCESS");
 
+            case 30:
+                return("ACCESS DENIED, INSUFFICIENT PERMISSIONS");
+
+            case 31:
+                return("MISSING PARAMETER 'field'");
+
+            case 32:
+                return("MISSING PARAMETER 'value'");
+
+            case 33:
+                return("INVALID VALUE FOR 'first_name'");
+
             default:
                 return("UNKNOWN ERROR");
         }

@@ -78,7 +78,17 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                             <div class="card-body">
                                                 <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'change-logo'), true); ?>" method="POST" enctype="multipart/form-data">
                                                     <div class="d-flex align-items-start pb-3 border-bottom">
-                                                        <img class="img-md" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="brand logo">
+                                                        <?PHP
+                                                            $img_parameters = array('app_id' => $Application->PublicAppId, 'resource' => 'small');
+                                                            if(isset($_GET['cache_refresh']))
+                                                            {
+                                                                if($_GET['cache_refresh'] == 'true')
+                                                                {
+                                                                    $img_parameters = array('app_id' => $Application->PublicAppId, 'resource' => 'small', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
+                                                                }
+                                                            }
+                                                        ?>
+                                                        <img class="img-md" src="<?PHP DynamicalWeb::getRoute('application_icon', $img_parameters, true); ?>" alt="brand logo">
 
                                                         <div class="wrapper pl-4">
                                                             <p class="font-weight-bold mb-0"><?PHP HTML::print($Application->Name); ?></p>
@@ -169,11 +179,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_edit_personal_information" id="perm_edit_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::EditPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?>> Edit Personal Information
+                                                            <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?>> View Email Address
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
-                                                    <p class="text-muted text-small pb-4">Edit user's personal information</p>
+                                                    <p class="text-muted text-small">View the users Email Address</p>
 
                                                     <div class="form-check">
                                                         <label class="form-check-label">
@@ -182,17 +192,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                         </label>
                                                     </div>
                                                     <p class="text-muted text-small">Send notifications via Telegram (if available)</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?>> View Email Address
-                                                            <i class="input-helper"></i>
-                                                        </label>
-                                                    </div>
-                                                    <p class="text-muted text-small">View the users Email Address</p>
                                                 </div>
                                             </div>
 

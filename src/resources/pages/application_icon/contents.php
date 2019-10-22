@@ -93,7 +93,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
     {
         $ImageContents = file_get_contents($file);
 
-        header('Cache-control: max-age='.(60*60*24*365));
+        header('Cache-control: max-age=60');
         header('Content-Length: ' . strlen($ImageContents));
         header('Content-type: image/jpeg');
         print($ImageContents);

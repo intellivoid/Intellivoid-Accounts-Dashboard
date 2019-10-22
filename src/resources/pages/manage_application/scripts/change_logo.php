@@ -74,5 +74,6 @@ use udp\Exceptions\UnsupportedFileTypeException;
 
     Actions::redirect(DynamicalWeb::getRoute('manage_application', array(
         'pub_id' => $Application->PublicAppId,
-        'callback' => '112'
+        'callback' => '112',
+        'cache_refresh' => 'true'
     )));

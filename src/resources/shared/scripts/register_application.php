@@ -82,11 +82,6 @@ use IntellivoidAccounts\Abstracts\AuthenticationMode;
         $Permissions[] = AccountRequestPermissions::ReadPersonalInformation;
     }
 
-    if(is_checked('perm_edit_personal_information'))
-    {
-        $Permissions[] = AccountRequestPermissions::EditPersonalInformation;
-    }
-
     if(is_checked('perm_make_purchases'))
     {
         $Permissions[] = AccountRequestPermissions::MakePurchases;

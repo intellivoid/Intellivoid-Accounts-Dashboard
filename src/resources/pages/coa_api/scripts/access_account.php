@@ -50,18 +50,6 @@
         }
     }
 
-    if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::EditPersonalInformation))
-    {
-        if($AuthenticationAccess->has_permission(AccountRequestPermissions::EditPersonalInformation))
-        {
-            $Response['permissions']['edit_personal_information'] = true;
-        }
-        else
-        {
-            $Response['permissions']['edit_personal_information'] = false;
-        }
-    }
-
     if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::TelegramNotifications))
     {
         if($AuthenticationAccess->has_permission(AccountRequestPermissions::TelegramNotifications))

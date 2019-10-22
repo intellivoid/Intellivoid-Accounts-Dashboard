@@ -43,11 +43,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $Application->apply_permission(AccountRequestPermissions::MakePurchases);
     }
 
-    if(is_checked('perm_edit_personal_information'))
-    {
-        $Application->apply_permission(AccountRequestPermissions::EditPersonalInformation);
-    }
-
     if(is_checked('perm_telegram_notifications'))
     {
         $Application->apply_permission(AccountRequestPermissions::TelegramNotifications);
