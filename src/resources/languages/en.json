@@ -40,7 +40,9 @@
             "CALLBACK_103": "Your name has been updated",
             "CALLBACK_104": "There was an issue while trying to update your information",
             "CALLBACK_105": "The given date is invalid",
-            "CALLBACK_106": "Your birthday has been updated"
+            "CALLBACK_106": "Your birthday has been updated",
+            "CALLBACK_107": "There was an issue while trying to clear your information",
+            "CALLBACK_108": "Your birthday was cleared and now no longer exists, happy birthday?"
         },
         "applications": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
