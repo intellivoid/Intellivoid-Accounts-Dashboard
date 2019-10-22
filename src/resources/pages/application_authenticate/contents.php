@@ -221,7 +221,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                     </div>
 
                                     <div class="form-group pb-2 mt-5">
-                                        <input id="submit_button" type="submit" class="btn btn-primary submit-btn btn-block" value="Authenticate">
+                                        <input id="submit_button" type="submit" class="btn btn-primary submit-btn btn-block" value="Authenticate" disabled>
                                     </div>
                                 </form>
                             </div>
@@ -232,5 +232,6 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
         <script src="/assets/js/shared/tooltips.js"></script>
+        <?PHP Javascript::importScript('autoenable'); ?>
     </body>
 </html>
