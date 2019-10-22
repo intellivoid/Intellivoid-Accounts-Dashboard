@@ -55,7 +55,6 @@ use DynamicalWeb\Runtime;
                                     </div>
                                 </form>
                             </div>
-                            <?PHP HTML::importSection('auth_footer'); ?>
                         </div>
                     </div>
                 </div>
