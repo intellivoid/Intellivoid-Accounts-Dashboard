@@ -6,6 +6,7 @@ use DynamicalWeb\HTML;
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('update.name');
+    HTML::importScript('clear.name');
     HTML::importScript('update.birthday');
     HTML::importScript('clear.birthday');
     HTML::importScript('define.information');
@@ -64,6 +65,7 @@ use DynamicalWeb\HTML;
                                                                             <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
                                                                         </div>
                                                                         <input type="submit" class="btn btn-success mr-2" value="Update">
+                                                                        <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>';">Clear</a>
                                                                     </form>
                                                                 </div>
                                                             </div>
