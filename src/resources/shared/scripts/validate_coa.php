@@ -89,7 +89,10 @@
 
     }
 
-    // TODO: Check if auth request has expired or is already used
+    if((int)time() > $AuthenticationRequest->ExpiresTimestamp)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '34')));
+    }
 
     DynamicalWeb::setMemoryObject('application', $Application);
     DynamicalWeb::setMemoryObject('auth_request', $AuthenticationRequest);

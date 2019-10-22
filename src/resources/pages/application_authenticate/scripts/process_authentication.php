@@ -5,6 +5,7 @@
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
 use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\Abstracts\LoginStatus;
 use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
 use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
@@ -170,6 +171,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             CLIENT_USER_AGENT
         );
 
-        HTML::importScript('redirect_url_function');
-        Actions::redirect(create_redirect_location($_GET['redirect'], array('access_token' => $Access->AccessToken)));
+        switch($Application->AuthenticationMode)
+        {
+            case AuthenticationMode::Redirect:
+                HTML::importScript('redirect_url_function');
+                /** @noinspection PhpUndefinedVariableInspection */
+                Actions::redirect(create_redirect_location($_GET['redirect'], array('access_token' => $Access->AccessToken)));
+                break;
+
+            case AuthenticationMode::Code:
+                /** @noinspection PhpUndefinedVariableInspection */
+                Actions::redirect(DynamicalWeb::getRoute('authentication_code', array(
+                    'auth' => 'application',
+                    'application_id' => $_GET['application_id'],
+                    'request_token' => $_GET['request_token'],
+                    'access_token' => $Access->AccessToken,
+                    'verification_token' => hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId)
+                )));
+                break;
+
+            default:
+                Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '35')));
+                break;
+        }
+
     }

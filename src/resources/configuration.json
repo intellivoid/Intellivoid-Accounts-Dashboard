@@ -20,6 +20,7 @@
 
         {"path": "/auth/coa/error", "page": "application_error"},
         {"path": "/auth/coa/request", "page": "application_authenticate"},
+        {"path": "/auth/coa/access", "page": "authentication_code"},
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},

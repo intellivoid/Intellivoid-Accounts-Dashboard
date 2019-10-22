@@ -112,6 +112,21 @@
             case 33:
                 return("INVALID VALUE FOR 'first_name'");
 
+            case 34:
+                return("REQUEST TOKEN EXPIRED");
+
+            case 35:
+                return("UNSUPPORTED APPLICATION AUTHENTICATION TYPE");
+
+            case 36:
+                return("CRYPTO ERROR, APPLICATION CERTIFICATE MISHAP");
+
+            case 37:
+                return("CRYPTO ERROR, AUTHENTICATION REQUEST MISHAP");
+
+            case 38:
+                return("ACCESS DENIED");
+
             default:
                 return("UNKNOWN ERROR");
         }
