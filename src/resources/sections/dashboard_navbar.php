@@ -22,6 +22,11 @@ use DynamicalWeb\HTML;
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item ml-4">
+                    <a class="nav-link" data-toggle="modal" data-target="#change-language-dialog" href="#">
+                        <i class="mdi mdi-translate"></i>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <?PHP HTML::print($UsernameSafe); ?>
@@ -71,6 +76,9 @@ use DynamicalWeb\HTML;
                             <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_security', [], true) ?>">Login Security</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('internal_authentication', [], true) ?>">Internal Auth</a>
+                            </li>
                             <li class="nav-item ">
                                 <a class="nav-link" data-toggle="modal" data-target="#password-reset-dialog" href="#">Update Password</a>
                             </li>
@@ -88,3 +96,4 @@ use DynamicalWeb\HTML;
     </div>
 </nav>
 <?PHP HTML::importSection('reset_password_modal'); ?>
+<?PHP HTML::importSection('change_language_modal'); ?>

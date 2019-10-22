@@ -16,6 +16,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="/assets/vendors/iconfonts/puse-icons-feather/feather.css">
+<link rel="stylesheet" href="/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
 <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
 <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.addons.css">
 <link rel="stylesheet" href="/assets/css/shared/style.css">

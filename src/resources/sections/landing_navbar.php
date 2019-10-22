@@ -12,6 +12,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ml-4">
+                        <a class="nav-link" data-toggle="modal" data-target="#change-language-dialog" href="#">
+                            <i class="mdi mdi-translate"></i>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-link" href="<?PHP DynamicalWeb::getRoute('login', array(), true); ?>">Login</a>
                     </li>
