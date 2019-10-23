@@ -20,6 +20,10 @@
 
     switch(strtolower(get_parameter('action')))
     {
+        case 'create_authentication_request':
+            HTML::importScript('create_authentication_request');
+            break;
+
         case 'request_authentication':
             HTML::importScript('request_authentication');
             break;
