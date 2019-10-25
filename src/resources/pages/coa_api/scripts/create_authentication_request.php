@@ -1,18 +1,33 @@
 <?php
 
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\ApplicationStatus;
     use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-    use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\IntellivoidAccounts;
+
+    /**
+     * This action 'create_authentication_request' allows the service / application to get the
+     * request token beforehand and the authentication url to give to the user to authenticate.
+     *
+     * During this time the Application/Service can poll the action 'check_authentication_request'
+     * to determine if the user has authenticated or not before the request token expires. If the
+     * user has authenticated then a access token will be returned which can be used to access
+     * the account
+     *
+     * This approach is for desktop software, mobile applications and small scripts
+     */
 
     if(get_parameter('application_id') == null)
     {
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '1')));
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 400,
+            'error_code' => 1,
+            'message' => resolve_error_code(1)
+        ));
     }
 
     // Define the important parts

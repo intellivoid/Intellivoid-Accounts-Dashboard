@@ -127,6 +127,15 @@
             case 38:
                 return("ACCESS DENIED");
 
+            case 39:
+                return("MISSING PARAMETER 'request_token'");
+
+            case 40:
+                return("INVALID REQUEST TOKEN");
+
+            case 41:
+                return("AWAITING AUTHENTICATION");
+
             default:
                 return("UNKNOWN ERROR");
         }

@@ -28,8 +28,12 @@
             HTML::importScript('request_authentication');
             break;
 
-        case 'access_account':
-            HTML::importScript('access_account');
+        case "get_access_code":
+            HTML::importScript('get_access_code');
+            break;
+
+        case 'check_permissions':
+            HTML::importScript('check_permissions');
             break;
 
         default:

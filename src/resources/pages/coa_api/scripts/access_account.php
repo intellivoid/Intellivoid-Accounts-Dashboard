@@ -8,7 +8,7 @@
     use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
-    HTML::importScript('check_access');
+    HTML::importScript('async.check_access');
 
     /** @var AuthenticationRequest $AuthenticationRequest */
     $AuthenticationRequest = DynamicalWeb::getMemoryObject('authentication_request');
