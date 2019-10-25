@@ -35,6 +35,7 @@
         $CurrentPage = 1;
     }
 
+
     if($CurrentPage > DynamicalWeb::getInt32('total_pages'))
     {
         $CurrentPage = DynamicalWeb::getInt32('total_pages') + 1;
