@@ -190,6 +190,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                 )));
                 break;
 
+            case AuthenticationMode::ApplicationPlaceholder:
+                Actions::redirect(DynamicalWeb::getRoute('authentication_success', array(
+                    'auth' => 'application',
+                    'application_id' => $_GET['application_id'],
+                    'request_token' => $_GET['request_token'],
+                    'access_token' => $Access->AccessToken,
+                    'verification_token' => hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId)
+                )));
+                break;
+
             default:
                 Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '35')));
                 break;
