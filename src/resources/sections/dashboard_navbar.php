@@ -66,7 +66,7 @@ use DynamicalWeb\HTML;
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="submenu ">
-                        <ul class="submenu-item">
+                        <ul class="submenu-item" style="padding-top: 23px; padding-bottom: 23px;">
                             <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('services', [], true) ?>">Services</a>
                             </li>
