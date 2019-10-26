@@ -165,7 +165,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
-                                                    <p class="text-muted text-small pb-4">Access to Personal Information like name, birthday and email</p>
+                                                    <p class="text-muted text-small">Access to Personal Information like name, birthday and email</p>
 
                                                     <div class="form-check">
                                                         <label class="form-check-label">
