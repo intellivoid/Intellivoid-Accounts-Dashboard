@@ -42,24 +42,29 @@
             $Cookie->Data["sudo_expires"] = time() + 900;
             $sws->CookieManager()->updateCookie($Cookie);
 
+            if(isset($_GET['callback']))
+            {
+                unset($_GET['callback']);
+            }
+
             if(isset($_POST['redirect']))
             {
                 switch($_POST['redirect'])
                 {
                     case 'login_security':
-                        Actions::redirect(DynamicalWeb::getRoute('login_security'));
+                        Actions::redirect(DynamicalWeb::getRoute('login_security', $_GET));
                         break;
 
                     case 'setup_mobile_verification':
-                        Actions::redirect(DynamicalWeb::getRoute('setup_mobile_verification'));
+                        Actions::redirect(DynamicalWeb::getRoute('setup_mobile_verification', $_GET));
                         break;
 
                     case 'setup_recovery_codes':
-                        Actions::redirect(DynamicalWeb::getRoute('setup_recovery_codes'));
+                        Actions::redirect(DynamicalWeb::getRoute('setup_recovery_codes', $_GET));
                         break;
 
                     default:
-                        Actions::redirect(DynamicalWeb::getRoute('index'));
+                        Actions::redirect(DynamicalWeb::getRoute('index', $_GET));
                         break;
                 }
             }

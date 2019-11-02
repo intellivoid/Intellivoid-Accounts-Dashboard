@@ -61,6 +61,6 @@ use DynamicalWeb\Runtime;
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <?PHP Javascript::importScript('sudo'); ?>
+        <?PHP Javascript::importScript('sudo', $_GET); ?>
     </body>
 </html>
