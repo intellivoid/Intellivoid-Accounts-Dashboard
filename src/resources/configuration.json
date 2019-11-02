@@ -9,6 +9,7 @@
         {"path": "/auth/khm", "page": "khm_api"},
         {"path": "/auth/coa", "page": "coa_api"},
         {"path": "/auth/telegram", "page": "telegram_api"},
+        {"path": "/auth/telegram/poll", "page": "telegram_poll"},
 
         {"path": "/auth/login", "page": "login"},
         {"path": "/auth/register", "page": "register"},

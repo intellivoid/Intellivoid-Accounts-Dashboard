@@ -699,6 +699,28 @@
 
             if($approved == true)
             {
+                return true;
+            }
+
+            if($disallowed == true)
+            {
+                throw new AuthPromptDeniedException();
+            }
+
+            return false;
+        }
+
+        /**
+         * Closes the auth prompt to prevent further polling
+         *
+         * @param TelegramClient $telegramClient
+         * @param bool $allow_further_attempts
+         * @throws DatabaseException
+         */
+        public function closePrompt(TelegramClient $telegramClient, bool $allow_further_attempts = false)
+        {
+            if($allow_further_attempts == true)
+            {
                 $AuthPrompt = $this->getAuthPrompt($telegramClient);
 
                 $AuthPrompt['currently_active'] = false;
@@ -708,11 +730,8 @@
                 $this->intellivoidAccounts->getTelegramClientManager()->updateClient(
                     $this->updateAuthPrompt($telegramClient, $AuthPrompt)
                 );
-
-                return true;
             }
-
-            if($disallowed == true)
+            else
             {
                 $AuthPrompt = $this->getAuthPrompt($telegramClient);
 
@@ -721,10 +740,6 @@
                 $this->intellivoidAccounts->getTelegramClientManager()->updateClient(
                     $this->updateAuthPrompt($telegramClient, $AuthPrompt)
                 );
-
-                throw new AuthPromptDeniedException();
             }
-
-            return false;
         }
     }

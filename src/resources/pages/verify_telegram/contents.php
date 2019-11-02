@@ -1,8 +1,17 @@
 <?PHP
-    use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
 
-    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
+    use DynamicalWeb\Javascript;
+use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+use IntellivoidAccounts\Exceptions\DatabaseException;
+use IntellivoidAccounts\Exceptions\HostNotKnownException;
+use IntellivoidAccounts\Exceptions\InvalidIpException;
+use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Objects\KnownHost;
+use sws\Objects\Cookie;
+
+$UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
         $UsernameSafe = substr($UsernameSafe, 0 ,16);
@@ -20,6 +29,32 @@
 
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
+
+    HTML::importScript('get_account');
+
+    /**
+     * Returns the Known Host associated with this client
+     *
+     * @return KnownHost
+     * @throws DatabaseException
+     * @throws HostNotKnownException
+     * @throws InvalidIpException
+     */
+    function get_host(): KnownHost
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+
+        /** @var Cookie $Cookie */
+        $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+
+        return $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
+    }
+
+
+    HTML::importScript('check_method');
+    HTML::importScript('verify');
+    HTML::importScript('send_prompt');
 
 ?>
 <!doctype html>
@@ -46,17 +81,8 @@
                                     Telegram Prompt
                                 </h1>
                                 <p class="text-center">Check your Telegram Account for a Authentication Prompt</p>
-                                <div id="callback_alert">
-                                    <?PHP HTML::importScript('callbacks'); ?>
-                                </div>
                                 <div class="border-bottom pb-2"></div>
-                                <form id="authentication_form" class="pt-4" name="authentication_form">
-                                    <img src="/assets/images/verification.svg" class="img-fluid" alt="telegram-auth-image">
-
-                                    <div class="form-group pb-2 pt-2">
-                                        <input type="submit" class="btn btn-primary submit-btn btn-block" value="Cancel">
-                                    </div>
-                                </form>
+                                <img src="/assets/images/verification.svg" class="img-fluid" alt="telegram-auth-image">
                             </div>
                         </div>
                     </div>
@@ -64,6 +90,6 @@
             </div>
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
-        <?PHP Javascript::importScript('verifyrecoverycode', $GetParameters); ?>
+        <?PHP Javascript::importScript('telegramauth', $GetParameters); ?>
     </body>
 </html>

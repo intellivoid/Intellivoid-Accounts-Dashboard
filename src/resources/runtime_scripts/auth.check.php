@@ -29,6 +29,7 @@
         'verify_mobile',
         'verify_telegram',
         'verify_recovery_code',
+        'telegram_poll',
         'logout'
     ];
 

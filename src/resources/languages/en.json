@@ -100,6 +100,16 @@
         "setup_recovery_codes": {
             "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         },
+        "verify":
+        {
+            "CALLBACK_100": "This method of verification is not available right now",
+            "CALLBACK_101": "There was an error while trying to process your request",
+            "CALLBACK_102": "Too many authentication prompts, try again later",
+            "CALLBACK_103": "There was an issue while trying to send an Authentication Prompt",
+            "CALLBACK_104": "Unable to verify prompt authentication",
+            "CALLBACK_105": "The authentication prompt has been denied",
+            "CALLBACK_106": "The authentication prompt has expired"
+        },
         "verify_mobile": {
             "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
             "CALLBACK_101": "Incorrect verification code"
