@@ -104,7 +104,7 @@
         {
             "CALLBACK_100": "This method of verification is not available right now",
             "CALLBACK_101": "There was an error while trying to process your request",
-            "CALLBACK_102": "Too many authentication prompts, try again later",
+            "CALLBACK_102": "Too many authentication attempts, try again later",
             "CALLBACK_103": "There was an issue while trying to send an Authentication Prompt",
             "CALLBACK_104": "Unable to verify prompt authentication",
             "CALLBACK_105": "The authentication prompt has been denied",

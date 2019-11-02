@@ -17,7 +17,7 @@
                 break;
 
             case 102:
-                RenderAlert(TEXT_CALLBACK_101, "warning", "mdi-alert-circle");
+                RenderAlert(TEXT_CALLBACK_102, "warning", "mdi-alert-circle");
                 break;
 
             case 103:

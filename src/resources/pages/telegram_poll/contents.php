@@ -176,10 +176,6 @@ use IntellivoidAccounts\Exceptions\AuthPromptDeniedException;
             'message' => "The prompt has expired"
         ));
     }
-    catch(AuthNotPromptedException $authNotPromptedException)
-    {
-
-    }
     catch(Exception $e)
     {
         returnJsonResponse(array(

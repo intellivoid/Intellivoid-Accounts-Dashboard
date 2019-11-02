@@ -51,7 +51,7 @@
             /** @noinspection PhpUndefinedVariableInspection */
             if($IntellivoidAccounts->getTelegramService()->pollAuthPrompt($TelegramClient) == true)
             {
-                $IntellivoidAccounts->getTelegramService()->closePrompt($TelegramClient);
+                $IntellivoidAccounts->getTelegramService()->closePrompt($TelegramClient, true);
                 $authenticated = true;
             }
         }
