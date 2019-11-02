@@ -2,7 +2,9 @@
     use DynamicalWeb\HTML;
 
     HTML::importScript('coa_auth');
+    HTML::importScript('telegram_auth');
     HTML::importScript('update_password');
+
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {

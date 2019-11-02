@@ -81,7 +81,12 @@
             "CALLBACK_104": "Recovery Codes cannot be disabled since it's not enabled.",
             "CALLBACK_105": "Recovery Codes verification has been disabled.",
             "CALLBACK_106": "You cannot setup Recovery Codes Verification since it's already enabled",
-            "CALLBACK_107": "Recovery Codes has been enabled"
+            "CALLBACK_107": "Recovery Codes has been enabled",
+            "CALLBACK_108": "Your Intellivoid Account is already linked to a Telegram Account",
+            "CALLBACK_109": "Your Telegram Client is invalid",
+            "CALLBACK_110": "There was an unknown error while trying to process your request",
+            "CALLBACK_111": "This Telegram is already linked to another account, to unlink your Telegram send /unlink",
+            "CALLBACK_112": "You have successfully linked your Telegram to your Intellivoid Account"
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"

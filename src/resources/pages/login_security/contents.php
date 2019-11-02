@@ -6,6 +6,7 @@
 
     HTML::importScript('check_sudo');
     HTML::importScript('check');
+    HTML::importScript('enable_telegram_verification');
     HTML::importScript('disable_mobile_verification');
     HTML::importScript('disable_recovery_codes');
 
@@ -71,8 +72,8 @@
                                             ?>
                                         </div>
                                         <p class="text-center mb-2 comment">
-                                            Using Google Authenticator on your phone, you can enter a one-time password
-                                            to verify it's you
+                                            Using Google Authenticator on your phone, you can enter a time based code
+                                            to verify it's you without internet access
                                         </p>
                                         <?PHP
                                             HTML::print("<small class=\"d-block mt-4 text-center posted-date\">", false);
@@ -162,8 +163,7 @@
                                             ?>
                                         </div>
                                         <p class="text-center mb-2 comment">
-                                            If you lost your phone, or cannot access it. You can use one-time recovery
-                                            codes to gain access to your account
+                                            Use one-time use recovery codes to access your account if you do not have access to your phone
                                         </p>
                                         <?PHP
                                             HTML::print("<small class=\"d-block mt-4 text-center posted-date\">", false);
@@ -278,12 +278,12 @@
                                             <div class="badge badge-lg badge-outline-danger badge-pill">Disabled</div>
                                         </div>
                                         <p class="text-center mb-2 comment">
-                                            Receive a notification on Telegram to verify your login authentication
+                                            Receive authentication prompts, security updates and notifications on Telegram
                                         </p>
                                         <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-primary btn-block">Setup</button>
+                                        <button class="btn btn-primary btn-block" onclick="location.href='tg://resolve?domain=IntellivoidBot&start=link'">Open Telegram</button>
                                     </div>
                                 </div>
                             </div>
