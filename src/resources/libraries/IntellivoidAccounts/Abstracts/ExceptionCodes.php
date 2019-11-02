@@ -41,12 +41,15 @@
 
         const InvalidAccountStatusException = 115;
 
+        /** @deprecated  */
         const InsufficientFundsException = 116;
 
         const InvalidVendorException = 117;
 
+        /** @deprecated  */
         const InvalidTransactionTypeException = 118;
 
+        /** @deprecated  */
         const TransactionRecordNotFoundException = 119;
 
         const HostNotKnownException = 120;
@@ -89,4 +92,18 @@
         const ApplicationAccessNotFoundException = 138;
 
         const InvalidApplicationFlagException = 139;
+
+        const TelegramApiException = 140;
+
+        const TelegramServicesNotAvailableException = 141;
+
+        const InvalidUrlException = 142;
+
+        const TooManyPromptRequestsException = 143;
+
+        const AuthNotPromptedException = 144;
+
+        const AuthPromptExpiredException = 145;
+
+        const AuthPromptAlreadyApprovedException = 146;
     }
