@@ -53,7 +53,7 @@ use IntellivoidAccounts\Objects\Account;
                                 <div class="card card-statistics social-card card-default">
                                     <div class="card-header header-sm">
                                         <div class="d-flex align-items-center">
-                                            <div class="wrapper d-flex align-items-center media-info text-info">
+                                            <div class="wrapper d-flex align-items-center media-info text-primary">
                                                 <i class="mdi mdi-cellphone-iphone icon-md"></i>
                                                 <h2 class="card-title ml-3">Mobile Verification</h2>
                                             </div>
@@ -89,7 +89,7 @@ use IntellivoidAccounts\Objects\Account;
                                             }
                                             else
                                             {
-                                                HTML::print(str_ireplace("%s", "Not Activated", "Last Updated: %s"));
+                                                HTML::print("Not Enabled");
                                             }
                                             HTML::print("</small>", false);
                                         ?>
@@ -179,7 +179,7 @@ use IntellivoidAccounts\Objects\Account;
                                             }
                                             else
                                             {
-                                                HTML::print(str_ireplace("%s", "Not Activated", "Last Updated: %s"));
+                                                HTML::print("Not Enabled");
                                             }
                                             HTML::print("</small>", false);
                                         ?>
@@ -298,7 +298,7 @@ use IntellivoidAccounts\Objects\Account;
                                 <div class="card card-statistics social-card card-default">
                                     <div class="card-header header-sm">
                                         <div class="d-flex align-items-center">
-                                            <div class="wrapper d-flex align-items-center media-info text-danger">
+                                            <div class="wrapper d-flex align-items-center media-info text-primary">
                                                 <i class="mdi mdi-telegram icon-md"></i>
                                                 <h2 class="card-title ml-3">Telegram Verification</h2>
                                             </div>
@@ -333,7 +333,7 @@ use IntellivoidAccounts\Objects\Account;
                                             }
                                             else
                                             {
-                                                HTML::print(str_ireplace("%s", "Not available", "Added on: %s"));
+                                                HTML::print("Not Enabled");
                                             }
                                             HTML::print("</small>", false);
                                         ?>
