@@ -3,9 +3,10 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
-use IntellivoidAccounts\Exceptions\TelegramClientNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
+    use IntellivoidAccounts\Exceptions\TelegramClientNotFoundException;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
 
     if(isset($_GET['auth']))
@@ -79,6 +80,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
         try
         {
+            $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::TelegramVerificationEnabled);
             $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient);
         }
         catch(Exception $e)

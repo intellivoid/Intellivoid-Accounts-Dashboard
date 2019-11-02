@@ -2,10 +2,10 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\AuditEventType;
-use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
-use IntellivoidAccounts\Exceptions\TelegramClientNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
+    use IntellivoidAccounts\Exceptions\TelegramClientNotFoundException;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
 
     if(isset($_GET['action']))
@@ -57,9 +57,19 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $Account->Configuration->VerificationMethods->TelegramLink->disable();
         $Account->Configuration->VerificationMethods->TelegramClientLinked = false;
 
-        $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::TelegramVerificationDisabled);
-        $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
-        $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient);
+        try
+        {
+
+            $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::TelegramVerificationDisabled);
+            $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
+            $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient);
+        }
+        catch(Exception $e)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+                'callback' => '110'
+            )));
+        }
 
         Actions::redirect(DynamicalWeb::getRoute('login_security', array(
             'callback' => '114'
