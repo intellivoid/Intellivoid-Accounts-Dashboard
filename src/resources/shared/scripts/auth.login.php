@@ -143,6 +143,12 @@
                 $Cookie->Data["auto_logout"] = time() + 600;
                 $Cookie->Data["verification_attempts"] = 0;
             }
+            elseif($Account->Configuration->VerificationMethods->TelegramClientLinked == true)
+            {
+                $Cookie->Data["verification_required"] = true;
+                $Cookie->Data["auto_logout"] = time() + 600;
+                $Cookie->Data["verification_attempts"] = 0;
+            }
             else
             {
                 try

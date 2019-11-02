@@ -63,6 +63,21 @@ use IntellivoidAccounts\Objects\Account;
                                     <div class="pt-4">
                                     </div>
                                     <?PHP
+                                        if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                        {
+                                            ?>
+                                            <div class="form-group">
+                                                <a class="d-flex align-items-center py-1 text-black" href="#" onclick="verify_telegram();" style="text-decoration: none;">
+                                                    <span class="mdi mdi-telegram"></span>
+                                                    <p class="mb-0 ml-3">Telegram Prompt</p>
+                                                    <p class="ml-auto mb-0 text-muted">
+                                                        <i class="mdi mdi-arrow-right"></i>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <?PHP
+                                        }
+
                                         if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
                                         {
                                             ?>
@@ -92,6 +107,7 @@ use IntellivoidAccounts\Objects\Account;
                                             </div>
                                             <?PHP
                                         }
+
                                     ?>
 
                                     <div class="border-bottom pb-1"></div>

@@ -17,6 +17,7 @@
         {"path": "/auth/sudo", "page": "sudo"},
         {"path": "/auth/verify/mobile", "page": "verify_mobile"},
         {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_code"},
+        {"path": "/auth/verify/telegram", "page": "verify_telegram"},
         {"path": "/auth/internal", "page": "internal_authentication"},
 
         {"path": "/auth/coa/error", "page": "application_error"},
