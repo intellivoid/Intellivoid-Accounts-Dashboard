@@ -86,7 +86,9 @@
             "CALLBACK_109": "Your Telegram Client is invalid",
             "CALLBACK_110": "There was an unknown error while trying to process your request",
             "CALLBACK_111": "This Telegram is already linked to another account, to unlink your Telegram send /unlink",
-            "CALLBACK_112": "You have successfully linked your Telegram to your Intellivoid Account"
+            "CALLBACK_112": "You have successfully linked your Telegram to your Intellivoid Account",
+            "CALLBACK_113": "There is no Telegram account linked to your Intellivoid Account",
+            "CALLBACK_114": "Your Telegram account has been unlinked successfully"
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"

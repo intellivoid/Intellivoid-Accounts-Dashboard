@@ -2,16 +2,21 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use IntellivoidAccounts\Objects\Account;
+use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('check_sudo');
     HTML::importScript('check');
     HTML::importScript('enable_telegram_verification');
     HTML::importScript('disable_mobile_verification');
+    HTML::importScript('unlink_telegram');
     HTML::importScript('disable_recovery_codes');
 
     /** @var Account $Account */
     $Account = DynamicalWeb::getMemoryObject('account');
+
+    /** @var IntellivoidAccounts $IntellivoidAccounts */
+    $IntellivoidAccounts = DynamicalWeb::getMemoryObject('intellivoid_accounts');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -262,6 +267,32 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal fade" id="unlink-telegram" tabindex="-1" role="dialog" aria-labelledby="unlink-telegram-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="unlink-telegram-label">Unlink Telegram Account</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <i class="mdi mdi-close"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                                Please confirm that you want to unlink your Telegram Account, you will
+                                                no longer receive Authentication Prompts, security notifciations and
+                                                application notifications.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <?PHP $Href = DynamicalWeb::getRoute('login_security', array('action' => 'unlink_telegram')); ?>
+                                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';">Unlink</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 grid-margin stretch-card">
                                 <div class="card card-statistics social-card card-default">
@@ -275,15 +306,55 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center pb-3">
-                                            <div class="badge badge-lg badge-outline-danger badge-pill">Disabled</div>
+                                            <?PHP
+                                            if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                            {
+                                                HTML::print("<div class=\"badge badge-lg badge-outline-success badge-pill\">", false);
+                                                HTML::print("Enabled");
+                                                HTML::print("</div>", false);
+                                            }
+                                            else
+                                            {
+                                                HTML::print("<div class=\"badge badge-lg badge-outline-danger badge-pill\">", false);
+                                                HTML::print("Disabled");
+                                                HTML::print("</div>", false);
+                                            }
+                                            ?>
                                         </div>
                                         <p class="text-center mb-2 comment">
                                             Receive authentication prompts, security updates and notifications on Telegram
                                         </p>
-                                        <small class="d-block mt-4 text-center posted-date">Last Updated: Never</small>
+                                        <?PHP
+                                            HTML::print("<small class=\"d-block mt-4 text-center posted-date\">", false);
+                                            if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                            {
+                                                $LastUpdated = $Account->Configuration->VerificationMethods->TelegramLink->LastLinked;
+                                                HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $LastUpdated), "Added on %s"));
+                                            }
+                                            else
+                                            {
+                                                HTML::print(str_ireplace("%s", "Not available", "Added on: %s"));
+                                            }
+                                            HTML::print("</small>", false);
+                                        ?>
                                     </div>
                                     <div class="card-footer align-content-center d-flex">
-                                        <button class="btn btn-primary btn-block" onclick="location.href='tg://resolve?domain=IntellivoidBot&start=link'">Open Telegram</button>
+                                        <?PHP
+                                        if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                        {
+                                            HTML::print("<button class=\"btn btn-danger btn-block\" data-toggle=\"modal\" data-target=\"#unlink-telegram\">", false);
+                                            HTML::print("Unlink Telegram");
+                                            HTML::print("</button>", false);
+                                        }
+                                        else
+                                        {
+                                            $BotName = $IntellivoidAccounts->getTelegramConfiguration()['TgBotName'];
+                                            $Href = DynamicalWeb::getRoute('setup_recovery_codes');
+                                            HTML::print("<button class=\"btn btn-primary btn-block\" onclick=\"location.href='tg://resolve?domain=$BotName&start=link'\">", false);
+                                            HTML::print("Open Telegram");
+                                            HTML::print("</button>", false);
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
