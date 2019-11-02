@@ -63,6 +63,7 @@
             $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::TelegramVerificationDisabled);
             $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
             $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient);
+            $IntellivoidAccounts->getTelegramService()->sendUnlinkedNotification($TelegramClient);
         }
         catch(Exception $e)
         {
