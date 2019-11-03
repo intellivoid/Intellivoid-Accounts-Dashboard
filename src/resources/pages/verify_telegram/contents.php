@@ -54,7 +54,7 @@
 
     HTML::importScript('check_method');
     HTML::importScript('verify');
-    HTML::importScript('send_prompt');
+    //HTML::importScript('send_prompt');
 
 ?>
 <!doctype html>
@@ -77,12 +77,11 @@
                                     <i class="mdi mdi-arrow-left"></i>
                                 </button>
                                 <h1 class="text-center">
-                                    <i class="mdi mdi-telegram"></i>
-                                    Telegram Prompt
+                                    <i class="mdi mdi-telegram"></i> Telegram Prompt
                                 </h1>
                                 <p class="text-center">Check your Telegram Account for a Authentication Prompt</p>
                                 <div class="border-bottom pb-2"></div>
-                                <img src="/assets/images/verification.svg" class="img-fluid" alt="telegram-auth-image">
+                                <img src="/assets/images/verification.svg" class="img-fluid mb-3 mt-3" alt="telegram-auth-image">
                             </div>
                         </div>
                     </div>

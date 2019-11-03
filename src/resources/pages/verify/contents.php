@@ -29,6 +29,7 @@ use IntellivoidAccounts\Objects\Account;
 
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
+    unset($GetParameters['incorrect_auth']);
     unset($GetParameters['anim']);
 
     /** @var Account $Account */
