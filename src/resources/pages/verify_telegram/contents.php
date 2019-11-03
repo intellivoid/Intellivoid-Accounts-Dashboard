@@ -54,7 +54,7 @@
 
     HTML::importScript('check_method');
     HTML::importScript('verify');
-    //HTML::importScript('send_prompt');
+    HTML::importScript('send_prompt');
 
 ?>
 <!doctype html>

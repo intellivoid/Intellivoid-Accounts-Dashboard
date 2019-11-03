@@ -84,14 +84,14 @@
                 return False;
             }
 
-            if(isset($this->RecoveryCodes[$input]) == false)
+            if(in_array($input, $this->RecoveryCodes) == false)
             {
                 return False;
             }
 
             if($remove_code == true)
             {
-                unset($this->RecoveryCodes[$input]);
+                $this->RecoveryCodes = array_diff($this->RecoveryCodes, [$input]);
             }
 
             return True;
