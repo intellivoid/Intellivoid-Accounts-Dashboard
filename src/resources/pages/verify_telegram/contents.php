@@ -1,17 +1,17 @@
 <?PHP
 
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
-use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
-use IntellivoidAccounts\Exceptions\DatabaseException;
-use IntellivoidAccounts\Exceptions\HostNotKnownException;
-use IntellivoidAccounts\Exceptions\InvalidIpException;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\KnownHost;
-use sws\Objects\Cookie;
+    use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Exceptions\DatabaseException;
+    use IntellivoidAccounts\Exceptions\HostNotKnownException;
+    use IntellivoidAccounts\Exceptions\InvalidIpException;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\KnownHost;
+    use sws\Objects\Cookie;
 
-$UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
+    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
         $UsernameSafe = substr($UsernameSafe, 0 ,16);

@@ -28,10 +28,10 @@ setInterval(function(){
         url: "<?PHP DynamicalWeb::getRoute('telegram_poll', $GetParameters, true); ?>",
         async: false
     }).responseText;
-
+    console.log(feedback);
     response_j = JSON.parse(feedback);
     if(response_j.status == false){
-        switch(response_j.status)
+        switch(response_j.error_code)
         {
             case 200:
                 <?PHP $GetParameters['callback'] = '107'; ?>
@@ -59,8 +59,8 @@ setInterval(function(){
                 break;
 
             case 205:
-                <?PHP $GetParameters['callback'] = '105'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                <?PHP $GetParameters['callback'] = '109'; ?>
+                location.href = "<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>";
                 break;
 
             case 206:
@@ -83,4 +83,4 @@ setInterval(function(){
             location.href = "<?PHP DynamicalWeb::getRoute('verify_telegram', $GetParameters, true); ?>";
         }
     }
-}, 5000);
+}, 1000);

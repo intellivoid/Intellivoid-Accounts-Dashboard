@@ -2,16 +2,10 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
-    use IntellivoidAccounts\Exceptions\DatabaseException;
-    use IntellivoidAccounts\Exceptions\HostNotKnownException;
-    use IntellivoidAccounts\Exceptions\InvalidIpException;
     use IntellivoidAccounts\Exceptions\TooManyPromptRequestsException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
-    use IntellivoidAccounts\Objects\KnownHost;
-    use sws\Objects\Cookie;
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
