@@ -78,7 +78,6 @@
          */
         public function verifyCode(string $input, bool $remove_code = false): bool
         {
-
             if($this->Enabled == false)
             {
                 return False;

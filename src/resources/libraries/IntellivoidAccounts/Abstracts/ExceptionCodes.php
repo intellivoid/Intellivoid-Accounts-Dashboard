@@ -41,7 +41,6 @@
 
         const InvalidAccountStatusException = 115;
 
-        /** @deprecated  */
         const InsufficientFundsException = 116;
 
         const InvalidVendorException = 117;
@@ -108,4 +107,32 @@
         const AuthPromptAlreadyApprovedException = 146;
 
         const AuthPromptDeniedException = 147;
+
+        const InvalidSubscriptionPlanNameException = 145;
+
+        const InvalidInitialPriceException = 146;
+
+         const InvalidCyclePriceException = 147;
+
+         const InvalidBillingCycleException = 148;
+
+         const InvalidFeatureException = 149;
+
+         const SubscriptionPlanNotFoundException = 150;
+
+         const SubscriptionPlanAlreadyExistsException = 151;
+
+        const InvalidSubscriptionPromotionNameException = 152;
+
+        const SubscriptionPromotionNotFoundException = 153;
+
+        const SubscriptionPromotionAlreadyExistsException = 154;
+
+        const InvalidFundsValueException = 155;
+
+        const InvalidInitialPriceShareException = 156;
+
+        const InvalidCyclePriceShareException = 157;
+
+        const SubscriptionNotActiveException = 158;
     }
