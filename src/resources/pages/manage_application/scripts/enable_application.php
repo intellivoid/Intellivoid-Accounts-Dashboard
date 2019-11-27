@@ -12,7 +12,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-    
+
     if($Application->Status == ApplicationStatus::Suspended)
     {
         Actions::redirect(DynamicalWeb::getRoute('manage_application',

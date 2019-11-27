@@ -2,6 +2,7 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
+use IntellivoidAccounts\Abstracts\ApplicationStatus;
 use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
@@ -11,6 +12,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+    
+    if($Application->Status == ApplicationStatus::Suspended)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        );
+    }
 
     if(isset($_POST['authentication_type']) == false)
     {
