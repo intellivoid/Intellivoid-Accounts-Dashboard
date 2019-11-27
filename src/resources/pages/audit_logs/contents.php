@@ -47,9 +47,7 @@
                                                 /** @var IntellivoidAccounts $IntellivoidAccounts */
                                                 $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
                                             }
-
                                             $AuditRecords = $IntellivoidAccounts->getAuditLogManager()->getNewRecords(WEB_ACCOUNT_ID, 100);
-
                                             if(count($AuditRecords) > 0)
                                             {
                                                 HTML::print("<ul class=\"bullet-line-list ml-4 pb-3\">", false);

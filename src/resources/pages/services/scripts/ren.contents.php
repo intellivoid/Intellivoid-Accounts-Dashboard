@@ -5,7 +5,8 @@
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
+use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\ApplicationAccess;
 
     function list_authorized_services(array $application_access_records)
@@ -31,7 +32,15 @@
                     $ApplicationAccess = ApplicationAccess::fromArray($access_record);
                     if($ApplicationAccess->Status == ApplicationAccessStatus::Authorized)
                     {
-                        $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(ApplicationSearchMethod::byId, $ApplicationAccess->ApplicationID);
+                        try
+                        {
+                            $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(ApplicationSearchMethod::byId, $ApplicationAccess->ApplicationID);
+                        }
+                        catch (ApplicationNotFoundException $e)
+                        {
+                            unset($e);
+                            continue;
+                        }
                         ?>
                         <div class="card accordion-minimal">
                             <div class="card-header" role="tab" id="heading-<?PHP HTML::print($Application->PublicAppId); ?>">
