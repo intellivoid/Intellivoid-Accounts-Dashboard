@@ -3,6 +3,7 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
 use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+use IntellivoidAccounts\Abstracts\ApplicationStatus;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Utilities\Hashing;
@@ -30,6 +31,12 @@ use IntellivoidAccounts\IntellivoidAccounts;
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
+    if($Application->Status == ApplicationStatus::Suspended)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        );
+    }
 
     $Application->Permissions = [];
 
