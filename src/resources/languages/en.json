@@ -54,7 +54,8 @@
             "CALLBACK_104": "The Application already exists in the system",
             "CALLBACK_105": "One or more permissions are not supported or is invalid",
             "CALLBACK_106": "Your application was created successfully",
-            "CALLBACK_107": "The application was not found"
+            "CALLBACK_107": "The application was not found",
+            "CALLBACK_108": "The application has been deleted successfully"
         },
         "manage_application": {
             "CALLBACK_100": "There was an error while trying to process your request, the error was reported to our staff",

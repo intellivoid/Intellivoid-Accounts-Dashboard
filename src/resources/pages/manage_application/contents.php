@@ -52,6 +52,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
                 case 'enable-application':
                     HTML::importScript('enable_application');
                     break;
+
+                case 'delete-application':
+                    HTML::importScript('delete_application');
+                    break;
             }
         }
     }
@@ -223,7 +227,8 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                     </div>
                                     <div class="card-footer">
                                         <div class="row align-items-center">
-                                            <button class="btn btn-success ml-auto mr-2<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>" onclick="$('#permissions-form').submit();"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>Save Changes</button>
+                                            <button class="btn btn-danger ml-auto mr-2" data-toggle="modal" data-target="#delete-application"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>Delete Application</button>
+                                            <button class="btn btn-success mr-2<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>" onclick="$('#permissions-form').submit();"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>Save Changes</button>
                                         </div>
                                     </div>
                                 </div>
@@ -231,6 +236,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                         </div>
 
                     </div>
+                    <?PHP HTML::importScript('dialog.delete_application'); ?>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
