@@ -8,6 +8,7 @@ use IntellivoidAccounts\Abstracts\AuthenticationMode;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
 
+    HTML::importScript('render_alert');
     HTML::importScript('check_application');
 
     /** @var Application $Application */
@@ -55,6 +56,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
         }
     }
 
+    $Suspended = false;
+
+    if($Application->Status == ApplicationStatus::Suspended)
+    {
+        $Suspended = true;
+    }
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -70,6 +78,12 @@ use IntellivoidAccounts\IntellivoidAccounts;
                 <div class="main-panel container">
                     <div class="content-wrapper">
                         <?PHP HTML::importScript('callbacks'); ?>
+                        <?PHP
+                            if($Suspended)
+                            {
+                                RenderAlert("The application is currently suspended, no changes can be made to this application at this time", "warning", "mdi-alert-circle");
+                            }
+                        ?>
                         <div class="row">
                             <div class="col-md-4 d-flex align-items-stretch">
                                 <div class="row flex-grow">
@@ -100,17 +114,25 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                     </div>
                                                 </form>
                                                 <?PHP
-                                                    if($Application->Status == ApplicationStatus::Active)
+                                                    switch($Application->Status)
                                                     {
-                                                        ?>
-                                                        <button class="btn btn-block btn-danger mt-3" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'disable-application'), true); ?>'">Disable Application</button>
-                                                        <?PHP
-                                                    }
-                                                    else
-                                                    {
-                                                        ?>
-                                                        <button class="btn btn-block btn-success mt-3" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'enable-application'), true); ?>'">Enable Application</button>
-                                                        <?PHP
+                                                        case ApplicationStatus::Active:
+                                                            ?>
+                                                            <button class="btn btn-block btn-danger mt-4" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'disable-application'), true); ?>'">Disable Application</button>
+                                                            <?PHP
+                                                            break;
+
+                                                        case ApplicationStatus::Disabled:
+                                                            ?>
+                                                            <button class="btn btn-block btn-success mt-4" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'enable-application'), true); ?>'">Enable Application</button>
+                                                            <?PHP
+                                                            break;
+
+                                                        case ApplicationStatus::Suspended:
+                                                            ?>
+                                                            <button class="btn btn-block btn-outline-warning disabled mt-4" disabled>Suspended</button>
+                                                            <?PHP
+                                                            break;
                                                     }
                                                 ?>
 
@@ -133,7 +155,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="input-group">
                                                     <input type="text" class="form-control border-danger bg-white" id="app_secret_key" data-toggle="tooltip" data-placement="bottom" title="This is for creating authentication requests, don't share it!" value="<?PHP HTML::print($Application->SecretKey); ?>" aria-readonly="true" readonly>
                                                     <div class="input-group-append">
-                                                        <button class="input-group-btn btn btn-light border-danger">
+                                                        <button class="input-group-btn btn btn-light border-danger"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
                                                             <i class="mdi mdi-reload"></i>
                                                         </button>
                                                     </div>
@@ -148,7 +170,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                         <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-auth-mode'), true); ?>" method="POST">
                                             <div class="form-group">
                                                 <label for="authentication_type">Authentication Type</label>
-                                                <select class="form-control" name="authentication_type" id="authentication_type" onchange="this.form.submit();">
+                                                <select class="form-control" name="authentication_type" id="authentication_type" onchange="this.form.submit();"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
                                                     <option value="redirect"<?PHP if($Application->AuthenticationMode == AuthenticationMode::Redirect){ HTML::print(" selected", false); } ?>>Redirect</option>
                                                     <option value="placeholder"<?PHP if($Application->AuthenticationMode == AuthenticationMode::ApplicationPlaceholder){ HTML::print(" selected", false); } ?>>Application Placeholder</option>
                                                     <option value="code"<?PHP if($Application->AuthenticationMode == AuthenticationMode::Code){ HTML::print(" selected", false); } ?>>Code</option>
@@ -161,7 +183,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_view_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?>> View Personal Information
+                                                            <input type="checkbox" name="perm_view_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>> View Personal Information
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -169,7 +191,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::MakePurchases, $Application->Permissions)){HTML::print(' checked'); } ?>>  Make purchases
+                                                            <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::MakePurchases, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>  Make purchases
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -179,7 +201,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?>> View Email Address
+                                                            <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>> View Email Address
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -187,7 +209,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::TelegramNotifications, $Application->Permissions)){HTML::print(' checked'); } ?>> Telegram Notifications
+                                                            <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::TelegramNotifications, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>> Telegram Notifications
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
@@ -201,7 +223,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                     </div>
                                     <div class="card-footer">
                                         <div class="row align-items-center">
-                                            <button class="btn btn-success ml-auto mr-2" onclick="$('#permissions-form').submit();">Save Changes</button>
+                                            <button class="btn btn-success ml-auto mr-2<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>" onclick="$('#permissions-form').submit();"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>Save Changes</button>
                                         </div>
                                     </div>
                                 </div>

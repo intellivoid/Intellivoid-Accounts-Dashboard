@@ -1,11 +1,7 @@
 <?php
 
-    use DynamicalWeb\HTML;
-
     if(isset($_GET['callback']))
     {
-        HTML::importScript('render_alert');
-
         switch((int)$_GET['callback'])
         {
             case 100:
@@ -69,7 +65,7 @@
                 break;
 
              case 115:
-                RenderAlert(TEXT_CALLBACK_115, "success", "mdi-checkbox-marked-circle-outline");
+                RenderAlert(TEXT_CALLBACK_115, "danger", "mdi-alert-circle");
                 break;
         }
     }
