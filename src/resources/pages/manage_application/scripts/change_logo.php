@@ -2,7 +2,8 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\ApplicationStatus;
+use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
 use udp\Exceptions\FileUploadException;
 use udp\Exceptions\ImageTooSmallException;
@@ -16,6 +17,12 @@ use udp\Exceptions\UnsupportedFileTypeException;
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
+    if($Application->Status == ApplicationStatus::Suspended)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        );
+    }
 
     try
     {

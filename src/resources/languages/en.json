@@ -71,7 +71,8 @@
             "CALLBACK_111": "Secret key updated successfully",
             "CALLBACK_112": "The logo has been changed successfully",
 			"CALLBACK_113": "The Application has been disabled successfully",
-			"CALLBACK_114": "The Application has been enabled successfully"
+			"CALLBACK_114": "The Application has been enabled successfully",
+			"CALLBACK_115": "Access Denied, the Application is currently suspended"
         },
         "login_security":
         {
