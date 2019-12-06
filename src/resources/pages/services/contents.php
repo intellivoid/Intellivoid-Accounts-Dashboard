@@ -3,7 +3,9 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
+use IntellivoidAccounts\IntellivoidAccounts;
 
     HTML::importScript('revoke_access');
     HTML::importScript('ren.contents');
@@ -47,6 +49,7 @@
 
                                                 $ApplicationAccessRecords = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->searchRecordsByAccount(WEB_ACCOUNT_ID);
                                                 $TotalAccessCount = 0;
+                                                $Applications = array();
 
                                                 if(count($ApplicationAccessRecords) > 0)
                                                 {
@@ -55,13 +58,25 @@
                                                         if($record['status'] == ApplicationAccessStatus::Authorized)
                                                         {
                                                             $TotalAccessCount += 1;
+
+                                                            try
+                                                            {
+                                                                $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(ApplicationSearchMethod::byId, $record['application_id']);
+                                                                $Applications[$record['application_id']] = $Application;
+                                                            }
+                                                            catch (Exception $e)
+                                                            {
+                                                                unset($e);
+                                                                $TotalAccessCount -= 1;
+                                                                continue;
+                                                            }
                                                         }
                                                     }
                                                 }
 
                                                 if($TotalAccessCount > 0)
                                                 {
-                                                    list_authorized_services($ApplicationAccessRecords);
+                                                    list_authorized_services($ApplicationAccessRecords, $Applications);
                                                 }
                                                 else
                                                 {

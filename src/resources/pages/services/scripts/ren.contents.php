@@ -9,7 +9,7 @@ use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\ApplicationAccess;
 
-    function list_authorized_services(array $application_access_records)
+    function list_authorized_services(array $application_access_records, array $applications)
     {
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
         {
@@ -32,13 +32,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
                     $ApplicationAccess = ApplicationAccess::fromArray($access_record);
                     if($ApplicationAccess->Status == ApplicationAccessStatus::Authorized)
                     {
-                        try
+                        if(isset($Applications[$ApplicationAccess->ApplicationID]))
                         {
-                            $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(ApplicationSearchMethod::byId, $ApplicationAccess->ApplicationID);
+                            /** @var Application $Application */
+                            $Application = $applications[$ApplicationAccess->ID];
                         }
-                        catch (ApplicationNotFoundException $e)
+                        else
                         {
-                            unset($e);
                             continue;
                         }
                         ?>
