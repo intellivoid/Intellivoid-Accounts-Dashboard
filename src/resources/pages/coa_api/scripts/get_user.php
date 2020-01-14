@@ -22,57 +22,8 @@
     $Response = array(
         'status' => true,
         'status_code' => 200,
-        'permissions' => array(),
         'user' => array()
     );
-
-    if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ViewEmailAddress))
-    {
-        if($AuthenticationAccess->has_permission(AccountRequestPermissions::ViewEmailAddress))
-        {
-            $Response['permissions']['view_email_address'] = true;
-        }
-        else
-        {
-            $Response['permissions']['view_email_address'] = false;
-        }
-    }
-
-    if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ReadPersonalInformation))
-    {
-        if($AuthenticationAccess->has_permission(AccountRequestPermissions::ReadPersonalInformation))
-        {
-            $Response['permissions']['read_personal_information'] = true;
-        }
-        else
-        {
-            $Response['permissions']['read_personal_information'] = false;
-        }
-    }
-
-    if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::TelegramNotifications))
-    {
-        if($AuthenticationAccess->has_permission(AccountRequestPermissions::TelegramNotifications))
-        {
-            $Response['permissions']['send_telegram_notifications'] = true;
-        }
-        else
-        {
-            $Response['permissions']['send_telegram_notifications'] = false;
-        }
-    }
-
-    if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::MakePurchases))
-    {
-        if($AuthenticationAccess->has_permission(AccountRequestPermissions::MakePurchases))
-        {
-            $Response['permissions']['make_purchases'] = true;
-        }
-        else
-        {
-            $Response['permissions']['make_purchases'] = false;
-        }
-    }
 
     $Domain = 'https://accounts.intellivoid.info';
     $Response['user']['tag'] = $Account->ID;
