@@ -22,14 +22,14 @@
     $Response = array(
         'status' => true,
         'status_code' => 200,
-        'user' => array()
+        'user_information' => array()
     );
 
     $Domain = 'https://accounts.intellivoid.info';
-    $Response['user']['tag'] = $Account->ID;
-    $Response['user']['public_id'] = $Account->PublicID;
-    $Response['user']['username'] = $Account->Username;
-    $Response['user']['avatar'] = array(
+    $Response['user_information']['tag'] = $Account->ID;
+    $Response['user_information']['public_id'] = $Account->PublicID;
+    $Response['user_information']['username'] = $Account->Username;
+    $Response['user_information']['avatar'] = array(
         'normal' =>     $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'normal')),
         'original' =>   $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'original')),
         'preview' =>    $Domain . DynamicalWeb::getRoute('avatar', array('user_id' => $Account->PublicID, 'resource' => 'preview')),
@@ -41,14 +41,14 @@
     {
         if ($AuthenticationAccess->has_permission(AccountRequestPermissions::ViewEmailAddress))
         {
-            $Response['user']['email_address'] = array(
+            $Response['user_information']['email_address'] = array(
                 'available' => true,
                 'value' => $Account->Email
             );
         }
         else
         {
-            $Response['user']['email_address'] = array(
+            $Response['user_information']['email_address'] = array(
                 'available' => false
             );
         }
@@ -58,7 +58,7 @@
     {
         if($AuthenticationAccess->has_permission(AccountRequestPermissions::ReadPersonalInformation))
         {
-            $Response['user']['personal_information'] = array(
+            $Response['user_information']['personal_information'] = array(
                 'available' => true,
                 'first_name' => array(),
                 'last_name' => array(),
@@ -67,14 +67,14 @@
 
             if($Account->PersonalInformation->FirstName == null)
             {
-                $Response['user']['personal_information']['first_name'] = array(
+                $Response['user_information']['personal_information']['first_name'] = array(
                     'available' => false,
                     'value' => null
                 );
             }
             else
             {
-                $Response['user']['personal_information']['first_name'] = array(
+                $Response['user_information']['personal_information']['first_name'] = array(
                     'available' => true,
                     'value' => $Account->PersonalInformation->FirstName
                 );
@@ -82,14 +82,14 @@
 
             if($Account->PersonalInformation->LastName == null)
             {
-                $Response['user']['personal_information']['last_name'] = array(
+                $Response['user_information']['personal_information']['last_name'] = array(
                     'available' => false,
                     'value' => null
                 );
             }
             else
             {
-                $Response['user']['personal_information']['last_name'] = array(
+                $Response['user_information']['personal_information']['last_name'] = array(
                     'available' => true,
                     'value' => $Account->PersonalInformation->LastName
                 );
@@ -97,7 +97,7 @@
 
             if($Account->PersonalInformation->BirthDate->Day == null)
             {
-                $Response['user']['personal_information']['birthday'] = array(
+                $Response['user_information']['personal_information']['birthday'] = array(
                     'available' => false,
                     'day' => null,
                     'month' => null,
@@ -106,7 +106,7 @@
             }
             else
             {
-                $Response['user']['personal_information']['birthday'] = array(
+                $Response['user_information']['personal_information']['birthday'] = array(
                     'available' => true,
                     'day' => (int)$Account->PersonalInformation->BirthDate->Day,
                     'month' => (int)$Account->PersonalInformation->BirthDate->Month,
@@ -116,7 +116,7 @@
         }
         else
         {
-            $Response['user']['personal_information'] = array(
+            $Response['user_information']['personal_information'] = array(
                 'available' => false
             );
         }
