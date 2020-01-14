@@ -4,6 +4,7 @@
     namespace IntellivoidAccounts\Objects\COA;
 
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+    use IntellivoidAccounts\Exceptions\InvalidApplicationFlagException;
     use IntellivoidAccounts\Exceptions\InvalidRequestPermissionException;
     use IntellivoidAccounts\Utilities\Validate;
 
@@ -14,7 +15,7 @@
     class Application
     {
         /**
-         * Unique Internal Databsae ID
+         * Unique Internal Database ID
          *
          * @var int
          */
@@ -75,6 +76,13 @@
          * @var int
          */
         public $AccountID;
+
+        /**
+         * Flags associated with this Application
+         *
+         * @var array
+         */
+        public $Flags;
 
         /**
          * The Unix Timestamp of when this Application was registered
@@ -139,6 +147,75 @@
         }
 
         /**
+         * Applies a flag to this Application
+         *
+         * @param string $flag
+         * @return bool
+         */
+        public function apply_flag(string $flag): bool
+        {
+            if($this->has_flag($flag))
+            {
+                return false;
+            }
+
+            $this->Flags[] = $flag;
+            return true;
+        }
+
+        /**
+         * Removes an existing flag from this Application
+         *
+         * @param string $flag
+         * @return bool
+         */
+        public function remove_flag(string $flag): bool
+        {
+            if($this->has_flag($flag) == false)
+            {
+                return false;
+            }
+
+            $this->Flags = array_diff($this->Flags, [$flag]);
+            return true;
+        }
+
+        /**
+         * Determines if the Application has the specified permission
+         *
+         * @param string $permission
+         * @return bool
+         */
+        public function has_permission(string $permission): bool
+        {
+            if($this->Permissions !== null)
+            {
+                if(in_array($permission, $this->Permissions))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Determines if the Application has the specified flag
+         *
+         * @param string $flag
+         * @return bool
+         */
+        public function has_flag(string $flag): bool
+        {
+            if(in_array($flag, $this->Flags))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /**
          * Returns an array that represents this object
          *
          * @return array
@@ -155,8 +232,9 @@
                 'status' => $this->Status,
                 'authentication_mode' => $this->AuthenticationMode,
                 'account_id' => $this->AccountID,
-                'creation_timestamp' => $this->CreationTimestamp,
-                'last_updated_timestamp' => $this->LastUpdatedTimestamp
+                'flags' => $this->Flags,
+                'creation_timestamp' => (int)$this->CreationTimestamp,
+                'last_updated_timestamp' => (int)$this->LastUpdatedTimestamp
             );
         }
 
@@ -209,6 +287,33 @@
             if(isset($data['account_id']))
             {
                 $ApplicationObject->AccountID = (int)$data['account_id'];
+            }
+
+            if(isset($data['flags']))
+            {
+                $ApplicationObject->Flags = $data['flags'];
+            }
+            else
+            {
+                $ApplicationObject->Flags = [];
+            }
+
+            if(isset($data['creation_timestamp']))
+            {
+                $ApplicationObject->CreationTimestamp = (int)$data['creation_timestamp'];
+            }
+            else
+            {
+                $ApplicationObject->CreationTimestamp = 0;
+            }
+
+            if(isset($data['last_updated_timestamp']))
+            {
+                $ApplicationObject->LastUpdatedTimestamp = (int)$data['last_updated_timestamp'];
+            }
+            else
+            {
+                $ApplicationObject->LastUpdatedTimestamp = 0;
             }
 
             return $ApplicationObject;

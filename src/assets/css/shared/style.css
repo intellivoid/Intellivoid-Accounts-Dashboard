@@ -362,7 +362,7 @@ textarea {
 
 button,
 input {
-  overflow: visible; }
+  overflow: visible;}
 
 button,
 select {
@@ -1684,6 +1684,19 @@ pre {
     -ms-overflow-style: -ms-autohiding-scrollbar; }
     .table-responsive-xl > .table-bordered {
       border: 0; } }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+  border-color: #8862e0 !important;
+}
 
 .table-responsive {
   display: block;
@@ -4566,22 +4579,6 @@ input[type="button"].btn-block {
     .card-columns .card {
       display: inline-block;
       width: 100%; } }
-
-.accordion .card:not(:first-of-type):not(:last-of-type) {
-  border-bottom: 0;
-  border-radius: 0; }
-
-.accordion .card:not(:first-of-type) .card-header:first-child {
-  border-radius: 0; }
-
-.accordion .card:first-of-type {
-  border-bottom: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; }
-
-.accordion .card:last-of-type {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
 
 .breadcrumb {
   display: -webkit-box;
@@ -9161,7 +9158,9 @@ pre {
   display: flex; }
   .image-grouped img {
     border-radius: 100%;
-    margin-left: -5px;
+    margin-left: -15px;
+    width: 60px;
+    height: 60px;
     border: 2px solid #ffffff; }
     .image-grouped img:first-child {
       margin-left: 0; }

@@ -13,7 +13,10 @@
         'avatar',
         'application_icon',
         'otl_api',
-        'khm_api'
+        'khm_api',
+        'coa_api',
+        'application_error',
+        'landing_page'
     ];
 
     $unauthorized_pages = [
@@ -24,7 +27,9 @@
     $verification_pages = [
         'verify',
         'verify_mobile',
+        'verify_telegram',
         'verify_recovery_code',
+        'telegram_poll',
         'logout'
     ];
 
@@ -45,11 +50,19 @@
 
     function execute_authentication_check(array $unauthorized_pages, array $verification_pages)
     {
+        $GetParameters = $_GET;
+        unset($GetParameters['callback']);
+
         /** @var sws $sws */
         $sws = DynamicalWeb::setMemoryObject('sws', new sws());
 
         if($sws->WebManager()->isCookieValid('intellivoid_secured_web_session') == false)
         {
+            if(APP_CURRENT_PAGE == 'index')
+            {
+                Actions::redirect(DynamicalWeb::getRoute('landing_page'));
+            }
+
             $Cookie = $sws->CookieManager()->newCookie('intellivoid_secured_web_session', 86400, false);
 
             $Cookie->Data = array(
@@ -79,15 +92,29 @@
                 exit();
             }
 
-            if(isset($_GET['callback']))
+            $Location =  null;
+
+            if(isset($_GET['redirect']))
             {
-                header('Refresh: 2; URL=/auth/login?callback=' . urlencode($_GET['callback']));
+                switch(strtolower($_GET['redirect']))
+                {
+
+                    case 'register':
+                        $Location = DynamicalWeb::getRoute('register', $_GET);
+                        break;
+
+                    case 'login':
+                    default:
+                        $Location = DynamicalWeb::getRoute('login', $_GET);
+                        break;
+                }
             }
             else
             {
-                header('Refresh: 2; URL=/auth/login');
+                $Location = DynamicalWeb::getRoute('login', $_GET);
             }
 
+            header('Refresh: 2; URL=' . $Location);
             HTML::importScript('loader');
             exit();
         }
@@ -121,6 +148,11 @@
 
         if(WEB_SESSION_ACTIVE == false)
         {
+            if(APP_CURRENT_PAGE == 'index')
+            {
+                Actions::redirect(DynamicalWeb::getRoute('landing_page'));
+            }
+
             $redirect = true;
 
             foreach($unauthorized_pages as $page)
@@ -133,7 +165,7 @@
 
             if($redirect == true)
             {
-                Actions::redirect(DynamicalWeb::getRoute('login'));
+                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
         }
         else
@@ -151,16 +183,14 @@
 
                     if(time() > WEB_AUTO_LOGOUT)
                     {
-                        Actions::redirect(DynamicalWeb::getRoute('login', array(
-                            'callback' => '107'
-                        )));
+                        $GetParameters['callback'] = '107';
+                        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
                     {
-                        Actions::redirect(DynamicalWeb::getRoute('login', array(
-                            'callback' => '108'
-                        )));
+                        $GetParameters['callback'] = '108';
+                        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
                     }
                 }
 
@@ -176,7 +206,7 @@
 
                 if($redirect == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('verify'));
+                    Actions::redirect(DynamicalWeb::getRoute('verify', $GetParameters));
                 }
             }
             else
@@ -193,7 +223,7 @@
 
                 if($redirect == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('index'));
+                    Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
                 }
             }
 

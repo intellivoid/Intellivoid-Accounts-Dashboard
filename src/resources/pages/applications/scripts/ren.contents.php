@@ -4,7 +4,7 @@
     use DynamicalWeb\HTML;
 use IntellivoidAccounts\Abstracts\ApplicationStatus;
 
-function render_items(array $items)
+    function render_items(array $items)
     {
         HTML::print("<div class=\"card-body no-gutter\">", false);
         foreach($items as $application)

@@ -6,6 +6,9 @@
 
     if(WEB_SESSION_ACTIVE == true)
     {
+        $GetParameters = $_GET;
+        unset($GetParameters['callback']);
+
         /** @var sws $sws */
         $sws = DynamicalWeb::getMemoryObject('sws');
 
@@ -21,5 +24,5 @@
 
         $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
 
-        Actions::redirect(DynamicalWeb::getRoute('login'));
+        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
     }

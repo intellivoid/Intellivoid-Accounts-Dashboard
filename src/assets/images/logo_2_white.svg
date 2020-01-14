@@ -1,0 +1,39 @@
+<svg width="130" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="32" width="132" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <defs>
+   <path id="svg_10" d="m1257.87,639.92c0,340.94 -276.86,617.75 -617.87,617.75c-341.01,0 -617.87,-276.81 -617.87,-617.75c0,-340.95 276.86,-617.75 617.87,-617.75c341.01,0 617.87,276.8 617.87,617.75z"/>
+   <path id="svg_9" d="m945.03,171.81l-770.06,770.77l770.06,0l0,-770.77z"/>
+   <path id="svg_8" d="m626.54,791.95l150.48,150.63l-300.97,0l-300.95,0l150.46,-150.63l150.49,-150.63l150.49,150.63z"/>
+   <path id="svg_7" d="m626.6,490.67l150.42,-150.62l-0.02,301.28l-0.02,301.26l-150.4,-150.63l-150.4,-150.65l150.42,-150.64z"/>
+  </defs>
+  <g stroke="null" id="svg_23">
+   <g stroke="null" transform="matrix(0.02236306485559045,0,0,0.022172648315216866,-23669.523988829624,-5393.879108170536) " id="svg_12">
+    <g stroke="null" id="svg_13">
+     <use stroke="null" x="1058461.355873" y="243302.806995" id="svg_14" fill="#ffffff" xlink:href="#svg_10"/>
+     <g stroke="null" id="svg_15">
+      <use stroke="#002cff" x="1058461.355873" y="243302.806995" id="svg_16" stroke-width="45" fill-opacity="0" xlink:href="#svg_10"/>
+     </g>
+    </g>
+    <g stroke="null" id="svg_17">
+     <use stroke="null" x="1058461.355873" y="243302.806995" id="svg_18" fill="#183db0" xlink:href="#svg_9"/>
+    </g>
+    <g stroke="null" id="svg_19">
+     <use stroke="null" x="1058461.355873" y="243302.806995" id="svg_20" fill="#2162f2" xlink:href="#svg_8"/>
+    </g>
+    <g stroke="null" id="svg_21">
+     <use stroke="null" x="1058461.355873" y="243302.806995" id="svg_22" fill="#3a50dc" xlink:href="#svg_7"/>
+    </g>
+   </g>
+  </g>
+  <text stroke="#000" transform="matrix(0.9458836420013979,0,0,0.901753598419475,6.113058975814847,-0.5006156522062262) " xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="21" id="svg_24" y="19.333237" x="29.917452" stroke-width="0" fill="#ffffff">Intellivoid</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="9" id="svg_25" y="27.49972" x="35.750654" stroke-width="0" stroke="#000" fill="#e5e5e5">Accounts</text>
+ </g>
+</svg>

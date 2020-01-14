@@ -45,6 +45,7 @@
 
         const InvalidVendorException = 117;
 
+        /** @deprecated  */
         const InvalidTransactionTypeException = 118;
 
         const TransactionRecordNotFoundException = 119;
@@ -83,4 +84,54 @@
         const OtlNotFoundException = 135;
 
         const InvalidApplicationNameException = 136;
+
+        const InvalidEventTypeException = 137;
+
+        const ApplicationAccessNotFoundException = 138;
+
+        const InvalidApplicationFlagException = 139;
+
+        const TelegramApiException = 140;
+
+        const TelegramServicesNotAvailableException = 141;
+
+        const InvalidUrlException = 142;
+
+        const TooManyPromptRequestsException = 143;
+
+        const AuthNotPromptedException = 144;
+
+        const AuthPromptExpiredException = 145;
+
+        const AuthPromptAlreadyApprovedException = 146;
+
+        const AuthPromptDeniedException = 147;
+
+        const InvalidSubscriptionPlanNameException = 145;
+
+        const InvalidInitialPriceException = 146;
+
+         const InvalidCyclePriceException = 147;
+
+         const InvalidBillingCycleException = 148;
+
+         const InvalidFeatureException = 149;
+
+         const SubscriptionPlanNotFoundException = 150;
+
+         const SubscriptionPlanAlreadyExistsException = 151;
+
+        const InvalidSubscriptionPromotionNameException = 152;
+
+        const SubscriptionPromotionNotFoundException = 153;
+
+        const SubscriptionPromotionAlreadyExistsException = 154;
+
+        const InvalidFundsValueException = 155;
+
+        const InvalidInitialPriceShareException = 156;
+
+        const InvalidCyclePriceShareException = 157;
+
+        const SubscriptionNotActiveException = 158;
     }

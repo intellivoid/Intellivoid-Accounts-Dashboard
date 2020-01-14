@@ -13,6 +13,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
+    if($Application->Status == ApplicationStatus::Suspended)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        );
+}
+
     $Timestamp = (int)time();
     $Application->Status = ApplicationStatus::Disabled;
     $Application->LastUpdatedTimestamp = $Timestamp;

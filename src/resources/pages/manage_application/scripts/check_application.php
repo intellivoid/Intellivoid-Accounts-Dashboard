@@ -9,10 +9,10 @@
 
     Runtime::import('IntellivoidAccounts');
 
-        if(isset($_GET['pub_id']) == false)
-        {
-            Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '107')));
-        }
+    if(isset($_GET['pub_id']) == false)
+    {
+        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '107')));
+    }
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {

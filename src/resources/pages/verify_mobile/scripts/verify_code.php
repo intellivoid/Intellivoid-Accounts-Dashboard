@@ -60,11 +60,15 @@
      */
     function execute_verification()
     {
+        $GetParameters = $_GET;
+        unset($GetParameters['callback']);
+        unset($GetParameters['incorrect_auth']);
+        unset($GetParameters['action']);
+
         if(isset($_POST['code']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('verify_mobile', array(
-                'callback' => '100'
-            )));
+            $GetParameters['callback'] = '100';
+            Actions::redirect(DynamicalWeb::getRoute('verify_mobile', $GetParameters));
         }
 
         /** @var Account $Account */
@@ -87,10 +91,9 @@
             $Cookie->Data["verification_attempts"] += 1;
             $sws->CookieManager()->updateCookie($Cookie);
 
-            Actions::redirect(DynamicalWeb::getRoute('verify_mobile', array(
-                'callback' => '101',
-                'incorrect_auth' => '1'
-            )));
+            $GetParameters['callback'] = '101';
+            $GetParameters['incorrect_auth'] = '1';
+            Actions::redirect(DynamicalWeb::getRoute('verify_mobile',  $GetParameters));
         }
 
         $Cookie->Data["verification_required"] = false;
@@ -106,6 +109,6 @@
         );
 
         HTML::importScript('sync_avatar');
-        Actions::redirect(DynamicalWeb::getRoute('index'));
+        Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
         exit();
     }

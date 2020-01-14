@@ -6,7 +6,8 @@
 
     if(WEB_SUDO_MODE == false)
     {
-        Actions::redirect('/auth/sudo?redirect=' . urlencode(APP_CURRENT_PAGE));
+        $_GET['redirect'] = APP_CURRENT_PAGE;
+        Actions::redirect(DynamicalWeb::getRoute('sudo', $_GET));
     }
     else
     {

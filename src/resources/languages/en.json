@@ -20,7 +20,8 @@
             "CALLBACK_105": "You are not authorized to login to this account due to suspicious activities",
             "CALLBACK_106": "Your account has been created, you can login now.",
             "CALLBACK_107": "Your session has expired, please login again",
-            "CALLBACK_108": "Please authorize yourself again"
+            "CALLBACK_108": "Please authorize yourself again",
+            "CALLBACK_109": "Authentication Denied"
         },
         "register": {
             "PAGE_TITLE": "DynamicalWeb",
@@ -40,7 +41,10 @@
             "CALLBACK_103": "Your name has been updated",
             "CALLBACK_104": "There was an issue while trying to update your information",
             "CALLBACK_105": "The given date is invalid",
-            "CALLBACK_106": "Your birthday has been updated"
+            "CALLBACK_106": "Your birthday has been updated",
+            "CALLBACK_107": "There was an issue while trying to clear your information",
+            "CALLBACK_108": "Your birthday was cleared and now no longer exists, happy birthday?",
+            "CALLBACK_109": "Your First and Last name was cleared"
         },
         "applications": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
@@ -50,7 +54,9 @@
             "CALLBACK_104": "The Application already exists in the system",
             "CALLBACK_105": "One or more permissions are not supported or is invalid",
             "CALLBACK_106": "Your application was created successfully",
-            "CALLBACK_107": "The application was not found"
+            "CALLBACK_107": "The application was not found",
+            "CALLBACK_108": "The application has been deleted successfully",
+            "CALLBACK_109": "Your account currently holds the maximum amount of Applications"
         },
         "manage_application": {
             "CALLBACK_100": "There was an error while trying to process your request, the error was reported to our staff",
@@ -67,7 +73,8 @@
             "CALLBACK_111": "Secret key updated successfully",
             "CALLBACK_112": "The logo has been changed successfully",
 			"CALLBACK_113": "The Application has been disabled successfully",
-			"CALLBACK_114": "The Application has been enabled successfully"
+			"CALLBACK_114": "The Application has been enabled successfully",
+			"CALLBACK_115": "Access Denied, the Application is currently suspended"
         },
         "login_security":
         {
@@ -78,7 +85,14 @@
             "CALLBACK_104": "Recovery Codes cannot be disabled since it's not enabled.",
             "CALLBACK_105": "Recovery Codes verification has been disabled.",
             "CALLBACK_106": "You cannot setup Recovery Codes Verification since it's already enabled",
-            "CALLBACK_107": "Recovery Codes has been enabled"
+            "CALLBACK_107": "Recovery Codes has been enabled",
+            "CALLBACK_108": "Your Intellivoid Account is already linked to a Telegram Account",
+            "CALLBACK_109": "Your Telegram Client is invalid",
+            "CALLBACK_110": "There was an unknown error while trying to process your request",
+            "CALLBACK_111": "This Telegram is already linked to another account, to unlink your Telegram send /unlink",
+            "CALLBACK_112": "You have successfully linked your Telegram to your Intellivoid Account",
+            "CALLBACK_113": "There is no Telegram account linked to your Intellivoid Account",
+            "CALLBACK_114": "Your Telegram account has been unlinked successfully"
         },
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"
@@ -90,9 +104,29 @@
         "setup_recovery_codes": {
             "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         },
+        "verify":
+        {
+            "CALLBACK_100": "This method of verification is not available right now",
+            "CALLBACK_101": "There was an error while trying to process your request",
+            "CALLBACK_102": "Too many authentication attempts, try again later",
+            "CALLBACK_103": "There was an issue while trying to send an Authentication Prompt",
+            "CALLBACK_104": "Unable to verify prompt authentication",
+            "CALLBACK_105": "The authentication prompt has been denied",
+            "CALLBACK_106": "The authentication prompt has expired"
+        },
         "verify_mobile": {
             "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
             "CALLBACK_101": "Incorrect verification code"
+        },
+        "verify_recovery_code": {
+            "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
+            "CALLBACK_101": "Incorrect or already used recovery code"
+        },
+        "services": {
+            "CALLBACK_100": "The requested resource was not found or does not exist",
+            "CALLBACK_101": "There was an error while trying to process your request",
+            "CALLBACK_102": "Access to this Service/Application has been revoked successfully",
+            "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
         }
     },
     "sections": {

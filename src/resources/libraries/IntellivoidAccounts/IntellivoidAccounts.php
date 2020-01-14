@@ -6,20 +6,27 @@
     use Exception;
     use IntellivoidAccounts\Managers\AccountManager;
     use IntellivoidAccounts\Managers\ApplicationManager;
+    use IntellivoidAccounts\Managers\AuditLogManager;
     use IntellivoidAccounts\Managers\CrossOverAuthenticationManager;
     use IntellivoidAccounts\Managers\KnownHostsManager;
     use IntellivoidAccounts\Managers\LoginRecordManager;
     use IntellivoidAccounts\Managers\OtlManager;
+    use IntellivoidAccounts\Managers\SubscriptionManager;
+    use IntellivoidAccounts\Managers\SubscriptionPlanManager;
+    use IntellivoidAccounts\Managers\SubscriptionPromotionManager;
     use IntellivoidAccounts\Managers\TelegramClientManager;
     use IntellivoidAccounts\Managers\TelegramVerificationCodeManager;
     use IntellivoidAccounts\Managers\TrackingUserAgentManager;
+    use IntellivoidAccounts\Managers\TransactionManager;
     use IntellivoidAccounts\Managers\TransactionRecordManager;
+    use IntellivoidAccounts\Services\Telegram;
     use mysqli;
     use udp\udp;
 
     $LocalDirectory = __DIR__ . DIRECTORY_SEPARATOR;
 
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'AccountSearchMethod.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'ApplicationAccessSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'ApplicationSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'AuthenticationAccessSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'AuthenticationRequestSearchMethod.php');
@@ -27,13 +34,19 @@
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'LoginRecordMultiSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'LoginRecordSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'OtlSearchMethod.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'SubscriptionPlanSearchMethod.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'SubscriptionPromotionSearchMethod.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'SubscriptionSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'TelegramClientSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'TelegramVerificationCodeSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'TrackingUserAgentSearchMethod.php');
-    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'TransactionRecordSearchMethod.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SearchMethods' . DIRECTORY_SEPARATOR . 'TransactionLogSearchMethod.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'AccountRequestPermissions.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'AccountStatus.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'ApplicationAccessStatus.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'ApplicationFlags.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'ApplicationStatus.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'AuditEventType.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'AuthenticationAccessStatus.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'AuthenticationMode.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'AuthenticationRequestStatus.php');
@@ -41,18 +54,24 @@
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'LoginStatus.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'OperatorType.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'OtlStatus.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SubscriptionPlanStatus.php');
+    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'SubscriptionPromotionStatus.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'TelegramChatType.php');
     include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'TelegramVerificationCodeStatus.php');
-    include_once($LocalDirectory . 'Abstracts' . DIRECTORY_SEPARATOR . 'TransactionType.php');
 
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AccountLimitedException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AccountNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AccountSuspendedException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'ApplicationAccessNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'ApplicationAlreadyExistsException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'ApplicationNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthenticationAccessNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthenticationRequestAlreadyUsedException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthenticationRequestNotFoundException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthNotPromptedException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthPromptAlreadyApprovedException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthPromptDeniedException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'AuthPromptExpiredException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'ConfigurationNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'DatabaseException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'EmailAlreadyExistsException.php');
@@ -61,9 +80,18 @@
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'IncorrectLoginDetailsException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InsufficientFundsException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidAccountStatusException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidApplicationFlagException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidApplicationNameException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidArgumentException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidBillingCycleException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidCyclePriceException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidCyclePriceShareException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidEmailException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidEventTypeException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidFeatureException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidFundsValueException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidInitialPriceException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidInitialPriceShareException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidIpException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidLoginStatusException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidMessageContentException.php');
@@ -71,29 +99,45 @@
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidPasswordException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidRequestPermissionException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidSearchMethodException.php');
-    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidTransactionTypeException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidSubscriptionPlanNameException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidSubscriptionPromotionNameException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidUrlException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidUsernameException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'InvalidVendorException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'LoginRecordNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'OtlNotFoundException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'SubscriptionNotActiveException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'SubscriptionPlanAlreadyExistsException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'SubscriptionPlanNotFoundException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'SubscriptionPromotionAlreadyExistsException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'SubscriptionPromotionNotFoundException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TelegramActionFailedException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TelegramApiException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TelegramClientNotFoundException.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TelegramServicesNotAvailableException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TelegramVerificationCodeNotFound.php');
+    include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TooManyPromptRequestsException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'TransactionRecordNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'UserAgentNotFoundException.php');
     include_once($LocalDirectory . 'Exceptions' . DIRECTORY_SEPARATOR . 'UsernameAlreadyExistsException.php');
 
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'AccountManager.php');
+    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'ApplicationAccessManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'ApplicationManager.php');
+    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'AuditLogManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'AuthenticationAccessManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'AuthenticationRequestManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'CrossOverAuthenticationManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'KnownHostsManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'LoginRecordManager.php');
-    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'MessagesManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'OtlManager.php');
+    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'SubscriptionManager.php');
+    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'SubscriptionPlanManager.php');
+    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'SubscriptionPromotionManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'TelegramClientManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'TelegramVerificationCodeManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'TrackingUserAgentManager.php');
+    include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'TransactionManager.php');
     include_once($LocalDirectory . 'Managers' . DIRECTORY_SEPARATOR . 'TransactionRecordManager.php');
 
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'Account' . DIRECTORY_SEPARATOR . 'Configuration' . DIRECTORY_SEPARATOR . 'KnownHosts.php');
@@ -106,19 +150,26 @@
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'COA' . DIRECTORY_SEPARATOR . 'Application.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'COA' . DIRECTORY_SEPARATOR . 'AuthenticationAccess.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'COA' . DIRECTORY_SEPARATOR . 'AuthenticationRequest.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'Subscription' . DIRECTORY_SEPARATOR . 'Feature.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'Subscription' . DIRECTORY_SEPARATOR . 'Properties.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'TelegramClient' . DIRECTORY_SEPARATOR . 'Chat.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'TelegramClient' . DIRECTORY_SEPARATOR . 'SessionData.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'TelegramClient' . DIRECTORY_SEPARATOR . 'User.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'VerificationMethods' . DIRECTORY_SEPARATOR . 'CurlVerification.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'VerificationMethods' . DIRECTORY_SEPARATOR . 'RecoveryCodes.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'VerificationMethods' . DIRECTORY_SEPARATOR . 'TelegramLink.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'VerificationMethods' . DIRECTORY_SEPARATOR . 'TwoFactorAuthentication.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'Account.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'ApplicationAccess.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'ApplicationConfiguration.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'AuditRecord.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'KnownHost.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'LocationData.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'LoginRecord.php');
-    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'Message.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'OneTimeLoginCode.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'Subscription.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'SubscriptionPlan.php');
+    include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'SubscriptionPromotion.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'TelegramClient.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'TelegramVerificationCode.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'TransactionRecord.php');
@@ -126,6 +177,9 @@
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'UserAgentRecord.php');
     include_once($LocalDirectory . 'Objects' . DIRECTORY_SEPARATOR . 'UserLoginRecord.php');
 
+    include_once($LocalDirectory . 'Services' . DIRECTORY_SEPARATOR . 'Telegram.php');
+
+    include_once($LocalDirectory . 'Utilities' . DIRECTORY_SEPARATOR . 'Converter.php');
     include_once($LocalDirectory . 'Utilities' . DIRECTORY_SEPARATOR . 'Hashing.php');
     include_once($LocalDirectory . 'Utilities' . DIRECTORY_SEPARATOR . 'Parse.php');
     include_once($LocalDirectory . 'Utilities' . DIRECTORY_SEPARATOR . 'Validate.php');
@@ -188,11 +242,6 @@
          * @var AccountManager
          */
         private $AccountManager;
-
-        /**
-         * @var TransactionRecordManager
-         */
-        private $TransactionRecordManager;
 
         /**
          * @var acm
@@ -260,6 +309,46 @@
         private $OtlManager;
 
         /**
+         * @var AuditLogManager
+         */
+        private $AuditLogManager;
+
+        /**
+         * @var mixed
+         */
+        private $TelegramConfiguration;
+
+        /**
+         * @var Telegram
+         */
+        private $TelegramService;
+
+        /**
+         * @var SubscriptionPlanManager
+         */
+        private $SubscriptionPlanManager;
+
+        /**
+         * @var SubscriptionPromotionManager
+         */
+        private $SubscriptionPromotionManager;
+
+        /**
+         * @var TransactionRecordManager
+         */
+        private $TransactionRecordManager;
+
+        /**
+         * @var TransactionManager
+         */
+        private $TransactionManager;
+
+        /**
+         * @var SubscriptionManager
+         */
+        private $SubscriptionManager;
+
+        /**
          * IntellivoidAccounts constructor.
          * @throws Exception
          */
@@ -269,6 +358,7 @@
             $this->DatabaseConfiguration = $this->acm->getConfiguration('Database');
             $this->IpStackConfiguration = $this->acm->getConfiguration('IpStack');
             $this->SystemConfiguration = $this->acm->getConfiguration('System');
+            $this->TelegramConfiguration = $this->acm->getConfiguration('TelegramService');
 
             $this->database = new mysqli(
                 $this->DatabaseConfiguration['Host'],
@@ -281,13 +371,19 @@
             $this->AccountManager = new AccountManager($this);
             $this->KnownHostsManager = new KnownHostsManager($this);
             $this->LoginRecordManager = new LoginRecordManager($this);
-            $this->TransactionRecordManager = new TransactionRecordManager($this);
             $this->TelegramClientManager = new TelegramClientManager($this);
             $this->CrossOverAuthenticationManager = new CrossOverAuthenticationManager($this);
             $this->ApplicationManager = new ApplicationManager($this);
             $this->TelegramVerificationCodeManager = new TelegramVerificationCodeManager($this);
             $this->TrackingUserAgentManager = new TrackingUserAgentManager($this);
             $this->OtlManager = new OtlManager($this);
+            $this->AuditLogManager = new AuditLogManager($this);
+            $this->TelegramService = new Telegram($this);
+            $this->SubscriptionPlanManager = new SubscriptionPlanManager($this);
+            $this->SubscriptionPromotionManager = new SubscriptionPromotionManager($this);
+            $this->TransactionRecordManager = new TransactionRecordManager($this);
+            $this->TransactionManager = new TransactionManager($this);
+            $this->SubscriptionManager = new SubscriptionManager($this);
 
             if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
             {
@@ -315,14 +411,6 @@
         public function getAccountManager(): AccountManager
         {
             return $this->AccountManager;
-        }
-
-        /**
-         * @return TransactionRecordManager
-         */
-        public function getTransactionRecordManager(): TransactionRecordManager
-        {
-            return $this->TransactionRecordManager;
         }
 
         /**
@@ -419,6 +507,70 @@
         public function getOtlManager(): OtlManager
         {
             return $this->OtlManager;
+        }
+
+        /**
+         * @return AuditLogManager
+         */
+        public function getAuditLogManager(): AuditLogManager
+        {
+            return $this->AuditLogManager;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getTelegramConfiguration()
+        {
+            return $this->TelegramConfiguration;
+        }
+
+        /**
+         * @return Telegram
+         */
+        public function getTelegramService(): Telegram
+        {
+            return $this->TelegramService;
+        }
+
+        /**
+         * @return SubscriptionPlanManager
+         */
+        public function getSubscriptionPlanManager(): SubscriptionPlanManager
+        {
+            return $this->SubscriptionPlanManager;
+        }
+
+        /**
+         * @return SubscriptionPromotionManager
+         */
+        public function getSubscriptionPromotionManager(): SubscriptionPromotionManager
+        {
+            return $this->SubscriptionPromotionManager;
+        }
+
+        /**
+         * @return TransactionRecordManager
+         */
+        public function getTransactionRecordManager(): TransactionRecordManager
+        {
+            return $this->TransactionRecordManager;
+        }
+
+        /**
+         * @return TransactionManager
+         */
+        public function getTransactionManager(): TransactionManager
+        {
+            return $this->TransactionManager;
+        }
+
+        /**
+         * @return SubscriptionManager
+         */
+        public function getSubscriptionManager(): SubscriptionManager
+        {
+            return $this->SubscriptionManager;
         }
 
     }

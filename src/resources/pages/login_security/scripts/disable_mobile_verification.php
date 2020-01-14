@@ -2,6 +2,9 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
 
     if(isset($_GET['action']))
     {
@@ -14,8 +17,8 @@
 
     function disable_mobile_verification()
     {
-        /** @var \IntellivoidAccounts\Objects\Account $Account */
-        $Account = \DynamicalWeb\DynamicalWeb::getMemoryObject('account');
+        /** @var Account $Account */
+        $Account = DynamicalWeb::getMemoryObject('account');
 
         if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == false)
         {
@@ -27,9 +30,19 @@
         $Account->Configuration->VerificationMethods->TwoFactorAuthentication->disable();
         $Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled = false;
 
-        /** @var \IntellivoidAccounts\IntellivoidAccounts $IntellivoidAccounts */
-        $IntellivoidAccounts = \DynamicalWeb\DynamicalWeb::getMemoryObject('intellivoid_accounts');
-        $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
+        try
+        {
+            /** @var IntellivoidAccounts $IntellivoidAccounts */
+            $IntellivoidAccounts = DynamicalWeb::getMemoryObject('intellivoid_accounts');
+            $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::MobileVerificationDisabled);
+            $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
+        }
+        catch(Exception $e)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+                'callback' => '110'
+            )));
+        }
 
         Actions::redirect(DynamicalWeb::getRoute('login_security', array(
             'callback' => '103'

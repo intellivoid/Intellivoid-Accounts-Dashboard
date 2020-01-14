@@ -4,7 +4,8 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-    use IntellivoidAccounts\Abstracts\AuthenticationMode;
+use IntellivoidAccounts\Abstracts\AuditEventType;
+use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Exceptions\ApplicationAlreadyExistsException;
     use IntellivoidAccounts\Exceptions\InvalidApplicationNameException;
     use IntellivoidAccounts\Exceptions\InvalidRequestPermissionException;
@@ -81,11 +82,6 @@
         $Permissions[] = AccountRequestPermissions::ReadPersonalInformation;
     }
 
-    if(is_checked('perm_edit_personal_information'))
-    {
-        $Permissions[] = AccountRequestPermissions::EditPersonalInformation;
-    }
-
     if(is_checked('perm_make_purchases'))
     {
         $Permissions[] = AccountRequestPermissions::MakePurchases;
@@ -96,11 +92,17 @@
         $Permissions[] = AccountRequestPermissions::TelegramNotifications;
     }
 
+    if(is_checked('perm_view_email_address'))
+    {
+        $Permissions[] = AccountRequestPermissions::ViewEmailAddress;
+    }
+
     try
     {
         $IntellivoidAccounts->getApplicationManager()->registerApplication(
             $_POST['application_name'], WEB_ACCOUNT_ID, $AuthenticationType, $Permissions
         );
+        $IntellivoidAccounts->getAuditLogManager()->logEvent(WEB_ACCOUNT_ID, AuditEventType::ApplicationCreated);
         Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '106')));
     }
     catch (ApplicationAlreadyExistsException $e)
@@ -119,5 +121,3 @@
     {
         Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '100')));
     }
-
-

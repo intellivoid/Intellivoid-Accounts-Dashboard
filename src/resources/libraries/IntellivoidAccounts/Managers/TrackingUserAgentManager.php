@@ -45,17 +45,24 @@
          */
         public function registerRecord(string $user_agent_string, int $host_id): string
         {
-            if(Validate::userAgent($user_agent_string) == false)
+            if(Validate::userAgent($user_agent_string))
             {
-                return null;
+                $user_agent_parse = UserAgent::fromString($user_agent_string);
+            }
+            else
+            {
+                $user_agent_parse = new UserAgent();
+                $user_agent_parse->Browser = "Unknown";
+                $user_agent_parse->Platform = "Unknown";
+                $user_agent_parse->Version = "Unknown";
+                $user_agent_string = "Unknown";
             }
 
-            $created = (int)time();
-            $user_agent_parse = UserAgent::fromString($user_agent_string);
-
+            $user_agent_string = $this->intellivoidAccounts->database->real_escape_string(base64_encode($user_agent_string));
             $tracking_id = Hashing::uaTrackingId($user_agent_string, $host_id);
             $tracking_id = $this->intellivoidAccounts->database->real_escape_string($tracking_id);
-            $user_agent_string = $this->intellivoidAccounts->database->real_escape_string($user_agent_string);
+            $created = (int)time();
+
             $host_id = (int)$host_id;
             $platform = 'Unknown';
             $browser = 'Unknown';
@@ -78,7 +85,7 @@
 
             $Query = QueryBuilder::insert_into('tracking_user_agents', array(
                 'tracking_id' => $tracking_id,
-                'user_agent_string' => base64_encode($user_agent_string),
+                'user_agent_string' => $user_agent_string,
                 'platform' => $platform,
                 'browser' => $browser,
                 'version' => $version,
@@ -173,10 +180,22 @@
                 $this->getRecord(TrackingUserAgentSearchMethod::byId, $userAgentRecord->ID);
             }
 
+            if(Validate::userAgent($userAgentRecord->UserAgentString))
+            {
+                $user_agent_parse = UserAgent::fromString($userAgentRecord->UserAgentString);
+            }
+            else
+            {
+                $user_agent_parse = new UserAgent();
+                $user_agent_parse->Browser = "Unknown";
+                $user_agent_parse->Platform = "Unknown";
+                $user_agent_parse->Version = "Unknown";
+                $userAgentRecord->UserAgentString = "Unknown";
+            }
+
             $tracking_id = Hashing::uaTrackingId($userAgentRecord->UserAgentString, $userAgentRecord->HostID);
             $tracking_id = $this->intellivoidAccounts->database->real_escape_string($tracking_id);
-            $user_agent_parse = UserAgent::fromString($userAgentRecord->UserAgentString);
-            $user_agent_string = $this->intellivoidAccounts->database->real_escape_string($userAgentRecord->UserAgentString);
+            $user_agent_string = $this->intellivoidAccounts->database->real_escape_string(base64_encode($userAgentRecord->UserAgentString));
             $platform = 'Unknown';
             $browser = 'Unknown';
             $version = 'Unknown';
@@ -247,5 +266,73 @@
             $user_agent_record->LastSeen = (int)time();
             $this->updateRecord($user_agent_record);
             return $tracking_id;
+        }
+
+        /**
+         * Returns the total amount of Tracking User Agent records by the Host ID
+         *
+         * @param int $host_id
+         * @return int
+         * @throws DatabaseException
+         */
+        public function getTotalRecordsByHost(int $host_id): int
+        {
+            $host_id = (int)$host_id;
+            $Query = "SELECT COUNT(id) AS total FROM `tracking_user_agents` WHERE host_id=$host_id";
+
+            $QueryResults = $this->intellivoidAccounts->database->query($Query);
+            if($QueryResults == false)
+            {
+                throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
+            }
+            else
+            {
+                return (int)$QueryResults->fetch_array()['total'];
+            }
+        }
+
+        /**
+         * Returns an array of Records by the Host ID
+         *
+         * @param int $host_id
+         * @param int $offset
+         * @param int $limit
+         * @return array
+         * @throws DatabaseException
+         */
+        public function getRecordsByHost(int $host_id, int $offset = 0, $limit = 50): array
+        {
+            $host_id = (int)$host_id;
+
+            $Query = QueryBuilder::select('tracking_user_agents', [
+                'id',
+                'tracking_id',
+                'user_agent_string',
+                'platform',
+                'browser',
+                'version',
+                'host_id',
+                'created',
+                'last_seen'
+            ], 'host_id', $host_id, null, null, $limit, $offset);
+
+            $QueryResults = $this->intellivoidAccounts->database->query($Query);
+            if ($QueryResults == false)
+            {
+                throw new DatabaseException($Query, $this->intellivoidAccounts->database->error);
+            }
+            else
+            {
+                $ResultsArray = [];
+
+                while ($Row = $QueryResults->fetch_assoc())
+                {
+                    $Row['user_agent_string'] = base64_decode($Row['user_agent_string']);
+                    $ResultsArray[] = $Row;
+                }
+
+                return $ResultsArray;
+            }
+
         }
     }

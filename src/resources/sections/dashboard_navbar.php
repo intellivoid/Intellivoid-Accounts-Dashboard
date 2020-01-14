@@ -14,12 +14,19 @@ use DynamicalWeb\HTML;
     <div class="container d-flex flex-row nav-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top">
             <a class="navbar-brand brand-logo" href="/">
-                <img src="/assets/images/logo_2.png" alt="logo" /> </a>
+                <img src="/assets/images/logo_2.svg" alt="logo"/>
+            </a>
             <a class="navbar-brand brand-logo-mini" href="/">
-                <img src="/assets/images/iv_logo.svg" alt="logo" /> </a>
+                <img src="/assets/images/iv_logo.svg" alt="logo"/>
+            </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item ml-4">
+                    <a class="nav-link" data-toggle="modal" data-target="#change-language-dialog" href="#">
+                        <i class="mdi mdi-translate"></i>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <?PHP HTML::print($UsernameSafe); ?>
@@ -59,15 +66,18 @@ use DynamicalWeb\HTML;
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="submenu ">
-                        <ul class="submenu-item ">
-                            <li class="nav-item ">
+                        <ul class="submenu-item" style="padding-top: 23px; padding-bottom: 23px;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('services', [], true) ?>">Services</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_history', [], true) ?>">Login History</a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#">Services</a>
-                            </li>
-                            <li class="nav-item ">
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_security', [], true) ?>">Login Security</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('internal_authentication', [], true) ?>">Internal Auth</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" data-toggle="modal" data-target="#password-reset-dialog" href="#">Update Password</a>
@@ -86,3 +96,4 @@ use DynamicalWeb\HTML;
     </div>
 </nav>
 <?PHP HTML::importSection('reset_password_modal'); ?>
+<?PHP HTML::importSection('change_language_modal'); ?>

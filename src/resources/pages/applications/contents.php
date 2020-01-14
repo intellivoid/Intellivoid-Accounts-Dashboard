@@ -41,6 +41,19 @@
                     <div class="content-wrapper">
                         <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
+                            <div class="col-md-4 grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Actions</h4>
+                                        <div class="wrapper mt-4">
+                                            <a class="d-flex align-items-center py-3 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
+                                                <i class="mdi mdi-plus text-danger"></i>
+                                                <p class="mb-0 ml-3">Create Application</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
@@ -73,19 +86,6 @@
                                                 render_items($TotalRecords);
                                             }
                                         ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 grid-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Actions</h4>
-                                        <div class="wrapper mt-4">
-                                            <a class="d-flex align-items-center py-3 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
-                                                <i class="mdi mdi-plus text-danger"></i>
-                                                <p class="mb-0 ml-3">Create Application</p>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -148,11 +148,11 @@
                                                <div class="col-md-6">
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_edit_personal_information" id="perm_edit_personal_information" class="form-check-input"> Edit Personal Information
+                                                           <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"> View Email Address
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
-                                                   <p class="text-muted text-small pb-4">Edit user's personal information</p>
+                                                   <p class="text-muted text-small pb-4">View the users Email Address</p>
 
                                                    <div class="form-check">
                                                        <label class="form-check-label">
@@ -163,7 +163,6 @@
                                                    <p class="text-muted text-small">Send notifications via Telegram (if available)</p>
                                                </div>
                                            </div>
-
                                        </div>
 
                                     </div>

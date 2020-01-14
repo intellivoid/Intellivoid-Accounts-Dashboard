@@ -11,7 +11,7 @@
      */
     function RenderAlert(string $text, string $type, string $icon)
     {
-        HTML::print("<div class=\"alert alert-fill-", false);
+        HTML::print("<div class=\"alert animated flipInX alert-fill-", false);
         HTML::print($type);
         HTML::print("\" role=\"alert\">", false);
         HTML::print("<i class=\"mdi ", false);
