@@ -12,6 +12,7 @@
 
     if(get_parameter('application_id') == null)
     {
+        header('X-COA-Error: 1');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '1')));
     }
 
@@ -37,21 +38,25 @@
     }
     catch (ApplicationNotFoundException $e)
     {
+        header('X-COA-Error: 2');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '2')));
     }
     catch(Exception $exception)
     {
+        header('X-COA-Error: -1');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
     }
 
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
+        header('X-COA-Error: 3');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '3')));
     }
 
     if($Application->Status == ApplicationStatus::Disabled)
     {
+        header('X-COA-Error: 4');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '4')));
     }
 
@@ -59,6 +64,7 @@
     {
         if(get_parameter('redirect') == null)
         {
+            header('X-COA-Error: 6');
             Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '6')));
         }
     }
@@ -69,6 +75,7 @@
     }
     catch(Exception $exception)
     {
+        header('X-COA-Error: 5');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '5')));
     }
 
@@ -80,6 +87,7 @@
     }
     catch (Exception $e)
     {
+        header('X-COA-Error: -1');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
     }
 
