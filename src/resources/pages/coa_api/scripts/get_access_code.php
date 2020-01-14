@@ -1,19 +1,15 @@
 <?php
 
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\ApplicationStatus;
-    use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationAccessSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationRequestSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
-use IntellivoidAccounts\Exceptions\AuthenticationRequestNotFoundException;
-use IntellivoidAccounts\Exceptions\DatabaseException;
-use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationAccessSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AuthenticationRequestSearchMethod;
+    use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
+    use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
+    use IntellivoidAccounts\Exceptions\AuthenticationRequestNotFoundException;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
 
     if(get_parameter('application_id') == null)
@@ -26,15 +22,15 @@ use IntellivoidAccounts\IntellivoidAccounts;
         ));
     }
 
-    //if(get_parameter('secret_key') == null)
-    //{
-    //    returnJsonResponse(array(
-    //        'status' => false,
-    //        'status_code' => 400,
-    //        'error_code' => 22,
-    //        'message' => resolve_error_code(22)
-    //    ));
-    //}
+    if(get_parameter('secret_key') == null)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 400,
+            'error_code' => 22,
+            'message' => resolve_error_code(22)
+        ));
+    }
 
     if(get_parameter('request_token') == null)
     {
@@ -86,15 +82,15 @@ use IntellivoidAccounts\IntellivoidAccounts;
         ));
     }
 
-    //if(get_parameter('secret_key') !== $Application->SecretKey)
-    //{
-    //    returnJsonResponse(array(
-    //        'status' => false,
-    //        'status_code' => 401,
-    //        'error_code' => 23,
-    //        'message' => resolve_error_code(23)
-    //    ));
-    //}
+    if(get_parameter('secret_key') !== $Application->SecretKey)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'status_code' => 401,
+            'error_code' => 23,
+            'message' => resolve_error_code(23)
+        ));
+    }
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
