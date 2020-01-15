@@ -93,7 +93,7 @@
                                                     <i class="mdi mdi-dots-vertical"></i>
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                                    <a class="dropdown-item" href="#">View more transactions</a>
+                                                    <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', array(), true); ?>">View more transactions</a>
                                                 </div>
                                             </div>
                                         </div>

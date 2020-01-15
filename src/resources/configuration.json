@@ -31,6 +31,7 @@
         {"path": "/user/personal", "page": "personal"},
         {"path": "/user/finance/balance", "page": "account_balance"},
         {"path": "/user/finance/view_invoice", "page": "view_invoice"},
+        {"path": "/user/finance/history", "page": "transaction_history"},
         {"path": "/transaction/success", "page": "transaction_success"},
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
