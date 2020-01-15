@@ -121,5 +121,11 @@
             );
         }
     }
+    else
+    {
+        $Response['user_information']['personal_information'] = array(
+            'available' => false
+        );
+    }
 
     returnJsonResponse($Response);

@@ -88,8 +88,22 @@ use DynamicalWeb\HTML;
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="link-icon mdi mdi-bank"></i>
-                        <span class="menu-title">Balance</span>
+                        <span class="menu-title">Finance</span>
+                        <i class="menu-arrow"></i>
                     </a>
+                    <div class="submenu ">
+                        <ul class="submenu-item" style="padding-top: 23px; padding-bottom: 23px;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('account_balance', [], true) ?>">Account Balance</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_history', [], true) ?>">Transaction History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_security', [], true) ?>">Subscriptions</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>

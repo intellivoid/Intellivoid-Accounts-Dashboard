@@ -29,6 +29,8 @@
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},
         {"path": "/user/personal", "page": "personal"},
+        {"path": "/user/finance/balance", "page": "account_balance"},
+        {"path": "/user/finance/view_invoice", "page": "view_invoice"},
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
