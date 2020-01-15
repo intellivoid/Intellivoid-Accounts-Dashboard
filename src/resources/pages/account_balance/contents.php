@@ -3,9 +3,11 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Objects\TransactionRecord;
 
-    Runtime::import('IntellivoidAccounts');
+Runtime::import('IntellivoidAccounts');
 
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -21,7 +23,15 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
-    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(\IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+    $TotalTransactions = $IntellivoidAccounts->getTransactionRecordManager()->getTotalRecords($Account->ID);
+
+    $RecentTransactions = null;
+
+    if($TotalTransactions > 0)
+    {
+        $RecentTransactions = $IntellivoidAccounts->getTransactionRecordManager()->getNewRecords($Account->ID, 15);
+    }
 
 
 ?>
@@ -73,30 +83,103 @@
                                         </div>
                                     </div>
                                     <div class="card-body no-gutter">
-                                        <div class="list-item">
-                                            <div class="preview-image">
-                                                <img class="img-sm rounded-circle" src="../../../assets/images/faces/face10.jpg" alt="profile image">
-                                            </div>
-                                            <div class="content">
-                                                <div class="d-flex align-items-center">
-                                                    <h6 class="product-name">Air Pod</h6>
-                                                    <small class="time ml-3 d-none d-sm-block">08.34 AM</small>
-                                                    <div class="ml-auto">
-                                                        <div class="br-wrapper br-theme-css-stars"><select id="review-rating-1" name="rating" autocomplete="off" style="display: none;">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                            </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected"></a><a href="#" data-rating-value="2" data-rating-text="2" class="br-selected"></a><a href="#" data-rating-value="3" data-rating-text="3" class="br-selected"></a><a href="#" data-rating-value="4" data-rating-text="4" class="br-selected br-current"></a><a href="#" data-rating-value="5" data-rating-text="5"></a></div></div>
+                                        <?PHP
+                                            if($TotalTransactions == 0)
+                                            {
+                                                ?>
+                                                <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
+                                                    <div class="p-2 my-flex-item">
+                                                        <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
+                                                    </div>
+                                                    <div class="p-2 my-flex-item">
+                                                        <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
                                                     </div>
                                                 </div>
-                                                <div class="d-flex align-items-center">
-                                                    <p class="user-name">Christine :</p>
-                                                    <p class="review-text d-block">The brand apple is original !</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                <?PHP
+                                            }
+                                            else
+                                            {
+                                                $CachedAccounts = array();
+                                                foreach($RecentTransactions as $transaction)
+                                                {
+                                                    $TransactionRecord = TransactionRecord::fromArray($transaction);
+                                                    $ImageSource = "/assets/images/vendor.svg";
+                                                    if(isset($CachedAccounts[$TransactionRecord->Vendor]))
+                                                    {
+                                                        if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                        {
+                                                            $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                'resource' => 'normal'
+                                                            ));
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        try
+                                                        {
+                                                            $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
+                                                                    AccountSearchMethod::byUsername, $TransactionRecord->Vendor
+                                                            );
+                                                            $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
+                                                            $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                'resource' => 'normal'
+                                                            ));
+                                                        }
+                                                        catch(Exception $e)
+                                                        {
+                                                            $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <div class="list-item">
+                                                        <div class="preview-image">
+                                                            <img class="img-sm rounded-circle" src="<?PHP HTML::print($ImageSource, false); ?>" alt="profile image">
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class="d-flex align-items-center">
+                                                                <h6 class="product-name"><?PHP HTML::print($TransactionRecord->Vendor); ?></h6>
+                                                                <small class="time ml-3 d-none d-sm-block"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></small>
+                                                                <div class="ml-auto">
+                                                                    <a class="text-small" href="#">View Invoice</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex align-items-center">
+                                                                <?PHP
+                                                                    if($TransactionRecord->Amount == 0)
+                                                                    {
+                                                                        ?>
+                                                                        <p class="text-muted mb-0">
+                                                                            $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
+                                                                        </p>
+                                                                        <?PHP
+                                                                    }
+                                                                    if($TransactionRecord->Amount < 0)
+                                                                    {
+                                                                        ?>
+                                                                        <p class="text-danger mb-0">
+                                                                            -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD
+                                                                        </p>
+                                                                        <?PHP
+                                                                    }
+                                                                    if($TransactionRecord->Amount > 0)
+                                                                    {
+                                                                        ?>
+                                                                        <p class="text-success mb-0">
+                                                                            $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
+                                                                        </p>
+                                                                        <?PHP
+                                                                    }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                            }
+                                        ?>
+
                                     </div>
                                 </div>
                             </div>
