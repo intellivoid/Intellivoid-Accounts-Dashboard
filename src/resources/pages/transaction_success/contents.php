@@ -5,7 +5,7 @@ use DynamicalWeb\HTML;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('gen_dashboard_headers'); ?>
-        <title>Intellivoid Accounts - COA Error</title>
+        <title>Intellivoid Accounts - Payment Successful</title>
     </head>
 
     <body>
