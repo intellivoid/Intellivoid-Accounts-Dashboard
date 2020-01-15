@@ -94,7 +94,7 @@ use DynamicalWeb\HTML;
                     <div class="submenu ">
                         <ul class="submenu-item" style="padding-top: 23px; padding-bottom: 23px;">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('services', [], true) ?>">Account Balance</a>
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('account_balance', [], true) ?>">Account Balance</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_history', [], true) ?>">Transaction History</a>
