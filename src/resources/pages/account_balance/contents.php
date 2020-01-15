@@ -3,12 +3,13 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\TransactionRecord;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\TransactionRecord;
 
-Runtime::import('IntellivoidAccounts');
+    Runtime::import('IntellivoidAccounts');
 
+    HTML::importScript('redirect_paypal');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
@@ -61,8 +62,23 @@ Runtime::import('IntellivoidAccounts');
                                         <div class="d-flex align-items-center">
                                             <div class="bg-primary dot-indicator"></div>
                                             <p class="text-muted mb-0 ml-2">
-                                                <a class="text-primary" href="#">Add to balance</a>
+                                                <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#">Add to balance</a>
                                             </p>
+                                        </div>
+                                        <div class="alert alert-fill-primary mt-3" role="alert">
+                                            <p>
+                                                You can add funds to your Intellivoid Account but these funds cannot be withdrawn or
+                                                transferred to other Intellivoid Accounts as explained in our Terms and Service.
+                                            </p>
+                                            <p>
+                                                This process is processed manually
+                                                by Intellivoid and it can take up to 48 Hours to be processed.
+                                            </p>
+                                            <p>
+                                                Your PayPal Email address must be the same as your Intellivoid Account's Email Address
+                                                otherwise the transaction will fail
+                                            </p>
+                                            <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('personal', array(), true); ?>">Update your Email Address</a>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +200,7 @@ Runtime::import('IntellivoidAccounts');
                                 </div>
                             </div>
                         </div>
-
+                        <?PHP HTML::importScript('add_balance_dialog'); ?>
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
