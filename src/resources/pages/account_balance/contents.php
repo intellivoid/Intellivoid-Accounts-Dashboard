@@ -142,7 +142,7 @@ Runtime::import('IntellivoidAccounts');
                                                                 <h6 class="product-name"><?PHP HTML::print($TransactionRecord->Vendor); ?></h6>
                                                                 <small class="time ml-3 d-none d-sm-block"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></small>
                                                                 <div class="ml-auto">
-                                                                    <a class="text-small" href="#">View Invoice</a>
+                                                                    <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">View Invoice</a>
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex align-items-center">
