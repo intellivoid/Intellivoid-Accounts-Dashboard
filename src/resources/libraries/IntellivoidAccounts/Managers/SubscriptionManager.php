@@ -22,6 +22,7 @@
     use IntellivoidAccounts\Exceptions\InvalidSubscriptionPromotionNameException;
     use IntellivoidAccounts\Exceptions\InvalidUsernameException;
     use IntellivoidAccounts\Exceptions\InvalidVendorException;
+    use IntellivoidAccounts\Exceptions\SubscriptionNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -72,6 +73,7 @@
          * @throws InvalidVendorException
          * @throws SubscriptionPlanNotFoundException
          * @throws SubscriptionPromotionNotFoundException
+         * @throws SubscriptionNotFoundException
          */
         public function startSubscription(int $account_id, int $application_id, string $plan_name, string $promotion_code = "NONE"): Subscription
         {
@@ -191,6 +193,7 @@
          * @throws DatabaseException
          * @throws InvalidSearchMethodException
          * @throws SubscriptionPlanNotFoundException
+         * @throws SubscriptionNotFoundException
          */
         public function getSubscription(string $search_method, string $value): Subscription
         {
@@ -232,7 +235,7 @@
             {
                 if($QueryResults->num_rows !== 1)
                 {
-                    throw new SubscriptionPlanNotFoundException();
+                    throw new SubscriptionNotFoundException();
                 }
 
                 $Row = $QueryResults->fetch_array(MYSQLI_ASSOC);
