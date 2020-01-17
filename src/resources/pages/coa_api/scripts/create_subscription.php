@@ -4,21 +4,21 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
-use IntellivoidAccounts\Abstracts\SubscriptionPlanStatus;
-use IntellivoidAccounts\Abstracts\SubscriptionPromotionStatus;
-use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
-use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\Account;
-use IntellivoidAccounts\Objects\ApplicationAccess;
-use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
+    use IntellivoidAccounts\Abstracts\SubscriptionPlanStatus;
+    use IntellivoidAccounts\Abstracts\SubscriptionPromotionStatus;
+    use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
+    use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
+    use IntellivoidAccounts\Objects\ApplicationAccess;
+    use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
-use IntellivoidAccounts\Objects\Subscription\Feature;
-use IntellivoidAccounts\Objects\Subscription\Properties;
+    use IntellivoidAccounts\Objects\Subscription\Feature;
+    use IntellivoidAccounts\Objects\Subscription\Properties;
 
-HTML::importScript('async.check_access');
+    HTML::importScript('async.check_access');
 
     /** @var AuthenticationRequest $AuthenticationRequest */
     $AuthenticationRequest = DynamicalWeb::getMemoryObject('authentication_request');
