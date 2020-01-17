@@ -40,6 +40,10 @@
             HTML::importScript('get_user');
             break;
 
+        case 'create_subscription':
+            HTML::importScript('create_subscription');
+            break;
+
         default:
             returnJsonResponse(array(
                 'status' => false,
