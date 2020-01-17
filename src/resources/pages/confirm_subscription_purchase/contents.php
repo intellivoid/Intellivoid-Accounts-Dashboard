@@ -60,7 +60,7 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <div class="mr-auto mb-4">
                                     <img class="img-fluid img-xs" src="/assets/images/iv_logo.svg" alt="iv_logo"/>
-                                    <span class="text-dark pl-3">Sign in with Intellivoid Accounts</span>
+                                    <span class="text-dark pl-3">Intellivoid Accounts</span>
                                 </div>
 
                                 <div class="border-bottom pt-3"></div>
@@ -78,6 +78,5 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
         </div>
         <?PHP HTML::importSection('js_scripts'); ?>
         <script src="/assets/js/shared/tooltips.js"></script>
-        <?PHP Javascript::importScript('autoenable'); ?>
     </body>
 </html>
