@@ -250,6 +250,13 @@
         $SubscriptionDetails['features'][] = $feature->toArray();
     }
 
+    $protocol = 'https';
+
+    if(get_parameter('secured') == 'false')
+    {
+        $protocol = 'http';
+    }
+
     returnJsonResponse(array(
         'status' => true,
         'status_code' => 200,
@@ -266,6 +273,6 @@
             ),
             'subscription_promotion' => $PromotionObject,
             'subscription_details' =>  $SubscriptionDetails,
-            'process_transaction_url' => DynamicalWeb::getRoute('confirm_subscription_purchase', $PurchaseParameters)
+            'process_transaction_url' => $protocol . '://' . $_SERVER['HTTP_HOST'] . DynamicalWeb::getRoute('confirm_subscription_purchase', $PurchaseParameters)
         )
     ));

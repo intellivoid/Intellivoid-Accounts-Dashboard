@@ -137,7 +137,7 @@
                 return("AWAITING AUTHENTICATION");
 
             case 42:
-                return("MISSING PARAMETER 'plan_id'");
+                return("MISSING PARAMETER 'plan_name'");
 
             case 43:
                 return("SUBSCRIPTION PLAN NOT FOUND");
