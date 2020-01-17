@@ -51,7 +51,7 @@
         ));
     }
 
-    if(get_parameter('plan_id') == null)
+    if(get_parameter('plan_name') == null)
     {
         returnJsonResponse(array(
             'status' => false,
