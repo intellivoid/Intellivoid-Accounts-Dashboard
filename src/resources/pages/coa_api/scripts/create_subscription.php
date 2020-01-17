@@ -61,16 +61,16 @@
         ));
     }
 
-    $PlanPubicID = get_parameter('plan_id');
-    $PromotionPublicID = get_parameter('promotion_id');
+    $SubscriptionPlanName = get_parameter('plan_name');
+    $SubscriptionPromotionCode = get_parameter('promotion_code');
 
     $SubscriptionPlan = null;
     $SubscriptionPlanPromotion = null;
 
     try
     {
-        $SubscriptionPlan = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
-            SubscriptionPlanSearchMethod::byPublicId, $PlanPubicID
+        $SubscriptionPlan = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlanByName(
+            $ApplicationAccess->ApplicationID, $SubscriptionPlanName
         );
     }
     catch (SubscriptionPlanNotFoundException $e)
@@ -102,12 +102,12 @@
         ));
     }
 
-    if($PromotionPublicID !== null)
+    if($SubscriptionPromotionCode !== null)
     {
         try
         {
             $SubscriptionPlanPromotion = $IntellivoidAccounts->getSubscriptionPromotionManager()->getSubscriptionPromotion(
-                SubscriptionPromotionSearchMethod::byPublicId, $PromotionPublicID
+                SubscriptionPromotionSearchMethod::byPromotionCode, $SubscriptionPromotionCode
             );
         }
         catch (SubscriptionPromotionNotFoundException $e)
@@ -140,7 +140,7 @@
         ));
     }
 
-    if($PromotionPublicID !== null)
+    if($SubscriptionPromotionCode !== null)
     {
         if($SubscriptionPlanPromotion->SubscriptionPlanID !== $SubscriptionPlan->ID)
         {
@@ -216,7 +216,9 @@
     $PurchaseParameters = array(
         'plan_name'=> $SubscriptionPlan->PlanName,
         'access_token' => $AuthenticationAccess->AccessToken,
-        'subscription_plan_id' => $SubscriptionPlan->PublicID
+        'transaction_token' => hash('crc32b', time()),
+        'subscription_plan_id' => $SubscriptionPlan->PublicID,
+        'app_tag' => $ApplicationAccess->ApplicationID
     );
 
     foreach($SubscriptionPlan->Features as $feature)
