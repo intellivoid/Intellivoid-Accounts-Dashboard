@@ -62,7 +62,7 @@
     }
 
     $PlanPubicID = get_parameter('plan_id');
-    $PromotionPublicID = get_parameter('promotion');
+    $PromotionPublicID = get_parameter('promotion_id');
 
     $SubscriptionPlan = null;
     $SubscriptionPlanPromotion = null;
