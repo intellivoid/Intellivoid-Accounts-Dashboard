@@ -17,6 +17,7 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
     HTML::importScript('request_parser');
     HTML::importScript('sp_validate_parameters');
     HTML::importScript('sp_validate_access');
+    HTML::importScript('process_purchase');
 
     /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
@@ -26,7 +27,7 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
 
     /** @var SubscriptionPlan $SubscriptionPlan */
     $SubscriptionPlan = DynamicalWeb::getMemoryObject('subscription_plan');
-    
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -50,6 +51,9 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
                                 <div class="mr-auto mb-4">
                                     <img class="img-fluid img-xs" src="/assets/images/iv_logo.svg" alt="iv_logo"/>
                                     <span class="text-dark pl-3">Intellivoid Accounts</span>
+                                </div>
+                                <div id="callback_alert">
+                                    <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 
                                 <div class="d-flex mb-2">
