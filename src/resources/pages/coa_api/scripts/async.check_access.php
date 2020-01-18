@@ -212,4 +212,5 @@
 
     DynamicalWeb::setMemoryObject('authentication_access', $AuthenticationAccess);
     DynamicalWeb::setMemoryObject('authentication_request', $AuthenticationRequest);
+    DynamicalWeb::setMemoryObject('application_access', $ApplicationAccess);
     DynamicalWeb::setMemoryObject('account', $Account);

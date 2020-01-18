@@ -25,7 +25,14 @@
         'user_information' => array()
     );
 
-    $Domain = 'https://accounts.intellivoid.info';
+    $protocol = 'https';
+
+    if(get_parameter('secured') == 'false')
+    {
+        $protocol = 'http';
+    }
+
+    $Domain = $protocol . '://' . $_SERVER['HTTP_HOST'];
     $Response['user_information']['tag'] = $Account->ID;
     $Response['user_information']['public_id'] = $Account->PublicID;
     $Response['user_information']['username'] = $Account->Username;
