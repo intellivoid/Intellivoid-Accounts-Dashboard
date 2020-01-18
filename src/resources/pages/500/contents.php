@@ -1,5 +1,4 @@
 <?PHP
-
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
@@ -7,7 +6,7 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('generic_headers'); ?>
-        <title>Intellivoid Accounts - 500</title>
+        <title>Intellivoid Accounts - Server Error</title>
     <body>
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -36,9 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
         </div>
         <?PHP HTML::importSection('generic_js'); ?>
     </body>
