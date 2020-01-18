@@ -10,8 +10,9 @@ use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMetho
     use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Objects\Subscription\Properties;
 
-    // Validate the parameters
+// Validate the parameters
     function validate_parameter_presence(string $parameter_name)
     {
         if(isset($_GET[$parameter_name]) == false)
@@ -31,12 +32,12 @@ use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMetho
     validate_parameter_presence('subscription_plan_id');
     validate_parameter_presence('app_tag');
 
-    if(isset($_GET['promotion_code']) == false)
+    if(isset($_GET['promotion_code']))
     {
         validate_parameter_presence('promotion_id');
     }
 
-    if(isset($_GET['promotion_id']) == false)
+    if(isset($_GET['promotion_id']))
     {
         validate_parameter_presence('promotion_code');
     }
@@ -186,5 +187,44 @@ use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMetho
         DynamicalWeb::setBoolean('subscription_promotion_set', false);
     }
 
+    $SubscriptionDetails = array(
+        'billing_cycle' => $SubscriptionPlan->BillingCycle,
+        'plan_name' => $SubscriptionPlan->PlanName,
+        'plan_id' => $SubscriptionPlan->PublicID,
+        'features' => array()
+    );
+
+    $SubscriptionDetailsProperties = new Properties();
+
+    foreach($SubscriptionPlan->Features as $feature)
+    {
+        $SubscriptionDetailsProperties->addFeature($feature);
+    }
+
+    if(isset($_GET['promotion_code']) == false)
+    {
+        $SubscriptionDetails['initial_price'] = $SubscriptionPlan->InitialPrice;
+        $SubscriptionDetails['cycle_price'] = $SubscriptionPlan->CyclePrice;
+    }
+    else
+    {
+        $SubscriptionDetails['initial_price'] = $SubscriptionPromotion->InitialPrice;
+        $SubscriptionDetails['cycle_price'] = $SubscriptionPromotion->CyclePrice;
+
+        foreach($SubscriptionPromotion->Features as $feature)
+        {
+            $SubscriptionDetailsProperties->addFeature($feature);
+        }
+
+        $SubscriptionDetails['promotion_code'] = $SubscriptionPromotion->PromotionCode;
+        $SubscriptionDetails['promotion_id'] = $SubscriptionPromotion->PublicID;
+    }
+
+    foreach($SubscriptionDetailsProperties->Features as $feature)
+    {
+        $SubscriptionDetails['features'][] = $feature->toArray();
+    }
+
     DynamicalWeb::setMemoryObject('subscription_plan', $SubscriptionPlan);
     DynamicalWeb::setMemoryObject('application', $Application);
+    DynamicalWeb::setArray('subscription_details', $SubscriptionDetails);

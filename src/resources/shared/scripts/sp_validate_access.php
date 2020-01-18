@@ -12,8 +12,9 @@
     use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
+use IntellivoidAccounts\Objects\Subscription\Properties;
 
-    if(get_parameter('app_tag') == null)
+if(get_parameter('app_tag') == null)
     {
         header('X-COA-Error: 1');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '1')));
