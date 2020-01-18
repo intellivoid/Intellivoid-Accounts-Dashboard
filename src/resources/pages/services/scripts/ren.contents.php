@@ -8,6 +8,7 @@
 use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
 use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\ApplicationAccess;
+use IntellivoidAccounts\Objects\COA\Application;
 
     function list_authorized_services(array $application_access_records, array $applications)
     {
@@ -32,7 +33,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                     $ApplicationAccess = ApplicationAccess::fromArray($access_record);
                     if($ApplicationAccess->Status == ApplicationAccessStatus::Authorized)
                     {
-                        if(isset($Applications[$ApplicationAccess->ApplicationID]))
+                        if(isset($applications[$ApplicationAccess->ApplicationID]))
                         {
                             /** @var Application $Application */
                             $Application = $applications[$ApplicationAccess->ID];
