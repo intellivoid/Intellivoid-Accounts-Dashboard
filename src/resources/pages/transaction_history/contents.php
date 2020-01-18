@@ -160,30 +160,30 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                         </div>
                                                         <div class="d-flex align-items-center">
                                                             <?PHP
-                                                            if($TransactionRecord->Amount == 0)
-                                                            {
-                                                                ?>
-                                                                <p class="text-muted mb-0">
-                                                                    $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
-                                                                </p>
-                                                                <?PHP
-                                                            }
-                                                            if($TransactionRecord->Amount < 0)
-                                                            {
-                                                                ?>
-                                                                <p class="text-danger mb-0">
-                                                                    -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD
-                                                                </p>
-                                                                <?PHP
-                                                            }
-                                                            if($TransactionRecord->Amount > 0)
-                                                            {
-                                                                ?>
-                                                                <p class="text-success mb-0">
-                                                                    $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
-                                                                </p>
-                                                                <?PHP
-                                                            }
+                                                                if($TransactionRecord->Amount == 0)
+                                                                {
+                                                                    ?>
+                                                                    <p class="text-muted mb-0">
+                                                                        $0 USD
+                                                                    </p>
+                                                                    <?PHP
+                                                                }
+                                                                elseif($TransactionRecord->Amount < 0)
+                                                                {
+                                                                    ?>
+                                                                    <p class="text-danger mb-0">
+                                                                        -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD
+                                                                    </p>
+                                                                    <?PHP
+                                                                }
+                                                                elseif($TransactionRecord->Amount > 0)
+                                                                {
+                                                                    ?>
+                                                                    <p class="text-success mb-0">
+                                                                        $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
+                                                                    </p>
+                                                                    <?PHP
+                                                                }
                                                             ?>
                                                         </div>
                                                     </div>

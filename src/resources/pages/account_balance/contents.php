@@ -206,11 +206,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                                     {
                                                                         ?>
                                                                         <p class="text-muted mb-0">
-                                                                            $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
+                                                                            $0 USD
                                                                         </p>
                                                                         <?PHP
                                                                     }
-                                                                    if($TransactionRecord->Amount < 0)
+                                                                    elseif($TransactionRecord->Amount < 0)
                                                                     {
                                                                         ?>
                                                                         <p class="text-danger mb-0">
@@ -218,7 +218,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                                         </p>
                                                                         <?PHP
                                                                     }
-                                                                    if($TransactionRecord->Amount > 0)
+                                                                    elseif($TransactionRecord->Amount > 0)
                                                                     {
                                                                         ?>
                                                                         <p class="text-success mb-0">
