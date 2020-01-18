@@ -4,7 +4,8 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
@@ -58,54 +59,92 @@
                                     </div>
                                     <div class="card-body no-gutter">
                                         <?PHP
-                                        if($TotalTransactions == 0)
-                                        {
-                                            ?>
-                                            <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
-                                                <div class="p-2 my-flex-item">
-                                                    <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
-                                                </div>
-                                                <div class="p-2 my-flex-item">
-                                                    <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
-                                                </div>
-                                            </div>
-                                            <?PHP
-                                        }
-                                        else
-                                        {
-                                            $CachedAccounts = array();
-                                            foreach($RecentTransactions as $transaction)
+                                            if($TotalTransactions == 0)
                                             {
-                                                $TransactionRecord = TransactionRecord::fromArray($transaction);
-                                                $ImageSource = "/assets/images/vendor.svg";
-                                                if(isset($CachedAccounts[$TransactionRecord->Vendor]))
+                                                ?>
+                                                <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
+                                                    <div class="p-2 my-flex-item">
+                                                        <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
+                                                    </div>
+                                                    <div class="p-2 my-flex-item">
+                                                        <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+                                                    </div>
+                                                </div>
+                                                <?PHP
+                                            }
+                                            else
+                                            {
+                                                $CachedAccounts = array();
+                                                $CachedApplications = array();
+                                                foreach($RecentTransactions as $transaction)
                                                 {
-                                                    if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                    $TransactionRecord = TransactionRecord::fromArray($transaction);
+                                                    $ImageSource = "/assets/images/vendor.svg";
+                                                    $VendorFound = false;
+
+                                                    if(isset($CachedApplications[$TransactionRecord->Vendor]))
                                                     {
-                                                        $ImageSource = DynamicalWeb::getRoute('avatar', array(
-                                                            'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
-                                                            'resource' => 'normal'
-                                                        ));
+                                                        if($CachedApplications[$TransactionRecord->Vendor] !== null)
+                                                        {
+                                                            $ImageSource = DynamicalWeb::getRoute('application_icon', array(
+                                                                'app_id' => $CachedApplications[$TransactionRecord->Vendor],
+                                                                'resource'=> 'normal'
+                                                            ));
+                                                            $VendorFound = true;
+                                                        }
                                                     }
-                                                }
-                                                else
-                                                {
-                                                    try
+                                                    else
                                                     {
-                                                        $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
-                                                            AccountSearchMethod::byUsername, $TransactionRecord->Vendor
-                                                        );
-                                                        $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
-                                                        $ImageSource = DynamicalWeb::getRoute('avatar', array(
-                                                            'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
-                                                            'resource' => 'normal'
-                                                        ));
+                                                        try
+                                                        {
+                                                            $VendorApplication = $IntellivoidAccounts->getApplicationManager()->getApplication(
+                                                                ApplicationSearchMethod::byName,
+                                                                substr($TransactionRecord->Vendor, 0, strpos($TransactionRecord->Vendor, ' '))
+                                                            );
+                                                            $CachedApplications[$TransactionRecord->Vendor] = $VendorApplication->PublicAppId;
+                                                            $ImageSource = DynamicalWeb::getRoute('application_icon', array(
+                                                                'app_id' => $CachedApplications[$TransactionRecord->Vendor],
+                                                                'resource'=> 'normal'
+                                                            ));
+                                                            $VendorFound = true;
+                                                        }
+                                                        catch(Exception $e)
+                                                        {
+                                                            $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                        }
                                                     }
-                                                    catch(Exception $e)
+
+                                                    if($VendorFound == false)
                                                     {
-                                                        $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                        if(isset($CachedAccounts[$TransactionRecord->Vendor]))
+                                                        {
+                                                            if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                            {
+                                                                $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                    'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                    'resource' => 'normal'
+                                                                ));
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            try
+                                                            {
+                                                                $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
+                                                                    AccountSearchMethod::byUsername, $TransactionRecord->Vendor
+                                                                );
+                                                                $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
+                                                                $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                    'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                    'resource' => 'normal'
+                                                                ));
+                                                            }
+                                                            catch(Exception $e)
+                                                            {
+                                                                $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                            }
+                                                        }
                                                     }
-                                                }
                                                 ?>
                                                 <div class="list-item">
                                                     <div class="preview-image">
