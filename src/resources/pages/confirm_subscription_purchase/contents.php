@@ -38,6 +38,10 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
     //}
 
     //$AuthenticateRoute = DynamicalWeb::getRoute('application_authenticate', $ReqParameters);
+
+    HTML::importScript('request_parser');
+    HTML::importScript('sp_validate_parameters');
+    HTML::importScript('sp_validate_access');
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
