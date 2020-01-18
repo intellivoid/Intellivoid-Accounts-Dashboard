@@ -7,7 +7,7 @@ use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
 use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
 use IntellivoidAccounts\IntellivoidAccounts;
 
-    HTML::importScript('revoke_access');
+    HTML::importScript('cancel_subscription');
     HTML::importScript('ren.contents');
 
 ?>
