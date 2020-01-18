@@ -108,16 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                 unset($AuthenticationRequest->RequestedPermissions[$Index]);
             }
         }
-
-        if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::MakePurchases))
-        {
-            if(check_permission('make_purchases') == false)
-            {
-                $Index = array_search(AccountRequestPermissions::MakePurchases, $AuthenticationRequest->RequestedPermissions);
-                unset($AuthenticationRequest->RequestedPermissions[$Index]);
-            }
-        }
-
+        
         $AuthenticationRequest->AccountId = WEB_ACCOUNT_ID;
 
         try
