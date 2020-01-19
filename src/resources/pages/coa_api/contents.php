@@ -40,6 +40,10 @@
             HTML::importScript('get_user');
             break;
 
+        case 'get_access':
+            HTML::importScript('get_access');
+            break;
+
         case 'create_subscription':
             HTML::importScript('create_subscription');
             break;
