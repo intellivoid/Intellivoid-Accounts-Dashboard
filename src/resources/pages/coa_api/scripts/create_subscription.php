@@ -41,7 +41,7 @@
         'user_information' => array()
     );
 
-    if($AuthenticationAccess->has_permission(AccountRequestPermissions::MakePurchases))
+    if($AuthenticationAccess->has_permission(AccountRequestPermissions::MakePurchases) == false)
     {
         returnJsonResponse(array(
             'status' => false,

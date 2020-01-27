@@ -189,12 +189,6 @@ use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
                                                 <div class="d-flex align-items-center py-1 text-black">
                                                     <span class="mdi mdi-shopping"></span>
                                                     <p class="mb-0 ml-3">Make purchases on your behalf</p>
-                                                    <div class="form-check ml-auto mb-0 mt-0">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" name="make_purchases" id="make_purchases" class="form-check-input" checked> Allow
-                                                            <i class="input-helper"></i>
-                                                        </label>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <?PHP

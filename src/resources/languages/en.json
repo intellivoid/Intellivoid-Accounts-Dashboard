@@ -127,6 +127,18 @@
             "CALLBACK_101": "There was an error while trying to process your request",
             "CALLBACK_102": "Access to this Service/Application has been revoked successfully",
             "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
+        },
+        "confirm_subscription_purchase": {
+            "CALLBACK_100": "There was an error while trying to process your request, please contact support.",
+            "CALLBACK_101": "The password is incorrect",
+            "CALLBACK_102": "You already have an activate subscription with this Application",
+            "CALLBACK_103": "Your account is currently limited, please contact support",
+            "CALLBACK_104": "You have insufficient funds in your Intellivoid Account, please add more funds."
+        },
+        "manage_subscriptions": {
+            "CALLBACK_100": "The requested resource was not found or does not exist",
+            "CALLBACK_101": "There was an error while trying to process your request",
+            "CALLBACK_102": "Your subscription has been canceled successfully"
         }
     },
     "sections": {

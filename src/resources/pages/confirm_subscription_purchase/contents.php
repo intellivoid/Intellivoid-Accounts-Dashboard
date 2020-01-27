@@ -11,38 +11,13 @@ use IntellivoidAccounts\Objects\COA\Application;
 use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 use IntellivoidAccounts\Objects\SubscriptionPlan;
 
-Runtime::import('IntellivoidAccounts');
-    //HTML::importScript('validate_coa');
-    //HTML::importScript('process_authentication');
-    //HTML::importScript('render_alert');
+    Runtime::import('IntellivoidAccounts');
 
-    ///** @var Application $Application */
-    //$Application = DynamicalWeb::getMemoryObject('application');
-
-    ///** @var AuthenticationRequest $AuthenticationRequest */
-    //$AuthenticationRequest = DynamicalWeb::getMemoryObject('auth_request');
-
-    //$VerificationToken = hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId);
-
-    //$ReqParameters = array(
-    //    'auth' => 'application',
-    //    'action' => 'authenticate',
-    //    'application_id' => $_GET['application_id'],
-    //    'request_token' => $_GET['request_token'],
-    //    'exp' => $AuthenticationRequest->ExpiresTimestamp,
-    //    'verification_token' => $VerificationToken,
-    //);
-
-    //if($Application->AuthenticationMode == AuthenticationMode::Redirect)
-    //{
-    //    $ReqParameters['redirect'] = $_GET['redirect'];
-    //}
-
-    //$AuthenticateRoute = DynamicalWeb::getRoute('application_authenticate', $ReqParameters);
-
+    HTML::importScript('render_alert');
     HTML::importScript('request_parser');
     HTML::importScript('sp_validate_parameters');
     HTML::importScript('sp_validate_access');
+    HTML::importScript('process_purchase');
 
     /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
@@ -52,6 +27,7 @@ Runtime::import('IntellivoidAccounts');
 
     /** @var SubscriptionPlan $SubscriptionPlan */
     $SubscriptionPlan = DynamicalWeb::getMemoryObject('subscription_plan');
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -75,6 +51,9 @@ Runtime::import('IntellivoidAccounts');
                                 <div class="mr-auto mb-4">
                                     <img class="img-fluid img-xs" src="/assets/images/iv_logo.svg" alt="iv_logo"/>
                                     <span class="text-dark pl-3">Intellivoid Accounts</span>
+                                </div>
+                                <div id="callback_alert">
+                                    <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 
                                 <div class="d-flex mb-2">
@@ -106,7 +85,8 @@ Runtime::import('IntellivoidAccounts');
 
                                 <div class="border-bottom pt-3"></div>
 
-                                <form id="authentication_form" name="authentication_form" class="pt-4">
+                                <?PHP $_GET['action'] = 'process_transaction'; ?>
+                                <form id="purchase_form" name="purchase_form" method="POST" action="<?PHP DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET, true); ?>" class="pt-4">
                                     <h6 class="mb-3"><?PHP HTML::print(str_ireplace("%s", $Application->Name, 'Activate subscription for %s')); ?></h6>
                                     <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="The billing cycle is when your subscription's billing gets processed automatically">
                                         <div class="d-flex align-items-center py-1 text-black" >

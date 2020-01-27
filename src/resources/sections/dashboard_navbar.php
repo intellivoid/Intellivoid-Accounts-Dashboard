@@ -100,7 +100,7 @@ use DynamicalWeb\HTML;
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('transaction_history', [], true) ?>">Transaction History</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_security', [], true) ?>">Subscriptions</a>
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('manage_subscriptions', [], true) ?>">Subscriptions</a>
                             </li>
                         </ul>
                     </div>

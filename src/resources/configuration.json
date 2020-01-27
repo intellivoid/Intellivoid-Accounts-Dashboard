@@ -1,6 +1,6 @@
 {
     "primary_language": "en",
-    "debugging_mode": true,
+    "debugging_mode": false,
     "router": [
         {"path": "/", "page": "index"},
         {"path": "/landing", "page": "landing_page"},
@@ -32,6 +32,7 @@
         {"path": "/user/finance/balance", "page": "account_balance"},
         {"path": "/user/finance/view_invoice", "page": "view_invoice"},
         {"path": "/user/finance/history", "page": "transaction_history"},
+        {"path": "/user/finance/subscriptions", "page": "manage_subscriptions"},
         {"path": "/transaction/success", "page": "transaction_success"},
         {"path": "/transaction/purchase/success", "page": "purchase_success"},
         {"path": "/transaction/purchase/failure", "page": "purchase_failure"},

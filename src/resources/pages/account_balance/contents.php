@@ -4,7 +4,8 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-    use IntellivoidAccounts\IntellivoidAccounts;
+use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
@@ -116,36 +117,74 @@
                                             else
                                             {
                                                 $CachedAccounts = array();
+                                                $CachedApplications = array();
                                                 foreach($RecentTransactions as $transaction)
                                                 {
                                                     $TransactionRecord = TransactionRecord::fromArray($transaction);
                                                     $ImageSource = "/assets/images/vendor.svg";
-                                                    if(isset($CachedAccounts[$TransactionRecord->Vendor]))
+                                                    $VendorFound = false;
+
+                                                    if(isset($CachedApplications[$TransactionRecord->Vendor]))
                                                     {
-                                                        if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                        if($CachedApplications[$TransactionRecord->Vendor] !== null)
                                                         {
-                                                            $ImageSource = DynamicalWeb::getRoute('avatar', array(
-                                                                'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
-                                                                'resource' => 'normal'
+                                                            $ImageSource = DynamicalWeb::getRoute('application_icon', array(
+                                                                'app_id' => $CachedApplications[$TransactionRecord->Vendor],
+                                                                'resource'=> 'normal'
                                                             ));
+                                                            $VendorFound = true;
                                                         }
                                                     }
                                                     else
                                                     {
                                                         try
                                                         {
-                                                            $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
-                                                                    AccountSearchMethod::byUsername, $TransactionRecord->Vendor
+                                                            $VendorApplication = $IntellivoidAccounts->getApplicationManager()->getApplication(
+                                                                ApplicationSearchMethod::byName,
+                                                                substr($TransactionRecord->Vendor, 0, strpos($TransactionRecord->Vendor, ' '))
                                                             );
-                                                            $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
-                                                            $ImageSource = DynamicalWeb::getRoute('avatar', array(
-                                                                'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
-                                                                'resource' => 'normal'
+                                                            $CachedApplications[$TransactionRecord->Vendor] = $VendorApplication->PublicAppId;
+                                                            $ImageSource = DynamicalWeb::getRoute('application_icon', array(
+                                                                'app_id' => $CachedApplications[$TransactionRecord->Vendor],
+                                                                'resource'=> 'normal'
                                                             ));
+                                                            $VendorFound = true;
                                                         }
                                                         catch(Exception $e)
                                                         {
                                                             $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                        }
+                                                    }
+
+                                                    if($VendorFound == false)
+                                                    {
+                                                        if(isset($CachedAccounts[$TransactionRecord->Vendor]))
+                                                        {
+                                                            if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                            {
+                                                                $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                    'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                    'resource' => 'normal'
+                                                                ));
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            try
+                                                            {
+                                                                $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
+                                                                    AccountSearchMethod::byUsername, $TransactionRecord->Vendor
+                                                                );
+                                                                $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
+                                                                $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                    'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                    'resource' => 'normal'
+                                                                ));
+                                                            }
+                                                            catch(Exception $e)
+                                                            {
+                                                                $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                            }
                                                         }
                                                     }
                                                     ?>
@@ -167,11 +206,11 @@
                                                                     {
                                                                         ?>
                                                                         <p class="text-muted mb-0">
-                                                                            $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
+                                                                            $0 USD
                                                                         </p>
                                                                         <?PHP
                                                                     }
-                                                                    if($TransactionRecord->Amount < 0)
+                                                                    elseif($TransactionRecord->Amount < 0)
                                                                     {
                                                                         ?>
                                                                         <p class="text-danger mb-0">
@@ -179,7 +218,7 @@
                                                                         </p>
                                                                         <?PHP
                                                                     }
-                                                                    if($TransactionRecord->Amount > 0)
+                                                                    elseif($TransactionRecord->Amount > 0)
                                                                     {
                                                                         ?>
                                                                         <p class="text-success mb-0">

@@ -2,7 +2,8 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\AccountStatus;
+use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
+use IntellivoidAccounts\Abstracts\AccountStatus;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
     use IntellivoidAccounts\Abstracts\ApplicationStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
@@ -12,7 +13,6 @@
     use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
-use IntellivoidAccounts\Objects\Subscription\Properties;
 
 if(get_parameter('app_tag') == null)
     {
@@ -114,6 +114,16 @@ if(get_parameter('app_tag') == null)
     {
         header('X-COA-Error: 29');
         Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '29')));
+    }
+
+    if(in_array(AccountRequestPermissions::MakePurchases ,$ApplicationAccess->Permissions) == false)
+    {
+        Actions::redirect(DynamicalWeb::getRoute(
+            'purchase_failure', array(
+                'error_type' => 'access_error',
+                'error' => 'access_denied'
+            )
+        ));
     }
 
     $AuthenticationAccess->ExpiresTimestamp = (int)time() + 43200;
