@@ -48,6 +48,10 @@
             HTML::importScript('create_subscription');
             break;
 
+        case 'process_subscription_billing':
+            HTML::importScript('process_subscription_billing');
+            break;
+
         default:
             returnJsonResponse(array(
                 'status' => false,

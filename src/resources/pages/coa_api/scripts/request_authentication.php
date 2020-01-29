@@ -44,7 +44,7 @@
     catch(Exception $exception)
     {
         header('X-COA-Error: -1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1', 'internal_reason' => 'application_exception')));
     }
 
 
@@ -88,7 +88,7 @@
     catch (Exception $e)
     {
         header('X-COA-Error: -1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1', 'internal_reason' => 'auth_request_exception')));
     }
 
     if($Application->AuthenticationMode == AuthenticationMode::Redirect)
