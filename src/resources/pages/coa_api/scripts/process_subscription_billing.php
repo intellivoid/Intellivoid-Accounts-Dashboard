@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
@@ -7,6 +8,7 @@
     use IntellivoidAccounts\Exceptions\SubscriptionNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
 
     $SubscriptionID = get_parameter('subscription_id');
@@ -19,6 +21,19 @@
             'error_code' => 42,
             'message' => resolve_error_code(42)
         ));
+    }
+
+    if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
+            "intellivoid_accounts", new IntellivoidAccounts()
+        );
+    }
+    else
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
     try
@@ -52,6 +67,9 @@
 
         if($Results == true)
         {
+            $Subscription->NextBillingCycle = (int)time() + (int)$Subscription->BillingCycle;
+            $IntellivoidAccounts->getSubscriptionManager()->updateSubscription($Subscription);
+
             returnJsonResponse(array(
                 'status' => true,
                 'status_code' => 200,
