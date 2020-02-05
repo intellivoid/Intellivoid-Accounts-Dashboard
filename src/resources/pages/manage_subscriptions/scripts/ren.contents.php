@@ -41,7 +41,7 @@ use IntellivoidAccounts\Objects\Subscription;
                     ?>
                     <div class="card accordion-minimal">
                         <div class="card-header" role="tab" id="heading-<?PHP HTML::print($Subscription->PublicID); ?>">
-                            <a class="mb-0 d-flex collapsed" data-toggle="collapse" href="#collapse-<?PHP HTML::print($Subscription->PublicID); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Application->PublicAppId); ?>">
+                            <a class="mb-0 d-flex collapsed" data-toggle="collapse" href="#collapse-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Application->PublicAppId); ?>">
                                 <img class="img-xs rounded-circle mt-2" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="profile image">
 
                                 <div class="ml-3">
@@ -58,7 +58,7 @@ use IntellivoidAccounts\Objects\Subscription;
                                 </div>
                             </a>
                         </div>
-                        <div id="collapse-<?PHP HTML::print($Subscription->PublicID); ?>" class="collapse" role="tabpanel" aria-labelledby="heading-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" data-parent="#subscription-accordion">
+                        <div id="collapse-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" class="collapse" role="tabpanel" aria-labelledby="heading-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" data-parent="#subscription-accordion">
                             <div class="card-body">
                                 <div class="ml-2 mr-2 row grid-margin d-flex mb-0">
                                     <div class="col-lg-9 mb-2">
