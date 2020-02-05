@@ -18,7 +18,17 @@ use DynamicalWeb\HTML;
                 <div class="modal-body">
                     <div class="d-flex flex-column justify-content-center align-items-center"  style="height:30vh;">
                         <div class="preview-image mb-3">
-                            <img class="img-lg img-fluid rounded-circle" src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="profile image">
+                            <?PHP
+                                $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal');
+                                if(isset($_GET['cache_refresh']))
+                                {
+                                    if($_GET['cache_refresh'] == 'true')
+                                    {
+                                        $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
+                                    }
+                                }
+                            ?>
+                            <img class="img-lg img-fluid rounded-circle" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>" alt="profile image">
                         </div>
                         <div class="mt-4 my-flex-item text-center">
                             <p class="text-muted"><?PHP HTML::print("JPEG or PNG Images that are 128x128px or larger are acceptable uploads"); ?></p>
