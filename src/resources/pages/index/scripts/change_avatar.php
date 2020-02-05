@@ -68,7 +68,7 @@
 
         try
         {
-            $IntellivoidAccounts->getAppUdp()->getProfilePictureManager()->apply_avatar($file, $Application->PublicAppId);
+            $IntellivoidAccounts->getUdp()->getProfilePictureManager()->apply_avatar($file, WEB_ACCOUNT_PUBID);
         }
         catch (ImageTooSmallException $e)
         {
