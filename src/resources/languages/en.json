@@ -8,7 +8,13 @@
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The current password you've entered is incorrect",
             "CALLBACK_102": "The confirmation password does not match the new password",
-            "CALLBACK_103": "Your password was updated successfully"
+            "CALLBACK_103": "Your password was updated successfully",
+            "CALLBACK_105": "There was an error with your upload, please try again",
+            "CALLBACK_106": "The system cannot process your upload at this time, please contact our staff about this",
+            "CALLBACK_107": "The given file type is unsupported, supported formats are JPEG and PNG",
+            "CALLBACK_108": "The image is too small to be processed",
+            "CALLBACK_109": "The file cannot be processed because it's invalid or corrupted",
+            "CALLBACK_110": "Your avatar has been changed successfully"
         },
         "login": {
             "PAGE_TITLE": "DynamicalWeb",

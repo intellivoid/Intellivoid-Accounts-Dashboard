@@ -14,7 +14,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
     /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
 
-
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_GET['action']))
