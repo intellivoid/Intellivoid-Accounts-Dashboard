@@ -30,7 +30,17 @@ use DynamicalWeb\HTML;
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <?PHP HTML::print($UsernameSafe); ?>
-                        <img class="img-xs ml-3" src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small'), true) ?>"  alt="Profile image">
+                        <?PHP
+                            $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small');
+                            if(isset($_GET['cache_refresh']))
+                            {
+                                if($_GET['cache_refresh'] == 'true')
+                                {
+                                    $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
+                                }
+                            }
+                        ?>
+                        <img class="img-xs ml-3" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>"  alt="<?PHP HTML::print($UsernameSafe); ?>">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <a class="dropdown-item mt-4" href="<?PHP DynamicalWeb::getRoute('applications', [], true); ?>"> Manage Applications </a>
