@@ -63,7 +63,7 @@
                 Actions::redirect(DynamicalWeb::getRoute('landing_page'));
             }
 
-            $Cookie = $sws->CookieManager()->newCookie('intellivoid_secured_web_session', 86400, false);
+            $Cookie = $sws->CookieManager()->newCookie('intellivoid_secured_web_session', 5656005, false);
 
             $Cookie->Data = array(
                 'session_active' => false,
