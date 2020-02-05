@@ -35,6 +35,7 @@ use DynamicalWeb\HTML;
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <a class="dropdown-item mt-4" href="<?PHP DynamicalWeb::getRoute('applications', [], true); ?>"> Manage Applications </a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#password-reset-dialog" href="#"> Change Password </a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#change-avatar-dialog" href="#"> Change Avatar </a>
                         <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('logout', [], true); ?>"> Logout </a>
                     </div>
                 </li>
@@ -110,4 +111,5 @@ use DynamicalWeb\HTML;
     </div>
 </nav>
 <?PHP HTML::importSection('reset_password_modal'); ?>
+<?PHP HTML::importSection('change_avatar_modal'); ?>
 <?PHP HTML::importSection('change_language_modal'); ?>
