@@ -40,7 +40,7 @@ use DynamicalWeb\HTML;
                                 }
                             }
                         ?>
-                        <img class="img-xs ml-3" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>"  alt="<?PHP HTML::print($UsernameSafe); ?>">
+                        <img class="img-xs rounded-circle ml-3" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>"  alt="<?PHP HTML::print($UsernameSafe); ?>">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <a class="dropdown-item mt-4" href="<?PHP DynamicalWeb::getRoute('applications', [], true); ?>"> Manage Applications </a>
