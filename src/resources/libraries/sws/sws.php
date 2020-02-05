@@ -76,7 +76,7 @@
          */
         public function __construct()
         {
-            $this->acm = new acm(__DIR__, 'intellivoid_accounts');
+            $this->acm = new acm(__DIR__, 'intellivoid_accounts_dashboard');
             $this->DatabaseConfiguration = $this->acm->getConfiguration('Database');
 
             $this->Database = new mysqli(
