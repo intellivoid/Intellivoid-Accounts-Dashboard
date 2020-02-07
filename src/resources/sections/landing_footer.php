@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="row py-4 footer-bottom">
-        <div class="col-md-8 mx-auto">
+        <div class="mx-auto">
             <div class="container-fluid clearfix">
                 <span class="d-block text-center text-sm-left d-sm-inline-block">Copyright &copy; 2017-<?PHP HTML::print(date('Y')); ?>
                     <a href="https://intellivoid.info/">Intellivoid Technologies</a>. All rights reserved.
