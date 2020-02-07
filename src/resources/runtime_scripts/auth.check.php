@@ -16,7 +16,8 @@
         'khm_api',
         'coa_api',
         'application_error',
-        'landing_page'
+        'landing_page',
+        'privacy'
     ];
 
     $unauthorized_pages = [
