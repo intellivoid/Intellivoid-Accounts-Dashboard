@@ -3,7 +3,8 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+use DynamicalWeb\Javascript;
+use DynamicalWeb\Runtime;
     use sws\sws;
 
     Runtime::import('SecuredWebSessions');
@@ -36,11 +37,14 @@
                 <?PHP HTML::importSection('landing_navbar'); ?>
                 <div class="row top-banner-content">
                     <div class="col-md-8 mx-auto">
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <h1 class="mr-2 text-white"> Intellivoid Accounts </h1>
-                                <h3 class="font-weight-light text-white"> Second-generation Authentication Solution </h3>
-                            </div>
+                        <div class="row mx-2">
+                            <h1 class="mr-2 text-white"> Intellivoid Accounts </h1>
+                        </div>
+                        <div class="row mx-2">
+                            <h3 class="font-weight-light text-white quotes">Second-generation Authentication Solution</h3>
+                            <h3 class="font-weight-light text-white quotes">One account for Everything</h3>
+                            <h3 class="font-weight-light text-white quotes">Opened Platform</h3>
+                            <h3 class="font-weight-light text-white quotes">True privacy and data control</h3>
                         </div>
                     </div>
                 </div>
@@ -115,5 +119,6 @@
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('gen_dashboard_js'); ?>
+        <?PHP Javascript::importScript('landingquotes'); ?>
     </body>
 </html>
