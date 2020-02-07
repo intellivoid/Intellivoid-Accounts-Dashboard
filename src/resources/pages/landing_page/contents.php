@@ -51,27 +51,27 @@
                         <div class="row">
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card card-icon-top mb-3">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1.88rem 1.81rem;">
                                         <img src="/assets/images/landing/gddd_1.svg" alt="image" class="card-icon">
-                                        <h4>Secured</h4>
+                                        <h4 class="mt-4">Secured</h4>
                                         <p class="card-text"> Setup multiple methods of verification of authentication, no email or phone verification </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card card-icon-top mb-3">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1.88rem 1.81rem;">
                                         <img src="/assets/images/landing/gddd_2.svg" alt="image" class="card-icon">
-                                        <h4>Data Control</h4>
+                                        <h4 class="mt-4">Data Control</h4>
                                         <p class="card-text"> Choose the data you want to share, there is no obligation other than your Username and Avatar </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card card-icon-top mb-3">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1.88rem 1.81rem;">
                                         <img src="/assets/images/landing/gddd_3.svg" alt="image" class="card-icon">
-                                        <h4>Open Platform</h4>
+                                        <h4 class="mt-4">Open Platform</h4>
                                         <p class="card-text"> Integrate Intellivoid Accounts into anything, even Android ROMs </p>
                                     </div>
                                 </div>
