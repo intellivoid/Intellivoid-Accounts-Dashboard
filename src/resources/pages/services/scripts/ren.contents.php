@@ -53,7 +53,7 @@ use IntellivoidAccounts\Objects\COA\Application;
                                         </h6>
                                         <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp), 'Last Authenticated: %s')); ?></small>
                                     </div>
-                                    <div class="ml-auto mr-3 mt-auto mb-auto">
+                                    <div class="ml-auto mr-3 mt-auto mb-4">
                                         <i class="mdi mdi-account-card-details"></i>
                                         <?PHP
                                             if(in_array(AccountRequestPermissions::ViewEmailAddress ,$ApplicationAccess->Permissions))

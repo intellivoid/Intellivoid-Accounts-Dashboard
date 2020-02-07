@@ -399,7 +399,8 @@
     @media (max-width: 768px) {
       .navbar.horizontal-layout .nav-bottom.header-toggled {
         display: block;
-        background: transparent; } }
+        background: transparent;
+        height: 0px; } }
     .navbar.horizontal-layout .nav-bottom.fixed-top {
       position: fixed;
       top: 0;
