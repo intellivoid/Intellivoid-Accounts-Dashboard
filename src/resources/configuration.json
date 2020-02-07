@@ -63,6 +63,13 @@
             "check_class_exists": true,
             "namespace": "IntellivoidAccounts",
             "main_class": "IntellivoidAccounts"
+        },
+        "Support": {
+            "directory_name": "Support",
+            "autoloader": "Support.php",
+            "check_class_exists": true,
+            "namespace": "Support",
+            "main_class": "Support"
         }
     },
     "runtime_scripts": {
