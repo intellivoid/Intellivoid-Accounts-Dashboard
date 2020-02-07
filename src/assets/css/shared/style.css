@@ -8963,8 +8963,8 @@ pre {
 /* Footer */
 .footer {
   background: #ffffff;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
   padding: 20px 1rem;
   transition: all 0.25s ease;
