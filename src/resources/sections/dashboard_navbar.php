@@ -79,7 +79,7 @@ use DynamicalWeb\HTML;
                     <div class="submenu ">
                         <ul class="submenu-item" style="padding-top: 23px; padding-bottom: 23px;">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('services', [], true) ?>">Services</a>
+                                <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('services', [], true) ?>">Authorized Apps</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('login_history', [], true) ?>">Login History</a>

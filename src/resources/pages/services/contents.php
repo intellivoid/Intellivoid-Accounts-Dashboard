@@ -15,7 +15,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title>Intellivoid Accounts - Authorized Apps</title>
     </head>
 
     <body>
@@ -28,7 +28,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                             <div class="col-lg-12 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Services</h4>
+                                        <h4 class="card-title">Authorized Apps</h4>
                                         <p class="card-description text-muted">Services and Applications you've authenticated to using this Intellivoid Account</p>
                                         <div class="wrapper mt-4">
                                             <?PHP HTML::importScript('callbacks'); ?>
