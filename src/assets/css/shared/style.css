@@ -5906,6 +5906,10 @@ button.bg-dark:focus,
 .d-none {
   display: none !important; }
 
+.tiny-text {
+  font-size: 0.75rem;
+}
+
 .d-inline {
   display: inline !important; }
 

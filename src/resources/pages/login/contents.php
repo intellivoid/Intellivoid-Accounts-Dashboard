@@ -31,11 +31,14 @@
                                 <div id="linear-spinner" class="indeterminate-none"></div>
                             </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
-                                <h1 class="text-center">
-                                    <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
+                                <h2 class="text-center">
+                                    <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-xs rounded-circle mb-2"/>
                                     Intelli<b>void</b>
-                                    <p>Login to an existing Intellivoid Account</p>
-                                </h1>
+                                </h2>
+                                <div class="text-center tiny-text">
+                                    Login to an existing Intellivoid Account
+                                </div>
+
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
