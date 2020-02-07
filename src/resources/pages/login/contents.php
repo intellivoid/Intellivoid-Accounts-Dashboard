@@ -39,7 +39,7 @@
                                     Login to an existing Intellivoid Account
                                 </div>
 
-                                <div id="callback_alert">
+                                <div id="callback_alert" class="mt-2">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 
