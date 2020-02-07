@@ -28,17 +28,17 @@
                                 <div id="linear-spinner" class="indeterminate-none"></div>
                             </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
-                                <h1 class="text-center">
-                                    <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
+                                <h2 class="text-center">
+                                    <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-xs rounded-circle mb-1"/>
                                     Intelli<b>void</b>
-                                    <p>Create a new Intellivoid Account</p>
-                                </h1>
+                                </h2>
+                                <div class="text-center tiny-text">
+                                    Create a new Intellivoid Account
+                                </div>
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
-
                                 <div class="border-bottom pt-3"></div>
-
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
                                         <label for="email" class="label" id="label_1">Email Address</label>
