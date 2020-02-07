@@ -56,14 +56,6 @@
                                     <div class="form-group">
                                         <input type="submit" id="submit_button" class="btn btn-primary submit-btn btn-block" value="Login">
                                     </div>
-                                    <div class="form-group d-flex justify-content-between">
-                                        <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label" id="label_3">
-                                                <input name="trusted_device" id="trusted_device" type="checkbox" class="form-check-input">
-                                                Trust this device
-                                            </label>
-                                        </div>
-                                    </div>
                                     <div class="text-block text-center my-3">
                                         <span class="text-small font-weight-semibold" id="option_pt1">Don't have an account?</span>
                                         <a href="<?PHP DynamicalWeb::getRoute('register', $GetParameters, true); ?>" id="option_pt2" class="text-black text-small">Create one</a>
