@@ -17,7 +17,8 @@
         'coa_api',
         'application_error',
         'landing_page',
-        'privacy'
+        'privacy',
+        'tos'
     ];
 
     $unauthorized_pages = [

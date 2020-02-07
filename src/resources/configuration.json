@@ -5,6 +5,7 @@
         {"path": "/", "page": "index"},
         {"path": "/landing", "page": "landing_page"},
         {"path": "/privacy", "page": "privacy"},
+        {"path": "/tos", "page": "tos"},
 
         {"path": "/auth/otl", "page": "otl_api"},
         {"path": "/auth/khm", "page": "khm_api"},
