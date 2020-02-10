@@ -9,7 +9,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
-
     HTML::importScript('redirect_paypal');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -41,7 +40,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Personal</title>
+        <title>Intellivoid Accounts - Account Balance</title>
     </head>
 
     <body>

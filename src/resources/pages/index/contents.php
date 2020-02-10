@@ -1,5 +1,9 @@
 <?PHP
+
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+use IntellivoidAccounts\IntellivoidAccounts;
 
     HTML::importScript('coa_auth');
     HTML::importScript('telegram_auth');
@@ -13,6 +17,22 @@
         $UsernameSafe = substr($UsernameSafe, 0 ,16);
         $UsernameSafe .= "...";
     }
+
+    if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
+            "intellivoid_accounts", new IntellivoidAccounts()
+        );
+    }
+    else
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+    }
+
+    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -69,80 +89,162 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-8 d-flex flex-column"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                            <div class="col-md-6 d-flex flex-column mb-4">
                                                 <div class="d-flex align-items-center pb-3">
-                                                    <h4 class="card-title mb-0">Quick Access</h4>
+                                                    <h4 class="card-title mb-0">Overview</h4>
                                                 </div>
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="d-flex">
-                                                            <i class="mdi mdi-bank icon-lg text-success d-flex align-items-center"></i>
-                                                            <div class="d-flex flex-column ml-4">
-                                                                <span class="d-flex flex-column">
-                                                                    <p class="mb-0">Account Balance</p>
-                                                                    <h4 class="font-weight-bold">$0</h4>
-                                                                </span>
-                                                                <small class="text-muted">
-                                                                    <a href="/balance">Add money to your Account</a>
-                                                                </small>
-                                                            </div>
-                                                        </div>
+                                                <div class="mb-3">
+                                                    <p class="text-muted mb-2">Account Balance</p>
+                                                    <div class="d-flex align-items-center">
+                                                        <h1 class="font-weight-medium mb-2">$<?PHP HTML::print($Account->Configuration->Balance); ?> USD</h1>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <p class="text-muted mb-0 ml-1">
+                                                            <a class="text-primary" href="#">Manage Account Balance</a>
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div class="pb-4"></div>
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="d-flex">
-                                                            <i class="mdi mdi-cart-outline icon-lg text-success d-flex align-items-center"></i>
-                                                            <div class="d-flex flex-column ml-4">
-                                                                <span class="d-flex flex-column">
-                                                                    <p class="mb-0">Account Balance</p>
-                                                                    <h4 class="font-weight-bold">$0</h4>
-                                                                </span>
-                                                                <small class="text-muted">
-                                                                    <a href="/balance">Add money to your Account</a>
-                                                                </small>
-                                                            </div>
-                                                        </div>
+                                                <div class="border-top"></div>
+                                                <div class="d-flex justify-content-between py-1 mt-2 mb-0">
+                                                    <div class="wrapper">
+                                                        <a class="mb-0 text-small text-black" href="#" style="text-decoration: none;">
+                                                            <i class="mdi mdi-account-key pr-2"></i>
+                                                            Manage Authorized Applications
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <div class="pb-4"></div>
+                                                <div class="d-flex justify-content-between py-1 mt-0 mb-0">
+                                                    <div class="wrapper">
+                                                        <a class="mb-0 text-small text-black" href="#" style="text-decoration: none;">
+                                                            <i class="mdi mdi-application pr-2"></i>
+                                                            Manage Applications
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between py-1">
+                                                    <div class="wrapper">
+                                                        <a class="mb-0 text-small text-black" href="#" style="text-decoration: none;">
+                                                            <i class="mdi mdi-history pr-2"></i>
+                                                            View Login History
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <small class="text-muted ml-auto d-none d-lg-block mb-3">Updated at 08.32pm, Aug 2018</small>
+                                            <div class="col-md-6">
+                                                <small class="text-muted ml-auto d-none d-lg-block mb-3">Account Security</small>
+                                                <div class="d-flex justify-content-between py-2 border-bottom">
+
+                                                    <div class="wrapper">
+                                                        <p class="mb-0">Mobile Verification</p>
+                                                        <h5 class="font-weight-medium">
+                                                            <?PHP
+                                                            HTML::print("<small class=\"posted-date\">", false);
+                                                            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                                            {
+                                                                $LastUpdated = $Account->Configuration->VerificationMethods->TwoFactorAuthentication->LastUpdated;
+                                                                HTML::print(gmdate("F j, Y, g:i a", $LastUpdated));
+                                                            }
+                                                            else
+                                                            {
+                                                                HTML::print("Not Enabled");
+                                                            }
+                                                            HTML::print("</small>", false);
+                                                            ?>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="wrapper d-flex flex-column align-items-center">
+                                                        <?PHP
+                                                        if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                                        {
+                                                            HTML::print("<div class=\"badge badge-success badge-pill\">", false);
+                                                            HTML::print("Enabled");
+                                                            HTML::print("</div>", false);
+                                                        }
+                                                        else
+                                                        {
+                                                            HTML::print("<div class=\"badge badge-danger badge-pill\">", false);
+                                                            HTML::print("Disabled");
+                                                            HTML::print("</div>", false);
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
                                                 <div class="d-flex justify-content-between py-2 border-bottom">
                                                     <div class="wrapper">
-                                                        <p class="mb-0">Marketing</p>
-                                                        <h5 class="font-weight-medium">34%</h5>
+                                                        <p class="mb-0">Recovery Codes</p>
+                                                        <h5 class="font-weight-medium">
+                                                            <?PHP
+                                                            HTML::print("<small class=\"posted-date\">", false);
+                                                            if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                                            {
+                                                                $LastUpdated = $Account->Configuration->VerificationMethods->RecoveryCodes->LastUpdated;
+                                                                HTML::print(gmdate("F j, Y, g:i a", $LastUpdated));
+                                                            }
+                                                            else
+                                                            {
+                                                                HTML::print("Not Enabled");
+                                                            }
+                                                            HTML::print("</small>", false);
+                                                            ?>
+                                                        </h5>
                                                     </div>
                                                     <div class="wrapper d-flex flex-column align-items-center">
-                                                        <small class="text-muted mb-2">2018</small>
-                                                        <div class="badge badge-pill badge-danger">Mar</div>
+                                                        <?PHP
+                                                        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                                        {
+                                                            HTML::print("<div class=\"badge badge-success badge-pill\">", false);
+                                                            HTML::print("Enabled");
+                                                            HTML::print("</div>", false);
+                                                        }
+                                                        else
+                                                        {
+                                                            HTML::print("<div class=\"badge badge-danger badge-pill\">", false);
+                                                            HTML::print("Disabled");
+                                                            HTML::print("</div>", false);
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex justify-content-between py-2 border-bottom">
                                                     <div class="wrapper">
-                                                        <p class="mb-0">Develpment</p>
-                                                        <h5 class="font-weight-medium">49%</h5>
+                                                        <p class="mb-0">Telegram Verification</p>
+                                                        <h5 class="font-weight-medium">
+                                                            <?PHP
+                                                            HTML::print("<small class=\"posted-date\">", false);
+                                                            if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                                            {
+                                                                $LastUpdated = $Account->Configuration->VerificationMethods->TelegramLink->LastLinked;
+                                                                HTML::print(gmdate("F j, Y, g:i a", $LastUpdated));
+                                                            }
+                                                            else
+                                                            {
+                                                                HTML::print("Not Enabled");
+                                                            }
+                                                            HTML::print("</small>", false);
+                                                            ?>
+                                                        </h5>
                                                     </div>
                                                     <div class="wrapper d-flex flex-column align-items-center">
-                                                        <small class="text-muted mb-2">2018</small>
-                                                        <div class="badge badge-pill badge-warning">DVR</div>
+                                                        <?PHP
+                                                        if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                                        {
+                                                            HTML::print("<div class=\"badge badge-success badge-pill\">", false);
+                                                            HTML::print("Enabled");
+                                                            HTML::print("</div>", false);
+                                                        }
+                                                        else
+                                                        {
+                                                            HTML::print("<div class=\"badge badge-danger badge-pill\">", false);
+                                                            HTML::print("Disabled");
+                                                            HTML::print("</div>", false);
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
-                                                <div class="d-flex justify-content-between pt-2">
-                                                    <div class="wrapper">
-                                                        <p class="mb-0">Human Resources</p>
-                                                        <h5 class="font-weight-medium">75%</h5>
-                                                    </div>
-                                                    <div class="wrapper d-flex flex-column align-items-center">
-                                                        <small class="text-muted mb-2">2017</small>
-                                                        <div class="badge badge-pill badge-success">H&amp;R</div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper mt-4 d-none d-lg-block">
-                                                    <p class="text-muted">Note: These statistics are aggregates over all of your application's
-                                                        users. </p>
+                                                <div class="wrapper mt-4 d-flex d-lg-block">
+                                                    <button class="btn btn-danger btn-block">
+                                                        <i class="mdi mdi-lock pr-1"></i>Manage Login Security
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
