@@ -5,6 +5,7 @@ use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
 use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
 use IntellivoidAccounts\Abstracts\SearchMethods\TransactionLogSearchMethod;
 use IntellivoidAccounts\IntellivoidAccounts;
 
@@ -52,6 +53,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
         Actions::redirect(DynamicalWeb::getRoute('index'));
     }
 
+    if($TransactionRecord->Amount == 0)
+    {
+        $TransactionRecord->Amount = 0;
+    }
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
@@ -77,6 +83,19 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                             <div class="col-lg-4 pl-0">
                                                 <?PHP
                                                 $FromAccount = null;
+                                                $FromApplication = null;
+
+                                                try
+                                                {
+                                                    $FromApplication = $IntellivoidAccounts->getApplicationManager()->getApplication(
+                                                        ApplicationSearchMethod::byName,
+                                                        substr($TransactionRecord->Vendor, 0, strpos($TransactionRecord->Vendor, ' '))
+                                                    );
+                                                }
+                                                catch(Exception $e)
+                                                {
+                                                    $FromApplication = null;
+                                                }
 
                                                 try
                                                 {
@@ -93,7 +112,15 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                     <b><?PHP HTML::print($TransactionRecord->Vendor); ?></b>
                                                 </p>
                                                 <?PHP
-                                                if($FromAccount !== null)
+                                                if($FromApplication !== null)
+                                                {
+                                                    ?>
+                                                    <p>Vendor ID:
+                                                        <code><?PHP HTML::print($FromApplication->PublicAppId); ?></code>
+                                                    </p>
+                                                    <?PHP
+                                                }
+                                                elseif($FromAccount !== null)
                                                 {
                                                     ?>
                                                     <p><?PHP HTML::print($FromAccount->Email); ?></p>
