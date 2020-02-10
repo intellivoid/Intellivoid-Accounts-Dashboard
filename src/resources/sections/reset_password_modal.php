@@ -15,38 +15,38 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                            <label for="current_password">Current Password</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="mdi mdi-lock"></i>
-                                    </span>
-                                </div>
-                                <input type="password" name="current_password" id="current_password" class="form-control" placeholder="Enter your current password">
+                        <label for="current_password">Current Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="mdi mdi-lock"></i>
+                                </span>
                             </div>
+                            <input type="password" name="current_password" id="current_password" class="form-control" placeholder="Enter your current password">
                         </div>
+                    </div>
                     <div class="form-group">
-                            <label for="new_password">New Password</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="mdi mdi-lock-plus"></i>
-                                    </span>
-                                </div>
-                                <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Enter your new password">
+                        <label for="new_password">New Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="mdi mdi-lock-plus"></i>
+                                </span>
                             </div>
+                            <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Enter your new password">
                         </div>
+                    </div>
                     <div class="form-group">
-                            <label for="confirm_password">Repeat Password</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="mdi mdi-lock-reset"></i>
-                                    </span>
-                                </div>
-                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Repeat your new password">
+                        <label for="confirm_password">Repeat Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="mdi mdi-lock-reset"></i>
+                                </span>
                             </div>
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Repeat your new password">
                         </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>

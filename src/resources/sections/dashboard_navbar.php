@@ -116,6 +116,12 @@ use DynamicalWeb\HTML;
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a data-toggle="modal" data-target="#feedback_dialog"  href="#" class="nav-link">
+                        <i class="link-icon mdi mdi-message"></i>
+                        <span class="menu-title">Feedback</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -123,3 +129,4 @@ use DynamicalWeb\HTML;
 <?PHP HTML::importSection('reset_password_modal'); ?>
 <?PHP HTML::importSection('change_avatar_modal'); ?>
 <?PHP HTML::importSection('change_language_modal'); ?>
+<?PHP HTML::importSection('feedback_modal'); ?>

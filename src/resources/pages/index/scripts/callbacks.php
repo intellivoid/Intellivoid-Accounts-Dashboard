@@ -51,5 +51,17 @@
             case 110:
                 RenderAlert(TEXT_CALLBACK_110, "success", "mdi-checkbox-marked-circle-outline");
                 break;
+
+            case 111:
+                RenderAlert("There was an error while trying to submit your report", "danger", "mdi-alert-circle");
+                break;
+
+            case 112:
+                RenderAlert("Your feedback message is invalid", "danger", "mdi-alert-circle");
+                break;
+
+            case 113:
+                RenderAlert("Thank you for your feedback!", "success", "mdi-checkbox-marked-circle-outline");
+                break;
         }
     }

@@ -5,6 +5,7 @@
     HTML::importScript('telegram_auth');
     HTML::importScript('update_password');
     HTML::importScript('change_avatar');
+    HTML::importScript('submit_report');
 
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
