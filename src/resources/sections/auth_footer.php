@@ -1,4 +1,5 @@
 <?PHP
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
 <ul class="auth-footer">
@@ -6,10 +7,10 @@
         <a href="https://intellivoid.info/">Intellivoid</a>
     </li>
     <li>
-        <a href="https://intellivoid.info/privacy">Privacy</a>
+        <a href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>">Privacy</a>
     </li>
     <li>
-        <a href="https://intellivoid.info/tos">Terms</a>
+        <a href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>">Terms</a>
     </li>
     <li>
         <a href="https://intellivoid.info/contact">Contact us</a>
