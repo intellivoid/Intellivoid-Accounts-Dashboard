@@ -21,5 +21,5 @@
         </a>
     </li>
 </ul>
-<p class="footer-text tiny-text text-center">Copyright © 2017-<?PHP HTML::print(date('Y')); ?> Intellivoid. All rights reserved.</p>
+<p class="footer-text tiny-text text-center">Copyright © 2017-<?PHP HTML::print(date('Y')); ?> Intellivoid Technologies. All rights reserved.</p>
 <?PHP HTML::importSection('change_language_modal'); ?>
