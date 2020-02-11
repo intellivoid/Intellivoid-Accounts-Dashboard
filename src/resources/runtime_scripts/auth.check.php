@@ -18,7 +18,8 @@
         'application_error',
         'landing_page',
         'privacy',
-        'tos'
+        'tos',
+        'documentation'
     ];
 
     $unauthorized_pages = [
