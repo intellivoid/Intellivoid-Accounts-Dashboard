@@ -135,10 +135,10 @@
             {
                 $Cookie->Data["verification_required"] = true;
                 $Cookie->Data["auto_logout"] = time() + 600;
+                $Cookie->Data["verification_attempts"] = 0;
                 $Cookie->Data["verification_type"] = "PASSWORD_RESET";
             }
-
-            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
+            elseif($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
             {
                 $Cookie->Data["verification_required"] = true;
                 $Cookie->Data["auto_logout"] = time() + 600;

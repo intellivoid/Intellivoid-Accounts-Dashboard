@@ -22,6 +22,10 @@
         'documentation'
     ];
 
+    $password_recovery_pages = [
+        'recover_password'
+    ];
+
     $unauthorized_pages = [
         'login',
         'register'
@@ -48,10 +52,10 @@
 
     if(AUTHENTICATION_SKIPPED == false)
     {
-        execute_authentication_check($unauthorized_pages, $verification_pages);
+        execute_authentication_check($unauthorized_pages, $verification_pages, $password_recovery_pages);
     }
 
-    function execute_authentication_check(array $unauthorized_pages, array $verification_pages)
+    function execute_authentication_check(array $unauthorized_pages, array $verification_pages, array $password_recovery_pages)
     {
         $GetParameters = $_GET;
         unset($GetParameters['callback']);
@@ -199,17 +203,43 @@
 
                 $redirect = true;
 
-                foreach($verification_pages as $page)
+                if(isset($Cookie->Data['verification_type']))
                 {
-                    if(APP_CURRENT_PAGE == $page)
+                    if($Cookie->Data['verification_type'] == 'PASSWORD_RESET')
                     {
-                        $redirect = false;
+                        foreach($password_recovery_pages as $page)
+                        {
+                            if(APP_CURRENT_PAGE == $page)
+                            {
+                                $redirect = false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach($verification_pages as $page)
+                    {
+                        if(APP_CURRENT_PAGE == $page)
+                        {
+                            $redirect = false;
+                        }
                     }
                 }
 
                 if($redirect == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('verify', $GetParameters));
+                    if(isset($Cookie->Data['verification_type']))
+                    {
+                        if ($Cookie->Data['verification_type'] == 'PASSWORD_RESET')
+                        {
+                            Actions::redirect(DynamicalWeb::getRoute('recover_password', $GetParameters));
+                        }
+                    }
+                    else
+                    {
+                        Actions::redirect(DynamicalWeb::getRoute('verify', $GetParameters));
+                    }
                 }
             }
             else
