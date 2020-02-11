@@ -117,7 +117,7 @@ use DynamicalWeb\HTML;
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="modal" data-target="#feedback_dialog"  href="#" class="nav-link">
+                    <a data-toggle="modal" data-target="#feedback_dialog" href="#" class="nav-link">
                         <i class="link-icon mdi mdi-message"></i>
                         <span class="menu-title">Feedback</span>
                     </a>

@@ -58,7 +58,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                         <h3 class="mb-0">Welcome back, <?PHP HTML::print($UsernameSafe); ?>!</h3>
                                         <p class="mb-0">Need anything more to know more? Feel free to contact us at any point.</p>
                                     </div>
-                                    <a href="https://intellivoid.info/contact" target="_blank" class="btn btn-light ml-5">Contact us</a>
+                                    <a href="#" data-toggle="modal" data-target="#feedback_dialog" class="btn btn-light ml-5">Contact us</a>
                                 </div>
                             </div>
                         </div>
