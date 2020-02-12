@@ -64,7 +64,6 @@
         <link rel="stylesheet" href="/assets/css/extra.css">
         <title>Intellivoid Accounts - Verify</title>
     </head>
-
     <body>
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
