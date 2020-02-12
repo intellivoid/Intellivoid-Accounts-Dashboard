@@ -41,16 +41,16 @@
             <div class="container-fluid page-body-wrapper full-page-wrapper">
                 <div class="content-wrapper d-flex align-items-center auth area theme-one">
                     <?PHP HTML::importSection('background_animations'); ?>
-                    <div class="row w-100 mx-auto animated slideInRight" id="input_dialog">
+                    <div class="row w-100 mx-auto" id="input_dialog">
                         <div class="col-lg-5 mx-auto">
-                            <div class="auto-form-wrapper">
+                            <div class="auto-form-wrapper animated slideInRight">
                                 <button class="btn btn-rounded btn-inverse-light grid-margin" onclick="go_back();">
                                     <i class="mdi mdi-arrow-left"></i>
                                 </button>
                                 <h1 class="text-center">
                                     <i class="mdi mdi-reload"></i> Verification
                                 </h1>
-                                <p>Enter a one-time use recovery code</p>
+                                <p class="text-center">Enter a one-time use recovery code</p>
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
@@ -60,7 +60,7 @@
 
                                     <div class="form-group">
                                         <label for="code" class="label" style="display: none; visibility: hidden;" hidden>Recovery Code</label>
-                                        <input name="code" id="code" type="text" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" placeholder="Verification Code" required>
+                                        <input name="code" id="code" type="text" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" autofocus="autofocus" placeholder="Verification Code" required>
                                     </div>
 
                                     <div class="form-group pb-2 pt-2">

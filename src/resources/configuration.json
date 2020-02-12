@@ -23,6 +23,7 @@
         {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_code"},
         {"path": "/auth/verify/telegram", "page": "verify_telegram"},
         {"path": "/auth/internal", "page": "internal_authentication"},
+        {"path": "/auth/recovery", "page": "recover_password"},
 
         {"path": "/auth/coa/error", "page": "application_error"},
         {"path": "/auth/coa/request", "page": "application_authenticate"},

@@ -47,5 +47,9 @@
             case 109:
                 RenderAlert(TEXT_CALLBACK_109, "danger", "mdi-alert-circle");
                 break;
+
+            case 110:
+                RenderAlert("Your password has been updated successfully", "primary", "mdi-checkbox-marked-circle-outline");
+                break;
         }
     }

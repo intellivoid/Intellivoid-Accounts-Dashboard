@@ -131,7 +131,14 @@
             $Cookie->Data["sudo_mode"] = false;
             $Cookie->Data["sudo_expires"] = 0;
 
-            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
+            if($Account->Status == AccountStatus::PasswordRecoveryMode)
+            {
+                $Cookie->Data["verification_required"] = true;
+                $Cookie->Data["auto_logout"] = time() + 600;
+                $Cookie->Data["verification_attempts"] = 0;
+                $Cookie->Data["verification_type"] = "PASSWORD_RESET";
+            }
+            elseif($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
             {
                 $Cookie->Data["verification_required"] = true;
                 $Cookie->Data["auto_logout"] = time() + 600;

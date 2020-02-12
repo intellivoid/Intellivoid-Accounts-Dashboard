@@ -46,11 +46,11 @@
                                 <div class="border-bottom pt-3"></div>
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
-                                        <label for="username_email" id="label_1" class="label">Username or Email</label>
-                                        <input name="username_email" id="username_email" type="text" class="form-control" placeholder="example@intellivoid.info" required>
+                                        <label for="username_email" id="username_email_label" class="label">Username or Email</label>
+                                        <input name="username_email" id="username_email" type="text" class="form-control" autofocus="autofocus" placeholder="example@intellivoid.info" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password" id="label_2" class="label">Password</label>
+                                        <label for="password" id="password_label" class="label">Password</label>
                                         <input name="password" id="password" type="password" class="form-control" placeholder="*********" required>
                                     </div>
                                     <div class="form-group">
