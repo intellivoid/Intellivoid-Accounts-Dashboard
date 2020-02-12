@@ -29,7 +29,11 @@
             "RECENT_ACTIVITY_CARD_TITLE": "Recent Activity",
             "RECENT_ACTIVITY_CARD_OPTIONS_VIEW_ALL_TRANSACTIONS": "View more transactions",
             "NO_ITEMS": "No Items",
-            "VIEW_TRANSACTION_INVOICE_LINK": "View Invoice"
+            "VIEW_TRANSACTION_INVOICE_LINK": "View Invoice",
+            "ADD_BALANCE_DIALOG_TITLE": "Add to your Balance",
+            "ADD_BALANCE_DIALOG_SELECT_LABEL": "Select Amount",
+            "ADD_BALANCE_DIALOG_CANCEL_BUTTON": "Cancel",
+            "ADD_BALANCE_DIALOG_CONTINUE_BUTTON": "Continue"
         },
         "index": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
