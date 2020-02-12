@@ -32,10 +32,10 @@ use DynamicalWeb\HTML;
                                     <div class="card-body">
                                         <div class="profile-header text-white">
                                             <div class="d-flex justify-content-around">
+                                                <img class="rounded-circle img-fluid img-lg ml-5" data-toggle="modal" data-target="#change-avatar-dialog" src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="profile image">
+
                                                 <div class="content-area">
-                                                    <h3 class="mb-0 mx-5">
-                                                        Personal Information
-                                                    </h3>
+                                                    <h3 class="mb-0 mx-5">Personal Information</h3>
                                                     <p class="mb-0 mx-5">You can edit what personal information is associated with your account here</p>
                                                 </div>
                                             </div>
@@ -150,6 +150,9 @@ use DynamicalWeb\HTML;
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div class="row">
 
                                             </div>
                                         </div>
