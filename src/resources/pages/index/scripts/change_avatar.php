@@ -22,6 +22,16 @@
 
     function change_avatar()
     {
+        $RedirectToPersonal = false;
+
+        if(isset($_GET['redirect']))
+        {
+            if($_GET['redirect'] == 'personal')
+            {
+                $RedirectToPersonal = true;
+            }
+        }
+
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
         {
             /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -41,24 +51,52 @@
         }
         catch (FileUploadException $e)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '110'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('index',
                 array('callback' => '105'))
             );
         }
         catch (SystemException $e)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '111'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('index',
                 array('callback' => '106'))
             );
         }
         catch (UnsupportedFileTypeException $e)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '112'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('index',
                 array('callback' => '107'))
             );
         }
         catch(Exception $exception)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '100'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('index',
                 array('callback' => '100'))
             );
@@ -72,20 +110,48 @@
         }
         catch (ImageTooSmallException $e)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '113'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('index',
                 array('callback' => '108'))
             );
         }
         catch (InvalidImageException $e)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '114'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('manage_application',
                 array('callback' => '109'))
             );
         }
         catch (UnsupportedFileTypeException $e)
         {
+            if($RedirectToPersonal)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('personal',
+                    array('callback' => '112'))
+                );
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('manage_application',
                 array('callback' => '107'))
+            );
+        }
+
+        if($RedirectToPersonal)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('personal',
+                array('callback' => '115', 'cache_refresh' => 'true'))
             );
         }
 
