@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
                                     <h2 class="animated fadeInDown"><?PHP HTML::print(TEXT_SUB_HEADER); ?></h2>
-                                    <h3 class="font-weight-light animated fadeInRight"><?PHP HTML::print(TEXT_MESSAGE); ?>></h3>
+                                    <h3 class="font-weight-light animated fadeInRight"><?PHP HTML::print(TEXT_MESSAGE); ?></h3>
                                 </div>
                             </div>
                             <div class="row mt-5">

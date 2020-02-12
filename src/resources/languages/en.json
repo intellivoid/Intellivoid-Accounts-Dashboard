@@ -11,6 +11,13 @@
             "MESSAGE": "Nothing can be found here",
             "HOME_LINK": "Go Back Home"
         },
+        "500": {
+            "PAGE_TITLE": "500 Internal Server Error",
+            "HEADER": "500",
+            "SUB_HEADER": "OwO",
+            "MESSAGE": "Server made an oopsy woopsy",
+            "HOME_LINK": "Go Back Home"
+        },
         "index": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The current password you've entered is incorrect",
