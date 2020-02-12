@@ -42,7 +42,7 @@
                                 <form action="<?PHP DynamicalWeb::getRoute('recover_password', array('action' => 'submit'), true); ?>" method="POST" id="authentication_form" class="pt-4" name="authentication_form">
                                     <div class="form-group">
                                         <label for="new_password" class="label" style="display: none; visibility: hidden;" hidden>New Password</label>
-                                        <input name="new_password" id="new_password" type="text" class="form-control" placeholder="New Password" required>
+                                        <input name="new_password" id="new_password" type="password" autocomplete="new-password" class="form-control" placeholder="New Password" required>
                                     </div>
                                     <div class="form-group pb-2 pt-2">
                                         <input type="submit" class="btn btn-primary submit-btn btn-block" value="Change Password">

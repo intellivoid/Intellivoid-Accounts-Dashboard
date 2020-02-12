@@ -2,7 +2,8 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Exceptions\AccountNotFoundException;
+use IntellivoidAccounts\Abstracts\AccountStatus;
+use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\Exceptions\InvalidAccountStatusException;
     use IntellivoidAccounts\Exceptions\InvalidEmailException;
@@ -62,6 +63,7 @@
         }
 
         $Account->Password = Hashing::password($_POST['new_password']);
+        $Account->Status = AccountStatus::Active;
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
         /** @var sws $sws */
