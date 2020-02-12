@@ -8,6 +8,7 @@ use DynamicalWeb\HTML;
     HTML::importScript('update.name');
     HTML::importScript('clear.name');
     HTML::importScript('update.birthday');
+    HTML::importScript('update.email');
     HTML::importScript('clear.birthday');
     HTML::importScript('define.information');
 
@@ -61,7 +62,7 @@ use DynamicalWeb\HTML;
                                                             <div class="d-flex mb-0">
                                                                 <h4>Email Address</h4>
                                                             </div>
-                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
+                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_email'), true) ?>" method="POST">
                                                                 <div class="input-group mb-3">
                                                                     <input type="email"<?PHP HTML::print(USER_EMAIL, false); ?> aria-label="Email Address" class="form-control border-primary" id="email_address" name="email_address" placeholder="example@intellivoid.info" required>
                                                                     <div class="input-group-append">

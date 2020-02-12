@@ -71,5 +71,21 @@
             case 115:
                 RenderAlert("Your avatar has been changed successfully", "success", "mdi-checkbox-marked-circle-outline");
                 break;
+
+            case 116:
+                RenderAlert("There was an error while trying to update your email address", "danger", "mdi-alert-circle");
+                break;
+
+            case 117:
+                RenderAlert("The email address you entered is invalid", "danger", "mdi-alert-circle");
+                break;
+
+            case 118:
+                RenderAlert("The email address is already used", "danger", "mdi-alert-circle");
+                break;
+
+            case 119:
+                RenderAlert("Your email address has been updated successfully", "success", "mdi-checkbox-marked-circle-outline");
+                break;
         }
     }
