@@ -59,7 +59,14 @@ use DynamicalWeb\HTML;
                                                 <div class="col-md-6 d-flex align-items-stretch">
                                                     <div class="row flex-grow">
                                                         <div class="col-12 grid-margin">
-                                                            <h4>Name</h4>
+                                                            <div class="d-flex mb-0">
+                                                                <h4>Name</h4>
+                                                                <div class="ml-auto mr-3 mt-auto mb-0">
+                                                                    <a class="text-muted" href="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>">
+                                                                        <i class="mdi mdi-delete"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                             <p class="text-muted">Your legal name</p>
                                                             <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
                                                                 <div class="form-group">
@@ -71,7 +78,6 @@ use DynamicalWeb\HTML;
                                                                     <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
                                                                 </div>
                                                                 <input type="submit" class="btn btn-success mr-2" value="Update">
-                                                                <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>';">Clear</a>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -80,7 +86,14 @@ use DynamicalWeb\HTML;
                                                 <div class="col-md-6 grid-margin stretch-card">
                                                     <div class="row flex-grow">
                                                         <div class="col-12 grid-margin">
-                                                            <h4>Birthday</h4>
+                                                            <div class="d-flex mb-0">
+                                                                <h4>Birthday</h4>
+                                                                <div class="ml-auto mr-3 mt-auto mb-0">
+                                                                    <a class="text-muted" href="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_birthday'), true) ?>">
+                                                                        <i class="mdi mdi-delete"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                             <p class="text-muted">When you were born</p>
                                                             <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_birthday'), true) ?>" method="POST">
                                                                 <div class="form-group">
@@ -155,7 +168,6 @@ use DynamicalWeb\HTML;
                                                                     </select>
                                                                 </div>
                                                                 <button type="submit" class="btn btn-success mr-2">Update</button>
-                                                                <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_birthday'), true) ?>';">Clear</a>
                                                             </form>
                                                         </div>
                                                     </div>
