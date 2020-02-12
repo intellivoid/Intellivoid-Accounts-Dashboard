@@ -19,6 +19,12 @@
             "HOME_LINK": "Go Back Home"
         },
         "account_balance": {
+            "PAGE_TITLE": "Account Balance",
+            "BALANCE_TITLE": "Account Balance",
+            "BALANCE_ADD_LINK": "Add to balance",
+            "ADD_MESSAGE_P1": " You can add funds to your Intellivoid Account but these funds cannot be withdrawn or transferred to other Intellivoid Accounts as explained in our Terms and Service.",
+            "ADD_MESSAGE_P2": "This process is processed manually by Intellivoid and it can take up to 48 Hours to be processed.",
+            "ADD_MESSAGE_P3": "Your PayPal Email address must be the same as your Intellivoid Account's Email Address otherwise the transaction will fail"
         },
         "index": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",

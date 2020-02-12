@@ -1,11 +1,12 @@
 <?PHP
+    /** @noinspection PhpUndefinedConstantInspection */
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
@@ -39,44 +40,33 @@ use IntellivoidAccounts\IntellivoidAccounts;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Account Balance</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
-
                         <div class="row">
                             <div class="col-sm-5 col-md-5 col-lg-5 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="absolute left top bottom h-100 v-strock-2 bg-success"></div>
-                                        <p class="text-muted mb-2">Account Balance</p>
+                                        <p class="text-muted mb-2"><?PHP HTML::print(TEXT_BALANCE_TITLE); ?></p>
                                         <div class="d-flex align-items-center">
                                             <h1 class="font-weight-medium mb-2">$<?PHP HTML::print($Account->Configuration->Balance); ?> USD</h1>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="bg-primary dot-indicator"></div>
                                             <p class="text-muted mb-0 ml-2">
-                                                <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#">Add to balance</a>
+                                                <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#"><?PHP HTML::print(TEXT_BALANCE_ADD_LINK); ?></a>
                                             </p>
                                         </div>
                                         <div class="alert alert-fill-primary mt-3" role="alert">
-                                            <p>
-                                                You can add funds to your Intellivoid Account but these funds cannot be withdrawn or
-                                                transferred to other Intellivoid Accounts as explained in our Terms and Service.
-                                            </p>
-                                            <p>
-                                                This process is processed manually
-                                                by Intellivoid and it can take up to 48 Hours to be processed.
-                                            </p>
-                                            <p>
-                                                Your PayPal Email address must be the same as your Intellivoid Account's Email Address
-                                                otherwise the transaction will fail
-                                            </p>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P1); ?></p>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P2); ?></p>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P3); ?></p>
                                             <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('personal', array(), true); ?>">Update your Email Address</a>
                                         </div>
                                     </div>
