@@ -33,10 +33,10 @@ use DynamicalWeb\HTML;
                                         <div class="profile-header text-white">
                                             <div class="d-flex justify-content-around">
                                                 <div class="content-area">
-                                                    <h3 class="mb-0">
+                                                    <h3 class="mb-0 mx-5">
                                                         Personal Information
                                                     </h3>
-                                                    <p class="mb-0">You can edit what personal information is associated with your account here</p>
+                                                    <p class="mb-0 mx-5">You can edit what personal information is associated with your account here</p>
                                                 </div>
                                             </div>
                                         </div>
