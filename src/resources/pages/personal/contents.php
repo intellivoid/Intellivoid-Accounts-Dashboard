@@ -8,6 +8,7 @@ use DynamicalWeb\HTML;
     HTML::importScript('update.name');
     HTML::importScript('clear.name');
     HTML::importScript('update.birthday');
+    HTML::importScript('update.email');
     HTML::importScript('clear.birthday');
     HTML::importScript('define.information');
 
@@ -32,11 +33,21 @@ use DynamicalWeb\HTML;
                                     <div class="card-body">
                                         <div class="profile-header text-white">
                                             <div class="d-flex justify-content-around">
+                                                <?PHP
+                                                    $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal');
+                                                    if(isset($_GET['cache_refresh']))
+                                                    {
+                                                        if($_GET['cache_refresh'] == 'true')
+                                                        {
+                                                            $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
+                                                        }
+                                                    }
+                                                ?>
+                                                <img class="rounded-circle img-fluid img-lg ml-5" data-toggle="modal" data-target="#change-avatar-dialog" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>" alt="profile image">
+
                                                 <div class="content-area">
-                                                    <h3 class="mb-0">
-                                                        Personal Information
-                                                    </h3>
-                                                    <p class="mb-0">You can edit what personal information is associated with your account here</p>
+                                                    <h3 class="mb-0 mx-5">Personal Information</h3>
+                                                    <p class="mb-0 mx-5">You can edit what personal information is associated with your account here</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -45,66 +56,90 @@ use DynamicalWeb\HTML;
                                         </div>
                                         <div class="profile-body">
                                             <div class="row">
-
+                                                <div class="col-md-12 d-flex align-items-stretch">
+                                                    <div class="row flex-grow">
+                                                        <div class="col-12 grid-margin">
+                                                            <div class="d-flex mb-0">
+                                                                <h4>Email Address</h4>
+                                                            </div>
+                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_email'), true) ?>" method="POST">
+                                                                <div class="input-group mb-3">
+                                                                    <input type="email"<?PHP HTML::print(USER_EMAIL, false); ?> aria-label="Email Address" class="form-control border-primary" id="email_address" name="email_address" placeholder="example@intellivoid.info" required>
+                                                                    <div class="input-group-append">
+                                                                        <input type="submit" class="btn btn-success ml-3" value="Update">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border-top"></div>
+                                            <div class="row mt-4">
                                                 <div class="col-md-6 d-flex align-items-stretch">
                                                     <div class="row flex-grow">
                                                         <div class="col-12 grid-margin">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <h4 class="card-title">Name</h4>
-                                                                    <p class="card-description text-muted">
-                                                                        Your legal name
-                                                                    </p>
-                                                                    <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
-                                                                        <div class="form-group">
-                                                                            <label for="first_name">First Name</label>
-                                                                            <input type="text"<?PHP HTML::print(USER_FIRST_NAME, false); ?> class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="last_name">Last Name</label>
-                                                                            <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
-                                                                        </div>
-                                                                        <input type="submit" class="btn btn-success mr-2" value="Update">
-                                                                        <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>';">Clear</a>
-                                                                    </form>
+                                                            <div class="d-flex mb-0">
+                                                                <h4>Name</h4>
+                                                                <div class="ml-auto mr-3 mt-auto mb-0">
+                                                                    <a class="text-muted" href="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>">
+                                                                        <i class="mdi mdi-delete"></i>
+                                                                    </a>
                                                                 </div>
                                                             </div>
+                                                            <p class="text-muted">Your legal name</p>
+                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
+                                                                <div class="form-group">
+                                                                    <label for="first_name">First Name</label>
+                                                                    <input type="text"<?PHP HTML::print(USER_FIRST_NAME, false); ?> class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="last_name">Last Name</label>
+                                                                    <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
+                                                                </div>
+                                                                <input type="submit" class="btn btn-success mr-2" value="Update">
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6 grid-margin stretch-card">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Birthday</h4>
-                                                            <p class="card-description text-muted">
-                                                                When you were born
-                                                            </p>
+                                                    <div class="row flex-grow">
+                                                        <div class="col-12 grid-margin">
+                                                            <div class="d-flex mb-0">
+                                                                <h4>Birthday</h4>
+                                                                <div class="ml-auto mr-3 mt-auto mb-0">
+                                                                    <a class="text-muted" href="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_birthday'), true) ?>">
+                                                                        <i class="mdi mdi-delete"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <p class="text-muted">When you were born</p>
                                                             <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_birthday'), true) ?>" method="POST">
                                                                 <div class="form-group">
                                                                     <label for="dob_year">Year</label>
                                                                     <select class="form-control border-primary" id="dob_year" name="dob_year" required>
                                                                         <?PHP
-                                                                            $FirstYear = 1970;
-                                                                            $CurrentYear = (int)date('Y') - 13;
-                                                                            $CurrentCount = $FirstYear;
+                                                                        $FirstYear = 1970;
+                                                                        $CurrentYear = (int)date('Y') - 13;
+                                                                        $CurrentCount = $FirstYear;
 
-                                                                            while(true)
+                                                                        while(true)
+                                                                        {
+                                                                            if($CurrentCount > $CurrentYear)
                                                                             {
-                                                                                if($CurrentCount > $CurrentYear)
-                                                                                {
-                                                                                    break;
-                                                                                }
-                                                                                if(USER_BOD_YEAR == $CurrentCount)
-                                                                                {
-                                                                                    HTML::print("<option value=\"" . $CurrentCount . "\" selected=\"selected\">" . $CurrentCount . "</option>", false);
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
-                                                                                }
-                                                                                $CurrentCount += 1;
+                                                                                break;
                                                                             }
+                                                                            if(USER_BOD_YEAR == $CurrentCount)
+                                                                            {
+                                                                                HTML::print("<option value=\"" . $CurrentCount . "\" selected=\"selected\">" . $CurrentCount . "</option>", false);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
+                                                                            }
+                                                                            $CurrentCount += 1;
+                                                                        }
                                                                         ?>
                                                                     </select>
                                                                 </div>
@@ -153,7 +188,6 @@ use DynamicalWeb\HTML;
                                                                     </select>
                                                                 </div>
                                                                 <button type="submit" class="btn btn-success mr-2">Update</button>
-                                                                <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_birthday'), true) ?>';">Clear</a>
                                                             </form>
                                                         </div>
                                                     </div>

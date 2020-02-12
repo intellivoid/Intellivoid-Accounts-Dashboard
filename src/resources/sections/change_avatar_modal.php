@@ -2,11 +2,17 @@
     use DynamicalWeb\DynamicalWeb;
 use DynamicalWeb\HTML;
 
+    $ActionParameters =  array('action' => 'change_avatar');
+
+    if(APP_CURRENT_PAGE == 'personal')
+    {
+        $ActionParameters['redirect'] = 'personal';
+    }
 ?>
 <div class="modal fade" id="change-avatar-dialog" tabindex="-1" role="dialog" aria-labelledby="cam" aria-hidden="true" style="display: none;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="<?PHP DynamicalWeb::getRoute('index', array('action' => 'change_avatar'), true); ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?PHP DynamicalWeb::getRoute('index', $ActionParameters, true); ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title" id="cam">Change Avatar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -47,5 +47,45 @@
             case 109:
                 RenderAlert(TEXT_CALLBACK_109, "success", "mdi-checkbox-marked-circle-outline");
                 break;
+
+            case 110:
+                RenderAlert("There was an error with your upload, please try again", "danger", "mdi-alert-circle");
+                break;
+
+            case 111:
+                RenderAlert("The system cannot process your upload at this time, please contact our staff about this", "danger", "mdi-alert-circle");
+                break;
+
+            case 112:
+                RenderAlert("The given file type is unsupported, supported formats are JPEG and PNG", "danger", "mdi-alert-circle");
+                break;
+
+            case 113:
+                RenderAlert("TThe image is too small to be processed", "danger", "mdi-alert-circle");
+                break;
+
+            case 114:
+                RenderAlert("The file cannot be processed because it's invalid or corrupted", "danger", "mdi-alert-circle");
+                break;
+
+            case 115:
+                RenderAlert("Your avatar has been changed successfully", "success", "mdi-checkbox-marked-circle-outline");
+                break;
+
+            case 116:
+                RenderAlert("There was an error while trying to update your email address", "danger", "mdi-alert-circle");
+                break;
+
+            case 117:
+                RenderAlert("The email address you entered is invalid", "danger", "mdi-alert-circle");
+                break;
+
+            case 118:
+                RenderAlert("The email address is already used", "danger", "mdi-alert-circle");
+                break;
+
+            case 119:
+                RenderAlert("Your email address has been updated successfully", "success", "mdi-checkbox-marked-circle-outline");
+                break;
         }
     }
