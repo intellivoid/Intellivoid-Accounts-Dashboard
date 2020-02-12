@@ -49,62 +49,54 @@ use DynamicalWeb\HTML;
                                                 <div class="col-md-6 d-flex align-items-stretch">
                                                     <div class="row flex-grow">
                                                         <div class="col-12 grid-margin">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <h4 class="card-title">Name</h4>
-                                                                    <p class="card-description text-muted">
-                                                                        Your legal name
-                                                                    </p>
-                                                                    <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
-                                                                        <div class="form-group">
-                                                                            <label for="first_name">First Name</label>
-                                                                            <input type="text"<?PHP HTML::print(USER_FIRST_NAME, false); ?> class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="last_name">Last Name</label>
-                                                                            <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
-                                                                        </div>
-                                                                        <input type="submit" class="btn btn-success mr-2" value="Update">
-                                                                        <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>';">Clear</a>
-                                                                    </form>
+                                                            <h4>Name</h4>
+                                                            <p class="text-muted">Your legal name</p>
+                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
+                                                                <div class="form-group">
+                                                                    <label for="first_name">First Name</label>
+                                                                    <input type="text"<?PHP HTML::print(USER_FIRST_NAME, false); ?> class="form-control border-primary" id="first_name" name="first_name" placeholder="John" required>
                                                                 </div>
-                                                            </div>
+                                                                <div class="form-group">
+                                                                    <label for="last_name">Last Name</label>
+                                                                    <input type="text"<?PHP HTML::print(USER_LAST_NAME, false); ?> class="form-control border-primary" id="last_name" name="last_name" placeholder="Smith" required>
+                                                                </div>
+                                                                <input type="submit" class="btn btn-success mr-2" value="Update">
+                                                                <a class="btn btn-warning mr-2 text-white" onclick="location.href='<?PHP DynamicalWeb::getRoute('personal', array('action' => 'clear_name'), true) ?>';">Clear</a>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6 grid-margin stretch-card">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Birthday</h4>
-                                                            <p class="card-description text-muted">
-                                                                When you were born
-                                                            </p>
+                                                    <div class="row flex-grow">
+                                                        <div class="col-12 grid-margin">
+                                                            <h4>Birthday</h4>
+                                                            <p class="text-muted">When you were born</p>
                                                             <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_birthday'), true) ?>" method="POST">
                                                                 <div class="form-group">
                                                                     <label for="dob_year">Year</label>
                                                                     <select class="form-control border-primary" id="dob_year" name="dob_year" required>
                                                                         <?PHP
-                                                                            $FirstYear = 1970;
-                                                                            $CurrentYear = (int)date('Y') - 13;
-                                                                            $CurrentCount = $FirstYear;
+                                                                        $FirstYear = 1970;
+                                                                        $CurrentYear = (int)date('Y') - 13;
+                                                                        $CurrentCount = $FirstYear;
 
-                                                                            while(true)
+                                                                        while(true)
+                                                                        {
+                                                                            if($CurrentCount > $CurrentYear)
                                                                             {
-                                                                                if($CurrentCount > $CurrentYear)
-                                                                                {
-                                                                                    break;
-                                                                                }
-                                                                                if(USER_BOD_YEAR == $CurrentCount)
-                                                                                {
-                                                                                    HTML::print("<option value=\"" . $CurrentCount . "\" selected=\"selected\">" . $CurrentCount . "</option>", false);
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
-                                                                                }
-                                                                                $CurrentCount += 1;
+                                                                                break;
                                                                             }
+                                                                            if(USER_BOD_YEAR == $CurrentCount)
+                                                                            {
+                                                                                HTML::print("<option value=\"" . $CurrentCount . "\" selected=\"selected\">" . $CurrentCount . "</option>", false);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                HTML::print("<option value=\"" . $CurrentCount . "\">" . $CurrentCount . "</option>", false);
+                                                                            }
+                                                                            $CurrentCount += 1;
+                                                                        }
                                                                         ?>
                                                                     </select>
                                                                 </div>
