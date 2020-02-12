@@ -19,7 +19,8 @@
         'landing_page',
         'privacy',
         'tos',
-        'documentation'
+        'documentation',
+        'gba_mode'
     ];
 
     $password_recovery_pages = [

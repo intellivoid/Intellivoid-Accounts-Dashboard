@@ -7,6 +7,7 @@
         {"path": "/privacy", "page": "privacy"},
         {"path": "/tos", "page": "tos"},
         {"path": "/documentation", "page": "documentation"},
+        {"path": "/security/gba", "page": "gba_mode"},
 
         {"path": "/auth/otl", "page": "otl_api"},
         {"path": "/auth/khm", "page": "khm_api"},
