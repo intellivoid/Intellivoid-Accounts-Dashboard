@@ -117,6 +117,11 @@
                 Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
+            if($Account->Status == AccountStatus::BlockedDueToGovernmentBackedAttack)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('gba_mode'));
+            }
+
             if($Account->Status == AccountStatus::Suspended)
             {
                 $GetParameters['callback'] = '104';
