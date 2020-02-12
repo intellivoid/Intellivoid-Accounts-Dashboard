@@ -34,7 +34,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $RecentTransactions = $IntellivoidAccounts->getTransactionRecordManager()->getNewRecords($Account->ID, 15);
     }
 
-
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">

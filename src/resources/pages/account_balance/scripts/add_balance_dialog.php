@@ -6,7 +6,6 @@
 <div class="modal fade" id="add-balance-dialog" tabindex="-1" role="dialog" aria-labelledby="abd" aria-hidden="true" style="display: none;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-
             <form action="<?PHP DynamicalWeb::getRoute('account_balance', array('action' => 'process_payment'), true); ?>" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="abd">Add to your Balance</h5>
@@ -34,7 +33,6 @@
                     <input type="submit" class="btn btn-success" value="Continue">
                 </div>
             </form>
-
         </div>
     </div>
 </div>
