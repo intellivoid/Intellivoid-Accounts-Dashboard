@@ -60,7 +60,7 @@
 
                                     <div class="form-group">
                                         <label for="code" class="label" style="display: none; visibility: hidden;" hidden>Recovery Code</label>
-                                        <input name="code" id="code" type="text" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" autofocus="autofocus" placeholder="Verification Code" required>
+                                        <input name="code" id="code" type="text" autocomplete="off" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" autofocus="autofocus" placeholder="Verification Code" required>
                                     </div>
 
                                     <div class="form-group pb-2 pt-2">
