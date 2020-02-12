@@ -5,6 +5,7 @@
     use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('get_account');
+    HTML::importScript('update_password');
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
@@ -40,8 +41,8 @@
                                 <div class="border-bottom pb-2"></div>
                                 <form action="<?PHP DynamicalWeb::getRoute('recover_password', array('action' => 'submit'), true); ?>" method="POST" id="authentication_form" class="pt-4" name="authentication_form">
                                     <div class="form-group">
-                                        <label for="code" class="label" style="display: none; visibility: hidden;" hidden>New Password</label>
-                                        <input name="code" id="code" type="text" class="form-control" placeholder="New Password" required>
+                                        <label for="new_password" class="label" style="display: none; visibility: hidden;" hidden>New Password</label>
+                                        <input name="new_password" id="new_password" type="text" class="form-control" placeholder="New Password" required>
                                     </div>
                                     <div class="form-group pb-2 pt-2">
                                         <input type="submit" class="btn btn-primary submit-btn btn-block" value="Change Password">
