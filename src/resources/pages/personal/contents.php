@@ -55,7 +55,26 @@ use DynamicalWeb\HTML;
                                         </div>
                                         <div class="profile-body">
                                             <div class="row">
-
+                                                <div class="col-md-12 d-flex align-items-stretch">
+                                                    <div class="row flex-grow">
+                                                        <div class="col-12 grid-margin">
+                                                            <div class="d-flex mb-0">
+                                                                <h4>Email Address</h4>
+                                                            </div>
+                                                            <form action="<?PHP DynamicalWeb::getRoute('personal', array('action' => 'update_name'), true) ?>" method="POST">
+                                                                <div class="input-group mb-3">
+                                                                    <input type="email"<?PHP HTML::print(USER_EMAIL, false); ?> aria-label="Email Address" class="form-control border-primary" id="email_address" name="email_address" placeholder="example@intellivoid.info" required>
+                                                                    <div class="input-group-append">
+                                                                        <input type="submit" class="btn btn-success ml-3" value="Update">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border-top"></div>
+                                            <div class="row mt-4">
                                                 <div class="col-md-6 d-flex align-items-stretch">
                                                     <div class="row flex-grow">
                                                         <div class="col-12 grid-margin">
@@ -172,9 +191,6 @@ use DynamicalWeb\HTML;
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </div>
-                                            <div class="row">
 
                                             </div>
                                         </div>
