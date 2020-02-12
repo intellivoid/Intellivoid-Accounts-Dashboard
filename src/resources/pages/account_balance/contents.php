@@ -67,7 +67,7 @@
                                             <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P1); ?></p>
                                             <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P2); ?></p>
                                             <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P3); ?></p>
-                                            <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('personal', array(), true); ?>">Update your Email Address</a>
+                                            <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('personal', array(), true); ?>"><?PHP HTML::print(TEXT_UPDATE_EMAIL_BUTTON); ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -75,14 +75,14 @@
                             <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 grid-margin stretch-card">
                                 <div class="card review-card">
                                     <div class="card-header header-sm d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title">Recent Activity</h4>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_TITLE); ?></h4>
                                         <div class="wrapper d-flex align-items-center">
                                             <div class="dropdown">
-                                                <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="mdi mdi-dots-vertical"></i>
                                                 </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                                    <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', array(), true); ?>">View more transactions</a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                                    <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', array(), true); ?>"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_OPTIONS_VIEW_ALL_TRANSACTIONS); ?></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                                         <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
                                                     </div>
                                                     <div class="p-2 my-flex-item">
-                                                        <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+                                                        <h6 class="text-muted"><?PHP HTML::print(TEXT_NO_ITEMS); ?></h6>
                                                     </div>
                                                 </div>
                                                 <?PHP
@@ -185,7 +185,7 @@
                                                                 <h6 class="product-name"><?PHP HTML::print($TransactionRecord->Vendor); ?></h6>
                                                                 <small class="time ml-3 d-none d-sm-block"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></small>
                                                                 <div class="ml-auto">
-                                                                    <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">View Invoice</a>
+                                                                    <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>"><?PHP HTML::print(TEXT_VIEW_TRANSACTION_INVOICE_LINK); ?></a>
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex align-items-center">
@@ -222,7 +222,6 @@
                                                 }
                                             }
                                         ?>
-
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +231,6 @@
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>
