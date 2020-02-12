@@ -1,5 +1,4 @@
 <?PHP
-
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
@@ -36,9 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
         </div>
         <?PHP HTML::importSection('generic_js'); ?>
     </body>
