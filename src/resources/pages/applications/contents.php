@@ -125,26 +125,9 @@
                                             </select>
                                         </div>
 
-                                       <div class="form-group pt-2">
+                                       <div class="form-group mt-4 mx-2">
                                            <label>Permissions</label>
                                            <div class="row">
-                                               <div class="col-md-6">
-                                                   <div class="form-check">
-                                                       <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_view_personal_information" class="form-check-input"> View Personal Information
-                                                           <i class="input-helper"></i>
-                                                       </label>
-                                                   </div>
-                                                   <p class="text-muted text-small pb-4">Access to Personal Information like name, birthday and email</p>
-
-                                                   <div class="form-check">
-                                                       <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input">  Make purchases
-                                                           <i class="input-helper"></i>
-                                                       </label>
-                                                   </div>
-                                                   <p class="text-muted text-small">Make purchases or activate paid subscriptions on users behalf</p>
-                                               </div>
                                                <div class="col-md-6">
                                                    <div class="form-check">
                                                        <label class="form-check-label">
@@ -161,6 +144,15 @@
                                                        </label>
                                                    </div>
                                                    <p class="text-muted text-small">Send notifications via Telegram (if available)</p>
+                                               </div>
+                                               <div class="col-md-6">
+                                                   <div class="form-check">
+                                                       <label class="form-check-label">
+                                                           <input type="checkbox" name="perm_view_personal_information" class="form-check-input"> View Personal Information
+                                                           <i class="input-helper"></i>
+                                                       </label>
+                                                   </div>
+                                                   <p class="text-muted text-small pb-4">Access to Personal Information like name, birthday and email</p>
                                                </div>
                                            </div>
                                        </div>
