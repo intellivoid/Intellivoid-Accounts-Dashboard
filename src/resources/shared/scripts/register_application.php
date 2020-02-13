@@ -82,11 +82,6 @@ use IntellivoidAccounts\Abstracts\AuthenticationMode;
         $Permissions[] = AccountRequestPermissions::ReadPersonalInformation;
     }
 
-    if(is_checked('perm_make_purchases'))
-    {
-        $Permissions[] = AccountRequestPermissions::MakePurchases;
-    }
-
     if(is_checked('perm_telegram_notifications'))
     {
         $Permissions[] = AccountRequestPermissions::TelegramNotifications;

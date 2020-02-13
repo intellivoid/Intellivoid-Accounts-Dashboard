@@ -7,7 +7,6 @@
 
     Runtime::import('IntellivoidAccounts');
 
-
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_GET['action']))
@@ -30,7 +29,7 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
 
     <body>
@@ -44,11 +43,11 @@
                             <div class="col-md-4 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Actions</h4>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_ACTIONS_CARD_TITLE); ?></h4>
                                         <div class="wrapper mt-4">
                                             <a class="d-flex align-items-center py-3 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
                                                 <i class="mdi mdi-plus text-danger"></i>
-                                                <p class="mb-0 ml-3">Create Application</p>
+                                                <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_ACTIONS_CREATE_APPLICATION_LINK); ?></p>
                                             </a>
                                         </div>
                                     </div>
@@ -57,10 +56,9 @@
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Applications</h4>
-                                        <p class="card-description"> Create and manage Applications for services & authentication </p>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_APPLICATIONS_CARD_TITLE); ?></h4>
+                                        <p class="card-description"><?PHP HTML::print(TEXT_APPLICATIONS_CARD_DESCRIPTION); ?></p>
                                         <?PHP
-
                                             if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
                                             {
                                                 /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -90,12 +88,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="modal fade" id="create-application" tabindex="-1" role="dialog" aria-labelledby="create-application-label" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <form class="modal-content" method="POST" action="<?PHP DynamicalWeb::getRoute('applications', array('action' => 'create-application'), true); ?>">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="create-application-label">Create Application</h5>
+                                        <h5 class="modal-title" id="create-application-label"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_TITLE); ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">
                                                 <i class="mdi mdi-close"></i>
@@ -103,11 +100,10 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-
                                         <div class="form-group">
-                                            <label for="application_name">Application Name</label>
+                                            <label for="application_name"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_APPLICATION_NAME_LABEL); ?></label>
                                             <div class="input-group">
-                                                <input type="text" id="application_name" name="application_name" placeholder="Enter your Application Name" class="form-control">
+                                                <input type="text" id="application_name" name="application_name" placeholder="<?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_APPLICATION_NAME_PLACEHOLDER); ?>" class="form-control">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">
                                                         <i class="mdi mdi-application"></i>
@@ -115,70 +111,58 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group pt-2">
-                                            <label for="authentication_type">Authentication Type</label>
+                                            <label for="authentication_type"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_LABEL); ?></label>
                                             <select class="form-control" name="authentication_type" id="authentication_type">
-                                                <option value="redirect">Redirect</option>
-                                                <option value="placeholder">Application Placeholder</option>
-                                                <option value="code">Code</option>
+                                                <option value="redirect"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_REDIRECT); ?></option>
+                                                <option value="placeholder"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_PLACEHOLDER); ?></option>
+                                                <option value="code"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_CODE); ?></option>
                                             </select>
                                         </div>
-
-                                       <div class="form-group pt-2">
-                                           <label>Permissions</label>
+                                       <div class="form-group mt-4 mx-2">
+                                           <label><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_HEADER); ?></label>
                                            <div class="row">
                                                <div class="col-md-6">
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_view_personal_information" class="form-check-input"> View Personal Information
+                                                           <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"> <?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_EMAIL_TEXT); ?>
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
-                                                   <p class="text-muted text-small pb-4">Access to Personal Information like name, birthday and email</p>
+                                                   <p class="text-muted text-small pb-4"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_EMAIL_DESCRIPTION); ?></p>
 
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input">  Make purchases
+                                                           <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"> <?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?>
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
-                                                   <p class="text-muted text-small">Make purchases or activate paid subscriptions on users behalf</p>
+                                                   <p class="text-muted text-small"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_TELEGRAM_NOTIFICATIONS_DESCRIPTION); ?></p>
                                                </div>
                                                <div class="col-md-6">
                                                    <div class="form-check">
                                                        <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"> View Email Address
+                                                           <input type="checkbox" name="perm_view_personal_information" class="form-check-input"> <?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_PERSONAL_INFORMATION_TEXT); ?>
                                                            <i class="input-helper"></i>
                                                        </label>
                                                    </div>
-                                                   <p class="text-muted text-small pb-4">View the users Email Address</p>
-
-                                                   <div class="form-check">
-                                                       <label class="form-check-label">
-                                                           <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" class="form-check-input"> Telegram Notifications
-                                                           <i class="input-helper"></i>
-                                                       </label>
-                                                   </div>
-                                                   <p class="text-muted text-small">Send notifications via Telegram (if available)</p>
+                                                   <p class="text-muted text-small pb-4"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_PERSONAL_INFORMATION_DESCRIPTION); ?></p>
                                                </div>
                                            </div>
                                        </div>
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                        <input type="submit" class="btn btn-success" value="Create Application">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_CANCEL_BUTTON); ?></button>
+                                        <input type="submit" class="btn btn-success" value="<?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_SUBMIT_BUTTON); ?>">
                                     </div>
                                 </form>
                             </div>
                         </div>
-
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>

@@ -24,7 +24,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 1,
             'message' => resolve_error_code(1)
         ));
@@ -54,7 +54,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 2,
             'message' => resolve_error_code(2)
         ));
@@ -63,7 +63,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -74,7 +74,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 403,
+            'response_code' => 403,
             'error_code' => 3,
             'message' => resolve_error_code(3)
         ));
@@ -84,7 +84,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 403,
+            'response_code' => 403,
             'error_code' => 4,
             'message' => resolve_error_code(4)
         ));
@@ -96,7 +96,7 @@
         {
             returnJsonResponse(array(
                 'status' => false,
-                'status_code' => 400,
+                'response_code' => 400,
                 'error_code' => 6,
                 'message' => resolve_error_code(6)
             ));
@@ -111,7 +111,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 5,
             'message' => resolve_error_code(5)
         ));
@@ -127,7 +127,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -144,7 +144,7 @@
     {
         returnJsonResponse(array(
             'status' => true,
-            'status_code' => 200,
+            'response_code' => 200,
             'request_token' => $AuthRequestToken->RequestToken,
             'auth_url' => $protocol . '://' . $_SERVER['HTTP_HOST'] . DynamicalWeb::getRoute('login',
                     array(
@@ -159,7 +159,7 @@
     {
         returnJsonResponse(array(
             'status' => true,
-            'status_code' => 200,
+            'response_code' => 200,
             'request_token' => $AuthRequestToken->RequestToken,
             'auth_url' => $protocol . '://' . $_SERVER['HTTP_HOST'] . DynamicalWeb::getRoute('login',
                     array(

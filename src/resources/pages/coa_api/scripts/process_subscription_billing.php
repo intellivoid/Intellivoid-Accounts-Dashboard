@@ -17,7 +17,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 42,
             'message' => resolve_error_code(42)
         ));
@@ -46,7 +46,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 43,
             'message' => resolve_error_code(43)
         ));
@@ -55,7 +55,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -72,7 +72,7 @@
 
             returnJsonResponse(array(
                 'status' => true,
-                'status_code' => 200,
+                'response_code' => 200,
                 'payment_processed' => true
             ));
         }
@@ -80,7 +80,7 @@
         {
             returnJsonResponse(array(
                 'status' => true,
-                'status_code' => 200,
+                'response_code' => 200,
                 'payment_processed' => false
             ));
         }
@@ -89,7 +89,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => 26,
             'message' => resolve_error_code(26)
         ));
@@ -98,7 +98,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => 4,
             'message' => resolve_error_code(4)
         ));
@@ -107,7 +107,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 49,
             'message' => resolve_error_code(49)
         ));
@@ -116,7 +116,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => 43,
             'message' => resolve_error_code(43)
         ));
@@ -125,7 +125,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => 44,
             'message' => resolve_error_code(44)
         ));
@@ -134,7 +134,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));

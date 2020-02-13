@@ -10,8 +10,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
     Runtime::import('IntellivoidAccounts');
 
-    HTML::importScript('redirect_paypal');
-
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -198,7 +196,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                             </div>
                         </div>
-                        <?PHP HTML::importScript('add_balance_dialog'); ?>
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>

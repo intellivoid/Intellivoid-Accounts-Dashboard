@@ -11,6 +11,7 @@
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
+    use IntellivoidAccounts\Exceptions\GovernmentBackedAttackModeEnabledException;
     use IntellivoidAccounts\Exceptions\HostNotKnownException;
     use IntellivoidAccounts\Exceptions\IncorrectLoginDetailsException;
     use IntellivoidAccounts\Exceptions\InvalidIpException;
@@ -249,13 +250,14 @@
     /**
      * Check's if the given login information is correct or not
      *
-     * @deprecated
      * @return Account
      * @throws AccountNotFoundException
      * @throws AccountSuspendedException
      * @throws DatabaseException
      * @throws IncorrectLoginDetailsException
      * @throws InvalidSearchMethodException
+     * @throws GovernmentBackedAttackModeEnabledException
+     * @deprecated
      */
     function check_login(): Account
     {
