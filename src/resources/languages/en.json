@@ -287,6 +287,24 @@
             "CALLBACK_109": "Authentication Denied",
             "CALLBACK_110": "Your password has been updated successfully"
         },
+        "login_history": {
+            "PAGE_TITLE": "Login History",
+            "CARD_TITLE": "Login History",
+            "CARD_DESCRIPTION": "Review what devices you logged in with and when",
+            "TABLE_HEADERS_ORIGIN": "Origin",
+            "TABLE_HEADERS_BROWSER": "Browser",
+            "TABLE_HEADERS_IP_ADDRESS": "IP Address",
+            "TABLE_HEADERS_STATUS": "Status",
+            "TABLE_HEADERS_DATE": "Date",
+            "LOGIN_STATUS_SUCCESS": "Successful",
+            "LOGIN_STATUS_INCORRECT_CREDENTIALS": "Incorrect Credentials",
+            "LOGIN_STATUS_VERIFICATION_FAILED": "Verification Failed",
+            "LOGIN_STATUS_UNTRUSTED_IP_BLOCKED": "Untrusted IP Blocked",
+            "LOGIN_STATUS_SUSPICIOUS_ACTIVITY_BLOCKED": "Suspicious Activity Blocked",
+            "LOGIN_STATUS_UNKNOWN": "Unknown",
+            "NO_RESULTS_HEADER": "No Results",
+            "NO_RESULTS_TEXT": "There is no data to display"
+        },
 
 
 

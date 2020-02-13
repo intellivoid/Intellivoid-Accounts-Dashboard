@@ -1,4 +1,7 @@
+<?php
+    use DynamicalWeb\HTML;
+?>
 <div class="container text-center pt-3">
-    <h4 class="mb-3 mt-5 text-muted">No Results</h4>
-    <p class="w-75 mx-auto mb-5 text-muted">There is no data to display</p>
+    <h4 class="mb-3 mt-5 text-muted"><?PHP HTML::print(TEXT_NO_RESULTS_HEADER); ?></h4>
+    <p class="w-75 mx-auto mb-5 text-muted"><?PHP HTML::print(TEXT_NO_RESULTS_TEXT); ?></p>
 </div>
