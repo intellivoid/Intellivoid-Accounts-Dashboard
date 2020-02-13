@@ -189,12 +189,43 @@
             "SUB_HEADER": "There seems to be a government-backed attack so we disabled your account for security reasons",
             "PAGE_CONTENT": "We cannot disclose to you how this came to be, your account has been disabled to prevent access from you, us, others and third-party applications you've authenticated to before. Your account will be made available once we can determine that it is safe to use. This is an automated process where one or more attacks may have triggered this."
         },
-
-
-
-
-
         "index": {
+            "PAGE_TITLE": "Intellivoid Accounts",
+            "WELCOME_BANNER_HEADER": "Welcome back, %s!",
+            "WELCOME_BANNER_SUB_HEADER": "Need anything more to know more? Feel free to contact us at any point.",
+            "WELCOME_BANNER_CONTACT_BUTTON": "Contact us",
+            "ACCOUNT_SECURITY_ALERT_TITLE": "Account Security",
+            "ACCOUNT_SECURITY_ALERT_MESSAGE": "It is important that you link your Telegram Account with your Intellivoid Account, this will provide greater security to your Account and allow you to recover your account in the case you lose access to it",,,
+            "ACCOUNT_SECURITY_OPEN_TELEGRAM_BUTTON": "Open Telegram",
+            "RECENT_ACTIONS_CARD_TITLE": "Recent Actions",
+            "RECENT_ACTIONS_CARD_DROPDOWN_VIEW_MORE": "View More",
+            "OVERVIEW_CARD_TITLE": "Overview",
+            "OVERVIEW_CARD_ACCOUNT_BALANCE_MANAGE_LINK": "Manage Account Balance",
+            "OVERVIEW_CARD_QUICK_ACTIONS_MANAGE_AUTHORIZED_APPLICATIONS": "Manage Authorized Applications",
+            "OVERVIEW_CARD_QUICK_ACTIONS_MANAGE_APPLICATIONS": "Manage Applications",
+            "OVERVIEW_CARD_QUICK_ACTIONS_VIEW_LOGIN_HISTORY": "View Login History",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY": "Account Security",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_NOT_ENABLED": "Not Enabled",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_ENABLED": "Enabled",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_DISABLED": "Enabled",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_MOBILE_VERIFICATION": "Mobile Verification",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_RECOVERY_CODES": "Recovery Codes",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_TELEGRAM_VERIFICATION": "Telegram Verification",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_MANAGE_BUTTON": "Manage Login Security",
+            "AUDIT_EVENT_NEW_LOGIN_DETECTED": "New login detected",
+            "AUDIT_EVENT_PASSWORD_UPDATE": "Password Updated",
+            "AUDIT_EVENT_PERSONAL_INFORMATION_UPDATE": "Personal Information Updated",
+            "AUDIT_EVENT_EMAIL_CHANGED": "Email Changed",
+            "AUDIT_EVENT_MOBILE_VERIFICATION_ENABLED": "Mobile Verification Enabled",
+            "AUDIT_EVENT_MOBILE_VERIFICATION_DISABLED": "Mobile Verification Disabled",
+            "AUDIT_EVENT_RECOVERY_CODES_ENABLED": "Recovery Codes Enabled",
+            "AUDIT_EVENT_RECOVERY_CODES_DISABLED": "Recovery Codes Disabled",
+            "AUDIT_EVENT_TELEGRAM_VERIFICATION_ENABLED": "Telegram Verification Enabled",
+            "AUDIT_EVENT_TELEGRAM_VERIFICATION_DISABLED": "Telegram Verification Disabled",
+            "AUDIT_EVENT_APPLICATION_CREATED": "Application Created",
+            "AUDIT_EVENT_NEW_LOGIN_LOCATION": "New Login Location Detected",
+            "AUDIT_EVENT_UNKNOWN": "Unknown",
+            "AUDIT_NO_ITEMS": "No Items",
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The current password you've entered is incorrect",
             "CALLBACK_102": "The confirmation password does not match the new password",
@@ -205,8 +236,17 @@
             "CALLBACK_107": "The given file type is unsupported, supported formats are JPEG and PNG",
             "CALLBACK_108": "The image is too small to be processed",
             "CALLBACK_109": "The file cannot be processed because it's invalid or corrupted",
-            "CALLBACK_110": "Your avatar has been changed successfully"
+            "CALLBACK_110": "Your avatar has been changed successfully",
+            "CALLBACK_111": "There was an error while trying to submit your report",
+            "CALLBACK_112": "Your feedback message is invalid",
+            "CALLBACK_113": "Thank you for your feedback!"
         },
+
+
+
+
+
+
         "login": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff.",
