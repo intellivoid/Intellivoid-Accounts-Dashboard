@@ -17,7 +17,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 1,
             'message' => resolve_error_code(1)
         ));
@@ -27,7 +27,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 22,
             'message' => resolve_error_code(22)
         ));
@@ -37,7 +37,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 24,
             'message' => resolve_error_code(24)
         ));
@@ -67,7 +67,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 400,
+            'response_code' => 400,
             'error_code' => 2,
             'message' => resolve_error_code(2)
         ));
@@ -76,7 +76,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -86,7 +86,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 401,
+            'response_code' => 401,
             'error_code' => 23,
             'message' => resolve_error_code(23)
         ));
@@ -96,7 +96,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 403,
+            'response_code' => 403,
             'error_code' => 3,
             'message' => resolve_error_code(3)
         ));
@@ -111,7 +111,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 401,
+            'response_code' => 401,
             'error_code' => 25,
             'message' => resolve_error_code(25)
         ));
@@ -120,7 +120,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -130,7 +130,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 401,
+            'response_code' => 401,
             'error_code' => 27,
             'message' => resolve_error_code(27)
         ));
@@ -144,7 +144,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 404,
+            'response_code' => 404,
             'error_code' => 26,
             'message' => resolve_error_code(26)
         ));
@@ -153,7 +153,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -163,7 +163,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 410,
+            'response_code' => 410,
             'error_code' => 28,
             'message' => resolve_error_code(28)
         ));
@@ -177,7 +177,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
@@ -187,7 +187,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 403,
+            'response_code' => 403,
             'error_code' => 29,
             'message' => resolve_error_code(29)
         ));
@@ -204,7 +204,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 500,
+            'response_code' => 500,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
         ));
