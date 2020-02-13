@@ -63,6 +63,12 @@
             "AUTHENTICATION_NOTICE_GENERIC": "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This is not an official Intellivoid Application/Service, whatever information or permissions you grant will be used in their terms of service and privacy policies if they have one. You can revoke access at any time via Intellivoid Accounts",
             "AUTHENTICATION_AUTHENTICATE_BUTTON": "Authenticate"
         },
+        "application_error": {
+            "PAGE_TITLE": "COA Error",
+            "PAGE_HEADER": "COA Error",
+            "PAGE_SUB_HEADER": "There was an error while trying to process your authentication request",
+            "ERROR_DETAILS_HEADER": "Error Details"
+        },
 
         "index": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
