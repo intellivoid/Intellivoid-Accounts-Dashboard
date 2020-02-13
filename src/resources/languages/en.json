@@ -246,6 +246,27 @@
             "PAGE_HEADER": "Internal Authentication",
             "PAGE_DESCRIPTION": "The code below is a one-time generated login code associated with your account, this is used for internal services. Staff will never ask for this code, you should not give this code to anyone. This code will expire in 5 minutes."
         },
+        "landing_page": {
+            "PAGE_TITLE": "Intellivoid Accounts",
+            "HOME_BANNER_HEADER": "Intellivoid Accounts",
+            "HOME_BANNER_QUOTE_1": "Second-generation Authentication Solution",
+            "HOME_BANNER_QUOTE_2": "One account for Everything",
+            "HOME_BANNER_QUOTE_3": "Opened Platform",
+            "HOME_BANNER_QUOTE_4": "True privacy and data control",
+            "FEATURES_1_HEADER": "Secured",
+            "FEATURES_1_BODY": "Setup multiple methods of verification of authentication, no email or phone verification",
+            "FEATURES_2_HEADER": "Data Control",
+            "FEATURES_2_BODY": "Choose the data you want to share, there is no obligation other than your Username and Avatar",
+            "FEATURES_3_HEADER": "Open Platform",
+            "FEATURES_3_BODY": "Integrate Intellivoid Accounts into anything, even Android ROMs",
+            "ABOUT_1_HEADER": "Say No to data collection",
+            "ABOUT_1_BODY": "Intellivoid does not display ads or collects data about you to share with third-party companies without your consent. Your data is yours, you have the right to choose how to share it with others",
+            "ABOUT_2_HEADER": "Stop reinventing the wheel",
+            "ABOUT_2_BODY": "Having too many accounts for many different services can put users at risk if one service gets compromised. Instead use Intellivoid Accounts as a form of authentication for your next project",
+            "ABOUT_3_HEADER": "No more ineffective forms of verification",
+            "ABOUT_3_BODY": "Getting tired of Phone Verification / Email Verification? No more! sim swapping is a thing of the past."
+
+        },
 
 
 
