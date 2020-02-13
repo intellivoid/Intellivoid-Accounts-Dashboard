@@ -13,7 +13,7 @@
     {
         $Response = array(
             "status" => false,
-            "status_code" => 400,
+            "response_code" => 400,
             "message" => "Missing GET parameter 'user_id'"
         );
         header('Content-Type: application/json');
@@ -44,7 +44,7 @@
     {
         $Response = array(
             "status" => false,
-            "status_code" => 404,
+            "response_code" => 404,
             "message" => "Resource not found"
         );
         header('Content-Type: application/json');
@@ -56,7 +56,7 @@
     {
         $Response = array(
             "status" => false,
-            "status_code" => 500,
+            "response_code" => 500,
             "message" => "Internal Server Error"
         );
         header('Content-Type: application/json');
@@ -81,7 +81,7 @@
 
         $Response = array(
             "status" => false,
-            "status_code" => 404,
+            "response_code" => 404,
             "message" => "Resource not found"
         );
         header('Content-Type: application/json');
