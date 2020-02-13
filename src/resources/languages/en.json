@@ -130,6 +130,18 @@
             "AUDIT_EVENT_UNKNOWN": "Unknown",
             "AUDIT_NO_ITEMS": "No Items"
         },
+        "authentication_code": {
+            "PAGE_TITLE": "Authentication Code",
+            "AUTHENTICATION_CARD_TITLE": "Sign in with Intellivoid Accounts",
+            "USER_IMG_ALT": "User Avatar",
+            "APP_IMG_ALT": "Application Logo",
+            "APPLICATION_TICK_VERIFIED": "This is verified & trusted",
+            "APPLICATION_TICK_OFFICIAL": "This is an official Intellivoid Application/Service",
+            "APPLICATION_TICK_UNTRUSTED": "This is untrusted and unsafe",
+            "HEADER_TEXT": "This application requires you to enter an access code in order to authenticate. You can copy the code shown below",
+            "ACCESS_TOKEN_LABEL": "Access Token",
+            "SUBMIT_BUTTON": "Done"
+        },
 
 
 
