@@ -153,6 +153,32 @@
             "HEADER_TEXT": "Successfully Authenticated",
             "SUB_HEADER_TEXT": "%s is processing your request"
         },
+        "confirm_subscription_purchase": {
+            "PAGE_TITLE": "Confirm Subscription Purchase",
+            "CARD_HEADER": "Intellivoid Accounts",
+            "USER_IMG_ALT": "User Avatar",
+            "APP_IMG_ALT": "Application Logo",
+            "APPLICATION_TICK_VERIFIED": "This is verified & trusted",
+            "APPLICATION_TICK_OFFICIAL": "This is an official Intellivoid Application/Service",
+            "APPLICATION_TICK_UNTRUSTED": "This is untrusted and unsafe",
+            "ACTIVATE_SUBSCRIPTION_HEADER": "Activate subscription for %s",
+            "INITIAL_PAYMENT_TOOLTIP": "The amount you have to pay to start this subscription",
+            "INITIAL_PAYMENT_PROMOTION_ACTIVE": "You will initially pay $%pp USD to start this subscription instead of $%op USD",
+            "INITIAL_PAYMENT_CYCLE_TEXT": "You will initially pay $%pp USD to start this subscription",
+            "BILLING_CYCLE_TOOLTIP": "The billing cycle is when your subscription's billing gets processed automatically",
+            "BILLING_CYCLE_PROMOTION_ACTIVE": "You will automatically be billed $%pp USD every %bc days instead of $%op USD",
+            "BILLING_CYCLE_TEXT": "You will automatically be billed $%pp USD every %bc days",
+            "CONFIRM_PASSWORD_LABEL": "Confirm Password",
+            "START_SUBSCRIPTION_BUTTON_FREE": "Start Subscription (FREE)",
+            "START_SUBSCRIPTION_BUTTON": "Start Subscription ($%s USD)",
+            "CALLBACK_100": "There was an error while trying to process your request, please contact support.",
+            "CALLBACK_101": "The password is incorrect",
+            "CALLBACK_102": "You already have an activate subscription with this Application",
+            "CALLBACK_103": "Your account is currently limited, please contact support",
+            "CALLBACK_104": "You have insufficient funds in your Intellivoid Account, please add more funds."
+        },
+
+
 
 
 
@@ -272,13 +298,6 @@
             "CALLBACK_101": "There was an error while trying to process your request",
             "CALLBACK_102": "Access to this Service/Application has been revoked successfully",
             "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
-        },
-        "confirm_subscription_purchase": {
-            "CALLBACK_100": "There was an error while trying to process your request, please contact support.",
-            "CALLBACK_101": "The password is incorrect",
-            "CALLBACK_102": "You already have an activate subscription with this Application",
-            "CALLBACK_103": "Your account is currently limited, please contact support",
-            "CALLBACK_104": "You have insufficient funds in your Intellivoid Account, please add more funds."
         },
         "manage_subscriptions": {
             "CALLBACK_100": "The requested resource was not found or does not exist",

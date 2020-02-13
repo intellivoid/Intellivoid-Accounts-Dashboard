@@ -22,7 +22,7 @@
     use IntellivoidAccounts\Objects\SubscriptionPlan;
     use IntellivoidAccounts\Objects\SubscriptionPromotion;
 
-if(isset($_GET['action']))
+    if(isset($_GET['action']))
     {
         if($_GET['action'] == 'process_transaction')
         {
