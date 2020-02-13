@@ -10,14 +10,15 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
     Runtime::import('IntellivoidAccounts');
 
-
     if(isset($_GET['app_id']) == false)
     {
         $Response = array(
             "status" => false,
+            "status_code" => 400,
             "message" => "Missing GET parameter 'app_id'"
         );
         header('Content-Type: application/json');
+        http_response_code(400);
         print(json_encode($Response));
         exit();
     }
@@ -44,9 +45,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
     {
         $Response = array(
             "status" => false,
+            "status_code" => 404,
             "message" => "Resource not found"
         );
         header('Content-Type: application/json');
+        http_response_code(404);
         print(json_encode($Response));
         exit();
     }
@@ -54,9 +57,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
     {
         $Response = array(
             "status" => false,
+            "status_code" => 500,
             "message" => "Internal Server Error"
         );
         header('Content-Type: application/json');
+        http_response_code(500);
         print(json_encode($Response));
         exit();
     }
@@ -77,9 +82,11 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
         $Response = array(
             "status" => false,
+            "status_code" => 404,
             "message" => "Resource not found"
         );
         header('Content-Type: application/json');
+        http_response_code(404);
         print(json_encode($Response));
         exit();
     }
@@ -88,7 +95,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
         upload_image($Avatar['normal']);
     }
 
-
     function upload_image($file)
     {
         $ImageContents = file_get_contents($file);
@@ -96,6 +102,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         header('Cache-control: max-age=60');
         header('Content-Length: ' . strlen($ImageContents));
         header('Content-type: image/jpeg');
+        http_response_code(200);
         print($ImageContents);
         exit();
     }
