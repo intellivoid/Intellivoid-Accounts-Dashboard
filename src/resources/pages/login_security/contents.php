@@ -2,8 +2,8 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\Account;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('check_sudo');
     HTML::importScript('check');
@@ -22,7 +22,7 @@ use IntellivoidAccounts\Objects\Account;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
 
     <body>
@@ -34,14 +34,11 @@ use IntellivoidAccounts\Objects\Account;
                         <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
                             <div class="col-lg-12 grid-margin stretch-card">
-                                <!--weather card-->
                                 <div class="card card-weather">
                                     <div class="card-body">
                                         <div class="pt-3">
-                                            <h3>Login Security</h3>
-                                            <p class="text-gray">
-                                                Secure your account even if somebody knows your password
-                                            </p>
+                                            <h3 class="text-white">Login Security</h3>
+                                            <p class="text-white">Secure your account even if somebody knows your password</p>
                                         </div>
                                     </div>
                                 </div>
