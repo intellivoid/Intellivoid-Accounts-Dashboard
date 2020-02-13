@@ -4,12 +4,9 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
     use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\ApplicationFlags;
-use IntellivoidAccounts\Abstracts\AuthenticationMode;
-use IntellivoidAccounts\Objects\COA\Application;
-use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
-use IntellivoidAccounts\Objects\SubscriptionPlan;
+    use IntellivoidAccounts\Abstracts\ApplicationFlags;
+    use IntellivoidAccounts\Objects\COA\Application;
+    use IntellivoidAccounts\Objects\SubscriptionPlan;
 
     Runtime::import('IntellivoidAccounts');
 
@@ -103,7 +100,6 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
                                                         HTML::print($Text);
                                                     }
                                                 ?>
-                                                <?PHP  ?>
                                             </p>
                                         </div>
                                     </div>
