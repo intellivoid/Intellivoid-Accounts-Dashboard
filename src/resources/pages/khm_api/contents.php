@@ -14,7 +14,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 100,
+            'response_code' => 400,
+            'status_code' => 100,
             'message' => 'Missing GET parameter \'remote_host\''
         ));
     }
@@ -23,7 +24,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 101,
+            'response_code' => 400,
+            'status_code' => 101,
             'message' => 'Missing GET parameter \'user_agent\''
         ));
     }
@@ -46,7 +48,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 102,
+            'response_code' => 400,
+            'status_code' => 102,
             'message' => 'The given user agent is invalid'
         ));
     }
@@ -67,7 +70,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 104,
+            'response_code' => 500,
+            'status_code' => 104,
             'error_code' => $exception->getCode(),
             'message' => 'Internal Server Error'
         ));
@@ -77,12 +81,14 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 105,
+            'response_code' => 403,
+            'status_code' => 105,
             'message' => 'The IP Address is blocked for security reasons'
         ));
     }
 
     returnJsonResponse(array(
         'status' => true,
+        'response_code' => 200,
         'host_id' => $KnownHost->PublicID
     ));

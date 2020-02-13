@@ -42,7 +42,7 @@
                                         <p class="card-description"><?PHP HTML::print(TEXT_PAGE_DESCRIPTION); ?></p>
                                         <div class="d-flex justify-content-around mt-5 mb-4">
                                             <div class="form-group" style="width: 500px;">
-                                                <input class="form-control border-primary bg-white text-center" type="text" value="<?PHP HTML::print($GeneratedCode); ?>" disabled>
+                                                <input class="form-control border-primary bg-white text-center" aria-label="OTL Code" type="text" value="<?PHP HTML::print($GeneratedCode); ?>" disabled>
                                             </div>
                                         </div>
                                     </div>
