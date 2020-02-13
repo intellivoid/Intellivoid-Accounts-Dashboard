@@ -16,10 +16,13 @@ use IntellivoidAccounts\Abstracts\ApplicationStatus;
                 </div>
                 <div class="content">
                     <div class="d-flex align-items-center">
-                        <h6 class="product-name"><?PHP HTML::print($application['name']); ?></h6>
-                        <small class="time ml-3 d-none d-sm-block">
-                            <?PHP HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $application['creation_timestamp']), "Created at %s")); ?>
-                        </small>
+                        <a class="d-flex align-items-center" style="text-decoration: none;" href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id']), true); ?>">
+                            <h6 class="product-name text-black"><?PHP HTML::print($application['name']); ?></h6>
+                            <small class="time ml-3 d-none d-sm-block">
+                                <?PHP HTML::print(str_ireplace("%s", gmdate("F j, Y, g:i a", $application['creation_timestamp']), "Created at %s")); ?>
+                            </small>
+                        </a>
+
                         <?PHP
                             if($application['status'] !== ApplicationStatus::Suspended)
                             {
