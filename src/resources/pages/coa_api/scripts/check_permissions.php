@@ -16,7 +16,7 @@
 
     $Response = array(
         'status' => true,
-        'status_code' => 200,
+        'response_code' => 200,
         'permissions' => array()
     );
 
