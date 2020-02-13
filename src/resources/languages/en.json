@@ -267,13 +267,14 @@
             "ABOUT_3_BODY": "Getting tired of Phone Verification / Email Verification? No more! sim swapping is a thing of the past."
 
         },
-
-
-
-
-
-
         "login": {
+            "PAGE_TITLE": "Intellivoid Accounts - Sign In",
+            "AUTHENTICATION_HEADER": "Login to an existing Intellivoid Account",
+            "LOGIN_PLACEHOLDER": "Username or Email",
+            "PASSWORD_PLACEHOLDER": "Password",
+            "LOGIN_BUTTON": "Login",
+            "HINT_NO_ACCOUNT": "Don't have an account?",
+            "CREATE_ACCOUNT_LINK": "Create one",
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff.",
             "CALLBACK_102": "The Username/Email is doesn't exist",
@@ -283,8 +284,16 @@
             "CALLBACK_106": "Your account has been created, you can login now.",
             "CALLBACK_107": "Your session has expired, please login again",
             "CALLBACK_108": "Please authorize yourself again",
-            "CALLBACK_109": "Authentication Denied"
+            "CALLBACK_109": "Authentication Denied",
+            "CALLBACK_110": "Your password has been updated successfully"
         },
+
+
+
+
+
+
+
         "register": {
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff.",
