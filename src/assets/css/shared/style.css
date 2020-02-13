@@ -8881,6 +8881,10 @@ small,
 #calendar .fc-view-container .fc-view table tbody.fc-body tr td.fc-widget-content .fc-day-grid-container .fc-day-grid .fc-row .fc-content-skeleton table tbody tr td.fc-event-container .fc-h-event {
   font-size: 12px; }
 
+.text-large {
+  font-size: 24px;
+}
+
 .icon-lg {
   font-size: 2.5rem; }
 

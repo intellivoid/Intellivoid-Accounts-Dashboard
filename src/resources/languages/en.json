@@ -195,7 +195,7 @@
             "WELCOME_BANNER_SUB_HEADER": "Need anything more to know more? Feel free to contact us at any point.",
             "WELCOME_BANNER_CONTACT_BUTTON": "Contact us",
             "ACCOUNT_SECURITY_ALERT_TITLE": "Account Security",
-            "ACCOUNT_SECURITY_ALERT_MESSAGE": "It is important that you link your Telegram Account with your Intellivoid Account, this will provide greater security to your Account and allow you to recover your account in the case you lose access to it",,,
+            "ACCOUNT_SECURITY_ALERT_MESSAGE": "It is important that you link your Telegram Account with your Intellivoid Account, this will provide greater security to your Account and allow you to recover your account in the case you lose access to it",
             "ACCOUNT_SECURITY_OPEN_TELEGRAM_BUTTON": "Open Telegram",
             "RECENT_ACTIONS_CARD_TITLE": "Recent Actions",
             "RECENT_ACTIONS_CARD_DROPDOWN_VIEW_MORE": "View More",
@@ -240,6 +240,9 @@
             "CALLBACK_111": "There was an error while trying to submit your report",
             "CALLBACK_112": "Your feedback message is invalid",
             "CALLBACK_113": "Thank you for your feedback!"
+        },
+        "internal_authentication": {
+            "PAGE_TITLE": "Internal Authentication"
         },
 
 

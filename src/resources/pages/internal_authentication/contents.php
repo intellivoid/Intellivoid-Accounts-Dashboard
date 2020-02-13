@@ -26,7 +26,7 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
 
     <body>
@@ -45,7 +45,11 @@
                                             used for internal services. Staff will never ask for this code, you should not give this
                                             code to anyone. This code will expire in 5 minutes.
                                         </p>
-                                        <h2 class="text-center pt-5 pb-5"><?PHP HTML::print($GeneratedCode); ?></h2>
+                                        <div class="d-flex justify-content-around mt-5 mb-4">
+                                            <div class="form-group" style="width: 500px;">
+                                                <input class="form-control border-primary bg-white text-center" type="text" value="<?PHP HTML::print($GeneratedCode); ?>" disabled>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
