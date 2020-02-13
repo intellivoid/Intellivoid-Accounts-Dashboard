@@ -111,6 +111,25 @@
             "CALLBACK_108": "The application has been deleted successfully",
             "CALLBACK_109": "Your account currently holds the maximum amount of Applications"
         },
+        "audit_logs": {
+            "PAGE_TITLE": "Audit Logs",
+            "CARD_TITLE": "Audit Logs History",
+            "CARD_DESCRIPTION": "Last security events associated with your account",
+            "AUDIT_EVENT_NEW_LOGIN_DETECTED": "New login detected",
+            "AUDIT_EVENT_PASSWORD_UPDATE": "Password Updated",
+            "AUDIT_EVENT_PERSONAL_INFORMATION_UPDATE": "Personal Information Updated",
+            "AUDIT_EVENT_EMAIL_CHANGED": "Email Changed",
+            "AUDIT_EVENT_MOBILE_VERIFICATION_ENABLED": "Mobile Verification Enabled",
+            "AUDIT_EVENT_MOBILE_VERIFICATION_DISABLED": "Mobile Verification Disabled",
+            "AUDIT_EVENT_RECOVERY_CODES_ENABLED": "Recovery Codes Enabled",
+            "AUDIT_EVENT_RECOVERY_CODES_DISABLED": "Recovery Codes Disabled",
+            "AUDIT_EVENT_TELEGRAM_VERIFICATION_ENABLED": "Telegram Verification Enabled",
+            "AUDIT_EVENT_TELEGRAM_VERIFICATION_DISABLED": "Telegram Verification Disabled",
+            "AUDIT_EVENT_APPLICATION_CREATED": "Application Created",
+            "AUDIT_EVENT_NEW_LOGIN_LOCATION": "New Login Location Detected",
+            "AUDIT_EVENT_UNKNOWN": "Unknown",
+            "AUDIT_NO_ITEMS": "No Items"
+        },
 
 
 
