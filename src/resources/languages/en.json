@@ -242,7 +242,9 @@
             "CALLBACK_113": "Thank you for your feedback!"
         },
         "internal_authentication": {
-            "PAGE_TITLE": "Internal Authentication"
+            "PAGE_TITLE": "Internal Authentication",
+            "PAGE_HEADER": "Internal Authentication",
+            "PAGE_DESCRIPTION": "The code below is a one-time generated login code associated with your account, this is used for internal services. Staff will never ask for this code, you should not give this code to anyone. This code will expire in 5 minutes."
         },
 
 
