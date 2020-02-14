@@ -23,7 +23,6 @@
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
-                        <?PHP HTML::importScript('callbacks'); ?>
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
