@@ -186,24 +186,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_view_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>> View Personal Information
-                                                            <i class="input-helper"></i>
-                                                        </label>
-                                                    </div>
-                                                    <p class="text-muted text-small">Access to Personal Information like name, birthday and email</p>
-
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_make_purchases" id="perm_make_purchases" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::MakePurchases, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>  Make purchases
-                                                            <i class="input-helper"></i>
-                                                        </label>
-                                                    </div>
-                                                    <p class="text-muted text-small">Make purchases or activate paid subscriptions on users behalf</p>
-
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
                                                             <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>> View Email Address
                                                             <i class="input-helper"></i>
                                                         </label>
@@ -217,6 +199,15 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                         </label>
                                                     </div>
                                                     <p class="text-muted text-small">Send notifications via Telegram (if available)</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" name="perm_view_personal_information" class="form-check-input"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>> View Personal Information
+                                                            <i class="input-helper"></i>
+                                                        </label>
+                                                    </div>
+                                                    <p class="text-muted text-small">Access to Personal Information like name, birthday and email</p>
                                                 </div>
                                             </div>
 
