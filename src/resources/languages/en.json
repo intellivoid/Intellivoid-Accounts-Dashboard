@@ -546,6 +546,17 @@
             "PART_3_INPUT_LABEL": "Verification Code",
             "CALLBACK_100": "The given verification code was incorrect / has expired"
         },
+        "setup_recovery_codes": {
+            "PAGE_TITLE": "Setup Recovery Codes",
+            "CARD_TITLE": "Recovery Codes Verification",
+            "CARD_DESCRIPTION": "These are one-time use recovery codes for accessing your account, this is important if you lose access to your phone or cannot verify using other methods. These codes are meant to be written down, and are case-sensitive.",
+            "CONFIRM_BUTTON": "Confirm",
+            "CONFIRMATION_DIALOG_TITLE": "Confirmation",
+            "CONFIRMATION_DIALOG_BODY": "You can generate these codes again by disabling Recovery Codes and Enabling it again, but each code can only be used once! Make sure you wrote them down somewhere or saved it in a safe place.",
+            "CONFIRMATION_DIALOG_CANCEL_BUTTON": "Cancel",
+            "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Done",
+            "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
+        },
 
 
 
@@ -557,9 +568,6 @@
         "sudo": {
             "CALLBACK_100": "There was an error while trying to enter sudo mode, please contact support.",
             "CALLBACK_101": "The password is incorrect"
-        },
-        "setup_recovery_codes": {
-            "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         },
         "verify":
         {
