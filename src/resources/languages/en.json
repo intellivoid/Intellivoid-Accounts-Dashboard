@@ -523,6 +523,7 @@
             "PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT": "Send notifications via Telegram",
             "PERMISSIONS_MAKE_PURCHASE_TEXT": "Request purchases",
             "REVOKE_ACCESS_BUTTON": "Revoke Access",
+            "NO_ITEMS": "No Items",
             "CALLBACK_100": "The requested resource was not found or does not exist",
             "CALLBACK_101": "There was an error while trying to process your request",
             "CALLBACK_102": "Access to this Service/Application has been revoked successfully",
