@@ -490,14 +490,17 @@
             "CALLBACK_101": "The given password is invalid, it must be greater than 8 characters but no greater than 128",
             "CALLBACK_102": "There was an error while trying to process your request, try again later."
         },
-
-
-
-
-
-
-
         "register": {
+            "PAGE_TITLE": "Intellivoid Accounts - Register",
+            "AUTHENTICATION_SUB_HEADER": "Create a new Intellivoid Account",
+            "EMAIL_ADDRESS_LABEL": "Email Address",
+            "USERNAME_LABEL": "Username",
+            "PASSWORD_LABEL": "Password",
+            "TOS_HINT": "By creating an account you agree to the Terms of Service and Privacy Policies of Intellivoid Accounts and Intellivoid",
+            "AGREE_CHECKBOX_LABEL": "Agree",
+            "CREATE_ACCOUNT_BUTTON": "Create Account",
+            "EXISTING_ACCOUNT_HINT": "Already have an account?",
+            "LOGIN_LINK": "Login",
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "There was an error while trying to process your request, the error was reported to our staff.",
             "CALLBACK_102": "The given username is invalid",
@@ -507,6 +510,14 @@
             "CALLBACK_106": "The Email is already used by another account",
             "CALLBACK_107": "You must agree to our Terms of Service to create a Intellivoid Account"
         },
+
+
+
+
+
+
+
+
         "setup_mobile_verification": {
             "CALLBACK_100": "The given verification code was incorrect / has expired"
         },
