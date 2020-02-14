@@ -472,6 +472,11 @@
             "CARD_HEADER": "Purchase Failure",
             "CARD_DESCRIPTION": "There was an issue while trying to validate or process your purchase request/process, try again later or report to support"
         },
+        "purchase_success": {
+            "PAGE_TITLE": "Purchase Successful",
+            "CARD_HEADER": "Purchase Successful",
+            "CARD_DESCRIPTION": "Your purchase has been processed successfully, you may now close this window."
+        },
 
 
 

@@ -5,9 +5,8 @@ use DynamicalWeb\HTML;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('gen_dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Purchase Successful</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("gen_dashboard_navbar"); ?>
@@ -22,10 +21,8 @@ use DynamicalWeb\HTML;
                                             <div class="d-flex mb-3">
                                                 <i class="mdi mdi-check-circle icon-lg text-success d-flex align-items-center"></i>
                                                 <div class="d-flex flex-column ml-4">
-                                                    <h4 class="font-weight-bold">Purchase Successful</h4>
-                                                    <small class="text-muted">
-                                                        Your purchase has been processed successfully, you may now close this window.
-                                                    </small>
+                                                    <h4 class="font-weight-bold"><?PHP HTML::print(TEXT_CARD_HEADER); ?></h4>
+                                                    <small class="text-muted"><?PHP HTML::print(TEXT_CARD_DESCRIPTION); ?></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -37,7 +34,6 @@ use DynamicalWeb\HTML;
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('gen_dashboard_js'); ?>
     </body>
