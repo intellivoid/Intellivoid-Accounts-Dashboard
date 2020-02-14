@@ -4,11 +4,9 @@
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\ApplicationAccess;
-use IntellivoidAccounts\Objects\COA\Application;
+    use IntellivoidAccounts\Objects\COA\Application;
 
     function list_authorized_services(array $application_access_records, array $applications)
     {
@@ -46,12 +44,12 @@ use IntellivoidAccounts\Objects\COA\Application;
                         <div class="card accordion-minimal">
                             <div class="card-header" role="tab" id="heading-<?PHP HTML::print($Application->PublicAppId); ?>">
                                 <a class="mb-0 d-flex collapsed" data-toggle="collapse" href="#collapse-<?PHP HTML::print($Application->PublicAppId); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Application->PublicAppId); ?>">
-                                    <img class="img-xs rounded-circle mt-2" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="profile image">
+                                    <img class="img-xs rounded-circle mt-2" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="brand logo">
                                     <div class="ml-3">
                                         <h6 class="mb-0">
                                             <?PHP HTML::print($Application->Name); ?>
                                         </h6>
-                                        <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp), 'Last Authenticated: %s')); ?></small>
+                                        <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp), TEXT_ITEM_LAST_AUTHENTICATED)); ?></small>
                                     </div>
                                     <div class="ml-auto mr-3 mt-auto mb-4">
                                         <i class="mdi mdi-account-card-details"></i>
@@ -85,10 +83,10 @@ use IntellivoidAccounts\Objects\COA\Application;
                                 <div class="card-body">
                                     <div class="ml-2 mr-2 row grid-margin d-flex mb-0">
                                         <div class="col-lg-9 mb-2">
-                                            <p><?PHP HTML::print(str_ireplace("%s", $Application->Name, "%s has access to")); ?></p>
+                                            <p><?PHP HTML::print(str_ireplace("%s", $Application->Name, TEXT_PERMISSIONS_HEADER)); ?></p>
                                             <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                                 <i class="mdi mdi-account-card-details mdi-18px"></i>
-                                                <p class="mb-0 ml-3">Your username and avatar</p>
+                                                <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_PERMISSIONS_USERNAME_AVATAR_TEXT); ?></p>
                                             </div>
                                             <?PHP
                                                 if(in_array(AccountRequestPermissions::ViewEmailAddress, $ApplicationAccess->Permissions))
@@ -96,7 +94,7 @@ use IntellivoidAccounts\Objects\COA\Application;
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                                         <i class="mdi mdi-email mdi-18px"></i>
-                                                        <p class="mb-0 ml-3">View your Email Address</p>
+                                                        <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_PERMISSIONS_EMAIL_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -105,7 +103,7 @@ use IntellivoidAccounts\Objects\COA\Application;
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                                         <i class="mdi mdi-account mdi-18px"></i>
-                                                        <p class="mb-0 ml-3">View your personal information</p>
+                                                        <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_PERMISSIONS_PERSONAL_INFORMATION_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -114,7 +112,7 @@ use IntellivoidAccounts\Objects\COA\Application;
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                                         <i class="mdi mdi-account-edit mdi-18px"></i>
-                                                        <p class="mb-0 ml-3">Edit your personal information</p>
+                                                        <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_PERMISSIONS_EDIT_PERSONAL_INFORMATION_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -123,7 +121,7 @@ use IntellivoidAccounts\Objects\COA\Application;
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                                         <i class="mdi mdi-shopping mdi-18px"></i>
-                                                        <p class="mb-0 ml-3">Make purchases on your behalf</p>
+                                                        <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_PERMISSIONS_MAKE_PURCHASE_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -132,15 +130,14 @@ use IntellivoidAccounts\Objects\COA\Application;
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                                         <i class="mdi mdi-telegram mdi-18px"></i>
-                                                        <p class="mb-0 ml-3">Send notifications to you on Telegram</p>
+                                                        <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
                                             ?>
-
                                         </div>
                                         <div class="col-lg-3 mt-auto mb-2">
-                                            <button class="btn btn-block btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('services', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Revoke Access</button>
+                                            <button class="btn btn-block btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('services', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';"><?PHP HTML::print(TEXT_REVOKE_ACCESS_BUTTON); ?></button>
                                         </div>
                                     </div>
                                 </div>

@@ -60,7 +60,7 @@ use DynamicalWeb\HTML;
             <ul class="nav page-navigation">
                 <li class="nav-item">
                     <a href="/" class="nav-link">
-                        <i class="link-icon mdi mdi-airplay"></i>
+                        <i class="link-icon mdi mdi-view-dashboard"></i>
                         <span class="menu-title">Overview</span>
                     </a>
                 </li>
