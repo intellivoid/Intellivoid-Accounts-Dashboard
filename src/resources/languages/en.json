@@ -462,6 +462,11 @@
             "CALLBACK_118": "The email address is already used",
             "CALLBACK_119": "Your email address has been updated successfully"
         },
+        "privacy": {
+            "PAGE_TITLE": "Intellivoid Accounts - Privacy Policies",
+            "CARD_HEADER": "Privacy Policy for Intellivoid Accounts",
+            "CARD_DESCRIPTION": "This page explains the privacy policies for Intellivoid Accounts"
+        },
 
 
 
