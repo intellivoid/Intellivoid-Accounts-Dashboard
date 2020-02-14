@@ -2,14 +2,10 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
-    use IntellivoidAccounts\Objects\ApplicationAccess;
-use IntellivoidAccounts\Objects\Subscription;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Subscription;
 
     function list_subscribed_services(array $Subscriptions)
     {
@@ -42,19 +38,17 @@ use IntellivoidAccounts\Objects\Subscription;
                     <div class="card accordion-minimal">
                         <div class="card-header" role="tab" id="heading-<?PHP HTML::print($Subscription->PublicID); ?>">
                             <a class="mb-0 d-flex collapsed" data-toggle="collapse" href="#collapse-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Application->PublicAppId); ?>">
-                                <img class="img-xs rounded-circle mt-2" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="profile image">
-
+                                <img class="img-xs rounded-circle mt-2" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="brand logo">
                                 <div class="ml-3">
                                     <h6 class="mb-0">
                                         <?PHP
                                             $Text = "%an (%sn)";
                                             $Text = str_ireplace('%an', $Application->Name, $Text);
                                             $Text = str_ireplace('%sn', $SubscriptionPlan->PlanName, $Text);
-
                                             HTML::print($Text);
                                         ?>
                                     </h6>
-                                    <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/Y g:i a", $Subscription->CreatedTimestamp), 'Started on: %s')); ?></small>
+                                    <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/Y g:i a", $Subscription->CreatedTimestamp), TEXT_SUBSCRIPTION_START)); ?></small>
                                 </div>
                             </a>
                         </div>
@@ -65,7 +59,7 @@ use IntellivoidAccounts\Objects\Subscription;
                                         <div class="d-flex ml-2 align-items-center py-1 pb-2">
                                             <i class="mdi mdi-calendar-clock mdi-18px"></i>
                                             <p class="mb-0 ml-3">
-                                                <?PHP $Text = 'You will be billed $%cp USD on %nbc'; ?>
+                                                <?PHP $Text = TEXT_SUBSCRIPTION_BILLING; ?>
                                                 <?PHP $Text = str_ireplace('%nbc', gmdate("j/m/Y g:i a", $Subscription->NextBillingCycle), $Text); ?>
                                                 <?PHP $Text = str_ireplace('%cp', $Subscription->Properties->CyclePrice, $Text); ?>
                                                 <?PHP HTML::print($Text); ?>
@@ -73,7 +67,7 @@ use IntellivoidAccounts\Objects\Subscription;
                                         </div>
                                     </div>
                                     <div class="col-lg-3 mt-auto mb-2">
-                                        <button class="btn btn-block btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';">Cancel Subscription</button>
+                                        <button class="btn btn-block btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>
