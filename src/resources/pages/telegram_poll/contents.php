@@ -36,9 +36,9 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 401,
             'error_code' => 200,
-            'message' => "Authentication Required"
+            'message' => "Unauthorized Request"
         ));
     }
 
@@ -50,7 +50,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 500,
             'error_code' => 201,
             'message' => "Internal Server Error"
         ));
@@ -60,9 +60,9 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 401,
             'error_code' => 200,
-            'message' => "Authentication Required"
+            'message' => "Unauthorized Request"
         ));
     }
 
@@ -70,9 +70,9 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 401,
             'error_code' => 200,
-            'message' => "Authentication Required"
+            'message' => "Unauthorized Request"
         ));
     }
 
@@ -80,7 +80,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 405,
             'error_code' => 202,
             'message' => "Method not available"
         ));
@@ -91,7 +91,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 429,
             'error_code' => 203,
             'message' => "Too many attempts"
         ));
@@ -167,7 +167,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 500,
             'error_code' => 201,
             'message' => "Internal Server Error"
         ));
@@ -177,7 +177,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 405,
             'error_code' => 202,
             'message' => "Method not available"
         ));
@@ -194,7 +194,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 500,
             'error_code' => 201,
             'message' => "Internal Server Error"
         ));
@@ -209,12 +209,14 @@
         {
             returnJsonResponse(array(
                 'status' => true,
+                'response_code' => 200,
                 'approved' => true
             ));
         }
 
         returnJsonResponse(array(
             'status' => true,
+            'response_code' => 200,
             'approved' => false
         ));
     }
@@ -230,7 +232,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 403,
             'error_code' => 204,
             'message' => "Unable to verify prompt authentication"
         ));
@@ -244,7 +246,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 500,
             'error_code' => 201,
             'message' => "Internal Server Error"
         ));
@@ -254,7 +256,7 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 403,
             'error_code' => 206,
             'message' => "The prompt has expired"
         ));
@@ -271,7 +273,7 @@
 
         returnJsonResponse(array(
             'status' => false,
-            'status_code' => 200,
+            'response_code' => 403,
             'error_code' => 205,
             'message' => "The prompt has been denied"
         ));
