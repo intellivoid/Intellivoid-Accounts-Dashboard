@@ -557,18 +557,23 @@
             "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Done",
             "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         },
-
-
-
-
-
-
-
-
         "sudo": {
+            "PAGE_TITLE": "Sudo Mode",
+            "AUTHENTICATION_SUB_HEADER": "To prevent unauthorized changes, enter your password",
+            "PASSWORD_LABEL": "Password",
+            "SUBMIT_BUTTON": "Enter sudo mode",
             "CALLBACK_100": "There was an error while trying to enter sudo mode, please contact support.",
             "CALLBACK_101": "The password is incorrect"
         },
+
+
+
+
+
+
+
+
+
         "verify":
         {
             "CALLBACK_100": "This method of verification is not available right now",
