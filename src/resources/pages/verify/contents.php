@@ -2,8 +2,8 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-use DynamicalWeb\Javascript;
-use IntellivoidAccounts\Objects\Account;
+    use DynamicalWeb\Javascript;
+    use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('get_account');
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
@@ -40,7 +40,7 @@ use IntellivoidAccounts\Objects\Account;
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Verify</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
 
     <body>
@@ -52,17 +52,16 @@ use IntellivoidAccounts\Objects\Account;
                         <div class="col-lg-5 mx-auto">
                             <div class="auto-form-wrapper">
                                 <h1 class="text-center">
-                                    <i class="mdi mdi-lock"></i>
-                                    Verification
-                                    <p>To protect your account from unauthorized access, verify your login</p>
+                                    <i class="mdi mdi-lock"></i> <?PHP HTML::print(TEXT_HEADER); ?>
                                 </h1>
+                                <p class="text-center text-small"><?PHP HTML::print(TEXT_SUB_HEADER); ?></p>
+
                                 <div id="callback_alert" class="pb-3" id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
 
                                 <form id="authentication_form" class="border-top pb-4" name="authentication_form">
-                                    <div class="pt-4">
-                                    </div>
+                                    <div class="pt-4"></div>
                                     <?PHP
                                         if($Account->Configuration->VerificationMethods->TelegramClientLinked)
                                         {
@@ -70,7 +69,7 @@ use IntellivoidAccounts\Objects\Account;
                                             <div class="form-group">
                                                 <a class="d-flex align-items-center py-1 text-black" href="#" onclick="verify_telegram();" style="text-decoration: none;">
                                                     <span class="mdi mdi-telegram"></span>
-                                                    <p class="mb-0 ml-3">Telegram Prompt</p>
+                                                    <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_VERIFICATION_METHOD_TELEGRAM); ?></p>
                                                     <p class="ml-auto mb-0 text-muted">
                                                         <i class="mdi mdi-arrow-right"></i>
                                                     </p>
@@ -85,7 +84,7 @@ use IntellivoidAccounts\Objects\Account;
                                             <div class="form-group">
                                                 <a class="d-flex align-items-center py-1 text-black" href="#" onclick="verify_mobile();" style="text-decoration: none;">
                                                     <span class="mdi mdi-cellphone-iphone"></span>
-                                                    <p class="mb-0 ml-3">Verify using your Phone</p>
+                                                    <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_VERIFICATION_METHOD_MOBILE); ?></p>
                                                     <p class="ml-auto mb-0 text-muted">
                                                         <i class="mdi mdi-arrow-right"></i>
                                                     </p>
@@ -100,7 +99,7 @@ use IntellivoidAccounts\Objects\Account;
                                             <div class="form-group">
                                                 <a class="d-flex align-items-center py-1 text-black" href="#" onclick="verify_recovery_codes();" style="text-decoration: none;">
                                                     <span class="mdi mdi-reload"></span>
-                                                    <p class="mb-0 ml-3">Use a recovery code</p>
+                                                    <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_VERIFICATION_METHOD_RECOVERY); ?></p>
                                                     <p class="ml-auto mb-0 text-muted">
                                                         <i class="mdi mdi-arrow-right"></i>
                                                     </p>
@@ -110,12 +109,10 @@ use IntellivoidAccounts\Objects\Account;
                                         }
 
                                     ?>
-
                                     <div class="border-bottom pb-1"></div>
-
                                     <div class="text-block text-center my-3 pt-4">
-                                        <span class="text-small font-weight-semibold">Not <?php HTML::print($UsernameSafe); ?>?</span>
-                                        <a href="<?PHP DynamicalWeb::getRoute('logout', $GetParameters, true); ?>" class="text-black text-small">Logout</a>
+                                        <span class="text-small font-weight-semibold"><?PHP HTML::print(str_ireplace('%s', $UsernameSafe, TEXT_FOOTER_NOT_USER_TEXT)); ?></span>
+                                        <a href="<?PHP DynamicalWeb::getRoute('logout', array(), true); ?>" class="text-black text-small"><?PHP HTML::print(TEXT_FOOTER_NOT_USER_LOGOUT_LINK); ?></a>
                                     </div>
                                 </form>
                             </div>

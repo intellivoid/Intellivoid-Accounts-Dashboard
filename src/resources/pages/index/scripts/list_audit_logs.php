@@ -37,67 +37,67 @@
             switch($AuditRecordObject->EventType)
             {
                 case AuditEventType::NewLoginDetected:
-                    $EventText = "New login detected";
+                    $EventText = TEXT_AUDIT_EVENT_NEW_LOGIN_DETECTED;
                     $EventIcon = "mdi mdi-shield text-success";
                     break;
 
                 case AuditEventType::PasswordUpdated:
-                    $EventText = "Password Updated";
+                    $EventText = TEXT_AUDIT_EVENT_PASSWORD_UPDATE;
                     $EventIcon = "mdi mdi-key-change text-success";
                     break;
 
                 case AuditEventType::PersonalInformationUpdated:
-                    $EventText = "Personal Information Updated";
+                    $EventText = TEXT_AUDIT_EVENT_PERSONAL_INFORMATION_UPDATE;
                     $EventIcon = "mdi mdi-account text-success";
                     break;
 
                 case AuditEventType::EmailUpdated:
-                    $EventText = "Email Changed";
+                    $EventText = TEXT_AUDIT_EVENT_EMAIL_CHANGED;
                     $EventIcon = "mdi mdi-email text-success";
                     break;
 
                 case AuditEventType::MobileVerificationEnabled:
-                    $EventText = "Mobile Verification Enabled";
+                    $EventText = TEXT_AUDIT_EVENT_MOBILE_VERIFICATION_ENABLED;
                     $EventIcon = "mdi mdi-cellphone-iphone text-success";
                     break;
 
                 case AuditEventType::MobileVerificationDisabled:
-                    $EventText = "Mobile Verification Disabled";
+                    $EventText = TEXT_AUDIT_EVENT_MOBILE_VERIFICATION_DISABLED;
                     $EventIcon = "mdi mdi-cellphone-iphone text-danger";
                     break;
 
                 case AuditEventType::RecoveryCodesEnabled:
-                    $EventText = "Recovery Codes Enabled";
+                    $EventText = TEXT_AUDIT_EVENT_RECOVERY_CODES_ENABLED;
                     $EventIcon = "mdi mdi-refresh text-success";
                     break;
 
                 case AuditEventType::RecoveryCodesDisabled:
-                    $EventText = "Recovery Codes Disabled";
+                    $EventText = TEXT_AUDIT_EVENT_RECOVERY_CODES_DISABLED;
                     $EventIcon = "mdi mdi-refresh text-danger";
                     break;
 
                 case AuditEventType::TelegramVerificationEnabled:
-                    $EventText = "Telegram Verification Enabled";
+                    $EventText = TEXT_AUDIT_EVENT_TELEGRAM_VERIFICATION_ENABLED;
                     $EventIcon = "mdi mdi-telegram text-success";
                     break;
 
                 case AuditEventType::TelegramVerificationDisabled:
-                    $EventText = "Telegram Verification Disabled";
+                    $EventText = TEXT_AUDIT_EVENT_TELEGRAM_VERIFICATION_DISABLED;
                     $EventIcon = "mdi mdi-telegram text-danger";
                     break;
 
                 case AuditEventType::ApplicationCreated:
-                    $EventText = "Application Created";
+                    $EventText = TEXT_AUDIT_EVENT_APPLICATION_CREATED;
                     $EventIcon = "mdi mdi-console text-success";
                     break;
 
                 case AuditEventType::NewLoginLocationDetected:
-                    $EventText = "New Login Location Detected";
+                    $EventText = TEXT_AUDIT_EVENT_NEW_LOGIN_LOCATION;
                     $EventIcon = "mdi mdi-map-marker text-success";
                     break;
 
                 default:
-                    $EventText = "Unknown";
+                    $EventText = TEXT_AUDIT_EVENT_UNKNOWN;
                     $EventIcon = "mdi mdi-help text-muted";
                     break;
             }
@@ -127,7 +127,7 @@
                 <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
             </div>
             <div class="p-2 my-flex-item">
-                <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+                <h6 class="text-muted"><?PHP HTML::print(TEXT_AUDIT_NO_ITEMS); ?></h6>
             </div>
         </div>
         <?PHP

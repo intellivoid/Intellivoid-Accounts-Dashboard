@@ -5,9 +5,8 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('gen_dashboard_headers'); ?>
-        <title>Intellivoid Accounts - COA Error</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("gen_dashboard_navbar"); ?>
@@ -22,10 +21,8 @@
                                             <div class="d-flex">
                                                 <i class="mdi mdi-certificate icon-lg text-primary d-flex align-items-center"></i>
                                                 <div class="d-flex flex-column ml-4">
-                                                    <h4 class="font-weight-bold">Terms of Service</h4>
-                                                    <small class="text-muted">
-                                                        This page explains the privacy policy of Intellivoid Accounts
-                                                    </small>
+                                                    <h4 class="font-weight-bold"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
+                                                    <small class="text-muted"><?PHP HTML::print(TEXT_PAGE_SUB_HEADER); ?></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,7 +38,6 @@
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('gen_dashboard_js'); ?>
     </body>

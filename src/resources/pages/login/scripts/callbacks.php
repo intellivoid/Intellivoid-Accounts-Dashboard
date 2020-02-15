@@ -49,7 +49,7 @@
                 break;
 
             case 110:
-                RenderAlert("Your password has been updated successfully", "primary", "mdi-checkbox-marked-circle-outline");
+                RenderAlert(TEXT_CALLBACK_110, "primary", "mdi-checkbox-marked-circle-outline");
                 break;
         }
     }

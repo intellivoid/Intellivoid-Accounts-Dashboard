@@ -23,7 +23,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 100,
+            'response_code' => 400,
+            'status_code' => 100,
             'message' => 'Missing GET parameter \'auth_code\''
         ));
     }
@@ -32,7 +33,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 101,
+            'response_code' => 400,
+            'status_code' => 101,
             'message' => 'Missing GET parameter \'vendor\''
         ));
     }
@@ -41,7 +43,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 102,
+            'response_code' => 400,
+            'status_code' => 102,
             'message' => 'Missing GET parameter \'host_id\''
         ));
     }
@@ -50,7 +53,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 113,
+            'response_code' => 400,
+            'status_code' => 113,
             'message' => 'Missing GET parameter \'user_agent\''
         ));
     }
@@ -59,8 +63,9 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 114,
-            'message' => 'Missing GET parameter \'user_agent\''
+            'response_code' => 400,
+            'status_code' => 114,
+            'message' => 'Invalid parameter for \'user_agent\''
         ));
     }
 
@@ -86,7 +91,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 103,
+            'response_code' => 403,
+            'status_code' => 103,
             'message' => 'Invalid Authentication Code'
         ));
     }
@@ -94,7 +100,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 104,
+            'response_code' => 500,
+            'status_code' => 104,
             'error_code' => $exception->getCode(),
             'message' => 'Internal Server Error'
         ));
@@ -104,7 +111,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 105,
+            'response_code' => 403,
+            'status_code' => 105,
             'message' => 'The authentication code was already used'
         ));
     }
@@ -113,7 +121,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 106,
+            'response_code' => 403,
+            'status_code' => 106,
             'message' => 'The authentication code is unavailable at this time'
         ));
     }
@@ -122,7 +131,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 107,
+            'response_code' => 403,
+            'status_code' => 107,
             'message' => 'The authentication code has expired'
         ));
     }
@@ -136,7 +146,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 108,
+            'response_code' => 404,
+            'status_code' => 108,
             'message' => 'The account was not found'
         ));
     }
@@ -144,7 +155,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 104,
+            'response_code' => 500,
+            'status_code' => 104,
             'error_code' => $exception->getCode(),
             'message' => 'Internal Server Error'
         ));
@@ -154,7 +166,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 109,
+            'response_code' => 403,
+            'status_code' => 109,
             'message' => 'The account has been suspended'
         ));
     }
@@ -163,7 +176,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 110,
+            'response_code' => 403,
+            'status_code' => 110,
             'message' => 'The account needs to be verified before it can be used'
         ));
     }
@@ -172,7 +186,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 111,
+            'response_code' => 400,
+            'status_code' => 111,
             'message' => 'The vendor name is invalid'
         ));
     }
@@ -185,7 +200,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 112,
+            'response_code' => 400,
+            'status_code' => 112,
             'message' => 'Invalid Host ID'
         ));
     }
@@ -193,7 +209,8 @@
     {
         returnJsonResponse(array(
             'status' => false,
-            'response_code' => 104,
+            'response_code' => 500,
+            'status_code' => 104,
             'error_code' => $exception->getCode(),
             'message' => 'Internal Server Error'
         ));
@@ -230,5 +247,6 @@
 
     returnJsonResponse(array(
         'status' => true,
+        'response_code' => 200,
         'account' => $ResponseObject
     ));

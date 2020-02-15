@@ -33,7 +33,7 @@
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Verify</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
 
     <body>
@@ -48,23 +48,21 @@
                                     <i class="mdi mdi-arrow-left"></i>
                                 </button>
                                 <h1 class="text-center">
-                                    <i class="mdi mdi-reload"></i> Verification
+                                    <i class="mdi mdi-reload"></i><?PHP HTML::print(TEXT_HEADER); ?>
                                 </h1>
-                                <p class="text-center">Enter a one-time use recovery code</p>
+                                <p class="text-center"><?PHP HTML::print(TEXT_SUB_HEADER); ?></p>
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
                                 <div class="border-bottom pb-2"></div>
                                 <?PHP $GetParameters['action'] = 'submit'; ?>
                                 <form action="<?PHP DynamicalWeb::getRoute('verify_recovery_code', $GetParameters, true); ?>" method="POST" id="authentication_form" class="pt-4" name="authentication_form">
-
                                     <div class="form-group">
-                                        <label for="code" class="label" style="display: none; visibility: hidden;" hidden>Recovery Code</label>
-                                        <input name="code" id="code" type="text" autocomplete="off" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" autofocus="autofocus" placeholder="Verification Code" required>
+                                        <label for="code" class="label" style="display: none; visibility: hidden;" hidden><?PHP HTML::print(TEXT_RECOVERY_CODE_LABEL); ?></label>
+                                        <input name="code" id="code" type="text" autocomplete="off" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" autofocus="autofocus" placeholder="<?PHP HTML::print(TEXT_VERIFICATION_CODE_PLACEHOLDER); ?>" required>
                                     </div>
-
                                     <div class="form-group pb-2 pt-2">
-                                        <input type="submit" class="btn btn-primary submit-btn btn-block" value="Verify">
+                                        <input type="submit" class="btn btn-primary submit-btn btn-block" value="<?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?>">
                                     </div>
                                 </form>
                             </div>

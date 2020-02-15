@@ -15,9 +15,8 @@ use IntellivoidAccounts\IntellivoidAccounts;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Manage Subscriptions</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
@@ -28,7 +27,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                             <div class="col-lg-12 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Subscriptions</h4>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_SUBSCRIPTIONS_HEADER); ?></h4>
                                         <div class="wrapper mt-4">
                                             <?PHP HTML::importScript('callbacks'); ?>
 
@@ -60,7 +59,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                     HTML::importScript('ren.no_contents');
                                                 }
                                             ?>
-
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +69,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>

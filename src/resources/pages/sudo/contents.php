@@ -20,9 +20,8 @@ use DynamicalWeb\Runtime;
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Sudo Mode</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -37,21 +36,19 @@ use DynamicalWeb\Runtime;
                                 <h1 class="text-center">
                                     <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                     Intelli<b>void</b>
-                                    <p>To prevent unauthorized changes, enter your password</p>
                                 </h1>
+                                <p class="text-small text-center"><?PHP HTML::print(TEXT_AUTHENTICATION_SUB_HEADER); ?></p>
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
                                 </div>
-
                                 <div class="border-bottom pt-3"></div>
-
                                 <form id="authentication_form" name="authentication_form" class="pt-4">
                                     <div class="form-group">
-                                        <label for="password" id="label_1" class="label">Password</label>
+                                        <label for="password" id="label_1" class="label"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
                                         <input name="password" id="password" type="password" class="form-control" placeholder="*********" aria-autocomplete="none" autocomplete="off" required>
                                     </div>
                                     <div class="form-group pb-2 pt-2">
-                                        <input id="submit_button" type="submit" class="btn btn-danger submit-btn btn-block" value="Enter sudo mode">
+                                        <input id="submit_button" type="submit" class="btn btn-danger submit-btn btn-block" value="<?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?>">
                                     </div>
                                 </form>
                             </div>
