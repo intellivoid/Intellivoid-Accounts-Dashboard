@@ -617,6 +617,11 @@
             "SUBMIT_BUTTON": "Verify",
             "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
             "CALLBACK_101": "Incorrect or already used recovery code"
+        },
+        "verify_telegram": {
+            "PAGE_TITLE": "Verify Authentication",
+            "HEADER": "Telegram Prompt",
+            "SUB_HEADER": "Check your Telegram Account for a Authentication Prompt"
         }
     },
     "sections": {

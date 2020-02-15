@@ -62,7 +62,7 @@
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Verify</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
     <body>
         <div class="container-scroller">
@@ -76,9 +76,9 @@
                                     <i class="mdi mdi-arrow-left"></i>
                                 </button>
                                 <h1 class="text-center">
-                                    <i class="mdi mdi-telegram"></i> Telegram Prompt
+                                    <i class="mdi mdi-telegram"></i><?PHP HTML::print(TEXT_HEADER); ?>
                                 </h1>
-                                <p class="text-center">Check your Telegram Account for a Authentication Prompt</p>
+                                <p class="text-center"><?PHP HTML::print(TEXT_SUB_HEADER); ?></p>
                                 <div class="border-bottom pb-2"></div>
                                 <img src="/assets/images/verification.svg" class="img-fluid mb-3 mt-3" alt="telegram-auth-image">
                             </div>
