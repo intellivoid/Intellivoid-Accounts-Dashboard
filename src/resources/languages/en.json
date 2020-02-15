@@ -581,17 +581,16 @@
             "PAGE_HEADER": "Payment Successful",
             "PAGE_SUB_HEADER": "Intellivoid is now going to process your transaction, this may take up to 48 hours."
         },
-
-
-
-
-
-
-
-
-
         "verify":
         {
+            "PAGE_TITLE": "Verify Authentication",
+            "HEADER": "Verification",
+            "SUB_HEADER": "To protect your account from unauthorized access, verify your login",
+            "VERIFICATION_METHOD_TELEGRAM": "Telegram Prompt",
+            "VERIFICATION_METHOD_MOBILE": "Verify using your Phone",
+            "VERIFICATION_METHOD_RECOVERY": "Use a recovery code",
+            "FOOTER_NOT_USER_TEXT": "Not %s?",
+            "FOOTER_NOT_USER_LOGOUT_LINK": "Logout",
             "CALLBACK_100": "This method of verification is not available right now",
             "CALLBACK_101": "There was an error while trying to process your request",
             "CALLBACK_102": "Too many authentication attempts, try again later",
@@ -600,6 +599,15 @@
             "CALLBACK_105": "The authentication prompt has been denied",
             "CALLBACK_106": "The authentication prompt has expired"
         },
+
+
+
+
+
+
+
+
+
         "verify_mobile": {
             "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
             "CALLBACK_101": "Incorrect verification code"
