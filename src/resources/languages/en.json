@@ -668,6 +668,13 @@
             "NAV_MENU_DROPDOWN_SUPPORT_PRIVACY": "Privacy Policy",
             "NAV_MENU_DROPDOWN_SUPPORT_TERMS_OF_SERVICE": "Terms of Service",
             "NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK": "Send Feedback"
+        },
+        "feedback_modal": {
+            "FEEDBACK_DIALOG_TITLE": "Send Feedback",
+            "FEEDBACK_DIALOG_MESSAGE_LABEL": "Message",
+            "FEEDBACK_DIALOG_MESSAGE_PLACEHOLDER": "Write your message here and we will get back to you as soon as possible via Email",
+            "FEEDBACK_DIALOG_CANCEL_BUTTON": "Cancel",
+            "FEEDBACK_DIALOG_SUBMIT_BUTTON": "Send"
         }
     }
 }
