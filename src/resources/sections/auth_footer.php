@@ -7,13 +7,13 @@
         <a href="https://intellivoid.info/">Intellivoid</a>
     </li>
     <li>
-        <a href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>">Privacy</a>
+        <a href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>"><?PHP HTML::print(TEXT_AUTH_FOOTER_PRIVACY_LINK); ?></a>
     </li>
     <li>
-        <a href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>">Terms</a>
+        <a href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>"><?PHP HTML::print(TEXT_AUTH_FOOTER_TOS_LINK); ?></a>
     </li>
     <li>
-        <a href="https://intellivoid.info/contact">Contact us</a>
+        <a href="https://intellivoid.info/contact"><?PHP HTML::print(TEXT_AUTH_FOOTER_CONTACT_LINK); ?></a>
     </li>
     <li>
         <a data-toggle="modal" data-target="#change-language-dialog" href="#">

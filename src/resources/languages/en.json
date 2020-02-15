@@ -636,13 +636,10 @@
         }
     },
     "sections": {
-        "navigation": {
-            "NAVBAR_BRAND": "DynamicalWeb",
-            "NAVBAR_LANGUAGE_DROPDOWN": "Language",
-            "NAVBAR_PAGE_HOME": "Home"
-        },
-        "footer": {
-            "FOOTER_TEXT": "DynamicalWeb Version 1.0.0.0 | Written by Zi Xing Narrakas"
+        "auth_footer": {
+            "AUTH_FOOTER_PRIVACY_LINK": "Privacy",
+            "AUTH_FOOTER_TOS_LINK": "Terms",
+            "AUTH_FOOTER_CONTACT_LINK": "Contact us"
         }
     }
 }
