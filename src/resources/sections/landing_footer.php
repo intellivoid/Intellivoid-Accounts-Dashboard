@@ -1,7 +1,6 @@
 <?php
-
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
 ?>
 <footer class="container-fluid footer">
     <div class="row pb-5 text-white footer-top">
@@ -10,16 +9,16 @@ use DynamicalWeb\HTML;
                 <div class="mt-auto mb-4 ml-5">
                     <ul class="nav mt-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>">Privacy Policies</a>
+                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_PRIVACY); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?> ">Terms of Service</a>
+                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?> "><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_TOS); ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://intellivoid.info/">Intellivoid</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Documentation</a>
+                            <a class="nav-link" href="#"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_DOCUMENTATION); ?></a>
                         </li>
                     </ul>
                 </div>

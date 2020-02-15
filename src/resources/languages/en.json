@@ -678,6 +678,11 @@
         },
         "gen_dashboard_navbar": {
             "NAV_MENU_LINK_HOME": "Home"
+        },
+        "landing_footer": {
+            "FOOTER_MENU_LINK_PRIVACY": "Privacy Policies",
+            "FOOTER_MENU_LINK_TOS": "Terms of Service",
+            "FOOTER_MENU_LINK_DOCUMENTATION": "Documentation"
         }
     }
 }
