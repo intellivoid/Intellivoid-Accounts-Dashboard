@@ -565,6 +565,11 @@
             "CALLBACK_100": "There was an error while trying to enter sudo mode, please contact support.",
             "CALLBACK_101": "The password is incorrect"
         },
+        "tos": {
+            "PAGE_TITLE": "Intellivoid Accounts - Terms of Service",
+            "PAGE_HEADER": "Terms of Service",
+            "PAGE_SUB_HEADER": "This page explains the Terms of our Service for Intellivoid Accounts"
+        },
 
 
 
