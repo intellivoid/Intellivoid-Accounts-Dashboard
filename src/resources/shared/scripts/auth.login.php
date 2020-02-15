@@ -11,6 +11,7 @@
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
+    use IntellivoidAccounts\Exceptions\GovernmentBackedAttackModeEnabledException;
     use IntellivoidAccounts\Exceptions\HostNotKnownException;
     use IntellivoidAccounts\Exceptions\IncorrectLoginDetailsException;
     use IntellivoidAccounts\Exceptions\InvalidIpException;
@@ -117,6 +118,11 @@
                 Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
+            if($Account->Status == AccountStatus::BlockedDueToGovernmentBackedAttack)
+            {
+                Actions::redirect(DynamicalWeb::getRoute('gba_mode'));
+            }
+
             if($Account->Status == AccountStatus::Suspended)
             {
                 $GetParameters['callback'] = '104';
@@ -131,7 +137,14 @@
             $Cookie->Data["sudo_mode"] = false;
             $Cookie->Data["sudo_expires"] = 0;
 
-            if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
+            if($Account->Status == AccountStatus::PasswordRecoveryMode)
+            {
+                $Cookie->Data["verification_required"] = true;
+                $Cookie->Data["auto_logout"] = time() + 600;
+                $Cookie->Data["verification_attempts"] = 0;
+                $Cookie->Data["verification_type"] = "PASSWORD_RESET";
+            }
+            elseif($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
             {
                 $Cookie->Data["verification_required"] = true;
                 $Cookie->Data["auto_logout"] = time() + 600;
@@ -237,13 +250,14 @@
     /**
      * Check's if the given login information is correct or not
      *
-     * @deprecated
      * @return Account
      * @throws AccountNotFoundException
      * @throws AccountSuspendedException
      * @throws DatabaseException
      * @throws IncorrectLoginDetailsException
      * @throws InvalidSearchMethodException
+     * @throws GovernmentBackedAttackModeEnabledException
+     * @deprecated
      */
     function check_login(): Account
     {

@@ -4,13 +4,11 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
-
-    HTML::importScript('redirect_paypal');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
@@ -35,15 +33,13 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $RecentTransactions = $IntellivoidAccounts->getTransactionRecordManager()->getNewRecords($Account->ID, 120);
     }
 
-
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Personal</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
@@ -55,7 +51,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                             <div class="col-12">
                                 <div class="card review-card">
                                     <div class="card-header header-sm d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title">Transaction History</h4>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_CARD_TITLE); ?></h4>
                                     </div>
                                     <div class="card-body no-gutter">
                                         <?PHP
@@ -67,7 +63,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                         <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
                                                     </div>
                                                     <div class="p-2 my-flex-item">
-                                                        <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+                                                        <h6 class="text-muted"><?PHP HTML::print(TEXT_NO_ITEMS); ?></h6>
                                                     </div>
                                                 </div>
                                                 <?PHP
@@ -148,14 +144,14 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 ?>
                                                 <div class="list-item">
                                                     <div class="preview-image">
-                                                        <img class="img-sm rounded-circle" src="<?PHP HTML::print($ImageSource, false); ?>" alt="profile image">
+                                                        <img class="img-sm rounded-circle" src="<?PHP HTML::print($ImageSource, false); ?>" alt="Brand Logo">
                                                     </div>
                                                     <div class="content">
                                                         <div class="d-flex align-items-center">
                                                             <h6 class="product-name"><?PHP HTML::print($TransactionRecord->Vendor); ?></h6>
                                                             <small class="time ml-3 d-none d-sm-block"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></small>
                                                             <div class="ml-auto">
-                                                                <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">View Invoice</a>
+                                                                <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>"><?PHP HTML::print(TEXT_VIEW_INVOICE_LINK); ?></a>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex align-items-center">
@@ -163,25 +159,19 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                                 if($TransactionRecord->Amount == 0)
                                                                 {
                                                                     ?>
-                                                                    <p class="text-muted mb-0">
-                                                                        $0 USD
-                                                                    </p>
+                                                                    <p class="text-muted mb-0">$0 USD</p>
                                                                     <?PHP
                                                                 }
                                                                 elseif($TransactionRecord->Amount < 0)
                                                                 {
                                                                     ?>
-                                                                    <p class="text-danger mb-0">
-                                                                        -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD
-                                                                    </p>
+                                                                    <p class="text-danger mb-0">-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</p>
                                                                     <?PHP
                                                                 }
                                                                 elseif($TransactionRecord->Amount > 0)
                                                                 {
                                                                     ?>
-                                                                    <p class="text-success mb-0">
-                                                                        $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
-                                                                    </p>
+                                                                    <p class="text-success mb-0">$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</p>
                                                                     <?PHP
                                                                 }
                                                             ?>
@@ -198,7 +188,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
                             </div>
                         </div>
-                        <?PHP HTML::importScript('add_balance_dialog'); ?>
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>

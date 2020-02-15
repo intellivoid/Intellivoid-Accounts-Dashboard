@@ -4,12 +4,9 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
     use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\ApplicationFlags;
-use IntellivoidAccounts\Abstracts\AuthenticationMode;
-use IntellivoidAccounts\Objects\COA\Application;
-use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
-use IntellivoidAccounts\Objects\SubscriptionPlan;
+    use IntellivoidAccounts\Abstracts\ApplicationFlags;
+    use IntellivoidAccounts\Objects\COA\Application;
+    use IntellivoidAccounts\Objects\SubscriptionPlan;
 
     Runtime::import('IntellivoidAccounts');
 
@@ -34,9 +31,8 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
     <head>
         <?PHP HTML::importSection('headers'); ?>
         <link rel="stylesheet" href="/assets/css/extra.css">
-        <title>Intellivoid Accounts - Authenticate</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -50,7 +46,7 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <div class="mr-auto mb-4">
                                     <img class="img-fluid img-xs" src="/assets/images/iv_logo.svg" alt="iv_logo"/>
-                                    <span class="text-dark pl-3">Intellivoid Accounts</span>
+                                    <span class="text-dark pl-3"><?PHP HTML::print(TEXT_CARD_HEADER); ?></span>
                                 </div>
                                 <div id="callback_alert">
                                     <?PHP HTML::importScript('callbacks'); ?>
@@ -58,73 +54,69 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
 
                                 <div class="d-flex mb-2">
                                     <div class="image-grouped mx-auto d-block">
-                                        <img src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="User Avatar">
-                                        <img src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'normal'), true) ?>" alt="Application Logo">
+                                        <img src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="<?PHP HTML::print(TEXT_USER_IMG_ALT); ?>">
+                                        <img src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'normal'), true) ?>" alt="<?PHP HTML::print(TEXT_APP_IMG_ALT); ?>">
                                     </div>
                                 </div>
 
                                 <h4 class="text-center">
                                     <?PHP HTML::print($Application->Name); ?>
                                     <?PHP
-                                    if(in_array(ApplicationFlags::Official, $Application->Flags))
-                                    {
-                                        HTML::print("<i class=\"mdi mdi-verified text-success\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is verified & trusted\"></i>", false);
-                                    }
-                                    elseif(in_array(ApplicationFlags::Verified, $Application->Flags))
-                                    {
-                                        HTML::print("<i class=\"mdi mdi-verified text-primary\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is an official Intellivoid Application/Service\"></i>", false);
-                                    }
-                                    elseif(in_array(ApplicationFlags::Untrusted, $Application->Flags))
-                                    {
-                                        HTML::print("<i class=\"mdi mdi-alert text-danger\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"This is untrusted and unsafe\"></i>", false);
-                                    }
-
+                                        if(in_array(ApplicationFlags::Verified, $Application->Flags))
+                                        {
+                                            HTML::print("<i class=\"mdi mdi-verified text-success\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"" . TEXT_APPLICATION_TICK_VERIFIED . "\"></i>", false);
+                                        }
+                                        elseif(in_array(ApplicationFlags::Official, $Application->Flags))
+                                        {
+                                            HTML::print("<i class=\"mdi mdi-verified text-primary\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"" . TEXT_APPLICATION_TICK_OFFICIAL . "\"></i>", false);
+                                        }
+                                        elseif(in_array(ApplicationFlags::Untrusted, $Application->Flags))
+                                        {
+                                            HTML::print("<i class=\"mdi mdi-alert text-danger\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"" . TEXT_APPLICATION_TICK_UNTRUSTED . "\"></i>", false);
+                                        }
                                     ?>
-
                                 </h4>
 
                                 <div class="border-bottom pt-3"></div>
-
                                 <?PHP $_GET['action'] = 'process_transaction'; ?>
                                 <form id="purchase_form" name="purchase_form" method="POST" action="<?PHP DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET, true); ?>" class="pt-4">
-                                    <h6 class="mb-3"><?PHP HTML::print(str_ireplace("%s", $Application->Name, 'Activate subscription for %s')); ?></h6>
-                                    <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="The billing cycle is when your subscription's billing gets processed automatically">
+                                    <h6 class="mb-3"><?PHP HTML::print(str_ireplace("%s", $Application->Name, TEXT_ACTIVATE_SUBSCRIPTION_HEADER)); ?></h6>
+                                    <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_INITIAL_PAYMENT_TOOLTIP); ?>">
                                         <div class="d-flex align-items-center py-1 text-black" >
                                             <span class="mdi mdi-currency-usd"></span>
                                             <p class="mb-0 ml-3">
                                                 <?PHP
                                                     if(isset($SubscriptionDetails['promotion_code']))
                                                     {
-                                                        $Text = "You will initially pay $%pp USD to start this subscription instead of $%op USD";
+                                                        $Text = TEXT_INITIAL_PAYMENT_PROMOTION_ACTIVE;
                                                         $Text = str_ireplace('%pp', $SubscriptionDetails['initial_price'], $Text);
                                                         $Text = str_ireplace('%op', $SubscriptionPlan->InitialPrice, $Text);
                                                         HTML::print($Text);
                                                     }
                                                     else
                                                     {
-                                                        $Text = "You will initially pay $%pp USD to start this subscription";
+                                                        $Text = TEXT_INITIAL_PAYMENT_CYCLE_TEXT;
                                                         $Text = str_ireplace('%pp', $SubscriptionDetails['initial_price'], $Text);
                                                         HTML::print($Text);
                                                     }
                                                 ?>
-                                                <?PHP  ?>
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="The billing cycle is when your subscription's billing gets processed automatically">
+                                    <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_BILLING_CYCLE_TOOLTIP); ?>">
                                         <div class="d-flex align-items-center py-1 text-black" >
                                             <span class="mdi mdi-timer"></span>
                                             <?PHP
                                                 if(isset($SubscriptionDetails['promotion_code']))
                                                 {
-                                                    $Text = "You will automatically be billed $%pp USD every %bc days instead of $%op USD";
+                                                    $Text = TEXT_BILLING_CYCLE_PROMOTION_ACTIVE;
                                                     $Text = str_ireplace("%pp", $SubscriptionDetails['cycle_price'], $Text);
                                                     $Text = str_ireplace("%bc", intval(abs($SubscriptionDetails['billing_cycle'])/60/60/24), $Text);
                                                     $Text = str_ireplace("%op", $SubscriptionPlan->CyclePrice, $Text);
                                                 }
                                                 else
                                                 {
-                                                    $Text = "You will automatically be billed $%pp USD every %bc days";
+                                                    $Text = TEXT_BILLING_CYCLE_TEXT;
                                                     $Text = str_ireplace("%pp", $SubscriptionDetails['cycle_price'], $Text);
                                                     $Text = str_ireplace("%bc", intval(abs($SubscriptionDetails['billing_cycle'])/60/60/24), $Text);
                                                 }
@@ -135,15 +127,15 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
                                     <div class="border-bottom pt-1"></div>
 
                                     <div class="form-group mt-4">
-                                        <label for="confirm_password" id="label_1" class="label">Confirm Password</label>
+                                        <label for="confirm_password" id="label_1" class="label"><?PHP HTML::print(TEXT_CONFIRM_PASSWORD_LABEL); ?></label>
                                         <input name="confirm_password" id="confirm_password" type="password" class="form-control" placeholder="*********" aria-autocomplete="none" autocomplete="off" required>
                                     </div>
                                     <div class="form-group pb-2 pt-2">
                                         <?PHP
-                                            $Text = "Start Subscription ($%s USD)";
+                                            $Text = TEXT_START_SUBSCRIPTION_BUTTON;
                                             if((float)$SubscriptionDetails['initial_price'] == 0)
                                             {
-                                                $Text = "Start Subscription (FREE)";
+                                                $Text = TEXT_START_SUBSCRIPTION_BUTTON_FREE;
                                             }
                                             else
                                             {
@@ -153,7 +145,6 @@ use IntellivoidAccounts\Objects\SubscriptionPlan;
                                         <input id="submit_button" type="submit" class="btn btn-success submit-btn btn-block" value="<?PHP HTML::print($Text); ?>" disabled>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>

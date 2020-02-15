@@ -1,13 +1,12 @@
 <?PHP
-use DynamicalWeb\HTML;
+    use DynamicalWeb\HTML;
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('gen_dashboard_headers'); ?>
-        <title>Intellivoid Accounts - COA Error</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("gen_dashboard_navbar"); ?>
@@ -22,15 +21,13 @@ use DynamicalWeb\HTML;
                                             <div class="d-flex">
                                                 <i class="mdi mdi-alert icon-lg text-warning d-flex align-items-center"></i>
                                                 <div class="d-flex flex-column ml-4">
-                                                    <h4 class="font-weight-bold">COA Error</h4>
-                                                    <small class="text-muted">
-                                                        There was an error while trying to process your authentication request
-                                                    </small>
+                                                    <h4 class="font-weight-bold"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
+                                                    <small class="text-muted"><?PHP HTML::print(TEXT_PAGE_SUB_HEADER); ?></small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row mt-5 ml-4 mr-4 mb-3">
-                                            <label for="error_details">Error Details</label>
+                                            <label for="error_details"><?PHP HTML::print(TEXT_ERROR_DETAILS_HEADER); ?></label>
                                             <textarea class="form-control" id="error_details" rows="2"><?PHP HTML::importScript('resolve_error_code'); ?></textarea>
                                         </div>
                                     </div>
@@ -41,7 +38,6 @@ use DynamicalWeb\HTML;
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('gen_dashboard_js'); ?>
     </body>

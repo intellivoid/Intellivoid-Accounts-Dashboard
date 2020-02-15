@@ -3,7 +3,8 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+use DynamicalWeb\Javascript;
+use DynamicalWeb\Runtime;
     use sws\sws;
 
     Runtime::import('SecuredWebSessions');
@@ -27,7 +28,7 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('landing_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
 
     <body>
@@ -36,11 +37,14 @@
                 <?PHP HTML::importSection('landing_navbar'); ?>
                 <div class="row top-banner-content">
                     <div class="col-md-8 mx-auto">
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <h1 class="mr-2 text-white"> Intellivoid Accounts </h1>
-                                <h3 class="font-weight-light text-white"> Second-generation Authentication Solution </h3>
-                            </div>
+                        <div class="row mx-2">
+                            <h1 class="mr-2 text-white"><?PHP HTML::print(TEXT_HOME_BANNER_HEADER); ?></h1>
+                        </div>
+                        <div class="row mx-2">
+                            <h3 class="font-weight-light text-white quotes"><?PHP HTML::print(TEXT_HOME_BANNER_QUOTE_1); ?></h3>
+                            <h3 class="font-weight-light text-white quotes"><?PHP HTML::print(TEXT_HOME_BANNER_QUOTE_2); ?></h3>
+                            <h3 class="font-weight-light text-white quotes"><?PHP HTML::print(TEXT_HOME_BANNER_QUOTE_3); ?></h3>
+                            <h3 class="font-weight-light text-white quotes"><?PHP HTML::print(TEXT_HOME_BANNER_QUOTE_4); ?></h3>
                         </div>
                     </div>
                 </div>
@@ -51,28 +55,28 @@
                         <div class="row">
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card card-icon-top mb-3">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1.88rem 1.81rem;">
                                         <img src="/assets/images/landing/gddd_1.svg" alt="image" class="card-icon">
-                                        <h4>Secured</h4>
-                                        <p class="card-text"> Setup multiple methods of verification of authentication, no email or phone verification </p>
+                                        <h4 class="mt-4"><?PHP HTML::print(TEXT_FEATURES_1_HEADER); ?></h4>
+                                        <p class="card-text"><?PHP HTML::print(TEXT_FEATURES_1_BODY); ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card card-icon-top mb-3">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1.88rem 1.81rem;">
                                         <img src="/assets/images/landing/gddd_2.svg" alt="image" class="card-icon">
-                                        <h4>Data Control</h4>
-                                        <p class="card-text"> Choose the data you want to share, there is no obligation other than your Username and Avatar </p>
+                                        <h4 class="mt-4"><?PHP HTML::print(TEXT_FEATURES_2_HEADER); ?></h4>
+                                        <p class="card-text"><?PHP HTML::print(TEXT_FEATURES_2_BODY); ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 grid-margin stretch-card">
                                 <div class="card card-icon-top mb-3">
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 1.88rem 1.81rem;">
                                         <img src="/assets/images/landing/gddd_3.svg" alt="image" class="card-icon">
-                                        <h4>Open Platform</h4>
-                                        <p class="card-text"> Integrate Intellivoid Accounts into anything, even Android ROMs </p>
+                                        <h4 class="mt-4"><?PHP HTML::print(TEXT_FEATURES_3_HEADER); ?></h4>
+                                        <p class="card-text"><?PHP HTML::print(TEXT_FEATURES_3_BODY); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -84,8 +88,8 @@
                                 <img class="img-lg mb-4 mb-md-0" src="/assets/images/landing/gddd_4.svg" alt="profile image">
                             </div>
                             <div class="ticket-details col-md-10">
-                                <h3>Say No to data collection</h3>
-                                <p class="text-gray mb-2">Intellivoid does not display ads or collects data about you to share with third-party companies without your consent. Your data is yours, you have the right to choose how to share it with others</p>
+                                <h3><?PHP HTML::print(TEXT_ABOUT_1_HEADER); ?></h3>
+                                <p class="text-gray mb-2"><?PHP HTML::print(TEXT_ABOUT_1_BODY); ?></p>
                             </div>
                         </div>
 
@@ -94,8 +98,8 @@
                                 <img class="img-lg mb-4 mb-md-0" src="/assets/images/landing/gddd_6.svg" alt="profile image">
                             </div>
                             <div class="ticket-details col-md-10">
-                                <h3>Stop reinventing the wheel</h3>
-                                <p class="text-gray mb-2">Having too many accounts for many different services can put users at risk if one service gets compromised. Instead use Intellivoid Accounts as a form of authentication for your next project</p>
+                                <h3><?PHP HTML::print(TEXT_ABOUT_2_HEADER); ?></h3>
+                                <p class="text-gray mb-2"><?PHP HTML::print(TEXT_ABOUT_2_BODY); ?></p>
                             </div>
                         </div>
 
@@ -104,48 +108,17 @@
                                 <img class="img-lg mb-4 mb-md-0" src="/assets/images/landing/gddd_7.svg" alt="profile image">
                             </div>
                             <div class="ticket-details col-md-10">
-                                <h3>No more ineffective forms of verification</h3>
-                                <p class="text-gray mb-2">Getting tired of Phone Verification / Email Verification? No more! sim swapping is a thing of the past.</p>
+                                <h3><?PHP HTML::print(TEXT_ABOUT_3_HEADER); ?></h3>
+                                <p class="text-gray mb-2"><?PHP HTML::print(TEXT_ABOUT_3_BODY); ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="container-fluid footer">
-                <div class="row pb-5 text-white footer-top">
-                    <div class="col-md-8 mx-auto">
-                        <div class="row">
-                            <div class="col-md-8 mt-auto mb-4 ml-5">
-                                <ul class="nav mt-3">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="https://intellivoid.info/privacy">Privacy Policies</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="https://intellivoid.info/tos">Terms of Service</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="https://intellivoid.info/">Intellivoid</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Documentation</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-4 footer-bottom">
-                    <div class="col-md-8 mx-auto">
-                        <div class="container-fluid clearfix">
-                            <span class="d-block text-center text-sm-left d-sm-inline-block">Copyright &copy; 2017-<?PHP HTML::print(date('Y')); ?>
-                                <a href="https://intellivoid.info/">Intellivoid Technologies</a>. All rights reserved.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?PHP HTML::importSection('landing_footer'); ?>
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('gen_dashboard_js'); ?>
+        <?PHP Javascript::importScript('landingquotes'); ?>
     </body>
 </html>

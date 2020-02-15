@@ -3,9 +3,8 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
     HTML::importScript('revoke_access');
     HTML::importScript('ren.contents');
@@ -15,9 +14,8 @@ use IntellivoidAccounts\IntellivoidAccounts;
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
@@ -28,11 +26,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
                             <div class="col-lg-12 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Services</h4>
-                                        <p class="card-description text-muted">Services and Applications you've authenticated to using this Intellivoid Account</p>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_CARD_HEADER); ?></h4>
+                                        <p class="card-description text-muted"><?PHP HTML::print(TEXT_CARD_SUB_HEADER); ?></p>
                                         <div class="wrapper mt-4">
                                             <?PHP HTML::importScript('callbacks'); ?>
-
                                             <?PHP
                                                 if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
                                                 {
@@ -89,12 +86,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>

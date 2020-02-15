@@ -4,7 +4,6 @@
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\LoginRecordMultiSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\KnownHost;
     use IntellivoidAccounts\Objects\UserLoginRecord;
@@ -124,37 +123,37 @@
                 {
                     case LoginStatus::Successful:
                         HTML::print("<div class=\"badge badge-success\">", false);
-                        HTML::print("Successful");
+                        HTML::print(TEXT_TABLE_HEADERS_DATE);
                         HTML::print("</div>", false);
                         break;
 
                     case LoginStatus::IncorrectCredentials:
                         HTML::print("<div class=\"badge badge-warning\">", false);
-                        HTML::print("Incorrect Credentials");
+                        HTML::print(TEXT_LOGIN_STATUS_INCORRECT_CREDENTIALS);
                         HTML::print("</div>", false);
                         break;
 
                     case LoginStatus::VerificationFailed:
                         HTML::print("<div class=\"badge badge-warning\">", false);
-                        HTML::print("Verification Failed");
+                        HTML::print(TEXT_LOGIN_STATUS_VERIFICATION_FAILED);
                         HTML::print("</div>", false);
                         break;
 
                     case LoginStatus::UntrustedIpBlocked:
                         HTML::print("<div class=\"badge badge-danger\">", false);
-                        HTML::print("Untrusted IP Blocked");
+                        HTML::print(TEXT_LOGIN_STATUS_UNTRUSTED_IP_BLOCKED);
                         HTML::print("</div>", false);
                         break;
 
                     case LoginStatus::BlockedSuspiciousActivities:
                         HTML::print("<div class=\"badge badge-danger\">", false);
-                        HTML::print("Suspicious Activity Blocked");
+                        HTML::print(TEXT_LOGIN_STATUS_SUSPICIOUS_ACTIVITY_BLOCKED);
                         HTML::print("</div>", false);
                         break;
 
                     default:
                         HTML::print("<div class=\"badge badge-info\">", false);
-                        HTML::print("Unknown");
+                        HTML::print(TEXT_LOGIN_STATUS_UNKNOWN);
                         HTML::print("</div>", false);
                         break;
                 }

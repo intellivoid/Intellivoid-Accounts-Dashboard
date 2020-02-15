@@ -1,5 +1,6 @@
 <?PHP
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
 ?>
 <nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
     <div class="container d-flex flex-row nav-top">
@@ -12,7 +13,7 @@
             </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
-            <button class="btn btn-outline-secondary ml-auto" onclick="location.href='<?PHP DynamicalWeb::getRoute('index', array(), true); ?>'">Home</button>
+            <button class="btn btn-outline-secondary ml-auto" onclick="location.href='<?PHP DynamicalWeb::getRoute('index', array(), true); ?>'"><?PHP HTML::print(TEXT_NAV_MENU_LINK_HOME); ?></button>
         </div>
     </div>
 </nav>

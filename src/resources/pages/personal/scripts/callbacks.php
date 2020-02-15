@@ -47,5 +47,45 @@
             case 109:
                 RenderAlert(TEXT_CALLBACK_109, "success", "mdi-checkbox-marked-circle-outline");
                 break;
+
+            case 110:
+                RenderAlert(TEXT_CALLBACK_110, "danger", "mdi-alert-circle");
+                break;
+
+            case 111:
+                RenderAlert(TEXT_CALLBACK_111, "danger", "mdi-alert-circle");
+                break;
+
+            case 112:
+                RenderAlert(TEXT_CALLBACK_112, "danger", "mdi-alert-circle");
+                break;
+
+            case 113:
+                RenderAlert(TEXT_CALLBACK_113, "danger", "mdi-alert-circle");
+                break;
+
+            case 114:
+                RenderAlert(TEXT_CALLBACK_114, "danger", "mdi-alert-circle");
+                break;
+
+            case 115:
+                RenderAlert(TEXT_CALLBACK_115, "success", "mdi-checkbox-marked-circle-outline");
+                break;
+
+            case 116:
+                RenderAlert(TEXT_CALLBACK_116, "danger", "mdi-alert-circle");
+                break;
+
+            case 117:
+                RenderAlert(TEXT_CALLBACK_117, "danger", "mdi-alert-circle");
+                break;
+
+            case 118:
+                RenderAlert(TEXT_CALLBACK_118, "danger", "mdi-alert-circle");
+                break;
+
+            case 119:
+                RenderAlert(TEXT_CALLBACK_119, "success", "mdi-checkbox-marked-circle-outline");
+                break;
         }
     }

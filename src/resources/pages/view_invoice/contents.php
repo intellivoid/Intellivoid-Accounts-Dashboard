@@ -1,12 +1,13 @@
 <?PHP
 
-use DynamicalWeb\Actions;
-use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Actions;
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\TransactionLogSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\TransactionLogSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
     Runtime::import('IntellivoidAccounts');
 
@@ -52,12 +53,17 @@ use IntellivoidAccounts\IntellivoidAccounts;
         Actions::redirect(DynamicalWeb::getRoute('index'));
     }
 
+    if($TransactionRecord->Amount == 0)
+    {
+        $TransactionRecord->Amount = 0;
+    }
+
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Invoice #IV-<?PHP HTML::print($TransactionRecord->ID); ?></title>
+        <title><?PHP HTML::print(str_ireplace('%s', $TransactionRecord->ID, TEXT_PAGE_TITLE)); ?></title>
     </head>
 
     <body>
@@ -71,12 +77,25 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                 <div class="card px-2">
                                     <div class="card-body">
                                         <div class="container-fluid">
-                                            <h3 class="text-right my-5">Invoice&nbsp;&nbsp;#IV-<?PHP HTML::print($TransactionRecord->ID); ?></h3>
+                                            <h3 class="text-right my-5"><?PHP HTML::print(str_ireplace('%s', $TransactionRecord->ID, TEXT_INVOICE_HEADER)); ?></h3>
                                             <hr> </div>
                                         <div class="container-fluid d-flex justify-content-between">
                                             <div class="col-lg-4 pl-0">
                                                 <?PHP
                                                 $FromAccount = null;
+                                                $FromApplication = null;
+
+                                                try
+                                                {
+                                                    $FromApplication = $IntellivoidAccounts->getApplicationManager()->getApplication(
+                                                        ApplicationSearchMethod::byName,
+                                                        substr($TransactionRecord->Vendor, 0, strpos($TransactionRecord->Vendor, ' '))
+                                                    );
+                                                }
+                                                catch(Exception $e)
+                                                {
+                                                    $FromApplication = null;
+                                                }
 
                                                 try
                                                 {
@@ -93,11 +112,19 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                     <b><?PHP HTML::print($TransactionRecord->Vendor); ?></b>
                                                 </p>
                                                 <?PHP
-                                                if($FromAccount !== null)
+                                                if($FromApplication !== null)
+                                                {
+                                                    ?>
+                                                    <p><?PHP HTML::print(TEXT_INVOICE_VENDOR_ID); ?>
+                                                        <code><?PHP HTML::print($FromApplication->PublicAppId); ?></code>
+                                                    </p>
+                                                    <?PHP
+                                                }
+                                                elseif($FromAccount !== null)
                                                 {
                                                     ?>
                                                     <p><?PHP HTML::print($FromAccount->Email); ?></p>
-                                                    <p>Vendor ID:
+                                                    <p><?PHP HTML::print(TEXT_INVOICE_VENDOR_ID); ?>
                                                         <code><?PHP HTML::print($FromAccount->PublicID); ?></code>
                                                     </p>
                                                     <?PHP
@@ -106,7 +133,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                             </div>
                                             <div class="col-lg-4 pr-0">
                                                 <p class="mt-5 mb-2 text-right">
-                                                    <b>Invoice to</b>
+                                                    <b><?PHP HTML::print(TEXT_INVOICE_TO); ?></b>
                                                 </p>
                                                 <p class="text-right">
                                                     @<?PHP HTML::print($Account->Username); ?>
@@ -116,7 +143,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                         </div>
                                         <div class="container-fluid d-flex justify-content-between">
                                             <div class="col-lg-3 pl-0">
-                                                <p class="mb-0 mt-5">Invoice Date : <?PHP HTML::print(date("F j, Y, g:i a", $TransactionRecord->Timestamp)); ?></p>
+                                                <p class="mb-0 mt-5"><?PHP HTML::print(str_ireplace('%s', date("F j, Y, g:i a", $TransactionRecord->Timestamp), TEXT_INVOICE_DATE)); ?></p>
                                             </div>
                                         </div>
                                         <div class="container-fluid mt-5 d-flex justify-content-center w-100">
@@ -125,10 +152,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                     <thead>
                                                     <tr class="bg-dark text-white">
                                                         <th>#</th>
-                                                        <th>Description</th>
-                                                        <th class="text-right">Quantity</th>
-                                                        <th class="text-right">Unit cost</th>
-                                                        <th class="text-right">Total</th>
+                                                        <th><?PHP HTML::print(TEXT_INVOICE_DESCRIPTION); ?></th>
+                                                        <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_QUANTITY); ?></th>
+                                                        <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_UNIT_COST); ?></th>
+                                                        <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_TOTAL); ?></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>

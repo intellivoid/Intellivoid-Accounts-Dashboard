@@ -14,9 +14,8 @@
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
@@ -28,12 +27,8 @@
                             <div class="col-lg-12 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Recovery Codes Verification</h4>
-                                        <p class="card-description">
-                                            These are one-time use recovery codes for accessing your account, this is
-                                            important if you lose access to your phone or cannot verify using other
-                                            methods. These codes are meant to be written down, and are case-sensitive.
-                                        </p>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_CARD_TITLE); ?></h4>
+                                        <p class="card-description"><?PHP HTML::print(TEXT_CARD_DESCRIPTION); ?></p>
                                         <?PHP $RecoveryCodes = $Account->Configuration->VerificationMethods->RecoveryCodes->RecoveryCodes; ?>
                                         <div class="row border-top pt-3 mt-auto">
                                             <div class="col-2">
@@ -78,43 +73,36 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#confirm">Confirm</button>
+                                        <button class="btn btn-success" data-toggle="modal" data-target="#confirm"><?PHP HTML::print(TEXT_CONFIRM_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirm-label" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="confirm-label">Confirmation</h5>
+                                        <h5 class="modal-title" id="confirm-label"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_TITLE); ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">
-                                                    <i class="mdi mdi-close"></i>
-                                                </span>
+                                            <span aria-hidden="true">
+                                                <i class="mdi mdi-close"></i>
+                                            </span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>
-                                            You can generate these codes again by disabling Recovery Codes and Enabling
-                                            it again, but each code can only be used once! Make sure you wrote them down
-                                            somewhere or saved it in a safe place.
-                                        </p>
+                                        <p><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_BODY); ?></p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-success" onclick="location.href='<?PHP DynamicalWeb::getRoute('setup_recovery_codes', array('action' => 'confirm'), true); ?>';">Yes, i saved them</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_CANCEL_BUTTON); ?></button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='<?PHP DynamicalWeb::getRoute('setup_recovery_codes', array('action' => 'confirm'), true); ?>';"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_SUBMIT_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>

@@ -18,7 +18,7 @@
 
     $Response = array(
         'status' => true,
-        'status_code' => 200,
+        'response_code' => 200,
         'app_tag' => $AuthenticationAccess->ApplicationId,
         'expires' => $AuthenticationAccess->ExpiresTimestamp
     );

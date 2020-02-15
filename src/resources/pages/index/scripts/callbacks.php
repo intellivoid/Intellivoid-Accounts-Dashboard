@@ -51,5 +51,17 @@
             case 110:
                 RenderAlert(TEXT_CALLBACK_110, "success", "mdi-checkbox-marked-circle-outline");
                 break;
+
+            case 111:
+                RenderAlert(TEXT_CALLBACK_111, "danger", "mdi-alert-circle");
+                break;
+
+            case 112:
+                RenderAlert(TEXT_CALLBACK_112, "danger", "mdi-alert-circle");
+                break;
+
+            case 113:
+                RenderAlert(TEXT_CALLBACK_113, "success", "mdi-checkbox-marked-circle-outline");
+                break;
         }
     }

@@ -5906,6 +5906,10 @@ button.bg-dark:focus,
 .d-none {
   display: none !important; }
 
+.tiny-text {
+  font-size: 0.75rem;
+}
+
 .d-inline {
   display: inline !important; }
 
@@ -8877,6 +8881,10 @@ small,
 #calendar .fc-view-container .fc-view table tbody.fc-body tr td.fc-widget-content .fc-day-grid-container .fc-day-grid .fc-row .fc-content-skeleton table tbody tr td.fc-event-container .fc-h-event {
   font-size: 12px; }
 
+.text-large {
+  font-size: 24px;
+}
+
 .icon-lg {
   font-size: 2.5rem; }
 
@@ -8920,7 +8928,7 @@ html {
 .main-panel {
   -webkit-transition: width 0.25s ease, margin 0.25s ease;
   transition: width 0.25s ease, margin 0.25s ease;
-  width: calc(100% - 255px);
+  width: 100%;
   min-height: calc(100vh - 63px);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9392,7 +9400,7 @@ pre {
   .card-weather .card-body {
     background: #ffffff; }
     .card-weather .card-body:first-child {
-      background: url("../../images/samples/weather.svg") no-repeat center;
+      background: url("/assets/images/dashboard/banner_bg_alt.jpg") no-repeat center;
       background-size: cover; }
   .card-weather .weather-date-location {
     padding: 0 0 38px; }
@@ -16872,7 +16880,7 @@ div.tagsinput {
 
 .profile-page .profile-header {
   width: 100%;
-  background: url("../../images/samples/profile_page/profile_header_banner.jpg") no-repeat center center;
+  background: url("/assets/images/dashboard/banner_bg.jpg") no-repeat center center;
   background-size: cover;
   padding: 60px 0;
   border-radius: 5px; }

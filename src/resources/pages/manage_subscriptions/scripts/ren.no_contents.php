@@ -6,6 +6,6 @@
         <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
     </div>
     <div class="p-2 my-flex-item">
-        <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+        <h6 class="text-muted"><?PHP HTML::print(TEXT_NO_ITEMS); ?></h6>
     </div>
 </div>

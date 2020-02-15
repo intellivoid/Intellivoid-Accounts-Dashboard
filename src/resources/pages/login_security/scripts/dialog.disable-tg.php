@@ -6,7 +6,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="unlink-telegram-label">Unlink Telegram Account</h5>
+                <h5 class="modal-title" id="unlink-telegram-label"><?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_TITLE); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
                         <i class="mdi mdi-close"></i>
@@ -14,16 +14,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>
-                    Please confirm that you want to unlink your Telegram Account, you will
-                    no longer receive Authentication Prompts, security notifications and
-                    application notifications.
-                </p>
+                <p><?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_BODY); ?></p>
             </div>
             <div class="modal-footer">
                 <?PHP $Href = DynamicalWeb::getRoute('login_security', array('action' => 'unlink_telegram')); ?>
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';">Unlink</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_CANCEL_BUTTON); ?></button>
+                <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';"><?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_DISABLE_BUTTON); ?></button>
             </div>
         </div>
     </div>

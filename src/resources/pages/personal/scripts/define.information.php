@@ -62,3 +62,5 @@
     {
         define("USER_BOD_DAY", $Account->PersonalInformation->BirthDate->Day, false);
     }
+
+    define("USER_EMAIL", "value=\"" . htmlspecialchars($Account->Email, ENT_QUOTES, 'UTF-8') . "\"", false);

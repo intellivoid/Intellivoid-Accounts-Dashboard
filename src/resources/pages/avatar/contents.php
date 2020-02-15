@@ -13,9 +13,11 @@
     {
         $Response = array(
             "status" => false,
+            "response_code" => 400,
             "message" => "Missing GET parameter 'user_id'"
         );
         header('Content-Type: application/json');
+        http_response_code(400);
         print(json_encode($Response));
         exit();
     }
@@ -42,9 +44,11 @@
     {
         $Response = array(
             "status" => false,
+            "response_code" => 404,
             "message" => "Resource not found"
         );
         header('Content-Type: application/json');
+        http_response_code(404);
         print(json_encode($Response));
         exit();
     }
@@ -52,9 +56,11 @@
     {
         $Response = array(
             "status" => false,
+            "response_code" => 500,
             "message" => "Internal Server Error"
         );
         header('Content-Type: application/json');
+        http_response_code(500);
         print(json_encode($Response));
         exit();
     }
@@ -75,9 +81,11 @@
 
         $Response = array(
             "status" => false,
+            "response_code" => 404,
             "message" => "Resource not found"
         );
         header('Content-Type: application/json');
+        http_response_code(404);
         print(json_encode($Response));
         exit();
     }
@@ -94,6 +102,7 @@
         header('Cache-control: max-age=60');
         header('Content-Length: ' . strlen($ImageContents));
         header('Content-type: image/jpeg');
+        http_response_code(200);
         print($ImageContents);
         exit();
     }

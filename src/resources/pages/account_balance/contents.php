@@ -1,15 +1,15 @@
 <?PHP
+    /** @noinspection PhpUndefinedConstantInspection */
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
-
     HTML::importScript('redirect_paypal');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -35,51 +35,39 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $RecentTransactions = $IntellivoidAccounts->getTransactionRecordManager()->getNewRecords($Account->ID, 15);
     }
 
-
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Personal</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
             <div class="container-fluid page-body-wrapper">
                 <div class="main-panel container">
                     <div class="content-wrapper">
-
                         <div class="row">
                             <div class="col-sm-5 col-md-5 col-lg-5 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="absolute left top bottom h-100 v-strock-2 bg-success"></div>
-                                        <p class="text-muted mb-2">Account Balance</p>
+                                        <p class="text-muted mb-2"><?PHP HTML::print(TEXT_BALANCE_TITLE); ?></p>
                                         <div class="d-flex align-items-center">
                                             <h1 class="font-weight-medium mb-2">$<?PHP HTML::print($Account->Configuration->Balance); ?> USD</h1>
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="bg-primary dot-indicator"></div>
                                             <p class="text-muted mb-0 ml-2">
-                                                <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#">Add to balance</a>
+                                                <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#"><?PHP HTML::print(TEXT_BALANCE_ADD_LINK); ?></a>
                                             </p>
                                         </div>
                                         <div class="alert alert-fill-primary mt-3" role="alert">
-                                            <p>
-                                                You can add funds to your Intellivoid Account but these funds cannot be withdrawn or
-                                                transferred to other Intellivoid Accounts as explained in our Terms and Service.
-                                            </p>
-                                            <p>
-                                                This process is processed manually
-                                                by Intellivoid and it can take up to 48 Hours to be processed.
-                                            </p>
-                                            <p>
-                                                Your PayPal Email address must be the same as your Intellivoid Account's Email Address
-                                                otherwise the transaction will fail
-                                            </p>
-                                            <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('personal', array(), true); ?>">Update your Email Address</a>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P1); ?></p>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P2); ?></p>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P3); ?></p>
+                                            <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('personal', array(), true); ?>"><?PHP HTML::print(TEXT_UPDATE_EMAIL_BUTTON); ?></a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,14 +75,14 @@ use IntellivoidAccounts\IntellivoidAccounts;
                             <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 grid-margin stretch-card">
                                 <div class="card review-card">
                                     <div class="card-header header-sm d-flex justify-content-between align-items-center">
-                                        <h4 class="card-title">Recent Activity</h4>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_TITLE); ?></h4>
                                         <div class="wrapper d-flex align-items-center">
                                             <div class="dropdown">
-                                                <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="mdi mdi-dots-vertical"></i>
                                                 </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
-                                                    <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', array(), true); ?>">View more transactions</a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                                    <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', array(), true); ?>"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_OPTIONS_VIEW_ALL_TRANSACTIONS); ?></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +97,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                         <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
                                                     </div>
                                                     <div class="p-2 my-flex-item">
-                                                        <h6 class="text-muted"><?PHP HTML::print("No Items"); ?></h6>
+                                                        <h6 class="text-muted"><?PHP HTML::print(TEXT_NO_ITEMS); ?></h6>
                                                     </div>
                                                 </div>
                                                 <?PHP
@@ -197,7 +185,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                                 <h6 class="product-name"><?PHP HTML::print($TransactionRecord->Vendor); ?></h6>
                                                                 <small class="time ml-3 d-none d-sm-block"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></small>
                                                                 <div class="ml-auto">
-                                                                    <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">View Invoice</a>
+                                                                    <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>"><?PHP HTML::print(TEXT_VIEW_TRANSACTION_INVOICE_LINK); ?></a>
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex align-items-center">
@@ -234,7 +222,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 }
                                             }
                                         ?>
-
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +231,6 @@ use IntellivoidAccounts\IntellivoidAccounts;
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('dashboard_js'); ?>
     </body>
