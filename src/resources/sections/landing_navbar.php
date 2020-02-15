@@ -1,5 +1,7 @@
 <?PHP
     use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
+
 ?>
 <nav class="navbar navbar-expand-lg bg-transparent">
     <div class="row flex-grow">
@@ -18,10 +20,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-link" href="<?PHP DynamicalWeb::getRoute('login', array(), true); ?>">Login</a>
+                        <a class="nav-link btn btn-link" href="<?PHP DynamicalWeb::getRoute('login', array(), true); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_LOGIN); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger" href="<?PHP DynamicalWeb::getRoute('register', array('redirect' => 'register'), true); ?>">Create an Account</a>
+                        <a class="nav-link btn btn-danger" href="<?PHP DynamicalWeb::getRoute('register', array('redirect' => 'register'), true); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_CREATE_ACCOUNT); ?></a>
                     </li>
                 </ul>
             </div>

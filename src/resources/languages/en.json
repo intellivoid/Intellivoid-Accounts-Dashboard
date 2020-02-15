@@ -683,6 +683,10 @@
             "FOOTER_MENU_LINK_PRIVACY": "Privacy Policies",
             "FOOTER_MENU_LINK_TOS": "Terms of Service",
             "FOOTER_MENU_LINK_DOCUMENTATION": "Documentation"
+        },
+        "landing_navbar": {
+            "NAV_MENU_LINK_LOGIN": "Login",
+            "NAV_MENU_LINK_CREATE_ACCOUNT": "Create an Account"
         }
     }
 }
