@@ -675,6 +675,9 @@
             "FEEDBACK_DIALOG_MESSAGE_PLACEHOLDER": "Write your message here and we will get back to you as soon as possible via Email",
             "FEEDBACK_DIALOG_CANCEL_BUTTON": "Cancel",
             "FEEDBACK_DIALOG_SUBMIT_BUTTON": "Send"
+        },
+        "gen_dashboard_navbar": {
+            "NAV_MENU_LINK_HOME": "Home"
         }
     }
 }
