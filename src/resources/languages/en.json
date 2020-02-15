@@ -640,6 +640,12 @@
             "AUTH_FOOTER_PRIVACY_LINK": "Privacy",
             "AUTH_FOOTER_TOS_LINK": "Terms",
             "AUTH_FOOTER_CONTACT_LINK": "Contact us"
+        },
+        "change_avatar_modal": {
+            "CHANGE_AVATAR_DIALOG_TITLE": "Change Avatar",
+            "CHANGE_AVATAR_DIALOG_HINT": "JPEG or PNG Images that are 128x128px or larger are acceptable uploads",
+            "CHANGE_AVATAR_DIALOG_CANCEL_BUTTON": "Cancel",
+            "CHANGE_AVATAR_DIALOG_UPLOAD_BUTTON": "Upload"
         }
     }
 }
