@@ -62,7 +62,7 @@
                                         <input name="code" id="code" type="text" autocomplete="off" class="form-control<?PHP if($BorderDanger == true){ HTML::print(" border-danger"); } ?>" autofocus="autofocus" placeholder="<?PHP HTML::print(TEXT_VERIFICATION_CODE_PLACEHOLDER); ?>" required>
                                     </div>
                                     <div class="form-group pb-2 pt-2">
-                                        <input type="submit" class="btn btn-primary submit-btn btn-block" value="Verify">
+                                        <input type="submit" class="btn btn-primary submit-btn btn-block" value="<?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?>">
                                     </div>
                                 </form>
                             </div>
