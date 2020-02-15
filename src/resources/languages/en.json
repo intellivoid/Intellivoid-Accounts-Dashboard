@@ -622,6 +622,17 @@
             "PAGE_TITLE": "Verify Authentication",
             "HEADER": "Telegram Prompt",
             "SUB_HEADER": "Check your Telegram Account for a Authentication Prompt"
+        },
+        "view_invoice": {
+            "PAGE_TITLE": "Invoice #IV-%s",
+            "INVOICE_HEADER": "Invoice #IV-%s",
+            "INVOICE_VENDOR_ID": "Vendor ID:",
+            "INVOICE_TO": "Invoice to",
+            "INVOICE_DATE": "Invoice Date: %s",
+            "INVOICE_DESCRIPTION": "Description",
+            "INVOICE_QUANTITY": "Quantity",
+            "INVOICE_UNIT_COST": "Unit Cost",
+            "INVOICE_TOTAL": "Total"
         }
     },
     "sections": {
