@@ -1,13 +1,12 @@
 <?PHP
-use DynamicalWeb\HTML;
+    use DynamicalWeb\HTML;
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
     <head>
         <?PHP HTML::importSection('gen_dashboard_headers'); ?>
-        <title>Intellivoid Accounts - Payment Successful</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-
     <body>
         <div class="container-scroller">
             <?PHP HTML::importSection("gen_dashboard_navbar"); ?>
@@ -22,10 +21,8 @@ use DynamicalWeb\HTML;
                                             <div class="d-flex mb-3">
                                                 <i class="mdi mdi-check-circle icon-lg text-success d-flex align-items-center"></i>
                                                 <div class="d-flex flex-column ml-4">
-                                                    <h4 class="font-weight-bold">Payment Successful</h4>
-                                                    <small class="text-muted">
-                                                        Intellivoid is now going to process your transaction, this may take up to 48 hours.
-                                                    </small>
+                                                    <h4 class="font-weight-bold"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
+                                                    <small class="text-muted"><?PHP HTML::print(TEXT_PAGE_SUB_HEADER); ?></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -37,7 +34,6 @@ use DynamicalWeb\HTML;
                     <?PHP HTML::importSection('dashboard_footer'); ?>
                 </div>
             </div>
-
         </div>
         <?PHP HTML::importSection('gen_dashboard_js'); ?>
     </body>
