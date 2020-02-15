@@ -687,6 +687,17 @@
         "landing_navbar": {
             "NAV_MENU_LINK_LOGIN": "Login",
             "NAV_MENU_LINK_CREATE_ACCOUNT": "Create an Account"
+        },
+        "reset_password_modal": {
+            "RESET_PASSWORD_DIALOG_TITLE": "Update Password",
+            "RESET_PASSWORD_DIALOG_CURRENT_PASSWORD_LABEL": "Current Password",
+            "RESET_PASSWORD_DIALOG_CURRENT_PASSWORD_PLACEHOLDER": "Enter your current password",
+            "RESET_PASSWORD_DIALOG_NEW_PASSWORD_LABEL": "New Password",
+            "RESET_PASSWORD_DIALOG_NEW_PASSWORD_PLACEHOLDER": "Enter your new password",
+            "RESET_PASSWORD_DIALOG_REPEAT_PASSWORD_LABEL": "Repeat Password",
+            "RESET_PASSWORD_DIALOG_REPEAT_PASSWORD_PLACEHOLDER": "Repeat your new password",
+            "RESET_PASSWORD_DIALOG_CANCEL_BUTTON": "Cancel",
+            "RESET_PASSWORD_DIALOG_SUBMIT_BUTTON": "Update"
         }
     }
 }
