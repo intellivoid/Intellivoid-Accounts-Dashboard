@@ -14,6 +14,18 @@
 <meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png?v=7k43mL0Bzv">
 <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml?v=7k43mL0Bzv">
 <meta name="theme-color" content="#ffffff">
+<meta name="title" content="Intellivoid Accounts">
+<meta name="description" content="Secured second-generation authentication solution, a one-account for all by Intellivoid Technologies">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://accounts.intellivoid.info/">
+<meta property="og:title" content="Intellivoid Accounts">
+<meta property="og:description" content="Secured second-generation authentication solution, a one-account for all by Intellivoid Technologies">
+<meta property="og:image" content="/assets/images/preview.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://accounts.intellivoid.info/">
+<meta property="twitter:title" content="Intellivoid Accounts">
+<meta property="twitter:description" content="Secured second-generation authentication solution, a one-account for all by Intellivoid Technologies">
+<meta property="twitter:image" content="/assets/images/preview.png">
 <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="/assets/vendors/iconfonts/puse-icons-feather/feather.css">
 <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
