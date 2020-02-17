@@ -163,6 +163,9 @@
             case 50:
                 return("MISSING PARAMETERS 'subscription_id'");
 
+            case 51:
+                return("ACCESS DENIED DUE TO SECURITY ISSUES");
+
             default:
                 return("UNKNOWN ERROR");
         }

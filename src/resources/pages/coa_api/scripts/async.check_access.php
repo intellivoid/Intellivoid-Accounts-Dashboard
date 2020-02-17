@@ -169,6 +169,16 @@
         ));
     }
 
+    if($Account->Status == AccountStatus::BlockedDueToGovernmentBackedAttack)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 403,
+            'error_code' => 51,
+            'message' => resolve_error_code(51)
+        ));
+    }
+
     try
     {
         $ApplicationAccess = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->syncApplicationAccess($Application->ID, $Account->ID);
