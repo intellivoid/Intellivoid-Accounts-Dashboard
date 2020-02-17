@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="border-top mt-4"></div>
                                         <div class="row mt-5 ml-4 mr-4 mb-3">
-                                            <?PHP HTML::importMarkdown('privacy_policy'); ?>
+                                            <?PHP HTML::importMarkdown('tos'); ?>
                                         </div>
                                     </div>
                                 </div>
