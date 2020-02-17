@@ -12,13 +12,13 @@
                             <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_PRIVACY); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?> "><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_TOS); ?></a>
+                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_TOS); ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://intellivoid.info/">Intellivoid</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_DOCUMENTATION); ?></a>
+                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('documentation', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_DOCUMENTATION); ?></a>
                         </li>
                     </ul>
                 </div>
