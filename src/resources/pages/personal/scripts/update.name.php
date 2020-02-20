@@ -45,7 +45,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         if(preg_match("/^([a-zA-Z' ]+)$/",$_POST['first_name']) == false)
         {
             Actions::redirect(DynamicalWeb::getRoute('personal', array(
-                'callback' => '104'
+                'callback' => '101'
             )));
         }
 
