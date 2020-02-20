@@ -67,7 +67,7 @@
                 <li class="nav-item">
                     <a href="<?PHP DynamicalWeb::getRoute('personal', [], true) ?>" class="nav-link">
                         <i class="link-icon mdi mdi-account"></i>
-                        <span class="menu-title"><?PHP HTML::print(TEXT_NAV_MENU_LINK_OVERVIEW); ?></span>
+                        <span class="menu-title"><?PHP HTML::print(TEXT_NAV_MENU_LINK_PERSONAL); ?></span>
                     </a>
                 </li>
                 <li class="nav-item">

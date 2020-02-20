@@ -10,23 +10,23 @@
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('json_response');
 
-    if(isset($_GET['remote_host']) == false)
+    if(isset($_POST['remote_host']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
             'response_code' => 400,
             'status_code' => 100,
-            'message' => 'Missing GET parameter \'remote_host\''
+            'message' => 'Missing POST parameter \'remote_host\''
         ));
     }
 
-    if(isset($_GET['user_agent']) == false)
+    if(isset($_POST['user_agent']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
             'response_code' => 400,
             'status_code' => 101,
-            'message' => 'Missing GET parameter \'user_agent\''
+            'message' => 'Missing POST parameter \'user_agent\''
         ));
     }
 
@@ -44,7 +44,7 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
-    if(Validate::userAgent($_GET['user_agent']) == false)
+    if(Validate::userAgent($_POST['user_agent']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
@@ -56,7 +56,7 @@
 
     try
     {
-        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->syncHost($_GET['remote_host'], $_GET['user_agent']);
+        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->syncHost($_POST['remote_host'], $_POST['user_agent']);
     }
     catch(InvalidIpException $invalidIpException)
     {

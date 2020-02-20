@@ -192,7 +192,7 @@
         "index": {
             "PAGE_TITLE": "Intellivoid Accounts",
             "WELCOME_BANNER_HEADER": "Welcome back, %s!",
-            "WELCOME_BANNER_SUB_HEADER": "Need anything more to know more? Feel free to contact us at any point.",
+            "WELCOME_BANNER_SUB_HEADER": "Need some help or have some questions? Feel free to contact us at any point.",
             "WELCOME_BANNER_CONTACT_BUTTON": "Contact us",
             "ACCOUNT_SECURITY_ALERT_TITLE": "Account Security",
             "ACCOUNT_SECURITY_ALERT_MESSAGE": "It is important that you link your Telegram Account with your Intellivoid Account, this will provide greater security to your Account and allow you to recover your account in the case you lose access to it",
@@ -207,7 +207,7 @@
             "OVERVIEW_CARD_ACCOUNT_SECURITY": "Account Security",
             "OVERVIEW_CARD_ACCOUNT_SECURITY_NOT_ENABLED": "Not Enabled",
             "OVERVIEW_CARD_ACCOUNT_SECURITY_ENABLED": "Enabled",
-            "OVERVIEW_CARD_ACCOUNT_SECURITY_DISABLED": "Enabled",
+            "OVERVIEW_CARD_ACCOUNT_SECURITY_DISABLED": "Disabled",
             "OVERVIEW_CARD_ACCOUNT_SECURITY_MOBILE_VERIFICATION": "Mobile Verification",
             "OVERVIEW_CARD_ACCOUNT_SECURITY_RECOVERY_CODES": "Recovery Codes",
             "OVERVIEW_CARD_ACCOUNT_SECURITY_TELEGRAM_VERIFICATION": "Telegram Verification",

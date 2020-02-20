@@ -19,47 +19,47 @@
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('json_response');
 
-    if(isset($_GET['auth_code']) == false)
+    if(isset($_POST['auth_code']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
             'response_code' => 400,
             'status_code' => 100,
-            'message' => 'Missing GET parameter \'auth_code\''
+            'message' => 'Missing POST parameter \'auth_code\''
         ));
     }
 
-    if(isset($_GET['vendor']) == false)
+    if(isset($_POST['vendor']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
             'response_code' => 400,
             'status_code' => 101,
-            'message' => 'Missing GET parameter \'vendor\''
+            'message' => 'Missing POST parameter \'vendor\''
         ));
     }
 
-    if(isset($_GET['host_id']) == false)
+    if(isset($_POST['host_id']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
             'response_code' => 400,
             'status_code' => 102,
-            'message' => 'Missing GET parameter \'host_id\''
+            'message' => 'Missing POST parameter \'host_id\''
         ));
     }
 
-    if(isset($_GET['user_agent']) == false)
+    if(isset($_POST['user_agent']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
             'response_code' => 400,
             'status_code' => 113,
-            'message' => 'Missing GET parameter \'user_agent\''
+            'message' => 'Missing POST parameter \'user_agent\''
         ));
     }
 
-    if(Validate::userAgent($_GET['user_agent']) == false)
+    if(Validate::userAgent($_POST['user_agent']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
@@ -85,7 +85,7 @@
 
     try
     {
-        $VerificationCode = $IntellivoidAccounts->getOtlManager()->getOtlRecord(OtlSearchMethod::byCode, Request::getParameter('auth_code'));
+        $VerificationCode = $IntellivoidAccounts->getOtlManager()->getOtlRecord(OtlSearchMethod::byCode, $_POST['auth_code']);
     }
     catch (OtlNotFoundException $e)
     {
@@ -137,7 +137,6 @@
         ));
     }
 
-
     try
     {
         $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, $VerificationCode->AccountID);
@@ -182,7 +181,7 @@
         ));
     }
 
-    if(Validate::vendor($_GET['vendor']) == false)
+    if(Validate::vendor($_POST['vendor']) == false)
     {
         returnJsonResponse(array(
             'status' => false,
@@ -194,7 +193,7 @@
 
     try
     {
-        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byPublicId, $_GET['host_id']);
+        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byPublicId, $_POST['host_id']);
     }
     catch (HostNotKnownException $e)
     {
@@ -217,13 +216,13 @@
     }
 
     $VerificationCode->Status = OtlStatus::Used;
-    $VerificationCode->Vendor = $_GET['vendor'];
+    $VerificationCode->Vendor = $_POST['vendor'];
     $IntellivoidAccounts->getOtlManager()->updateOtlRecord($VerificationCode);
 
     $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
         $Account->ID, $KnownHost->ID,
         LoginStatus::Successful, $VerificationCode->Vendor,
-        $_GET['user_agent']
+        $_POST['user_agent']
     );
 
     $ResponseObject = array(
