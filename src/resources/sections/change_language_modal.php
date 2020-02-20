@@ -20,6 +20,11 @@
                         </a>
                     </div>
                     <div class="col-4">
+                        <a href="<?PHP DynamicalWeb::getRoute('change_language', array('language' => 'zh', 'cache' => hash('sha256', time())), true); ?>">
+                            <i class="flag-icon flag-icon-cn" title="cn" id="cn"></i> 中文
+                        </a>
+                    </div>
+                    <div class="col-4">
                         <a href="<?PHP DynamicalWeb::getRoute('change_language', array('language' => 'es', 'cache' => hash('sha256', time())), true); ?>">
                             <i class="flag-icon flag-icon-cl" title="es" id="es"></i> Español
                         </a>

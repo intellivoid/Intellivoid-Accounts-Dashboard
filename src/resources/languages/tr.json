@@ -22,7 +22,7 @@
             "PAGE_TITLE": "Hesap Bakiyesi",
             "BALANCE_TITLE": "Hesap Bakiyesi",
             "BALANCE_ADD_LINK": "Bakiyeye ekle",
-            "ADD_MESSAGE_P1": " Intellivoid Hesabınıza para ekleyebilirsiniz, ancak bu fonlar Şartlar ve Hizmetlerimizde açıklandığı gibi geri alınamaz veya diğer Intellivoid Hesaplarına aktarılamaz.",
+            "ADD_MESSAGE_P1": " Intellivoid Hesabınıza para ekleyebilirsiniz, ancak bu fonlar Şartlar ve Hizmetlerimizde açıklandığı gibi geri alınamaz veya diğer Intellivoid Accountsna aktarılamaz.",
             "ADD_MESSAGE_P2": "Bu işlem Intellivoid tarafından manuel olarak işlenir ve işlenmesi 48 saate kadar sürebilir.",
             "ADD_MESSAGE_P3": "PayPal E-posta adresiniz Intellivoid Hesabınızın E-posta Adresi ile aynı olmalıdır, aksi takdirde işlem başarısız olur",
             "UPDATE_EMAIL_BUTTON": "E-posta Adresinizi güncelleyin",
@@ -37,7 +37,7 @@
         },
         "application_authenticate": {
             "PAGE_TITLE": "%s kimlik doğrulaması",
-            "AUTHENTICATE_CARD_TITLE": "Intellivoid Hesapları ile oturum açın",
+            "AUTHENTICATE_CARD_TITLE": "Intellivoid Accounts ile oturum açın",
             "USER_IMG_ALT": "Kullanıcı Profili",
             "APP_IMG_ALT": "Uygulama Logosu",
             "APPLICATION_TICK_VERIFIED": "Bu doğrulandı ve güvenilir",
@@ -58,9 +58,9 @@
             "PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT": "Telegram ile bildirim gönderme",
             "PERMISSIONS_MAKE_PURCHASES_TOOLTIP": "Hesap Bakiyenizi kullanarak alışveriş yapmanıza veya abonelikleri etkinleştirmenize olanak tanır (Yalnızca Intellivoid)",
             "PERMISSIONS_MAKE_PURCHASE_TEXT": "Satın alma talebi",
-            "AUTHENTICATION_NOTICE_OFFICIAL": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu, Intellivoid'in ilgili web sitesinde veya uygulamada incelenebilecek hizmet şartları ve gizlilik politikaları aracılığıyla vereceğiniz bilgi veya izinler ne olursa olsun, resmi bir Intellivoid Uygulaması / Hizmetidir. Intellivoid Hesapları aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
-            "AUTHENTICATION_NOTICE_VERIFIED": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu Uygulamanın Intellivoid tarafından resmi olduğu doğrulanmıştır, ancak bu, resmi bir Intellivoid Uygulaması / Hizmeti değildir, verdiğiniz bilgi veya izinler, varsa hizmet şartlarında ve gizlilik politikalarında kullanılacaktır. Intellivoid Hesapları aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
-            "AUTHENTICATION_NOTICE_GENERIC": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu, resmi bir Intellivoid Uygulaması / Hizmeti değildir; verdiğiniz bilgi veya izinler, hizmet şartlarında ve varsa gizlilik politikalarında kullanılacaktır. Intellivoid Hesapları aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
+            "AUTHENTICATION_NOTICE_OFFICIAL": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu, Intellivoid'in ilgili web sitesinde veya uygulamada incelenebilecek hizmet şartları ve gizlilik politikaları aracılığıyla vereceğiniz bilgi veya izinler ne olursa olsun, resmi bir Intellivoid Uygulaması / Hizmetidir. Intellivoid Accounts aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
+            "AUTHENTICATION_NOTICE_VERIFIED": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu Uygulamanın Intellivoid tarafından resmi olduğu doğrulanmıştır, ancak bu, resmi bir Intellivoid Uygulaması / Hizmeti değildir, verdiğiniz bilgi veya izinler, varsa hizmet şartlarında ve gizlilik politikalarında kullanılacaktır. Intellivoid Accounts aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
+            "AUTHENTICATION_NOTICE_GENERIC": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu, resmi bir Intellivoid Uygulaması / Hizmeti değildir; verdiğiniz bilgi veya izinler, hizmet şartlarında ve varsa gizlilik politikalarında kullanılacaktır. Intellivoid Accounts aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
             "AUTHENTICATION_AUTHENTICATE_BUTTON": "Kimlik Doğrulaması"
         },
         "application_error": {
@@ -132,7 +132,7 @@
         },
         "authentication_code": {
             "PAGE_TITLE": "Kimlik Doğrulama Kodu",
-            "AUTHENTICATION_CARD_TITLE": "Intellivoid Hesapları ile oturum açın",
+            "AUTHENTICATION_CARD_TITLE": "Intellivoid Accounts ile oturum açın",
             "USER_IMG_ALT": "Kullanıcı Profil Resmi",
             "APP_IMG_ALT": "Uygulama Logosu",
             "APPLICATION_TICK_VERIFIED": "Bu doğrulandı ve güvenilir",
@@ -144,7 +144,7 @@
         },
         "authentication_success": {
             "PAGE_TITLE": "Kimlik Doğrulama Başarılı",
-            "AUTHENTICATION_CARD_TITLE": "Intellivoid Hesapları ile oturum açın",
+            "AUTHENTICATION_CARD_TITLE": "Intellivoid Accounts ile oturum açın",
             "USER_IMG_ALT": "Kullanıcı Profil Resmi",
             "APP_IMG_ALT": "Uygulama Logosu",
             "APPLICATION_TICK_VERIFIED": "Bu doğrulandı ve güvenilir",
@@ -155,7 +155,7 @@
         },
         "confirm_subscription_purchase": {
             "PAGE_TITLE": "Abonelik Satın Alma İşlemini Onaylayın",
-            "CARD_HEADER": "Intellivoid Hesapları",
+            "CARD_HEADER": "Intellivoid Accounts",
             "USER_IMG_ALT": "Kullanıcı Profil Resmi",
             "APP_IMG_ALT": "Uygulama Logosu",
             "APPLICATION_TICK_VERIFIED": "Bu doğrulandı ve güvenilir",
@@ -190,7 +190,7 @@
             "PAGE_CONTENT": "Bunun nasıl olduğunu size açıklayamayız, hesabınız sizden, bizden, başkalarından ve daha önce kimlik doğrulaması yaptığınız üçüncü taraf uygulamalarından erişimi önlemek için devre dışı bırakılmıştır. Hesabınızın, kullanımının güvenli olduğunu belirlediğimizde kullanılabilir hale gelecektir. Bu, bir veya daha fazla saldırının bunu tetiklemiş olabileceği otomatik bir işlemdir."
         },
         "index": {
-            "PAGE_TITLE": "Intellivoid Hesapları",
+            "PAGE_TITLE": "Intellivoid Accounts",
             "WELCOME_BANNER_HEADER": "Tekrar Hoş Geldin, %s!",
             "WELCOME_BANNER_SUB_HEADER": "Yardıma mı ihtiyacınız var veya sorularınız mı var? Herhangi bir noktada bizimle iletişime geçmekten çekinmeyin.",
             "WELCOME_BANNER_CONTACT_BUTTON": "Bize Ulaşın",
@@ -258,11 +258,11 @@
             "FEATURES_2_HEADER": "Veri Kontrolü",
             "FEATURES_2_BODY": "Paylaşmak istediğiniz verileri seçin, Kullanıcı Adınız ve Profil Fotografınızdan başka bir zorunluluk yoktur ",
             "FEATURES_3_HEADER": "Açılmış Platform",
-            "FEATURES_3_BODY": "Intellivoid Hesaplarını Android ROM'larda bile her şeye entegre edin",
+            "FEATURES_3_BODY": "Intellivoid Accountsnı Android ROM'larda bile her şeye entegre edin",
             "ABOUT_1_HEADER": "Veri toplamaya hayır deyin",
             "ABOUT_1_BODY": "Intellivoid, izniniz olmadan üçüncü taraf şirketlerle paylaşmak için reklam görüntülemez veya sizinle ilgili verileri toplar. Verileriniz sizindir, başkalarıyla nasıl paylaşacağınızı seçme hakkına sahipsiniz",
             "ABOUT_2_HEADER": "Tekerleği yeniden icat etmeyi bırak",
-            "ABOUT_2_BODY": "Birçok farklı hizmet için çok fazla hesaba sahip olmak, bir hizmetin güvenliği ihlal edilirse kullanıcıları risk altına sokabilir. Bunun yerine Intellivoid Hesaplarını bir sonraki projeniz için bir kimlik doğrulama formu olarak kullanın",
+            "ABOUT_2_BODY": "Birçok farklı hizmet için çok fazla hesaba sahip olmak, bir hizmetin güvenliği ihlal edilirse kullanıcıları risk altına sokabilir. Bunun yerine Intellivoid Accountsnı bir sonraki projeniz için bir kimlik doğrulama formu olarak kullanın",
             "ABOUT_3_HEADER": "Artık etkin olmayan doğrulama biçimleri yok",
             "ABOUT_3_BODY": "Telefon Doğrulama / E-posta Doğrulamasından bıktınız mı? Daha fazla yok! sim takas etmek geçmişte kaldı."
 
@@ -462,9 +462,9 @@
             "CALLBACK_119": "E-posta adresiniz başarıyla güncellendi"
         },
         "privacy": {
-            "PAGE_TITLE": "Intellivoid Hesapları - Gizlilik Politikaları",
-            "CARD_HEADER": "Intellivoid Hesapları için Gizlilik Politikaları",
-            "CARD_DESCRIPTION": "TBu sayfada Intellivoid Hesaplarının gizlilik politikaları açıklanmaktadır"
+            "PAGE_TITLE": "Intellivoid Accounts - Gizlilik Politikaları",
+            "CARD_HEADER": "Intellivoid Accounts için Gizlilik Politikaları",
+            "CARD_DESCRIPTION": "TBu sayfada Intellivoid Accountsnın gizlilik politikaları açıklanmaktadır"
         },
         "purchase_failure": {
             "PAGE_TITLE": "Satın Alma Hatası",
@@ -490,12 +490,12 @@
             "CALLBACK_102": "İsteğinizi işleme koymaya çalışırken bir hata oluştu, daha sonra tekrar deneyin."
         },
         "register": {
-            "PAGE_TITLE": "Intellivoid Hesapları - Kayıtlar",
+            "PAGE_TITLE": "Intellivoid Accounts - Kayıtlar",
             "AUTHENTICATION_SUB_HEADER": "Yeni bir Intellivoid Hesabı oluşturun",
             "EMAIL_ADDRESS_LABEL": "E-mail Adresi",
             "USERNAME_LABEL": "Kullanıcı Adı",
             "PASSWORD_LABEL": "Şifre",
-            "TOS_HINT": "Bir hesap oluşturarak Intellivoid Hesaplarının ve Intellivoid'in Hizmet Şartlarını ve Gizlilik Politikalarını kabul etmiş olursunuz.",
+            "TOS_HINT": "Bir hesap oluşturarak Intellivoid Accountsnın ve Intellivoid'in Hizmet Şartlarını ve Gizlilik Politikalarını kabul etmiş olursunuz.",
             "AGREE_CHECKBOX_LABEL": "Kabul Ediyorum",
             "CREATE_ACCOUNT_BUTTON": "Zaten bir hesabın var mı ?",
             "LOGIN_LINK": "Giriş Yap",

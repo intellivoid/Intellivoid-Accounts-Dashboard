@@ -180,7 +180,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                 <div class="col-md-6">
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_EMAIL_ADDRESS); ?>
+                                                            <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" class="form-check-input"<?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_EMAIL_ADDRESS_LABEL); ?>
                                                             <i class="input-helper"></i>
                                                         </label>
                                                     </div>
