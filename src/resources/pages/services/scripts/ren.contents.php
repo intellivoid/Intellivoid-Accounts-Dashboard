@@ -29,12 +29,13 @@
                 foreach($application_access_records as $access_record)
                 {
                     $ApplicationAccess = ApplicationAccess::fromArray($access_record);
+
                     if($ApplicationAccess->Status == ApplicationAccessStatus::Authorized)
                     {
                         if(isset($applications[$ApplicationAccess->ApplicationID]))
                         {
                             /** @var Application $Application */
-                            $Application = $applications[$ApplicationAccess->ID];
+                            $Application = $applications[$ApplicationAccess->ApplicationID];
                         }
                         else
                         {
