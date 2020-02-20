@@ -4,8 +4,8 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\AuditEventType;
-use IntellivoidAccounts\Abstracts\AuthenticationMode;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Exceptions\ApplicationAlreadyExistsException;
     use IntellivoidAccounts\Exceptions\InvalidApplicationNameException;
     use IntellivoidAccounts\Exceptions\InvalidRequestPermissionException;
@@ -92,8 +92,22 @@ use IntellivoidAccounts\Abstracts\AuthenticationMode;
         $Permissions[] = AccountRequestPermissions::ViewEmailAddress;
     }
 
+
+
     try
     {
+        $TotalRecords = $IntellivoidAccounts->getApplicationManager()->getRecords(WEB_ACCOUNT_ID);
+
+        if($TotalRecords == 20)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '109')));
+        }
+
+        if($TotalRecords > 20)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '109')));
+        }
+
         $IntellivoidAccounts->getApplicationManager()->registerApplication(
             $_POST['application_name'], WEB_ACCOUNT_ID, $AuthenticationType, $Permissions
         );
