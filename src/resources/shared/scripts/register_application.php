@@ -96,7 +96,7 @@
 
     try
     {
-        $TotalRecords = $IntellivoidAccounts->getApplicationManager()->getRecords(WEB_ACCOUNT_ID);
+        $TotalRecords = count($IntellivoidAccounts->getApplicationManager()->getRecords(WEB_ACCOUNT_ID));
 
         if($TotalRecords == 20)
         {
