@@ -81,3 +81,4 @@ $('#authentication_form').on('submit', function () {
     );
     return false;
 });
+toggle_anim();

@@ -24,7 +24,7 @@
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-5 mx-auto">
                             <div class="linear-activity">
-                                <div id="linear-spinner" class="indeterminate-none"></div>
+                                <div id="linear-spinner" class="indeterminate"></div>
                             </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h2 class="text-center">
@@ -38,35 +38,35 @@
                                 <div class="border-bottom pt-3"></div>
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
-                                        <label for="email" class="label" id="label_1"><?PHP HTML::print(TEXT_EMAIL_ADDRESS_LABEL); ?></label>
-                                        <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" aria-autocomplete="none" required>
+                                        <label for="email" class="label text-muted" id="label_1"><?PHP HTML::print(TEXT_EMAIL_ADDRESS_LABEL); ?></label>
+                                        <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" aria-autocomplete="none" required disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="username" class="label" id="label_2"><?PHP HTML::print(TEXT_USERNAME_LABEL); ?></label>
-                                        <input name="username" id="username" type="text" class="form-control" aria-autocomplete="none" autocomplete="off" placeholder="Username" required>
+                                        <label for="username" class="label text-muted" id="label_2"><?PHP HTML::print(TEXT_USERNAME_LABEL); ?></label>
+                                        <input name="username" id="username" type="text" class="form-control" aria-autocomplete="none" autocomplete="off" placeholder="Username" required disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password" class="label" id="label_3"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
-                                        <input name="password" id="password" type="password" class="form-control"  autocomplete="new-password" placeholder="*********" required>
+                                        <label for="password" class="label text-muted" id="label_3"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
+                                        <input name="password" id="password" type="password" class="form-control"  autocomplete="new-password" placeholder="*********" required disabled>
                                     </div>
                                     <div class="form-group">
-                                        <p class="text-small" id="tos_label"><?PHP HTML::print(TEXT_TOS_HINT); ?></p>
+                                        <p class="text-small text-muted" id="tos_label"><?PHP HTML::print(TEXT_TOS_HINT); ?></p>
                                     </div>
                                     <div class="form-group d-flex justify-content-between">
 
                                         <div class="form-check form-check-flat mt-0">
-                                            <label id="tos_check_label" class="form-check-label">
-                                                <input name="tos_agree" id="tos_agree" type="checkbox" class="form-check-input" required><?PHP HTML::print(TEXT_AGREE_CHECKBOX_LABEL); ?>
+                                            <label id="tos_check_label" class="form-check-label text-muted">
+                                                <input name="tos_agree" id="tos_agree" type="checkbox" class="form-check-input" required disabled><?PHP HTML::print(TEXT_AGREE_CHECKBOX_LABEL); ?>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" id="submit_button" value="<?PHP HTML::print(TEXT_CREATE_ACCOUNT_BUTTON); ?>" class="btn btn-primary submit-btn btn-block">
+                                        <input type="submit" id="submit_button" value="<?PHP HTML::print(TEXT_CREATE_ACCOUNT_BUTTON); ?>" class="btn btn-primary submit-btn btn-block" disabled>
                                     </div>
 
                                     <div class="text-block text-center my-3">
-                                        <span class="text-small font-weight-semibold" id="ca_label"><?PHP HTML::print(TEXT_EXISTING_ACCOUNT_HINT); ?></span>
-                                        <a id="ca_link" href="<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>" class="text-black text-small"><?PHP HTML::print(TEXT_LOGIN_LINK); ?></a>
+                                        <span class="text-small font-weight-semibold text-muted" id="ca_label"><?PHP HTML::print(TEXT_EXISTING_ACCOUNT_HINT); ?></span>
+                                        <a id="ca_link text-muted" href="<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>" class="text-black text-small"><?PHP HTML::print(TEXT_LOGIN_LINK); ?></a>
                                     </div>
                                 </form>
                             </div>
