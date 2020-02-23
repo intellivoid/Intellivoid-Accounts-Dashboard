@@ -30,7 +30,7 @@ use DynamicalWeb\Runtime;
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-5 mx-auto">
                             <div class="linear-activity">
-                                <div id="linear-spinner" class="indeterminate-none"></div>
+                                <div id="linear-spinner" class="indeterminate"></div>
                             </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h1 class="text-center">
@@ -44,11 +44,11 @@ use DynamicalWeb\Runtime;
                                 <div class="border-bottom pt-3"></div>
                                 <form id="authentication_form" name="authentication_form" class="pt-4">
                                     <div class="form-group">
-                                        <label for="password" id="label_1" class="label"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
-                                        <input name="password" id="password" type="password" class="form-control" placeholder="*********" aria-autocomplete="none" autocomplete="off" required>
+                                        <label for="password" id="label_1" class="label text-muted"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
+                                        <input name="password" id="password" type="password" class="form-control" placeholder="*********" aria-autocomplete="none" autocomplete="off" required disabled>
                                     </div>
                                     <div class="form-group pb-2 pt-2">
-                                        <input id="submit_button" type="submit" class="btn btn-danger submit-btn btn-block" value="<?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?>">
+                                        <input id="submit_button" type="submit" class="btn btn-danger submit-btn btn-block" value="<?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?>" disabled>
                                     </div>
                                 </form>
                             </div>
