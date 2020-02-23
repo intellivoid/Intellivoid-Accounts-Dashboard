@@ -30,41 +30,37 @@ function toggle_anim()
         $("#linear-spinner").removeClass("indeterminate");
         $("#linear-spinner").addClass("indeterminate-none");
         $("#username_email").prop("disabled", false);
+        $("#password").prop("disabled", false);
         $("#label_1").removeClass("text-muted");
         $("#label_2").removeClass("text-muted");
         $("#submit_button").prop("disabled", false);
-        $("#trusted_device").prop("disabled", false);
         $("#label_3").removeClass("text-muted");
-        $("#option_pt1").removeClass("text-muted");
-        $("#option_pt2").removeClass("text-muted");
     }
     else
     {
         $("#linear-spinner").removeClass("indeterminate-none");
         $("#linear-spinner").addClass("indeterminate");
         $("#username_email").prop("disabled", true);
+        $("#password").prop("disabled", true);
         $("#label_1").addClass("text-muted");
         $("#label_2").addClass("text-muted");
         $("#submit_button").prop("disabled", true);
         $("#trusted_device").prop("disabled", true);
         $("#label_3").addClass("text-muted");
-        $("#option_pt1").addClass("text-muted");
-        $("#option_pt2").addClass("text-muted");
     }
 }
 $('#authentication_form').on('submit', function () {
     var username_email = $("#username_email").val();
     var password = $("#password").val();
-    var trusted_device = $("#trusted_device").is(":checked");
     $("#callback_alert").empty();
     toggle_anim();
 
     $.redirectPost("<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>",
         {
             "username_email": username_email,
-            "password": password,
-            "trusted_device": trusted_device
+            "password": password
         }
     );
     return false;
 });
+toggle_anim();

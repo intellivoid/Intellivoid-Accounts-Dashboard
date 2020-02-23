@@ -24,7 +24,7 @@
                     <div class="row w-100 mx-auto">
                         <div class="col-lg-5 mx-auto">
                             <div class="linear-activity">
-                                <div id="linear-spinner" class="indeterminate-none"></div>
+                                <div id="linear-spinner" class="indeterminate"></div>
                             </div>
                             <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
                                 <h2 class="text-center">
@@ -38,15 +38,15 @@
                                 <div class="border-bottom pt-3"></div>
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
-                                        <label for="username_email" id="username_email_label" class="label"><?PHP HTML::print(TEXT_LOGIN_PLACEHOLDER); ?></label>
-                                        <input name="username_email" id="username_email" type="text" class="form-control" autofocus="autofocus" placeholder="example@intellivoid.info" required>
+                                        <label for="username_email" id="username_email_label" class="label text-muted"><?PHP HTML::print(TEXT_LOGIN_PLACEHOLDER); ?></label>
+                                        <input name="username_email" id="username_email" type="text" class="form-control" autofocus="autofocus" placeholder="example@intellivoid.info" disabled required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password" id="password_label" class="label"><?PHP HTML::print(TEXT_PASSWORD_PLACEHOLDER); ?></label>
-                                        <input name="password" id="password" type="password" class="form-control" placeholder="*********" required>
+                                        <label for="password" id="password_label" class="label text-muted"><?PHP HTML::print(TEXT_PASSWORD_PLACEHOLDER); ?></label>
+                                        <input name="password" id="password" type="password" class="form-control" placeholder="*********" disabled required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" id="submit_button" class="btn btn-primary submit-btn btn-block" value="<?PHP HTML::print(TEXT_LOGIN_BUTTON); ?>">
+                                        <input type="submit" id="submit_button" class="btn btn-primary submit-btn btn-block" value="<?PHP HTML::print(TEXT_LOGIN_BUTTON); ?>" disabled>
                                     </div>
                                     <div class="text-block text-center my-3">
                                         <span class="text-small font-weight-semibold" id="option_pt1"><?PHP HTML::print(TEXT_HINT_NO_ACCOUNT); ?></span>
