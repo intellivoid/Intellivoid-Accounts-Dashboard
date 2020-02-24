@@ -20,7 +20,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         {
             switch($_GET['action'])
             {
-                case 'change-logo':
+                case 'update-app-logo':
                    HTML::importScript('change_logo');
                    break;
 
@@ -92,7 +92,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                     <div class="col-12 grid-margin">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'change-logo'), true); ?>" method="POST" enctype="multipart/form-data">
+                                                <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update-app-logo'), true); ?>" method="POST" enctype="multipart/form-data">
                                                     <div class="d-flex align-items-start pb-3 border-bottom">
                                                         <?PHP
                                                             $img_parameters = array('app_id' => $Application->PublicAppId, 'resource' => 'small');

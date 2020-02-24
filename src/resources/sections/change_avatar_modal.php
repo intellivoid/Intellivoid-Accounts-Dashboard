@@ -44,10 +44,26 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_CHANGE_AVATAR_DIALOG_CANCEL_BUTTON); ?></button>
-                    <label class="btn btn-success mt-2" for="file-selector" onchange="this.form.submit();">
-                        <input id="file-selector" name="user_av_file" type="file" class="d-none">
-                        <?PHP HTML::print(TEXT_CHANGE_AVATAR_DIALOG_UPLOAD_BUTTON); ?>
-                    </label>
+                    <?PHP
+                        if(APP_CURRENT_PAGE == 'manage_application')
+                        {
+                            ?>
+                            <label class="btn btn-success mt-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('index', $ActionParameters, true); ?>'">
+                                <?PHP HTML::print(TEXT_CHANGE_AVATAR_DIALOG_UPLOAD_BUTTON); ?>
+                            </label>
+                            <?PHP
+                        }
+                        else
+                        {
+                            ?>
+                            <label class="btn btn-success mt-2" for="file-selector" onchange="this.form.submit();">
+                                <input id="file-selector" name="user_av_file" type="file" class="d-none">
+                                <?PHP HTML::print(TEXT_CHANGE_AVATAR_DIALOG_UPLOAD_BUTTON); ?>
+                            </label>
+                            <?PHP
+                        }
+                    ?>
+
                 </div>
             </form>
         </div>
