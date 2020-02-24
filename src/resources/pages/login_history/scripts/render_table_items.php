@@ -123,7 +123,7 @@
                 {
                     case LoginStatus::Successful:
                         HTML::print("<div class=\"badge badge-success\">", false);
-                        HTML::print(TEXT_TABLE_HEADERS_DATE);
+                        HTML::print(TEXT_LOGIN_STATUS_SUCCESS);
                         HTML::print("</div>", false);
                         break;
 
