@@ -22,11 +22,6 @@
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item ml-4">
-                    <a class="nav-link" data-toggle="modal" data-target="#change-language-dialog" href="#">
-                        <i class="mdi mdi-translate"></i>
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <?PHP HTML::print($UsernameSafe); ?>
@@ -135,6 +130,11 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-toggle="modal" data-target="#change-language-dialog"  class="nav-link">
+                        <i class="link-icon mdi mdi-translate"></i>
+                    </a>
                 </li>
             </ul>
         </div>
