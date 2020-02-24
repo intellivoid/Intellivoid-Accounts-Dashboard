@@ -72,8 +72,8 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                     </h4>
                                     <span class="text-black"><?PHP HTML::print(TEXT_ACCOUNT_SECURITY_ALERT_MESSAGE); ?></span>
                                     <div class="mt-4 mb-2">
-                                        <button class="btn btn-primary">
-                                            <i class="mdi mdi-telegram pr-1" onclick="location.href='tg://resolve?domain=IntellivoidBot&start=link';"></i> <?PHP HTML::print(TEXT_ACCOUNT_SECURITY_OPEN_TELEGRAM_BUTTON); ?>
+                                        <button class="btn btn-primary" onclick="location.href='tg://resolve?domain=IntellivoidBot&start=link';">
+                                            <i class="mdi mdi-telegram pr-1"></i> <?PHP HTML::print(TEXT_ACCOUNT_SECURITY_OPEN_TELEGRAM_BUTTON); ?>
                                         </button>
                                     </div>
                                 </div>
