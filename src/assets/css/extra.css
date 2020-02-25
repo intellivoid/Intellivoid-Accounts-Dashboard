@@ -234,5 +234,16 @@ body{
 
 }
 
+@media (max-width: 576px) {
+    .content-wrapper.auth.theme-one {
+        padding: 1.5rem 0.4rem;
+    }
+    .content-wrapper.auth.theme-one .auto-form-wrapper {
+        padding: 40px 25px 10px;
+    }
+}
 
+.main-panel {
+    max-width: 1140px;
+}
 
