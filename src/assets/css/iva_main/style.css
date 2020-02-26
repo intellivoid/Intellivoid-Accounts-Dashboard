@@ -333,7 +333,7 @@
             @media (min-width: 768px) {
               .navbar.horizontal-layout .nav-bottom .page-navigation > .nav-item:not(.mega-menu) .submenu ul {
                 position: absolute;
-                width: calc(100% - 1px);
+                width: calc(150% - 1px);
                 left: 0;
                 right: 0;
                 top: 50px;
