@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="nav-bottom" id="navigation_bar">
-        <div class="container">
+        <div class="container pl-0 pr-0">
             <ul class="nav page-navigation">
                 <li class="nav-item">
                     <a href="/" class="nav-link">

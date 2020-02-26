@@ -251,7 +251,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                                                     </div>
                                                 </div>
                                                 <div class="wrapper mt-4 d-flex d-lg-block">
-                                                    <button class="btn btn-danger btn-block" onclick="location.href='<?PHP DynamicalWeb::getRoute('login_security', array(), true); ?>';">
+                                                    <button class="btn btn-danger btn-sm btn-block" onclick="location.href='<?PHP DynamicalWeb::getRoute('login_security', array(), true); ?>';">
                                                         <i class="mdi mdi-lock pr-1"></i><?PHP HTML::print(TEXT_OVERVIEW_CARD_ACCOUNT_SECURITY_MANAGE_BUTTON); ?>
                                                     </button>
                                                 </div>
