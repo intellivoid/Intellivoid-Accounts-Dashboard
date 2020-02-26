@@ -45,7 +45,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
             <div class="container-fluid page-body-wrapper">
-                <div class="main-panel container">
+                <div class="main-panel container-fluid">
                     <div class="content-wrapper">
                         <?PHP HTML::importScript('callbacks'); ?>
                         <div class="row">
