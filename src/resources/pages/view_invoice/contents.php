@@ -78,9 +78,10 @@
                                     <div class="card-body">
                                         <div class="container-fluid">
                                             <h3 class="text-right my-5"><?PHP HTML::print(str_ireplace('%s', $TransactionRecord->ID, TEXT_INVOICE_HEADER)); ?></h3>
-                                            <hr> </div>
-                                        <div class="container-fluid d-flex justify-content-between">
-                                            <div class="col-lg-4 pl-0">
+                                            <hr>
+                                        </div>
+                                        <div class="container-fluid d-flex justify-content-between row">
+                                            <div class="col-lg-4">
                                                 <?PHP
                                                 $FromAccount = null;
                                                 $FromApplication = null;
@@ -131,11 +132,11 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="col-lg-4 pr-0">
-                                                <p class="mt-5 mb-2 text-right">
+                                            <div class="col-lg-4">
+                                                <p class="mt-5 mb-2">
                                                     <b><?PHP HTML::print(TEXT_INVOICE_TO); ?></b>
                                                 </p>
-                                                <p class="text-right">
+                                                <p>
                                                     @<?PHP HTML::print($Account->Username); ?>
                                                     <br> <?PHP HTML::print($Account->Email); ?>
                                                 </p>
@@ -146,7 +147,7 @@
                                                 <p class="mb-0 mt-5"><?PHP HTML::print(str_ireplace('%s', date("F j, Y, g:i a", $TransactionRecord->Timestamp), TEXT_INVOICE_DATE)); ?></p>
                                             </div>
                                         </div>
-                                        <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                                        <div class="container-fluid mt-5 d-flex justify-content-center w-100 py-0 px-0">
                                             <div class="table-responsive w-100">
                                                 <table class="table">
                                                     <thead>
