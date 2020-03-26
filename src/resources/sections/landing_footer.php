@@ -15,7 +15,7 @@
                             <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_TOS); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://intellivoid.info/">Intellivoid</a>
+                            <a class="nav-link" href="https://intellivoid.net/">Intellivoid</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('documentation', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_DOCUMENTATION); ?></a>
@@ -29,7 +29,7 @@
         <div class="mx-auto">
             <div class="container-fluid clearfix">
                 <span class="d-block text-center text-sm-left d-sm-inline-block">Copyright &copy; 2017-<?PHP HTML::print(date('Y')); ?>
-                    <a href="https://intellivoid.info/">Intellivoid Technologies</a>. All rights reserved.
+                    <a href="https://intellivoid.net/">Intellivoid Technologies</a>. All rights reserved.
                 </span>
             </div>
         </div>
