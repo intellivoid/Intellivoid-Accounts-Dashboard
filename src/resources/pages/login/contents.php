@@ -39,7 +39,7 @@
                                 <form id="authentication_form" name="authentication_form">
                                     <div class="form-group pt-4">
                                         <label for="username_email" id="username_email_label" class="label text-muted"><?PHP HTML::print(TEXT_LOGIN_PLACEHOLDER); ?></label>
-                                        <input name="username_email" id="username_email" type="text" class="form-control" autofocus="autofocus" placeholder="example@intellivoid.info" disabled required>
+                                        <input name="username_email" id="username_email" type="text" class="form-control" autofocus="autofocus" placeholder="example@intellivoid.net" disabled required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" id="password_label" class="label text-muted"><?PHP HTML::print(TEXT_PASSWORD_PLACEHOLDER); ?></label>

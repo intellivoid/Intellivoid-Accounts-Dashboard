@@ -80,7 +80,7 @@
         "on_page_load": ["auth.check.php", "check.host.php"],
         "page_loaded": [],
         "after_request": ["async_notifications.php"],
-        "on_request": [],
+        "on_request": ["maintenance.php"],
         "on_import": []
     }
 }

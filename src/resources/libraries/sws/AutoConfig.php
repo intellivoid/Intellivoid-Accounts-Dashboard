@@ -15,7 +15,7 @@
     $DatabaseSchema->setDefinition('Port', '3306');
     $DatabaseSchema->setDefinition('Username', 'root');
     $DatabaseSchema->setDefinition('Password', '');
-    $DatabaseSchema->setDefinition('Name', 'example');
+    $DatabaseSchema->setDefinition('Name', 'intellivoid');
     $acm->defineSchema('Database', $DatabaseSchema);
 
     $acm->processCommandLine();
