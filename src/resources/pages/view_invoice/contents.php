@@ -70,7 +70,7 @@
         <div class="container-scroller">
             <?PHP HTML::importSection("dashboard_navbar"); ?>
             <div class="container-fluid page-body-wrapper">
-                <div class="main-panel container">
+                <div class="main-panel container-fluid">
                     <div class="content-wrapper">
                         <div class="row">
                             <div class="col-lg-12">

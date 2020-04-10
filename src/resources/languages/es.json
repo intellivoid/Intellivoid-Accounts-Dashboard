@@ -215,7 +215,7 @@
             "AUDIT_EVENT_NEW_LOGIN_DETECTED": "Nuevo inicio de sesión detectado",
             "AUDIT_EVENT_PASSWORD_UPDATE": "Contraseña actualizada",
             "AUDIT_EVENT_PERSONAL_INFORMATION_UPDATE": "Información personal actualizada",
-            "AUDIT_EVENT_EMAIL_CHANGED": "Dirección de correo electrónico actualizada"
+            "AUDIT_EVENT_EMAIL_CHANGED": "Dirección de correo electrónico actualizada",
             "AUDIT_EVENT_MOBILE_VERIFICATION_ENABLED": "Verificación móvil habilitada",
             "AUDIT_EVENT_MOBILE_VERIFICATION_DISABLED": "Verificación móvil deshabilitada",
             "AUDIT_EVENT_RECOVERY_CODES_ENABLED": "Códigos de recuperación habilitados",
