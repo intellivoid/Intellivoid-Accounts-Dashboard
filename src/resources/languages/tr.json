@@ -22,9 +22,9 @@
             "PAGE_TITLE": "Hesap Bakiyesi",
             "BALANCE_TITLE": "Hesap Bakiyesi",
             "BALANCE_ADD_LINK": "Bakiyeye ekle",
-            "ADD_MESSAGE_P1": " Intellivoid Hesabınıza para ekleyebilirsiniz, ancak bu fonlar Şartlar ve Hizmetlerimizde açıklandığı gibi geri alınamaz veya diğer Intellivoid Accountsna aktarılamaz.",
+            "ADD_MESSAGE_P1": " Intellivoid Accounts'a para ekleyebilirsiniz, ancak bu fonlar Şartlar ve Hizmetlerimizde açıklandığı gibi geri alınamaz veya diğer Intellivoid Hesaplarına aktarılamaz.",
             "ADD_MESSAGE_P2": "Bu işlem Intellivoid tarafından manuel olarak işlenir ve işlenmesi 48 saate kadar sürebilir.",
-            "ADD_MESSAGE_P3": "PayPal E-posta adresiniz Intellivoid Hesabınızın E-posta Adresi ile aynı olmalıdır, aksi takdirde işlem başarısız olur",
+            "ADD_MESSAGE_P3": "PayPal E-posta adresiniz Intellivoid Accounts'un E-posta Adresi ile aynı olmalıdır, aksi takdirde işlem başarısız olur",
             "UPDATE_EMAIL_BUTTON": "E-posta Adresinizi güncelleyin",
             "RECENT_ACTIVITY_CARD_TITLE": "Son Etkinlik",
             "RECENT_ACTIVITY_CARD_OPTIONS_VIEW_ALL_TRANSACTIONS": "Diğer işlemleri görüntüle",
@@ -175,7 +175,7 @@
             "CALLBACK_101": "Şifre yanlış",
             "CALLBACK_102": "Bu Uygulama ile zaten aktif bir aboneliğiniz var",
             "CALLBACK_103": "Hesabınız şu anda sınırlı, lütfen destek ekibiyle iletişime geçin",
-            "CALLBACK_104": "Intellivoid Hesabınızda yeterli para yok, lütfen daha fazla para ekleyin."
+            "CALLBACK_104": "Intellivoid Accounts'da yeterli para yok, lütfen daha fazla para ekleyin."
         },
         "documentation": {
             "PAGE_TITLE": "COA Dökümanı",
@@ -195,7 +195,7 @@
             "WELCOME_BANNER_SUB_HEADER": "Yardıma mı ihtiyacınız var veya sorularınız mı var? Herhangi bir noktada bizimle iletişime geçmekten çekinmeyin.",
             "WELCOME_BANNER_CONTACT_BUTTON": "Bize Ulaşın",
             "ACCOUNT_SECURITY_ALERT_TITLE": "Hesap Güvenliği",
-            "ACCOUNT_SECURITY_ALERT_MESSAGE": "Telegram Hesabınızı Intellivoid Hesabınızla bağlamanız önemlidir, bu Hesabınıza daha fazla güvenlik sağlar ve hesabınıza erişimi kaybetmeniz durumunda hesabınızı kurtarmanıza olanak tanır",
+            "ACCOUNT_SECURITY_ALERT_MESSAGE": "Telegram Hesabınızı Intellivoid Accounts'a bağlamanız önemlidir, bu Hesabınıza daha fazla güvenlik sağlar ve hesabınıza erişimi kaybetmeniz durumunda hesabınızı kurtarmanıza olanak tanır",
             "ACCOUNT_SECURITY_OPEN_TELEGRAM_BUTTON": "Telegramı Aç",
             "RECENT_ACTIONS_CARD_TITLE": "Son İşlemler",
             "RECENT_ACTIONS_CARD_DROPDOWN_VIEW_MORE": "Daha fazla göster",
@@ -247,8 +247,8 @@
             "PAGE_DESCRIPTION": "Aşağıdaki kod, hesabınızla ilişkilendirilmiş tek seferlik oluşturulan bir giriş kodudur, bu dahili servisler için kullanılır. Personel asla bu kodu istemez, bu kodu kimseye vermemelisiniz. Bu kodun süresi 5 dakika içinde dolar."
         },
         "landing_page": {
-            "PAGE_TITLE": "Intellivoid Hesabı",
-            "HOME_BANNER_HEADER": "Intellivoid Hesabı",
+            "PAGE_TITLE": "Intellivoid Accounts",
+            "HOME_BANNER_HEADER": "Intellivoid Accounts",
             "HOME_BANNER_QUOTE_1": "İkinci nesil doğrulama çözümü",
             "HOME_BANNER_QUOTE_2": "Her şey için bir hesap",
             "HOME_BANNER_QUOTE_3": "Açılmış Platform",
@@ -269,7 +269,7 @@
         },
         "login": {
             "PAGE_TITLE": "Intellivoid Accounts - Oturum Aç",
-            "AUTHENTICATION_HEADER": "Mevcut bir Intellivoid Hesabına giriş yapın",
+            "AUTHENTICATION_HEADER": "Mevcut bir Intellivoid Accounts'a giriş yapın",
             "LOGIN_PLACEHOLDER": "Kullanıcı adı ya da email",
             "PASSWORD_PLACEHOLDER": "Şifre",
             "LOGIN_BUTTON": "Giriş Yap",
@@ -348,12 +348,12 @@
             "CALLBACK_105": "Kurtarma Kodları doğrulaması devre dışı bırakıldı.",
             "CALLBACK_106": "Zaten etkin olduğundan Kurtarma Kodları Doğrulamasını ayarlayamazsınız",
             "CALLBACK_107": "Kurtarma Kodları etkinleştirildi",
-            "CALLBACK_108": "Intellivoid Hesabınız bir Telegram Hesabına zaten bağlı",
+            "CALLBACK_108": "Intellivoid Accounts bir Telegram Hesabına zaten bağlı",
             "CALLBACK_109": "Telegram İstemciniz geçersiz",
             "CALLBACK_110": "İsteğinizi işleme koymaya çalışırken bilinmeyen bir hata oluştu ",
             "CALLBACK_111": "Bu Telegram hesabı bir hesaba bağlı. Başka bir hesaba bağlanmak için ilk önce /unlik komutunu kullanıp tekrar bağlanmayı deneyin.",
-            "CALLBACK_112": "Telegram'ınızı Intellivoid Hesabınıza başarıyla bağladınız",
-            "CALLBACK_113": "Intellivoid Hesabınıza bağlı bir Telegram hesabı yok",
+            "CALLBACK_112": "Telegram'ınızı Intellivoid Accounts'a başarıyla bağladınız",
+            "CALLBACK_113": "Intellivoid Accounts'a bağlı bir Telegram hesabı yok",
             "CALLBACK_114": "Telegram hesabınızın bağlantısı başarıyla kaldırıldı"
         },
         "manage_application": {
@@ -490,8 +490,8 @@
             "CALLBACK_102": "İsteğinizi işleme koymaya çalışırken bir hata oluştu, daha sonra tekrar deneyin."
         },
         "register": {
+            "AUTHENTICATION_SUB_HEADER": "Yeni bir Intellivoid Accounts oluşturun",
             "PAGE_TITLE": "Intellivoid Accounts - Kayıtlar",
-            "AUTHENTICATION_SUB_HEADER": "Yeni bir Intellivoid Hesabı oluşturun",
             "EMAIL_ADDRESS_LABEL": "E-mail Adresi",
             "USERNAME_LABEL": "Kullanıcı Adı",
             "PASSWORD_LABEL": "Şifre",
@@ -506,12 +506,12 @@
             "CALLBACK_104": "Şifre güvenli değil, lütfen başka bir şifre seçin",
             "CALLBACK_105": "Kullanıcı adı başka bir hesap tarafından zaten kullanılıyor",
             "CALLBACK_106": "E-posta zaten başka bir hesap tarafından kullanılıyor",
-            "CALLBACK_107": "Intellivoid Hesabı oluşturmak için Hizmet Şartlarımızı kabul etmelisiniz"
+            "CALLBACK_107": "Intellivoid Accounts oluşturmak için Hizmet Şartlarımızı kabul etmelisiniz"
         },
         "services": {
             "PAGE_TITLE": "Yetkilendirilmiş Uygulamalar",
             "CARD_HEADER": "Yetkilendirilmiş Uygulamalar",
-            "CARD_SUB_HEADER": "Bu Intellivoid Hesabını kullanarak kimlik doğruladığınız Hizmetler ve Uygulamalar",
+            "CARD_SUB_HEADER": "Bu Intellivoid Accounts'u kullanarak kimlik doğruladığınız Hizmetler ve Uygulamalar",
             "ITEM_LAST_AUTHENTICATED": "Son Doğrulanan:%s",
             "PERMISSIONS_HEADER": "%s şunlara erişebilir",
             "PERMISSIONS_USERNAME_AVATAR_TEXT": "Kullanıcı Adın ve Profil Fotoğrafın",
