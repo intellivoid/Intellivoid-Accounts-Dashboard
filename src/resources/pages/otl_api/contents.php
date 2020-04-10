@@ -240,7 +240,7 @@
 
     foreach($IntellivoidAccounts->getUdp()->getProfilePictureManager()->get_avatar($Account->PublicID) as $item => $value)
     {
-        $ResponseObject['avatars'][$item] = 'https://accounts.intellivoid.info/user/contents/public/avatar?user_id=' . $Account->PublicID . '&resource=' . urlencode($item);
+        $ResponseObject['avatars'][$item] = 'https://accounts.intellivoid.net/user/contents/public/avatar?user_id=' . $Account->PublicID . '&resource=' . urlencode($item);
         $ResponseObject['avatars'][$item . '_direct'] = 'user/contents/public/avatar?user_id=' . $Account->PublicID . '&resource=' . urlencode($item);
     }
 

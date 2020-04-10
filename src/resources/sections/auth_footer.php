@@ -4,7 +4,7 @@
 ?>
 <ul class="auth-footer">
     <li>
-        <a href="https://intellivoid.info/">Intellivoid</a>
+        <a href="https://intellivoid.net/">Intellivoid</a>
     </li>
     <li>
         <a href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>"><?PHP HTML::print(TEXT_AUTH_FOOTER_PRIVACY_LINK); ?></a>
@@ -13,7 +13,7 @@
         <a href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>"><?PHP HTML::print(TEXT_AUTH_FOOTER_TOS_LINK); ?></a>
     </li>
     <li>
-        <a href="https://intellivoid.info/contact"><?PHP HTML::print(TEXT_AUTH_FOOTER_CONTACT_LINK); ?></a>
+        <a href="https://intellivoid.net/contact"><?PHP HTML::print(TEXT_AUTH_FOOTER_CONTACT_LINK); ?></a>
     </li>
     <li>
         <a data-toggle="modal" data-target="#change-language-dialog" href="#">
