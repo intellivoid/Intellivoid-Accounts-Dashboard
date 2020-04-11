@@ -73,6 +73,13 @@
             "check_class_exists": true,
             "namespace": "Support",
             "main_class": "Support"
+        },
+        "PwCompromission": {
+            "directory_name": "pwc",
+            "autoloader": "pwc.php",
+            "check_class_exists": true,
+            "namespace": "pwc",
+            "main_class": "pwc"
         }
     },
     "runtime_scripts": {
