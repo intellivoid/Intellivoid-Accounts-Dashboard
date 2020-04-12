@@ -239,7 +239,8 @@
             "CALLBACK_110": "Your avatar has been changed successfully",
             "CALLBACK_111": "There was an error while trying to submit your report",
             "CALLBACK_112": "Your feedback message is invalid",
-            "CALLBACK_113": "Thank you for your feedback!"
+            "CALLBACK_113": "Thank you for your feedback!",
+            "CALLBACK_114": "Intellivoid has detected that your password has been compromised by another service, we suggest that you change your password immediately to keep your account safe."
         },
         "internal_authentication": {
             "PAGE_TITLE": "Internal Authentication",
