@@ -203,7 +203,7 @@
                                         </p>
                                     </div>
                                     <div class="form-group pb-2 mt-5">
-                                        <input id="submit_button" type="submit" class="btn btn-primary submit-btn btn-block" value="<?PHP HTML::print(TEXT_AUTHENTICATION_AUTHENTICATE_BUTTON); ?>" disabled>
+                                        <input id="submit_button" type="submit" class="btn btn-primary submit-btn btn-block" onclick="authenticate();" value="<?PHP HTML::print(TEXT_AUTHENTICATION_AUTHENTICATE_BUTTON); ?>" disabled>
                                     </div>
                                 </form>
                             </div>
