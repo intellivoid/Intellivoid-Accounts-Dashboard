@@ -265,10 +265,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="sidenav-overlay"></div>
-        <div class="drag-target"></div>
-
+        <?PHP HTML::importSection('mayax_dashboard_ehelper'); ?>
         <?PHP HTML::importSection('mayax_dashboard_footer'); ?>
         <?PHP HTML::importSection('mayax_dashboard_js'); ?>
     </body>
