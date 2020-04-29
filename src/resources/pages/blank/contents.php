@@ -7,9 +7,9 @@
         <?PHP HTML::importSection('mayax_dashboard_headers'); ?>
         <title>Blank Page</title>
     </head>
-    <body class="horizontal-layout horizontal-menu 2-columns  navbar-sticky fixed-footer  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
+    <body class="horizontal-layout horizontal-menu 2-columns navbar-sticky fixed-footer" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 
-        <div class="content-overlay"></div>
+        <?PHP HTML::importSection('mayax_dashboard_bhelper'); ?>
         <?PHP HTML::importSection('mayax_dashboard_nav'); ?>
 
         <div class="horizontal-menu-wrapper">
