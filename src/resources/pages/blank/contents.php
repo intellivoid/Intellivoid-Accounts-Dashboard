@@ -14,8 +14,7 @@
         <?PHP HTML::importSection('mayax_dashboard_horizontal_menu'); ?>
 
         <div class="app-content content">
-            <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <?PHP HTML::importSection('mayax_dashboard_chelper'); ?>
             <div class="content-wrapper">
                 <div class="content-header row">
                     <div class="content-header-left col-md-9 col-12 mb-2">
