@@ -275,12 +275,7 @@
             </p>
         </footer>
 
-        <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
-        <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-        <script src="../../../app-assets/vendors/js/ui/jquery.sticky.js"></script>
-        <script src="../../../app-assets/vendors/js/ui/prism.min.js"></script>
-        <script src="../../../app-assets/js/core/app-menu.js"></script>
-        <script src="../../../app-assets/js/core/app.js"></script>
+        <?PHP HTML::importSection('mayax_dashboard_js'); ?>
     </body>
 
 </html>
