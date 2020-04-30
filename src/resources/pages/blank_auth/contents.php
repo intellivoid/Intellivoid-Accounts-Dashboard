@@ -11,8 +11,7 @@
     <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static bg-full-screen-image blank-page blank-page" data-open="hover" data-menu="horizontal-menu" data-col="1-column">
         <!-- BEGIN: Content-->
         <div class="app-content content">
-            <div class="content-overlay"></div>
-            <div class="header-navbar-shadow"></div>
+            <?PHP HTML::importSection('authentication_bhelper'); ?>
             <div class="content-wrapper">
                 <div class="content-header row">
                 </div>
