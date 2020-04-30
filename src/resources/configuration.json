@@ -4,6 +4,7 @@
     "router": [
         {"path": "/", "page": "index"},
         {"path": "/blank", "page": "blank"},
+        {"path": "/blank_auth", "page": "blank_auth"},
         {"path": "/landing", "page": "landing_page"},
         {"path": "/privacy", "page": "privacy"},
         {"path": "/tos", "page": "tos"},

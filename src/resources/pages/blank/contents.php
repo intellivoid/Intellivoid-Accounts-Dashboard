@@ -2,7 +2,7 @@
     use DynamicalWeb\HTML;
 ?>
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
         <?PHP HTML::importSection('mayax_dashboard_headers'); ?>
         <title>Blank Page</title>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                     </section>
-                    
+
                 </div>
             </div>
         </div>
