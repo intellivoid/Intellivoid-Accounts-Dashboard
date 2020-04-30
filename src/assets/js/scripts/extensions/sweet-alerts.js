@@ -208,7 +208,7 @@ $(document).ready(function () {
     Swal.fire({
       title: 'Sweet!',
       text: 'Modal with a custom image.',
-      imageUrl: '../../../app-assets/images/slider/04.jpg',
+      imageUrl: '..//assets/images/slider/04.jpg',
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Custom image',

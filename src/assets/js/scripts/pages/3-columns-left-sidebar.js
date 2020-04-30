@@ -28,7 +28,7 @@ $(document).ready(function() {
     /*************************************
     *        Default Score Rating        *
     **************************************/
-    $.fn.raty.defaults.path = '../../../app-assets/images/raty/';
+    $.fn.raty.defaults.path = '..//assets/images/raty/';
 
     $('#score-rating').raty({
         score: 3

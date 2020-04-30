@@ -29,7 +29,6 @@
 <meta name="apple-mobile-web-app-title" content="Intellivoid Accounts">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/assets/vendors/css/vendors.min.css">
-<link rel="stylesheet" type="text/css" href="/assets/vendors/css/ui/prism.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-extended.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/colors.css">

@@ -109,7 +109,7 @@ $(document).ready(function() {
   /*** GET TABLE DATA FROM URL ***/
 
   agGrid
-    .simpleHttpRequest({ url: "../../../app-assets/data/ag-grid-data.json" })
+    .simpleHttpRequest({ url: "..//assets/data/ag-grid-data.json" })
     .then(function(data) {
       gridOptions.api.setRowData(data);
     });

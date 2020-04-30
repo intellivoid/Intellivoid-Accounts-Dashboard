@@ -2,7 +2,7 @@
         DARK LAYOUT
 =========================================================*/
 .knowledge-base-bg {
-  background: url(../../../app-assets/images/pages/knowledge-base-cover.jpg) no-repeat;
+  background: url(..//assets/images/pages/knowledge-base-cover.jpg) no-repeat;
   background-size: cover; }
 
 .knowledge-base-category .list-group-item, .knowledge-base-question .list-group-item {

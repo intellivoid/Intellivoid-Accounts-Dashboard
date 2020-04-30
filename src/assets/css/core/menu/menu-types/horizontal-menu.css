@@ -118,10 +118,9 @@
       align-items: center;
       margin-right: 0; }
       .horizontal-menu .header-navbar.navbar-brand-center .navbar-header .navbar-brand .brand-logo {
-        background: url("../../../../../app-assets/images/logo/vuexy-logo.png") no-repeat;
-        background-position: -65px -54px;
-        height: 24px;
-        width: 35px; }
+        background: url("/assets/images/iva_logo.svg") no-repeat;
+        height: 36px;
+        width: 36px; }
       .horizontal-menu .header-navbar.navbar-brand-center .navbar-header .navbar-brand .brand-text {
         color: #fff;
         padding-left: 1rem;

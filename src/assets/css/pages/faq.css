@@ -2,7 +2,7 @@
         DARK LAYOUT
 =========================================================*/
 .faq-bg {
-  background: url(../../../app-assets/images/pages/faq.jpg) no-repeat;
+  background: url(..//assets/images/pages/faq.jpg) no-repeat;
   background-size: cover; }
   .faq-bg .form-control:focus ~ .form-control-position i {
     color: #7367f0; }
