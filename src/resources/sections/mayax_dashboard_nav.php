@@ -19,53 +19,12 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav bookmark-icons">
-                        <li class="nav-item d-none d-lg-block">
-                            <a class="nav-link" href="sk-layout-2-columns.html" data-toggle="tooltip" data-placement="top" title="2-Columns">
-                                <i class="ficon feather icon-sidebar"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item d-none d-lg-block">
-                            <a class="nav-link bookmark-star">
-                                <i class="ficon feather icon-star warning"></i>
-                            </a>
-                            <div class="bookmark-input search-input">
-                                <div class="bookmark-input-icon">
-                                    <i class="feather icon-search primary"></i>
-                                </div>
-                                <input class="form-control input" type="text" placeholder="Explore Vuexy..." tabindex="0" data-search="starter-list">
-                                <ul class="search-list"></ul>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-language nav-item">
                         <a class="nav-link" id="dropdown-flag" href="#" data-toggle="modal" data-target="#change-language-dialog">
                             <i class="ficon feather icon-globe"></i>
                         </a>
-                    </li>
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link nav-link-expand">
-                            <i class="ficon feather icon-maximize"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-search">
-                        <a class="nav-link nav-link-search">
-                            <i class="ficon feather icon-search"></i>
-                        </a>
-                        <div class="search-input">
-                            <div class="search-input-icon">
-                                <i class="feather icon-search primary"></i>
-                            </div>
-                            <input class="input" type="text" placeholder="Explore Vuexy..." tabindex="-1" data-search="starter-list">
-                            <div class="search-input-close">
-                                <i class="feather icon-x"></i>
-                            </div>
-                            <ul class="search-list"></ul>
-                        </div>
                     </li>
                     <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">

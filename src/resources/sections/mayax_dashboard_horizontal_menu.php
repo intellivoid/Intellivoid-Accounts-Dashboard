@@ -57,7 +57,12 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="feather icon-lock"></i>
+                        <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_AUTHENTICATOR); ?></span>
+                    </a>
+                </li>
                 <li class="dropdown nav-item" data-menu="dropdown">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                         <i class="feather icon-message-square"></i>
