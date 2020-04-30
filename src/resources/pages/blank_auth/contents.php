@@ -81,10 +81,6 @@
             </div>
         </div>
     </div>
-    <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
-    <script src="../../../app-assets/vendors/js/ui/jquery.sticky.js"></script>
-    <script src="../../../app-assets/js/core/app-menu.js"></script>
-    <script src="../../../app-assets/js/core/app.js"></script>
-    <script src="../../../app-assets/js/scripts/components.js"></script>
+    <?PHP HTML::importSection('authentication_js'); ?>
     </body>
 </html>
