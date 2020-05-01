@@ -2630,7 +2630,7 @@ input[type="month"].form-control {
   .select2-container--classic .select2-selection--multiple .select2-selection__choice,
   .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #3a50dc !important;
-    border-color: #4839eb !important;
+    border-color: #3a50dc !important;
     color: #fff;
     padding: 5px; }
   .select2-container--classic .select2-selection--multiple .select2-selection__rendered li .select2-search__field,
