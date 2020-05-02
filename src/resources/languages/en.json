@@ -637,10 +637,9 @@
         }
     },
     "sections": {
-        "auth_footer": {
+        "authentication_footer": {
             "AUTH_FOOTER_PRIVACY_LINK": "Privacy",
-            "AUTH_FOOTER_TOS_LINK": "Terms",
-            "AUTH_FOOTER_CONTACT_LINK": "Contact us"
+            "AUTH_FOOTER_TOS_LINK": "Terms"
         },
         "change_avatar_modal": {
             "CHANGE_AVATAR_DIALOG_TITLE": "Change Avatar",
