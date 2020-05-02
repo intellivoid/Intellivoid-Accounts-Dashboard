@@ -7,6 +7,15 @@
             $DisabledAnimations = true;
         }
     }
+
+    if(defined("UI_EXPANDED"))
+    {
+        if(UI_EXPANDED)
+        {
+            $DisabledAnimations = true;
+        }
+    }
+
     if($DisabledAnimations == false)
     {
         ?>

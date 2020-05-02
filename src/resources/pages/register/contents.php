@@ -17,12 +17,11 @@
     <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static blank-page blank-page area" data-open="hover" data-menu="horizontal-menu" data-col="1-column">
         <div class="app-content content" style="overflow: inherit;">
             <?PHP HTML::importSection('authentication_bhelper'); ?>
-
             <div class="content-wrapper mt-0">
+                <?PHP HTML::importScript("expanded"); ?>
                 <?PHP HTML::importSection('background_animations'); ?>
                 <div class="content-body">
                     <?PHP
-                        HTML::importScript("expanded");
                         if(UI_EXPANDED)
                         {
                             HTML::importScript("card");

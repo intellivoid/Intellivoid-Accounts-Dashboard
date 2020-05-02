@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <label for="email" id="email_label" class="text-muted"><?PHP HTML::print(TEXT_EMAIL_ADDRESS_LABEL); ?></label>
                     <div class="position-relative has-icon-left">
-                        <input type="email" id="email" class="form-control" autocomplete="email" name="email" placeholder="JohnDoe@intellivoid.info" required disabled>
+                        <input type="email" id="email" class="form-control" autocomplete="email" name="email" autofocus="autofocus" placeholder="JohnDoe@intellivoid.info" required disabled>
                         <div class="form-control-position">
                             <i class="feather icon-mail"></i>
                         </div>

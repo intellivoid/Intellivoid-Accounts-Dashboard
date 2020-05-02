@@ -270,7 +270,7 @@
         },
         "login": {
             "PAGE_TITLE": "Intellivoid Accounts - Sign In",
-            "AUTHENTICATION_HEADER": "Login to an existing Intellivoid Account",
+            "AUTHENTICATION_HEADER": "Sign In",
             "LOGIN_PLACEHOLDER": "Username or Email",
             "PASSWORD_PLACEHOLDER": "Password",
             "LOGIN_BUTTON": "Login",
