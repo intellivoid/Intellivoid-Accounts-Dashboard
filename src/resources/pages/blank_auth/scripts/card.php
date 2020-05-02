@@ -4,7 +4,7 @@
     $CardStyle = "";
     if(UI_EXPANDED)
     {
-        $CardStyle = " style=\"height: calc(100% - 4px); position: fixed; width: 100%\"";
+        $CardStyle = " style=\"height: calc(100% - 4px); position: fixed; width: 100%; overflow: auto; overflow-x: hidden;\"";
     }
 ?>
 <div class="linear-activity">
@@ -15,14 +15,14 @@
         <div class="card-title">
             <img src="/assets/images/logo_2.svg" alt="Intellivoid Accounts Brand" style="width: 130px; height: 30px;" class="img-fluid mb-2">
             <h4 class="mb-0 auth-header">Register an Account</h4>
-            <span class="text-danger font-small-2 auth-error">There was a problem while processing your request</span>
+            <?PHP HTML::importScript('callbacks'); ?>
         </div>
     </div>
     <div class="card-content p-2 pt-0">
         <div class="card-body pt-0">
             <form action="#">
                 <div class="form-group">
-                    <label for="email" class="text-muted">Email</label>
+                    <label for="email" id="email_label" class="text-muted">Email</label>
                     <div class="position-relative has-icon-left">
                         <input type="email" id="email" class="form-control" autocomplete="email" name="email" placeholder="Email Address" required disabled>
                         <div class="form-control-position">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="username" class="text-muted">Username</label>
+                    <label for="username" id="username_label" class="text-muted">Username</label>
                     <div class="position-relative has-icon-left">
                         <input type="text" id="username" class="form-control" autocomplete="username" name="username" placeholder="Username" required disabled>
                         <div class="form-control-position">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="text-muted">Password</label>
+                    <label for="password" id="password_label" class="text-muted">Password</label>
                     <div class="position-relative has-icon-left">
                         <input type="password" id="password" class="form-control" autocomplete="new-password" name="password" placeholder="Password" required disabled>
                         <div class="form-control-position">
@@ -58,7 +58,7 @@
                                         <i class="vs-icon feather icon-check"></i>
                                     </span>
                                 </span>
-                                <label for="tos_agree" class="text-muted">I accept the terms of service.</label>
+                                <label for="tos_agree" id="tos_agree_label" class="text-muted">I accept the terms of service.</label>
                             </div>
                         </fieldset>
                     </div>
