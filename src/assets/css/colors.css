@@ -1186,7 +1186,7 @@ input:focus ~ .bg-primary {
   .alert-primary .alert-heading {
     box-shadow: rgba(115, 103, 240, 0.4) 0px 6px 15px -7px; }
   .alert-primary .alert-link {
-    color: #5e50ee !important; }
+    color: #3a50dc !important; }
 
 .bg-rgba-primary {
   background: rgba(115, 103, 240, 0.15) !important; }
@@ -1229,7 +1229,7 @@ input:focus ~ .bg-primary {
   background-color: #3a50dc !important;
   color: #fff; }
   .btn-primary:hover {
-    border-color: #5e50ee !important;
+    border-color: #3a50dc !important;
     color: #fff !important;
     box-shadow: 0 8px 25px -8px #3a50dc; }
   .btn-primary:focus, .btn-primary:active {
@@ -1365,14 +1365,14 @@ input:focus ~ .bg-primary {
   box-shadow: 0 3px 12px 0 rgba(115, 103, 240, 0.4) !important; }
 
 .primary.darken-1 {
-  color: #5e50ee !important; }
+  color: #3a50dc !important; }
 
 .bg-primary.bg-darken-1 {
-  background-color: #5e50ee !important; }
+  background-color: #3a50dc !important; }
 
 .btn-primary.btn-darken-1 {
   border-color: #3a50dc !important;
-  background-color: #5e50ee !important; }
+  background-color: #3a50dc !important; }
   .btn-primary.btn-darken-1:hover {
     border-color: #3a50dc !important;
     background-color: #3321e9 !important; }
@@ -1381,31 +1381,31 @@ input:focus ~ .bg-primary {
     background-color: #2716db !important; }
 
 .btn-outline-primary.btn-outline-darken-1 {
-  border-color: #5e50ee !important;
-  color: #5e50ee !important; }
+  border-color: #3a50dc !important;
+  color: #3a50dc !important; }
   .btn-outline-primary.btn-outline-darken-1:hover {
-    background-color: #5e50ee !important; }
+    background-color: #3a50dc !important; }
 
 input:focus ~ .bg-primary {
-  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.21rem #5e50ee !important; }
+  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.21rem #3a50dc !important; }
 
 .border-primary.border-darken-1 {
-  border: 1px solid #5e50ee !important; }
+  border: 1px solid #3a50dc !important; }
 
 .border-top-primary.border-top-darken-1 {
-  border-top: 1px solid #5e50ee !important; }
+  border-top: 1px solid #3a50dc !important; }
 
 .border-bottom-primary.border-bottom-darken-1 {
-  border-bottom: 1px solid #5e50ee !important; }
+  border-bottom: 1px solid #3a50dc !important; }
 
 .border-left-primary.border-left-darken-1 {
-  border-left: 1px solid #5e50ee !important; }
+  border-left: 1px solid #3a50dc !important; }
 
 .border-right-primary.border-right-darken-1 {
-  border-right: 1px solid #5e50ee !important; }
+  border-right: 1px solid #3a50dc !important; }
 
 .overlay-primary.overlay-darken-1 {
-  background: #5e50ee;
+  background: #3a50dc;
   /* The Fallback */
   background: rgba(94, 80, 238, 0.6); }
 

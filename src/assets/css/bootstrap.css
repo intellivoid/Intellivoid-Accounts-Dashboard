@@ -140,7 +140,7 @@ a {
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #5e50ee;
+    color: #3a50dc;
     text-decoration: none; }
 
 a:not([href]):not([tabindex]) {
@@ -2059,7 +2059,7 @@ fieldset:disabled a.btn {
   color: #3a50dc;
   text-decoration: none; }
   .btn-link:hover {
-    color: #5e50ee;
+    color: #3a50dc;
     text-decoration: none; }
   .btn-link:focus, .btn-link.focus {
     text-decoration: none;
@@ -3402,7 +3402,7 @@ input[type="button"].btn-block {
   border: 1px solid #dae1e7; }
   .page-link:hover {
     z-index: 2;
-    color: #5e50ee;
+    color: #3a50dc;
     text-decoration: none;
     background-color: #ededed;
     border-color: #dae1e7; }
@@ -4345,7 +4345,7 @@ a.close.disabled {
   font-size: 1rem;
   color: #2c2c2c;
   background-color: #3a50dc;
-  border-bottom: 1px solid #5e50ee;
+  border-bottom: 1px solid #3a50dc;
   border-top-left-radius: calc(0.6rem - 1px);
   border-top-right-radius: calc(0.6rem - 1px); }
   .popover-header:empty {

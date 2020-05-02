@@ -391,7 +391,7 @@ fieldset:disabled .fc a.fc-button,
   color: #3a50dc;
   text-decoration: none; }
   .btn-link:hover {
-    color: #5e50ee;
+    color: #3a50dc;
     text-decoration: none; }
   .btn-link:focus, .btn-link.focus {
     text-decoration: none;
@@ -517,7 +517,7 @@ input[type="button"].btn-block {
 
 .fc .fc-event {
   background: #3a50dc;
-  border: 1px solid #5e50ee;
+  border: 1px solid #3a50dc;
   padding: 1px 8px;
   border-radius: 1rem;
   border: none;

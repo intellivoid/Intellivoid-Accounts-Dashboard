@@ -1,82 +1,51 @@
-<?PHP
-
+<?php
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
 
-    HTML::importScript('auth.register');
-
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
+
+    HTML::importScript('auth.register');
 ?>
-<!doctype html>
-<html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
+<!DOCTYPE html>
+<html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
-        <?PHP HTML::importSection('headers'); ?>
-        <link rel="stylesheet" href="/assets/css/extra.css">
+        <?PHP HTML::importSection('authentication_headers'); ?>
         <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-    <body>
-        <div class="container-scroller">
-            <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center auth area theme-one">
-                    <?PHP HTML::importSection('background_animations'); ?>
-                    <div class="row w-100 mx-auto">
-                        <div class="col-lg-5 mx-auto">
-                            <div class="linear-activity">
-                                <div id="linear-spinner" class="indeterminate"></div>
-                            </div>
-                            <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
-                                <h2 class="text-center">
-                                    <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-xs rounded-circle mb-1"/>
-                                    Intelli<b>void</b>
-                                </h2>
-                                <div class="text-center tiny-text"><?PHP HTML::print(TEXT_AUTHENTICATION_SUB_HEADER); ?></div>
-                                <div id="callback_alert">
-                                    <?PHP HTML::importScript('callbacks'); ?>
+    <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static blank-page blank-page area" data-open="hover" data-menu="horizontal-menu" data-col="1-column">
+        <div class="app-content content" style="overflow: inherit;">
+            <?PHP HTML::importSection('authentication_bhelper'); ?>
+
+            <div class="content-wrapper mt-0">
+                <?PHP HTML::importSection('background_animations'); ?>
+                <div class="content-body">
+                    <?PHP
+                        HTML::importScript("expanded");
+                        if(UI_EXPANDED)
+                        {
+                            HTML::importScript("card");
+                        }
+                        else
+                        {
+                            ?>
+                            <section class="row flexbox-container mx-0">
+                                <div class="col-xl-8 col-10 d-flex justify-content-center my-3">
+                                    <div class="col-12 col-sm-10 col-md-11 col-lg-8 col-xl-7 p-0">
+                                        <?PHP HTML::importScript("card"); ?>
+                                    </div>
                                 </div>
-                                <div class="border-bottom pt-3"></div>
-                                <form id="authentication_form" name="authentication_form">
-                                    <div class="form-group pt-4">
-                                        <label for="email" class="label text-muted" id="label_1"><?PHP HTML::print(TEXT_EMAIL_ADDRESS_LABEL); ?></label>
-                                        <input name="email" id="email" type="email" class="form-control" placeholder="Email Address" aria-autocomplete="none" required disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="username" class="label text-muted" id="label_2"><?PHP HTML::print(TEXT_USERNAME_LABEL); ?></label>
-                                        <input name="username" id="username" type="text" class="form-control" aria-autocomplete="none" autocomplete="off" placeholder="Username" required disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password" class="label text-muted" id="label_3"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
-                                        <input name="password" id="password" type="password" class="form-control"  autocomplete="new-password" placeholder="*********" required disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="text-small text-muted" id="tos_label"><?PHP HTML::print(TEXT_TOS_HINT); ?></p>
-                                    </div>
-                                    <div class="form-group d-flex justify-content-between">
+                            </section>
+                            <?PHP
+                        }
+                    ?>
 
-                                        <div class="form-check form-check-flat mt-0">
-                                            <label id="tos_check_label" class="form-check-label text-muted">
-                                                <input name="tos_agree" id="tos_agree" type="checkbox" class="form-check-input" required disabled><?PHP HTML::print(TEXT_AGREE_CHECKBOX_LABEL); ?>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="submit" id="submit_button" value="<?PHP HTML::print(TEXT_CREATE_ACCOUNT_BUTTON); ?>" class="btn btn-primary submit-btn btn-block" disabled>
-                                    </div>
-
-                                    <div class="text-block text-center my-3">
-                                        <span class="text-small font-weight-semibold text-muted" id="ca_label"><?PHP HTML::print(TEXT_EXISTING_ACCOUNT_HINT); ?></span>
-                                        <a id="ca_link text-muted" href="<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>" class="text-black text-small"><?PHP HTML::print(TEXT_LOGIN_LINK); ?></a>
-                                    </div>
-                                </form>
-                            </div>
-                            <?PHP HTML::importSection('auth_footer'); ?>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
-        <?PHP HTML::importSection('js_scripts'); ?>
+        <?PHP HTML::importSection('authentication_js'); ?>
         <?PHP Javascript::importScript('register', $GetParameters); ?>
     </body>
 </html>

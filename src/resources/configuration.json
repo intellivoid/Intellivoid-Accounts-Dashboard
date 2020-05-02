@@ -5,6 +5,7 @@
         {"path": "/", "page": "index"},
         {"path": "/blank", "page": "blank"},
         {"path": "/blank_auth", "page": "blank_auth"},
+        {"path": "/loading_auth", "page": "loading_auth"},
         {"path": "/landing", "page": "landing_page"},
         {"path": "/privacy", "page": "privacy"},
         {"path": "/tos", "page": "tos"},
@@ -86,13 +87,10 @@
     },
     "runtime_scripts": {
         "initialize": [],
-        "on_page_load": [],
-        "xon_page_load": ["auth.check.php", "check.host.php"],
+        "on_page_load": ["auth.check.php", "check.host.php"],
         "page_loaded": [],
-        "after_request": [],
-        "xafter_request": ["async_notifications.php"],
-        "on_request": [],
-        "xon_request": ["maintenance.php"],
+        "after_request": ["async_notifications.php"],
+        "on_request": ["maintenance.php"],
         "on_import": []
     }
 }
