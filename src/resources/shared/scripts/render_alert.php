@@ -11,10 +11,10 @@
      */
     function RenderAlert(string $text, string $type, string $icon)
     {
-        HTML::print("<div class=\"alert animated flipInX alert-fill-", false);
+        HTML::print("<div class=\"alert alert-", false);
         HTML::print($type);
         HTML::print("\" role=\"alert\">", false);
-        HTML::print("<i class=\"mdi ", false);
+        HTML::print("<i class=\"pr-1 feather ", false);
         HTML::print($icon);
         HTML::print("\"></i>", false);
         HTML::print($text);
