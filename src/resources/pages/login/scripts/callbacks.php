@@ -2,37 +2,10 @@
 
     use DynamicalWeb\HTML;
 
-    function RenderAuthError(string $text)
-    {
-        HTML::print("<span class=\"text-danger font-small-2 auth-error\">", false);
-        HTML::print($text);
-        HTML::print("</span>", false);
-    }
-
-    function RenderAuthWarning(string $text)
-    {
-        HTML::print("<span class=\"text-warning font-small-2 auth-error\">", false);
-        HTML::print($text);
-        HTML::print("</span>", false);
-    }
-
-    function RenderAuthSuccess(string $text)
-    {
-        HTML::print("<span class=\"text-success font-small-2 auth-error\">", false);
-        HTML::print($text);
-        HTML::print("</span>", false);
-    }
-
-    function RenderAuthPrimary(string $text)
-    {
-        HTML::print("<span class=\"text-primary font-small-2 auth-error\">", false);
-        HTML::print($text);
-        HTML::print("</span>", false);
-    }
 
     if(isset($_GET['callback']))
     {
-        HTML::importScript('render_alert');
+        HTML::importScript('render_auth_alert');
 
         switch((int)$_GET['callback'])
         {

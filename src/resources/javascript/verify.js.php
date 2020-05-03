@@ -6,9 +6,33 @@
     unset($GetParameters['anim']);
 ?>
 function animate_next(){
-    $("#verification_dialog").removeClass("animated");
-    $("#verification_dialog").removeClass("slideInLeft");
-    $("#verification_dialog").addClass("animated slideOutLeft")
+    <?php
+        $Expanded = false;
+        if(isset($_GET['expanded']))
+        {
+            if($_GET['expanded'] == "1")
+            {
+                $Expanded = true;
+            }
+        }
+
+        if($Expanded == false)
+        {
+            ?>
+            $("#verification_dialog").removeClass("animated");
+            $("#verification_dialog").removeClass("fadeInLeft");
+            $("#verification_dialog").addClass("animated fadeOutLeft");
+            <?php
+        }
+        else
+        {
+            ?>
+            $("#linear-spinner").removeClass("indeterminate-none");
+            $("#linear-spinner").addClass("indeterminate");
+            <?php
+        }
+    ?>
+
 }
 function verify_mobile()
 {

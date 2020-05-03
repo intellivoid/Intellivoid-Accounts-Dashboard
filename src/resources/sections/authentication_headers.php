@@ -28,6 +28,7 @@
 <link rel="shortcut icon" href="/assets/favicon/favicon.ico?v=39djAdAm3a">
 <meta name="apple-mobile-web-app-title" content="Intellivoid Accounts">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="/assets/vendors/css/vendors.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-extended.css">
