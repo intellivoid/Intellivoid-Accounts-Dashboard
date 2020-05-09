@@ -55,3 +55,5 @@ function verify_telegram()
         window.location.href='<?PHP DynamicalWeb::getRoute('verify_telegram', $GetParameters, true); ?>'
     }, 800);
 }
+$("#linear-spinner").removeClass("indeterminate");
+$("#linear-spinner").addClass("indeterminate-none");

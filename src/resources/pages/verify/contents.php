@@ -1,9 +1,7 @@
 <?php
 
-    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
-    use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('get_account');
     HTML::importScript("expanded");
@@ -62,7 +60,6 @@
                             <?PHP
                         }
                     ?>
-
                 </div>
             </div>
             <?PHP HTML::importSection('change_language_modal'); ?>

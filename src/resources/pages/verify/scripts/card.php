@@ -25,7 +25,7 @@ use IntellivoidAccounts\Objects\Account;
 ?>
 <div id="verification_dialog" class="<?PHP HTML::print(getAnimationStyle()); ?>">
     <div class="linear-activity">
-        <div id="linear-spinner" class="indeterminate-none"></div>
+        <div id="linear-spinner" class="indeterminate"></div>
     </div>
     <div class="card rounded-0 mb-0"<?php HTML::print($CardStyle, false); ?>>
         <div class="card-header pt-50 pb-0 mb-0 mx-2 mt-2">
@@ -78,7 +78,7 @@ use IntellivoidAccounts\Objects\Account;
                         ?>
                         <div class="form-group mt-1">
                             <a class="d-flex align-items-center text-black" href="#" onclick="verify_recovery_codes();" style="text-decoration: none;">
-                                <span class="feather icon-smartphone"></span>
+                                <span class="feather icon-refresh-ccw"></span>
                                 <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_VERIFICATION_METHOD_RECOVERY); ?></p>
                                 <p class="ml-auto mb-0 text-muted">
                                     <i class="feather icon-arrow-right"></i>
