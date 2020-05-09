@@ -65,7 +65,7 @@ use IntellivoidAccounts\Objects\Account;
                     </button>
                 </form>
                 <button id="back_button" class="btn btn-light waves-effect waves-light float-right mr-1" onclick="go_back();">
-                    <span id="back_label">Go Back</span>
+                    <span id="back_label"><?PHP HTML::print(TEXT_BACK_BUTTON); ?></span>
                 </button>
             </div>
         </div>

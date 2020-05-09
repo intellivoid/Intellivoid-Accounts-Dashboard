@@ -616,6 +616,7 @@
             "RECOVERY_CODE_LABEL": "Recovery Code",
             "RECOVERY_CODE_PLACEHOLDER": "Recovery Code",
             "SUBMIT_BUTTON": "Verify",
+            "BACK_BUTTON": "Go Back",
             "CALLBACK_100": "There was a problem with your request, please make sure your browser is up to date.",
             "CALLBACK_101": "Incorrect or already used recovery code"
         },
