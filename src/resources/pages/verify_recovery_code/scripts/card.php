@@ -7,7 +7,7 @@ use IntellivoidAccounts\Objects\Account;
     $CardStyle = "";
     if(UI_EXPANDED)
     {
-        $CardStyle = " style=\"height: calc(100% - 4px); position: fixed; width: 100%; overflow: auto; overflow-x: hidden;\"";
+        $CardStyle = " style=\"height: calc(100% - 3px); position: fixed; width: 100%; overflow: auto; overflow-x: hidden;\"";
     }
 
     $GetParameters = $_GET;
