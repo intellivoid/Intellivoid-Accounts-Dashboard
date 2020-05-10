@@ -4,6 +4,7 @@
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
     unset($GetParameters['action']);
+    $GetParameters['anim'] = 'previous';
 ?>
 function insertParam(key, value)
 {
@@ -24,12 +25,48 @@ function insertParam(key, value)
 }
 function go_back()
 {
-    $("#input_dialog").removeClass("animated");
-    $("#input_dialog").removeClass("slideInRight");
-    $("#input_dialog").addClass("animated slideOutRight");
+    <?php
+        $Expanded = false;
+        if(isset($_GET['expanded']))
+        {
+            if($_GET['expanded'] == "1")
+            {
+                $Expanded = true;
+            }
+        }
+
+        if($Expanded == false)
+        {
+            ?>
+            $("#verification_dialog").removeClass("animated");
+            $("#verification_dialog").removeClass("fadeInRight");
+            $("#verification_dialog").addClass("animated fadeOutRight");
+            <?php
+        }
+        else
+        {
+            ?>
+            $("#linear-spinner").removeClass("indeterminate-none");
+            $("#linear-spinner").addClass("indeterminate");
+            <?php
+        }
+    ?>
     setTimeout(function() {
         window.location.href='<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>'
-    }, 800);
+    }, 500);
+}
+function toggle_anim()
+{
+    if($("#linear-spinner").hasClass("indeterminate") === true)
+    {
+        $("#linear-spinner").removeClass("indeterminate");
+        $("#linear-spinner").addClass("indeterminate-none");
+    }
+    else
+    {
+        $("#linear-spinner").removeClass("indeterminate-none");
+        $("#linear-spinner").addClass("indeterminate");
+    }
 }
 setInterval(function(){
     var feedback = $.ajax({
@@ -93,3 +130,4 @@ setInterval(function(){
         }
     }
 }, 1000);
+toggle_anim();

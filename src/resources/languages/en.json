@@ -624,7 +624,8 @@
         "verify_telegram": {
             "PAGE_TITLE": "Verify Authentication",
             "HEADER": "Telegram Prompt",
-            "SUB_HEADER": "Check your Telegram Account for a Authentication Prompt"
+            "SUB_HEADER": "Check your Telegram Account for a Authentication Prompt",
+            "BACK_BUTTON": "Go Back"
         },
         "view_invoice": {
             "PAGE_TITLE": "Invoice #IV-%s",
