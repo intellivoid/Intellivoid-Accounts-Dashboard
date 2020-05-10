@@ -126,7 +126,7 @@ setInterval(function(){
         {
             <?PHP $GetParameters['action'] = 'verify'; ?>
             <?PHP unset($GetParameters['callback']); ?>
-            location.href = "<?PHP DynamicalWeb::getRoute('verify_telegram', $GetParameters, true); ?>";
+            location.href = "<?PHP DynamicalWeb::getRoute('index', $GetParameters, true); ?>";
         }
     }
 }, 1000);
