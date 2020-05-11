@@ -127,12 +127,12 @@
                                 <span class="user-name text-bold-600">
                                     <?PHP HTML::print($UsernameSafe); ?>
                                     <?PHP
-                                        $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small');
+                                        $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal');
                                         if(isset($_GET['cache_refresh']))
                                         {
                                             if($_GET['cache_refresh'] == 'true')
                                             {
-                                                $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
+                                                $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
                                             }
                                         }
                                     ?>
