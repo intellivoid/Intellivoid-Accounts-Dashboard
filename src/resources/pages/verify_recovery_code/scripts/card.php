@@ -40,7 +40,12 @@ use IntellivoidAccounts\Objects\Account;
         <div class="card-header pt-50 pb-0 mb-0 mx-2 mt-2">
             <div class="card-title">
                 <img src="/assets/images/logo_2.svg" alt="Intellivoid Accounts Brand" style="width: 130px; height: 30px;" class="img-fluid mb-2">
-                <h4 class="mb-0 auth-header"><?PHP HTML::print(TEXT_HEADER); ?></h4>
+                <h4 class="mb-0 auth-header">
+                    <a class="text-muted" href="#" onclick="go_back();" style="text-decoration: none;">
+                        <i class="feather icon-arrow-left pr-1"></i>
+                    </a>
+                    <?PHP HTML::print(TEXT_HEADER); ?>
+                </h4>
                 <div id="callback_alert">
                     <?PHP HTML::importScript('callbacks'); ?>
                 </div>
@@ -64,9 +69,6 @@ use IntellivoidAccounts\Objects\Account;
                         <span id="submit_preloader" class="spinner-border spinner-border-sm" role="status"></span>
                     </button>
                 </form>
-                <button id="back_button" class="btn btn-light waves-effect waves-light float-right mr-1" onclick="go_back();">
-                    <span id="back_label"><?PHP HTML::print(TEXT_BACK_BUTTON); ?></span>
-                </button>
             </div>
         </div>
         <div class="card-footer<?PHP if(UI_EXPANDED){ HTML::print(" mt-auto"); } ?>">
