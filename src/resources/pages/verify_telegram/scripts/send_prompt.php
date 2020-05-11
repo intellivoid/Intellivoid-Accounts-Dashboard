@@ -34,8 +34,8 @@
     }
     catch (TooManyPromptRequestsException $e)
     {
-        //$_GET['callback'] = '102';
-        //Actions::redirect(DynamicalWeb::getRoute('verify', $_GET));
+        $_GET['callback'] = '102';
+        Actions::redirect(DynamicalWeb::getRoute('verify', $_GET));
     }
     catch(Exception $e)
     {

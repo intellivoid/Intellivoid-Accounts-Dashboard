@@ -479,8 +479,8 @@
         },
         "recover_password": {
             "PAGE_TITLE": "Password Recovery",
-            "PASSWORD_RECOVERY_CARD_TITLE": "New Password",
-            "PASSWORD_RECOVERY_CARD_SUB_HEADER": "Enter a new password that you will not forget",
+            "HEADER": "New Password",
+            "SUB_HEADER": "To login, you need to setup a new password.",
             "NEW_PASSWORD_LABEL": "New Password",
             "NEW_PASSWORD_PLACEHOLDER": "Enter your new password",
             "CHANGE_PASSWORD_BUTTON": "Change Password",
@@ -488,7 +488,8 @@
             "FOOTER_NOT_USER_LOGOUT_LINK": "Logout",
             "CALLBACK_100": "There was an issue with your request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The given password is invalid, it must be greater than 8 characters but no greater than 128",
-            "CALLBACK_102": "There was an error while trying to process your request, try again later."
+            "CALLBACK_102": "There was an error while trying to process your request, try again later.",
+            "CALLBACK_103": "The password you entered was previously compromised by another service, please use another password"
         },
         "register": {
             "PAGE_TITLE": "Intellivoid Accounts - Register",

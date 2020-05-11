@@ -36,14 +36,14 @@ function getUrlParameter(sParam) {
             return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
         }
     }
-};
+}
 
 function toggle_anim() {
     if($("#linear-spinner").hasClass("indeterminate") === true)
     {
         $("#linear-spinner").removeClass("indeterminate");
         $("#linear-spinner").addClass("indeterminate-none");
-        $("#password").prop("disabled", false);
+        $("#new_password").prop("disabled", false);
         $("#password_label").removeClass("text-muted");
         $("#submit_button").prop("disabled", false);
         $("#submit_preloader").prop("hidden", true);
@@ -53,7 +53,7 @@ function toggle_anim() {
     {
         $("#linear-spinner").removeClass("indeterminate-none");
         $("#linear-spinner").addClass("indeterminate");
-        $("#password").prop("disabled", true);
+        $("#new_password").prop("disabled", true);
         $("#password_label").addClass("text-muted");
         $("#submit_button").prop("disabled", true);
         $("#submit_preloader").prop("hidden", false);
@@ -62,7 +62,6 @@ function toggle_anim() {
 }
 
 $('#authentication_form').on('submit', function () {
-    var password = $("#password").val();
     $("#callback_alert").empty();
     toggle_anim();
 
@@ -71,11 +70,12 @@ $('#authentication_form').on('submit', function () {
         {
             unset($_GET['callback']);
         }
+        $_GET['action'] = 'submit';
     ?>
-    $.redirectPost("<?PHP DynamicalWeb::getRoute('sudo', $_GET, true); ?>",
+    $.redirectPost("<?PHP DynamicalWeb::getRoute('recover_password', $_GET, true); ?>",
         {
-            "password": password,
-            "redirect": getUrlParameter('redirect')
+            "username": $("#username").val(),
+            "new_password": $("#new_password").val()
         }
     );
     return false;

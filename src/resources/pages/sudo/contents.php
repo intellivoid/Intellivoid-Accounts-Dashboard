@@ -64,7 +64,8 @@
                     ?>
                 </div>
             </div>
+        </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-            <?PHP Javascript::importScript('sudo', $_GET); ?>
+        <?PHP Javascript::importScript('sudo', $_GET); ?>
     </body>
 </html>
