@@ -1,3 +1,15 @@
+<?PHP
+
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
+
+    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
+    if(strlen($UsernameSafe) > 16)
+    {
+        $UsernameSafe = substr($UsernameSafe, 0 ,16);
+        $UsernameSafe .= "...";
+    }
+?>
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-fixed navbar-brand-center">
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav flex-row">
@@ -112,29 +124,38 @@
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
-                                <span class="user-name text-bold-600">John Doe</span>
-                                <span class="user-status">Available</span>
+                                <span class="user-name text-bold-600">
+                                    <?PHP HTML::print($UsernameSafe); ?>
+                                    <?PHP
+                                        $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small');
+                                        if(isset($_GET['cache_refresh']))
+                                        {
+                                            if($_GET['cache_refresh'] == 'true')
+                                            {
+                                                $img_parameters = array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'small', 'cache_refresh' => hash('sha256', time() . 'CACHE'));
+                                            }
+                                        }
+                                    ?>
+                                </span>
+                                <span class="user-status"><?PHP HTML::print(WEB_ACCOUNT_EMAIL); ?></span>
                             </div>
                             <span>
-                                <img class="round" src="/assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40">
+                                <img class="round" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="40" width="40">
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">
-                                <i class="feather icon-user"></i> Edit Profile
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('applications', [], true); ?>">
+                                <i class="feather icon-layers"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_MANAGE_APPLICATIONS); ?>
                             </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="feather icon-mail"></i> My Inbox
+                            <a class="dropdown-item" data-toggle="modal" data-target="#password-reset-dialog" href="#">
+                                <i class="feather icon-lock"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_CHANGE_PASSWORD); ?>
                             </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="feather icon-check-square"></i> Task
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="feather icon-message-square"></i> Chats
+                            <a class="dropdown-item" data-toggle="modal" data-target="#change-avatar-dialog" href="#">
+                                <i class="feather icon-image"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_CHANGE_AVATAR); ?>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
-                                <i class="feather icon-power"></i> Logout
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('logout', [], true); ?>">
+                                <i class="feather icon-power"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_LOGOUT); ?>
                             </a>
                         </div>
                     </li>

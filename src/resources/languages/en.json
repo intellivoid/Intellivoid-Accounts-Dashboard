@@ -671,6 +671,14 @@
             "NAV_MENU_DROPDOWN_SUPPORT_TERMS_OF_SERVICE": "Terms of Service",
             "NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK": "Send Feedback"
         },
+        "main_nav": {
+            "USER_DROPDOWN_MANAGE_APPLICATIONS": "Manage Applications",
+            "USER_DROPDOWN_CHANGE_PASSWORD": "Change Password",
+            "USER_DROPDOWN_CHANGE_AVATAR": "Change Avatar",
+            "USER_DROPDOWN_LOGOUT": "Logout",
+            "USER_ROLE_PERSONAL": "Personal",
+            "USER_ROLE_ADMIN": "Administrator"
+        },
         "main_horizontal_menu": {
             "NAV_MENU_BRAND_TEXT": "Intellivoid",
             "NAV_MENU_LINK_OVERVIEW": "Overview",
