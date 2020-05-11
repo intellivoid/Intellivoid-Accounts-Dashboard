@@ -559,9 +559,10 @@
         },
         "sudo": {
             "PAGE_TITLE": "Sudo Mode",
-            "AUTHENTICATION_SUB_HEADER": "To prevent unauthorized changes, enter your password",
+            "HEADER": "Sudo Mode",
+            "SUB_HEADER": "To prevent unauthorized changes, enter your password",
             "PASSWORD_LABEL": "Password",
-            "SUBMIT_BUTTON": "Enter sudo mode",
+            "SUBMIT_BUTTON": "Authenticate",
             "CALLBACK_100": "There was an error while trying to enter sudo mode, please contact support.",
             "CALLBACK_101": "The password is incorrect"
         },
