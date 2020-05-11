@@ -671,7 +671,7 @@
             "NAV_MENU_DROPDOWN_SUPPORT_TERMS_OF_SERVICE": "Terms of Service",
             "NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK": "Send Feedback"
         },
-        "mayax_dashboard_horizontal_menu": {
+        "main_horizontal_menu": {
             "NAV_MENU_BRAND_TEXT": "Intellivoid",
             "NAV_MENU_LINK_OVERVIEW": "Overview",
             "NAV_MENU_LINK_ACCOUNT_SETTINGS": "Account Settings",

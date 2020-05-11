@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
-        <?PHP HTML::importSection('mayax_dashboard_headers'); ?>
+        <?PHP HTML::importSection('main_headers'); ?>
         <title>Blank Page</title>
     </head>
     <body class="horizontal-layout horizontal-menu 2-columns navbar-sticky fixed-footer" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 
-        <?PHP HTML::importSection('mayax_dashboard_bhelper'); ?>
-        <?PHP HTML::importSection('mayax_dashboard_nav'); ?>
-        <?PHP HTML::importSection('mayax_dashboard_horizontal_menu'); ?>
+        <?PHP HTML::importSection('main_bhelper'); ?>
+        <?PHP HTML::importSection('main_nav'); ?>
+        <?PHP HTML::importSection('main_horizontal_menu'); ?>
 
         <div class="app-content content">
-            <?PHP HTML::importSection('mayax_dashboard_chelper'); ?>
+            <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
                 <div class="content-body">
                     <section id="description" class="card">
@@ -34,9 +34,9 @@
             </div>
         </div>
 
-        <?PHP HTML::importSection('mayax_dashboard_ehelper'); ?>
-        <?PHP HTML::importSection('mayax_dashboard_footer'); ?>
-        <?PHP HTML::importSection('mayax_dashboard_js'); ?>
+        <?PHP HTML::importSection('main_ehelper'); ?>
+        <?PHP HTML::importSection('main_footer'); ?>
+        <?PHP HTML::importSection('main_js'); ?>
 
     </body>
 </html>
