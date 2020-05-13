@@ -199,8 +199,12 @@
             "ACCOUNT_SECURITY_OPEN_TELEGRAM_BUTTON": "Open Telegram",
             "RECENT_ACTIONS_CARD_TITLE": "Recent Actions",
             "RECENT_ACTIONS_CARD_DROPDOWN_VIEW_MORE": "View More",
-            "OVERVIEW_CARD_TITLE": "Overview",
-            "OVERVIEW_CARD_ACCOUNT_BALANCE_MANAGE_LINK": "Manage Account Balance",
+            "ACCOUNT_BALANCE_TEXT": "Account Balance",
+            "ACCOUNT_BALANCE_MANAGE_BUTTON": "View Details",
+            "NO_ITEMS": "No transactions ",
+            "VIEW_INVOICE_LINK": "View Invoice",
+
+
             "OVERVIEW_CARD_QUICK_ACTIONS_MANAGE_AUTHORIZED_APPLICATIONS": "Manage Authorized Applications",
             "OVERVIEW_CARD_QUICK_ACTIONS_MANAGE_APPLICATIONS": "Manage Applications",
             "OVERVIEW_CARD_QUICK_ACTIONS_VIEW_LOGIN_HISTORY": "View Login History",
