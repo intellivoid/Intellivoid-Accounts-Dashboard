@@ -120,7 +120,7 @@
             ?>
             <li>
                 <div class="timeline-icon <?PHP HTML::print($EventClass); ?>">
-                    <i class="<?PHP HTML::print($EventIcon); ?> font-medium-2 align-middle"></i>
+                    <i class="<?PHP HTML::print($EventIcon); ?> font-medium-1 align-middle"></i>
                 </div>
                 <div class="timeline-info">
                     <p class="mb-0"><?PHP HTML::print($EventText); ?></p>
@@ -139,7 +139,7 @@
                 <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon" width="48" height="48"/>
             </div>
             <div class="pt-2 my-flex-item">
-                <h6 class="text-muted"><?PHP HTML::print(TEXT_AUDIT_NO_ITEMS); ?></h6>
+                <h6 class="text-muted"><?PHP HTML::print(TEXT_NO_ITEMS); ?></h6>
             </div>
         </div>
         <?PHP

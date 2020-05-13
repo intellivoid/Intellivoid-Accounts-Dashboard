@@ -203,8 +203,6 @@
             "ACCOUNT_BALANCE_MANAGE_BUTTON": "View Details",
             "NO_ITEMS": "No transactions ",
             "VIEW_INVOICE_LINK": "View Invoice",
-
-
             "OVERVIEW_CARD_QUICK_ACTIONS_MANAGE_AUTHORIZED_APPLICATIONS": "Manage Authorized Applications",
             "OVERVIEW_CARD_QUICK_ACTIONS_MANAGE_APPLICATIONS": "Manage Applications",
             "OVERVIEW_CARD_QUICK_ACTIONS_VIEW_LOGIN_HISTORY": "View Login History",
@@ -229,7 +227,6 @@
             "AUDIT_EVENT_APPLICATION_CREATED": "Application Created",
             "AUDIT_EVENT_NEW_LOGIN_LOCATION": "New Login Location Detected",
             "AUDIT_EVENT_UNKNOWN": "Unknown",
-            "AUDIT_NO_ITEMS": "No Items",
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The current password you've entered is incorrect",
             "CALLBACK_102": "The confirmation password does not match the new password",

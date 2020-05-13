@@ -47,7 +47,7 @@
         <?PHP HTML::importSection('main_nav'); ?>
         <?PHP HTML::importSection('main_horizontal_menu'); ?>
 
-        <div class="app-content content">
+        <div class="app-content content mb-0">
             <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
                 <div class="content-body">
@@ -71,7 +71,7 @@
                     </section>
                     <section id="general">
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-12">
+                            <div class="col-lg-4 col-md-12 col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title"><?PHP HTML::print(TEXT_RECENT_ACTIONS_CARD_TITLE); ?></h4>
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-8 col-12">
+                            <div class="col-lg-5 col-md-12 col-12">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="card-body">
@@ -115,9 +115,11 @@
                             </div>
                             <div class="col-lg-3 col-md-12 col-12">
                                 <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Account Security</h4>
+                                    </div>
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <h1>Test</h1>
                                         </div>
                                     </div>
                                 </div>
