@@ -83,7 +83,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
                         <?PHP
                             if($Suspended)
                             {
-                                RenderAlert(TEXT_APPLICATION_SUSPENDED_MESSAGE, "warning", "mdi-alert-circle");
+                                RenderAlert(TEXT_APPLICATION_SUSPENDED_MESSAGE, "warning", "icon-alert-triangle");
                             }
                         ?>
                         <div class="row">
