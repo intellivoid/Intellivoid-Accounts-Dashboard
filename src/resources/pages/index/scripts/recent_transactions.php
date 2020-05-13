@@ -1,14 +1,14 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
-use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\TransactionRecord;
+    use DynamicalWeb\HTML;
+    use DynamicalWeb\Runtime;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\TransactionRecord;
 
-Runtime::import('IntellivoidAccounts');
+    Runtime::import('IntellivoidAccounts');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
@@ -39,7 +39,7 @@ Runtime::import('IntellivoidAccounts');
     {
         ?>
         <div class="ml-auto mr-auto my-3">
-            <h5 class="text-muted">No Recent Transactions</h5>
+            <h5 class="text-muted"><?PHP HTML::print(TEXT_NO_TRANSACTIONS); ?></h5>
         </div>
         <?PHP
     }

@@ -5,7 +5,6 @@
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-
     HTML::importScript('coa_auth');
     HTML::importScript('telegram_auth');
     HTML::importScript('update_password');
@@ -33,7 +32,7 @@
     }
 
     $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
-
+    DynamicalWeb::setMemoryObject('account', $Account);
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
@@ -116,11 +115,126 @@
                             <div class="col-lg-3 col-md-12 col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Account Security</h4>
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_ACCOUNT_SECURITY); ?></h4>
                                     </div>
                                     <div class="card-content">
                                         <div class="card-body">
+                                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                                <div class="wrapper">
+                                                    <p class="mb-0"><?PHP HTML::print(TEXT_ACCOUNT_SECURITY_MOBILE_VERIFICATION); ?></p>
+                                                    <h5 class="font-weight-medium">
+                                                        <?PHP
+                                                        HTML::print("<small class=\"posted-date\">", false);
+                                                        if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                                        {
+                                                            $LastUpdated = $Account->Configuration->VerificationMethods->TwoFactorAuthentication->LastUpdated;
+                                                            HTML::print(gmdate("F j, Y, g:i a", $LastUpdated));
+                                                        }
+                                                        else
+                                                        {
+                                                            HTML::print(TEXT_ACCOUNT_SECURITY_NOT_ENABLED);
+                                                        }
+                                                        HTML::print("</small>", false);
+                                                        ?>
+                                                    </h5>
+                                                </div>
+                                                <div class="wrapper d-flex flex-column align-items-center">
+                                                    <?PHP
+                                                    if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled)
+                                                    {
+                                                        HTML::print("<div class=\"badge badge-primary badge-pill\">", false);
+                                                        HTML::print(TEXT_ACCOUNT_SECURITY_ENABLED);
+                                                        HTML::print("</div>", false);
+                                                    }
+                                                    else
+                                                    {
+                                                        HTML::print("<div class=\"badge badge-danger badge-pill\">", false);
+                                                        HTML::print(TEXT_ACCOUNT_SECURITY_DISABLED);
+                                                        HTML::print("</div>", false);
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                                <div class="wrapper">
+                                                    <p class="mb-0"><?PHP HTML::print(TEXT_ACCOUNT_SECURITY_RECOVERY_CODES); ?></p>
+                                                    <h5 class="font-weight-medium">
+                                                        <?PHP
+                                                        HTML::print("<small class=\"posted-date\">", false);
+                                                        if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                                        {
+                                                            $LastUpdated = $Account->Configuration->VerificationMethods->RecoveryCodes->LastUpdated;
+                                                            HTML::print(gmdate("F j, Y, g:i a", $LastUpdated));
+                                                        }
+                                                        else
+                                                        {
+                                                            HTML::print(TEXT_ACCOUNT_SECURITY_NOT_ENABLED);
+                                                        }
+                                                        HTML::print("</small>", false);
+                                                        ?>
+                                                    </h5>
+                                                </div>
+                                                <div class="wrapper d-flex flex-column align-items-center">
+                                                    <?PHP
+                                                    if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled)
+                                                    {
+                                                        HTML::print("<div class=\"badge badge-primary badge-pill\">", false);
+                                                        HTML::print(TEXT_ACCOUNT_SECURITY_ENABLED);
+                                                        HTML::print("</div>", false);
+                                                    }
+                                                    else
+                                                    {
+                                                        HTML::print("<div class=\"badge badge-danger badge-pill\">", false);
+                                                        HTML::print(TEXT_ACCOUNT_SECURITY_DISABLED);
+                                                        HTML::print("</div>", false);
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between pt-1">
+                                                <div class="wrapper">
+                                                    <p class="mb-0"><?PHP HTML::print(TEXT_ACCOUNT_SECURITY_TELEGRAM_VERIFICATION); ?></p>
+                                                    <h5 class="font-weight-medium">
+                                                        <?PHP
+                                                        HTML::print("<small class=\"posted-date\">", false);
+                                                        if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                                        {
+                                                            $LastUpdated = $Account->Configuration->VerificationMethods->TelegramLink->LastLinked;
+                                                            HTML::print(gmdate("F j, Y, g:i a", $LastUpdated));
+                                                        }
+                                                        else
+                                                        {
+                                                            HTML::print(TEXT_ACCOUNT_SECURITY_NOT_ENABLED);
+                                                        }
+                                                        HTML::print("</small>", false);
+                                                        ?>
+                                                    </h5>
+                                                </div>
+                                                <div class="wrapper d-flex flex-column align-items-center">
+                                                    <?PHP
+                                                    if($Account->Configuration->VerificationMethods->TelegramClientLinked)
+                                                    {
+                                                        HTML::print("<div class=\"badge badge-primary badge-pill\">", false);
+                                                        HTML::print(TEXT_ACCOUNT_SECURITY_ENABLED);
+                                                        HTML::print("</div>", false);
+                                                    }
+                                                    else
+                                                    {
+                                                        HTML::print("<div class=\"badge badge-danger badge-pill\">", false);
+                                                        HTML::print(TEXT_ACCOUNT_SECURITY_DISABLED);
+                                                        HTML::print("</div>", false);
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="card-footer text-muted bg-white">
+                                        <span class="float-right">
+                                            <a href="#" class="card-link"><?PHP HTML::print(TEXT_ACCOUNT_SETTINGS); ?>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
