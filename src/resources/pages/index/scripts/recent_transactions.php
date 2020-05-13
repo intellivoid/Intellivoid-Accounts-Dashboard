@@ -6,6 +6,7 @@
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
     Runtime::import('IntellivoidAccounts');
@@ -24,7 +25,8 @@
     }
 
 
-    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+    /** @var Account $Account */
+    $Account = DynamicalWeb::getMemoryObject('account');
     $TotalTransactions = $IntellivoidAccounts->getTransactionRecordManager()->getTotalRecords($Account->ID);
 
     $RecentTransactions = null;
@@ -158,7 +160,9 @@
             <?PHP
         }
         ?>
-        <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('transaction_history', [], true); ?>';">View transaction history</button>
+        <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('transaction_history', [], true); ?>';">
+            <?PHP HTML::print(TEXT_VIEW_TRANSACTION_HISTORY); ?>
+        </button>
         <?php
     }
 ?>

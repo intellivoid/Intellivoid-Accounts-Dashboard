@@ -201,6 +201,7 @@
             "ACCOUNT_BALANCE_TEXT": "Account Balance",
             "ACCOUNT_BALANCE_MANAGE_BUTTON": "View Details",
             "NO_TRANSACTIONS": "No Recent Transactions",
+            "VIEW_TRANSACTION_HISTORY": "View Transaction History",
             "ACCOUNT_SECURITY": "Account Security",
             "ACCOUNT_SECURITY_NOT_ENABLED": "Not Enabled",
             "ACCOUNT_SECURITY_ENABLED": "Enabled",
