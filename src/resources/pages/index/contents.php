@@ -50,6 +50,7 @@
             <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
                 <div class="content-body">
+                    <?PHP HTML::importScript('callbacks'); ?>
                     <section id="header">
                         <div class="row">
                             <div class="col-12">
