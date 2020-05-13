@@ -36,3 +36,5 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/themes/dark-layout.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/themes/semi-dark-layout.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/core/menu/menu-types/horizontal-menu.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/core/colors/palette-gradient.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/extra.css">

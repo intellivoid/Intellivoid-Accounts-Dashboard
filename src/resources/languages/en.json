@@ -191,8 +191,8 @@
         },
         "index": {
             "PAGE_TITLE": "Intellivoid Accounts",
-            "WELCOME_BANNER_HEADER": "Welcome back, %s!",
-            "WELCOME_BANNER_SUB_HEADER": "Need some help or have some questions? Feel free to contact us at any point.",
+            "WELCOME_BANNER_HEADER": "Welcome, %s!",
+            "WELCOME_BANNER_SUB_HEADER": "This is where you can manage your Intellivoid Account, if you need any help then don't hesitate to reach out to us",
             "WELCOME_BANNER_CONTACT_BUTTON": "Contact us",
             "ACCOUNT_SECURITY_ALERT_TITLE": "Account Security",
             "ACCOUNT_SECURITY_ALERT_MESSAGE": "It is important that you link your Telegram Account with your Intellivoid Account, this will provide greater security to your Account and allow you to recover your account in the case you lose access to it",
