@@ -692,6 +692,14 @@
             "NAV_MENU_DROPDOWN_SUPPORT_TERMS_OF_SERVICE": "Terms of Service",
             "NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK": "Send Feedback"
         },
+        "settings_sidebar": {
+            "SETTINGS_TAB_GENERAL": "General",
+            "SETTINGS_TAB_CHANGE_PASSWORD": "Update Password",
+            "SETTINGS_TAB_LOGIN_SECURITY": "Login Security",
+            "SETTINGS_TAB_AUTHORIZED_APPS": "Authorized Applications",
+            "SETTINGS_TAB_LOGIN_HISTORY": "Login History",
+            "SETTINGS_TAB_OTL_GENERATOR": "OTL Generator"
+        },
         "feedback_modal": {
             "FEEDBACK_DIALOG_TITLE": "Send Feedback",
             "FEEDBACK_DIALOG_MESSAGE_LABEL": "Message",

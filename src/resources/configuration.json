@@ -53,7 +53,9 @@
         {"path": "/security/services", "page": "services"},
         {"path": "/security/audit_logs", "page": "audit_logs"},
         {"path": "/security/setup/mobile", "page": "setup_mobile_verification"},
-        {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"}
+        {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"},
+
+        {"path": "/settings/user", "page": "settings_user"}
     ],
     "libraries": {
         "SecuredWebSessions": {
