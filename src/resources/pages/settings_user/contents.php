@@ -6,6 +6,8 @@
 
     Runtime::import('IntellivoidAccounts');
 
+    HTML::importScript('clear.name');
+    HTML::importScript('clear.birthday');
     HTML::importScript('define.information');
 
 ?>
@@ -84,7 +86,21 @@
 
                                                     <!-- Name -->
                                                     <div class="col-12 mb-1">
-                                                        <h5 class="mb-1">Legal Name</h5>
+                                                        <div class="mb-1">
+                                                            <h5 class="">Legal Name</h5>
+                                                            <?PHP
+                                                                if(USER_NAME_SET)
+                                                                {
+                                                                    ?>
+                                                                    <a href="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'clear_name'), true) ?>" class="text-muted font-small-3">
+                                                                        <i class="feather icon-delete pr-25"></i>Clear
+                                                                    </a>
+                                                                    <?PHP
+                                                                }
+                                                            ?>
+
+                                                        </div>
+
                                                         <div class="row">
 
                                                             <!-- First Name -->
@@ -114,10 +130,22 @@
 
                                                     <!-- Birthday -->
                                                     <div class="col-12">
-                                                        <h5 class="mb-1">Birthday</h5>
+                                                        <div class="mb-1">
+                                                            <h5 class="">Birthday</h5>
+                                                            <?PHP
+                                                                if(USER_BOD_SET)
+                                                                {
+                                                                    ?>
+                                                                    <a href="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'clear_birthday'), true) ?>" class="text-muted font-small-3">
+                                                                        <i class="feather icon-delete pr-25"></i>Clear
+                                                                    </a>
+                                                                    <?PHP
+                                                                }
+                                                            ?>
+                                                        </div>
                                                         <div class="row">
 
-                                                            <!-- First Name -->
+                                                            <!-- Year -->
                                                             <div class="col-4">
                                                                 <label for="dob_year">Year</label>
                                                                 <fieldset class="form-group">
@@ -148,6 +176,7 @@
                                                                 </fieldset>
                                                             </div>
 
+                                                            <!-- Month -->
                                                             <div class="col-4">
                                                                 <label for="dob_month">Month</label>
                                                                 <fieldset class="form-group">
@@ -168,6 +197,7 @@
                                                                 </fieldset>
                                                             </div>
 
+                                                            <!-- Day -->
                                                             <div class="col-4">
                                                                 <label for="dob_day">Day</label>
                                                                 <fieldset class="form-group">
@@ -197,7 +227,6 @@
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
-
 
                                                         </div>
                                                     </div>

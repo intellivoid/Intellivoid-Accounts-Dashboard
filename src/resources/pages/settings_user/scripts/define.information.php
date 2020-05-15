@@ -36,12 +36,30 @@
         define("USER_LAST_NAME", "value=\"" . htmlspecialchars($Account->PersonalInformation->LastName, ENT_QUOTES, 'UTF-8') . "\"", false);
     }
 
+    if($Account->PersonalInformation->FirstName == null)
+    {
+        if($Account->PersonalInformation->LastName == null)
+        {
+            define("USER_NAME_SET", false, false);
+        }
+        else
+        {
+            define("USER_NAME_SET", true, false);
+        }
+    }
+    else
+    {
+        define("USER_NAME_SET", true, false);
+    }
+
     if($Account->PersonalInformation->BirthDate->Year == 0)
     {
+        define("USER_BOD_SET", false, false);
         define("USER_BOD_YEAR", "", false);
     }
     else
     {
+        define("USER_BOD_SET", true, false);
         define("USER_BOD_YEAR", $Account->PersonalInformation->BirthDate->Year, false);
     }
 
