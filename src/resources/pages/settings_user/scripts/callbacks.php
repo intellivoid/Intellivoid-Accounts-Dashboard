@@ -20,9 +20,9 @@
                 RenderAlert(TEXT_CALLBACK_102, "danger", "icon-alert-triangle");
                 break;
 
-            case 103:
-                RenderAlert(TEXT_CALLBACK_103, "success", "icon-check-circle");
-                break;
+            //case 103:
+            //    RenderAlert(TEXT_CALLBACK_103, "success", "icon-check-circle");
+            //    break;
 
             case 104:
                 RenderAlert(TEXT_CALLBACK_104, "danger", "icon-alert-triangle");
@@ -32,9 +32,9 @@
                 RenderAlert(TEXT_CALLBACK_105, "danger", "icon-alert-triangle");
                 break;
 
-            case 106:
-                RenderAlert(TEXT_CALLBACK_106, "success", "icon-check-circle");
-                break;
+            //case 106:
+            //    RenderAlert(TEXT_CALLBACK_106, "success", "icon-check-circle");
+            //    break;
 
             case 107:
                 RenderAlert(TEXT_CALLBACK_107, "danger", "icon-alert-triangle");
@@ -84,8 +84,12 @@
                 RenderAlert(TEXT_CALLBACK_118, "danger", "icon-alert-triangle");
                 break;
 
-            case 119:
-                RenderAlert(TEXT_CALLBACK_119, "success", "icon-check-circle");
+            //case 119:
+            //    RenderAlert(TEXT_CALLBACK_119, "success", "icon-check-circle");
+            //    break;
+
+            case 120:
+                RenderAlert(TEXT_CALLBACK_120, "success", "icon-check-circle");
                 break;
         }
     }

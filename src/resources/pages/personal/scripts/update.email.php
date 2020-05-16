@@ -2,12 +2,12 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\AuditEventType;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Utilities\Validate;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Utilities\Validate;
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_GET['action']))
         {

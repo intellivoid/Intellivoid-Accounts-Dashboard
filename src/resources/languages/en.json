@@ -530,6 +530,7 @@
             "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
         },
         "settings_user": {
+            "DEFAULT_VALUE": "None",
             "BIRTHDAY_YEAR_01": "January",
             "BIRTHDAY_YEAR_02": "February",
             "BIRTHDAY_YEAR_03": "March",
@@ -545,12 +546,10 @@
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The given First Name is invalid",
             "CALLBACK_102": "The given Last Name is invalid",
-            "CALLBACK_103": "Your name has been updated",
             "CALLBACK_104": "There was an issue while trying to update your information",
             "CALLBACK_105": "The given date is invalid",
-            "CALLBACK_106": "Your birthday has been updated",
             "CALLBACK_107": "There was an issue while trying to clear your information",
-            "CALLBACK_108": "Your birthday was cleared and now no longer exists, happy birthday?",
+            "CALLBACK_108": "Your birthday was cleared and now no longer exists",
             "CALLBACK_109": "Your First and Last name was cleared",
             "CALLBACK_110": "There was an error with your upload, please try again",
             "CALLBACK_111": "The system cannot process your upload at this time, please contact our staff about this",
@@ -561,7 +560,7 @@
             "CALLBACK_116": "There was an error while trying to update your email address",
             "CALLBACK_117": "The email address you entered is invalid",
             "CALLBACK_118": "The email address is already used",
-            "CALLBACK_119": "Your email address has been updated successfully"
+            "CALLBACK_120": "Your account information has been updated successfully "
         },
         "setup_mobile_verification": {
             "PAGE_TITLE": "Setup Mobile Verification",
