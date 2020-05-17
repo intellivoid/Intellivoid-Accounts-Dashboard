@@ -16,7 +16,7 @@
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
         <?PHP HTML::importSection('main_headers'); ?>
-        <title>General Settings</title>
+        <title><?PHP HTML::print(TEXT_PAGE_TITLE) ?></title>
     </head>
     <body class="horizontal-layout horizontal-menu 2-columns navbar-sticky fixed-footer" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 
@@ -38,7 +38,7 @@
                                 <div class="card">
                                     <form method="POST" action="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'update'), true); ?>">
                                         <div class="card-header">
-                                            <h4 class="card-title">Account Information</h4>
+                                            <h4 class="card-title"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
@@ -61,11 +61,11 @@
                                                     <div class="media-body mt-75">
                                                         <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                                             <button class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer waves-effect waves-light"data-toggle="modal" data-target="#change-avatar-dialog">
-                                                                Change Avatar
+                                                                <?PHP HTML::print(TEXT_CHANGE_AVATAR_BUTTON); ?>
                                                             </button>
                                                         </div>
                                                         <p class="text-muted ml-75 mt-50">
-                                                            <small>Supported formats are JPEG and PNG</small>
+                                                            <small><?PHP HTML::print(TEXT_CHANGE_AVATAR_HINT) ?></small>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -76,7 +76,7 @@
 
                                                         <!-- Email Address -->
                                                         <div class="col-12 mb-1">
-                                                            <label for="email">Personal Email Address</label>
+                                                            <label for="email"><?PHP HTML::print(TEXT_EMAIL_ADDRESS_LABEL); ?></label>
                                                             <fieldset class="form-group position-relative has-icon-left">
                                                                 <input id="email" name="email" autocomplete="email" type="email" class="form-control" placeholder="johndoe@intellivoid.net" <?PHP HTML::print(USER_EMAIL, false); ?> required>
                                                                 <div class="form-control-position">
@@ -88,13 +88,14 @@
                                                         <!-- Name -->
                                                         <div class="col-12 mb-1">
                                                             <div class="mb-1">
-                                                                <h5 class="">Legal Name</h5>
+                                                                <h5><?PHP HTML::print(TEXT_LEGAL_NAME_LABEL); ?></h5>
                                                                 <?PHP
                                                                     if(USER_NAME_SET)
                                                                     {
                                                                         ?>
                                                                         <a href="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'clear_name'), true) ?>" class="text-muted font-small-3">
-                                                                            <i class="feather icon-delete pr-25"></i>Clear
+                                                                            <i class="feather icon-delete pr-25"></i>
+                                                                            <?PHP HTML::print(TEXT_CLEAR_ACTION_HINT); ?>
                                                                         </a>
                                                                         <?PHP
                                                                     }
@@ -106,7 +107,7 @@
 
                                                                 <!-- First Name -->
                                                                 <div class="col-6">
-                                                                    <label for="first_name">First Name</label>
+                                                                    <label for="first_name"><?PHP HTML::print(TEXT_FIRST_NAME_LABEL); ?></label>
                                                                     <fieldset class="form-group position-relative has-icon-left">
                                                                         <input id="first_name" name="first_name" autocomplete="given-name" type="text" class="form-control" placeholder="John" <?PHP HTML::print(USER_FIRST_NAME, false); ?>>
                                                                         <div class="form-control-position">
@@ -117,7 +118,7 @@
 
                                                                 <!-- Last Name -->
                                                                 <div class="col-6">
-                                                                    <label for="last_name">Last Name</label>
+                                                                    <label for="last_name"><?PHP HTML::print(TEXT_LAST_NAME_LABEL); ?></label>
                                                                     <fieldset class="form-group position-relative has-icon-left">
                                                                         <input id="last_name" name="last_name" autocomplete="family-name" type="text" class="form-control" placeholder="Doe" <?PHP HTML::print(USER_LAST_NAME, false); ?> required>
                                                                         <div class="form-control-position">
@@ -132,13 +133,14 @@
                                                         <!-- Birthday -->
                                                         <div class="col-12">
                                                             <div class="mb-1">
-                                                                <h5 class="">Birthday</h5>
+                                                                <h5>Birthday</h5>
                                                                 <?PHP
                                                                     if(USER_BOD_SET)
                                                                     {
                                                                         ?>
                                                                         <a href="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'clear_birthday'), true) ?>" class="text-muted font-small-3">
-                                                                            <i class="feather icon-delete pr-25"></i>Clear
+                                                                            <i class="feather icon-delete pr-25"></i>
+                                                                            <?PHP HTML::print(TEXT_CLEAR_ACTION_HINT); ?>
                                                                         </a>
                                                                         <?PHP
                                                                     }
@@ -148,7 +150,7 @@
 
                                                                 <!-- Year -->
                                                                 <div class="col-4">
-                                                                    <label for="dob_year">Year</label>
+                                                                    <label for="dob_year"><?PHP HTML::print(TEXT_DOB_YEAR_LABEL); ?></label>
                                                                     <fieldset class="form-group">
                                                                         <select class="form-control" id="dob_year" autocomplete="bday-year" name="dob_year">
                                                                             <?PHP
@@ -188,7 +190,7 @@
 
                                                                 <!-- Month -->
                                                                 <div class="col-4">
-                                                                    <label for="dob_month">Month</label>
+                                                                    <label for="dob_month"><?PHP HTML::print(TEXT_DOB_MONTH_LABEL); ?></label>
                                                                     <fieldset class="form-group">
                                                                         <select class="form-control" id="dob_month" autocomplete="bday-month" name="dob_month">
                                                                             <?php
@@ -219,7 +221,7 @@
 
                                                                 <!-- Day -->
                                                                 <div class="col-4">
-                                                                    <label for="dob_day">Day</label>
+                                                                    <label for="dob_day"><?PHP HTML::print(TEXT_DOB_DAY_LABEL); ?></label>
                                                                     <fieldset class="form-group">
                                                                         <select class="form-control" id="dob_day" autocomplete="bday-day" name="dob_day">
                                                                             <?PHP
@@ -266,7 +268,7 @@
                                         </div>
                                         <div class="card-footer bg-white">
                                             <span class="float-right">
-                                                <button type="submit" class="btn btn-primary mb-1">Submit</button>
+                                                <button type="submit" class="btn btn-primary mb-1"><?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?></button>
                                             </span>
                                         </div>
                                     </form>

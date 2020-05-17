@@ -530,6 +530,19 @@
             "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
         },
         "settings_user": {
+            "PAGE_TITLE": "Personal Information",
+            "PAGE_HEADER": "Personal Information",
+            "CHANGE_AVATAR_BUTTON": "Change Avatar",
+            "CHANGE_AVATAR_HINT": "Supported formats are JPEG and PNG",
+            "CLEAR_ACTION_HINT": "Clear",
+            "EMAIL_ADDRESS_LABEL": "Personal Email Address",
+            "LEGAL_NAME_LABEL": "Legal Name",
+            "FIRST_NAME_LABEL": "First Name",
+            "LAST_NAME_LABEL": "Last Name",
+            "DOB_YEAR_LABEL": "Year",
+            "DOB_MONTH_LABEL": "Month",
+            "DOB_DAY_LABEL": "Day",
+            "SUBMIT_BUTTON": "Update",
             "DEFAULT_VALUE": "None",
             "BIRTHDAY_YEAR_01": "January",
             "BIRTHDAY_YEAR_02": "February",
@@ -726,7 +739,7 @@
             "NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK": "Send Feedback"
         },
         "settings_sidebar": {
-            "SETTINGS_TAB_GENERAL": "General",
+            "SETTINGS_TAB_PERSONAL": "Personal Information",
             "SETTINGS_TAB_CHANGE_PASSWORD": "Update Password",
             "SETTINGS_TAB_LOGIN_SECURITY": "Login Security",
             "SETTINGS_TAB_AUTHORIZED_APPS": "Authorized Applications",

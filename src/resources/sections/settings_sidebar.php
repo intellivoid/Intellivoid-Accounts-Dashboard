@@ -8,8 +8,8 @@
 <ul class="nav nav-pills flex-column mt-md-0 mt-1">
     <li class="nav-item">
         <a href="<?PHP DynamicalWeb::getRoute('settings_user', [], true); ?>" class="nav-link d-flex py-75<?PHP if(APP_CURRENT_PAGE == 'settings_user'){ HTML::print($ActiveClass); } ?>">
-            <i class="feather icon-globe mr-50 font-medium-3"></i>
-            <?PHP HTML::print(TEXT_SETTINGS_TAB_GENERAL); ?>
+            <i class="feather icon-user mr-50 font-medium-3"></i>
+            <?PHP HTML::print(TEXT_SETTINGS_TAB_PERSONAL); ?>
         </a>
     </li>
     <li class="nav-item">
