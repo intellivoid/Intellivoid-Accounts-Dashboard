@@ -24,23 +24,33 @@ use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
 
     function update_password()
     {
+        $RedirectPage = 'index';
+
+        if(isset($_GET['redirect']))
+        {
+            if($_GET['redirect'] == 'settings_password')
+            {
+                $RedirectPage = 'settings_password';
+            }
+        }
+
         if(isset($_POST['current_password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('index', array(
+            Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '100'
             )));
         }
 
         if(isset($_POST['new_password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('index', array(
+            Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '100'
             )));
         }
 
         if(isset($_POST['confirm_password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('index', array(
+            Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '100'
             )));
         }
@@ -62,14 +72,14 @@ use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
         $AccountObject = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
         if(Validate::verifyHashedPassword($_POST['current_password'], $AccountObject->Password) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('index', array(
+            Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '101'
             )));
         }
 
         if(Hashing::password($_POST['new_password']) !== Hashing::password($_POST['confirm_password']))
         {
-            Actions::redirect(DynamicalWeb::getRoute('index', array(
+            Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '102'
             )));
         }
@@ -77,7 +87,7 @@ use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
         $AccountObject->updatePassword($_POST['new_password']);
         $IntellivoidAccounts->getAccountManager()->updateAccount($AccountObject);
         $IntellivoidAccounts->getAuditLogManager()->logEvent($AccountObject->ID, AuditEventType::PasswordUpdated);
-        Actions::redirect(DynamicalWeb::getRoute('index', array(
+        Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
             'callback' => '103'
         )));
     }
