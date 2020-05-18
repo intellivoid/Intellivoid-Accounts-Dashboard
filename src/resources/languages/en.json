@@ -486,6 +486,13 @@
         "settings_password": {
             "PAGE_TITLE": "Update Password",
             "PAGE_HEADER": "Update Password",
+            "CURRENT_PASSWORD_LABEL": "Current Password",
+            "CURRENT_PASSWORD_PLACEHOLDER": "Current Password",
+            "NEW_PASSWORD_LABEL": "New Password",
+            "NEW_PASSWORD_PLACEHOLDER": "New Password",
+            "CONFIRM_PASSWORD_LABEL": "Confirm Password",
+            "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm password",
+            "SUBMIT_BUTTON": "Update",
             "CALLBACK_100": "There was a problem with the request, please make sure you are using an up to date browser",
             "CALLBACK_101": "The current password you've entered is incorrect",
             "CALLBACK_102": "The confirmation password does not match the new password",

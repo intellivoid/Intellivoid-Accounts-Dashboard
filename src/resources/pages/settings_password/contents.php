@@ -44,9 +44,9 @@
 
                                                     <!-- Current Password -->
                                                     <div class="col-12">
-                                                        <label for="current_password">Current Password</label>
+                                                        <label for="current_password"><?PHP HTML::print(TEXT_CURRENT_PASSWORD_LABEL); ?></label>
                                                         <fieldset class="form-group position-relative has-icon-left">
-                                                            <input id="current_password" name="current_password" autocomplete="current-password" type="password" class="form-control" placeholder="Current Password" required>
+                                                            <input id="current_password" name="current_password" autocomplete="current-password" type="password" class="form-control" placeholder="<?PHP HTML::print(TEXT_CURRENT_PASSWORD_PLACEHOLDER); ?>" required>
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-lock"></i>
                                                             </div>
@@ -55,9 +55,9 @@
 
                                                     <!-- New Password -->
                                                     <div class="col-12">
-                                                        <label for="new_password">New Password</label>
+                                                        <label for="new_password"><?PHP HTML::print(TEXT_NEW_PASSWORD_LABEL); ?></label>
                                                         <fieldset class="form-group position-relative has-icon-left">
-                                                            <input id="new_password" name="new_password" autocomplete="new-password" type="password" class="form-control" placeholder="New Password" required>
+                                                            <input id="new_password" name="new_password" autocomplete="new-password" type="password" class="form-control" placeholder="<?PHP HTML::print(TEXT_NEW_PASSWORD_PLACEHOLDER); ?>" required>
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-lock"></i>
                                                             </div>
@@ -66,9 +66,9 @@
 
                                                     <!-- Confirm Password -->
                                                     <div class="col-12">
-                                                        <label for="confirm_password">Confirm Password</label>
+                                                        <label for="confirm_password"><?PHP HTML::print(TEXT_CONFIRM_PASSWORD_LABEL); ?></label>
                                                         <fieldset class="form-group position-relative has-icon-left">
-                                                            <input id="confirm_password" name="confirm_password" autocomplete="new-password" type="password" class="form-control" placeholder="Confirm Password" required>
+                                                            <input id="confirm_password" name="confirm_password" autocomplete="new-password" type="password" class="form-control" placeholder="<?PHP HTML::print(TEXT_CONFIRM_PASSWORD_PLACEHOLDER); ?>" required>
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-lock"></i>
                                                             </div>
@@ -81,7 +81,7 @@
                                         </div>
                                         <div class="card-footer bg-white">
                                             <span class="float-right">
-                                                <button type="submit" class="btn btn-primary mb-1">Update</button>
+                                                <button type="submit" class="btn btn-primary mb-1"><?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?></button>
                                             </span>
                                         </div>
                                     </form>
