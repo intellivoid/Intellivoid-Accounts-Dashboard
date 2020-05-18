@@ -483,6 +483,23 @@
             "CALLBACK_102": "Access to this Service/Application has been revoked successfully",
             "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
         },
+        "settings_login_history": {
+            "PAGE_TITLE": "Login History",
+            "PAGE_HEADER": "Recent Logins",
+            "TABLE_HEADERS_ORIGIN": "Origin",
+            "TABLE_HEADERS_BROWSER": "Browser",
+            "TABLE_HEADERS_IP_ADDRESS": "IP Address",
+            "TABLE_HEADERS_STATUS": "Status",
+            "TABLE_HEADERS_DATE": "Date",
+            "LOGIN_STATUS_SUCCESS": "Successful",
+            "LOGIN_STATUS_INCORRECT_CREDENTIALS": "Incorrect Credentials",
+            "LOGIN_STATUS_VERIFICATION_FAILED": "Verification Failed",
+            "LOGIN_STATUS_UNTRUSTED_IP_BLOCKED": "Untrusted IP Blocked",
+            "LOGIN_STATUS_SUSPICIOUS_ACTIVITY_BLOCKED": "Suspicious Activity Blocked",
+            "LOGIN_STATUS_UNKNOWN": "Unknown",
+            "NO_RESULTS_HEADER": "No Results",
+            "NO_RESULTS_TEXT": "There is no data to display"
+        },
         "settings_password": {
             "PAGE_TITLE": "Update Password",
             "PAGE_HEADER": "Update Password",
