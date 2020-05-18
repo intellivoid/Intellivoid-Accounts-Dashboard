@@ -8,8 +8,10 @@ use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Utilities\Hashing;
     use IntellivoidAccounts\Utilities\Validate;
+use pwc\pwc;
 
-    Runtime::import('IntellivoidAccounts');
+Runtime::import('IntellivoidAccounts');
+    Runtime::import('PwCompromission');
 
     if(isset($_GET['action']))
     {
@@ -82,6 +84,34 @@ use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
             Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '102'
             )));
+        }
+
+        $pwc = new pwc();
+
+        try
+        {
+            $PasswordCache = $pwc->checkPassword($_POST['new_password']);
+
+            if($PasswordCache->Compromised)
+            {
+                if($RedirectPage == "index")
+                {
+                    Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
+                        'callback' => '115'
+                    )));
+                }
+
+                if($RedirectPage == "settings_password")
+                {
+                    Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
+                        'callback' => '104'
+                    )));
+                }
+            }
+        }
+        catch(Exception $exception)
+        {
+            unset($exception);
         }
 
         $AccountObject->updatePassword($_POST['new_password']);
