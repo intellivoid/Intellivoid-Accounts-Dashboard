@@ -2,8 +2,25 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
-    HTML::importScript('get_records');
+    // Define the important parts
+    if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
+            "intellivoid_accounts", new IntellivoidAccounts()
+        );
+    }
+    else
+    {
+        /** @var IntellivoidAccounts $IntellivoidAccounts */
+        $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+    }
+
+    $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+    $GeneratedCode = $IntellivoidAccounts->getOtlManager()->generateLoginCode($Account->ID);
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
@@ -33,16 +50,12 @@
                                     </div>
                                     <div class="card-content">
                                         <div class="card-body">
-                                            <?PHP
-                                                if(count(DynamicalWeb::getArray('search_results')) == 0)
-                                                {
-                                                    HTML::importScript('no_items_msg');
-                                                }
-                                                else
-                                                {
-                                                    HTML::importScript('render_table');
-                                                }
-                                            ?>
+                                            <p class="card-description"><?PHP HTML::print(TEXT_DESCRIPTION); ?></p>
+                                            <div class="d-flex justify-content-around mt-5 mb-4">
+                                                <div class="form-group" style="width: 500px;">
+                                                    <input class="form-control bg-white text-center" aria-label="OTL Code" type="text" value="<?PHP HTML::print($GeneratedCode); ?>" readonly>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

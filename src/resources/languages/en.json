@@ -500,6 +500,11 @@
             "NO_RESULTS_HEADER": "No Results",
             "NO_RESULTS_TEXT": "There is no data to display"
         },
+        "settings_otl_generator": {
+            "PAGE_TITLE": "OTL Generator",
+            "PAGE_HEADER": "One-time Password Generator",
+            "DESCRIPTION": "The code below is a one-time generated login code associated with your account, this is used for internal services. Staff will never ask for this code, you should not give this code to anyone. This code will expire in 5 minutes."
+        },
         "settings_password": {
             "PAGE_TITLE": "Update Password",
             "PAGE_HEADER": "Update Password",

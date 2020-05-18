@@ -57,7 +57,8 @@
 
         {"path": "/settings/user", "page": "settings_user"},
         {"path": "/settings/password", "page": "settings_password"},
-        {"path": "/settings/login_history", "page": "settings_login_history"}
+        {"path": "/settings/login_history", "page": "settings_login_history"},
+        {"path": "/settings/otl", "page": "settings_otl_generator"}
     ],
     "libraries": {
         "SecuredWebSessions": {

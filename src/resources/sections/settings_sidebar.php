@@ -37,7 +37,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link d-flex py-75<?PHP if(APP_CURRENT_PAGE == 'settings_otl_generator'){ HTML::print($ActiveClass); } ?>">
+        <a href="<?PHP DynamicalWeb::getRoute('settings_otl_generator', [], true); ?>" class="nav-link d-flex py-75<?PHP if(APP_CURRENT_PAGE == 'settings_otl_generator'){ HTML::print($ActiveClass); } ?>">
             <i class="feather icon-zap mr-50 font-medium-3"></i>
             <?PHP HTML::print(TEXT_SETTINGS_TAB_OTL_GENERATOR); ?>
         </a>
