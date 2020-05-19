@@ -25,7 +25,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link d-flex py-75<?PHP if(APP_CURRENT_PAGE == 'settings_authorized_apps'){ HTML::print($ActiveClass); } ?>">
+        <a href="<?PHP DynamicalWeb::getRoute('settings_authorized_apps', [], true); ?>" class="nav-link d-flex py-75<?PHP if(APP_CURRENT_PAGE == 'settings_authorized_apps'){ HTML::print($ActiveClass); } ?>">
             <i class="feather icon-layers mr-50 font-medium-3"></i>
             <?PHP HTML::print(TEXT_SETTINGS_TAB_AUTHORIZED_APPS); ?>
         </a>
