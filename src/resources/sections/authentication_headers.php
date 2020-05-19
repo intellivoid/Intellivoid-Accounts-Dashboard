@@ -5,7 +5,7 @@
 <meta name="msapplication-TileColor" content="#0404fc">
 <meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png?v=39djAdAm3a">
 <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml?v=39djAdAm3a">
-<meta name="theme-color" content="#0404fc">
+<meta name="theme-color" content="#3a50dc">
 <meta name="title" content="Intellivoid Accounts">
 <meta name="description" content="Secured second-generation authentication solution, a one-account for all by Intellivoid Technologies">
 <meta property="og:type" content="website">

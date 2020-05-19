@@ -51,8 +51,8 @@
             {
                 switch($_POST['redirect'])
                 {
-                    case 'login_security':
-                        Actions::redirect(DynamicalWeb::getRoute('login_security', $_GET));
+                    case 'settings_login_security':
+                        Actions::redirect(DynamicalWeb::getRoute('settings_login_security', $_GET));
                         break;
 
                     case 'setup_mobile_verification':
