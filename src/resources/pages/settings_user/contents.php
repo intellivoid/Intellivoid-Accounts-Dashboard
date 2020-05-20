@@ -60,7 +60,7 @@
                                                     </a>
                                                     <div class="media-body mt-75">
                                                         <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                            <button class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer waves-effect waves-light"data-toggle="modal" data-target="#change-avatar-dialog">
+                                                            <button class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer waves-effect waves-light" data-toggle="modal" type="button" data-target="#change-avatar-dialog">
                                                                 <?PHP HTML::print(TEXT_CHANGE_AVATAR_BUTTON); ?>
                                                             </button>
                                                         </div>

@@ -528,9 +528,9 @@
             "ACTION_LINK_TELEGRAM": "Open Telegram",
             "ACTION_UNLINK_TELEGRAM": "Unlink Telegram",
             "CARD_MOBILE_VERIFICATION_HEADER": "Mobile Verification",
-            "CARD_MOBILE_VERIFICATION_DESCRIPTION": "Using Google Authenticator on your phone, you can enter a time based code to verify it's you without internet access",
+            "CARD_MOBILE_VERIFICATION_DESCRIPTION": "By using Google Authenticator on your phone, you can enter a time based code to verify it's you without internet access",
             "CARD_RECOVERY_CODES_HEADER": "Recovery Codes",
-            "CARD_RECOVERY_CODES_DESCRIPTION": "Use one-time use recovery codes to access your account if you do not have access to your phone",
+            "CARD_RECOVERY_CODES_DESCRIPTION": "Use a one-time recovery code to access your account if you do not have access to your phone",
             "CARD_TELEGRAM_VERIFICATION_HEADER": "Telegram Verification",
             "CARD_TELEGRAM_VERIFICATION_DESCRIPTION": "Receive authentication prompts, security updates and notifications on Telegram",
             "DISABLE_MV_DIALOG_TITLE": "Disable Mobile Verification",
@@ -713,7 +713,7 @@
         "verify":
         {
             "PAGE_TITLE": "Verify Authentication",
-            "HEADER": "Verification",
+            "HEADER": "Verify your login",
             "SUB_HEADER": "To protect your account from unauthorized access, verify your login",
             "VERIFICATION_METHOD_TELEGRAM": "Telegram Prompt",
             "VERIFICATION_METHOD_MOBILE": "Verify using your Phone",
