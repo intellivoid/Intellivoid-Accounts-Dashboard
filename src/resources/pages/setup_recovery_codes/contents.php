@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_CANCEL_BUTTON); ?></button>
-                                        <button type="button" class="btn btn-success" onclick="location.href='<?PHP DynamicalWeb::getRoute('setup_recovery_codes', array('action' => 'confirm'), true); ?>';"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_SUBMIT_BUTTON); ?></button>
+                                        <button type="button" class="btn btn-success" onclick="location.href='<?PHP DynamicalWeb::getRoute('settings_setup_recovery_codes', array('action' => 'confirm'), true); ?>';"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_SUBMIT_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>

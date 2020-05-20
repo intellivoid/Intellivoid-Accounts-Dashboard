@@ -33,6 +33,7 @@
         <div class="app-content content mb-0">
             <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
+                <?PHP HTML::importScript('callbacks'); ?>
                 <div class="content-body">
                     <section id="account_settings">
                         <div class="row">
@@ -87,7 +88,7 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    $Href = DynamicalWeb::getRoute('setup_mobile_verification');
+                                                                    $Href = DynamicalWeb::getRoute('settings_setup_mobile_verification');
                                                                     HTML::print("<button class=\"btn bg-gradient-primary\" onclick=\"location.href='$Href';\">", false);
                                                                     HTML::print(TEXT_ACTION_SETUP);
                                                                     HTML::print("</button>", false);
@@ -157,7 +158,7 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    $Href = DynamicalWeb::getRoute('setup_recovery_codes');
+                                                                    $Href = DynamicalWeb::getRoute('settings_setup_recovery_codes');
                                                                     HTML::print("<button class=\"btn bg-gradient-primary\" onclick=\"location.href='$Href';\">", false);
                                                                     HTML::print(TEXT_ACTION_SETUP);
                                                                     HTML::print("</button>", false);
@@ -237,6 +238,10 @@
                     </section>
                 </div>
             </div>
+            <?PHP HTML::importScript('dialog.disable-mv'); ?>
+            <?PHP HTML::importScript('dialog.disable-rc-mv'); ?>
+            <?PHP HTML::importScript('dialog.disable-rc'); ?>
+            <?PHP HTML::importScript('dialog.disable-tg'); ?>
         </div>
 
         <?PHP HTML::importSection('main_ehelper'); ?>

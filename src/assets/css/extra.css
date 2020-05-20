@@ -268,7 +268,7 @@ max-width: 1140px;
     right: 0; }
 
 .bg-analytics {
-    background: linear-gradient(118deg, #3a50dc, rgba(115, 103, 240, 0.7)); }
+    background: linear-gradient(118deg, #3a50dc, rgb(24, 61, 176)); }
 .bg-analytics .avatar {
     margin-bottom: 2rem; }
 

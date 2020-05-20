@@ -28,7 +28,7 @@
 
         if($Account->Configuration->VerificationMethods->TelegramClientLinked == true)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '108'
             )));
         }
@@ -44,13 +44,13 @@
         }
         catch (TelegramClientNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '109'
             )));
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '110'
             )));
         }
@@ -58,7 +58,7 @@
         /** @noinspection PhpUndefinedVariableInspection */
         if($TelegramClient->AccountID !== 0)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '111'
             )));
         }
@@ -73,7 +73,7 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '110'
             )));
         }
@@ -86,12 +86,12 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '110'
             )));
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+        Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
             'callback' => '112'
         )));
     }

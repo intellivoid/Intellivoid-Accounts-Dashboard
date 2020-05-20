@@ -22,7 +22,7 @@
 
         if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '104'
             )));
         }
@@ -39,12 +39,12 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
                 'callback' => '110'
             )));
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('login_security', array(
+        Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
             'callback' => '105'
         )));
     }

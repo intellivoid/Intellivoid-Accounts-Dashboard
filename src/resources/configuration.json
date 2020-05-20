@@ -60,7 +60,9 @@
         {"path": "/settings/login_history", "page": "settings_login_history"},
         {"path": "/settings/otl", "page": "settings_otl_generator"},
         {"path": "/settings/applications", "page": "settings_authorized_apps"},
-        {"path": "/settings/security", "page": "settings_login_security"}
+        {"path": "/settings/security", "page": "settings_login_security"},
+        {"path": "/settings/security/recovery", "page": "settings_setup_recovery_codes"},
+        {"path": "/settings/security/mobile", "page": "settings_setup_mobile_verification"}
     ],
     "libraries": {
         "SecuredWebSessions": {

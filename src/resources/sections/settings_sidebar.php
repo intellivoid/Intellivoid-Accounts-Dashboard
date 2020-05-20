@@ -19,7 +19,19 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="<?PHP DynamicalWeb::getRoute('settings_login_security', [], true); ?>" class="nav-link d-flex py-75<?PHP if(APP_CURRENT_PAGE == 'settings_login_security'){ HTML::print($ActiveClass); } ?>">
+        <?PHP
+            $SettingsLoginSecurityClass = "";
+
+            switch(APP_CURRENT_PAGE)
+            {
+                case "settings_login_security":
+                case "settings_setup_recovery_codes":
+                case "settings_setup_mobile_verification":
+                    $SettingsLoginSecurityClass = $ActiveClass;
+                    break;
+            }
+        ?>
+        <a href="<?PHP DynamicalWeb::getRoute('settings_login_security', [], true); ?>" class="nav-link d-flex py-75<?PHP HTML::print($SettingsLoginSecurityClass); ?>">
             <i class="feather icon-shield mr-50 font-medium-3"></i>
             <?PHP HTML::print(TEXT_SETTINGS_TAB_LOGIN_SECURITY); ?>
         </a>

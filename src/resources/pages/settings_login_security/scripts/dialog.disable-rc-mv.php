@@ -2,19 +2,14 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
-<div class="modal fade" id="disable-rc-mv" tabindex="-1" role="dialog" aria-labelledby="disable-rc-mv-label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade text-left" id="disable-rc-mv" tabindex="-1" role="dialog" aria-labelledby="disable-rc-mv-label" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="disable-rc-mv-label"><?PHP HTML::print(TEXT_DISABLE_RC_MV_DIALOG_TITLE); ?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">
-                        <i class="mdi mdi-close"></i>
-                    </span>
-                </button>
+                <h4 class="modal-title" id="disable-rc-mv-label"><?PHP HTML::print(TEXT_DISABLE_RC_MV_DIALOG_TITLE); ?></h4>
             </div>
             <div class="modal-body">
-                <p><?PHP HTML::print(TEXT_DISABLE_RC_MV_DIALOG_BODY); ?></p>
+                <?PHP HTML::print(TEXT_DISABLE_RC_MV_DIALOG_BODY); ?>
             </div>
             <div class="modal-footer">
                 <?PHP $Href = DynamicalWeb::getRoute('login_security', array('action' => 'disable_rc')); ?>

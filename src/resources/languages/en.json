@@ -520,7 +520,6 @@
         },
         "settings_login_security": {
             "PAGE_TITLE": "Login Security",
-            "PAGE_HEADER": "Secure your Intellivoid Account",
             "STATE_ENABLED": "Enabled",
             "STATE_DISABLED": "Disabled",
             "STATE_NOT_ENABLED": "Not Enabled",
@@ -528,8 +527,6 @@
             "ACTION_DISABLE": "Disable",
             "ACTION_LINK_TELEGRAM": "Open Telegram",
             "ACTION_UNLINK_TELEGRAM": "Unlink Telegram",
-            "ADDED_ON_TIMESTAMP": "Added on %s",
-            "LAST_UPDATED_TIMESTAMP": "Last Updated: %s",
             "CARD_MOBILE_VERIFICATION_HEADER": "Mobile Verification",
             "CARD_MOBILE_VERIFICATION_DESCRIPTION": "Using Google Authenticator on your phone, you can enter a time based code to verify it's you without internet access",
             "CARD_RECOVERY_CODES_HEADER": "Recovery Codes",
@@ -588,6 +585,31 @@
             "CALLBACK_102": "The confirmation password does not match the new password",
             "CALLBACK_103": "Your password was updated successfully",
             "CALLBACK_104": "The password you entered was previously compromised by another service, please use another password."
+        },
+        "settings_setup_mobile_verification": {
+            "PAGE_TITLE": "Setup Mobile Verification",
+            "PAGE_HEADER": "Setup Mobile Verification",
+            "PART_1_TITLE": "Download",
+            "PART_1_BODY": "Download Google Authenticator or use an authenticator of your choice before continuing to the next step",
+            "PART_1_PLAYSTORE": "Playstore",
+            "PART_1_APPSTORE": "AppStore",
+            "PART_2_TITLE": "Scan",
+            "PAGE_2_BUTTON": "Add Account",
+            "PART_2_HINT": "Can't scan or add it?",
+            "PART_3_TITLE": "Verify",
+            "PART_3_INPUT_LABEL": "Enter your generated code to verify",
+            "CALLBACK_100": "The given verification code was incorrect / has expired"
+        },
+        "settings_setup_recovery_codes": {
+            "PAGE_TITLE": "Setup Recovery Codes",
+            "PAGE_HEADER": "Setup Recovery Codes",
+            "CARD_DESCRIPTION": "These are one-time use recovery codes for accessing your account, this is important if you lose access to your phone or cannot verify using other methods. These codes are meant to be written down, and are case-sensitive.",
+            "CONFIRM_BUTTON": "Confirm",
+            "CONFIRMATION_DIALOG_TITLE": "Confirmation",
+            "CONFIRMATION_DIALOG_BODY": "You can generate these codes again by disabling Recovery Codes and Enabling it again, but each code can only be used once! Make sure you wrote them down somewhere or saved it in a safe place.",
+            "CONFIRMATION_DIALOG_CANCEL_BUTTON": "Cancel",
+            "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Done",
+            "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         },
         "settings_user": {
             "PAGE_TITLE": "Personal Information",

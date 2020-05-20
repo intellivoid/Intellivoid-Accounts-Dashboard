@@ -4,7 +4,7 @@
     use DynamicalWeb\HTML;
 use DynamicalWeb\Javascript;
 
-HTML::importScript('check');
+    HTML::importScript('check');
     HTML::importScript('verify');
     HTML::importScript('setup');
 ?>

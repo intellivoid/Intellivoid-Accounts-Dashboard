@@ -318,7 +318,7 @@ body.fixed-footer footer.footer-dark {
         .main-menu.menu-light .navigation > li:not(.open) > ul {
           display: none; }
         .main-menu.menu-light .navigation > li.active > a {
-          background: linear-gradient(118deg, #3a50dc, rgba(115, 103, 240, 0.7));
+          background: linear-gradient(118deg, #3a50dc, rgb(24, 61, 176));
           box-shadow: 0 0 10px 1px rgba(115, 103, 240, 0.7);
           color: #fff;
           font-weight: 400;
@@ -349,7 +349,7 @@ body.fixed-footer footer.footer-dark {
           .main-menu.menu-light .navigation > li ul .hover > a, .main-menu.menu-light .navigation > li ul:hover > a {
             color: #6c6c6c; }
           .main-menu.menu-light .navigation > li ul .active {
-            background: linear-gradient(118deg, #3a50dc, rgba(115, 103, 240, 0.7));
+            background: linear-gradient(118deg, #3a50dc, rgb(24, 61, 176));
             box-shadow: 0 0 10px 1px rgba(115, 103, 240, 0.7);
             border-radius: 4px; }
             .main-menu.menu-light .navigation > li ul .active > a {
@@ -436,7 +436,7 @@ body.fixed-footer footer.footer-dark {
         .main-menu.menu-dark .navigation > li:not(.open) > ul {
           display: none; }
         .main-menu.menu-dark .navigation > li.active > a {
-          background: linear-gradient(118deg, #3a50dc, rgba(115, 103, 240, 0.7));
+          background: linear-gradient(118deg, #3a50dc, rgb(24, 61, 176));
           box-shadow: 0 0 10px 1px rgba(115, 103, 240, 0.7);
           color: #fff;
           font-weight: 400;
@@ -467,7 +467,7 @@ body.fixed-footer footer.footer-dark {
           .main-menu.menu-dark .navigation > li ul .hover > a, .main-menu.menu-dark .navigation > li ul:hover > a {
             color: #e6e6e6; }
           .main-menu.menu-dark .navigation > li ul .active {
-            background: linear-gradient(118deg, #3a50dc, rgba(115, 103, 240, 0.7));
+            background: linear-gradient(118deg, #3a50dc, rgb(24, 61, 176));
             box-shadow: 0 0 10px 1px rgba(115, 103, 240, 0.7);
             border-radius: 4px; }
             .main-menu.menu-dark .navigation > li ul .active > a {

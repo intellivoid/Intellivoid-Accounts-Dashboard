@@ -11,7 +11,7 @@
   'use strict';
   // main menu active gradient colors object
   var themeColor = {
-    "theme-primary": "linear-gradient(118deg, #3a50dc, rgba(115, 103, 240, 0.7))",
+    "theme-primary": "linear-gradient(118deg, #3a50dc, rgb(24, 61, 176))",
     "theme-success": "linear-gradient(118deg, #28c76f, rgba(40, 199, 111, 0.7))",
     "theme-danger": "linear-gradient(118deg, #ea5455, rgba(234, 84, 85, 0.7))",
     "theme-info": "linear-gradient(118deg, #00cfe8, rgba(0, 207, 232, 0.7))",
