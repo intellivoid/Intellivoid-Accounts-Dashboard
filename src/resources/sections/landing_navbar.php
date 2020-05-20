@@ -30,3 +30,7 @@ use DynamicalWeb\HTML;
         </div>
     </div>
 </nav>
+<?PHP HTML::importSection('reset_password_modal'); ?>
+<?PHP HTML::importSection('change_avatar_modal'); ?>
+<?PHP HTML::importSection('change_language_modal'); ?>
+<?PHP HTML::importSection('feedback_modal'); ?>
