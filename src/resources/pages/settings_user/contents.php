@@ -34,7 +34,7 @@
                             <div class="col-md-4 col-lg-3 mb-2 mb-md-0" id="settings_sidebar">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>
                             </div>
-                            <div class="col-md-8" id="settings_viewer">
+                            <div class="col-md-8 col-lg-9" id="settings_viewer">
                                 <div class="card">
                                     <form method="POST" action="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'update'), true); ?>">
                                         <div class="card-header">

@@ -39,6 +39,8 @@
                         case "settings_authorized_apps":
                         case "settings_login_history":
                         case "settings_otl_generator":
+                        case "settings_setup_recovery_codes":
+                        case "settings_setup_mobile_verification":
                             $SettingsActive = " active";
                     }
                 ?>
