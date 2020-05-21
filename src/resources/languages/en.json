@@ -183,6 +183,9 @@
             "SUB_HEADER": "This page explains how COA works and how you can use it in your own software",
             "PAGE_CONTENT": "Intellivoid Accounts COA is currently in beta, documentation will be made available soon."
         },
+        "finance_balance": {
+            "PAGE_TITLE": "Account Balance"
+        },
         "gba_mode": {
             "PAGE_TITLE": "Security Warning",
             "HEADER_TITLE": "Government-backed Attack Protection",
@@ -262,7 +265,6 @@
             "ABOUT_2_BODY": "Having too many accounts for many different services can put users at risk if one service gets compromised. Instead use Intellivoid Accounts as a form of authentication for your next project",
             "ABOUT_3_HEADER": "No more ineffective forms of verification",
             "ABOUT_3_BODY": "Getting tired of Phone Verification / Email Verification? No more! sim swapping is a thing of the past."
-
         },
         "login": {
             "PAGE_TITLE": "Intellivoid Accounts - Sign In",

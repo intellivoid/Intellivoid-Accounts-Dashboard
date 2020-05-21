@@ -57,7 +57,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('account_balance', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_balance', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_ACCOUNT_BALANCE); ?>
                             </a>
                         </li>

@@ -47,6 +47,8 @@
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
+        {"path": "/finance/balance", "page": "finance_balance"},
+
         {"path": "/settings/user", "page": "settings_user"},
         {"path": "/settings/password", "page": "settings_password"},
         {"path": "/settings/login_history", "page": "settings_login_history"},
