@@ -21,7 +21,7 @@
             <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
                 <div class="content-body">
-                    <section id="account_settings">
+                    <section id="login_history">
                         <div class="row">
                             <div class="col-md-3 mb-2 mb-md-0">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>

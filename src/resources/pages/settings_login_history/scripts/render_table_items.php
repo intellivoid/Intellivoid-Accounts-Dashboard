@@ -22,6 +22,7 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
+    /** @var array $loginRecord */
     foreach(DynamicalWeb::getArray('search_results') as $loginRecord)
     {
         /** @var UserLoginRecord $loginRecord */
@@ -99,53 +100,53 @@
 
         ?>
         <tr>
-            <td>
+            <td class="d-flex flex-row">
                 <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="<?PHP HTML::print($loginRecord->Origin); ?>" class="avatar pull-up">
                     <img class="media-object rounded-circle" src="<?PHP HTML::print($ApplicationBrand); ?>" alt="<?PHP HTML::print($loginRecord->Origin); ?>" height="30" width="30">
                 </div>
-                <?PHP HTML::print($loginRecord->Origin); ?>
+                <span class="my-auto d-none d-lg-inline"><?PHP HTML::print($loginRecord->Origin); ?></span>
             </td>
-            <td>
+            <td class="flex-row">
                 <?PHP
                     switch($loginRecord->Status)
                     {
                         case LoginStatus::Successful:
-                            HTML::print("<i class=\"fa fa-circle font-small-3 text-success mr-50\"></i>", false);
+                            HTML::print("<i class=\"fa fa-circle font-small-3 text-success mr-50 d-none d-lg-inline\"></i>", false);
                             HTML::print("<span>", false);
                             HTML::print(TEXT_LOGIN_STATUS_SUCCESS);
                             HTML::print("</span>", false);
                             break;
 
                         case LoginStatus::IncorrectCredentials:
-                            HTML::print("<i class=\"fa fa-circle font-small-3 text-warning mr-50\"></i>", false);
+                            HTML::print("<i class=\"fa fa-circle font-small-3 text-warning mr-50 d-none d-lg-inline\"></i>", false);
                             HTML::print("<span>", false);
                             HTML::print(TEXT_LOGIN_STATUS_INCORRECT_CREDENTIALS);
                             HTML::print("</span>", false);
                             break;
 
                         case LoginStatus::VerificationFailed:
-                            HTML::print("<i class=\"fa fa-circle font-small-3 text-warning mr-50\"></i>", false);
+                            HTML::print("<i class=\"fa fa-circle font-small-3 text-warning mr-50 d-none d-lg-inline\"></i>", false);
                             HTML::print("<span>", false);
                             HTML::print(TEXT_LOGIN_STATUS_VERIFICATION_FAILED);
                             HTML::print("</span>", false);
                             break;
 
                         case LoginStatus::UntrustedIpBlocked:
-                            HTML::print("<i class=\"fa fa-circle font-small-3 text-danger mr-50\"></i>", false);
+                            HTML::print("<i class=\"fa fa-circle font-small-3 text-danger mr-50 d-none d-lg-inline\"></i>", false);
                             HTML::print("<span>", false);
                             HTML::print(TEXT_LOGIN_STATUS_UNTRUSTED_IP_BLOCKED);
                             HTML::print("</span>", false);
                             break;
 
                         case LoginStatus::BlockedSuspiciousActivities:
-                            HTML::print("<i class=\"fa fa-circle font-small-3 text-danger mr-50\"></i>", false);
+                            HTML::print("<i class=\"fa fa-circle font-small-3 text-danger mr-50 d-none d-lg-inline\"></i>", false);
                             HTML::print("<span>", false);
                             HTML::print(TEXT_LOGIN_STATUS_SUSPICIOUS_ACTIVITY_BLOCKED);
                             HTML::print("</span>", false);
                             break;
 
                         default:
-                            HTML::print("<i class=\"fa fa-circle font-small-3 text-info mr-50\"></i>", false);
+                            HTML::print("<i class=\"fa fa-circle font-small-3 text-info mr-50 d-none d-lg-inline\"></i>", false);
                             HTML::print("<span>", false);
                             HTML::print(TEXT_LOGIN_STATUS_UNKNOWN);
                             HTML::print("</span>", false);
@@ -153,7 +154,7 @@
                     }
                 ?>
             </td>
-            <td data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<?PHP HTML::print($Details); ?>">
+            <td class="d-flex flex-row" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<?PHP HTML::print($Details); ?>">
                 <?PHP
                     switch($loginRecord->UserAgent->Platform)
                     {
@@ -161,7 +162,7 @@
                         case 'Macintosh':
                         case 'Linux':
                         case 'Windows':
-                            //HTML::print("<img src=\"/assets/images/devices/laptop.svg\"/>", false);
+                            HTML::print("<img alt=\"laptop\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"/assets/images/devices/laptop.svg\"/>", false);
                             break;
 
                         case 'iPad':
@@ -175,15 +176,15 @@
                         case 'Tizen':
                         case 'iPhone':
                         case 'Android':
-                            //HTML::print("<img src=\"/assets/images/devices/smartphone.svg\"/>", false);
+                            HTML::print("<img alt=\"smartphone\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"/assets/images/devices/smartphone.svg\"/>", false);
                             break;
 
                         default:
-                            //HTML::print("<img src=\"/assets/images/devices/desktop.svg\"/>", false);
+                            HTML::print("<img alt=\"desktop\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"/assets/images/devices/desktop.svg\"/>", false);
                             break;
                     }
-                    HTML::print($loginRecord->UserAgent->Browser);
                 ?>
+                <span class="my-auto"><?PHP HTML::print($loginRecord->UserAgent->Browser); ?></span>
             </td>
             <td data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<?PHP HTML::print($LocationDetails); ?>">
                 <?PHP

@@ -51,9 +51,14 @@
                                     <h6 class="mb-0">
                                         <?PHP HTML::print($Application->Name); ?>
                                     </h6>
-                                    <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp), TEXT_ITEM_LAST_AUTHENTICATED)); ?></small>
+                                    <small class="text-muted d-none d-lg-inline">
+                                        <?PHP HTML::print(str_ireplace('%s', gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp), TEXT_ITEM_LAST_AUTHENTICATED)); ?>
+                                    </small>
+                                    <small class="text-muted d-md-inline d-lg-none">
+                                        <?PHP HTML::print(gmdate("j/m/y g:i a", $ApplicationAccess->LastAuthenticatedTimestamp)); ?>
+                                    </small>
                                 </div>
-                                <div class="ml-auto mr-3">
+                                <div class="ml-auto mr-3 d-none d-md-inline">
                                     <i class="feather icon-user pl-25"></i>
                                     <?PHP
                                         if(in_array(AccountRequestPermissions::ViewEmailAddress ,$ApplicationAccess->Permissions))
