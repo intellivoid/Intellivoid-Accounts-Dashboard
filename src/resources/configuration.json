@@ -3,6 +3,7 @@
     "debugging_mode": true,
     "router": [
         {"path": "/", "page": "index"},
+        {"path": "/audit", "page": "audit_logs"},
         {"path": "/blank", "page": "blank"},
         {"path": "/blank_auth", "page": "blank_auth"},
         {"path": "/loading_auth", "page": "loading_auth"},
@@ -47,10 +48,8 @@
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
-        {"path": "/security", "page": "login_security"},
         {"path": "/security/login_history", "page": "login_history"},
         {"path": "/security/services", "page": "services"},
-        {"path": "/audit", "page": "audit_logs"},
         {"path": "/security/setup/mobile", "page": "setup_mobile_verification"},
         {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"},
 
