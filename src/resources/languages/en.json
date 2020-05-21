@@ -571,23 +571,6 @@
             "CALLBACK_118": "The email address is already used",
             "CALLBACK_120": "Your account information has been updated successfully "
         },
-        "setup_mobile_verification": {
-            "PAGE_TITLE": "Setup Mobile Verification",
-            "CARD_HEADER": "Mobile Verification Setup",
-            "PART_1_TITLE": "Download",
-            "PART_1_HEADER": "Download Google Authenticator",
-            "PART_1_BODY": "you can use the Google Authenticator app to receive codes even if you don’t have an Internet connection.",
-            "PART_1_PLAYSTORE": "Google Playstore",
-            "PART_1_APPSTORE": "Apple AppStore",
-            "PART_1_DOWNLOAD_BUTTON": "Download",
-            "PART_2_TITLE": "Scan",
-            "PART_2_HEADER": "Scan QR Code",
-            "PART_2_HINT": "Can't scan it?",
-            "PART_3_TITLE": "Verify",
-            "PART_3_HEADER": "Enter your generated code to verify",
-            "PART_3_INPUT_LABEL": "Verification Code",
-            "CALLBACK_100": "The given verification code was incorrect / has expired"
-        },
         "setup_recovery_codes": {
             "PAGE_TITLE": "Setup Recovery Codes",
             "CARD_TITLE": "Recovery Codes Verification",
