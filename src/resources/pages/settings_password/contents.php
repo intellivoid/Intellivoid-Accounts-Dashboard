@@ -24,7 +24,7 @@
             <div class="content-wrapper">
                 <div class="content-body">
                     <?PHP HTML::importScript('callbacks'); ?>
-                    <section id="account_settings">
+                    <section id="update_password">
                         <div class="row">
                             <div class="col-md-4 mb-2 mb-md-0" id="settings_sidebar">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>

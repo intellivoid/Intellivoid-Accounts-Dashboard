@@ -38,7 +38,7 @@
             <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
                 <div class="content-body">
-                    <section id="account_settings">
+                    <section id="otl_generator">
                         <div class="row">
                             <div class="col-md-4 mb-2 mb-md-0" id="settings_sidebar">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>
