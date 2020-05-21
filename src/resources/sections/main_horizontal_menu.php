@@ -96,7 +96,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#" data-toggle="dropdown">
+                            <a class="dropdown-item" data-toggle="modal" data-target="#feedback_dialog" href="#">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK); ?>
                             </a>
                         </li>
