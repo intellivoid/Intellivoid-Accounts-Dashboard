@@ -44,11 +44,11 @@
                                 <div class="row">
 
                                     <!-- MOBILE VERIFICATION -->
-                                    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 grid-margin stretch-card">
+                                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
                                         <div class="card">
                                             <div class="card-content">
                                                 <div class="card-body">
-                                                    <img class="card-img img-fluid mb-1 p-1" src="/assets/images/undraw/mobile_verification.svg" alt="<?PHP HTML::print(TEXT_CARD_MOBILE_VERIFICATION_HEADER); ?>">
+                                                    <img class="card-img img-fluid mb-1 p-1 d-lg-none d-xl-inline" src="/assets/images/undraw/mobile_verification.svg" alt="<?PHP HTML::print(TEXT_CARD_MOBILE_VERIFICATION_HEADER); ?>">
                                                     <h5 class="mt-1"><?PHP HTML::print(TEXT_CARD_MOBILE_VERIFICATION_HEADER); ?></h5>
                                                     <p class="card-text"><?PHP HTML::print(TEXT_CARD_MOBILE_VERIFICATION_DESCRIPTION); ?></p>
                                                     <hr class="my-1">
@@ -104,11 +104,11 @@
                                     </div>
 
                                     <!-- RECOVERY CODES -->
-                                    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 grid-margin stretch-card">
+                                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
                                         <div class="card">
                                             <div class="card-content">
                                                 <div class="card-body">
-                                                    <img class="card-img img-fluid mb-1 p-1" src="/assets/images/undraw/recovery_code.svg" alt="<?PHP HTML::print(TEXT_CARD_RECOVERY_CODES_HEADER); ?>">
+                                                    <img class="card-img img-fluid mb-1 p-1 d-lg-none d-xl-inline" src="/assets/images/undraw/recovery_code.svg" alt="<?PHP HTML::print(TEXT_CARD_RECOVERY_CODES_HEADER); ?>">
                                                     <h5 class="mt-1"><?PHP HTML::print(TEXT_CARD_RECOVERY_CODES_HEADER); ?></h5>
                                                     <p class="card-text"><?PHP HTML::print(TEXT_CARD_RECOVERY_CODES_DESCRIPTION); ?></p>
                                                     <hr class="my-1">
@@ -174,11 +174,11 @@
                                     </div>
 
                                     <!-- TELEGRAM PROMPT -->
-                                    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 grid-margin stretch-card">
+                                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
                                         <div class="card">
                                             <div class="card-content">
                                                 <div class="card-body">
-                                                    <img class="card-img img-fluid mb-1 p-1" src="/assets/images/undraw/telegram_prompt.svg" alt="<?PHP HTML::print(TEXT_CARD_TELEGRAM_VERIFICATION_HEADER); ?>">
+                                                    <img class="card-img img-fluid mb-1 p-1  d-lg-none d-xl-inline" src="/assets/images/undraw/telegram_prompt.svg" alt="<?PHP HTML::print(TEXT_CARD_TELEGRAM_VERIFICATION_HEADER); ?>">
                                                     <h5 class="mt-1"><?PHP HTML::print(TEXT_CARD_TELEGRAM_VERIFICATION_HEADER); ?></h5>
                                                     <p class="card-text"><?PHP HTML::print(TEXT_CARD_TELEGRAM_VERIFICATION_DESCRIPTION); ?></p>
                                                     <hr class="my-1">
