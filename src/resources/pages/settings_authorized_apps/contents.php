@@ -2,10 +2,10 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
     HTML::importScript('revoke_access');
     HTML::importScript('ren.contents');
@@ -27,7 +27,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
             <div class="content-wrapper">
                 <div class="content-body">
                     <?PHP HTML::importScript('callbacks'); ?>
-                    <section id="account_settings">
+                    <section id="authorized_applications">
                         <div class="row">
                             <div class="col-md-3 mb-2 mb-md-0">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>

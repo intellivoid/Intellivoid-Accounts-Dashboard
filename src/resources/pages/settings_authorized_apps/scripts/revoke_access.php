@@ -1,11 +1,11 @@
 <?php
 
-use DynamicalWeb\Actions;
-use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationAccessSearchMethod;
-use IntellivoidAccounts\Exceptions\ApplicationAccessNotFoundException;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use DynamicalWeb\Actions;
+    use DynamicalWeb\DynamicalWeb;
+    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationAccessSearchMethod;
+    use IntellivoidAccounts\Exceptions\ApplicationAccessNotFoundException;
+    use IntellivoidAccounts\IntellivoidAccounts;
 
     if(isset($_GET['action']))
     {
