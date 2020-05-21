@@ -48,7 +48,6 @@
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
-        {"path": "/security/login_history", "page": "login_history"},
         {"path": "/security/services", "page": "services"},
         {"path": "/security/setup/mobile", "page": "setup_mobile_verification"},
         {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"},
