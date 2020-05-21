@@ -3,14 +3,14 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
-use IntellivoidAccounts\Abstracts\AuditEventType;
-use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Utilities\Hashing;
     use IntellivoidAccounts\Utilities\Validate;
-use pwc\pwc;
+    use pwc\pwc;
 
-Runtime::import('IntellivoidAccounts');
+    Runtime::import('IntellivoidAccounts');
     Runtime::import('PwCompromission');
 
     if(isset($_GET['action']))
@@ -84,6 +84,22 @@ Runtime::import('IntellivoidAccounts');
             Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                 'callback' => '102'
             )));
+        }
+
+        if(Validate::password($_POST['new_password']) == false)
+        {
+            {
+                Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
+                    'callback' => '116'
+                )));
+            }
+
+            if($RedirectPage == "settings_password")
+            {
+                Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
+                    'callback' => '105'
+                )));
+            }
         }
 
         $pwc = new pwc();

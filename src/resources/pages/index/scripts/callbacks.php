@@ -72,5 +72,9 @@
                 RenderAlert(TEXT_CALLBACK_115, "warning", "icon-alert-triangle");
                 break;
 
+            case 116:
+                RenderAlert(TEXT_CALLBACK_116, "warning", "icon-alert-triangle");
+                break;
+
         }
     }

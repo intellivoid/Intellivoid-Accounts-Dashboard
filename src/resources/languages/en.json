@@ -240,7 +240,8 @@
             "CALLBACK_112": "Your feedback message is invalid",
             "CALLBACK_113": "Thank you for your feedback!",
             "CALLBACK_114": "Intellivoid has detected that your password has been compromised by another service, we suggest that you change your password immediately to keep your account safe.",
-            "CALLBACK_115": "The password you entered was previously compromised by another service, please use another password."
+            "CALLBACK_115": "The password you entered was previously compromised by another service, please use another password.",
+            "CALLBACK_116": "The password you entered is invalid"
         },
         "internal_authentication": {
             "PAGE_TITLE": "Internal Authentication",
@@ -584,7 +585,8 @@
             "CALLBACK_101": "The current password you've entered is incorrect",
             "CALLBACK_102": "The confirmation password does not match the new password",
             "CALLBACK_103": "Your password was updated successfully",
-            "CALLBACK_104": "The password you entered was previously compromised by another service, please use another password."
+            "CALLBACK_104": "The password you entered was previously compromised by another service, please use another password.",
+            "CALLBACK_105": "The password you enterd is invalid"
         },
         "settings_setup_mobile_verification": {
             "PAGE_TITLE": "Setup Mobile Verification",
