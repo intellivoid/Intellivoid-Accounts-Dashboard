@@ -50,7 +50,16 @@
                         <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_ACCOUNT_SETTINGS); ?></span>
                     </a>
                 </li>
-                <li class="dropdown nav-item" data-menu="dropdown">
+                <?PHP
+                    $FinanceActive = "";
+
+                    switch(APP_CURRENT_PAGE)
+                    {
+                        case "finance_balance":
+                            $FinanceActive = " active";
+                    }
+                ?>
+                <li class="dropdown nav-item<?PHP HTML::print($FinanceActive); ?>" data-menu="dropdown">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                         <i class="feather icon-dollar-sign"></i>
                         <span data-i18n="Starter kit"><?PHP HTML::print(TEXT_NAV_MENU_LINK_FINANCE); ?></span>
