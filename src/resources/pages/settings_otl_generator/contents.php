@@ -40,7 +40,7 @@
                 <div class="content-body">
                     <section id="otl_generator">
                         <div class="row">
-                            <div class="col-md-4 mb-2 mb-md-0" id="settings_sidebar">
+                            <div class="col-md-4 col-lg-3 mb-2 mb-md-0" id="settings_sidebar">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>
                             </div>
                             <div class="col-md-8" id="settings_viewer">
