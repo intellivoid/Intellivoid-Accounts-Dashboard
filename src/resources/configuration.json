@@ -48,8 +48,6 @@
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
-        {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"},
-
         {"path": "/settings/user", "page": "settings_user"},
         {"path": "/settings/password", "page": "settings_password"},
         {"path": "/settings/login_history", "page": "settings_login_history"},

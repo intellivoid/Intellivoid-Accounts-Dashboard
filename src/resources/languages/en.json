@@ -571,17 +571,6 @@
             "CALLBACK_118": "The email address is already used",
             "CALLBACK_120": "Your account information has been updated successfully "
         },
-        "setup_recovery_codes": {
-            "PAGE_TITLE": "Setup Recovery Codes",
-            "CARD_TITLE": "Recovery Codes Verification",
-            "CARD_DESCRIPTION": "These are one-time use recovery codes for accessing your account, this is important if you lose access to your phone or cannot verify using other methods. These codes are meant to be written down, and are case-sensitive.",
-            "CONFIRM_BUTTON": "Confirm",
-            "CONFIRMATION_DIALOG_TITLE": "Confirmation",
-            "CONFIRMATION_DIALOG_BODY": "You can generate these codes again by disabling Recovery Codes and Enabling it again, but each code can only be used once! Make sure you wrote them down somewhere or saved it in a safe place.",
-            "CONFIRMATION_DIALOG_CANCEL_BUTTON": "Cancel",
-            "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Done",
-            "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
-        },
         "sudo": {
             "PAGE_TITLE": "Sudo Mode",
             "HEADER": "Sudo Mode",
