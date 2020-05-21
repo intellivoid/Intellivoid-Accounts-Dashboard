@@ -2,17 +2,12 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
-<div class="modal fade" id="feedback_dialog" tabindex="-1" role="dialog" aria-labelledby="fdl" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" role="document">
+<div class="modal fade text-left" id="feedback_dialog" tabindex="-1" role="dialog" aria-labelledby="fdl" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <form action="<?PHP DynamicalWeb::getRoute('index', array('action' => 'submit_feedback'), true) ?>" method="POST">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="fdl"><?PHP HTML::print(TEXT_FEEDBACK_DIALOG_TITLE); ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            <i class="mdi mdi-close"></i>
-                        </span>
-                    </button>
+                    <h4 class="modal-title" id="fdl"><?PHP HTML::print(TEXT_FEEDBACK_DIALOG_TITLE); ?></h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -22,9 +17,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_FEEDBACK_DIALOG_CANCEL_BUTTON); ?></button>
-                    <input type="submit" class="btn btn-success" value="<?PHP HTML::print(TEXT_FEEDBACK_DIALOG_SUBMIT_BUTTON); ?>">
+                    <input type="submit" class="btn btn-primary" value="<?PHP HTML::print(TEXT_FEEDBACK_DIALOG_SUBMIT_BUTTON); ?>">
                 </div>
             </form>
+
         </div>
     </div>
 </div>

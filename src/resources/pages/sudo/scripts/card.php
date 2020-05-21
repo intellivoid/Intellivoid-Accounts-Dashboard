@@ -42,6 +42,7 @@ use IntellivoidAccounts\Objects\Account;
             <div class="card-body pt-0">
                 <span class="text-small"><?PHP HTML::print(TEXT_SUB_HEADER); ?></span>
                 <form id="authentication_form" name="authentication_form" class="mt-2">
+                    <input name="username" id="username" type="text" autocomplete="off" value="<?PHP HTML::print(WEB_ACCOUNT_USERNAME); ?>" hidden>
                     <div class="form-group">
                         <label for="password" id="password_label" class="text-muted"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
                         <div class="position-relative has-icon-left">

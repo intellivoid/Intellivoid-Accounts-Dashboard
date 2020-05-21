@@ -67,5 +67,14 @@
             case 114:
                 RenderAlert(TEXT_CALLBACK_114, "danger", "icon-alert-triangle");
                 break;
+
+            case 115:
+                RenderAlert(TEXT_CALLBACK_115, "warning", "icon-alert-triangle");
+                break;
+
+            case 116:
+                RenderAlert(TEXT_CALLBACK_116, "warning", "icon-alert-triangle");
+                break;
+
         }
     }

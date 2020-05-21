@@ -22,14 +22,30 @@
         </div>
         <div class="navbar-container main-menu-content" data-menu="menu-container">
             <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item <?PHP if(APP_CURRENT_PAGE == 'index'){ HTML::print("active"); } ?>">
+                <li class="nav-item<?PHP if(APP_CURRENT_PAGE == 'index'){ HTML::print(" active"); } ?>">
                     <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('index', [], true); ?>">
                         <i class="feather icon-home"></i>
                         <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_OVERVIEW); ?></span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('personal', [], true); ?>">
+                <?PHP
+                    $SettingsActive = "";
+
+                    switch(APP_CURRENT_PAGE)
+                    {
+                        case "settings_user":
+                        case "settings_password":
+                        case "settings_login_security":
+                        case "settings_authorized_apps":
+                        case "settings_login_history":
+                        case "settings_otl_generator":
+                        case "settings_setup_recovery_codes":
+                        case "settings_setup_mobile_verification":
+                            $SettingsActive = " active";
+                    }
+                ?>
+                <li class="nav-item<?PHP HTML::print($SettingsActive); ?>">
+                    <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('settings_user', [], true); ?>">
                         <i class="feather icon-user"></i>
                         <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_ACCOUNT_SETTINGS); ?></span>
                     </a>
@@ -80,7 +96,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#" data-toggle="dropdown">
+                            <a class="dropdown-item" data-toggle="modal" data-target="#feedback_dialog" href="#">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK); ?>
                             </a>
                         </li>

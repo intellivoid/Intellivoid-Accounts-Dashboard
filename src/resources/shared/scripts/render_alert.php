@@ -14,7 +14,7 @@
         HTML::print("<div class=\"alert alert-", false);
         HTML::print($type);
         HTML::print("\" role=\"alert\">", false);
-        HTML::print("<i class=\"pr-1 feather ", false);
+        HTML::print("<i class=\"px-1 feather ", false);
         HTML::print($icon);
         HTML::print("\"></i>", false);
         HTML::print($text);
