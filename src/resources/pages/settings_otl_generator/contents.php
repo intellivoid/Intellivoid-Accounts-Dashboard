@@ -40,10 +40,10 @@
                 <div class="content-body">
                     <section id="account_settings">
                         <div class="row">
-                            <div class="col-md-3 mb-2 mb-md-0">
+                            <div class="col-md-4 mb-2 mb-md-0" id="settings_sidebar">
                                 <?PHP HTML::importSection('settings_sidebar'); ?>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-8" id="settings_viewer">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
