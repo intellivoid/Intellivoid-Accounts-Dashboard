@@ -56,9 +56,21 @@
                                                                         <div class="card text-white bg-gradient-success text-center">
                                                                             <div class="card-content d-flex">
                                                                                 <div class="card-body">
-                                                                                    <img src="/assets/images/undraw/android.svg" alt="Android" width="150" class="float-left px-1">
-                                                                                    <h4 class="card-title text-white mb-2">Android</h4>
-                                                                                    <a class="btn btn-primary waves-effect waves-light mt-auto" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><?PHP HTML::print(TEXT_PART_1_PLAYSTORE); ?></a>
+                                                                                    <div class="d-inline">
+                                                                                        <img src="/assets/images/undraw/android.svg" alt="Android" width="150" class="float-left px-1 d-none d-lg-inline">
+                                                                                        <h4 class="card-title text-white mb-2">Android</h4>
+                                                                                    </div>
+
+                                                                                    <div class="d-none d-xl-inline">
+                                                                                        <a class="btn btn-primary waves-effect waves-light mt-auto" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">
+                                                                                            <?PHP HTML::print(TEXT_PART_1_PLAYSTORE); ?>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="d-xl-none d-md-block">
+                                                                                        <a class="btn btn-primary btn-block waves-effect waves-light" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">
+                                                                                            <?PHP HTML::print(TEXT_PART_1_PLAYSTORE); ?>
+                                                                                        </a>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -68,9 +80,22 @@
                                                                         <div class="card text-white bg-gradient-info text-center">
                                                                             <div class="card-content d-flex">
                                                                                 <div class="card-body">
-                                                                                    <img src="/assets/images/undraw/ios.svg" alt="iOS" width="150" class="float-left px-1">
-                                                                                    <h4 class="card-title text-white mb-2">iOS</h4>
-                                                                                    <a class="btn btn-primary waves-effect waves-light mt-auto" href="http://appstore.com/googleauthenticator"><?PHP HTML::print(TEXT_PART_1_APPSTORE); ?></a>
+                                                                                    <div class="d-inline">
+                                                                                        <img src="/assets/images/undraw/ios.svg" alt="iOS" width="150" class="float-left px-1 d-none d-lg-inline">
+                                                                                        <h4 class="card-title text-white mb-2">iOS</h4>
+                                                                                    </div>
+
+                                                                                    <div class="d-none d-xl-inline">
+                                                                                        <a class="btn btn-primary waves-effect waves-light mt-auto" href="http://appstore.com/googleauthenticator">
+                                                                                            <?PHP HTML::print(TEXT_PART_1_APPSTORE); ?>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="d-xl-none d-md-block">
+                                                                                        <a class="btn btn-primary btn-block waves-effect waves-light mt-auto" href="http://appstore.com/googleauthenticator">
+                                                                                            <?PHP HTML::print(TEXT_PART_1_APPSTORE); ?>
+                                                                                        </a>
+                                                                                    </div>
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
