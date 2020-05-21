@@ -97,22 +97,7 @@
                     </section>
                 </div>
             </div>
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirm-label" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirm-label"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_TITLE); ?></h5>
-                        </div>
-                        <div class="modal-body">
-                            <p><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_BODY); ?></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_CANCEL_BUTTON); ?></button>
-                            <button type="button" class="btn btn-primary" onclick="location.href='<?PHP DynamicalWeb::getRoute('settings_setup_recovery_codes', array('action' => 'confirm'), true); ?>';"><?PHP HTML::print(TEXT_CONFIRMATION_DIALOG_SUBMIT_BUTTON); ?></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?PHP HTML::importScript('confirmation_dialog'); ?>
         </div>
 
         <?PHP HTML::importSection('main_ehelper'); ?>
