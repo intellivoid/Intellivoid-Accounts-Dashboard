@@ -120,14 +120,14 @@
             }
             ?>
             <div class="list-item p-1">
-                <div class="avatar avatar-lg mr-1">
+                <div class="avatar avatar-md mr-1">
                     <img src="<?PHP HTML::print($ImageSource, false); ?>" alt="Brand Logo">
                 </div>
                 <div class="content pr-0">
                     <div class="d-flex flex-wrap">
                         <p class="font-medium-1 mr-1 mb-0"><?PHP HTML::print($TransactionRecord->Vendor); ?></p>
                         <div class="ml-auto">
-                            <span class="text-muted font-medium-1"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></span>
+                            <span class="text-muted font-small-3"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></span>
                             <a href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">
                                 <i class="feather icon-file-text"></i>
                             </a>
@@ -138,19 +138,19 @@
                             if($TransactionRecord->Amount == 0)
                             {
                                 ?>
-                                <span class="text-muted font-medium-4">$0 USD</span>
+                                <span class="text-muted font-medium-2">$0 USD</span>
                                 <?PHP
                             }
                             elseif($TransactionRecord->Amount < 0)
                             {
                                 ?>
-                                <span class="text-danger font-medium-4">-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</span>
+                                <span class="text-danger font-medium-2">-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</span>
                                 <?PHP
                             }
                             elseif($TransactionRecord->Amount > 0)
                             {
                                 ?>
-                                <span class="text-primary font-medium-4">$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</span>
+                                <span class="text-primary font-medium-2">$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</span>
                                 <?PHP
                             }
                         ?>

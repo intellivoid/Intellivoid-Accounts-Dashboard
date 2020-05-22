@@ -184,7 +184,21 @@
             "PAGE_CONTENT": "Intellivoid Accounts COA is currently in beta, documentation will be made available soon."
         },
         "finance_balance": {
-            "PAGE_TITLE": "Account Balance"
+            "PAGE_TITLE": "Account Balance",
+            "BALANCE_TITLE": "Account Balance",
+            "BALANCE_ADD_LINK": "Add to balance",
+            "ADD_MESSAGE_P1": " You can add funds to your Intellivoid Account but these funds cannot be withdrawn or transferred to other Intellivoid Accounts as explained in our Terms and Service.",
+            "ADD_MESSAGE_P2": "This process is processed manually by Intellivoid and it can take up to 48 Hours to be processed.",
+            "ADD_MESSAGE_P3": "Your PayPal Email address must be the same as your Intellivoid Account's Email Address otherwise the transaction will fail",
+            "UPDATE_EMAIL_BUTTON": "Update your Email Address",
+            "RECENT_ACTIVITY_CARD_TITLE": "Recent Activity",
+            "RECENT_ACTIVITY_CARD_OPTIONS_VIEW_ALL_TRANSACTIONS": "View more transactions",
+            "NO_ITEMS": "No Items",
+            "VIEW_TRANSACTION_INVOICE_LINK": "View Invoice",
+            "ADD_BALANCE_DIALOG_TITLE": "Add to your Balance",
+            "ADD_BALANCE_DIALOG_SELECT_LABEL": "Select Amount",
+            "ADD_BALANCE_DIALOG_CANCEL_BUTTON": "Cancel",
+            "ADD_BALANCE_DIALOG_CONTINUE_BUTTON": "Continue"
         },
         "gba_mode": {
             "PAGE_TITLE": "Security Warning",
