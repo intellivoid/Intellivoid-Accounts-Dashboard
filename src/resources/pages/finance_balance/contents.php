@@ -54,179 +54,171 @@
             <div class="content-wrapper">
                 <div class="content-body">
                     <div class="row">
-                        <div class="col-sm-5 col-md-5 col-lg-5 grid-margin">
+                        <div class="col-12 col-xl-4">
                             <div class="card">
-                                <div class="card-body">
-                                    <div class="absolute left top bottom h-100 v-strock-2 bg-success"></div>
-                                    <p class="text-muted mb-2"><?PHP HTML::print(TEXT_BALANCE_TITLE); ?></p>
-                                    <div class="d-flex align-items-center">
-                                        <h1 class="font-weight-medium mb-2">$<?PHP HTML::print($Account->Configuration->Balance); ?> USD</h1>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-primary dot-indicator"></div>
-                                        <p class="text-muted mb-0 ml-2">
-                                            <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#"><?PHP HTML::print(TEXT_BALANCE_ADD_LINK); ?></a>
-                                        </p>
-                                    </div>
-                                    <div class="alert alert-fill-primary mt-3" role="alert">
-                                        <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P1); ?></p>
-                                        <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P2); ?></p>
-                                        <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P3); ?></p>
-                                        <a class="btn btn-inverse-light" href="<?PHP DynamicalWeb::getRoute('settings_user', array(), true); ?>"><?PHP HTML::print(TEXT_UPDATE_EMAIL_BUTTON); ?></a>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <h2 class="text-bold-400">
+                                                $<?PHP HTML::print($Account->Configuration->Balance); ?> USD
+                                            </h2>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-circle font-small-3 text-primary mr-50"></i>
+                                            <p class="text-muted mb-0">
+                                                <a class="text-primary" data-toggle="modal" data-target="#add-balance-dialog"  href="#"><?PHP HTML::print(TEXT_BALANCE_ADD_LINK); ?></a>
+                                            </p>
+                                        </div>
+                                        <div class="alert alert-primary mt-2" role="alert">
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P1); ?></p>
+                                            <br/>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P2); ?></p>
+                                            <br/>
+                                            <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P3); ?></p>
+                                            <a class="btn btn-block bg-gradient-primary mt-1" href="<?PHP DynamicalWeb::getRoute('settings_user', array(), true); ?>"><?PHP HTML::print(TEXT_UPDATE_EMAIL_BUTTON); ?></a>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-7 col-md-6 col-sm-12 grid-margin stretch-card">
-                            <div class="card review-card">
-                                <div class="card-header header-sm d-flex justify-content-between align-items-center">
-                                    <h4 class="card-title"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_TITLE); ?></h4>
-                                    <div class="wrapper d-flex align-items-center">
-                                        <div class="dropdown">
-                                            <button class="btn btn-transparent icon-btn dropdown-toggle arrow-disabled pr-0" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="mdi mdi-dots-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                                <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', array(), true); ?>"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_OPTIONS_VIEW_ALL_TRANSACTIONS); ?></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body no-gutter">
-                                    <?PHP
-                                    if($TotalTransactions == 0)
-                                    {
-                                        ?>
-                                        <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
-                                            <div class="p-2 my-flex-item">
-                                                <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
-                                            </div>
-                                            <div class="p-2 my-flex-item">
-                                                <h6 class="text-muted"><?PHP HTML::print(TEXT_NO_ITEMS); ?></h6>
-                                            </div>
-                                        </div>
+                        <div class="col-12 col-xl-8">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><?PHP HTML::print(TEXT_RECENT_ACTIVITY_CARD_TITLE); ?></h4>
                                         <?PHP
-                                    }
-                                    else
-                                    {
-                                        $CachedAccounts = array();
-                                        $CachedApplications = array();
-                                        foreach($RecentTransactions as $transaction)
+                                        if($TotalTransactions == 0)
                                         {
-                                            $TransactionRecord = TransactionRecord::fromArray($transaction);
-                                            $ImageSource = "/assets/images/vendor.svg";
-                                            $VendorFound = false;
+                                            ?>
+                                            <div class="ml-auto mr-auto my-3">
+                                                <h5 class="text-muted"><?PHP HTML::print(TEXT_NO_TRANSACTIONS); ?></h5>
+                                            </div>
+                                            <?PHP
+                                        }
+                                        else
+                                        {
+                                            $CachedAccounts = array();
+                                            $CachedApplications = array();
+                                            foreach($RecentTransactions as $transaction)
+                                            {
+                                                $TransactionRecord = TransactionRecord::fromArray($transaction);
+                                                $ImageSource = "/assets/images/vendor.svg";
+                                                $VendorFound = false;
 
-                                            if(isset($CachedApplications[$TransactionRecord->Vendor]))
-                                            {
-                                                if($CachedApplications[$TransactionRecord->Vendor] !== null)
+                                                if(isset($CachedApplications[$TransactionRecord->Vendor]))
                                                 {
-                                                    $ImageSource = DynamicalWeb::getRoute('application_icon', array(
-                                                        'app_id' => $CachedApplications[$TransactionRecord->Vendor],
-                                                        'resource'=> 'normal'
-                                                    ));
-                                                    $VendorFound = true;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                try
-                                                {
-                                                    $VendorApplication = $IntellivoidAccounts->getApplicationManager()->getApplication(
-                                                        ApplicationSearchMethod::byName,
-                                                        substr($TransactionRecord->Vendor, 0, strpos($TransactionRecord->Vendor, ' '))
-                                                    );
-                                                    $CachedApplications[$TransactionRecord->Vendor] = $VendorApplication->PublicAppId;
-                                                    $ImageSource = DynamicalWeb::getRoute('application_icon', array(
-                                                        'app_id' => $CachedApplications[$TransactionRecord->Vendor],
-                                                        'resource'=> 'normal'
-                                                    ));
-                                                    $VendorFound = true;
-                                                }
-                                                catch(Exception $e)
-                                                {
-                                                    $CachedAccounts[$TransactionRecord->Vendor] = null;
-                                                }
-                                            }
-
-                                            if($VendorFound == false)
-                                            {
-                                                if(isset($CachedAccounts[$TransactionRecord->Vendor]))
-                                                {
-                                                    if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                    if($CachedApplications[$TransactionRecord->Vendor] !== null)
                                                     {
-                                                        $ImageSource = DynamicalWeb::getRoute('avatar', array(
-                                                            'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
-                                                            'resource' => 'normal'
+                                                        $ImageSource = DynamicalWeb::getRoute('application_icon', array(
+                                                            'app_id' => $CachedApplications[$TransactionRecord->Vendor],
+                                                            'resource'=> 'normal'
                                                         ));
+                                                        $VendorFound = true;
                                                     }
                                                 }
                                                 else
                                                 {
                                                     try
                                                     {
-                                                        $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
-                                                            AccountSearchMethod::byUsername, $TransactionRecord->Vendor
+                                                        $VendorApplication = $IntellivoidAccounts->getApplicationManager()->getApplication(
+                                                            ApplicationSearchMethod::byName,
+                                                            substr($TransactionRecord->Vendor, 0, strpos($TransactionRecord->Vendor, ' '))
                                                         );
-                                                        $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
-                                                        $ImageSource = DynamicalWeb::getRoute('avatar', array(
-                                                            'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
-                                                            'resource' => 'normal'
+                                                        $CachedApplications[$TransactionRecord->Vendor] = $VendorApplication->PublicAppId;
+                                                        $ImageSource = DynamicalWeb::getRoute('application_icon', array(
+                                                            'app_id' => $CachedApplications[$TransactionRecord->Vendor],
+                                                            'resource'=> 'normal'
                                                         ));
+                                                        $VendorFound = true;
                                                     }
                                                     catch(Exception $e)
                                                     {
                                                         $CachedAccounts[$TransactionRecord->Vendor] = null;
                                                     }
                                                 }
-                                            }
-                                            ?>
-                                            <div class="list-item">
-                                                <div class="preview-image">
-                                                    <img class="img-sm rounded-circle" src="<?PHP HTML::print($ImageSource, false); ?>" alt="profile image">
-                                                </div>
-                                                <div class="content">
-                                                    <div class="d-flex align-items-center">
-                                                        <h6 class="product-name"><?PHP HTML::print($TransactionRecord->Vendor); ?></h6>
-                                                        <small class="time ml-3 d-none d-sm-block"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></small>
-                                                        <div class="ml-auto">
-                                                            <a class="text-small" href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>"><?PHP HTML::print(TEXT_VIEW_TRANSACTION_INVOICE_LINK); ?></a>
+
+                                                if($VendorFound == false)
+                                                {
+                                                    if(isset($CachedAccounts[$TransactionRecord->Vendor]))
+                                                    {
+                                                        if($CachedAccounts[$TransactionRecord->Vendor] !== null)
+                                                        {
+                                                            $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                'resource' => 'normal'
+                                                            ));
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        try
+                                                        {
+                                                            $VendorAccount = $IntellivoidAccounts->getAccountManager()->getAccount(
+                                                                AccountSearchMethod::byUsername, $TransactionRecord->Vendor
+                                                            );
+                                                            $CachedAccounts[$TransactionRecord->Vendor] = $VendorAccount->PublicID;
+                                                            $ImageSource = DynamicalWeb::getRoute('avatar', array(
+                                                                'user_id' => $CachedAccounts[$TransactionRecord->Vendor],
+                                                                'resource' => 'normal'
+                                                            ));
+                                                        }
+                                                        catch(Exception $e)
+                                                        {
+                                                            $CachedAccounts[$TransactionRecord->Vendor] = null;
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                                <div class="list-item p-1">
+                                                    <div class="avatar avatar-md mr-1">
+                                                        <img src="<?PHP HTML::print($ImageSource, false); ?>" alt="Brand Logo">
+                                                    </div>
+                                                    <div class="content pr-0">
+                                                        <div class="d-flex flex-wrap">
+                                                            <p class="font-medium-1 mr-1 mb-0"><?PHP HTML::print($TransactionRecord->Vendor); ?></p>
+                                                            <div class="ml-auto">
+                                                                <span class="text-muted font-small-3 d-none d-xl-inline"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></span>
+                                                                <a href="<?PHP DynamicalWeb::getRoute('view_invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">
+                                                                    <i class="feather icon-file-text"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-20">
+                                                            <?PHP
+                                                            if($TransactionRecord->Amount == 0)
+                                                            {
+                                                                ?>
+                                                                <span class="text-muted font-medium-2">$0 USD</span>
+                                                                <?PHP
+                                                            }
+                                                            elseif($TransactionRecord->Amount < 0)
+                                                            {
+                                                                ?>
+                                                                <span class="text-danger font-medium-2">-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</span>
+                                                                <?PHP
+                                                            }
+                                                            elseif($TransactionRecord->Amount > 0)
+                                                            {
+                                                                ?>
+                                                                <span class="text-primary font-medium-2">$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</span>
+                                                                <?PHP
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex align-items-center">
-                                                        <?PHP
-                                                        if($TransactionRecord->Amount == 0)
-                                                        {
-                                                            ?>
-                                                            <p class="text-muted mb-0">
-                                                                $0 USD
-                                                            </p>
-                                                            <?PHP
-                                                        }
-                                                        elseif($TransactionRecord->Amount < 0)
-                                                        {
-                                                            ?>
-                                                            <p class="text-danger mb-0">
-                                                                -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD
-                                                            </p>
-                                                            <?PHP
-                                                        }
-                                                        elseif($TransactionRecord->Amount > 0)
-                                                        {
-                                                            ?>
-                                                            <p class="text-success mb-0">
-                                                                $<?PHP HTML::print($TransactionRecord->Amount); ?> USD
-                                                            </p>
-                                                            <?PHP
-                                                        }
-                                                        ?>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                            <?PHP
+                                                <?PHP
+                                            }
+                                            ?>
+                                            <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('transaction_history', [], true); ?>';">
+                                                <?PHP HTML::print(TEXT_VIEW_TRANSACTION_HISTORY); ?>
+                                            </button>
+                                            <?php
                                         }
-                                    }
-                                    ?>
+                                        ?>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
