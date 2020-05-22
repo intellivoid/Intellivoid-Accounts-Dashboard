@@ -2,21 +2,16 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
-<div class="modal fade" id="add-balance-dialog" tabindex="-1" role="dialog" aria-labelledby="abd" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" role="document">
+<div class="modal fade text-left" id="add-balance-dialog" tabindex="-1" role="dialog" aria-labelledby="abd" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
-            <form action="<?PHP DynamicalWeb::getRoute('account_balance', array('action' => 'process_payment'), true); ?>" method="POST">
+            <form action="<?PHP DynamicalWeb::getRoute('finance_balance', array('action' => 'process_payment'), true); ?>" method="POST">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="abd"><?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_TITLE); ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            <i class="mdi mdi-close"></i>
-                        </span>
-                    </button>
+                    <h4 class="modal-title" id="abd"><?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_TITLE); ?></h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="authentication_type"><?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_SELECT_LABEL); ?></label>
+                        <label for="amount"><?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_SELECT_LABEL); ?></label>
                         <select class="form-control" name="amount" id="amount">
                             <option value="FLLNCMMRHFT4E">$5.00 USD</option>
                             <option value="NN3U3ZKFN9NSG">$10.00 USD</option>
