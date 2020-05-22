@@ -24,7 +24,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_CANCEL_BUTTON); ?></button>
-                    <input type="submit" class="btn btn-success" value="<?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_CONTINUE_BUTTON); ?>">
+                    <input type="submit" class="btn btn-primary" value="<?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_CONTINUE_BUTTON); ?>">
                 </div>
             </form>
         </div>
