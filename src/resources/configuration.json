@@ -48,6 +48,7 @@
 		{"path": "/applications/manage", "page": "manage_application"},
 
         {"path": "/finance/balance", "page": "finance_balance"},
+        {"path": "/finance/view_invoice", "page": "finance_invoice"},
 
         {"path": "/settings/user", "page": "settings_user"},
         {"path": "/settings/password", "page": "settings_password"},
