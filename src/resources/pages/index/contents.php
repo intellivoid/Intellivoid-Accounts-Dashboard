@@ -95,7 +95,7 @@
                                     <div class="card-content">
                                         <div class="card-body">
                                             <div class="row pb-50">
-                                                <div class="col-lg-6 col-12 d-flex justify-content-between flex-column order-lg-1 order-2 mt-lg-0 mt-2">
+                                                <div class="col-xl-6 col-12 d-flex justify-content-between flex-column order-lg-1 order-2 mt-lg-0 mt-2">
                                                     <div>
                                                         <h2 class="text-bold-700 mb-25">$<?PHP HTML::print($Account->Configuration->Balance); ?> USD</h2>
                                                         <p class="text-bold-500 mb-75"><?PHP HTML::print(TEXT_ACCOUNT_BALANCE_TEXT); ?></p>
