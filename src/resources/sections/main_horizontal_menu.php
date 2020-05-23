@@ -71,12 +71,12 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_transactions', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_TRANSACTION_HISTORY); ?>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_subscriptions', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_subscriptions', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_SUBSCRIPTIONS); ?>
                             </a>
                         </li>

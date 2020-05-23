@@ -50,6 +50,7 @@
         {"path": "/finance/balance", "page": "finance_balance"},
         {"path": "/finance/view_invoice", "page": "finance_invoice"},
         {"path": "/finance/transactions", "page": "finance_transactions"},
+        {"path": "/finance/subscriptions", "page": "finance_subscriptions"},
 
         {"path": "/settings/user", "page": "settings_user"},
         {"path": "/settings/password", "page": "settings_password"},
