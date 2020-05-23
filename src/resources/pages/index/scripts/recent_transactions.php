@@ -160,7 +160,7 @@
             <?PHP
         }
         ?>
-        <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('transaction_history', [], true); ?>';">
+        <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('finance_transactions', [], true); ?>';">
             <?PHP HTML::print(TEXT_VIEW_TRANSACTION_HISTORY); ?>
         </button>
         <?php
