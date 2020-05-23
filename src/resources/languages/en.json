@@ -160,12 +160,6 @@
             "CALLBACK_103": "Your account is currently limited, please contact support",
             "CALLBACK_104": "You have insufficient funds in your Intellivoid Account, please add more funds."
         },
-        "documentation": {
-            "PAGE_TITLE": "COA Documentation",
-            "HEADER_TITLE": "COA Documentation",
-            "SUB_HEADER": "This page explains how COA works and how you can use it in your own software",
-            "PAGE_CONTENT": "Intellivoid Accounts COA is currently in beta, documentation will be made available soon."
-        },
         "finance_balance": {
             "PAGE_TITLE": "Account Balance",
             "BALANCE_ADD_LINK": "Add to balance",
