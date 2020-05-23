@@ -37,7 +37,6 @@
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},
         {"path": "/user/finance/view_invoice", "page": "view_invoice"},
-        {"path": "/user/finance/history", "page": "transaction_history"},
         {"path": "/transaction/success", "page": "transaction_success"},
         {"path": "/transaction/purchase/success", "page": "purchase_success"},
         {"path": "/transaction/purchase/failure", "page": "purchase_failure"},

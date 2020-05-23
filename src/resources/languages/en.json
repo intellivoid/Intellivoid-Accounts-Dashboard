@@ -594,12 +594,6 @@
             "PAGE_HEADER": "Terms of Service",
             "PAGE_SUB_HEADER": "This page explains the Terms of our Service for Intellivoid Accounts"
         },
-        "transaction_history": {
-            "PAGE_TITLE": "Transaction History",
-            "CARD_TITLE": "Transaction History",
-            "NO_ITEMS": "No transactions ",
-            "VIEW_INVOICE_LINK": "View Invoice"
-        },
         "transaction_success": {
             "PAGE_TITLE": "Purchase Successful",
             "PAGE_HEADER": "Payment Successful",
