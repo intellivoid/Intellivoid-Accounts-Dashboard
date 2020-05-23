@@ -56,6 +56,9 @@
                     switch(APP_CURRENT_PAGE)
                     {
                         case "finance_balance":
+                        case "finance_invoice":
+                        case "finance_transactions":
+                        case "finance_subscriptions":
                             $FinanceActive = " active";
                     }
                 ?>
