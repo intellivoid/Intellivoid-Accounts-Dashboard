@@ -91,7 +91,7 @@
                                         if($TotalTransactions == 0)
                                         {
                                             ?>
-                                            <div class="ml-auto mr-auto my-3">
+                                            <div class="text-center my-3">
                                                 <h5 class="text-muted"><?PHP HTML::print(TEXT_NO_TRANSACTIONS); ?></h5>
                                             </div>
                                             <?PHP
