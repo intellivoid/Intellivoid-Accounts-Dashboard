@@ -94,7 +94,7 @@
                 <li class="dropdown nav-item" data-menu="dropdown">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                         <i class="feather icon-message-square"></i>
-                        <span data-i18n="Starter kit"><?PHP HTML::print(TEXT_NAV_MENU_LINK_SUPPORT); ?></span>
+                        <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_SUPPORT); ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
