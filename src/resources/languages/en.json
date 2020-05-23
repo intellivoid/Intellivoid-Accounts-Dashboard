@@ -356,17 +356,6 @@
             "CALLBACK_114": "The Application has been enabled successfully",
             "CALLBACK_115": "Access Denied, the Application is currently suspended"
         },
-        "manage_subscriptions": {
-            "PAGE_TITLE": "Manage Subscriptions",
-            "SUBSCRIPTIONS_HEADER": "Subscriptions",
-            "SUBSCRIPTION_BILLING": "You will be billed $%cp USD on %nbc",
-            "SUBSCRIPTION_START": "Started on: %s",
-            "CANCEL_SUBSCRIPTION_BUTTON": "Cancel Subscription",
-            "NO_ITEMS": "No Items",
-            "CALLBACK_100": "The requested resource was not found or does not exist",
-            "CALLBACK_101": "There was an error while trying to process your request",
-            "CALLBACK_102": "Your subscription has been canceled successfully"
-        },
         "privacy": {
             "PAGE_TITLE": "Intellivoid Accounts - Privacy Policies",
             "CARD_HEADER": "Privacy Policy for Intellivoid Accounts",
