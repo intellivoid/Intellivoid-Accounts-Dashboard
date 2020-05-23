@@ -35,10 +35,6 @@
                         ApplicationSearchMethod::byId, $SubscriptionPlan->ApplicationID
                     );
                     ?>
-
-
-
-
                     <div class="collapse-margin">
                         <div class="card-header" style="justify-content: normal;;" id="heading-<?PHP HTML::print($Subscription->PublicID); ?>" data-toggle="collapse" role="button" data-target="#collapse-<?PHP HTML::print($Subscription->PublicID); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Subscription->PublicID); ?>">
                             <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="<?PHP HTML::print($Application->Name); ?>" class="avatar pull-up">
@@ -61,12 +57,10 @@
                                 </small>
                             </div>
                         </div>
-
                         <div id="collapse-<?PHP HTML::print($Subscription->PublicID); ?>" class="collapse" aria-labelledby="heading-<?PHP HTML::print($Subscription->PublicID); ?>" data-parent="#apps-accordion">
                             <div class="card-body pt-50 px-2">
                                 <div class="row grid-margin d-flex mb-0">
                                     <div class="col-lg-9 mb-2">
-
                                         <div class="d-flex ml-2 align-items-center pb-50">
                                             <i class="feather icon-calendar"></i>
                                             <p class="mb-0 ml-2">
@@ -80,13 +74,13 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 mt-auto mb-1">
-                                        <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
+                                        <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('finance_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <?PHP
                 }
             ?>
