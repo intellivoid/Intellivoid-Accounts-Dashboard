@@ -25,7 +25,7 @@
                                     <div class="card-body text-center">
                                         <img src="/assets/images/undraw/404.svg" class="img-fluid align-self-center" alt="404 Not Found">
                                         <h1 class="font-large-2 my-1"><?PHP HTML::print(TEXT_HEADER); ?></h1>
-                                        <a class="btn btn-primary btn-lg mt-2" href="<?PHP DynamicalWeb::getRoute('index'); ?>"><?PHP HTML::print(TEXT_HOME_LINK); ?></a>
+                                        <a class="btn btn-primary btn-lg mt-2" href="<?PHP DynamicalWeb::getRoute('index', [], true); ?>"><?PHP HTML::print(TEXT_HOME_LINK); ?></a>
                                     </div>
                                 </div>
                             </div>
