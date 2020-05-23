@@ -100,7 +100,7 @@
                                                         <h2 class="text-bold-700 mb-25">$<?PHP HTML::print($Account->Configuration->Balance); ?> USD</h2>
                                                         <p class="text-bold-500 mb-75"><?PHP HTML::print(TEXT_ACCOUNT_BALANCE_TEXT); ?></p>
                                                     </div>
-                                                    <a href="<?PHP DynamicalWeb::getRoute('account_balance', array(), true); ?>" class="btn btn-primary shadow"><?PHP HTML::print(TEXT_ACCOUNT_BALANCE_MANAGE_BUTTON); ?>
+                                                    <a href="<?PHP DynamicalWeb::getRoute('finance_balance', array(), true); ?>" class="btn btn-primary shadow"><?PHP HTML::print(TEXT_ACCOUNT_BALANCE_MANAGE_BUTTON); ?>
                                                         <i class="feather icon-chevrons-right"></i>
                                                     </a>
                                                 </div>
