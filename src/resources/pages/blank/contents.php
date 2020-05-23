@@ -32,7 +32,7 @@
         </div>
 
         <?PHP HTML::importSection('generic_ehelper'); ?>
-        <?PHP HTML::importSection('main_footer'); ?>
+        <?PHP HTML::importSection('generic_footer'); ?>
         <?PHP HTML::importSection('generic_js'); ?>
 
     </body>
