@@ -36,16 +36,17 @@
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},
-        {"path": "/user/finance/balance", "page": "account_balance"},
-        {"path": "/user/finance/view_invoice", "page": "view_invoice"},
-        {"path": "/user/finance/history", "page": "transaction_history"},
-        {"path": "/user/finance/subscriptions", "page": "manage_subscriptions"},
         {"path": "/transaction/success", "page": "transaction_success"},
         {"path": "/transaction/purchase/success", "page": "purchase_success"},
         {"path": "/transaction/purchase/failure", "page": "purchase_failure"},
         {"path": "/transaction/subscription/confirm", "page": "confirm_subscription_purchase"},
 		{"path": "/applications", "page": "applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
+
+        {"path": "/finance/balance", "page": "finance_balance"},
+        {"path": "/finance/view_invoice", "page": "finance_invoice"},
+        {"path": "/finance/transactions", "page": "finance_transactions"},
+        {"path": "/finance/subscriptions", "page": "finance_subscriptions"},
 
         {"path": "/settings/user", "page": "settings_user"},
         {"path": "/settings/password", "page": "settings_password"},

@@ -1281,6 +1281,16 @@ body.fixed-footer .main-menu.menu-fixed {
       height: 50px; }
       .avatar.avatar-lg .avatar-content .avatar-icon {
         font-size: 2rem; }
+  .avatar.avatar-md {
+    font-size: 1.5rem; }
+    .avatar.avatar-md img {
+      width: 38px;
+      height: 38px; }
+      .avatar.avatar-md .avatar-content {
+        width: 38px;
+        height: 38px; }
+        .avatar.avatar-md .avatar-content .avatar-icon {
+          font-size: 1.5rem; }
   .avatar.avatar-sm .avatar-content {
     width: 24px;
     height: 24px; }

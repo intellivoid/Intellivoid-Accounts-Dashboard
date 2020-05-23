@@ -50,24 +50,33 @@
                         <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_ACCOUNT_SETTINGS); ?></span>
                     </a>
                 </li>
-                <li class="dropdown nav-item" data-menu="dropdown">
+                <?PHP
+                    $FinanceActive = "";
+
+                    switch(APP_CURRENT_PAGE)
+                    {
+                        case "finance_balance":
+                            $FinanceActive = " active";
+                    }
+                ?>
+                <li class="dropdown nav-item<?PHP HTML::print($FinanceActive); ?>" data-menu="dropdown">
                     <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                         <i class="feather icon-dollar-sign"></i>
                         <span data-i18n="Starter kit"><?PHP HTML::print(TEXT_NAV_MENU_LINK_FINANCE); ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('account_balance', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_balance', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_ACCOUNT_BALANCE); ?>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('transaction_history', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_transactions', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_TRANSACTION_HISTORY); ?>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_subscriptions', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_subscriptions', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_SUBSCRIPTIONS); ?>
                             </a>
                         </li>
