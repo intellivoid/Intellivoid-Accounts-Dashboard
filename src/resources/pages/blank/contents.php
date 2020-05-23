@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
-        <?PHP HTML::importSection('main_headers'); ?>
+        <?PHP HTML::importSection('generic_headers'); ?>
         <title>Blank</title>
     </head>
     <body class="horizontal-layout horizontal-menu 2-columns navbar-sticky fixed-footer" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
