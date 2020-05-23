@@ -23,7 +23,7 @@
         }
 
         ?>
-        <div class="accordion" id="subscription-accordion" role="tablist">
+        <div class="accordion" id="apps-accordion" role="tablist">
             <?PHP
                 foreach($Subscriptions as $Subscription)
                 {
@@ -35,44 +35,58 @@
                         ApplicationSearchMethod::byId, $SubscriptionPlan->ApplicationID
                     );
                     ?>
-                    <div class="card accordion-minimal">
-                        <div class="card-header" role="tab" id="heading-<?PHP HTML::print($Subscription->PublicID); ?>">
-                            <a class="mb-0 d-flex collapsed" data-toggle="collapse" href="#collapse-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Application->PublicAppId); ?>">
-                                <img class="img-xs rounded-circle mt-2" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="brand logo">
-                                <div class="ml-3">
-                                    <h6 class="mb-0">
-                                        <?PHP
-                                            $Text = "%an (%sn)";
-                                            $Text = str_ireplace('%an', $Application->Name, $Text);
-                                            $Text = str_ireplace('%sn', $SubscriptionPlan->PlanName, $Text);
-                                            HTML::print($Text);
-                                        ?>
-                                    </h6>
-                                    <small class="text-muted"><?PHP HTML::print(str_ireplace('%s', gmdate("j/m/Y g:i a", $Subscription->CreatedTimestamp), TEXT_SUBSCRIPTION_START)); ?></small>
-                                </div>
-                            </a>
+
+
+
+
+                    <div class="collapse-margin">
+                        <div class="card-header" style="justify-content: normal;;" id="heading-<?PHP HTML::print($Subscription->PublicID); ?>" data-toggle="collapse" role="button" data-target="#collapse-<?PHP HTML::print($Subscription->PublicID); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Subscription->PublicID); ?>">
+                            <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="<?PHP HTML::print($Application->Name); ?>" class="avatar pull-up">
+                                <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="<?PHP HTML::print($Application->Name); ?>" height="30" width="30">
+                            </div>
+                            <div class="ml-1">
+                                <h6 class="mb-0">
+                                    <?PHP
+                                        $Text = "%an (%sn)";
+                                        $Text = str_ireplace('%an', $Application->Name, $Text);
+                                        $Text = str_ireplace('%sn', $SubscriptionPlan->PlanName, $Text);
+                                        HTML::print($Text);
+                                    ?>
+                                </h6>
+                                <small class="text-muted d-none d-lg-inline">
+                                    <?PHP HTML::print(str_ireplace('%s', gmdate("j/m/Y g:i a", $Subscription->CreatedTimestamp), TEXT_SUBSCRIPTION_START)); ?>
+                                </small>
+                                <small class="text-muted d-md-inline d-lg-none">
+                                    <?PHP HTML::print(gmdate("j/m/Y g:i a", $Subscription->CreatedTimestamp)); ?>
+                                </small>
+                            </div>
                         </div>
-                        <div id="collapse-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" class="collapse" role="tabpanel" aria-labelledby="heading-<?PHP HTML::print($SubscriptionPlan->PublicID); ?>" data-parent="#subscription-accordion">
-                            <div class="card-body">
-                                <div class="ml-2 mr-2 row grid-margin d-flex mb-0">
+
+                        <div id="collapse-<?PHP HTML::print($Subscription->PublicID); ?>" class="collapse" aria-labelledby="heading-<?PHP HTML::print($Subscription->PublicID); ?>" data-parent="#apps-accordion">
+                            <div class="card-body pt-50 px-2">
+                                <div class="row grid-margin d-flex mb-0">
                                     <div class="col-lg-9 mb-2">
-                                        <div class="d-flex ml-2 align-items-center py-1 pb-2">
-                                            <i class="mdi mdi-calendar-clock mdi-18px"></i>
-                                            <p class="mb-0 ml-3">
-                                                <?PHP $Text = TEXT_SUBSCRIPTION_BILLING; ?>
-                                                <?PHP $Text = str_ireplace('%nbc', gmdate("j/m/Y g:i a", $Subscription->NextBillingCycle), $Text); ?>
-                                                <?PHP $Text = str_ireplace('%cp', $Subscription->Properties->CyclePrice, $Text); ?>
-                                                <?PHP HTML::print($Text); ?>
+
+                                        <div class="d-flex ml-2 align-items-center pb-50">
+                                            <i class="feather icon-calendar"></i>
+                                            <p class="mb-0 ml-2">
+                                                <?PHP
+                                                    $Text = TEXT_SUBSCRIPTION_BILLING;
+                                                    $Text = str_ireplace('%nbc', gmdate("j/m/Y g:i a", $Subscription->NextBillingCycle), $Text);
+                                                    $Text = str_ireplace('%cp', $Subscription->Properties->CyclePrice, $Text);
+                                                    HTML::print($Text);
+                                                ?>
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 mt-auto mb-2">
-                                        <button class="btn btn-block btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
+                                    <div class="col-lg-3 mt-auto mb-1">
+                                        <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <?PHP
                 }
             ?>
