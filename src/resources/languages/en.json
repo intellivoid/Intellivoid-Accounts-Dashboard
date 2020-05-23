@@ -654,28 +654,6 @@
             "CHANGE_AVATAR_DIALOG_CANCEL_BUTTON": "Cancel",
             "CHANGE_AVATAR_DIALOG_UPLOAD_BUTTON": "Upload"
         },
-        "dashboard_navbar": {
-            "USER_DROPDOWN_MANAGE_APPLICATIONS": "Manage Applications",
-            "USER_DROPDOWN_CHANGE_PASSWORD": "Change Password",
-            "USER_DROPDOWN_CHANGE_AVATAR": "Change Avatar",
-            "USER_DROPDOWN_LOGOUT": "Logout",
-            "NAV_MENU_LINK_OVERVIEW": "Overview",
-            "NAV_MENU_LINK_PERSONAL": "Personal",
-            "NAV_MENU_LINK_SECURITY": "Security",
-            "NAV_MENU_DROPDOWN_SECURITY_AUTHORIZED_APPS": "Authorized Apps",
-            "NAV_MENU_DROPDOWN_SECURITY_LOGIN_HISTORY": "Login History",
-            "NAV_MENU_DROPDOWN_SECURITY_LOGIN_SECURITY": "Login",
-            "NAV_MENU_DROPDOWN_SECURITY_INTERNAL_AUTH": "Internal Auth",
-            "NAV_MENU_DROPDOWN_SECURITY_UPDATE_PASSWORD": "Update Password",
-            "NAV_MENU_LINK_FINANCE": "Finance",
-            "NAV_MENU_DROPDOWN_FINANCE_ACCOUNT_BALANCE": "Account Balance",
-            "NAV_MENU_DROPDOWN_FINANCE_TRANSACTION_HISTORY": "Transaction History",
-            "NAV_MENU_DROPDOWN_FINANCE_SUBSCRIPTIONS": "Subscriptions",
-            "NAV_MENU_LINK_SUPPORT": "Support",
-            "NAV_MENU_DROPDOWN_SUPPORT_PRIVACY": "Privacy Policy",
-            "NAV_MENU_DROPDOWN_SUPPORT_TERMS_OF_SERVICE": "Terms of Service",
-            "NAV_MENU_DROPDOWN_SUPPORT_FEEDBACK": "Send Feedback"
-        },
         "main_nav": {
             "USER_DROPDOWN_MANAGE_APPLICATIONS": "Manage Applications",
             "USER_DROPDOWN_CHANGE_PASSWORD": "Change Password",
@@ -712,9 +690,6 @@
             "FEEDBACK_DIALOG_MESSAGE_PLACEHOLDER": "Write your message here and we will get back to you as soon as possible via Email",
             "FEEDBACK_DIALOG_CANCEL_BUTTON": "Cancel",
             "FEEDBACK_DIALOG_SUBMIT_BUTTON": "Send"
-        },
-        "gen_dashboard_navbar": {
-            "NAV_MENU_LINK_HOME": "Home"
         },
         "landing_footer": {
             "FOOTER_MENU_LINK_PRIVACY": "Privacy Policies",
