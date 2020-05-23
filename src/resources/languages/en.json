@@ -6,9 +6,7 @@
     "pages": {
         "404": {
             "PAGE_TITLE": "404 Not Found",
-            "HEADER": "404",
-            "SUB_HEADER": "UwU",
-            "MESSAGE": "Nothing can be found here",
+            "HEADER": "404 - Page Not Found!",
             "HOME_LINK": "Go Back Home"
         },
         "500": {
