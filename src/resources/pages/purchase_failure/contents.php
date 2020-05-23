@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <div class="row mx-2 my-3">
                                     <div class="d-flex">
-                                        <i class="feather icon-x-circle text-danger d-flex align-items-center" style="font-size: 38px;"></i>
+                                        <i class="feather icon-x-circletext-danger d-flex align-items-center" style="font-size: 38px;"></i>
                                         <div class="d-flex flex-column ml-1">
                                             <h4 class="font-weight-bold"><?PHP HTML::print(TEXT_CARD_HEADER); ?></h4>
                                             <small class="text-muted"><?PHP HTML::print(TEXT_CARD_DESCRIPTION); ?></small>
