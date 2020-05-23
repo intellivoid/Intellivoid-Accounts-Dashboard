@@ -11,9 +11,7 @@
         },
         "500": {
             "PAGE_TITLE": "500 Internal Server Error",
-            "HEADER": "500",
-            "SUB_HEADER": "OwO",
-            "MESSAGE": "Server made an oopsy woopsy",
+            "HEADER": "500 - Internal Server Error",
             "HOME_LINK": "Go Back Home"
         },
         "application_authenticate": {
