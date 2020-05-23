@@ -97,7 +97,6 @@
                                     $FromAccount = null;
                                 }
                             ?>
-                            <!-- Invoice Company Details -->
                             <div id="invoice-company-details" class="row">
                                 <div class="col-sm-6 col-12 text-left pt-1">
                                     <div class="media pt-1">
@@ -143,50 +142,48 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Invoice Items Details -->
                             <div id="invoice-items-details" class="pt-1 invoice-items-table">
                                 <div class="row">
                                     <div class="table-responsive w-100">
                                         <table class="table">
                                             <thead>
-                                            <tr class="bg-dark text-white">
-                                                <th>#</th>
-                                                <th><?PHP HTML::print(TEXT_INVOICE_DESCRIPTION); ?></th>
-                                                <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_QUANTITY); ?></th>
-                                                <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_UNIT_COST); ?></th>
-                                                <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_TOTAL); ?></th>
-                                            </tr>
+                                                <tr class="bg-dark text-white">
+                                                    <th>#</th>
+                                                    <th><?PHP HTML::print(TEXT_INVOICE_DESCRIPTION); ?></th>
+                                                    <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_QUANTITY); ?></th>
+                                                    <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_UNIT_COST); ?></th>
+                                                    <th class="text-right"><?PHP HTML::print(TEXT_INVOICE_TOTAL); ?></th>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <tr class="text-right">
-                                                <td class="text-left">1</td>
-                                                <td class="text-left"><?PHP HTML::print(TEXT_INVOICE_TRANSACTION); ?></td>
-                                                <td>1</td>
-                                                <?PHP
-                                                if($TransactionRecord->Amount == 0)
-                                                {
-                                                    ?>
-                                                    <td>$0 USD</td>
-                                                    <td>$0 USD</td>
+                                                <tr class="text-right">
+                                                    <td class="text-left">1</td>
+                                                    <td class="text-left"><?PHP HTML::print(TEXT_INVOICE_TRANSACTION); ?></td>
+                                                    <td>1</td>
                                                     <?PHP
-                                                }
-                                                elseif($TransactionRecord->Amount > 0)
-                                                {
+                                                        if($TransactionRecord->Amount == 0)
+                                                        {
+                                                            ?>
+                                                            <td>$0 USD</td>
+                                                            <td>$0 USD</td>
+                                                            <?PHP
+                                                        }
+                                                        elseif($TransactionRecord->Amount > 0)
+                                                        {
+                                                            ?>
+                                                            <td>$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</td>
+                                                            <td>$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</td>
+                                                            <?PHP
+                                                        }
+                                                        elseif($TransactionRecord->Amount < 0)
+                                                        {
+                                                            ?>
+                                                            <td>-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</td>
+                                                            <td>-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</td>
+                                                            <?PHP
+                                                        }
                                                     ?>
-                                                    <td>$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</td>
-                                                    <td>$<?PHP HTML::print($TransactionRecord->Amount); ?> USD</td>
-                                                    <?PHP
-                                                }
-                                                elseif($TransactionRecord->Amount < 0)
-                                                {
-                                                    ?>
-                                                    <td>-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</td>
-                                                    <td>-$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD</td>
-                                                    <?PHP
-                                                }
-                                                ?>
-
-                                            </tr>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -195,19 +192,19 @@
                             <div class="container-fluid mt-2 w-100">
                                 <h4 class="text-right">
                                     <?PHP
-                                    HTML::print(TEXT_INVOICE_TOTAL);
-                                    if($TransactionRecord->Amount == 0)
-                                    {
-                                        HTML::print("$0 USD");
-                                    }
-                                    elseif($TransactionRecord->Amount > 0)
-                                    {
-                                        ?>$<?PHP HTML::print($TransactionRecord->Amount); ?> USD<?PHP
-                                    }
-                                    elseif($TransactionRecord->Amount < 0)
-                                    {
-                                        ?>Total -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD<?PHP
-                                    }
+                                        HTML::print(TEXT_INVOICE_TOTAL);
+                                        if($TransactionRecord->Amount == 0)
+                                        {
+                                            HTML::print("$0 USD");
+                                        }
+                                        elseif($TransactionRecord->Amount > 0)
+                                        {
+                                            ?>$<?PHP HTML::print($TransactionRecord->Amount); ?> USD<?PHP
+                                        }
+                                        elseif($TransactionRecord->Amount < 0)
+                                        {
+                                            ?>Total -$<?PHP HTML::print(abs($TransactionRecord->Amount)); ?> USD<?PHP
+                                        }
                                     ?>
                                 </h4>
                             </div>
