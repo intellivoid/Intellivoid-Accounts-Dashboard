@@ -33,7 +33,7 @@
 
         <?PHP HTML::importSection('main_ehelper'); ?>
         <?PHP HTML::importSection('main_footer'); ?>
-        <?PHP HTML::importSection('main_js'); ?>
+        <?PHP HTML::importSection('generic_js'); ?>
 
     </body>
 </html>
