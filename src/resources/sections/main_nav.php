@@ -144,7 +144,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('applications', [], true); ?>">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_applications', [], true); ?>">
                                 <i class="feather icon-layers"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_MANAGE_APPLICATIONS); ?>
                             </a>
                             <a class="dropdown-item" data-toggle="modal" data-target="#password-reset-dialog" href="#">
