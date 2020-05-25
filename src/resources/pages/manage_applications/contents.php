@@ -19,13 +19,6 @@
             }
         }
     }
-
-    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
-    if(strlen($UsernameSafe) > 16)
-    {
-        $UsernameSafe = substr($UsernameSafe, 0 ,16);
-        $UsernameSafe .= "...";
-    }
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
@@ -48,10 +41,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"><?PHP HTML::print(TEXT_ACTIONS_CARD_TITLE); ?></h4>
-                                    <div class="wrapper mt-4">
-                                        <a class="d-flex align-items-center py-3 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
-                                            <i class="mdi mdi-plus text-danger"></i>
-                                            <p class="mb-0 ml-3"><?PHP HTML::print(TEXT_ACTIONS_CREATE_APPLICATION_LINK); ?></p>
+                                    <div class="wrapper mt-1 mx-1">
+                                        <a class="d-flex align-items-center py-1 text-black" data-toggle="modal" data-target="#create-application" style="text-decoration: none;" href="<?PHP ?>">
+                                            <i class="feather icon-plus-square text-primary"></i>
+                                            <p class="mb-0 pl-50"><?PHP HTML::print(TEXT_ACTIONS_CREATE_APPLICATION_LINK); ?></p>
                                         </a>
                                     </div>
                                 </div>
