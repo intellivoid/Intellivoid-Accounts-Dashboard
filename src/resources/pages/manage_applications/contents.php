@@ -38,7 +38,7 @@
                 <?PHP HTML::importScript('callbacks'); ?>
                 <div class="content-body">
                     <div class="row">
-                        <div class="col-md-4 grid-margin">
+                        <div class="col-12 col-lg-4 col-xl-3 grid-margin">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"><?PHP HTML::print(TEXT_ACTIONS_CARD_TITLE); ?></h4>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8 grid-margin stretch-card">
+                        <div class="col-12 col-lg-8 col-xl-9 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"><?PHP HTML::print(TEXT_APPLICATIONS_CARD_TITLE); ?></h4>
