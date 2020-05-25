@@ -10,7 +10,6 @@
         foreach($items as $application)
         {
             ?>
-
             <div class="d-flex justify-content-start align-items-center my-75">
                 <div class="avatar mr-75">
                     <img src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $application['public_app_id'], 'resource' => 'normal'), true); ?>" alt="<?PHP HTML::print($application['name']); ?>" height="40" width="40">
@@ -65,7 +64,6 @@
                     <a href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id']), true); ?>">
                         <i class="feather icon-edit"></i>
                     </a>
-
                 </div>
             </div>
             <?PHP

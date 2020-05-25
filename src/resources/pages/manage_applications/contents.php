@@ -35,6 +35,7 @@
         <div class="app-content content mb-0">
             <?PHP HTML::importSection('main_chelper'); ?>
             <div class="content-wrapper">
+                <?PHP HTML::importScript('callbacks'); ?>
                 <div class="content-body">
                     <div class="row">
                         <div class="col-md-4 grid-margin">
