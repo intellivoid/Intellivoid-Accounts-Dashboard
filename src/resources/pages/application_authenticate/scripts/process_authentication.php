@@ -4,18 +4,18 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-use IntellivoidAccounts\Abstracts\AuthenticationMode;
-use IntellivoidAccounts\Abstracts\LoginStatus;
-use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
-use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
+    use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
+    use IntellivoidAccounts\Abstracts\AuthenticationMode;
+    use IntellivoidAccounts\Abstracts\LoginStatus;
+    use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthenticationRequestAlreadyUsedException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
-use sws\Objects\Cookie;
+    use sws\Objects\Cookie;
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_GET['action']))
         {
