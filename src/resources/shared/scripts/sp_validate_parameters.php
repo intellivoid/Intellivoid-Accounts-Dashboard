@@ -3,16 +3,16 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\InvalidSubscriptionPromotionNameException;
     use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\Subscription\Properties;
+    use IntellivoidAccounts\Objects\Subscription\Properties;
 
-// Validate the parameters
+    // Validate the parameters
     function validate_parameter_presence(string $parameter_name)
     {
         if(isset($_GET[$parameter_name]) == false)
