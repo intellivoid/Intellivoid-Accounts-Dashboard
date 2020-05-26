@@ -148,6 +148,15 @@
             $IntellivoidAccounts->getSubscriptionManager()->startSubscription(
                 $Account->ID, $Application->ID, $SubscriptionPlan->PlanName, $PromotionCode
             );
+
+            if(isset($_GET['redirect']))
+            {
+                if (filter_var($_GET['redirect'], FILTER_VALIDATE_URL) == true)
+                {
+                    Actions::redirect(DynamicalWeb::getRoute('purchase_success', array('redirect' => $_GET['redirect'])));
+                }
+            }
+
             Actions::redirect(DynamicalWeb::getRoute('purchase_success'));
         }
         catch (AccountLimitedException $e)

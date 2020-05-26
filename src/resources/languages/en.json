@@ -356,7 +356,8 @@
         "purchase_success": {
             "PAGE_TITLE": "Purchase Successful",
             "CARD_HEADER": "Purchase Successful",
-            "CARD_DESCRIPTION": "Your purchase has been processed successfully, you may now close this window."
+            "CARD_DESCRIPTION": "Your purchase has been processed successfully, you may now close this window.",
+            "CARD_DESCRIPTION_REDIRECT": "Your purchase has been processed successfully, you will be redirected shortly"
         },
         "recover_password": {
             "PAGE_TITLE": "Password Recovery",

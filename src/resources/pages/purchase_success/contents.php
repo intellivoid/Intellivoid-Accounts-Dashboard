@@ -1,5 +1,23 @@
 <?PHP
     use DynamicalWeb\HTML;
+
+    if(isset($_GET["redirect"]))
+    {
+        if (filter_var($_GET['redirect'], FILTER_VALIDATE_URL) == true)
+        {
+            define("REDIRECT_CALLBACK_ENABLED", true);
+            define("REDIRECT_CALLBACK_LOCATION", $_GET['redirect']);
+            header('Refresh: 5 URL=' . $_GET['redirect']);
+        }
+        else
+        {
+            define("REDIRECT_CALLBACK_ENABLED", false);
+        }
+    }
+    else
+    {
+        define("REDIRECT_CALLBACK_ENABLED", false);
+    }
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
@@ -25,7 +43,20 @@
                                         <i class="feather icon-check-circle text-success d-flex align-items-center" style="font-size: 38px;"></i>
                                         <div class="d-flex flex-column ml-1">
                                             <h4 class="font-weight-bold"><?PHP HTML::print(TEXT_CARD_HEADER); ?></h4>
-                                            <small class="text-muted"><?PHP HTML::print(TEXT_CARD_DESCRIPTION); ?></small>
+                                            <?PHP
+                                                if(REDIRECT_CALLBACK_ENABLED)
+                                                {
+                                                    ?>
+                                                    <small class="text-muted"><?PHP HTML::print(TEXT_CARD_DESCRIPTION_REDIRECT); ?></small>
+                                                    <?PHP
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    <small class="text-muted"><?PHP HTML::print(TEXT_CARD_DESCRIPTION); ?></small>
+                                                    <?PHP
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
