@@ -89,7 +89,7 @@ use IntellivoidAccounts\Objects\Subscription\Properties;
             $Application->ID, $_GET['plan_name']
         );
 
-        $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
+        $SubscriptionPlanAlt = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
             SubscriptionPlanSearchMethod::byPublicId, $_GET['subscription_plan_id']
         );
     }
@@ -110,6 +110,17 @@ use IntellivoidAccounts\Objects\Subscription\Properties;
                 'error_type' => 'parameter_error',
                 'error' => 'internal_server_error',
                 'step' => '2'
+            )
+        ));
+    }
+
+    if($SubscriptionPlan->PublicID !== $SubscriptionPlanAlt->PublicID)
+    {
+        Actions::redirect(DynamicalWeb::getRoute(
+            'purchase_failure', array(
+                'error_type' => 'parameter_error',
+                'error' => 'invalid_plan_name',
+                'step' => '1'
             )
         ));
     }
