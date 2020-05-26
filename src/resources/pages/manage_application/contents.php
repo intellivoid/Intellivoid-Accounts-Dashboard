@@ -174,7 +174,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <h4 class="card-title"><?PHP HTML::print(TEXT_SETTINGS_HEADER); ?></h4>
+                                    <h4 class="card-title pb-2"><?PHP HTML::print(TEXT_SETTINGS_HEADER); ?></h4>
                                     <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_auth_mode'), true); ?>" method="POST">
                                         <div class="form-group">
                                             <label for="authentication_type"><?PHP HTML::print(TEXT_AUTHENTICATION_TYPE_LABEL); ?></label>
@@ -186,7 +186,7 @@
                                         </div>
                                     </form>
                                     <form class="form-group pt-2 mb-0" id="permissions-form" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_permissions'), true); ?>" method="POST">
-                                        <label><?PHP HTML::print(TEXT_PERMISSIONS_HEADER); ?></label>
+                                        <h4 class="card-title pb-2"><?PHP HTML::print(TEXT_PERMISSIONS_HEADER); ?></h4>
                                         <div class="row">
                                             <div class="col-md-6">
 
