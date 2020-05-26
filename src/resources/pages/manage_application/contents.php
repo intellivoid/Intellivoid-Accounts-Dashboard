@@ -240,7 +240,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="row align-items-center">
-                                        <button class="btn bg-gradient-danger ml-auto mr-2" data-toggle="modal" data-target="#delete_application"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>><?PHP HTML::print(TEXT_DELETE_APPLICATION_BUTTON); ?></button>
+                                        <button class="btn bg-gradient-danger ml-auto mr-2" data-toggle="modal" data-target="#delete-application"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>><?PHP HTML::print(TEXT_DELETE_APPLICATION_BUTTON); ?></button>
                                         <button class="btn bg-gradient-primary mr-2<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>" onclick="$('#permissions-form').submit();"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>><?PHP HTML::print(TEXT_SAVE_CHANGES_BUTTON); ?></button>
                                     </div>
                                 </div>
