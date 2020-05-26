@@ -17,7 +17,7 @@
                 <p><?PHP HTML::print(TEXT_DELETE_APPLICATION_DIALOG_BODY); ?></p>
             </div>
             <div class="modal-footer">
-                <?PHP $Href = DynamicalWeb::getRoute('manage_application', array('pub_id' => $_GET['pub_id'], 'action' => 'delete-application')); ?>
+                <?PHP $Href = DynamicalWeb::getRoute('manage_application', array('pub_id' => $_GET['pub_id'], 'action' => 'delete_application')); ?>
                 <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_DELETE_APPLICATION_DIALOG_CANCEL_BUTTON); ?></button>
                 <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';"><?PHP HTML::print(TEXT_DELETE_APPLICATION_DIALOG_DELETE_BUTTON); ?></button>
             </div>
