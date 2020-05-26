@@ -47,12 +47,12 @@
 
     if(isset($_POST['application_name']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '100', 'param' => 'application_name')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '100', 'param' => 'application_name')));
     }
 
     if(isset($_POST['authentication_type']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '100', 'param' => 'authentication_type')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '100', 'param' => 'authentication_type')));
     }
 
     $AuthenticationType = null;
@@ -72,7 +72,7 @@
             break;
 
         default:
-            Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '103')));
+            Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '103')));
     }
 
     $Permissions = [];
@@ -100,33 +100,33 @@
 
         if($TotalRecords == 20)
         {
-            Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '109')));
+            Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '109')));
         }
 
         if($TotalRecords > 20)
         {
-            Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '109')));
+            Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '109')));
         }
 
         $IntellivoidAccounts->getApplicationManager()->registerApplication(
             $_POST['application_name'], WEB_ACCOUNT_ID, $AuthenticationType, $Permissions
         );
         $IntellivoidAccounts->getAuditLogManager()->logEvent(WEB_ACCOUNT_ID, AuditEventType::ApplicationCreated);
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '106')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '106')));
     }
     catch (ApplicationAlreadyExistsException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '104')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '104')));
     }
     catch (InvalidApplicationNameException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '102')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '102')));
     }
     catch (InvalidRequestPermissionException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '105')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '105')));
     }
     catch(Exception $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '100')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '100')));
     }

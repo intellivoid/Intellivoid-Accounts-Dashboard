@@ -37,7 +37,8 @@
         {"path": "/transaction/purchase/success", "page": "purchase_success"},
         {"path": "/transaction/purchase/failure", "page": "purchase_failure"},
         {"path": "/transaction/subscription/confirm", "page": "confirm_subscription_purchase"},
-		{"path": "/applications", "page": "applications"},
+
+		{"path": "/applications", "page": "manage_applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
         {"path": "/finance/balance", "page": "finance_balance"},
