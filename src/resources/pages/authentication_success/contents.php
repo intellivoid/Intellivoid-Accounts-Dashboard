@@ -1,8 +1,8 @@
 <?php
+
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\Abstracts\ApplicationFlags;
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
 
