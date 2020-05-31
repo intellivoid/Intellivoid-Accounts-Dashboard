@@ -3,7 +3,7 @@
     "debugging_mode": true,
     "router": [
         {"path": "/", "page": "index"},
-        {"path": "/audit", "page": "audit_logs"},
+        {"path": "/audit", "page": "audit_log"},
         {"path": "/loading_auth", "page": "loading_auth"},
         {"path": "/landing", "page": "landing_page"},
         {"path": "/privacy", "page": "privacy"},

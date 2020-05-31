@@ -48,9 +48,9 @@
             "PAGE_SUB_HEADER": "There was an error while trying to process your authentication request",
             "ERROR_DETAILS_HEADER": "Error Details"
         },
-        "audit_logs": {
+        "audit_log": {
             "PAGE_TITLE": "Audit Logs",
-            "CARD_TITLE": "Audit Logs History",
+            "PAGE_HEADER": "Audit Logs History",
             "CARD_DESCRIPTION": "Last security events associated with your account",
             "AUDIT_EVENT_NEW_LOGIN_DETECTED": "New login detected",
             "AUDIT_EVENT_PASSWORD_UPDATE": "Password Updated",

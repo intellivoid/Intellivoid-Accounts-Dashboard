@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="card-footer text-muted bg-white">
                                         <span class="float-right">
-                                            <a href="<?PHP DynamicalWeb::getRoute('audit_logs', array(), true); ?>" class="card-link"><?PHP HTML::print(TEXT_RECENT_ACTIONS_CARD_DROPDOWN_VIEW_MORE); ?>
+                                            <a href="<?PHP DynamicalWeb::getRoute('audit_log', array(), true); ?>" class="card-link"><?PHP HTML::print(TEXT_RECENT_ACTIONS_CARD_DROPDOWN_VIEW_MORE); ?>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </span>
