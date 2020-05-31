@@ -267,7 +267,7 @@ textarea.form-control {
     height: auto; }
 
 select.form-control:not([multiple="multiple"]) {
-  background-image: url("/assets/images/pages/arrow-down.png");
+  background-image: url("/assets/images/arrow-down.png");
   background-position: calc(100% - 12px) 13px, calc(100% - 20px) 13px, 100% 0;
   background-size: 12px 12px, 10px 10px;
   background-repeat: no-repeat;
@@ -1109,7 +1109,7 @@ html [type="button"],
     Description: Contain header navigation bar, vertical main navigation bar and
     horiznotal main navigation bar related SCSS.
     ----------------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ================================================================================================*/
@@ -2136,7 +2136,7 @@ body[data-col="1-column"] .header-navbar.floating-nav {
   File Name: progress.scss
   Description: Extended bootstrap progress bar scss.
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+  Item Name: Intellivoid Accounts Dashboard
   Author: PIXINVENT
   Author URL: http://www.themeforest.net/user/pixinvent
   ----------------------------------------------------------------------------------------
@@ -2166,7 +2166,7 @@ body[data-col="1-column"] .header-navbar.floating-nav {
 	File Name: list-group.scss
 	Description: Contain list item, list group related extended SCSS.
 	----------------------------------------------------------------------------------------------
-	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+	Item Name: Intellivoid Accounts Dashboard
 	Author: PIXINVENT
 	Author URL: http://www.themeforest.net/user/pixinvent
 ================================================================================================*/

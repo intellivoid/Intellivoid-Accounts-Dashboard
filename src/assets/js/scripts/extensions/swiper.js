@@ -2,7 +2,7 @@
     File Name: swiper.js
     Description: swiper plugin
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/

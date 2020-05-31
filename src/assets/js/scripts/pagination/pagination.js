@@ -3,9 +3,9 @@
     Description: Provide pagination links for your site or app with the multi-page
                 pagination component.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
-    Author URL: hhttp://www.themeforest.net/user/pixinvent
+    Item Name: Intellivoid Accounts Dashboard
+    Author: Zi Xing Narrakas
+    Author URL: https://intellivoid.net
 ==========================================================================================*/
 (function (window, document, $) {
   'use strict';

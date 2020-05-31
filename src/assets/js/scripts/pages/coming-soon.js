@@ -2,7 +2,7 @@
     File Name: page-coming-soon.js
     Description: Coming Soon
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/

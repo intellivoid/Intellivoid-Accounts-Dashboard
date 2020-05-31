@@ -3,9 +3,9 @@
     Description: Modals are streamlined, but flexible, dialog prompts with the minimum
 				required functionality and smart defaults.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
-    Author URL: hhttp://www.themeforest.net/user/pixinvent
+    Item Name: Intellivoid Accounts Dashboard
+    Author: Zi Xing Narrakas
+    Author URL: https://intellivoid.net
 ==========================================================================================*/
 (function(window, document, $) {
 	'use strict';
