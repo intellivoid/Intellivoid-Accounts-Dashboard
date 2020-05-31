@@ -8,11 +8,14 @@
         <div class="navbar-container content">
             <div class="navbar-collapse" id="navbar-mobile">
                 <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-                    <img src="/assets/images/logo_2.svg" alt="Intellivoid Accounts Brand" style="width: 130px; height: 30px;" class="img-fluid my-2">
+                    <a href="<?PHP DynamicalWeb::getRoute('index', array(), true); ?>">
+                        <img src="/assets/images/logo_2.svg" alt="Intellivoid Accounts Brand" style="width: 130px; height: 30px;" class="img-fluid my-2">
+                    </a>
+
                 </div>
                 <ul class="nav navbar-nav float-right mr-2">
                     <li class="nav-item d-block">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('index', array(), true); ?>">
                             <i class="ficon feather icon-home"></i>
                         </a>
                     </li>
