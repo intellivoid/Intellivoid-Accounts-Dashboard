@@ -85,6 +85,7 @@ We work hard to protect you and Intellivoid from unauthorized access, alteration
  - We review our information collection, storage, and processing practices, including physical security measures, to prevent unauthorized access to our systems
  - We restrict access to personal information to Intellivoid employees, contractors, and agents who need that information in order to process it. Anyone with this access is subject to strict contractual confidentiality obligations and may be disciplined or terminated if they fail to meet these obligations.
 
+Intellivoid also uses the haveibeenpwnd service to determine if your password has been compromised by another service, in order to determine this Intellivoid will hash your password using SHA1 and send the first 5 characters of the hash, Intellivoid will never send your full password to third-party services. This information is used to show you security alerts about your password being compromised to urge you to change your password.
 
 ### Data Transfers
 

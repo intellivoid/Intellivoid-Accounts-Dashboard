@@ -13,8 +13,10 @@
     use IntellivoidAccounts\Exceptions\InvalidUsernameException;
     use IntellivoidAccounts\Exceptions\UsernameAlreadyExistsException;
     use IntellivoidAccounts\IntellivoidAccounts;
+use pwc\pwc;
 
     Runtime::import('IntellivoidAccounts');
+    Runtime::import('PwCompromission');
 
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
@@ -122,6 +124,23 @@
         {
             $GetParameters['callback'] = '107';
             Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
+        }
+
+        $pwc = new pwc();
+
+        try
+        {
+            $PasswordCache = $pwc->checkPassword($_POST['password']);
+
+            if($PasswordCache->Compromised)
+            {
+                $GetParameters['callback'] = '108';
+                Actions::redirect(DynamicalWeb::getRoute('register', $GetParameters));
+            }
+        }
+        catch(Exception $exception)
+        {
+            unset($exception);
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)

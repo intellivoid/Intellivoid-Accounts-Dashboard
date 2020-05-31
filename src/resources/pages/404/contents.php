@@ -1,43 +1,40 @@
 <?PHP
-    /** @noinspection PhpUndefinedConstantInspection */
+
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
-<!doctype html>
-<html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
+<!DOCTYPE html>
+<html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
         <?PHP HTML::importSection('generic_headers'); ?>
         <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
-    <body>
-        <div class="container-scroller">
-            <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center text-center error-page bg-primary">
-                    <div class="row flex-grow">
-                        <div class="col-lg-7 mx-auto text-white">
-                            <div class="row align-items-center d-flex flex-row">
-                                <div class="col-lg-6 text-lg-right pr-lg-4">
-                                    <h1 class="display-1 mb-0 animated slow fadeInLeft"><?PHP HTML::print(TEXT_HEADER); ?></h1>
-                                </div>
-                                <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                                    <h2 class="animated fadeInDown"><?PHP HTML::print(TEXT_SUB_HEADER); ?></h2>
-                                    <h3 class="font-weight-light animated fadeInRight"><?PHP HTML::print(TEXT_MESSAGE); ?></h3>
-                                </div>
-                            </div>
-                            <div class="row mt-5">
-                                <div class="col-12 text-center mt-xl-2">
-                                    <a class="text-white font-weight-medium animated slower fadeIn" href="<?PHP DynamicalWeb::getRoute('index', array(), true); ?>"><?PHP HTML::print(TEXT_HOME_LINK); ?></a>
-                                </div>
-                            </div>
-                            <div class="row mt-5 animated fadeInUp">
-                                <div class="col-12 mt-xl-2">
-                                    <p class="text-white font-weight-medium text-center">Copyright &copy; 2017-<?PHP HTML::print(date('Y')); ?> Intellivoid Technologies All rights reserved.</p>
+    </head>
+    <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static bg-full-screen-image blank-page" data-open="hover" data-menu="horizontal-menu" data-col="1-columns">
+        <?PHP HTML::importSection('generic_bhelper'); ?>
+        <div class="app-content content mb-0 pt-0" style="min-height: auto; overflow: hidden;">
+            <?PHP HTML::importSection('main_chelper'); ?>
+            <div class="content-wrapper mt-0">
+                <?PHP HTML::importSection('background_animations'); ?>
+                <div class="content-header row">
+                </div>
+                <div class="content-body">
+                    <section class="row flexbox-container">
+                        <div class="col-xl-7 col-md-8 col-12 d-flex justify-content-center">
+                            <div class="card auth-card bg-transparent shadow-none rounded-0 mb-0 w-100">
+                                <div class="card-content">
+                                    <div class="card-body text-center">
+                                        <img src="/assets/images/undraw/404.svg" class="img-fluid align-self-center" alt="404 Not Found">
+                                        <h1 class="font-large-2 my-1"><?PHP HTML::print(TEXT_HEADER); ?></h1>
+                                        <a class="btn btn-primary btn-lg mt-2" href="<?PHP DynamicalWeb::getRoute('index', [], true); ?>"><?PHP HTML::print(TEXT_HOME_LINK); ?></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
+        <?PHP HTML::importSection('generic_ehelper'); ?>
         <?PHP HTML::importSection('generic_js'); ?>
     </body>
 </html>

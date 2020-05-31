@@ -52,7 +52,7 @@
         {
             Page::staticResponse(
                 'Security Error', 'Security Verification Failure',
-                "The server cannot verify your browser or IP Address, please contact support."
+                "Your browser is not supported because it does not have proper support for secured communications, try using a browser like Chrome, Firefox or Opera."
             );
             exit();
         }

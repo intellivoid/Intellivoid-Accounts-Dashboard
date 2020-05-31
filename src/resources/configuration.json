@@ -1,12 +1,13 @@
 {
     "primary_language": "en",
-    "debugging_mode": false,
+    "debugging_mode": true,
     "router": [
         {"path": "/", "page": "index"},
+        {"path": "/audit", "page": "audit_log"},
+        {"path": "/loading_auth", "page": "loading_auth"},
         {"path": "/landing", "page": "landing_page"},
         {"path": "/privacy", "page": "privacy"},
         {"path": "/tos", "page": "tos"},
-        {"path": "/documentation", "page": "documentation"},
         {"path": "/security/gba", "page": "gba_mode"},
 
         {"path": "/auth/otl", "page": "otl_api"},
@@ -23,7 +24,6 @@
         {"path": "/auth/verify/mobile", "page": "verify_mobile"},
         {"path": "/auth/verify/recovery_codes", "page": "verify_recovery_code"},
         {"path": "/auth/verify/telegram", "page": "verify_telegram"},
-        {"path": "/auth/internal", "page": "internal_authentication"},
         {"path": "/auth/recovery", "page": "recover_password"},
 
         {"path": "/auth/coa/error", "page": "application_error"},
@@ -33,24 +33,27 @@
 
         {"path": "/user/contents/public/avatar", "page": "avatar"},
         {"path": "/user/contents/public/application", "page": "application_icon"},
-        {"path": "/user/personal", "page": "personal"},
-        {"path": "/user/finance/balance", "page": "account_balance"},
-        {"path": "/user/finance/view_invoice", "page": "view_invoice"},
-        {"path": "/user/finance/history", "page": "transaction_history"},
-        {"path": "/user/finance/subscriptions", "page": "manage_subscriptions"},
         {"path": "/transaction/success", "page": "transaction_success"},
         {"path": "/transaction/purchase/success", "page": "purchase_success"},
         {"path": "/transaction/purchase/failure", "page": "purchase_failure"},
         {"path": "/transaction/subscription/confirm", "page": "confirm_subscription_purchase"},
-		{"path": "/applications", "page": "applications"},
+
+		{"path": "/applications", "page": "manage_applications"},
 		{"path": "/applications/manage", "page": "manage_application"},
 
-        {"path": "/security", "page": "login_security"},
-        {"path": "/security/login_history", "page": "login_history"},
-        {"path": "/security/services", "page": "services"},
-        {"path": "/security/audit_logs", "page": "audit_logs"},
-        {"path": "/security/setup/mobile", "page": "setup_mobile_verification"},
-        {"path": "/security/setup/recovery_codes", "page": "setup_recovery_codes"}
+        {"path": "/finance/balance", "page": "finance_balance"},
+        {"path": "/finance/view_invoice", "page": "finance_invoice"},
+        {"path": "/finance/transactions", "page": "finance_transactions"},
+        {"path": "/finance/subscriptions", "page": "finance_subscriptions"},
+
+        {"path": "/settings/user", "page": "settings_user"},
+        {"path": "/settings/password", "page": "settings_password"},
+        {"path": "/settings/login_history", "page": "settings_login_history"},
+        {"path": "/settings/otl", "page": "settings_otl_generator"},
+        {"path": "/settings/applications", "page": "settings_authorized_apps"},
+        {"path": "/settings/security", "page": "settings_login_security"},
+        {"path": "/settings/security/recovery", "page": "settings_setup_recovery_codes"},
+        {"path": "/settings/security/mobile", "page": "settings_setup_mobile_verification"}
     ],
     "libraries": {
         "SecuredWebSessions": {
@@ -73,6 +76,13 @@
             "check_class_exists": true,
             "namespace": "Support",
             "main_class": "Support"
+        },
+        "PwCompromission": {
+            "directory_name": "pwc",
+            "autoloader": "pwc.php",
+            "check_class_exists": true,
+            "namespace": "pwc",
+            "main_class": "pwc"
         }
     },
     "runtime_scripts": {

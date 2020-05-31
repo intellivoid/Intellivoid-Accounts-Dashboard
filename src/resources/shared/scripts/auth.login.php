@@ -20,10 +20,12 @@
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\KnownHost;
     use IntellivoidAccounts\Utilities\Validate;
-    use sws\Objects\Cookie;
+use pwc\pwc;
+use sws\Objects\Cookie;
     use sws\sws;
 
     Runtime::import('IntellivoidAccounts');
+    Runtime::import('PwCompromission');
 
     $GetParameters = $_GET;
     unset($GetParameters['callback']);
@@ -190,6 +192,22 @@
 
             $sws->CookieManager()->updateCookie($Cookie);
             HTML::importScript('sync_avatar');
+
+            $pwc = new pwc();
+
+            try
+            {
+                $PasswordCache = $pwc->checkPassword($_POST['password']);
+
+                if($PasswordCache->Compromised)
+                {
+                    $GetParameters['callback'] = '114';
+                }
+            }
+            catch(Exception $exception)
+            {
+                unset($exception);
+            }
 
             Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
         }
