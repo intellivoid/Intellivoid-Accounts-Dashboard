@@ -53,7 +53,7 @@
                     <?PHP HTML::importScript('callbacks'); ?>
                     <section id="header">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 d-none d-lg-block">
                                 <div class="card bg-analytics text-white">
                                     <div class="card-content">
                                         <div class="card-body text-center">
