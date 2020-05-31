@@ -2,7 +2,7 @@
     File Name: app-todo.js
     Description: app-todo
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
