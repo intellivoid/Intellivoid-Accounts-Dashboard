@@ -317,6 +317,25 @@
         }
 
         $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
+
+        $FirstNameUpdated = false;
+        $LastNameUpdated = false;
+
+        if($Account->PersonalInformation->FirstName != $_POST['first_name'])
+        {
+            $FirstNameUpdated = true;
+        }
+
+        if($Account->PersonalInformation->LastName != $_POST['last_name'])
+        {
+            $LastNameUpdated = true;
+        }
+
+        if(($FirstNameUpdated == false) && ($LastNameUpdated == false))
+        {
+            return;
+        }
+
         $Account->PersonalInformation->FirstName = $_POST['first_name'];
         $Account->PersonalInformation->LastName = $_POST['last_name'];
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);

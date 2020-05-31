@@ -120,7 +120,7 @@
                                                                 <div class="col-6">
                                                                     <label for="last_name"><?PHP HTML::print(TEXT_LAST_NAME_LABEL); ?></label>
                                                                     <fieldset class="form-group position-relative has-icon-left">
-                                                                        <input id="last_name" name="last_name" autocomplete="family-name" type="text" class="form-control" placeholder="Doe" <?PHP HTML::print(USER_LAST_NAME, false); ?> required>
+                                                                        <input id="last_name" name="last_name" autocomplete="family-name" type="text" class="form-control" placeholder="Doe" <?PHP HTML::print(USER_LAST_NAME, false); ?>>
                                                                         <div class="form-control-position">
                                                                             <i class="feather icon-user"></i>
                                                                         </div>
