@@ -13,8 +13,9 @@
     use IntellivoidAccounts\Exceptions\InvalidUsernameException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Utilities\Validate;
+use sws\sws;
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
+if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_GET['action']))
         {
@@ -217,6 +218,12 @@
         $Account->Email = $_POST['email'];
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
         $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::EmailUpdated);
+
+        /** @var sws $sws */
+        $sws = DynamicalWeb::setMemoryObject('sws', new sws());
+        $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+        $Cookie->Data['account_email'] = $_POST['email'];
+        $sws->CookieManager()->updateCookie($Cookie);
     }
 
     /**
