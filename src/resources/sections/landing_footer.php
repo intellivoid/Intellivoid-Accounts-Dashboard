@@ -18,7 +18,7 @@
                             <a class="nav-link" href="https://intellivoid.net/">Intellivoid</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('documentation', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_DOCUMENTATION); ?></a>
+                            <a class="nav-link" href="https://docs.intellivoid.net/"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_DOCUMENTATION); ?></a>
                         </li>
                     </ul>
                 </div>

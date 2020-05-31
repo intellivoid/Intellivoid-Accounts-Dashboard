@@ -51,16 +51,19 @@
             {
                 switch($_POST['redirect'])
                 {
+                    case 'settings_login_security':
                     case 'login_security':
-                        Actions::redirect(DynamicalWeb::getRoute('login_security', $_GET));
+                        Actions::redirect(DynamicalWeb::getRoute('settings_login_security', $_GET));
                         break;
 
+                    case 'settings_setup_mobile_verification':
                     case 'setup_mobile_verification':
-                        Actions::redirect(DynamicalWeb::getRoute('setup_mobile_verification', $_GET));
+                        Actions::redirect(DynamicalWeb::getRoute('settings_setup_mobile_verification', $_GET));
                         break;
 
+                    case 'settings_setup_recovery_codes':
                     case 'setup_recovery_codes':
-                        Actions::redirect(DynamicalWeb::getRoute('setup_recovery_codes', $_GET));
+                        Actions::redirect(DynamicalWeb::getRoute('settings_setup_recovery_codes', $_GET));
                         break;
 
                     default:

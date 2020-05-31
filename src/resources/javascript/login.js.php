@@ -31,10 +31,13 @@ function toggle_anim()
         $("#linear-spinner").addClass("indeterminate-none");
         $("#username_email").prop("disabled", false);
         $("#password").prop("disabled", false);
-        $("#label_1").removeClass("text-muted");
-        $("#label_2").removeClass("text-muted");
+        $("#username_email_label").removeClass("text-muted");
+        $("#password_label").removeClass("text-muted");
         $("#submit_button").prop("disabled", false);
-        $("#label_3").removeClass("text-muted");
+        $("#ca_label").removeClass("text-muted");
+        $("#ca_link").removeClass("text-muted");
+        $("#submit_preloader").prop("hidden", true);
+        $("#submit_label").prop("hidden", false);
     }
     else
     {
@@ -42,11 +45,13 @@ function toggle_anim()
         $("#linear-spinner").addClass("indeterminate");
         $("#username_email").prop("disabled", true);
         $("#password").prop("disabled", true);
-        $("#label_1").addClass("text-muted");
-        $("#label_2").addClass("text-muted");
+        $("#username_email_label").addClass("text-muted");
+        $("#password_label").addClass("text-muted");
         $("#submit_button").prop("disabled", true);
-        $("#trusted_device").prop("disabled", true);
-        $("#label_3").addClass("text-muted");
+        $("#ca_label").addClass("text-muted");
+        $("#ca_link").addClass("text-muted");
+        $("#submit_preloader").prop("hidden", false);
+        $("#submit_label").prop("hidden", true);
     }
 }
 $('#authentication_form').on('submit', function () {

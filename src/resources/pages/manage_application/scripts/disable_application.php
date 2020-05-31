@@ -30,9 +30,9 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
         if(isset($_GET['redirect']))
         {
-            if($_GET['redirect'] == 'applications')
+            if($_GET['redirect'] == 'manage_applications')
             {
-                Actions::redirect(DynamicalWeb::getRoute('applications'));
+                Actions::redirect(DynamicalWeb::getRoute('manage_applications'));
             }
         }
         else

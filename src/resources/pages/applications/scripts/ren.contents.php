@@ -37,13 +37,13 @@
                                         if($application['status'] == ApplicationStatus::Active)
                                         {
                                             ?>
-                                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id'], 'action' => 'disable-application', 'redirect' => 'applications'), true); ?>"><?PHP HTML::print(TEXT_APPLICATION_VIEW_OPTIONS_DISABLE_APPLICATION); ?></a>
+                                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id'], 'action' => 'disable_application', 'redirect' => 'applications'), true); ?>"><?PHP HTML::print(TEXT_APPLICATION_VIEW_OPTIONS_DISABLE_APPLICATION); ?></a>
                                             <?PHP
                                         }
                                         if($application['status'] == ApplicationStatus::Disabled)
                                         {
                                             ?>
-                                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id'], 'action' => 'enable-application', 'redirect' => 'applications'), true); ?>"><?PHP HTML::print(TEXT_APPLICATION_VIEW_OPTIONS_ENABLE_APPLICATION); ?></a>
+                                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $application['public_app_id'], 'action' => 'enable_application', 'redirect' => 'applications'), true); ?>"><?PHP HTML::print(TEXT_APPLICATION_VIEW_OPTIONS_ENABLE_APPLICATION); ?></a>
                                             <?PHP
                                         }
                                         ?>

@@ -27,93 +27,105 @@
 
     if(count($AuditRecords) > 0)
     {
-        HTML::print("<ul class=\"bullet-line-list pb-3\">", false);
+        HTML::print("<ul class=\"activity-timeline timeline-left list-unstyled\">", false);
         foreach($AuditRecords as $AuditRecord)
         {
             $AuditRecordObject = AuditRecord::fromArray($AuditRecord);
             $EventText = null;
             $EventIcon = null;
+            $EventClass = null;
 
             switch($AuditRecordObject->EventType)
             {
                 case AuditEventType::NewLoginDetected:
                     $EventText = TEXT_AUDIT_EVENT_NEW_LOGIN_DETECTED;
-                    $EventIcon = "mdi mdi-shield text-success";
+                    $EventIcon = "feather icon-shield";
+                    $EventClass = "bg-primary";
                     break;
 
                 case AuditEventType::PasswordUpdated:
                     $EventText = TEXT_AUDIT_EVENT_PASSWORD_UPDATE;
-                    $EventIcon = "mdi mdi-key-change text-success";
+                    $EventIcon = "feather icon-unlock";
+                    $EventClass = "bg-primary";
                     break;
 
                 case AuditEventType::PersonalInformationUpdated:
                     $EventText = TEXT_AUDIT_EVENT_PERSONAL_INFORMATION_UPDATE;
-                    $EventIcon = "mdi mdi-account text-success";
+                    $EventIcon = "feather icon-user";
+                    $EventClass = "bg-primary";
                     break;
 
                 case AuditEventType::EmailUpdated:
                     $EventText = TEXT_AUDIT_EVENT_EMAIL_CHANGED;
-                    $EventIcon = "mdi mdi-email text-success";
+                    $EventIcon = "feather icon-mail";
+                    $EventClass = "bg-primary";
                     break;
 
                 case AuditEventType::MobileVerificationEnabled:
                     $EventText = TEXT_AUDIT_EVENT_MOBILE_VERIFICATION_ENABLED;
-                    $EventIcon = "mdi mdi-cellphone-iphone text-success";
+                    $EventIcon = "feather icon-smartphone";
+                    $EventClass = "bg-success";
                     break;
 
                 case AuditEventType::MobileVerificationDisabled:
                     $EventText = TEXT_AUDIT_EVENT_MOBILE_VERIFICATION_DISABLED;
-                    $EventIcon = "mdi mdi-cellphone-iphone text-danger";
+                    $EventIcon = "feather icon-smartphone";
+                    $EventClass = "bg-danger";
                     break;
 
                 case AuditEventType::RecoveryCodesEnabled:
                     $EventText = TEXT_AUDIT_EVENT_RECOVERY_CODES_ENABLED;
-                    $EventIcon = "mdi mdi-refresh text-success";
+                    $EventIcon = "feather icon-rotate-ccw";
+                    $EventClass = "bg-success";
                     break;
 
                 case AuditEventType::RecoveryCodesDisabled:
                     $EventText = TEXT_AUDIT_EVENT_RECOVERY_CODES_DISABLED;
-                    $EventIcon = "mdi mdi-refresh text-danger";
+                    $EventIcon = "feather icon-rotate-ccw";
+                    $EventClass = "bg-danger";
                     break;
 
                 case AuditEventType::TelegramVerificationEnabled:
                     $EventText = TEXT_AUDIT_EVENT_TELEGRAM_VERIFICATION_ENABLED;
-                    $EventIcon = "mdi mdi-telegram text-success";
+                    $EventIcon = "feather icon-smartphone";
+                    $EventClass = "bg-success";
                     break;
 
                 case AuditEventType::TelegramVerificationDisabled:
                     $EventText = TEXT_AUDIT_EVENT_TELEGRAM_VERIFICATION_DISABLED;
-                    $EventIcon = "mdi mdi-telegram text-danger";
+                    $EventIcon = "feather icon-smartphone";
+                    $EventClass = "bg-danger";
                     break;
 
                 case AuditEventType::ApplicationCreated:
                     $EventText = TEXT_AUDIT_EVENT_APPLICATION_CREATED;
-                    $EventIcon = "mdi mdi-console text-success";
+                    $EventIcon = "feather icon-layers";
+                    $EventClass = "bg-primary";
                     break;
 
                 case AuditEventType::NewLoginLocationDetected:
                     $EventText = TEXT_AUDIT_EVENT_NEW_LOGIN_LOCATION;
-                    $EventIcon = "mdi mdi-map-marker text-success";
+                    $EventIcon = "feather icon-map-pin";
+                    $EventClass = "bg-warning";
                     break;
 
                 default:
                     $EventText = TEXT_AUDIT_EVENT_UNKNOWN;
-                    $EventIcon = "mdi mdi-help text-muted";
+                    $EventIcon = "feather icon-help-circle";
+                    $EventClass = "bg-primary";
                     break;
             }
             $Timestamp = gmdate("j/m/y g:i a", $AuditRecordObject->Timestamp)
 
             ?>
             <li>
-                <div class="d-flex align-items-center justify-content-between pb-2">
-                    <div class="d-flex">
-                        <div class="ml-3">
-                            <p class="mb-0 pb-2"><?PHP HTML::print($EventText); ?></p>
-                            <i class="<?PHP HTML::print($EventIcon); ?>"></i>
-                            <small class="text-muted"> <?PHP HTML::print($Timestamp); ?> </small>
-                        </div>
-                    </div>
+                <div class="timeline-icon <?PHP HTML::print($EventClass); ?>">
+                    <i class="<?PHP HTML::print($EventIcon); ?> font-medium-1 align-middle"></i>
                 </div>
+                <div class="timeline-info">
+                    <p class="mb-0"><?PHP HTML::print($EventText); ?></p>
+                </div>
+                <small class="text-muted"><?PHP HTML::print($Timestamp); ?></small>
             </li>
             <?PHP
         }
@@ -123,10 +135,10 @@
     {
         ?>
         <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
-            <div class="p-2 my-flex-item">
-                <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon"/>
+            <div class="my-flex-item">
+                <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon" width="48" height="48"/>
             </div>
-            <div class="p-2 my-flex-item">
+            <div class="pt-2 my-flex-item">
                 <h6 class="text-muted"><?PHP HTML::print(TEXT_AUDIT_NO_ITEMS); ?></h6>
             </div>
         </div>

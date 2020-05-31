@@ -3,16 +3,16 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
-use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
+    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\InvalidSubscriptionPromotionNameException;
     use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
     use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
-use IntellivoidAccounts\Objects\Subscription\Properties;
+    use IntellivoidAccounts\Objects\Subscription\Properties;
 
-// Validate the parameters
+    // Validate the parameters
     function validate_parameter_presence(string $parameter_name)
     {
         if(isset($_GET[$parameter_name]) == false)
@@ -89,7 +89,7 @@ use IntellivoidAccounts\Objects\Subscription\Properties;
             $Application->ID, $_GET['plan_name']
         );
 
-        $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
+        $SubscriptionPlanAlt = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
             SubscriptionPlanSearchMethod::byPublicId, $_GET['subscription_plan_id']
         );
     }
@@ -110,6 +110,17 @@ use IntellivoidAccounts\Objects\Subscription\Properties;
                 'error_type' => 'parameter_error',
                 'error' => 'internal_server_error',
                 'step' => '2'
+            )
+        ));
+    }
+
+    if($SubscriptionPlan->PublicID !== $SubscriptionPlanAlt->PublicID)
+    {
+        Actions::redirect(DynamicalWeb::getRoute(
+            'purchase_failure', array(
+                'error_type' => 'parameter_error',
+                'error' => 'invalid_plan_name',
+                'step' => '1'
             )
         ));
     }

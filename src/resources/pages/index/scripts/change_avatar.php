@@ -22,13 +22,13 @@
 
     function change_avatar()
     {
-        $RedirectToPersonal = false;
+        $RedirectToSettings = false;
 
         if(isset($_GET['redirect']))
         {
-            if($_GET['redirect'] == 'personal')
+            if($_GET['redirect'] == 'settings_user')
             {
-                $RedirectToPersonal = true;
+                $RedirectToSettings = true;
             }
         }
 
@@ -51,9 +51,9 @@
         }
         catch (FileUploadException $e)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
+                Actions::redirect(DynamicalWeb::getRoute('settings_user',
                     array('callback' => '110'))
                 );
             }
@@ -64,9 +64,9 @@
         }
         catch (SystemException $e)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
+                Actions::redirect(DynamicalWeb::getRoute('settings_user',
                     array('callback' => '111'))
                 );
             }
@@ -77,9 +77,9 @@
         }
         catch (UnsupportedFileTypeException $e)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
+                Actions::redirect(DynamicalWeb::getRoute('settings_user',
                     array('callback' => '112'))
                 );
             }
@@ -90,9 +90,9 @@
         }
         catch(Exception $exception)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
+                Actions::redirect(DynamicalWeb::getRoute('settings_user',
                     array('callback' => '100'))
                 );
             }
@@ -110,9 +110,9 @@
         }
         catch (ImageTooSmallException $e)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
+                Actions::redirect(DynamicalWeb::getRoute('settings_user',
                     array('callback' => '113'))
                 );
             }
@@ -123,9 +123,9 @@
         }
         catch (InvalidImageException $e)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
+                Actions::redirect(DynamicalWeb::getRoute('settings_user',
                     array('callback' => '114'))
                 );
             }
@@ -136,7 +136,7 @@
         }
         catch (UnsupportedFileTypeException $e)
         {
-            if($RedirectToPersonal)
+            if($RedirectToSettings)
             {
                 Actions::redirect(DynamicalWeb::getRoute('personal',
                     array('callback' => '112'))
@@ -148,9 +148,9 @@
             );
         }
 
-        if($RedirectToPersonal)
+        if($RedirectToSettings)
         {
-            Actions::redirect(DynamicalWeb::getRoute('personal',
+            Actions::redirect(DynamicalWeb::getRoute('settings_user',
                 array('callback' => '115', 'cache_refresh' => 'true'))
             );
         }

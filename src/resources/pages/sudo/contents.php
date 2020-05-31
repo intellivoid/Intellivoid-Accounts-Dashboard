@@ -1,63 +1,71 @@
-<?PHP
+<?php
 
     use DynamicalWeb\HTML;
-use DynamicalWeb\Javascript;
-use DynamicalWeb\Runtime;
+    use DynamicalWeb\Javascript;
+    use DynamicalWeb\Runtime;
 
     Runtime::import('IntellivoidAccounts');
 
     HTML::importScript('check');
     HTML::importScript('enter_sudo_mode');
+    HTML::importScript('expanded');
+
+    function getAnimationStyle()
+    {
+        if(UI_EXPANDED)
+        {
+            return "";
+        }
+
+        return " animated fadeInUp";
+    }
+
 
     if(isset($_GET['redirect']) == false)
     {
         header('Location: /');
         exit();
     }
+
+    $GetParameters = $_GET;
+    unset($GetParameters['callback']);
+    unset($GetParameters['incorrect_auth']);
+    unset($GetParameters['anim']);
 ?>
-<!doctype html>
-<html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
+<!DOCTYPE html>
+<html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
     <head>
-        <?PHP HTML::importSection('headers'); ?>
-        <link rel="stylesheet" href="/assets/css/extra.css">
+        <?PHP HTML::importSection('authentication_headers'); ?>
         <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
     </head>
-    <body>
-        <div class="container-scroller">
-            <div class="container-fluid page-body-wrapper full-page-wrapper">
-                <div class="content-wrapper d-flex align-items-center auth area theme-one">
-                    <?PHP HTML::importSection('background_animations'); ?>
-                    <div class="row w-100 mx-auto">
-                        <div class="col-lg-5 mx-auto">
-                            <div class="linear-activity">
-                                <div id="linear-spinner" class="indeterminate"></div>
-                            </div>
-                            <div class="auto-form-wrapper" style="border-radius: 0px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
-                                <h1 class="text-center">
-                                    <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
-                                    Intelli<b>void</b>
-                                </h1>
-                                <p class="text-small text-center"><?PHP HTML::print(TEXT_AUTHENTICATION_SUB_HEADER); ?></p>
-                                <div id="callback_alert">
-                                    <?PHP HTML::importScript('callbacks'); ?>
+    <body class="horizontal-layout horizontal-menu 1-column navbar-floating footer-static blank-page blank-page area" data-open="hover" data-menu="horizontal-menu" data-col="1-column">
+        <div class="app-content content" style="overflow: inherit;">
+            <?PHP HTML::importSection('authentication_bhelper'); ?>
+            <div class="content-wrapper mt-0">
+                <?PHP HTML::importSection('background_animations'); ?>
+                <div class="content-body">
+                    <?PHP
+                    if(UI_EXPANDED)
+                    {
+                        HTML::importScript("card");
+                    }
+                    else
+                    {
+                        ?>
+                        <section class="row flexbox-container mx-0">
+                            <div class="col-xl-8 col-10 d-flex justify-content-center my-1">
+                                <div class="col-12 col-sm-10 col-md-11 col-lg-8 col-xl-7 p-0">
+                                    <?PHP HTML::importScript("card"); ?>
                                 </div>
-                                <div class="border-bottom pt-3"></div>
-                                <form id="authentication_form" name="authentication_form" class="pt-4">
-                                    <div class="form-group">
-                                        <label for="password" id="label_1" class="label text-muted"><?PHP HTML::print(TEXT_PASSWORD_LABEL); ?></label>
-                                        <input name="password" id="password" type="password" class="form-control" placeholder="*********" aria-autocomplete="none" autocomplete="off" required disabled>
-                                    </div>
-                                    <div class="form-group pb-2 pt-2">
-                                        <input id="submit_button" type="submit" class="btn btn-danger submit-btn btn-block" value="<?PHP HTML::print(TEXT_SUBMIT_BUTTON); ?>" disabled>
-                                    </div>
-                                </form>
                             </div>
-                        </div>
-                    </div>
+                        </section>
+                        <?PHP
+                    }
+                    ?>
                 </div>
             </div>
         </div>
-        <?PHP HTML::importSection('js_scripts'); ?>
+        <?PHP HTML::importSection('authentication_js'); ?>
         <?PHP Javascript::importScript('sudo', $_GET); ?>
     </body>
 </html>

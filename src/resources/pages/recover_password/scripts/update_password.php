@@ -2,6 +2,7 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\Runtime;
 use IntellivoidAccounts\Abstracts\AccountStatus;
 use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\DatabaseException;
@@ -13,7 +14,10 @@ use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Utilities\Hashing;
     use IntellivoidAccounts\Utilities\Validate;
-    use sws\sws;
+use pwc\pwc;
+use sws\sws;
+
+    Runtime::import('PwCompromission');
 
     if(isset($_GET['action']))
     {
@@ -27,7 +31,8 @@ use IntellivoidAccounts\Exceptions\AccountNotFoundException;
                 }
                 catch(Exception $e)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('recover_password', array('callback' => '102')));
+                    $_GET['callback'] = '102';
+                    Actions::redirect(DynamicalWeb::getRoute('recover_password', $_GET));
                 }
             }
         }
@@ -59,7 +64,25 @@ use IntellivoidAccounts\Exceptions\AccountNotFoundException;
 
         if(Validate::password($_POST['new_password']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('recover_password', array('callback' => '101')));
+            $_GET['callback'] = '101';
+            Actions::redirect(DynamicalWeb::getRoute('recover_password', $_GET));
+        }
+
+        $pwc = new pwc();
+
+        try
+        {
+            $PasswordCache = $pwc->checkPassword($_POST['new_password']);
+
+            if($PasswordCache->Compromised)
+            {
+                $_GET['callback'] = '103';
+                Actions::redirect(DynamicalWeb::getRoute('recover_password', $_GET));
+            }
+        }
+        catch(Exception $exception)
+        {
+            unset($exception);
         }
 
         $Account->Password = Hashing::password($_POST['new_password']);
@@ -77,6 +100,7 @@ use IntellivoidAccounts\Exceptions\AccountNotFoundException;
         $sws->CookieManager()->updateCookie($Cookie);
         $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
 
-        Actions::redirect(DynamicalWeb::getRoute('login', array('callback' => '110')));
+        $_GET['callback'] = '110';
+        Actions::redirect(DynamicalWeb::getRoute('login', $_GET));
         exit();
     }
