@@ -221,6 +221,11 @@
         'app_tag' => $ApplicationAccess->ApplicationID
     );
 
+    if(get_parameter('redirect') == null)
+    {
+        $PurchaseParameters['redirect'] = get_parameter('redirect');
+    }
+
     foreach($SubscriptionPlan->Features as $feature)
     {
         $SubscriptionDetailsProperties->addFeature($feature);
