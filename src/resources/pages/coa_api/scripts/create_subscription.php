@@ -221,7 +221,7 @@
         'app_tag' => $ApplicationAccess->ApplicationID
     );
 
-    if(get_parameter('redirect') == null)
+    if(get_parameter('redirect') != null)
     {
         $PurchaseParameters['redirect'] = get_parameter('redirect');
     }
