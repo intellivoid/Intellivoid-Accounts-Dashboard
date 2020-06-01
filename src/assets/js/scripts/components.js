@@ -2,8 +2,8 @@
   File Name: Components.js
   Description: For Generic Components.
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
+  Item Name: Intellivoid Accounts Dashboard
+  Author: Zi Xing Narrakas
   Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 

@@ -2,9 +2,9 @@
     File Name: 3-columns-left-sidebar.js
     Description: Invoices list datables configurations
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
-    Author URL: hhttp://www.themeforest.net/user/pixinvent
+    Item Name: Intellivoid Accounts Dashboard
+    Author: Zi Xing Narrakas
+    Author URL: https://intellivoid.net
 ==========================================================================================*/
 
 $(document).ready(function() {

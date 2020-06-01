@@ -57,8 +57,8 @@
                                 <div class="card bg-analytics text-white">
                                     <div class="card-content">
                                         <div class="card-body text-center">
-                                            <img src="/assets/images/elements/decore-left.png" class="img-left" alt="card-img-left">
-                                            <img src="/assets/images/elements/decore-right.png" class="img-right" alt="card-img-right">
+                                            <img src="/assets/images/decore-left.png" class="img-left" alt="card-img-left">
+                                            <img src="/assets/images/decore-right.png" class="img-right" alt="card-img-right">
                                             <div class="text-center">
                                                 <h1 class="mb-2 text-white"><?PHP HTML::print(str_ireplace("%s", $UsernameSafe, TEXT_WELCOME_BANNER_HEADER)); ?></h1>
                                                 <p class="m-auto w-75"><?PHP HTML::print(TEXT_WELCOME_BANNER_SUB_HEADER); ?></p>

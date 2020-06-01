@@ -99,7 +99,7 @@ html {
     html body p {
       line-height: 1.5rem; }
     html body.bg-full-screen-image {
-      background: url(/assets/images/pages/vuexy-login-bg.jpg) no-repeat center center;
+      background: url(/assets/images/background_generic.jpg) no-repeat center center;
       background-size: cover; }
     html body.blank-page .content {
       margin-left: 0; }
@@ -179,7 +179,7 @@ html {
     File Name: sidebar.scss
     Description: content sidebar specific scss.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -257,7 +257,7 @@ body.fixed-footer footer.footer-dark {
     File Name: navigations.scss
     Description: Common mixin for menus, contain dark and light version scss.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -1304,7 +1304,7 @@ body.fixed-footer .main-menu.menu-fixed {
 	File Name: search.scss
 	Description: Search  functionality.
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+	Item Name: Intellivoid Accounts Dashboard
 	Author: PIXINVENT
 	Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -2214,7 +2214,7 @@ body.navbar-static .navbar-container .search-input.open {
     File Name: demo.scss
     Description: CSS used for demo purpose only. Remove this css from your project.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Intellivoid Accounts Dashboard
     Author: PIXINVENT
     Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -2286,7 +2286,7 @@ body.navbar-static .navbar-container .search-input.open {
 	File Name: customizer.scss
 	Description: CSS used for demo purpose only. Remove this css from your project.
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+	Item Name: Intellivoid Accounts Dashboard
 	Author: PIXINVENT
 	Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
