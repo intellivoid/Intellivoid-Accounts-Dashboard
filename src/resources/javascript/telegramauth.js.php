@@ -140,7 +140,7 @@ setInterval(function(){
         {
             <?PHP $GetParameters['action'] = 'verify'; ?>
             <?PHP unset($GetParameters['callback']); ?>
-            location.href = "<?PHP DynamicalWeb::getRoute('index', $GetParameters, true); ?>";
+            location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
             telegram_auth.process_completed = true;
         }
     }
