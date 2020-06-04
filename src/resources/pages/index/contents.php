@@ -1,5 +1,6 @@
 <?php
 
+    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
@@ -11,6 +12,14 @@
     HTML::importScript('change_avatar');
     HTML::importScript('submit_report');
 
+    if(isset($_GET['pwc_mcache']))
+    {
+        if($_GET['pwc_mcache'] == '1')
+        {
+            Actions::redirect(DynamicalWeb::getRoute('index', array('callback'=>'114')));
+        }
+    }
+    
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
