@@ -8,7 +8,7 @@
     /** @var Account $Account */
     $Account = DynamicalWeb::getMemoryObject('account');
 
-    if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
+    if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == false)
     {
         $_GET['callback'] = '100';
         Actions::redirect(DynamicalWeb::getRoute('verify', $_GET));

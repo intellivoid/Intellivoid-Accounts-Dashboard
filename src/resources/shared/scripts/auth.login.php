@@ -202,6 +202,7 @@ use sws\Objects\Cookie;
                 if($PasswordCache->Compromised)
                 {
                     $GetParameters['callback'] = '114';
+                    $GetParameters['pwc_mcache'] = '1';
                 }
             }
             catch(Exception $exception)
