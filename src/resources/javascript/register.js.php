@@ -36,13 +36,14 @@ function toggle_anim()
         $("#password").prop("disabled", false);
         $("#tos_agree").prop("disabled", false);
         $("#submit_button").prop("disabled", false);
-        $("#tos_check_label").removeClass("text-muted");
-        $("#tos_label").removeClass("text-muted");
-        $("#label_1").removeClass("text-muted");
-        $("#label_2").removeClass("text-muted");
-        $("#label_3").removeClass("text-muted");
+        $("#tos_agree_label").removeClass("text-muted");
+        $("#email_label").removeClass("text-muted");
+        $("#username_label").removeClass("text-muted");
+        $("#password_label").removeClass("text-muted");
         $("#ca_label").removeClass("text-muted");
         $("#ca_link").removeClass("text-muted");
+        $("#submit_preloader").prop("hidden", true);
+        $("#submit_label").prop("hidden", false);
     }
     else
     {
@@ -53,13 +54,14 @@ function toggle_anim()
         $("#password").prop("disabled", true);
         $("#tos_agree").prop("disabled", true);
         $("#submit_button").prop("disabled", true);
-        $("#tos_label").addClass("text-muted");
-        $("#tos_check_label").addClass("text-muted");
-        $("#label_1").addClass("text-muted");
-        $("#label_2").addClass("text-muted");
-        $("#label_3").addClass("text-muted");
+        $("#tos_agree_label").addClass("text-muted");
+        $("#email_label").addClass("text-muted");
+        $("#username_label").addClass("text-muted");
+        $("#password_label").addClass("text-muted");
         $("#ca_label").addClass("text-muted");
         $("#ca_link").addClass("text-muted");
+        $("#submit_preloader").prop("hidden", false);
+        $("#submit_label").prop("hidden", true);
     }
 }
 

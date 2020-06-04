@@ -4,16 +4,16 @@
 
     if(isset($_GET['callback']))
     {
-        HTML::importScript('render_alert');
+        HTML::importScript('render_auth_alert');
 
         switch((int)$_GET['callback'])
         {
             case 100:
-                RenderAlert(TEXT_CALLBACK_100, "danger", "mdi-alert-circle");
+                RenderAuthError(TEXT_CALLBACK_100);
                 break;
 
             case 101:
-                RenderAlert(TEXT_CALLBACK_101, "warning", "mdi-alert-circle");
+                RenderAuthWarning(TEXT_CALLBACK_101);
                 break;
         }
     }

@@ -44,16 +44,20 @@ function toggle_anim() {
         $("#linear-spinner").removeClass("indeterminate");
         $("#linear-spinner").addClass("indeterminate-none");
         $("#password").prop("disabled", false);
-        $("#label_1").removeClass("text-muted");
+        $("#password_label").removeClass("text-muted");
         $("#submit_button").prop("disabled", false);
+        $("#submit_preloader").prop("hidden", true);
+        $("#submit_label").prop("hidden", false);
     }
     else
     {
         $("#linear-spinner").removeClass("indeterminate-none");
         $("#linear-spinner").addClass("indeterminate");
         $("#password").prop("disabled", true);
-        $("#label_1").addClass("text-muted");
+        $("#password_label").addClass("text-muted");
         $("#submit_button").prop("disabled", true);
+        $("#submit_preloader").prop("hidden", false);
+        $("#submit_label").prop("hidden", true);
     }
 }
 

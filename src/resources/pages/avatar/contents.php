@@ -100,7 +100,6 @@
         $ImageContents = file_get_contents($file);
 
         header('Cache-control: max-age=60');
-        header('Content-Length: ' . strlen($ImageContents));
         header('Content-type: image/jpeg');
         http_response_code(200);
         print($ImageContents);
