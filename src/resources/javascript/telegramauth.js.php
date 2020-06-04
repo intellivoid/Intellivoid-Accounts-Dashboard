@@ -6,6 +6,9 @@
     unset($GetParameters['action']);
     $GetParameters['anim'] = 'previous';
 ?>
+var telegram_auth = {
+    process_completed: false
+}
 function insertParam(key, value)
 {
     key = encodeURI(key); value = encodeURI(value);
@@ -69,12 +72,16 @@ function toggle_anim()
     }
 }
 setInterval(function(){
+
+    if(telegram_auth.process_completed === true){
+        return;
+    }
+
     var feedback = $.ajax({
         type: "POST",
         url: "<?PHP DynamicalWeb::getRoute('telegram_poll', $GetParameters, true); ?>",
         async: false
     }).responseText;
-    console.log(feedback);
     response_j = JSON.parse(feedback);
     if(response_j.status == false){
         switch(response_j.error_code)
@@ -82,11 +89,13 @@ setInterval(function(){
             case 200:
                 <?PHP $GetParameters['callback'] = '107'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
 
             case 201:
                 <?PHP $GetParameters['callback'] = '101'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
 
             case 202:
@@ -97,26 +106,31 @@ setInterval(function(){
             case 203:
                 <?PHP $GetParameters['callback'] = '102'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
 
             case 204:
                 <?PHP $GetParameters['callback'] = '104'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
 
             case 205:
                 <?PHP $GetParameters['callback'] = '109'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
 
             case 206:
                 <?PHP $GetParameters['callback'] = '106'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
 
             default:
                 <?PHP $GetParameters['callback'] = '101'; ?>
                 location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                telegram_auth.process_completed = true;
                 break;
         }
     }
@@ -127,7 +141,8 @@ setInterval(function(){
             <?PHP $GetParameters['action'] = 'verify'; ?>
             <?PHP unset($GetParameters['callback']); ?>
             location.href = "<?PHP DynamicalWeb::getRoute('index', $GetParameters, true); ?>";
+            telegram_auth.process_completed = true;
         }
     }
-}, 1000);
+}, 2000);
 toggle_anim();
