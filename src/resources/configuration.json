@@ -65,25 +65,22 @@
             "main_class": "sws"
         },
         "IntellivoidAccounts": {
-            "directory_name": "IntellivoidAccounts",
-            "autoloader": "IntellivoidAccounts.php",
-            "check_class_exists": true,
-            "namespace": "IntellivoidAccounts",
-            "main_class": "IntellivoidAccounts"
+            "package_name": "net.intellivoid.accounts",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
         },
         "Support": {
-            "directory_name": "Support",
-            "autoloader": "Support.php",
-            "check_class_exists": true,
-            "namespace": "Support",
-            "main_class": "Support"
+            "package_name": "net.intellivoid.support",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
         },
         "PwCompromission": {
-            "directory_name": "pwc",
-            "autoloader": "pwc.php",
-            "check_class_exists": true,
-            "namespace": "pwc",
-            "main_class": "pwc"
+            "package_name": "net.intellivoid.pwc",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
         }
     },
     "runtime_scripts": {
