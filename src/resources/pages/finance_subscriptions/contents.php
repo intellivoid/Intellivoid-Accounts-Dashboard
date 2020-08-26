@@ -5,11 +5,10 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-    use IntellivoidAccounts\IntellivoidAccounts;
-    use IntellivoidAccounts\Objects\TransactionRecord;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
 
+    Runtime::import("SubscriptionManager");
+    Runtime::import("IntellivoidAccounts");
     HTML::importScript('cancel_subscription');
     HTML::importScript('ren.contents');
 
@@ -38,23 +37,20 @@
                                     <div class="card-body">
                                         <h4 class="card-title"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
                                         <?PHP
-                                            if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+                                            if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
                                             {
-                                                /** @var IntellivoidAccounts $IntellivoidAccounts */
-                                                $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
-                                                    "intellivoid_accounts", new IntellivoidAccounts()
+                                                /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+                                                $SubscriptionManager = DynamicalWeb::setMemoryObject(
+                                                    "subscription_manager", new IntellivoidSubscriptionManager()
                                                 );
                                             }
                                             else
                                             {
-                                                /** @var IntellivoidAccounts $IntellivoidAccounts */
-                                                $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+                                                /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+                                                $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
                                             }
 
-                                            $Subscriptions = $IntellivoidAccounts->getSubscriptionManager()->getSubscriptionsByAccountID(
-                                                WEB_ACCOUNT_ID
-                                            );
-
+                                            $Subscriptions = $SubscriptionManager->getSubscriptionManager()->getSubscriptionsByAccountID(WEB_ACCOUNT_ID);
 
                                             if(count($Subscriptions) > 0)
                                             {

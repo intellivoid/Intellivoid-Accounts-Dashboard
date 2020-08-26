@@ -2,6 +2,7 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Exceptions\AccountLimitedException;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
@@ -13,14 +14,12 @@
     use IntellivoidAccounts\Exceptions\InvalidFundsValueException;
     use IntellivoidAccounts\Exceptions\InvalidUsernameException;
     use IntellivoidAccounts\Exceptions\InvalidVendorException;
-    use IntellivoidAccounts\Exceptions\SubscriptionNotFoundException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\COA\Application;
-    use IntellivoidAccounts\Objects\SubscriptionPlan;
-    use IntellivoidAccounts\Objects\SubscriptionPromotion;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
+    use IntellivoidSubscriptionManager\Objects\SubscriptionPlan;
+    use IntellivoidSubscriptionManager\Objects\SubscriptionPromotion;
 
     if(isset($_GET['action']))
     {
@@ -45,12 +44,23 @@
         /** @var Account $Account */
         $Account = DynamicalWeb::getMemoryObject('account');
 
-        /** @var array $SubscriptionDetails */
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $SubscriptionDetails = DynamicalWeb::getArray('subscription_details');
-
         /** @var SubscriptionPlan $SubscriptionPlan */
         $SubscriptionPlan = DynamicalWeb::getMemoryObject('subscription_plan');
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        Runtime::import("SubscriptionManager");
+        if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
+        {
+            /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+            $SubscriptionManager = DynamicalWeb::setMemoryObject(
+                "subscription_manager", new IntellivoidSubscriptionManager()
+            );
+        }
+        else
+        {
+            /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+            $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
+        }
 
         if(isset($_POST['confirm_password']) == false)
         {
@@ -98,9 +108,7 @@
         // Check if the user already has a subscription with the Application
         try
         {
-            $ApplicationSubscriptionPlans = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlansByApplication(
-                $Application->ID
-            );
+            $ApplicationSubscriptionPlans = $SubscriptionManager->getPlanManager()->getSubscriptionPlansByApplication($Application->ID);
         }
         catch(Exception $e)
         {
@@ -110,12 +118,12 @@
         }
 
         /** @var SubscriptionPlan $subscriptionPlanIlt */
-        /** @var array $ApplicationSubscriptionPlans */
+        /** @noinspection PhpUndefinedVariableInspection */
         foreach($ApplicationSubscriptionPlans as $subscriptionPlanIlt)
         {
             try
             {
-                $Exists = $IntellivoidAccounts->getSubscriptionManager()->subscriptionPlanAssociatedWithAccount(
+                $Exists = $SubscriptionManager->getSubscriptionManager()->subscriptionPlanAssociatedWithAccount(
                     $Account->ID, $subscriptionPlanIlt->ID
                 );
 
@@ -145,8 +153,8 @@
 
         try
         {
-            $IntellivoidAccounts->getSubscriptionManager()->startSubscription(
-                $Account->ID, $Application->ID, $SubscriptionPlan->PlanName, $PromotionCode
+            $IntellivoidAccounts->getAccountManager()->startSubscription(
+                $SubscriptionManager, $Account->ID, $Application->ID, $SubscriptionPlan->PlanName, $PromotionCode
             );
 
             if(isset($_GET['redirect']))
@@ -233,35 +241,7 @@
                     'error' => 'invalid_vendor'
                 )
             ));
-        }
-        catch (SubscriptionNotFoundException $e)
-        {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'subscription_not_found'
-                )
-            ));
-        }
-        catch (SubscriptionPlanNotFoundException $e)
-        {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'subscription_plan_not_found'
-                )
-            ));
-        }
-        catch (SubscriptionPromotionNotFoundException $e)
-        {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'subscription_promotion_not_found'
-                )
-            ));
-        }
-        catch(Exception $e)
+        } catch(Exception $e)
         {
             Actions::redirect(DynamicalWeb::getRoute(
                 'purchase_failure', array(

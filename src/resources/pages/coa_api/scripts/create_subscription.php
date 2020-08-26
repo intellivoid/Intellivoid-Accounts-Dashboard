@@ -3,20 +3,21 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
-    use IntellivoidAccounts\Abstracts\SubscriptionPlanStatus;
-    use IntellivoidAccounts\Abstracts\SubscriptionPromotionStatus;
-    use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\ApplicationAccess;
     use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
-    use IntellivoidAccounts\Objects\Subscription\Feature;
-    use IntellivoidAccounts\Objects\Subscription\Properties;
+    use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
+    use IntellivoidSubscriptionManager\Abstracts\SubscriptionPlanStatus;
+    use IntellivoidSubscriptionManager\Abstracts\SubscriptionPromotionStatus;
+    use IntellivoidSubscriptionManager\Exceptions\SubscriptionPlanNotFoundException;
+    use IntellivoidSubscriptionManager\Exceptions\SubscriptionPromotionNotFoundException;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
+    use IntellivoidSubscriptionManager\Objects\Subscription\Feature;
+    use IntellivoidSubscriptionManager\Objects\Subscription\Properties;
 
     HTML::importScript('async.check_access');
 
@@ -34,6 +35,21 @@
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+
+    /** @noinspection PhpUnhandledExceptionInspection */
+    Runtime::import("SubscriptionManager");
+    if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
+    {
+        /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+        $SubscriptionManager = DynamicalWeb::setMemoryObject(
+            "subscription_manager", new IntellivoidSubscriptionManager()
+        );
+    }
+    else
+    {
+        /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+        $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
+    }
 
     $Response = array(
         'status' => true,
@@ -63,13 +79,12 @@
 
     $SubscriptionPlanName = get_parameter('plan_name');
     $SubscriptionPromotionCode = get_parameter('promotion_code');
-
     $SubscriptionPlan = null;
     $SubscriptionPlanPromotion = null;
 
     try
     {
-        $SubscriptionPlan = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlanByName(
+        $SubscriptionPlan = $SubscriptionManager->getPlanManager()->getSubscriptionPlanByName(
             $ApplicationAccess->ApplicationID, $SubscriptionPlanName
         );
     }
@@ -106,7 +121,7 @@
     {
         try
         {
-            $SubscriptionPlanPromotion = $IntellivoidAccounts->getSubscriptionPromotionManager()->getSubscriptionPromotion(
+            $SubscriptionPlanPromotion = $SubscriptionManager->getPromotionManager()->getSubscriptionPromotion(
                 SubscriptionPromotionSearchMethod::byPromotionCode, $SubscriptionPromotionCode
             );
         }

@@ -1,15 +1,14 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionSearchMethod;
+    use DynamicalWeb\Runtime;
+    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\InsufficientFundsException;
-    use IntellivoidAccounts\Exceptions\SubscriptionNotFoundException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
-
+    use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionSearchMethod;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
 
     $SubscriptionID = get_parameter('subscription_id');
 
@@ -23,6 +22,23 @@
         ));
     }
 
+    /** @noinspection PhpUnhandledExceptionInspection */
+    Runtime::import("SubscriptionManager");
+    if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
+    {
+        /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+        $SubscriptionManager = DynamicalWeb::setMemoryObject(
+            "subscription_manager", new IntellivoidSubscriptionManager()
+        );
+    }
+    else
+    {
+        /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+        $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
+    }
+
+    /** @noinspection PhpUnhandledExceptionInspection */
+    Runtime::import('IntellivoidAccounts');
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -38,18 +54,9 @@
 
     try
     {
-        $Subscription = $IntellivoidAccounts->getSubscriptionManager()->getSubscription(
+        $Subscription = $SubscriptionManager->getSubscriptionManager()->getSubscription(
             SubscriptionSearchMethod::byId, (int)$SubscriptionID
         );
-    }
-    catch (SubscriptionNotFoundException $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 43,
-            'message' => resolve_error_code(43)
-        ));
     }
     catch(Exception $e)
     {
@@ -63,12 +70,28 @@
 
     try
     {
-        $Results = $IntellivoidAccounts->getSubscriptionManager()->processBilling($Subscription);
+        $Account = $IntellivoidAccounts->getAccountManager()->getAccount(
+            AccountSearchMethod::byId, WEB_ACCOUNT_ID
+        );
+    }
+    catch(Exception $e)
+    {
+        returnJsonResponse(array(
+            'status' => false,
+            'response_code' => 400,
+            'error_code' => 26,
+            'message' => resolve_error_code(26)
+        ));
+    }
+
+    try
+    {
+        $Results = $IntellivoidAccounts->getAccountManager()->processBilling($SubscriptionManager, $Subscription);
 
         if($Results == true)
         {
             $Subscription->NextBillingCycle = (int)time() + (int)$Subscription->BillingCycle;
-            $IntellivoidAccounts->getSubscriptionManager()->updateSubscription($Subscription);
+            $SubscriptionManager->getSubscriptionManager()->updateSubscription($Subscription);
 
             returnJsonResponse(array(
                 'status' => true,
@@ -110,24 +133,6 @@
             'response_code' => 400,
             'error_code' => 49,
             'message' => resolve_error_code(49)
-        ));
-    }
-    catch (SubscriptionPlanNotFoundException $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => 43,
-            'message' => resolve_error_code(43)
-        ));
-    }
-    catch (SubscriptionPromotionNotFoundException $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => 44,
-            'message' => resolve_error_code(44)
         ));
     }
     catch(Exception $e)
