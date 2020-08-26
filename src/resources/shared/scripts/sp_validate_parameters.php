@@ -2,15 +2,16 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-    use IntellivoidAccounts\Exceptions\InvalidSubscriptionPromotionNameException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPlanNotFoundException;
-    use IntellivoidAccounts\Exceptions\SubscriptionPromotionNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
-    use IntellivoidAccounts\Objects\Subscription\Properties;
+    use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
+    use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionPromotionSearchMethod;
+    use IntellivoidSubscriptionManager\Exceptions\SubscriptionPlanNotFoundException;
+    use IntellivoidSubscriptionManager\Exceptions\SubscriptionPromotionNotFoundException;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
+    use IntellivoidSubscriptionManager\Objects\Subscription\Properties;
 
     // Validate the parameters
     function validate_parameter_presence(string $parameter_name)
@@ -57,6 +58,21 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
+    /** @noinspection PhpUnhandledExceptionInspection */
+    Runtime::import("SubscriptionManager");
+    if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
+    {
+        /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+        $SubscriptionManager = DynamicalWeb::setMemoryObject(
+            "subscription_manager", new IntellivoidSubscriptionManager()
+        );
+    }
+    else
+    {
+        /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+        $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
+    }
+
     try
     {
         $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(
@@ -85,11 +101,11 @@
 
     try
     {
-        $SubscriptionPlan = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlanByName(
+        $SubscriptionPlan = $SubscriptionManager->getPlanManager()->getSubscriptionPlanByName(
             $Application->ID, $_GET['plan_name']
         );
 
-        $SubscriptionPlanAlt = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
+        $SubscriptionPlanAlt = $SubscriptionManager->getPlanManager()->getSubscriptionPlan(
             SubscriptionPlanSearchMethod::byPublicId, $_GET['subscription_plan_id']
         );
     }
@@ -140,23 +156,13 @@
     {
         try
         {
-            $SubscriptionPromotion = $IntellivoidAccounts->getSubscriptionPromotionManager()->getSubscriptionPromotion(
+            $SubscriptionPromotion = $SubscriptionManager->getPromotionManager()->getSubscriptionPromotion(
                 SubscriptionPromotionSearchMethod::byPromotionCode, $_GET['promotion_code']
             );
 
-            $IntellivoidAccounts->getSubscriptionPromotionManager()->getSubscriptionPromotion(
+            $SubscriptionManager->getPromotionManager()->getSubscriptionPromotion(
                 SubscriptionPromotionSearchMethod::byPublicId, $_GET['promotion_id']
             );
-        }
-        catch (InvalidSubscriptionPromotionNameException $e)
-        {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'parameter_error',
-                    'error' => 'invalid_promotion_name',
-                    'step' => '1'
-                )
-            ));
         }
         catch (SubscriptionPromotionNotFoundException $e)
         {

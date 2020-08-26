@@ -81,6 +81,12 @@
             "version": "latest",
             "import_dependencies": true,
             "throw_error": true
+        },
+        "SubscriptionManager": {
+            "package_name": "net.intellivoid.subscriptions",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
         }
     },
     "runtime_scripts": {

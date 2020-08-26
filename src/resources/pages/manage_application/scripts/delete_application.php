@@ -24,7 +24,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
     {
         $IntellivoidAccounts->getApplicationManager()->deleteApplication($Application);
 
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '108')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '108')));
     }
     catch(Exception $exception)
     {

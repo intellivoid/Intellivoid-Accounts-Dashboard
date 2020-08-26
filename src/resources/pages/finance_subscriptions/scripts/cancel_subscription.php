@@ -2,9 +2,10 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionSearchMethod;
-    use IntellivoidAccounts\Exceptions\SubscriptionNotFoundException;
-    use IntellivoidAccounts\IntellivoidAccounts;
+    use DynamicalWeb\Runtime;
+    use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionSearchMethod;
+    use IntellivoidSubscriptionManager\Exceptions\SubscriptionNotFoundException;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
 
     if(isset($_GET['action']))
     {
@@ -12,29 +13,38 @@
         {
             if(isset($_GET['subscription_id']))
             {
+                /** @noinspection PhpUnhandledExceptionInspection */
                 cancel_subscription($_GET['subscription_id']);
             }
         }
     }
 
+    /**
+     * Cancels an existing subscription
+     *
+     * @param string $access_id
+     * @throws Exception
+     */
     function cancel_subscription(string $access_id)
     {
-        if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
+        /** @noinspection PhpUnhandledExceptionInspection */
+        Runtime::import("SubscriptionManager");
+        if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
         {
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
-                "intellivoid_accounts", new IntellivoidAccounts()
+            /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+            $SubscriptionManager = DynamicalWeb::setMemoryObject(
+                "subscription_manager", new IntellivoidSubscriptionManager()
             );
         }
         else
         {
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
+            /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+            $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
         }
 
         try
         {
-            $Subscription = $IntellivoidAccounts->getSubscriptionManager()->getSubscription(
+            $Subscription = $SubscriptionManager->getSubscriptionManager()->getSubscription(
                 SubscriptionSearchMethod::byPublicId, $_GET['subscription_id']
             );
         }
@@ -49,7 +59,8 @@
 
         try
         {
-            $IntellivoidAccounts->getSubscriptionManager()->cancelSubscription($Subscription);
+            /** @noinspection PhpUndefinedVariableInspection */
+            $SubscriptionManager->getSubscriptionManager()->cancelSubscription($Subscription);
         }
         catch(Exception $e)
         {

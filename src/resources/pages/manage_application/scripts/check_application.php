@@ -11,7 +11,7 @@
 
     if(isset($_GET['pub_id']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '107')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '107')));
     }
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -33,16 +33,16 @@
     }
     catch (ApplicationNotFoundException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '107')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '107')));
     }
     catch(Exception $exception)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '100')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '100')));
     }
 
     if($Application->AccountID !== WEB_ACCOUNT_ID)
     {
-        Actions::redirect(DynamicalWeb::getRoute('applications', array('callback' => '107')));
+        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '107')));
     }
 
     DynamicalWeb::setMemoryObject('application', $Application);

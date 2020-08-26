@@ -2,13 +2,31 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
-    use IntellivoidAccounts\Objects\Subscription;
+    use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
+    use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
+    use IntellivoidSubscriptionManager\Objects\Subscription;
 
     function list_subscribed_services(array $Subscriptions)
     {
+        /** @noinspection PhpUnhandledExceptionInspection */
+        Runtime::import("SubscriptionManager");
+        if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
+        {
+            /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+            $SubscriptionManager = DynamicalWeb::setMemoryObject(
+                "subscription_manager", new IntellivoidSubscriptionManager()
+            );
+        }
+        else
+        {
+            /** @var IntellivoidSubscriptionManager $SubscriptionManager */
+            $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
+        }
+
+        Runtime::import("IntellivoidAccounts");
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
         {
             /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -28,7 +46,7 @@
                 foreach($Subscriptions as $Subscription)
                 {
                     $Subscription = Subscription::fromArray($Subscription);
-                    $SubscriptionPlan = $IntellivoidAccounts->getSubscriptionPlanManager()->getSubscriptionPlan(
+                    $SubscriptionPlan = $SubscriptionManager->getPlanManager()->getSubscriptionPlan(
                         SubscriptionPlanSearchMethod::byId, $Subscription->SubscriptionPlanID
                     );
                     $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(
