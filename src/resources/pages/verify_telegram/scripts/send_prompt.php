@@ -2,10 +2,10 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
     use IntellivoidAccounts\Exceptions\TooManyPromptRequestsException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
+    use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
 
     /** @var IntellivoidAccounts $IntellivoidAccounts */
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
