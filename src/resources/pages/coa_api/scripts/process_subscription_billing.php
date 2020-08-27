@@ -2,7 +2,6 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Runtime;
-    use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\InsufficientFundsException;
@@ -65,22 +64,6 @@
             'response_code' => 400,
             'error_code' => -1,
             'message' => resolve_error_code(-1)
-        ));
-    }
-
-    try
-    {
-        $Account = $IntellivoidAccounts->getAccountManager()->getAccount(
-            AccountSearchMethod::byId, WEB_ACCOUNT_ID
-        );
-    }
-    catch(Exception $e)
-    {
-        returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 26,
-            'message' => resolve_error_code(26)
         ));
     }
 
