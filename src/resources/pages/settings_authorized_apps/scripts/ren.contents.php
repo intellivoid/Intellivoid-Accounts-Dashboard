@@ -103,7 +103,7 @@
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center pb-50">
                                                         <i class="feather icon-settings"></i>
-                                                        <p class="mb-0 ml-2"><?PHP HTML::print("Sync application settings & variables"); ?></p>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_SYNC_SETTINGS_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -157,7 +157,7 @@
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center pb-50">
                                                         <i class="feather icon-info"></i>
-                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_ACCOUNT); ?></p>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_ACCOUNT_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -167,7 +167,7 @@
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center pb-50">
                                                         <i class="feather icon-check-square"></i>
-                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_MANAGER); ?></p>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_MANAGER_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
@@ -176,7 +176,7 @@
                                                     ?>
                                                     <div class="d-flex ml-2 align-items-center pb-50">
                                                         <i class="feather icon-check-square"></i>
-                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_MANAGER); ?></p>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_MANAGER_TEXT); ?></p>
                                                     </div>
                                                     <?PHP
                                                 }
