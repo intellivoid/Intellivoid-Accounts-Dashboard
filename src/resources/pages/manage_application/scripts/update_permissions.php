@@ -54,8 +54,27 @@
         $Application->apply_permission(AccountRequestPermissions::ViewEmailAddress);
     }
 
-    $Timestamp = (int)time();
-    $Application->LastUpdatedTimestamp = $Timestamp;
+    if(is_checked('perm_view_telegram_client'))
+    {
+        $Application->apply_permission(AccountRequestPermissions::GetTelegramClient);
+    }
+
+    if(is_checked('perm_access_todo'))
+    {
+        $Application->apply_permission(AccountRequestPermissions::AccessTodo);
+    }
+
+    if(is_checked('perm_manage_todo'))
+    {
+        $Application->apply_permission(AccountRequestPermissions::ManageTodo);
+    }
+
+    if(is_checked('perm_sync_settings'))
+    {
+        $Application->apply_permission(AccountRequestPermissions::SyncApplicationSettings);
+    }
+
+    $Application->LastUpdatedTimestamp = (int)time();
 
     try
     {

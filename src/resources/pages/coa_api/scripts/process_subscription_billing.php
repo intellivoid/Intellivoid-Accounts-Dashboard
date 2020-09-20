@@ -9,15 +9,15 @@
     use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionSearchMethod;
     use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
 
-    $SubscriptionID = get_parameter('subscription_id');
+    $SubscriptionID = get_parameter("subscription_id");
 
     if($SubscriptionID == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 42,
-            'message' => resolve_error_code(42)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 42,
+            "message" => resolve_error_code(42)
         ));
     }
 
@@ -37,7 +37,7 @@
     }
 
     /** @noinspection PhpUnhandledExceptionInspection */
-    Runtime::import('IntellivoidAccounts');
+    Runtime::import("IntellivoidAccounts");
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -60,10 +60,10 @@
     catch(Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
@@ -77,53 +77,53 @@
             $SubscriptionManager->getSubscriptionManager()->updateSubscription($Subscription);
 
             returnJsonResponse(array(
-                'status' => true,
-                'response_code' => 200,
-                'payment_processed' => true
+                "status" => true,
+                "response_code" => 200,
+                "payment_processed" => true
             ));
         }
         else
         {
             returnJsonResponse(array(
-                'status' => true,
-                'response_code' => 200,
-                'payment_processed' => false
+                "status" => true,
+                "response_code" => 200,
+                "payment_processed" => false
             ));
         }
     }
     catch (AccountNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => 26,
-            'message' => resolve_error_code(26)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => 26,
+            "message" => resolve_error_code(26)
         ));
     }
     catch (ApplicationNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => 4,
-            'message' => resolve_error_code(4)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => 4,
+            "message" => resolve_error_code(4)
         ));
     }
     catch (InsufficientFundsException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 49,
-            'message' => resolve_error_code(49)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 49,
+            "message" => resolve_error_code(49)
         ));
     }
     catch(Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }

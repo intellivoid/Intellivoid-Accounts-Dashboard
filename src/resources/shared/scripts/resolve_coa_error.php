@@ -161,10 +161,19 @@
                 return("INSUFFICIENT FUNDS");
 
             case 50:
-                return("MISSING PARAMETERS 'subscription_id'");
+                return("MISSING PARAMETER 'subscription_id'");
 
             case 51:
                 return("ACCESS DENIED DUE TO SECURITY ISSUES");
+
+            case 52:
+                return("MISSING PARAMETER 'application'");
+
+            case 53:
+                return("DIRECT AUTHENTICATION IS ONLY APPLICABLE TO BUILTIN APPLICATIONS");
+
+            case 54:
+                return("DIRECT AUTHENTICATION FAILED, APPLICATION NOT FOUND");
 
             default:
                 return("UNKNOWN ERROR");

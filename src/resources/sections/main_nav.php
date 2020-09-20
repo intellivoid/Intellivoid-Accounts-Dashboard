@@ -31,6 +31,19 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav bookmark-icons">
+                        <li class="nav-item d-block">
+                            <a class="nav-link disabled" href="#" data-toggle="tooltip" data-placement="top" title="Accounts">
+                                <i class="ficon feather icon-user"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item d-block">
+                            <a class="nav-link" href="https://todo.intellivoid.net" data-toggle="tooltip" data-placement="top" title="Todo">
+                                <i class="ficon feather icon-check-square"></i>
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
                     <li class="dropdown dropdown-language nav-item">

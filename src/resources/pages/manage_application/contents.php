@@ -7,7 +7,6 @@
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
     use IntellivoidAccounts\Abstracts\ApplicationStatus;
     use IntellivoidAccounts\Abstracts\AuthenticationMode;
-    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
 
     HTML::importScript('render_alert');
@@ -188,9 +187,8 @@
                                     <form class="form-group pt-2 mb-0" id="permissions-form" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_permissions'), true); ?>" method="POST">
                                         <h4 class="card-title pb-2"><?PHP HTML::print(TEXT_PERMISSIONS_HEADER); ?></h4>
                                         <div class="row">
+
                                             <div class="col-md-6">
-
-
                                                 <fieldset>
                                                     <div class="vs-checkbox-con vs-checkbox-primary">
                                                         <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" <?PHP if($Application->has_permission(AccountRequestPermissions::ViewEmailAddress)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
@@ -202,9 +200,10 @@
                                                         <label for="perm_view_email_address" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_EMAIL_ADDRESS_LABEL); ?></label>
                                                     </div>
                                                 </fieldset>
-                                                <p class="text-muted font-small-3 pb-1"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_EMAIL_ADDRESS_TEXT); ?></p>
+                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_EMAIL_ADDRESS_TEXT); ?></p>
+                                            </div>
 
-
+                                            <div class="col-md-6">
                                                 <fieldset>
                                                     <div class="vs-checkbox-con vs-checkbox-primary">
                                                         <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications"<?PHP if(in_array(AccountRequestPermissions::TelegramNotifications, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
@@ -217,11 +216,9 @@
                                                     </div>
                                                 </fieldset>
                                                 <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></p>
-
                                             </div>
+
                                             <div class="col-md-6">
-
-
                                                 <fieldset>
                                                     <div class="vs-checkbox-con vs-checkbox-primary">
                                                         <input type="checkbox" name="perm_view_personal_information" id="perm_view_personal_information"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
@@ -235,6 +232,67 @@
                                                 </fieldset>
                                                 <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_PERSONAL_INFORMATION_TEXT); ?></p>
                                             </div>
+
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" name="perm_view_telegram_client" id="perm_view_telegram_client"<?PHP if(in_array(AccountRequestPermissions::GetTelegramClient, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
+                                                        <span class="vs-checkbox">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <label for="perm_view_telegram_client" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_CLIENT_LABEL); ?></label>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_CLIENT_TEXT); ?></p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" name="perm_access_todo" id="perm_access_todo"<?PHP if(in_array(AccountRequestPermissions::AccessTodo, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
+                                                        <span class="vs-checkbox">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <label for="perm_access_todo" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_LABEL); ?></label>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_TEXT); ?></p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" name="perm_manage_todo" id="perm_manage_todo"<?PHP if(in_array(AccountRequestPermissions::ManageTodo, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
+                                                        <span class="vs-checkbox">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <label for="perm_manage_todo" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_LABEL); ?></label>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_TEXT); ?></p>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <div class="vs-checkbox-con vs-checkbox-primary">
+                                                        <input type="checkbox" name="perm_sync_settings" id="perm_sync_settings"<?PHP if(in_array(AccountRequestPermissions::SyncApplicationSettings, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
+                                                        <span class="vs-checkbox">
+                                                            <span class="vs-checkbox--check">
+                                                                <i class="vs-icon feather icon-check"></i>
+                                                            </span>
+                                                        </span>
+                                                        <label for="perm_sync_settings" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_SYNC_SETTINGS_LABEL); ?></label>
+                                                    </div>
+                                                </fieldset>
+                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_SYNC_SETTINGS_TEXT); ?></p>
+                                            </div>
+
                                         </div>
                                     </form>
                                 </div>

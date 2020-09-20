@@ -26,24 +26,6 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
-    /**
-     * If the
-     *
-     * @param string $param
-     * @return bool
-     */
-    function is_checked(string $param): bool
-    {
-        if(isset($_POST[$param]))
-        {
-            if($_POST[$param] == 'on')
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     if(isset($_POST['application_name']) == false)
     {
@@ -75,24 +57,6 @@
             Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '103')));
     }
 
-    $Permissions = [];
-
-    if(is_checked('perm_view_personal_information'))
-    {
-        $Permissions[] = AccountRequestPermissions::ReadPersonalInformation;
-    }
-
-    if(is_checked('perm_telegram_notifications'))
-    {
-        $Permissions[] = AccountRequestPermissions::TelegramNotifications;
-    }
-
-    if(is_checked('perm_view_email_address'))
-    {
-        $Permissions[] = AccountRequestPermissions::ViewEmailAddress;
-    }
-
-
 
     try
     {
@@ -109,8 +73,9 @@
         }
 
         $IntellivoidAccounts->getApplicationManager()->registerApplication(
-            $_POST['application_name'], WEB_ACCOUNT_ID, $AuthenticationType, $Permissions
+            $_POST['application_name'], WEB_ACCOUNT_ID, $AuthenticationType, []
         );
+
         $IntellivoidAccounts->getAuditLogManager()->logEvent(WEB_ACCOUNT_ID, AuditEventType::ApplicationCreated);
         Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '106')));
     }

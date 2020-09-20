@@ -6,31 +6,31 @@
     use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
-    HTML::importScript('async.check_access');
+    HTML::importScript("async.check_access");
 
     /** @var AuthenticationRequest $AuthenticationRequest */
-    $AuthenticationRequest = DynamicalWeb::getMemoryObject('authentication_request');
+    $AuthenticationRequest = DynamicalWeb::getMemoryObject("authentication_request");
 
     /** @var AuthenticationAccess $AuthenticationRequest */
-    $AuthenticationAccess = DynamicalWeb::getMemoryObject('authentication_access');
+    $AuthenticationAccess = DynamicalWeb::getMemoryObject("authentication_access");
 
     $Response = array(
-        'status' => true,
-        'response_code' => 200,
-        'permissions' => array()
+        "status" => true,
+        "response_code" => 200,
+        "permissions" => array()
     );
 
-    $Response['permissions']['view_public_information'] = true;
+    $Response["permissions"]["view_public_information"] = true;
 
     if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ViewEmailAddress))
     {
         if($AuthenticationAccess->has_permission(AccountRequestPermissions::ViewEmailAddress))
         {
-            $Response['permissions']['view_email_address'] = true;
+            $Response["permissions"]["view_email_address"] = true;
         }
         else
         {
-            $Response['permissions']['view_email_address'] = false;
+            $Response["permissions"]["view_email_address"] = false;
         }
     }
 
@@ -38,11 +38,11 @@
     {
         if($AuthenticationAccess->has_permission(AccountRequestPermissions::ReadPersonalInformation))
         {
-            $Response['permissions']['read_personal_information'] = true;
+            $Response["permissions"]["read_personal_information"] = true;
         }
         else
         {
-            $Response['permissions']['read_personal_information'] = false;
+            $Response["permissions"]["read_personal_information"] = false;
         }
     }
 
@@ -50,11 +50,11 @@
     {
         if($AuthenticationAccess->has_permission(AccountRequestPermissions::TelegramNotifications))
         {
-            $Response['permissions']['send_telegram_notifications'] = true;
+            $Response["permissions"]["send_telegram_notifications"] = true;
         }
         else
         {
-            $Response['permissions']['send_telegram_notifications'] = false;
+            $Response["permissions"]["send_telegram_notifications"] = false;
         }
     }
 
@@ -62,11 +62,11 @@
     {
         if($AuthenticationAccess->has_permission(AccountRequestPermissions::MakePurchases))
         {
-            $Response['permissions']['make_purchases'] = true;
+            $Response["permissions"]["make_purchases"] = true;
         }
         else
         {
-            $Response['permissions']['make_purchases'] = false;
+            $Response["permissions"]["make_purchases"] = false;
         }
     }
 

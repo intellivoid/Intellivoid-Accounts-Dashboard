@@ -11,7 +11,6 @@
 
     Runtime::import('IntellivoidAccounts');
     HTML::importScript('validate_coa');
-    HTML::importScript('process_authentication');
     HTML::importScript('render_alert');
 
     /** @var Application $Application */
@@ -39,6 +38,9 @@
     $AuthenticateRoute = DynamicalWeb::getRoute('application_authenticate', $ReqParameters);
 
     DynamicalWeb::setString('authenticate_route', $AuthenticateRoute);
+    DynamicalWeb::setArray('request_parameters', $ReqParameters);
+    HTML::importScript('process_authentication');
+
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
@@ -62,8 +64,8 @@
                         {
                             ?>
                             <section class="row flexbox-container mx-0">
-                                <div class="col-xl-8 col-10 d-flex justify-content-center my-3">
-                                    <div class="col-12 col-sm-10 col-md-11 col-lg-8 col-xl-7 p-0">
+                                <div class="col-xl-8 col-10 d-flex justify-content-center mt-3">
+                                    <div class="col-12 col-sm-10 col-md-11 col-lg-8 col-xl-7 p-0 mb-3">
                                         <?PHP HTML::importScript("card"); ?>
                                     </div>
                                 </div>

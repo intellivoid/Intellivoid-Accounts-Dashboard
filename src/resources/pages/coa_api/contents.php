@@ -20,36 +20,36 @@
 
     switch(strtolower(get_parameter('action')))
     {
-        case 'create_authentication_request':
-            HTML::importScript('create_authentication_request');
+        case "create_authentication_request":
+            HTML::importScript("create_authentication_request");
             break;
 
-        case 'request_authentication':
-            HTML::importScript('request_authentication');
+        case "request_authentication":
+            HTML::importScript("request_authentication");
             break;
 
-        case 'get_access_token':
-            HTML::importScript('get_access_token');
+        case "get_access_token":
+            HTML::importScript("get_access_token");
             break;
 
-        case 'check_permissions':
-            HTML::importScript('check_permissions');
+        case "check_permissions":
+            HTML::importScript("check_permissions");
             break;
 
-        case 'get_user':
-            HTML::importScript('get_user');
+        case "get_user":
+            HTML::importScript("get_user");
             break;
 
-        case 'get_access':
-            HTML::importScript('get_access');
+        case "get_access":
+            HTML::importScript("get_access");
             break;
 
-        case 'create_subscription':
-            HTML::importScript('create_subscription');
+        case "create_subscription":
+            HTML::importScript("create_subscription");
             break;
 
-        case 'process_subscription_billing':
-            HTML::importScript('process_subscription_billing');
+        case "process_subscription_billing":
+            HTML::importScript("process_subscription_billing");
             break;
 
         default:

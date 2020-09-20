@@ -12,33 +12,33 @@
     use IntellivoidAccounts\IntellivoidAccounts;
 
 
-    if(get_parameter('application_id') == null)
+    if(get_parameter("application_id") == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 1,
-            'message' => resolve_error_code(1)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 1,
+            "message" => resolve_error_code(1)
         ));
     }
 
-    if(get_parameter('secret_key') == null)
+    if(get_parameter("secret_key") == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 22,
-            'message' => resolve_error_code(22)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 22,
+            "message" => resolve_error_code(22)
         ));
     }
 
-    if(get_parameter('request_token') == null)
+    if(get_parameter("request_token") == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 39,
-            'message' => resolve_error_code(39)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 39,
+            "message" => resolve_error_code(39)
         ));
     }
 
@@ -60,80 +60,80 @@
     try
     {
         $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(
-            ApplicationSearchMethod::byApplicationId, get_parameter('application_id')
+            ApplicationSearchMethod::byApplicationId, get_parameter("application_id")
         );
     }
     catch (ApplicationNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 2,
-            'message' => resolve_error_code(2)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 2,
+            "message" => resolve_error_code(2)
         ));
     }
     catch(Exception $exception)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
-    if(get_parameter('secret_key') !== $Application->SecretKey)
+    if(get_parameter("secret_key") !== $Application->SecretKey)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 401,
-            'error_code' => 23,
-            'message' => resolve_error_code(23)
+            "status" => false,
+            "response_code" => 401,
+            "error_code" => 23,
+            "message" => resolve_error_code(23)
         ));
     }
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 403,
-            'error_code' => 3,
-            'message' => resolve_error_code(3)
+            "status" => false,
+            "response_code" => 403,
+            "error_code" => 3,
+            "message" => resolve_error_code(3)
         ));
     }
 
     try
     {
         $AuthenticationRequest = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationRequestManager()->getAuthenticationRequest(
-            AuthenticationRequestSearchMethod::requestToken, get_parameter('request_token')
+            AuthenticationRequestSearchMethod::requestToken, get_parameter("request_token")
         );
     }
     catch (AuthenticationRequestNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 40,
-            'message' => resolve_error_code(40)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 40,
+            "message" => resolve_error_code(40)
         ));
     }
     catch(Exception $exception)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
     if((int)time() > $AuthenticationRequest->ExpiresTimestamp)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 34,
-            'message' => resolve_error_code(34)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 34,
+            "message" => resolve_error_code(34)
         ));
     }
 
@@ -146,24 +146,26 @@
     catch (AuthenticationAccessNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 41,
-            'message' => resolve_error_code(41)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 41,
+            "message" => resolve_error_code(41)
         ));
     }
     catch(Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
     returnJsonResponse(array(
-        'status' => true,
-        'response_code' => 200,
-        'access_token' => $AuthenticationAccess->AccessToken
+        "status" => true,
+        "response_code" => 200,
+        "access_token" => $AuthenticationAccess->AccessToken,
+        "requested_permissions" => $AuthenticationRequest->RequestedPermissions,
+        "granted_permissions" => $AuthenticationAccess->Permissions
     ));
