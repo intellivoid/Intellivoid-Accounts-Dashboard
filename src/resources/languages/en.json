@@ -258,7 +258,7 @@
             "CALLBACK_102": "The Username/Email is doesn't exist",
             "CALLBACK_103": "The login credentials are incorrect",
             "CALLBACK_104": "Your account has been suspended, if you think this was a mistake, you can contact us.",
-            "CALLBACK_105": "You are not authorized to login to this account due to suspicious activities",
+            "CALLBACK_105": "You are not authorized to perform this action at this time due to suspicious activities, please contact support for further assistance.",
             "CALLBACK_106": "Your account has been created, you can login now.",
             "CALLBACK_107": "Your session has expired, please login again",
             "CALLBACK_108": "Please authorize yourself again",
@@ -400,7 +400,9 @@
             "CALLBACK_105": "The Username is already used by another account",
             "CALLBACK_106": "The Email is already used by another account",
             "CALLBACK_107": "You must agree to our Terms of Service to create a Intellivoid Account",
-            "CALLBACK_108": "The password you entered cannot be used because it was compromised by another service."
+            "CALLBACK_108": "The password you entered cannot be used because it was compromised by another service.",
+            "CALLBACK_109": "Due to suspicious activities detected by our automated abuse system, you are not allowed to create an account at this time. Bypassing this may result in all of your accounts being suspended automatically.",
+            "CALLBACK_110": "You are not authorized to perform this action at this time due to suspicious activities, please contact support for further assistance."
         },
         "settings_authorized_apps": {
             "PAGE_TITLE": "Authorized Applications",

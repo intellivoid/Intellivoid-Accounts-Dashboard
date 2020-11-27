@@ -2,12 +2,65 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
+use DynamicalWeb\Page;
 
-    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
+$UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
         $UsernameSafe = substr($UsernameSafe, 0 ,16);
         $UsernameSafe .= "...";
+    }
+
+    /**
+     * Determines if the quick access object is enabled or not
+     *
+     * @param string $name
+     * @return bool
+     * @throws Exception
+     */
+    function quick_access_enabled(string $name): bool
+    {
+        $Configuration = DynamicalWeb::getConfiguration("quick_access");
+
+        if(isset($Configuration[$name]) == false)
+        {
+            return false;
+        }
+
+        if($Configuration[$name]["ENABLED"])
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Determines the quick access location depending if it's localhost mode or not
+     *
+     * @param string $name
+     * @return string
+     * @throws Exception
+     */
+    function quick_access_location(string $name): string
+    {
+        $Configuration = DynamicalWeb::getConfiguration("quick_access");
+
+        if(isset($Configuration[$name]) == false)
+        {
+            Page::staticResponse(
+                "Intellivoid Accounts Error", "Quick Access Configuration",
+                "The quick access '$name' is not configured properly, see quick_access.json"
+            );
+            exit(0);
+        }
+
+        if($Configuration["LOCAL_MODE"])
+        {
+            return $Configuration[$name]["LOCAL_URI"];
+        }
+
+        return $Configuration[$name]["PRODUCTION_URI"];
     }
 ?>
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-fixed navbar-brand-center">
@@ -37,12 +90,18 @@
                                 <i class="ficon feather icon-user"></i>
                             </a>
                         </li>
-                        <li class="nav-item d-block">
-                            <a class="nav-link" href="https://todo.intellivoid.net" data-toggle="tooltip" data-placement="top" title="Todo">
-                                <i class="ficon feather icon-check-square"></i>
-                            </a>
-                        </li>
-
+                        <?PHP
+                            if(quick_access_enabled("TODO"))
+                            {
+                                ?>
+                                <li class="nav-item d-block">
+                                    <a class="nav-link" href="<?PHP HTML::print(quick_access_location("TODO"), false); ?>" data-toggle="tooltip" data-placement="top" title="Todo">
+                                        <i class="ficon feather icon-check-square"></i>
+                                    </a>
+                                </li>
+                                <?PHP
+                            }
+                        ?>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">

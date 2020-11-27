@@ -1,0 +1,7 @@
+{
+  "ACCOUNT_CREATION_LIMIT": {
+    "ENABLED": true,
+    "MAGIC_RESET_ENABLED": true,
+    "MAGIC_RESET_CODE": "reset"
+  }
+}
