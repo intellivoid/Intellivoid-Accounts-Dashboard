@@ -661,6 +661,7 @@
             "USER_DROPDOWN_MANAGE_APPLICATIONS": "Manage Applications",
             "USER_DROPDOWN_CHANGE_PASSWORD": "Change Password",
             "USER_DROPDOWN_CHANGE_AVATAR": "Change Avatar",
+            "USER_DROPDOWN_APPLICATION_INFO": "Application Info",
             "USER_DROPDOWN_LOGOUT": "Logout",
             "USER_ROLE_PERSONAL": "Personal",
             "USER_ROLE_ADMIN": "Administrator"
@@ -693,6 +694,10 @@
             "FEEDBACK_DIALOG_MESSAGE_PLACEHOLDER": "Write your message here and we will get back to you as soon as possible via Email",
             "FEEDBACK_DIALOG_CANCEL_BUTTON": "Cancel",
             "FEEDBACK_DIALOG_SUBMIT_BUTTON": "Send"
+        },
+        "application_info_modal": {
+            "APP_INFO_DIALOG_TITLE": "Application Info",
+            "APP_INFO_DIALOG_CLOSE_BUTTON": "Close"
         },
         "landing_footer": {
             "FOOTER_MENU_LINK_PRIVACY": "Privacy Policies",

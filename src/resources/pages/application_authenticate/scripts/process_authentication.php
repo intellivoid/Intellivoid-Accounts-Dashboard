@@ -95,6 +95,11 @@
 
         $SkipPermissionCheck = false;
 
+        if(function_exists("directAuthVerify") == false)
+        {
+            HTML::importScript("direct_auth");
+        }
+
         // Check if it's really a direct auth and if so
         // Then omit the permission check
         if(directAuthVerify($Application->NameSafe))

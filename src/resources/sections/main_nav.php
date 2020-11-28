@@ -2,9 +2,9 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-use DynamicalWeb\Page;
+    use DynamicalWeb\Page;
 
-$UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
+    $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
     {
         $UsernameSafe = substr($UsernameSafe, 0 ,16);
@@ -62,6 +62,8 @@ $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
 
         return $Configuration[$name]["PRODUCTION_URI"];
     }
+
+    HTML::importSection("application_info_modal");
 ?>
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-fixed navbar-brand-center">
     <div class="navbar-header d-xl-block d-none">
@@ -133,6 +135,9 @@ $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#appInfoModal">
+                                <i class="feather icon-info"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_APPLICATION_INFO); ?>
+                            </a>
                             <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_applications', [], true); ?>">
                                 <i class="feather icon-layers"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_MANAGE_APPLICATIONS); ?>
                             </a>
