@@ -163,7 +163,7 @@
                                                                                     HTML::print("<option value=\"None\">" . TEXT_DEFAULT_VALUE . "</option>", false);
                                                                                 }
 
-                                                                                $FirstYear = 1970;
+                                                                                $FirstYear = 1950;
                                                                                 $CurrentYear = (int)date('Y') - 13;
                                                                                 $CurrentCount = $FirstYear;
 

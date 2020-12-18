@@ -37,6 +37,14 @@
             "PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT": "Send notifications via Telegram",
             "PERMISSIONS_MAKE_PURCHASES_TOOLTIP": "Allows you to make purchases or activate subscriptions using your Account Balance (Intellivoid Only)",
             "PERMISSIONS_MAKE_PURCHASE_TEXT": "Request purchases",
+            "PERMISSIONS_SYNC_SETTINGS_TEXT": "Sync Application Settings",
+            "PERMISSIONS_SYNC_SETTINGS_TOOLTIP": "This application will sync it's settings to your account, this permission is required for this application to work correctly",
+            "PERMISSIONS_REQUEST_TELEGRAM_CLIENT_TEXT": "View your Telegram account",
+            "PERMISSIONS_REQUEST_TELEGRAM_CLIENT_TOOLTIP": "Can request basic information about your linked Telegram account like your ID, Username and Name",
+            "PERMISSIONS_MANAGE_TODO_TEXT": "View and Manage your Todo Manager",
+            "PERMISSIONS_MANAGE_TODO_TOOLTIP": "Can view and manage your todo manager such as your tasks and groups",
+            "PERMISSIONS_ACCESS_TODO_TEXT": "Access Todo Manager",
+            "PERMISSIONS_ACCESS_TODO_TOOLTIP": "Can access your todo manager's tasks and groups but cannot change anything about them",
             "AUTHENTICATION_NOTICE_OFFICIAL": "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This is an official Intellivoid Application/Service, whatever information or permissions you grant will be used via Intellivoid's terms of service and privacy policies which can be reviewed on the respective website or application. You can revoke access at any time via Intellivoid Accounts",
             "AUTHENTICATION_NOTICE_VERIFIED": "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This Application has been verified to be official by Intellivoid, however this is not an official Intellivoid Application/Service, whatever information or permissions you grant will be used in their terms of service and privacy policies if they have one. You can revoke access at any time via Intellivoid Accounts",
             "AUTHENTICATION_NOTICE_GENERIC": "By clicking Authenticate you are authenticating to %s with the permissions you choose to grant to this application or service. This is not an official Intellivoid Application/Service, whatever information or permissions you grant will be used in their terms of service and privacy policies if they have one. You can revoke access at any time via Intellivoid Accounts",
@@ -88,7 +96,8 @@
             "APPLICATION_TICK_OFFICIAL": "This is an official Intellivoid Application/Service",
             "APPLICATION_TICK_UNTRUSTED": "This is untrusted and unsafe",
             "HEADER_TEXT": "Successfully Authenticated",
-            "SUB_HEADER_TEXT": "%s is processing your request"
+            "SUB_HEADER_TEXT": "%s is processing your request",
+            "SUB_HEADER_ALT_TEXT": "You may now close this window"
         },
         "confirm_subscription_purchase": {
             "PAGE_TITLE": "Confirm Subscription Purchase",
@@ -250,7 +259,7 @@
             "CALLBACK_102": "The Username/Email is doesn't exist",
             "CALLBACK_103": "The login credentials are incorrect",
             "CALLBACK_104": "Your account has been suspended, if you think this was a mistake, you can contact us.",
-            "CALLBACK_105": "You are not authorized to login to this account due to suspicious activities",
+            "CALLBACK_105": "You are not authorized to perform this action at this time due to suspicious activities, please contact support for further assistance.",
             "CALLBACK_106": "Your account has been created, you can login now.",
             "CALLBACK_107": "Your session has expired, please login again",
             "CALLBACK_108": "Please authorize yourself again",
@@ -281,6 +290,14 @@
             "PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT": "Send notifications via Telegram (if available)",
             "PERMISSIONS_VIEW_PERSONAL_INFORMATION_LABEL": "View Personal Information",
             "PERMISSIONS_VIEW_PERSONAL_INFORMATION_TEXT": "Access to Personal Information like name, birthday and email",
+            "PERMISSIONS_VIEW_TELEGRAM_CLIENT_LABEL": "View Telegram Account",
+            "PERMISSIONS_VIEW_TELEGRAM_CLIENT_TEXT": "View basic information about the user's linked Telegram Account",
+            "PERMISSIONS_ACCESS_TODO_LABEL": "Access Todo Tasks & Groups",
+            "PERMISSIONS_ACCESS_TODO_TEXT": "Can view the user's todo tasks and groups",
+            "PERMISSIONS_MANAGE_TODO_LABEL": "Edit/Create Todo Tasks & Groups",
+            "PERMISSIONS_MANAGE_TODO_TEXT": "Can edit and create tasks or groups in the user's todo manager",
+            "PERMISSIONS_SYNC_SETTINGS_LABEL": "Sync Settings/Variables",
+            "PERMISSIONS_SYNC_SETTINGS_TEXT": "Allows you to store settings/variables with a users account",
             "DELETE_APPLICATION_BUTTON": "Delete Application",
             "SAVE_CHANGES_BUTTON": "Save Changes",
             "DELETE_APPLICATION_DIALOG_TITLE": "Delete Application",
@@ -317,13 +334,6 @@
             "CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_REDIRECT": "Redirect",
             "CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_PLACEHOLDER": "Application Placeholder",
             "CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_CODE": "Code",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_HEADER": "Permissions",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_EMAIL_TEXT": "View Email Address",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_EMAIL_DESCRIPTION": "View the users Email Address",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT": "Telegram Notifications",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_TELEGRAM_NOTIFICATIONS_DESCRIPTION": "Send notifications via Telegram (if available)",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_PERSONAL_INFORMATION_TEXT": "View Personal Information",
-            "CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_PERSONAL_INFORMATION_DESCRIPTION": "Access to Personal Information like name, birthday and email",
             "CREATE_APPLICATION_DIALOG_CANCEL_BUTTON": "Cancel",
             "CREATE_APPLICATION_DIALOG_SUBMIT_BUTTON": "Create Application",
             "APPLICATION_VIEW_APPLICATION_ICON_ALT": "Application Icon",
@@ -391,7 +401,9 @@
             "CALLBACK_105": "The Username is already used by another account",
             "CALLBACK_106": "The Email is already used by another account",
             "CALLBACK_107": "You must agree to our Terms of Service to create a Intellivoid Account",
-            "CALLBACK_108": "The password you entered cannot be used because it was compromised by another service."
+            "CALLBACK_108": "The password you entered cannot be used because it was compromised by another service.",
+            "CALLBACK_109": "Due to suspicious activities detected by our automated abuse system, you are not allowed to create an account at this time. Bypassing this may result in all of your accounts being suspended automatically.",
+            "CALLBACK_110": "You are not authorized to perform this action at this time due to suspicious activities, please contact support for further assistance."
         },
         "settings_authorized_apps": {
             "PAGE_TITLE": "Authorized Applications",
@@ -404,6 +416,10 @@
             "PERMISSIONS_EDIT_PERSONAL_INFORMATION_TEXT": "Edit your personal information",
             "PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT": "Send notifications via Telegram",
             "PERMISSIONS_MAKE_PURCHASE_TEXT": "Request purchases",
+            "PERMISSIONS_VIEW_TELEGRAM_ACCOUNT_TEXT": "Request basic information about your linked Telegram Account",
+            "PERMISSIONS_MANAGE_TODO_MANAGER_TEXT": "Access and edit your Todo Manager's tasks and groups",
+            "PERMISSIONS_ACCESS_TODO_MANAGER_TEXT": "Access your Todo Manager's tasks and groups",
+            "PERMISSIONS_SYNC_SETTINGS_TEXT": "Sync application settings & variables",
             "REVOKE_ACCESS_BUTTON": "Revoke Access",
             "NO_ITEMS": "No Items",
             "CALLBACK_100": "The requested resource was not found or does not exist",
@@ -646,6 +662,7 @@
             "USER_DROPDOWN_MANAGE_APPLICATIONS": "Manage Applications",
             "USER_DROPDOWN_CHANGE_PASSWORD": "Change Password",
             "USER_DROPDOWN_CHANGE_AVATAR": "Change Avatar",
+            "USER_DROPDOWN_APPLICATION_INFO": "Application Info",
             "USER_DROPDOWN_LOGOUT": "Logout",
             "USER_ROLE_PERSONAL": "Personal",
             "USER_ROLE_ADMIN": "Administrator"
@@ -678,6 +695,10 @@
             "FEEDBACK_DIALOG_MESSAGE_PLACEHOLDER": "Write your message here and we will get back to you as soon as possible via Email",
             "FEEDBACK_DIALOG_CANCEL_BUTTON": "Cancel",
             "FEEDBACK_DIALOG_SUBMIT_BUTTON": "Send"
+        },
+        "application_info_modal": {
+            "APP_INFO_DIALOG_TITLE": "Application Info",
+            "APP_INFO_DIALOG_CLOSE_BUTTON": "Close"
         },
         "landing_footer": {
             "FOOTER_MENU_LINK_PRIVACY": "Privacy Policies",

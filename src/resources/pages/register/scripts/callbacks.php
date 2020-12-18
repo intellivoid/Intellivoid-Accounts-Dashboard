@@ -43,5 +43,13 @@
             case 108:
                 RenderAuthError(TEXT_CALLBACK_108);
                 break;
+
+            case 109:
+                RenderAuthError(TEXT_CALLBACK_109);
+                break;
+
+            case 110:
+                RenderAuthError(TEXT_CALLBACK_110);
+                break;
         }
     }

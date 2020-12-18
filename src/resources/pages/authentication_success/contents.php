@@ -28,6 +28,7 @@
             <?PHP HTML::importSection('authentication_bhelper'); ?>
             <div class="content-wrapper mt-0">
                 <?PHP HTML::importScript("expanded"); ?>
+                <?PHP HTML::importScript("require_close"); ?>
                 <?PHP HTML::importSection('background_animations'); ?>
                 <div class="content-body">
                     <?PHP
@@ -40,7 +41,7 @@
                             ?>
                             <section class="row flexbox-container mx-0">
                                 <div class="col-xl-8 col-10 d-flex justify-content-center my-3">
-                                    <div class="col-12 col-sm-10 col-md-11 col-lg-8 col-xl-7 p-0">
+                                    <div class="col-12 col-sm-10 col-md-11 col-lg-8 col-xl-7 p-0 mb-3">
                                         <?PHP HTML::importScript("card"); ?>
                                     </div>
                                 </div>
@@ -53,5 +54,13 @@
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('authentication_js'); ?>
+        <?PHP
+            if(REQUIRE_CLOSE_WINDOW)
+            {
+                ?>
+                <script> close(); window.close(); </script>
+                <?PHP
+            }
+        ?>
     </body>
 </html>

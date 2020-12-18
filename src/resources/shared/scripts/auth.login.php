@@ -5,7 +5,8 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
-    use IntellivoidAccounts\Abstracts\LoginStatus;
+use IntellivoidAccounts\Abstracts\KnownHostViolationStatus;
+use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
@@ -78,25 +79,37 @@ use sws\Objects\Cookie;
                 Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
-            if($Host->Blocked == true)
-            {
-                try
-                {
-                    $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
-                        $Account->ID, $Host->ID,
-                        LoginStatus::UntrustedIpBlocked, 'Intellivoid Accounts',
-                        CLIENT_USER_AGENT
-                    );
+            $Host = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data["host_id"]);
 
-                    $GetParameters['callback'] = '105';
-                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
-                }
-                catch(Exception $exception)
+            try
+            {
+                $ViolationCheckStatus = $Host->checkViolationStatus();
+                $IntellivoidAccounts->getKnownHostsManager()->updateKnownHost($Host);
+
+                switch($ViolationCheckStatus)
                 {
-                    $GetParameters['callback'] = '106';
-                    $GetParameters['type'] = 'blocked';
-                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                    case KnownHostViolationStatus::HostBlockedAccountCreationLimit:
+                    case KnownHostViolationStatus::NoViolation:
+                        break;
+
+                    case KnownHostViolationStatus::HostBlockedByAdministrator:
+                    default:
+                        $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
+                            $Account->ID, $Host->ID,
+                            LoginStatus::UntrustedIpBlocked, 'Intellivoid Accounts',
+                            CLIENT_USER_AGENT
+                        );
+
+                        $GetParameters["callback"] = "105";
+                        Actions::redirect(DynamicalWeb::getRoute("login", $GetParameters));
+                        break;
                 }
+            }
+            catch(Exception $exception)
+            {
+                $GetParameters['callback'] = '105';
+                $GetParameters['type'] = 'blocked';
+                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
             }
 
             if(Validate::verifyHashedPassword($_POST['password'], $Account->Password) == false)

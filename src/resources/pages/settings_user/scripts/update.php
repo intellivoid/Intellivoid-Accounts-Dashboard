@@ -93,7 +93,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $DOB_Month = (int)$_POST['dob_month'];
         $DOB_Day = (int)$_POST['dob_day'];
 
-        if($DOB_Year < 1970)
+        if($DOB_Year < 1950)
         {
             Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
                 'callback' => '105'

@@ -81,6 +81,7 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                 }
                 ?>
             </div>
+
             <form class="mt-4" id="authentication_form" action="<?PHP HTML::print(DynamicalWeb::getString('authenticate_route'), false); ?>" method="POST" name="authentication_form">
                 <h6 class="mb-2"><?PHP HTML::print(str_ireplace("%s", $Application->Name, TEXT_PERMISSIONS_REQUEST_HEADER)); ?></h6>
                 <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_PERMISSIONS_USERNAME_AVATAR_TOOLTIP); ?>">
@@ -91,6 +92,18 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                 </div>
                 <?PHP
 
+                    if(in_array(AccountRequestPermissions::SyncApplicationSettings, $AuthenticationRequest->RequestedPermissions))
+                    {
+                        ?>
+                        <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_PERMISSIONS_SYNC_SETTINGS_TOOLTIP); ?>">
+                            <div class="d-flex align-items-center py-0 text-black">
+                                <span class="feather icon-settings"></span>
+                                <p class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_SYNC_SETTINGS_TEXT); ?></p>
+                            </div>
+                        </div>
+                        <?PHP
+                    }
+
                     if($AuthenticationRequest->has_requested_permission(AccountRequestPermissions::ViewEmailAddress))
                     {
                         ?>
@@ -99,15 +112,12 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                                 <span class="feather icon-mail"></span>
                                 <span class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_EMAIL_TEXT); ?></span>
                                 <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
-                                    <input name="view_email" id="view_email" type="checkbox" checked value="false">
+                                    <input name="view_email" id="view_email" type="checkbox" checked>
                                     <span class="vs-checkbox">
                                         <span class="vs-checkbox--check">
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                    <label for="view_email">
-                                        <?PHP HTML::print(TEXT_PERMISSIONS_ALLOW_CHECKBOX); ?>
-                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -123,15 +133,12 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                                 <span class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_PERSONAL_INFORMATION_TEXT); ?></span>
 
                                 <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
-                                    <input name="view_personal_information" id="view_personal_information" type="checkbox" checked value="false">
+                                    <input name="view_personal_information" id="view_personal_information" type="checkbox" checked>
                                     <span class="vs-checkbox">
                                         <span class="vs-checkbox--check">
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                    <label for="view_personal_information">
-                                        <?PHP HTML::print(TEXT_PERMISSIONS_ALLOW_CHECKBOX); ?>
-                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -146,15 +153,12 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                                 <span class="feather icon-edit-2"></span>
                                 <p class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_EDIT_PERSONAL_INFORMATION_TEXT); ?></p>
                                 <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
-                                    <input name="edit_personal_information" id="edit_personal_information" type="checkbox" checked value="false">
+                                    <input name="edit_personal_information" id="edit_personal_information" type="checkbox" checked>
                                     <span class="vs-checkbox">
                                         <span class="vs-checkbox--check">
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                    <label for="edit_personal_information">
-                                        <?PHP HTML::print(TEXT_PERMISSIONS_ALLOW_CHECKBOX); ?>
-                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -169,15 +173,71 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                                 <span class="feather icon-message-square"></span>
                                 <p class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></p>
                                 <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
-                                    <input name="telegram_notifications" id="telegram_notifications" type="checkbox" checked value="false">
+                                    <input name="telegram_notifications" id="telegram_notifications" type="checkbox" checked>
                                     <span class="vs-checkbox">
                                         <span class="vs-checkbox--check">
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                    <label for="telegram_notifications">
-                                        <?PHP HTML::print(TEXT_PERMISSIONS_ALLOW_CHECKBOX); ?>
-                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <?PHP
+                    }
+
+                    if(in_array(AccountRequestPermissions::GetTelegramClient, $AuthenticationRequest->RequestedPermissions))
+                    {
+                        ?>
+                        <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_PERMISSIONS_REQUEST_TELEGRAM_CLIENT_TOOLTIP); ?>">
+                            <div class="d-flex align-items-center py-0 text-black">
+                                <span class="feather icon-info"></span>
+                                <p class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_REQUEST_TELEGRAM_CLIENT_TEXT); ?></p>
+                                <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
+                                    <input name="get_telegram_client" id="get_telegram_client" type="checkbox" checked>
+                                    <span class="vs-checkbox">
+                                        <span class="vs-checkbox--check">
+                                            <i class="vs-icon feather icon-check"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <?PHP
+                    }
+
+                    if(in_array(AccountRequestPermissions::ManageTodo, $AuthenticationRequest->RequestedPermissions))
+                    {
+                        ?>
+                        <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_TOOLTIP); ?>">
+                            <div class="d-flex align-items-center py-0 text-black">
+                                <span class="feather icon-check-square"></span>
+                                <p class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_TEXT); ?></p>
+                                <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
+                                    <input name="manage_todo" id="manage_todo" type="checkbox" checked>
+                                    <span class="vs-checkbox">
+                                        <span class="vs-checkbox--check">
+                                            <i class="vs-icon feather icon-check"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <?PHP
+                    }
+                    elseif(in_array(AccountRequestPermissions::AccessTodo, $AuthenticationRequest->RequestedPermissions))
+                    {
+                        ?>
+                        <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_TOOLTIP); ?>">
+                            <div class="d-flex align-items-center py-0 text-black">
+                                <span class="feather icon-check-square"></span>
+                                <p class="mb-0 ml-1"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_TEXT); ?></p>
+                                <div class="vs-checkbox-con vs-checkbox-primary ml-auto mb-0 mt-0">
+                                    <input name="view_todo" id="view_todo" type="checkbox" checked>
+                                    <span class="vs-checkbox">
+                                        <span class="vs-checkbox--check">
+                                            <i class="vs-icon feather icon-check"></i>
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>

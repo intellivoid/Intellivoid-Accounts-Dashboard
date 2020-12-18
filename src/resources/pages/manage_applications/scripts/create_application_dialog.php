@@ -27,51 +27,6 @@
                             <option value="code"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_AUTHENTICATION_TYPE_CODE); ?></option>
                         </select>
                     </div>
-                    <h5 class="pb-1"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_HEADER); ?></h5>
-                    <div class="form-group px-1 mb-0">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                        <input type="checkbox" name="perm_view_email_address" id="perm_view_email_address" value="false">
-                                        <span class="vs-checkbox">
-                                                <span class="vs-checkbox--check">
-                                                    <i class="vs-icon feather icon-check"></i>
-                                                </span>
-                                            </span>
-                                        <label for="perm_view_email_address" class="font-medium-1"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_EMAIL_TEXT); ?></label>
-                                    </div>
-                                </fieldset>
-                                <p class="text-muted font-small-3 pb-1"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_EMAIL_DESCRIPTION); ?></p>
-                                <fieldset>
-                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                        <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications" value="false">
-                                        <span class="vs-checkbox">
-                                                <span class="vs-checkbox--check">
-                                                    <i class="vs-icon feather icon-check"></i>
-                                                </span>
-                                            </span>
-                                        <label for="perm_telegram_notifications" class="font-medium-1"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></label>
-                                    </div>
-                                </fieldset>
-                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_TELEGRAM_NOTIFICATIONS_DESCRIPTION); ?></p>
-                            </div>
-                            <div class="col-md-6">
-                                <fieldset>
-                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                        <input type="checkbox" name="perm_view_personal_information" id="perm_view_personal_information" value="false">
-                                        <span class="vs-checkbox">
-                                                <span class="vs-checkbox--check">
-                                                    <i class="vs-icon feather icon-check"></i>
-                                                </span>
-                                            </span>
-                                        <label for="perm_view_personal_information" class="font-medium-1"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_PERSONAL_INFORMATION_TEXT); ?></label>
-                                    </div>
-                                </fieldset>
-                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_PERMISSIONS_VIEW_PERSONAL_INFORMATION_DESCRIPTION); ?></p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_CANCEL_BUTTON); ?></button>

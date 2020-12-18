@@ -13,33 +13,33 @@
     use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    if(get_parameter('application_id') == null)
+    if(get_parameter("application_id") == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 1,
-            'message' => resolve_error_code(1)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 1,
+            "message" => resolve_error_code(1)
         ));
     }
 
-    if(get_parameter('secret_key') == null)
+    if(get_parameter("secret_key") == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 22,
-            'message' => resolve_error_code(22)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 22,
+            "message" => resolve_error_code(22)
         ));
     }
 
-    if(get_parameter('access_token') == null)
+    if(get_parameter("access_token") == null)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 24,
-            'message' => resolve_error_code(24)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 24,
+            "message" => resolve_error_code(24)
         ));
     }
 
@@ -60,79 +60,79 @@
     try
     {
         $Application = $IntellivoidAccounts->getApplicationManager()->getApplication(
-            ApplicationSearchMethod::byApplicationId, get_parameter('application_id')
+            ApplicationSearchMethod::byApplicationId, get_parameter("application_id")
         );
     }
     catch (ApplicationNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 400,
-            'error_code' => 2,
-            'message' => resolve_error_code(2)
+            "status" => false,
+            "response_code" => 400,
+            "error_code" => 2,
+            "message" => resolve_error_code(2)
         ));
     }
     catch(Exception $exception)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
-    if(get_parameter('secret_key') !== $Application->SecretKey)
+    if(get_parameter("secret_key") !== $Application->SecretKey)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 401,
-            'error_code' => 23,
-            'message' => resolve_error_code(23)
+            "status" => false,
+            "response_code" => 401,
+            "error_code" => 23,
+            "message" => resolve_error_code(23)
         ));
     }
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 403,
-            'error_code' => 3,
-            'message' => resolve_error_code(3)
+            "status" => false,
+            "response_code" => 403,
+            "error_code" => 3,
+            "message" => resolve_error_code(3)
         ));
     }
 
     try
     {
-        $AuthenticationAccess = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationAccessManager()->getAuthenticationAccess(AuthenticationAccessSearchMethod::byAccessToken, get_parameter('access_token'));
+        $AuthenticationAccess = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationAccessManager()->getAuthenticationAccess(AuthenticationAccessSearchMethod::byAccessToken, get_parameter("access_token"));
         $AuthenticationRequest = $IntellivoidAccounts->getCrossOverAuthenticationManager()->getAuthenticationRequestManager()->getAuthenticationRequest(AuthenticationRequestSearchMethod::byId, $AuthenticationAccess->RequestId);
     }
     catch (AuthenticationAccessNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 401,
-            'error_code' => 25,
-            'message' => resolve_error_code(25)
+            "status" => false,
+            "response_code" => 401,
+            "error_code" => 25,
+            "message" => resolve_error_code(25)
         ));
     }
     catch (Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
     if((int)time() > $AuthenticationAccess->ExpiresTimestamp)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 401,
-            'error_code' => 27,
-            'message' => resolve_error_code(27)
+            "status" => false,
+            "response_code" => 401,
+            "error_code" => 27,
+            "message" => resolve_error_code(27)
         ));
     }
 
@@ -143,39 +143,39 @@
     catch (AccountNotFoundException $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 404,
-            'error_code' => 26,
-            'message' => resolve_error_code(26)
+            "status" => false,
+            "response_code" => 404,
+            "error_code" => 26,
+            "message" => resolve_error_code(26)
         ));
     }
     catch (Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
     if($Account->Status == AccountStatus::Suspended)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 410,
-            'error_code' => 28,
-            'message' => resolve_error_code(28)
+            "status" => false,
+            "response_code" => 410,
+            "error_code" => 28,
+            "message" => resolve_error_code(28)
         ));
     }
 
     if($Account->Status == AccountStatus::BlockedDueToGovernmentBackedAttack)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 403,
-            'error_code' => 51,
-            'message' => resolve_error_code(51)
+            "status" => false,
+            "response_code" => 403,
+            "error_code" => 51,
+            "message" => resolve_error_code(51)
         ));
     }
 
@@ -186,20 +186,20 @@
     catch(Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
     if($ApplicationAccess->Status == ApplicationAccessStatus::Unauthorized)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 403,
-            'error_code' => 29,
-            'message' => resolve_error_code(29)
+            "status" => false,
+            "response_code" => 403,
+            "error_code" => 29,
+            "message" => resolve_error_code(29)
         ));
     }
 
@@ -213,14 +213,14 @@
     catch(Exception $e)
     {
         returnJsonResponse(array(
-            'status' => false,
-            'response_code' => 500,
-            'error_code' => -1,
-            'message' => resolve_error_code(-1)
+            "status" => false,
+            "response_code" => 500,
+            "error_code" => -1,
+            "message" => resolve_error_code(-1)
         ));
     }
 
-    DynamicalWeb::setMemoryObject('authentication_access', $AuthenticationAccess);
-    DynamicalWeb::setMemoryObject('authentication_request', $AuthenticationRequest);
-    DynamicalWeb::setMemoryObject('application_access', $ApplicationAccess);
-    DynamicalWeb::setMemoryObject('account', $Account);
+    DynamicalWeb::setMemoryObject("authentication_access", $AuthenticationAccess);
+    DynamicalWeb::setMemoryObject("authentication_request", $AuthenticationRequest);
+    DynamicalWeb::setMemoryObject("application_access", $ApplicationAccess);
+    DynamicalWeb::setMemoryObject("account", $Account);

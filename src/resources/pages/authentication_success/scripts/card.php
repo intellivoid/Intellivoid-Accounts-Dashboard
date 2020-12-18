@@ -77,7 +77,24 @@
                 <h4>
                     <i class="feather icon-check-circle text-success pr-50"></i> <?PHP HTML::print(TEXT_HEADER_TEXT); ?>
                 </h4>
-                <p><?PHP HTML::print(str_ireplace('%s', $Application->Name, TEXT_SUB_HEADER_TEXT)); ?></p>
+                <?PHP
+                    if(REQUIRE_CLOSE_WINDOW)
+                    {
+                        ?>
+                        <p>
+                            <?PHP HTML::print(TEXT_SUB_HEADER_ALT_TEXT); ?>
+                        </p>
+                        <?PHP
+                    }
+                    else
+                    {
+                        ?>
+                        <p>
+                            <?PHP HTML::print(str_ireplace('%s', $Application->Name, TEXT_SUB_HEADER_TEXT)); ?>
+                        </p>
+                        <?PHP
+                    }
+                ?>
             </div>
         </div>
     </div>

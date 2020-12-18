@@ -1,28 +1,14 @@
-<?PHP
+<?PHP /** @noinspection PhpUndefinedConstantInspection */
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
-    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\ApplicationAccess;
     use IntellivoidAccounts\Objects\COA\Application;
 
     function list_authorized_services(array $application_access_records, array $applications)
     {
-        if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
-        {
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
-                "intellivoid_accounts", new IntellivoidAccounts()
-            );
-        }
-        else
-        {
-            /** @var IntellivoidAccounts $IntellivoidAccounts */
-            $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-        }
-
         ?>
         <div class="accordion" id="apps-accordion" role="tablist">
             <?PHP
@@ -61,25 +47,41 @@
                                 <div class="ml-auto mr-3 d-none d-md-inline">
                                     <i class="feather icon-user pl-25"></i>
                                     <?PHP
-                                        if(in_array(AccountRequestPermissions::ViewEmailAddress ,$ApplicationAccess->Permissions))
+                                        if(in_array(AccountRequestPermissions::SyncApplicationSettings, $ApplicationAccess->Permissions))
                                         {
-                                            HTML::print("<i class=\"feather icon-mail pl-25\"></i>", false);
+                                            HTML::print("<i class=\"feather icon-settings pl-25\"></i> ", false);
                                         }
-                                        if(in_array(AccountRequestPermissions::ReadPersonalInformation ,$ApplicationAccess->Permissions))
+                                        if(in_array(AccountRequestPermissions::ViewEmailAddress, $ApplicationAccess->Permissions))
                                         {
-                                            HTML::print("<i class=\"feather icon-eye pl-25\"></i>", false);
+                                            HTML::print("<i class=\"feather icon-mail pl-25\"></i> ", false);
                                         }
-                                        if(in_array(AccountRequestPermissions::EditPersonalInformation ,$ApplicationAccess->Permissions))
+                                        if(in_array(AccountRequestPermissions::ReadPersonalInformation, $ApplicationAccess->Permissions))
                                         {
-                                            HTML::print("<i class=\"feather icon-edit-2 pl-25\"></i>", false);
+                                            HTML::print("<i class=\"feather icon-eye pl-25\"></i> ", false);
                                         }
-                                        if(in_array(AccountRequestPermissions::MakePurchases ,$ApplicationAccess->Permissions))
+                                        if(in_array(AccountRequestPermissions::EditPersonalInformation, $ApplicationAccess->Permissions))
                                         {
-                                            HTML::print("<i class=\"feather icon-shopping-cart pl-25\"></i>", false);
+                                            HTML::print("<i class=\"feather icon-edit-2 pl-25\"></i> ", false);
                                         }
-                                        if(in_array(AccountRequestPermissions::TelegramNotifications ,$ApplicationAccess->Permissions))
+                                        if(in_array(AccountRequestPermissions::MakePurchases, $ApplicationAccess->Permissions))
                                         {
-                                            HTML::print("<i class=\"feather icon-message-square pl-25\"></i>", false);
+                                            HTML::print("<i class=\"feather icon-shopping-cart pl-25\"></i> ", false);
+                                        }
+                                        if(in_array(AccountRequestPermissions::TelegramNotifications, $ApplicationAccess->Permissions))
+                                        {
+                                            HTML::print("<i class=\"feather icon-message-square pl-25\"></i> ", false);
+                                        }
+                                        if(in_array(AccountRequestPermissions::GetTelegramClient, $ApplicationAccess->Permissions))
+                                        {
+                                            HTML::print("<i class=\"feather icon-info pl-25\"></i> ", false);
+                                        }
+                                        if(in_array(AccountRequestPermissions::ManageTodo, $ApplicationAccess->Permissions))
+                                        {
+                                            HTML::print("<i class=\"feather icon-check-square pl-25\"></i> ", false);
+                                        }
+                                        elseif(in_array(AccountRequestPermissions::AccessTodo, $ApplicationAccess->Permissions))
+                                        {
+                                            HTML::print("<i class=\"feather icon-check-square pl-25\"></i> ", false);
                                         }
                                     ?>
 
@@ -96,54 +98,93 @@
                                                 <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_USERNAME_AVATAR_TEXT); ?></p>
                                             </div>
                                             <?PHP
-                                            if(in_array(AccountRequestPermissions::ViewEmailAddress, $ApplicationAccess->Permissions))
-                                            {
-                                                ?>
-                                                <div class="d-flex ml-2 align-items-center pb-50">
-                                                    <i class="feather icon-mail"></i>
-                                                    <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_EMAIL_TEXT); ?></p>
-                                                </div>
-                                                <?PHP
-                                            }
-                                            if(in_array(AccountRequestPermissions::ReadPersonalInformation, $ApplicationAccess->Permissions))
-                                            {
-                                                ?>
-                                                <div class="d-flex ml-2 align-items-center pb-50">
-                                                    <i class="feather icon-eye"></i>
-                                                    <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_PERSONAL_INFORMATION_TEXT); ?></p>
-                                                </div>
-                                                <?PHP
-                                            }
-                                            if(in_array(AccountRequestPermissions::EditPersonalInformation, $ApplicationAccess->Permissions))
-                                            {
-                                                ?>
-                                                <div class="d-flex ml-2 align-items-center pb-50">
-                                                    <i class="feather icon-edit-2"></i>
-                                                    <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_EDIT_PERSONAL_INFORMATION_TEXT); ?></p>
-                                                </div>
-                                                <?PHP
-                                            }
-                                            if(in_array(AccountRequestPermissions::MakePurchases, $ApplicationAccess->Permissions))
-                                            {
-                                                ?>
-                                                <div class="d-flex ml-2 align-items-center pb-50">
-                                                    <i class="feather icon-shopping-cart"></i>
-                                                    <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_MAKE_PURCHASE_TEXT); ?></p>
-                                                </div>
-                                                <?PHP
-                                            }
-                                            if(in_array(AccountRequestPermissions::TelegramNotifications, $ApplicationAccess->Permissions))
-                                            {
-                                                ?>
-                                                <div class="d-flex ml-2 align-items-center pb-50">
-                                                    <i class="feather icon-message-square"></i>
-                                                    <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></p>
-                                                </div>
-                                                <?PHP
-                                            }
+                                                if(in_array(AccountRequestPermissions::SyncApplicationSettings, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-settings"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_SYNC_SETTINGS_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                if(in_array(AccountRequestPermissions::ViewEmailAddress, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-mail"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_EMAIL_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                if(in_array(AccountRequestPermissions::ReadPersonalInformation, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-eye"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_PERSONAL_INFORMATION_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                if(in_array(AccountRequestPermissions::EditPersonalInformation, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-edit-2"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_EDIT_PERSONAL_INFORMATION_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                if(in_array(AccountRequestPermissions::MakePurchases, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-shopping-cart"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_MAKE_PURCHASE_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                if(in_array(AccountRequestPermissions::TelegramNotifications, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-message-square"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                if(in_array(AccountRequestPermissions::GetTelegramClient, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-info"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_ACCOUNT_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+
+                                                if(in_array(AccountRequestPermissions::ManageTodo, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-check-square"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_MANAGER_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
+                                                elseif(in_array(AccountRequestPermissions::AccessTodo, $ApplicationAccess->Permissions))
+                                                {
+                                                    ?>
+                                                    <div class="d-flex ml-2 align-items-center pb-50">
+                                                        <i class="feather icon-check-square"></i>
+                                                        <p class="mb-0 ml-2"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_MANAGER_TEXT); ?></p>
+                                                    </div>
+                                                    <?PHP
+                                                }
                                             ?>
                                         </div>
                                         <div class="col-lg-3 mt-auto mb-1">
+                                            <!-- <button class="btn btn-block btn-square btn-outline-success" onclick="location.href='<?PHP #DynamicalWeb::getRoute('settings_authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Export Data</button> -->
+                                            <!-- <button class="btn btn-block btn-square btn-outline-light" onclick="location.href='<?PHP #DynamicalWeb::getRoute('settings_authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Clear Data</button> -->
                                             <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('settings_authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';"><?PHP HTML::print(TEXT_REVOKE_ACCESS_BUTTON); ?></button>
                                         </div>
                                     </div>
