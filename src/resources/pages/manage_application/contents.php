@@ -206,21 +206,6 @@
                                             <div class="col-md-6">
                                                 <fieldset>
                                                     <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" name="perm_telegram_notifications" id="perm_telegram_notifications"<?PHP if(in_array(AccountRequestPermissions::TelegramNotifications, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
-                                                        <span class="vs-checkbox">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <label for="perm_telegram_notifications" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_LABEL); ?></label>
-                                                    </div>
-                                                </fieldset>
-                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_TELEGRAM_NOTIFICATIONS_TEXT); ?></p>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
                                                         <input type="checkbox" name="perm_view_personal_information" id="perm_view_personal_information"<?PHP if(in_array(AccountRequestPermissions::ReadPersonalInformation, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
                                                         <span class="vs-checkbox">
                                                             <span class="vs-checkbox--check">
@@ -233,50 +218,6 @@
                                                 <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_PERSONAL_INFORMATION_TEXT); ?></p>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" name="perm_view_telegram_client" id="perm_view_telegram_client"<?PHP if(in_array(AccountRequestPermissions::GetTelegramClient, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
-                                                        <span class="vs-checkbox">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <label for="perm_view_telegram_client" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_CLIENT_LABEL); ?></label>
-                                                    </div>
-                                                </fieldset>
-                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_VIEW_TELEGRAM_CLIENT_TEXT); ?></p>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" name="perm_access_todo" id="perm_access_todo"<?PHP if(in_array(AccountRequestPermissions::AccessTodo, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
-                                                        <span class="vs-checkbox">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <label for="perm_access_todo" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_LABEL); ?></label>
-                                                    </div>
-                                                </fieldset>
-                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_ACCESS_TODO_TEXT); ?></p>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                                        <input type="checkbox" name="perm_manage_todo" id="perm_manage_todo"<?PHP if(in_array(AccountRequestPermissions::ManageTodo, $Application->Permissions)){HTML::print(' checked'); } ?><?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
-                                                        <span class="vs-checkbox">
-                                                            <span class="vs-checkbox--check">
-                                                                <i class="vs-icon feather icon-check"></i>
-                                                            </span>
-                                                        </span>
-                                                        <label for="perm_manage_todo" class="font-medium-1"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_LABEL); ?></label>
-                                                    </div>
-                                                </fieldset>
-                                                <p class="text-muted font-small-3"><?PHP HTML::print(TEXT_PERMISSIONS_MANAGE_TODO_TEXT); ?></p>
-                                            </div>
 
                                             <div class="col-md-6">
                                                 <fieldset>

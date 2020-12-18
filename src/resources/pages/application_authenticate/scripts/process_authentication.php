@@ -8,8 +8,14 @@
     use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
+    use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthenticationAccessNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthenticationRequestAlreadyUsedException;
+    use IntellivoidAccounts\Exceptions\DatabaseException;
+    use IntellivoidAccounts\Exceptions\HostNotKnownException;
+    use IntellivoidAccounts\Exceptions\InvalidIpException;
+    use IntellivoidAccounts\Exceptions\InvalidLoginStatusException;
+    use IntellivoidAccounts\Exceptions\InvalidSearchMethodException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
@@ -59,6 +65,16 @@
         return false;
     }
 
+    /**
+     * Processes the authentication procedure
+     *
+     * @throws AccountNotFoundException
+     * @throws DatabaseException
+     * @throws HostNotKnownException
+     * @throws InvalidIpException
+     * @throws InvalidLoginStatusException
+     * @throws InvalidSearchMethodException
+     */
     function process_auth()
     {
         /** @var Application $Application */
@@ -112,6 +128,7 @@
                 }
             }
         }
+
 
         if($SkipPermissionCheck == false)
         {
@@ -181,6 +198,14 @@
             }
         }
 
+        // Correct the requested permissions
+        $CorrectedArray = [];
+        foreach($AuthenticationRequest->RequestedPermissions as $permission)
+        {
+            $CorrectedArray[] = $permission;
+        }
+        $AuthenticationRequest->RequestedPermissions = $CorrectedArray;
+
         $AuthenticationRequest->AccountId = WEB_ACCOUNT_ID;
 
         try
@@ -239,32 +264,35 @@
             case AuthenticationMode::Redirect:
                 HTML::importScript('redirect_url_function');
                 /** @noinspection PhpUndefinedVariableInspection */
-                Actions::redirect(create_redirect_location($_GET['redirect'], array('access_token' => $Access->AccessToken)));
+                Actions::redirect(create_redirect_location($_GET['redirect'], array(
+                    'access_token' => $Access->AccessToken
+                )));
                 break;
 
             case AuthenticationMode::Code:
-                /** @noinspection PhpUndefinedVariableInspection */
-                Actions::redirect(DynamicalWeb::getRoute('authentication_code', array(
-                    'auth' => 'application',
-                    'application_id' => $_GET['application_id'],
-                    'request_token' => $_GET['request_token'],
-                    'access_token' => $Access->AccessToken,
-                    'verification_token' => hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId)
-                )));
+                $GetParameters = $_GET;
+                $GetParameters["auth"] = "application";
+                $GetParameters["access_token"] = $Access->AccessToken;
+                $GetParameters["verification_token"] = hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId);
+
+                Actions::redirect(DynamicalWeb::getRoute('authentication_code', $GetParameters));
+
                 break;
 
             case AuthenticationMode::ApplicationPlaceholder:
-                Actions::redirect(DynamicalWeb::getRoute('authentication_success', array(
-                    'auth' => 'application',
-                    'application_id' => $_GET['application_id'],
-                    'request_token' => $_GET['request_token'],
-                    'access_token' => $Access->AccessToken,
-                    'verification_token' => hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId)
-                )));
+                $GetParameters = $_GET;
+                $GetParameters["auth"] = "application";
+                $GetParameters["access_token"] = $Access->AccessToken;
+                $GetParameters["verification_token"] = hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId);
+
+                Actions::redirect(DynamicalWeb::getRoute('authentication_success', $GetParameters));
+
                 break;
 
             default:
-                Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '35')));
+                Actions::redirect(DynamicalWeb::getRoute('application_error', array(
+                    'error_code' => '35'
+                )));
                 break;
         }
 

@@ -96,7 +96,8 @@
             "APPLICATION_TICK_OFFICIAL": "This is an official Intellivoid Application/Service",
             "APPLICATION_TICK_UNTRUSTED": "This is untrusted and unsafe",
             "HEADER_TEXT": "Successfully Authenticated",
-            "SUB_HEADER_TEXT": "%s is processing your request"
+            "SUB_HEADER_TEXT": "%s is processing your request",
+            "SUB_HEADER_ALT_TEXT": "You may now close this window"
         },
         "confirm_subscription_purchase": {
             "PAGE_TITLE": "Confirm Subscription Purchase",

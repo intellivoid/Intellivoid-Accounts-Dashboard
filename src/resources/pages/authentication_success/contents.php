@@ -28,6 +28,7 @@
             <?PHP HTML::importSection('authentication_bhelper'); ?>
             <div class="content-wrapper mt-0">
                 <?PHP HTML::importScript("expanded"); ?>
+                <?PHP HTML::importScript("require_close"); ?>
                 <?PHP HTML::importSection('background_animations'); ?>
                 <div class="content-body">
                     <?PHP
@@ -53,5 +54,13 @@
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('authentication_js'); ?>
+        <?PHP
+            if(REQUIRE_CLOSE_WINDOW)
+            {
+                ?>
+                <script> close(); window.close(); </script>
+                <?PHP
+            }
+        ?>
     </body>
 </html>

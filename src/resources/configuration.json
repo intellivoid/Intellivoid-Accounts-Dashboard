@@ -1,6 +1,6 @@
 {
     "primary_language": "en",
-    "debugging_mode": true,
+    "debugging_mode": false,
     "enable_ppm": true,
     "router": [
         {"path": "/", "page": "index"},

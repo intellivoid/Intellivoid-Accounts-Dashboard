@@ -183,6 +183,8 @@
                                             ?>
                                         </div>
                                         <div class="col-lg-3 mt-auto mb-1">
+                                            <!-- <button class="btn btn-block btn-square btn-outline-success" onclick="location.href='<?PHP #DynamicalWeb::getRoute('settings_authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Export Data</button> -->
+                                            <!-- <button class="btn btn-block btn-square btn-outline-light" onclick="location.href='<?PHP #DynamicalWeb::getRoute('settings_authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Clear Data</button> -->
                                             <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('settings_authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';"><?PHP HTML::print(TEXT_REVOKE_ACCESS_BUTTON); ?></button>
                                         </div>
                                     </div>

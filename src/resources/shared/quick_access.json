@@ -1,5 +1,5 @@
 {
-  "LOCAL_MODE": true,
+  "LOCAL_MODE": false,
   "TODO": {
     "ENABLED": true,
     "PRODUCTION_URI": "https://todo.intellivoid.net/",

@@ -21,14 +21,13 @@
 
     $VerificationToken = hash('sha256', $AuthenticationRequest->CreatedTimestamp . $AuthenticationRequest->RequestToken . $Application->PublicAppId);
 
-    $ReqParameters = array(
-        'auth' => 'application',
-        'action' => 'authenticate',
-        'application_id' => $_GET['application_id'],
-        'request_token' => $_GET['request_token'],
-        'exp' => $AuthenticationRequest->ExpiresTimestamp,
-        'verification_token' => $VerificationToken,
-    );
+    $ReqParameters = $_GET;
+    $ReqParameters["auth"] = "application";
+    $ReqParameters["action"] = "authenticate";
+    $ReqParameters["application_id"] = $_GET['application_id'];
+    $ReqParameters["request_token"] = $_GET['request_token'];
+    $ReqParameters["exp"] = $AuthenticationRequest->ExpiresTimestamp;
+    $ReqParameters["verification_token"] = $VerificationToken;
 
     if($Application->AuthenticationMode == AuthenticationMode::Redirect)
     {
