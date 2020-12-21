@@ -75,9 +75,9 @@
     }
     catch(Exception $exception)
     {
-        $IntellivoidAccounts->getLogHandler()->logException($exception, "Web Application");
+        $ExceptionID = $IntellivoidAccounts->getLogHandler()->logException($exception, "Web Application");
         header("X-COA-Error: 5");
-        Actions::redirect(DynamicalWeb::getRoute("application_error", array("error_code" => "5")));
+        Actions::redirect(DynamicalWeb::getRoute("application_error", array("error_code" => "5", "error_id" => $ExceptionID)));
     }
 
     try
