@@ -76,7 +76,7 @@
     catch(Exception $exception)
     {
         header("X-COA-Error: 5");
-        Actions::redirect(DynamicalWeb::getRoute("application_error", array("error_code" => "5", "furry" => "awoooo")));
+        Actions::redirect(DynamicalWeb::getRoute("application_error", array("error_code" => "5")));
     }
 
     try
