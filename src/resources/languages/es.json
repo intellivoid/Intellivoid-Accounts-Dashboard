@@ -35,7 +35,7 @@
             "ADD_BALANCE_DIALOG_CANCEL_BUTTON": "Cancelar",
             "ADD_BALANCE_DIALOG_CONTINUE_BUTTON": "Continuar"
         },
-        "application_authenticate": {
+        "authentication/coa/application_authenticate": {
             "PAGE_TITLE": "Autenticar a %s",
             "AUTHENTICATE_CARD_TITLE": "Inicia sesión con cuenta Intellivoid",
             "USER_IMG_ALT": "Avatar de usuario",
@@ -63,7 +63,7 @@
             "AUTHENTICATION_NOTICE_GENERIC": "Presionando Autenticar, autorizas a %s con los permisos que se deseen otorgar a esta aplicación/servicio. Esta no es una aplicación oficial de Intellivoid, cualquier información o permiso que otorgues será utilizado con base a los términos de servicio y politicas de privacidad de dicha aplicación. Puedes revocar el acceso cuando quieras por medio de Intellivoid Accounts",
             "AUTHENTICATION_AUTHENTICATE_BUTTON": "Autenticar"
         },
-        "application_error": {
+        "authentication/coa/application_error": {
             "PAGE_TITLE": "Error de COA",
             "PAGE_HEADER": "Error de COA",
             "PAGE_SUB_HEADER": "Hubo un error al tratar de procesar tu solicitud de autenticación",
@@ -130,7 +130,7 @@
             "AUDIT_EVENT_UNKNOWN": "Desconocido",
             "AUDIT_NO_ITEMS": "Sin elementos"
         },
-        "authentication_code": {
+        "authentication/coa/authentication_code": {
             "PAGE_TITLE": "Código de autenticación",
             "AUTHENTICATION_CARD_TITLE": "Iniciar sesión con cuenta de Intellivoid",
             "USER_IMG_ALT": "Avatar del usuario",
@@ -142,7 +142,7 @@
             "ACCESS_TOKEN_LABEL": "Token de acceso",
             "SUBMIT_BUTTON": "Listo"
         },
-        "authentication_success": {
+        "authentication/coa/authentication_success": {
             "PAGE_TITLE": "Autenticación correcta",
             "AUTHENTICATION_CARD_TITLE": "Iniciar sesión con cuenta de Intellivoid",
             "USER_IMG_ALT": "Avatar del usuario",
@@ -267,7 +267,7 @@
             "ABOUT_3_BODY": "¿Cansado de verificación por teléfono / E-mail? ¡No más! El sim swapping es cosa del pasado."
 
         },
-        "login": {
+        "authentication/login": {
             "PAGE_TITLE": "Intellivoid Accounts - Iniciar sesión",
             "AUTHENTICATION_HEADER": "Iniciar sesión con una cuenta existente de Intellivoid",
             "LOGIN_PLACEHOLDER": "Usuario o E-mail",
@@ -476,7 +476,7 @@
             "CARD_HEADER": "Compra exitosa",
             "CARD_DESCRIPTION": "Tu compra ha sido procesada correctamente, puedes cerrar esta ventana."
         },
-        "recover_password": {
+        "authentication/recover_password": {
             "PAGE_TITLE": "Recuperación de contraseña",
             "PASSWORD_RECOVERY_CARD_TITLE": "Nueva contraseña",
             "PASSWORD_RECOVERY_CARD_SUB_HEADER": "Introduce una nueva contraseña, asegúrate de no olvidarla",
@@ -489,7 +489,7 @@
             "CALLBACK_101": "La contraseña dada es inválida, longitud permitida: superior a 8 caracteres, menor que 128",
             "CALLBACK_102": "Hubo un error al procesar tu petición, inténtalo de nuevo más tarde."
         },
-        "register": {
+        "authentication/register": {
             "PAGE_TITLE": "Intellivoid Accounts - Registrarse",
             "AUTHENTICATION_SUB_HEADER": "Crear una cuenta de Intellivoid",
             "EMAIL_ADDRESS_LABEL": "Dirección de correo electrónico",
@@ -556,7 +556,7 @@
             "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Listo",
             "CALLBACK_100": "La verificación móvil ha sido activada en tu cuenta, es altamente recomendado configurar los códigos de recuperación en caso de perder tu dispositivo"
         },
-        "sudo": {
+        "authentication/sudo": {
             "PAGE_TITLE": "Modo Sudo",
             "AUTHENTICATION_SUB_HEADER": "Para prevenir cambios no autorizados, introduce tu contraseña",
             "PASSWORD_LABEL": "Contraseña",
@@ -580,7 +580,7 @@
             "PAGE_HEADER": "Pago exitoso",
             "PAGE_SUB_HEADER": "Intellivoid va procesará tu transacción, esto puede tardar hasta 48 horas."
         },
-        "verify":
+        "authentication/verification/verify":
         {
             "PAGE_TITLE": "Verificar autenticación",
             "HEADER": "Verificación",
@@ -598,7 +598,7 @@
             "CALLBACK_105": "El mensaje de autenticación ha sido denegado",
             "CALLBACK_106": "El mensaje de autenticación ha expirado"
         },
-        "verify_mobile": {
+        "authentication/verification/verify_mobile": {
             "PAGE_TITLE": "Verificar autenticación",
             "HEADER": "Verificación",
             "SUB_HEADER": "Introduce el código generado por la aplicación de autenticación de tu teléfono",
@@ -608,7 +608,7 @@
             "CALLBACK_100": "Hubo un problema con tu solicitud, asegúrate estar usando un navegador actualizado.",
             "CALLBACK_101": "Código de verificación incorrecto"
         },
-        "verify_recovery_code": {
+        "authentication/verification/verify_recovery_code": {
             "PAGE_TITLE": "Verificar autenticación",
             "HEADER": "Verificación",
             "SUB_HEADER": "Introducir un código de verificación de único uso",
@@ -618,7 +618,7 @@
             "CALLBACK_100": "Hubo un problema con tu solicitud, asegurate de que estás usando un navegador actualizado.",
             "CALLBACK_101": "Código de verificación incorrecto u ocupado"
         },
-        "verify_telegram": {
+        "authentication/verification/verify_telegram": {
             "PAGE_TITLE": "Verificar autenticación",
             "HEADER": "Mensaje vía Telegram",
             "SUB_HEADER": "Verifica tu cuenta de Telegram mediante un mensaje de autenticación"

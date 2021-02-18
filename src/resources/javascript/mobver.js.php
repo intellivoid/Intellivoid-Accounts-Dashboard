@@ -26,7 +26,7 @@ verticalForm.children("div").steps({
     bodyTag: "section",
     transitionEffect: "slideLeft",
     onFinished: function (event, currentIndex) {
-        $.redirectPost("<?PHP DynamicalWeb::getRoute('settings_setup_mobile_verification', array('action' => 'verify'), true); ?>",
+        $.redirectPost("<?PHP DynamicalWeb::getRoute('settings_setup_mobile_verification', array('action' => 'authentication/verification/verify'), true); ?>",
             {
                 "verification_code": $("#verification_code").val()
             }

@@ -144,7 +144,7 @@
                                 <i class="feather icon-image"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_CHANGE_AVATAR); ?>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('logout', [], true); ?>">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('authentication/logout', [], true); ?>">
                                 <i class="feather icon-power"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_LOGOUT); ?>
                             </a>
                         </div>

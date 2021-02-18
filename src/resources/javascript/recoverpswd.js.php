@@ -72,7 +72,7 @@ $('#authentication_form').on('submit', function () {
         }
         $_GET['action'] = 'submit';
     ?>
-    $.redirectPost("<?PHP DynamicalWeb::getRoute('recover_password', $_GET, true); ?>",
+    $.redirectPost("<?PHP DynamicalWeb::getRoute('authentication/recover_password', $_GET, true); ?>",
         {
             "username": $("#username").val(),
             "new_password": $("#new_password").val()

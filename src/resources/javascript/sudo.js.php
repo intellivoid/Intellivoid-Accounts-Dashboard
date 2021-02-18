@@ -72,7 +72,7 @@ $('#authentication_form').on('submit', function () {
             unset($_GET['callback']);
         }
     ?>
-    $.redirectPost("<?PHP DynamicalWeb::getRoute('sudo', $_GET, true); ?>",
+    $.redirectPost("<?PHP DynamicalWeb::getRoute('authentication/sudo', $_GET, true); ?>",
         {
             "password": password,
             "redirect": getUrlParameter('redirect')

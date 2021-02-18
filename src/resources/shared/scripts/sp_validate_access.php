@@ -17,13 +17,13 @@ use IntellivoidAccounts\Abstracts\AccountStatus;
 if(get_parameter('app_tag') == null)
     {
         header('X-COA-Error: 1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '1')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '1')));
     }
 
     if(get_parameter('access_token') == null)
     {
         header('X-COA-Error: 24');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '24')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '24')));
     }
 
     // Define the important parts
@@ -46,7 +46,7 @@ if(get_parameter('app_tag') == null)
     if($Application->Status == ApplicationStatus::Suspended)
     {
         header('X-COA-Error: 3');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '3')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '3')));
     }
 
     try
@@ -61,18 +61,18 @@ if(get_parameter('app_tag') == null)
     catch (AuthenticationAccessNotFoundException $e)
     {
         header('X-COA-Error: 25');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '25')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '25')));
     }
     catch (Exception $e)
     {
         header('X-COA-Error: -1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '-1')));
     }
 
     if((int)time() > $AuthenticationAccess->ExpiresTimestamp)
     {
         header('X-COA-Error: 27');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '27')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '27')));
     }
 
     try
@@ -84,18 +84,18 @@ if(get_parameter('app_tag') == null)
     catch (AccountNotFoundException $e)
     {
         header('X-COA-Error: 26');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '26')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '26')));
     }
     catch (Exception $e)
     {
         header('X-COA-Error: -1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '-1')));
     }
 
     if($Account->Status == AccountStatus::Suspended)
     {
         header('X-COA-Error: 28');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '28')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '28')));
     }
 
     try
@@ -107,13 +107,13 @@ if(get_parameter('app_tag') == null)
     catch(Exception $e)
     {
         header('X-COA-Error: -1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '-1')));
     }
 
     if($ApplicationAccess->Status == ApplicationAccessStatus::Unauthorized)
     {
         header('X-COA-Error: 29');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '29')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '29')));
     }
 
     if(in_array(AccountRequestPermissions::MakePurchases ,$ApplicationAccess->Permissions) == false)
@@ -136,7 +136,7 @@ if(get_parameter('app_tag') == null)
     catch(Exception $e)
     {
         header('X-COA-Error: -1');
-        Actions::redirect(DynamicalWeb::getRoute('application_error', array('error_code' => '-1')));
+        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '-1')));
     }
 
     DynamicalWeb::setMemoryObject('authentication_access', $AuthenticationAccess);

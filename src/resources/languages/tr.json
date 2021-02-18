@@ -35,7 +35,7 @@
             "ADD_BALANCE_DIALOG_CANCEL_BUTTON": "İptal",
             "ADD_BALANCE_DIALOG_CONTINUE_BUTTON": "Devam et"
         },
-        "application_authenticate": {
+        "authentication/coa/application_authenticate": {
             "PAGE_TITLE": "%s kimlik doğrulaması",
             "AUTHENTICATE_CARD_TITLE": "Intellivoid Accounts ile oturum açın",
             "USER_IMG_ALT": "Kullanıcı Profili",
@@ -63,7 +63,7 @@
             "AUTHENTICATION_NOTICE_GENERIC": "Kimlik Doğrulama'yı tıklatarak bu uygulamaya veya hizmete vermeyi seçtiğiniz izinlerle %s kimlik doğrulaması yapıyorsunuz. Bu, resmi bir Intellivoid Uygulaması / Hizmeti değildir; verdiğiniz bilgi veya izinler, hizmet şartlarında ve varsa gizlilik politikalarında kullanılacaktır. Intellivoid Accounts aracılığıyla erişimi istediğiniz zaman iptal edebilirsiniz",
             "AUTHENTICATION_AUTHENTICATE_BUTTON": "Kimlik Doğrulaması"
         },
-        "application_error": {
+        "authentication/coa/application_error": {
             "PAGE_TITLE": "COA Hatası",
             "PAGE_HEADER": "COA Hatası",
             "PAGE_SUB_HEADER": "Kimlik doğrulama isteğinizi işleme koymaya çalışırken bir hata oluştu",
@@ -130,7 +130,7 @@
             "AUDIT_EVENT_UNKNOWN": "Bilinmeyen",
             "AUDIT_NO_ITEMS": "Öğe Yok"
         },
-        "authentication_code": {
+        "authentication/coa/authentication_code": {
             "PAGE_TITLE": "Kimlik Doğrulama Kodu",
             "AUTHENTICATION_CARD_TITLE": "Intellivoid Accounts ile oturum açın",
             "USER_IMG_ALT": "Kullanıcı Profil Resmi",
@@ -142,7 +142,7 @@
             "ACCESS_TOKEN_LABEL": "Erişim Simgesi",
             "SUBMIT_BUTTON": "Tamamlandı!"
         },
-        "authentication_success": {
+        "authentication/coa/authentication_success": {
             "PAGE_TITLE": "Kimlik Doğrulama Başarılı",
             "AUTHENTICATION_CARD_TITLE": "Intellivoid Accounts ile oturum açın",
             "USER_IMG_ALT": "Kullanıcı Profil Resmi",
@@ -267,7 +267,7 @@
             "ABOUT_3_BODY": "Telefon Doğrulama / E-posta Doğrulamasından bıktınız mı? Daha fazla yok! sim takas etmek geçmişte kaldı."
 
         },
-        "login": {
+        "authentication/login": {
             "PAGE_TITLE": "Intellivoid Accounts - Oturum Aç",
             "AUTHENTICATION_HEADER": "Mevcut bir Intellivoid Accounts'a giriş yapın",
             "LOGIN_PLACEHOLDER": "Kullanıcı adı ya da email",
@@ -476,7 +476,7 @@
             "CARD_HEADER": "Satın Alma Başarılı",
             "CARD_DESCRIPTION": "Satın alma işleminiz başarıyla işlendi, şimdi bu pencereyi kapatabilirsiniz."
         },
-        "recover_password": {
+        "authentication/recover_password": {
             "PAGE_TITLE": "Şifre Kurtarma",
             "PASSWORD_RECOVERY_CARD_TITLE": "Yeni Şifre",
             "PASSWORD_RECOVERY_CARD_SUB_HEADER": "Unutmayacağınız yeni bir şifre girin",
@@ -489,7 +489,7 @@
             "CALLBACK_101": "Belirtilen şifre geçersiz, 8 karakterden büyük, 128 karakterden büyük olmamalıdır",
             "CALLBACK_102": "İsteğinizi işleme koymaya çalışırken bir hata oluştu, daha sonra tekrar deneyin."
         },
-        "register": {
+        "authentication/register": {
             "AUTHENTICATION_SUB_HEADER": "Yeni bir Intellivoid Accounts oluşturun",
             "PAGE_TITLE": "Intellivoid Accounts - Kayıtlar",
             "EMAIL_ADDRESS_LABEL": "E-mail Adresi",
@@ -555,7 +555,7 @@
             "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Tamam!",
             "CALLBACK_100": "Mobil doğrulama hesabınızda etkinleştirildi, cihazınızı kaybetmeniz durumunda Kurtarma Kodlarını ayarlamanız önemle tavsiye edilir"
         },
-        "sudo": {
+        "authentication/sudo": {
             "PAGE_TITLE": "Sudo Modu",
             "AUTHENTICATION_SUB_HEADER": "Yetkisiz değişiklikleri önlemek için şifrenizi girin",
             "PASSWORD_LABEL": "Şifre",
@@ -579,7 +579,7 @@
             "PAGE_HEADER": "Ödeme başarılı",
             "PAGE_SUB_HEADER": "Intellivoid şimdi işleminizi gerçekleştirecek, bu işlem 48 saate kadar sürebilir."
         },
-        "verify":
+        "authentication/verification/verify":
         {
             "PAGE_TITLE": "Kimlik Doğrulamasını Doğrula",
             "HEADER": "Doğrulama",
@@ -597,7 +597,7 @@
             "CALLBACK_105": "Kimlik doğrulama istemi reddedildi",
             "CALLBACK_106": "Kimlik doğrulama isteminin süresi doldu"
         },
-        "verify_mobile": {
+        "authentication/verification/verify_mobile": {
             "PAGE_TITLE": "Kimlik Doğrulamasını Doğrula",
             "HEADER": "Doğrulama",
             "SUB_HEADER": "Kimlik Doğrulama Uygulamanız tarafından oluşturulan kodu telefonunuzdan girin",
@@ -607,7 +607,7 @@
             "CALLBACK_100": "İsteğinizle ilgili bir sorun oluştu, lütfen tarayıcınızın güncel olduğundan emin olun.",
             "CALLBACK_101": "Yanlış doğrulama kodu"
         },
-        "verify_recovery_code": {
+        "authentication/verification/verify_recovery_code": {
             "PAGE_TITLE": "Kimlik Doğrulamasını Doğrula",
             "HEADER": "Doğrulama",
             "SUB_HEADER": "Bir kerelik kullanım kurtarma kodu girin",
@@ -617,7 +617,7 @@
             "CALLBACK_100": "İsteğinizle ilgili bir sorun oluştu, lütfen tarayıcınızın güncel olduğundan emin olun.",
             "CALLBACK_101": "Yanlış veya önceden kullanılmış kurtarma kodu"
         },
-        "verify_telegram": {
+        "authentication/verification/verify_telegram": {
             "PAGE_TITLE": "Kimlik Doğrulamasını Doğrula",
             "HEADER": "Telegram İstemi",
             "SUB_HEADER": "Telgram Hesabınızda Kimlik Doğrulama İstemi olup olmadığını kontrol edin"

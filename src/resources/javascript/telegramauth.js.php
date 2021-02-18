@@ -55,7 +55,7 @@ function go_back()
         }
     ?>
     setTimeout(function() {
-        window.location.href='<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>'
+        window.location.href='<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>'
     }, 500);
 }
 function toggle_anim()
@@ -88,48 +88,48 @@ setInterval(function(){
         {
             case 200:
                 <?PHP $GetParameters['callback'] = '107'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/login', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
 
             case 201:
                 <?PHP $GetParameters['callback'] = '101'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
 
             case 202:
                 <?PHP $GetParameters['callback'] = '100'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>";
                 break;
 
             case 203:
                 <?PHP $GetParameters['callback'] = '102'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
 
             case 204:
                 <?PHP $GetParameters['callback'] = '104'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
 
             case 205:
                 <?PHP $GetParameters['callback'] = '109'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('login', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/login', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
 
             case 206:
                 <?PHP $GetParameters['callback'] = '106'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
 
             default:
                 <?PHP $GetParameters['callback'] = '101'; ?>
-                location.href = "<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>";
+                location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>";
                 telegram_auth.process_completed = true;
                 break;
         }
@@ -140,7 +140,7 @@ setInterval(function(){
         {
             <?PHP $GetParameters['action'] = 'verify'; ?>
             <?PHP unset($GetParameters['callback']); ?>
-            location.href = "<?PHP DynamicalWeb::getRoute('verify_telegram', $GetParameters, true); ?>";
+            location.href = "<?PHP DynamicalWeb::getRoute('authentication/verification/verify_telegram', $GetParameters, true); ?>";
             telegram_auth.process_completed = true;
         }
     }

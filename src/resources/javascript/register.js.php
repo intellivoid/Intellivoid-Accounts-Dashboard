@@ -73,7 +73,7 @@ $('#authentication_form').on('submit', function () {
     $("#callback_alert").empty();
     toggle_anim();
 
-    $.redirectPost("<?PHP DynamicalWeb::getRoute('register', $GetParameters, true); ?>",
+    $.redirectPost("<?PHP DynamicalWeb::getRoute('authentication/register', $GetParameters, true); ?>",
         {
             "username": username,
             "email": email,

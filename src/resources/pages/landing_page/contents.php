@@ -118,7 +118,7 @@ use DynamicalWeb\Runtime;
             <?PHP HTML::importSection('landing_footer'); ?>
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
-        <?PHP HTML::importSection('gen_dashboard_js'); ?>
+        <?PHP HTML::importSection('generic_js'); ?>
         <?PHP Javascript::importScript('landingquotes'); ?>
     </body>
 </html>

@@ -14,7 +14,7 @@
             "HEADER": "500内部服务器错误",
             "HOME_LINK": "回到家"
         },
-        "application_authenticate": {
+        "authentication/coa/application_authenticate": {
             "PAGE_TITLE": "向%s验证",
             "AUTHENTICATE_CARD_TITLE": "使用Intellivoid Accounts登录",
             "USER_IMG_ALT": "用户头像",
@@ -50,7 +50,7 @@
             "AUTHENTICATION_NOTICE_GENERIC": "通过单击“身份验证”，您将使用您选择授予此应用程序或服务的权限向%s进行身份验证。这不是官方的Intellivoid应用程序/服务，如果您授予的任何信息或权限，将在其服务条款和隐私策略中使用（如果有的话）。您可以随时通过Intellivoid Accounts撤消访问权限",
             "AUTHENTICATION_AUTHENTICATE_BUTTON": "认证"
         },
-        "application_error": {
+        "authentication/coa/application_error": {
             "PAGE_TITLE": "COA错误",
             "PAGE_HEADER": "COA错误",
             "PAGE_SUB_HEADER": "尝试处理身份验证请求时出错",
@@ -75,7 +75,7 @@
             "AUDIT_EVENT_UNKNOWN": "未知",
             "AUDIT_NO_ITEMS": "没有相关产品"
         },
-        "authentication_code": {
+        "authentication/coa/authentication_code": {
             "PAGE_TITLE": "验证码",
             "AUTHENTICATION_CARD_TITLE": "使用Intellivoid Accounts登录",
             "USER_IMG_ALT": "用户头像",
@@ -87,7 +87,7 @@
             "ACCESS_TOKEN_LABEL": "访问令牌",
             "SUBMIT_BUTTON": "完成了"
         },
-        "authentication_success": {
+        "authentication/coa/authentication_success": {
             "PAGE_TITLE": "验证成功",
             "AUTHENTICATION_CARD_TITLE": "使用Intellivoid Accounts登录",
             "USER_IMG_ALT": "用户头像",
@@ -245,7 +245,7 @@
             "ABOUT_3_HEADER": "不再有无效的验证形式",
             "ABOUT_3_BODY": "厌倦了电话验证/电子邮件验证？不再！ sim交换已成为过去。"
         },
-        "login": {
+        "authentication/login": {
             "PAGE_TITLE": "Intellivoid Accounts-登录",
             "AUTHENTICATION_HEADER": "登入",
             "LOGIN_PLACEHOLDER": "用户名或电子邮件",
@@ -368,7 +368,7 @@
             "CARD_DESCRIPTION": "您的购买已成功处理，您现在可以关闭此窗口。",
             "CARD_DESCRIPTION_REDIRECT": "您的购买已成功处理，您将很快被重定向"
         },
-        "recover_password": {
+        "authentication/recover_password": {
             "PAGE_TITLE": "找回密码",
             "HEADER": "新密码",
             "SUB_HEADER": "要登录，您需要设置一个新密码。",
@@ -382,7 +382,7 @@
             "CALLBACK_102": "尝试处理您的请求时出错，请稍后再试。",
             "CALLBACK_103": "您输入的密码之前曾被其他服务盗用，请使用其他密码"
         },
-        "register": {
+        "authentication/register": {
             "PAGE_TITLE": "Intellivoid Accounts-注册",
             "AUTHENTICATION_SUB_HEADER": "注册账户",
             "EMAIL_ADDRESS_LABEL": "电子邮件地址",
@@ -581,7 +581,7 @@
             "CALLBACK_118": "该电子邮件地址已被使用",
             "CALLBACK_120": "您的帐户信息已成功更新"
         },
-        "sudo": {
+        "authentication/sudo": {
             "PAGE_TITLE": "须藤模式",
             "HEADER": "须藤模式",
             "SUB_HEADER": "为防止未经授权的更改，请输入密码",
@@ -600,7 +600,7 @@
             "PAGE_HEADER": "支付成功",
             "PAGE_SUB_HEADER": "Intellivoid现在将处理您的交易，这可能最多需要48个小时。"
         },
-        "verify":
+        "authentication/verification/verify":
         {
             "PAGE_TITLE": "验证身份验证",
             "HEADER": "验证您的登录名",
@@ -618,7 +618,7 @@
             "CALLBACK_105": "身份验证提示已被拒绝",
             "CALLBACK_106": "身份验证提示已过期"
         },
-        "verify_mobile": {
+        "authentication/verification/verify_mobile": {
             "PAGE_TITLE": "移动验证",
             "HEADER": "移动验证",
             "SUB_HEADER": "输入您的身份验证应用程序通过手机生成的代码",
@@ -628,7 +628,7 @@
             "CALLBACK_100": "您的请求存在问题，请确保您的浏览器是最新的。",
             "CALLBACK_101": "验证码不正确e"
         },
-        "verify_recovery_code": {
+        "authentication/verification/verify_recovery_code": {
             "PAGE_TITLE": "验证恢复码",
             "HEADER": "验证恢复码",
             "SUB_HEADER": "输入一次性使用恢复码",
@@ -638,7 +638,7 @@
             "CALLBACK_100": "您的请求存在问题，请确保您的浏览器是最新的。",
             "CALLBACK_101": "错误或已使用的恢复代码"
         },
-        "verify_telegram": {
+        "authentication/verification/verify_telegram": {
             "PAGE_TITLE": "验证身份验证",
             "HEADER": "电报提示",
             "SUB_HEADER": "检查您的电报帐户是否有身份验证提示"

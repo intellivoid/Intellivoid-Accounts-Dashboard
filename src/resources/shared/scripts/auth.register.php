@@ -35,37 +35,37 @@
             register_account();
             HTML::importScript("sync_avatar");
             $GetParameters["callback"] = "106";
-            Actions::redirect(DynamicalWeb::getRoute("login", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/login", $GetParameters));
         }
         catch(InvalidUsernameException $invalidUsernameException)
         {
             $GetParameters["callback"] = "102";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
         catch(InvalidEmailException $invalidEmailException)
         {
             $GetParameters["callback"] = "103";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
         catch(InvalidPasswordException $invalidPasswordException)
         {
             $GetParameters["callback"] = "104";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
         catch(UsernameAlreadyExistsException $usernameAlreadyExistsException)
         {
             $GetParameters["callback"] = "105";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
         catch(EmailAlreadyExistsException $emailAlreadyExistsException)
         {
             $GetParameters["callback"] = "106";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
         catch(Exception $exception)
         {
             $GetParameters["callback"] = "101";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
     }
 
@@ -114,25 +114,25 @@
         if(isset($_POST["email"]) == false)
         {
             $GetParameters["callback"] = "100";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
 
         if(isset($_POST["password"]) == false)
         {
             $GetParameters["callback"] = "100";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
 
         if(isset($_POST["password"]) == false)
         {
             $GetParameters["callback"] = "100";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
 
         if(get_checkbox_input("tos_agree") == false)
         {
             $GetParameters["callback"] = "107";
-            Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -160,7 +160,7 @@
         {
             case KnownHostViolationStatus::HostBlockedAccountCreationLimit:
                 $GetParameters["callback"] = "109";
-                Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
                 break;
 
             case KnownHostViolationStatus::NoViolation:
@@ -169,7 +169,7 @@
             case KnownHostViolationStatus::HostBlockedByAdministrator:
             default:
                 $GetParameters["callback"] = "110";
-                Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
                 break;
         }
 
@@ -182,7 +182,7 @@
             if($PasswordCache->Compromised)
             {
                 $GetParameters["callback"] = "108";
-                Actions::redirect(DynamicalWeb::getRoute("register", $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
             }
         }
         catch(Exception $exception)

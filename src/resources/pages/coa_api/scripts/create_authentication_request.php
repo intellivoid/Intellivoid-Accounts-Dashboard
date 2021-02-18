@@ -146,7 +146,7 @@
             "status" => true,
             "response_code" => 200,
             "request_token" => $AuthRequestToken->RequestToken,
-            "auth_url" => $protocol . "://" . $_SERVER["HTTP_HOST"] . DynamicalWeb::getRoute("login",
+            "auth_url" => $protocol . "://" . $_SERVER["HTTP_HOST"] . DynamicalWeb::getRoute("authentication/login",
                     array(
                         "auth" => "application",
                         "redirect" => get_parameter("redirect"),
@@ -161,7 +161,7 @@
             "status" => true,
             "response_code" => 200,
             "request_token" => $AuthRequestToken->RequestToken,
-            "auth_url" => $protocol . "://" . $_SERVER["HTTP_HOST"] . DynamicalWeb::getRoute("login",
+            "auth_url" => $protocol . "://" . $_SERVER["HTTP_HOST"] . DynamicalWeb::getRoute("authentication/login",
                     array(
                         "auth" => "application",
                         "application_id" => $Application->PublicAppId,

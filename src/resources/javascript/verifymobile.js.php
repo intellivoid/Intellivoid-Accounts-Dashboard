@@ -57,7 +57,7 @@ function go_back()
         }
     ?>
     setTimeout(function() {
-        window.location.href='<?PHP DynamicalWeb::getRoute('verify', $GetParameters, true); ?>'
+        window.location.href='<?PHP DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters, true); ?>'
     }, 800);
 }
 function toggle_anim()
@@ -88,7 +88,7 @@ function toggle_anim()
 $('#authentication_form').on('submit', function () {
     $("#callback_alert").empty();
     toggle_anim();
-    $.redirectPost("<?PHP DynamicalWeb::getRoute('verify_mobile', $SubmitGetParameters, true); ?>",
+    $.redirectPost("<?PHP DynamicalWeb::getRoute('authentication/verification/verify_mobile', $SubmitGetParameters, true); ?>",
         {
             "code": $("#code").val()
         }

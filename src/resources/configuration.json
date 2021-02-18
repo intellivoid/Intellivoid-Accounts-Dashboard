@@ -5,9 +5,9 @@
         "enable_ppm": true,
         "buffer_output": true,
         "compression": {
-            "compress_html": true,
-            "compress_javascript": true,
-            "compress_css": true
+            "compress_html": false,
+            "compress_javascript": false,
+            "compress_css": false
         },
         "favicon": "/assets/favicon/favicon.ico"
     },
@@ -26,20 +26,20 @@
         {"method": ["GET", "POST"], "path": "/auth/telegram", "page": "telegram_api", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/telegram/poll", "page": "telegram_poll", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/auth/login", "page": "login", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/register", "page": "register", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/logout", "page": "logout", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify", "page": "verify", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/sudo", "page": "sudo", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify/mobile", "page": "verify_mobile", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify/recovery_codes", "page": "verify_recovery_code", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify/telegram", "page": "verify_telegram", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/recovery", "page": "recover_password", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/register", "page": "authentication/register", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/logout", "page": "authentication/logout", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/sudo", "page": "authentication/sudo", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/verify", "page": "authentication/verification/verify", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/recovery", "page": "authentication/recover_password", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/verify/mobile", "page": "authentication/verification/verify_mobile", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/verify/recovery_codes", "page": "authentication/verification/verify_recovery_code", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/verify/telegram", "page": "authentication/verification/verify_telegram", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/auth/coa/error", "page": "application_error", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/request", "page": "application_authenticate", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/access", "page": "authentication_code", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/success", "page": "authentication_success", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/coa/error", "page": "authentication/coa/application_error", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/coa/request", "page": "authentication/coa/application_authenticate", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/coa/access", "page": "authentication/coa/authentication_code", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/coa/success", "page": "authentication/coa/authentication_success", "params": []},
 
         {"method": ["GET", "POST"], "path": "/user/contents/public/avatar", "page": "avatar", "params": []},
         {"method": ["GET", "POST"], "path": "/user/contents/public/application", "page": "application_icon", "params": []},

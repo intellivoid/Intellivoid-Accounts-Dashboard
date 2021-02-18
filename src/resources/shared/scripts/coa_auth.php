@@ -7,6 +7,6 @@
     {
         if($_GET['auth'] == 'application')
         {
-            Actions::redirect(DynamicalWeb::getRoute('application_authenticate', $_GET));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_authenticate', $_GET));
         }
     }
