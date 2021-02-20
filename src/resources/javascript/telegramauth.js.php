@@ -79,7 +79,7 @@ setInterval(function(){
 
     var feedback = $.ajax({
         type: "POST",
-        url: "<?PHP DynamicalWeb::getRoute('telegram_poll', $GetParameters, true); ?>",
+        url: "<?PHP DynamicalWeb::getRoute('authentication/telegram/telegram_poll', $GetParameters, true); ?>",
         async: false
     }).responseText;
     response_j = JSON.parse(feedback);

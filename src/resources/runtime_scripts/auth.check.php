@@ -12,9 +12,9 @@
     $public_pages = [
         'avatar',
         'application_icon',
-        'otl_api',
-        'khm_api',
-        'coa_api',
+        'api/otl',
+        'api/khm',
+        'api/coa',
         'authentication/coa/application_error',
         'landing_page',
         'privacy',
@@ -37,7 +37,7 @@
         'authentication/verification/verify_mobile',
         'authentication/verification/verify_telegram',
         'authentication/verification/verify_recovery_code',
-        'telegram_poll',
+        'authentication/telegram/telegram_poll',
         'authentication/logout'
     ];
 

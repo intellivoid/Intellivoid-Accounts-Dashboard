@@ -20,11 +20,11 @@
         {"method": ["GET", "POST"], "path": "/tos", "page": "tos", "params": []},
         {"method": ["GET", "POST"], "path": "/security/gba", "page": "gba_mode", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/auth/otl", "page": "otl_api", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/khm", "page": "khm_api", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa", "page": "coa_api", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/telegram", "page": "telegram_api", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/telegram/poll", "page": "telegram_poll", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/otl", "page": "api/otl", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/khm", "page": "api/khm", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/coa", "page": "api/coa", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/telegram", "page": "authentication/telegram/telegram_api", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/telegram/poll", "page": "authentication/telegram/telegram_poll", "params": []},
 
         {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/register", "page": "authentication/register", "params": []},
