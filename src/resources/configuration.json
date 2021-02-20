@@ -23,9 +23,9 @@
         {"method": ["GET", "POST"], "path": "/auth/otl", "page": "api/otl", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/khm", "page": "api/khm", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/coa", "page": "api/coa", "params": []},
+        
         {"method": ["GET", "POST"], "path": "/auth/telegram", "page": "authentication/telegram/telegram_api", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/telegram/poll", "page": "authentication/telegram/telegram_poll", "params": []},
-
         {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/register", "page": "authentication/register", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/logout", "page": "authentication/logout", "params": []},
@@ -35,7 +35,6 @@
         {"method": ["GET", "POST"], "path": "/auth/verify/mobile", "page": "authentication/verification/verify_mobile", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/verify/recovery_codes", "page": "authentication/verification/verify_recovery_code", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/verify/telegram", "page": "authentication/verification/verify_telegram", "params": []},
-
         {"method": ["GET", "POST"], "path": "/auth/coa/error", "page": "authentication/coa/application_error", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/coa/request", "page": "authentication/coa/application_authenticate", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/coa/access", "page": "authentication/coa/authentication_code", "params": []},
