@@ -12,7 +12,7 @@
                 <?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_BODY); ?>
             </div>
             <div class="modal-footer">
-                <?PHP $Href = DynamicalWeb::getRoute('settings_login_security', array('action' => 'unlink_telegram')); ?>
+                <?PHP $Href = DynamicalWeb::getRoute('settings/login_security', array('action' => 'unlink_telegram')); ?>
                 <button type="button" class="btn btn-light" data-dismiss="modal"><?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_CANCEL_BUTTON); ?></button>
                 <button type="button" class="btn btn-danger" onclick="location.href='<?PHP HTML::print($Href); ?>';"><?PHP HTML::print(TEXT_DISABLE_TG_DIALOG_DISABLE_BUTTON); ?></button>
             </div>

@@ -24,7 +24,7 @@
 
         if($Account->Configuration->VerificationMethods->TelegramClientLinked == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '113'
             )));
         }
@@ -40,13 +40,13 @@
         }
         catch (TelegramClientNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '109'
             )));
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '110'
             )));
         }
@@ -67,12 +67,12 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '110'
             )));
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+        Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
             'callback' => '114'
         )));
     }

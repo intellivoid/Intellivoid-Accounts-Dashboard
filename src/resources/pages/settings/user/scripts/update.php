@@ -26,13 +26,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                     update_birthday();
                     update_name();
                     update_email();
-                    Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+                    Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                         'callback' => '120'
                     )));
                 }
                 catch(Exception $exception)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+                    Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                         'callback' => '104'
                     )));
                 }
@@ -55,21 +55,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_POST['dob_year']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '100'
             )));
         }
 
         if(isset($_POST['dob_month']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '100'
             )));
         }
 
         if(isset($_POST['dob_day']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '100'
             )));
         }
@@ -95,42 +95,42 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
         if($DOB_Year < 1950)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '105'
             )));
         }
 
         if($DOB_Year > ((int)date('Y') - 13))
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '105'
             )));
         }
 
         if($DOB_Month < 1)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '105'
             )));
         }
 
         if($DOB_Month > 12)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '105'
             )));
         }
 
         if($DOB_Day < 1)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '105'
             )));
         }
 
         if($DOB_Day > 31)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '105'
             )));
         }
@@ -171,14 +171,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_POST['email']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '100'
             )));
         }
 
         if(Validate::email($_POST['email']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '117'
             )));
         }
@@ -206,7 +206,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         try
         {
             $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byEmail, $_POST['email']);
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '118'
             )));
         }
@@ -241,14 +241,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if(isset($_POST['first_name']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '100'
             )));
         }
 
         if(isset($_POST['last_name']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '100'
             )));
         }
@@ -260,7 +260,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
         if(strlen($_POST['last_name']) == 0)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '102'
             )));
 
@@ -269,42 +269,42 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
         if(preg_match("/^([a-zA-Z' ]+)$/",$_POST['first_name']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '101'
             )));
         }
 
         if(strlen($_POST['first_name']) > 46)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '101'
             )));
         }
 
         if(strlen($_POST['first_name']) < 1)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '101'
             )));
         }
 
         if(preg_match("/^([a-zA-Z' ]+)$/",$_POST['last_name']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '102'
             )));
         }
 
         if(strlen($_POST['last_name']) > 64)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '102'
             )));
         }
 
         if(strlen($_POST['last_name']) < 1)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                 'callback' => '102'
             )));
         }

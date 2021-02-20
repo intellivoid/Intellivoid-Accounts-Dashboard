@@ -13,7 +13,7 @@
 
     if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
     {
-        Actions::redirect(DynamicalWeb::getRoute('settings_setup_mobile_verification', array(
+        Actions::redirect(DynamicalWeb::getRoute('settings/setup_mobile_verification', array(
             'callback' => '101'
         )));
     }

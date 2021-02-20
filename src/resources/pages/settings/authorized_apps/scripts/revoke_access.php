@@ -39,11 +39,11 @@
         }
         catch (ApplicationAccessNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_authorized_apps', array('callback' => '100')));
+            Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '100')));
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_authorized_apps', array('callback' => '101')));
+            Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '101')));
         }
 
         /** @noinspection PhpUndefinedVariableInspection */
@@ -51,8 +51,8 @@
         {
             $ApplicationAccess->Status = ApplicationAccessStatus::Unauthorized;
             $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->updateApplicationAccess($ApplicationAccess);
-            Actions::redirect(DynamicalWeb::getRoute('settings_authorized_apps', array('callback' => '102')));
+            Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '102')));
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('settings_authorized_apps', array('callback' => '103')));
+        Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '103')));
     }

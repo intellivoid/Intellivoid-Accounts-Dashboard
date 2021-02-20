@@ -35,7 +35,7 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::RecoveryCodesEnabled);
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
-        Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+        Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
             'callback' => '107'
         )));
     }

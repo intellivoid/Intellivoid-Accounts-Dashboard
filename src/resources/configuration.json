@@ -23,7 +23,7 @@
         {"method": ["GET", "POST"], "path": "/auth/otl", "page": "api/otl", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/khm", "page": "api/khm", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/coa", "page": "api/coa", "params": []},
-        
+
         {"method": ["GET", "POST"], "path": "/auth/telegram", "page": "authentication/telegram/telegram_api", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/telegram/poll", "page": "authentication/telegram/telegram_poll", "params": []},
         {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []},
@@ -55,14 +55,14 @@
         {"method": ["GET", "POST"], "path": "/finance/transactions", "page": "finance_transactions", "params": []},
         {"method": ["GET", "POST"], "path": "/finance/subscriptions", "page": "finance_subscriptions", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/settings/user", "page": "settings_user", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/password", "page": "settings_password", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/login_history", "page": "settings_login_history", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/otl", "page": "settings_otl_generator", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/applications", "page": "settings_authorized_apps", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/security", "page": "settings_login_security", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/security/recovery", "page": "settings_setup_recovery_codes", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/security/mobile", "page": "settings_setup_mobile_verification", "params": []}
+        {"method": ["GET", "POST"], "path": "/settings/user", "page": "settings/user", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/password", "page": "settings/password", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/login_history", "page": "settings/login_history", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/otl", "page": "settings/otl_generator", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/applications", "page": "settings/authorized_apps", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/security", "page": "settings/login_security", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/security/recovery", "page": "settings/setup_recovery_codes", "params": []},
+        {"method": ["GET", "POST"], "path": "/settings/security/mobile", "page": "settings/setup_mobile_verification", "params": []}
     ],
     "libraries": {
         "SecuredWebSessions": {

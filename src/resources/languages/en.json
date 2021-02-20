@@ -405,7 +405,7 @@
             "CALLBACK_109": "Due to suspicious activities detected by our automated abuse system, you are not allowed to create an account at this time. Bypassing this may result in all of your accounts being suspended automatically.",
             "CALLBACK_110": "You are not authorized to perform this action at this time due to suspicious activities, please contact support for further assistance."
         },
-        "settings_authorized_apps": {
+        "settings/authorized_apps": {
             "PAGE_TITLE": "Authorized Applications",
             "PAGE_HEADER": "Authorized Applications",
             "ITEM_LAST_AUTHENTICATED": "Last Authenticated: %s",
@@ -427,7 +427,7 @@
             "CALLBACK_102": "Access to this Service/Application has been revoked successfully",
             "CALLBACK_103": "Access to this Service/Application cannot be revoked because it has already been revoked"
         },
-        "settings_login_history": {
+        "settings/login_history": {
             "PAGE_TITLE": "Login History",
             "PAGE_HEADER": "Recent Logins",
             "TABLE_HEADERS_ORIGIN": "Origin",
@@ -444,7 +444,7 @@
             "NO_RESULTS_HEADER": "No Results",
             "NO_RESULTS_TEXT": "There is no data to display"
         },
-        "settings_login_security": {
+        "settings/login_security": {
             "PAGE_TITLE": "Login Security",
             "STATE_ENABLED": "Enabled",
             "STATE_DISABLED": "Disabled",
@@ -491,12 +491,12 @@
             "CALLBACK_113": "There is no Telegram account linked to your Intellivoid Account",
             "CALLBACK_114": "Your Telegram account has been unlinked successfully"
         },
-        "settings_otl_generator": {
+        "settings/otl_generator": {
             "PAGE_TITLE": "OTL Generator",
             "PAGE_HEADER": "One-time Password Generator",
             "DESCRIPTION": "The code below is a one-time generated login code associated with your account, this is used for internal services. Staff will never ask for this code, you should not give this code to anyone. This code will expire in 5 minutes."
         },
-        "settings_password": {
+        "settings/password": {
             "PAGE_TITLE": "Update Password",
             "PAGE_HEADER": "Update Password",
             "CURRENT_PASSWORD_LABEL": "Current Password",
@@ -513,7 +513,7 @@
             "CALLBACK_104": "The password you entered was previously compromised by another service, please use another password.",
             "CALLBACK_105": "The password you enterd is invalid"
         },
-        "settings_setup_mobile_verification": {
+        "settings/setup_mobile_verification": {
             "PAGE_TITLE": "Setup Mobile Verification",
             "PAGE_HEADER": "Setup Mobile Verification",
             "PART_1_TITLE": "Download",
@@ -527,7 +527,7 @@
             "PART_3_INPUT_LABEL": "Enter your generated code to verify",
             "CALLBACK_100": "The given verification code was incorrect / has expired"
         },
-        "settings_setup_recovery_codes": {
+        "settings/setup_recovery_codes": {
             "PAGE_TITLE": "Setup Recovery Codes",
             "PAGE_HEADER": "Setup Recovery Codes",
             "CARD_DESCRIPTION": "These are one-time use recovery codes for accessing your account, this is important if you lose access to your phone or cannot verify using other methods. These codes are meant to be written down, and are case-sensitive.",
@@ -538,7 +538,7 @@
             "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "Done",
             "CALLBACK_100": "Mobile verification has been enabled on your account, it's highly recommended to setup Recovery Codes in the case that you lose your device"
         },
-        "settings_user": {
+        "settings/user": {
             "PAGE_TITLE": "Personal Information",
             "PAGE_HEADER": "Personal Information",
             "CHANGE_AVATAR_BUTTON": "Change Avatar",

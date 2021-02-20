@@ -26,7 +26,7 @@
 
         if(isset($_GET['redirect']))
         {
-            if($_GET['redirect'] == 'settings_user')
+            if($_GET['redirect'] == 'settings/user')
             {
                 $RedirectToSettings = true;
             }
@@ -53,7 +53,7 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user',
+                Actions::redirect(DynamicalWeb::getRoute('settings/user',
                     array('callback' => '110'))
                 );
             }
@@ -66,7 +66,7 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user',
+                Actions::redirect(DynamicalWeb::getRoute('settings/user',
                     array('callback' => '111'))
                 );
             }
@@ -79,7 +79,7 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user',
+                Actions::redirect(DynamicalWeb::getRoute('settings/user',
                     array('callback' => '112'))
                 );
             }
@@ -92,7 +92,7 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user',
+                Actions::redirect(DynamicalWeb::getRoute('settings/user',
                     array('callback' => '100'))
                 );
             }
@@ -112,7 +112,7 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user',
+                Actions::redirect(DynamicalWeb::getRoute('settings/user',
                     array('callback' => '113'))
                 );
             }
@@ -125,7 +125,7 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user',
+                Actions::redirect(DynamicalWeb::getRoute('settings/user',
                     array('callback' => '114'))
                 );
             }
@@ -150,7 +150,7 @@
 
         if($RedirectToSettings)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_user',
+            Actions::redirect(DynamicalWeb::getRoute('settings/user',
                 array('callback' => '115', 'cache_refresh' => 'true'))
             );
         }

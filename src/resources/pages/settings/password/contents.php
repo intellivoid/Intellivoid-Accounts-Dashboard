@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-md-8 col-lg-9" id="settings_viewer">
                                 <div class="card">
-                                    <form method="POST" action="<?PHP DynamicalWeb::getRoute('index', array('action' => 'update_password', 'redirect' => 'settings_password'), true) ?>">
+                                    <form method="POST" action="<?PHP DynamicalWeb::getRoute('index', array('action' => 'update_password', 'redirect' => 'settings/password'), true) ?>">
                                         <div class="card-header">
                                             <h4 class="card-title"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
                                         </div>

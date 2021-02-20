@@ -16,7 +16,7 @@
             }
             catch(Exception $exception)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+                Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
                     'callback' => '107'
                 )));
             }
@@ -44,7 +44,7 @@
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
         $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::PersonalInformationUpdated);
 
-        Actions::redirect(DynamicalWeb::getRoute('settings_user', array(
+        Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
             'callback' => '109'
         )));
     }

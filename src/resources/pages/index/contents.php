@@ -241,7 +241,7 @@
                                     </div>
                                     <div class="card-footer text-muted bg-white">
                                         <span class="float-right">
-                                            <a href="<?PHP DynamicalWeb::getRoute('settings_login_security', array(), true); ?>" class="card-link"><?PHP HTML::print(TEXT_ACCOUNT_SETTINGS); ?>
+                                            <a href="<?PHP DynamicalWeb::getRoute('settings/login_security', array(), true); ?>" class="card-link"><?PHP HTML::print(TEXT_ACCOUNT_SETTINGS); ?>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </span>

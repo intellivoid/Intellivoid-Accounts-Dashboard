@@ -75,7 +75,7 @@
                                             <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P2); ?></p>
                                             <br/>
                                             <p><?PHP HTML::print(TEXT_ADD_MESSAGE_P3); ?></p>
-                                            <a class="btn btn-block bg-gradient-primary mt-1" href="<?PHP DynamicalWeb::getRoute('settings_user', array(), true); ?>"><?PHP HTML::print(TEXT_UPDATE_EMAIL_BUTTON); ?></a>
+                                            <a class="btn btn-block bg-gradient-primary mt-1" href="<?PHP DynamicalWeb::getRoute('settings/user', array(), true); ?>"><?PHP HTML::print(TEXT_UPDATE_EMAIL_BUTTON); ?></a>
                                         </div>
                                     </div>
                                 </div>

@@ -402,7 +402,7 @@
             "CALLBACK_107": "您必须同意我们的服务条款才能创建Intellivoid Accounts",
             "CALLBACK_108": "您输入的密码已被其他服务泄露，因此无法使用。"
         },
-        "settings_authorized_apps": {
+        "settings/authorized_apps": {
             "PAGE_TITLE": "授权申请",
             "PAGE_HEADER": "授权申请",
             "ITEM_LAST_AUTHENTICATED": "上次认证时间：%s",
@@ -424,7 +424,7 @@
             "CALLBACK_102": "已成功撤消对该服务/应用程序的访问",
             "CALLBACK_103": "无法撤消对此服务/应用程序的访问，因为它已被撤消"
         },
-        "settings_login_history": {
+        "settings/login_history": {
             "PAGE_TITLE": "登录历史",
             "PAGE_HEADER": "最近登录",
             "TABLE_HEADERS_ORIGIN": "起源",
@@ -441,7 +441,7 @@
             "NO_RESULTS_HEADER": "没有结果",
             "NO_RESULTS_TEXT": "没有要显示的数据"
         },
-        "settings_login_security": {
+        "settings/login_security": {
             "PAGE_TITLE": "登录安全",
             "STATE_ENABLED": "已启用",
             "STATE_DISABLED": "残障人士",
@@ -488,12 +488,12 @@
             "CALLBACK_113": "没有电报帐户链接到您的Intellivoid Accounts",
             "CALLBACK_114": "您的电报帐户已成功取消关联"
         },
-        "settings_otl_generator": {
+        "settings/otl_generator": {
             "PAGE_TITLE": "OTL发生器",
             "PAGE_HEADER": "一次性密码生成器",
             "DESCRIPTION": "下面的代码是与您的帐户关联的一次性生成的登录代码，用于内部服务。员工绝不会要求此代码，您不应将此代码提供给任何人。该代码将在5分钟后过期。"
         },
-        "settings_password": {
+        "settings/password": {
             "PAGE_TITLE": "更新密码",
             "PAGE_HEADER": "更新密码",
             "CURRENT_PASSWORD_LABEL": "当前密码",
@@ -510,7 +510,7 @@
             "CALLBACK_104": "您输入的密码之前已被其他服务盗用，请使用其他密码。",
             "CALLBACK_105": "您输入的密码无效"
         },
-        "settings_setup_mobile_verification": {
+        "settings/setup_mobile_verification": {
             "PAGE_TITLE": "设置手机验证",
             "PAGE_HEADER": "设置手机验证",
             "PART_1_TITLE": "下载",
@@ -524,7 +524,7 @@
             "PART_3_INPUT_LABEL": "输入您生成的代码以进行验证",
             "CALLBACK_100": "指定的验证码不正确/已过期"
         },
-        "settings_setup_recovery_codes": {
+        "settings/setup_recovery_codes": {
             "PAGE_TITLE": "设置恢复代码",
             "PAGE_HEADER": "设置恢复代码",
             "CARD_DESCRIPTION": "这些是用于访问帐户的一次性使用恢复码，如果您无法访问手机或无法使用其他方法进行验证，则这很重要。这些代码应记录下来，并且区分大小写。",
@@ -535,7 +535,7 @@
             "CONFIRMATION_DIALOG_SUBMIT_BUTTON": "完成了",
             "CALLBACK_100": "您的帐户已启用了移动验证功能，强烈建议您在丢失设备的情况下设置恢复代码"
         },
-        "settings_user": {
+        "settings/user": {
             "PAGE_TITLE": "个人信息",
             "PAGE_HEADER": "个人信息",
             "CHANGE_AVATAR_BUTTON": "更改头像",

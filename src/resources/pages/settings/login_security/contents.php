@@ -88,7 +88,7 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    $Href = DynamicalWeb::getRoute('settings_setup_mobile_verification');
+                                                                    $Href = DynamicalWeb::getRoute('settings/setup_mobile_verification');
                                                                     HTML::print("<button class=\"btn bg-gradient-primary\" onclick=\"location.href='$Href';\">", false);
                                                                     HTML::print(TEXT_ACTION_SETUP);
                                                                     HTML::print("</button>", false);
@@ -158,7 +158,7 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    $Href = DynamicalWeb::getRoute('settings_setup_recovery_codes');
+                                                                    $Href = DynamicalWeb::getRoute('settings/setup_recovery_codes');
                                                                     HTML::print("<button class=\"btn bg-gradient-primary\" onclick=\"location.href='$Href';\">", false);
                                                                     HTML::print(TEXT_ACTION_SETUP);
                                                                     HTML::print("</button>", false);

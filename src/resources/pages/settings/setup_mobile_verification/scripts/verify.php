@@ -24,7 +24,7 @@
     {
         if(isset($_POST['verification_code']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_setup_mobile_verification', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/setup_mobile_verification', array(
                 'callback' => '100'
             )));;
         }
@@ -37,7 +37,7 @@
 
         if($Account->Configuration->VerificationMethods->TwoFactorAuthentication->verifyCode($_POST['verification_code']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_setup_mobile_verification', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/setup_mobile_verification', array(
                 'callback' => '100'
             )));
         }
@@ -48,13 +48,13 @@
 
         if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_setup_recovery_codes', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/setup_recovery_codes', array(
                 'callback' => '100'
             )));
         }
         else
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', array(
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '100'
             )));
         }

@@ -30,9 +30,9 @@
 
         if(isset($_GET['redirect']))
         {
-            if($_GET['redirect'] == 'settings_password')
+            if($_GET['redirect'] == 'settings/password')
             {
-                $RedirectPage = 'settings_password';
+                $RedirectPage = 'settings/password';
             }
         }
 
@@ -94,7 +94,7 @@
                 )));
             }
 
-            if($RedirectPage == "settings_password")
+            if($RedirectPage == "settings/password")
             {
                 Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                     'callback' => '105'
@@ -117,7 +117,7 @@
                     )));
                 }
 
-                if($RedirectPage == "settings_password")
+                if($RedirectPage == "settings/password")
                 {
                     Actions::redirect(DynamicalWeb::getRoute($RedirectPage, array(
                         'callback' => '104'

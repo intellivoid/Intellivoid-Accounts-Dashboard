@@ -43,7 +43,7 @@
                                                 </div>
                                                 <div class="card-content">
                                                     <div class="card-body">
-                                                        <form action="<?PHP DynamicalWeb::getRoute('settings_setup_mobile_verification', array('action'=>'verify'), true); ?>" method="POST" id="mobile_verification_setup_wizard" class="wizard-circle">
+                                                        <form action="<?PHP DynamicalWeb::getRoute('settings/setup_mobile_verification', array('action'=>'verify'), true); ?>" method="POST" id="mobile_verification_setup_wizard" class="wizard-circle">
 
                                                             <!-- Download -->
                                                             <h6>

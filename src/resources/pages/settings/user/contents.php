@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-8 col-lg-9" id="settings_viewer">
                                 <div class="card">
-                                    <form method="POST" action="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'update'), true); ?>">
+                                    <form method="POST" action="<?PHP DynamicalWeb::getRoute('settings/user', array('action' => 'update'), true); ?>">
                                         <div class="card-header">
                                             <h4 class="card-title"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
                                         </div>
@@ -93,7 +93,7 @@
                                                                     if(USER_NAME_SET)
                                                                     {
                                                                         ?>
-                                                                        <a href="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'clear_name'), true) ?>" class="text-muted font-small-3">
+                                                                        <a href="<?PHP DynamicalWeb::getRoute('settings/user', array('action' => 'clear_name'), true) ?>" class="text-muted font-small-3">
                                                                             <i class="feather icon-delete pr-25"></i>
                                                                             <?PHP HTML::print(TEXT_CLEAR_ACTION_HINT); ?>
                                                                         </a>
@@ -138,7 +138,7 @@
                                                                     if(USER_BOD_SET)
                                                                     {
                                                                         ?>
-                                                                        <a href="<?PHP DynamicalWeb::getRoute('settings_user', array('action' => 'clear_birthday'), true) ?>" class="text-muted font-small-3">
+                                                                        <a href="<?PHP DynamicalWeb::getRoute('settings/user', array('action' => 'clear_birthday'), true) ?>" class="text-muted font-small-3">
                                                                             <i class="feather icon-delete pr-25"></i>
                                                                             <?PHP HTML::print(TEXT_CLEAR_ACTION_HINT); ?>
                                                                         </a>

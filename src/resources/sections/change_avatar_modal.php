@@ -4,9 +4,9 @@
 
     $ActionParameters =  array('action' => 'change_avatar');
 
-    if(APP_CURRENT_PAGE == 'settings_user')
+    if(APP_CURRENT_PAGE == 'settings/user')
     {
-        $ActionParameters['redirect'] = 'settings_user';
+        $ActionParameters['redirect'] = 'settings/user';
     }
 ?>
 <div class="modal fade text-left" id="change-avatar-dialog" tabindex="-1" role="dialog" aria-labelledby="cam" style="display: none;" aria-hidden="true">

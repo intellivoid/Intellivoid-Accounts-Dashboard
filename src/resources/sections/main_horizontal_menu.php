@@ -33,19 +33,19 @@
 
                     switch(APP_CURRENT_PAGE)
                     {
-                        case "settings_user":
-                        case "settings_password":
-                        case "settings_login_security":
-                        case "settings_authorized_apps":
-                        case "settings_login_history":
-                        case "settings_otl_generator":
-                        case "settings_setup_recovery_codes":
-                        case "settings_setup_mobile_verification":
+                        case "settings/user":
+                        case "settings/password":
+                        case "settings/login_security":
+                        case "settings/authorized_apps":
+                        case "settings/login_history":
+                        case "settings/otl_generator":
+                        case "settings/setup_recovery_codes":
+                        case "settings/setup_mobile_verification":
                             $SettingsActive = " active";
                     }
                 ?>
                 <li class="nav-item<?PHP HTML::print($SettingsActive); ?>">
-                    <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('settings_user', [], true); ?>">
+                    <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('settings/user', [], true); ?>">
                         <i class="feather icon-user"></i>
                         <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_ACCOUNT_SETTINGS); ?></span>
                     </a>
