@@ -12,10 +12,10 @@
     $public_pages = [
         'avatar',
         'application_icon',
-        'otl_api',
-        'khm_api',
-        'coa_api',
-        'application_error',
+        'api/otl',
+        'api/khm',
+        'api/coa',
+        'authentication/coa/application_error',
         'landing_page',
         'privacy',
         'tos',
@@ -24,21 +24,21 @@
     ];
 
     $password_recovery_pages = [
-        'recover_password'
+        'authentication/recover_password'
     ];
 
     $unauthorized_pages = [
-        'login',
-        'register'
+        'authentication/login',
+        'authentication/register'
     ];
 
     $verification_pages = [
-        'verify',
-        'verify_mobile',
-        'verify_telegram',
-        'verify_recovery_code',
-        'telegram_poll',
-        'logout'
+        'authentication/verification/verify',
+        'authentication/verification/verify_mobile',
+        'authentication/verification/verify_telegram',
+        'authentication/verification/verify_recovery_code',
+        'authentication/telegram/telegram_poll',
+        'authentication/logout'
     ];
 
     $skip_authentication = false;
@@ -107,19 +107,19 @@
                 switch(strtolower($_GET['redirect']))
                 {
 
-                    case 'register':
-                        $Location = DynamicalWeb::getRoute('register', $_GET);
+                    case 'authentication/register':
+                        $Location = DynamicalWeb::getRoute('authentication/register', $_GET);
                         break;
 
-                    case 'login':
+                    case 'authentication/login':
                     default:
-                        $Location = DynamicalWeb::getRoute('login', $_GET);
+                        $Location = DynamicalWeb::getRoute('authentication/login', $_GET);
                         break;
                 }
             }
             else
             {
-                $Location = DynamicalWeb::getRoute('login', $_GET);
+                $Location = DynamicalWeb::getRoute('authentication/login', $_GET);
             }
 
             header('Refresh: 2; URL=' . $Location);
@@ -173,7 +173,7 @@
 
             if($redirect == true)
             {
-                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
             }
         }
         else
@@ -192,13 +192,13 @@
                     if(time() > WEB_AUTO_LOGOUT)
                     {
                         $GetParameters['callback'] = '107';
-                        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                        Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
                     {
                         $GetParameters['callback'] = '108';
-                        Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                        Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
                     }
                 }
 
@@ -234,12 +234,12 @@
                     {
                         if ($Cookie->Data['verification_type'] == 'PASSWORD_RESET')
                         {
-                            Actions::redirect(DynamicalWeb::getRoute('recover_password', $GetParameters));
+                            Actions::redirect(DynamicalWeb::getRoute('authentication/recover_password', $GetParameters));
                         }
                     }
                     else
                     {
-                        Actions::redirect(DynamicalWeb::getRoute('verify', $GetParameters));
+                        Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters));
                     }
                 }
             }

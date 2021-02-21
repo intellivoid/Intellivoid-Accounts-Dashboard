@@ -7,6 +7,6 @@
     {
         if($_GET['auth'] == 'telegram')
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings_login_security', $_GET));
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', $_GET));
         }
     }

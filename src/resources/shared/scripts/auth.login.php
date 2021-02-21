@@ -5,8 +5,8 @@
     use DynamicalWeb\HTML;
     use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AccountStatus;
-use IntellivoidAccounts\Abstracts\KnownHostViolationStatus;
-use IntellivoidAccounts\Abstracts\LoginStatus;
+    use IntellivoidAccounts\Abstracts\KnownHostViolationStatus;
+    use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
@@ -21,8 +21,8 @@ use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\KnownHost;
     use IntellivoidAccounts\Utilities\Validate;
-use pwc\pwc;
-use sws\Objects\Cookie;
+    use pwc\pwc;
+    use sws\Objects\Cookie;
     use sws\sws;
 
     Runtime::import('IntellivoidAccounts');
@@ -60,13 +60,13 @@ use sws\Objects\Cookie;
         {
             $GetParameters['callback'] = '106';
             $GetParameters['type'] = 'internal';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
 
         if(isset($_POST['password']) == false)
         {
             $GetParameters['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
 
         try
@@ -76,7 +76,7 @@ use sws\Objects\Cookie;
             if($Account == null)
             {
                 $GetParameters['callback'] = '103';
-                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
             }
 
             $Host = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data["host_id"]);
@@ -101,7 +101,7 @@ use sws\Objects\Cookie;
                         );
 
                         $GetParameters["callback"] = "105";
-                        Actions::redirect(DynamicalWeb::getRoute("login", $GetParameters));
+                        Actions::redirect(DynamicalWeb::getRoute("authentication/login", $GetParameters));
                         break;
                 }
             }
@@ -109,7 +109,7 @@ use sws\Objects\Cookie;
             {
                 $GetParameters['callback'] = '105';
                 $GetParameters['type'] = 'blocked';
-                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
             }
 
             if(Validate::verifyHashedPassword($_POST['password'], $Account->Password) == false)
@@ -126,11 +126,11 @@ use sws\Objects\Cookie;
                 {
                     $GetParameters['callback'] = '101';
                     $GetParameters['type'] = 'verify_ps';
-                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                    Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
                 }
 
                 $GetParameters['callback'] = '103';
-                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
             }
 
             if($Account->Status == AccountStatus::BlockedDueToGovernmentBackedAttack)
@@ -141,7 +141,7 @@ use sws\Objects\Cookie;
             if($Account->Status == AccountStatus::Suspended)
             {
                 $GetParameters['callback'] = '104';
-                Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
             }
 
             $Cookie->Data["session_active"] = true;
@@ -191,7 +191,7 @@ use sws\Objects\Cookie;
                 {
                     $GetParameters['callback'] = '105';
                     $GetParameters['type'] = 'no_verification';
-                    Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+                    Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
                 }
 
                 if($Account->Configuration->KnownHosts->addHostId($Host->ID) == true)
@@ -228,12 +228,12 @@ use sws\Objects\Cookie;
         catch(AccountNotFoundException $accountNotFoundException)
         {
             $GetParameters['callback'] = '102';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
         catch(Exception $exception)
         {
             $GetParameters['callback'] = '101';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
 
     }
@@ -300,13 +300,13 @@ use sws\Objects\Cookie;
         if(isset($_POST['username_email']) == false)
         {
             $GetParameters['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
 
         if(isset($_POST['password']) == false)
         {
             $GetParameters['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -330,7 +330,7 @@ use sws\Objects\Cookie;
         if(isset($_POST['username_email']) == false)
         {
             $GetParameters['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('login', $GetParameters));
+            Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
