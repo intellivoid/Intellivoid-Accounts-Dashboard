@@ -55,8 +55,9 @@
             )));
         }
 
+
         /** @noinspection PhpUndefinedVariableInspection */
-        if($TelegramClient->AccountID !== 0)
+        if($TelegramClient->AccountID !== null)
         {
             Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '111'
@@ -81,7 +82,7 @@
         try
         {
             $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::TelegramVerificationEnabled);
-            $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient);
+            $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient, false, true);
             $IntellivoidAccounts->getTelegramService()->sendLinkedNotification($TelegramClient);
         }
         catch(Exception $e)

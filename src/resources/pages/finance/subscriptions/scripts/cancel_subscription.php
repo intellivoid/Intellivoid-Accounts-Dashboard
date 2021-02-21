@@ -50,11 +50,11 @@
         }
         catch (SubscriptionNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('finance_subscriptions', array('callback' => '100')));
+            Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '100')));
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('finance_subscriptions', array('callback' => '101')));
+            Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '101')));
         }
 
         try
@@ -64,9 +64,9 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('finance_subscriptions', array('callback' => '101')));
+            Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '101')));
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('finance_subscriptions', array('callback' => '102')));
+        Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '102')));
 
     }

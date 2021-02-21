@@ -6,7 +6,6 @@
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
-    use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AuthPromptDeniedException;
     use IntellivoidAccounts\Exceptions\AuthPromptExpiredException;
@@ -18,9 +17,12 @@
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\KnownHost;
-    use IntellivoidAccounts\Objects\TelegramClient;
     use sws\Objects\Cookie;
     use sws\sws;
+    use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
+    use TelegramClientManager\Exceptions\InvalidSearchMethod;
+    use TelegramClientManager\Exceptions\TelegramClientNotFoundException;
+    use TelegramClientManager\Objects\TelegramClient;
 
     Runtime::import('IntellivoidAccounts');
     Runtime::import('SecuredWebSessions');
@@ -137,12 +139,16 @@
      *
      * @param IntellivoidAccounts $intellivoidAccounts
      * @param Account $account
+     * @param $telegramClient
+     * @throws AccountNotFoundException
      * @throws DatabaseException
      * @throws HostNotKnownException
      * @throws InvalidIpException
-     * @throws AccountNotFoundException
      * @throws InvalidLoginStatusException
      * @throws InvalidSearchMethodException
+     * @throws \TelegramClientManager\Exceptions\DatabaseException
+     * @throws InvalidSearchMethod
+     * @throws TelegramClientNotFoundException
      */
     function process_denial(IntellivoidAccounts $intellivoidAccounts, Account $account, TelegramClient $telegramClient)
     {

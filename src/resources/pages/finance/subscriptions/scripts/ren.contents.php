@@ -92,7 +92,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 mt-auto mb-1">
-                                        <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('finance_subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
+                                        <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('finance/subscriptions', array('action' => 'cancel_subscription', 'subscription_id' => $Subscription->PublicID), true); ?>';"><?PHP HTML::print(TEXT_CANCEL_SUBSCRIPTION_BUTTON); ?></button>
                                     </div>
                                 </div>
                             </div>

@@ -52,7 +52,7 @@
         }
 
         /** @noinspection PhpUndefinedVariableInspection */
-        $TelegramClient->AccountID = 0;
+        $TelegramClient->AccountID = null;
 
         $Account->Configuration->VerificationMethods->TelegramLink->disable();
         $Account->Configuration->VerificationMethods->TelegramClientLinked = false;
@@ -62,7 +62,7 @@
 
             $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::TelegramVerificationDisabled);
             $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
-            $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient);
+            $IntellivoidAccounts->getTelegramClientManager()->updateClient($TelegramClient, false, true);
             $IntellivoidAccounts->getTelegramService()->sendUnlinkedNotification($TelegramClient);
         }
         catch(Exception $e)

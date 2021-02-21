@@ -55,10 +55,10 @@
 
                     switch(APP_CURRENT_PAGE)
                     {
-                        case "finance_balance":
-                        case "finance_invoice":
-                        case "finance_transactions":
-                        case "finance_subscriptions":
+                        case "finance/balance":
+                        case "finance/invoice":
+                        case "finance/transactions":
+                        case "finance/subscriptions":
                             $FinanceActive = " active";
                     }
                 ?>
@@ -69,17 +69,17 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_balance', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance/balance', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_ACCOUNT_BALANCE); ?>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_transactions', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance/transactions', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_TRANSACTION_HISTORY); ?>
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance_subscriptions', [], true); ?>" data-toggle="dropdown">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('finance/subscriptions', [], true); ?>" data-toggle="dropdown">
                                 <?PHP HTML::print(TEXT_NAV_MENU_DROPDOWN_FINANCE_SUBSCRIPTIONS); ?>
                             </a>
                         </li>

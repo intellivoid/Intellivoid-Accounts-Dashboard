@@ -122,7 +122,7 @@
             "CALLBACK_103": "您的帐户目前受限制，请联系支持部门t",
             "CALLBACK_104": "您的Intellivoid Accounts中资金不足，请添加更多资金。"
         },
-        "finance_balance": {
+        "finance/balance": {
             "PAGE_TITLE": "账户余额",
             "BALANCE_ADD_LINK": "加上余额",
             "ADD_MESSAGE_P1": "您可以将资金添加到您的Intellivoid Accounts中，但是不能按照我们的条款和服务中的说明提取或转入其他Intellivoid Accounts中。",
@@ -137,7 +137,7 @@
             "ADD_BALANCE_DIALOG_CANCEL_BUTTON": "取消",
             "ADD_BALANCE_DIALOG_CONTINUE_BUTTON": "继续"
         },
-        "finance_invoice": {
+        "finance/invoice": {
             "PAGE_TITLE": "发票＃IV-%s",
             "INVOICE_HEADER": "发票＃IV-%s",
             "INVOICE_VENDOR_ID": "供应商编号",
@@ -149,7 +149,7 @@
             "INVOICE_TOTAL": "总",
             "INVOICE_FOOTER": "该发票由Intellivoid Accounts生成"
         },
-        "finance_subscriptions": {
+        "finance/subscriptions": {
             "PAGE_TITLE": "管理订阅",
             "PAGE_HEADER": "订阅内容",
             "SUBSCRIPTION_BILLING": "您将在%nbc上向您收取$%cp USD的费用",
@@ -160,7 +160,7 @@
             "CALLBACK_101": "尝试处理您的请求时出错",
             "CALLBACK_102": "您的订阅已成功取消"
         },
-        "finance_transactions": {
+        "finance/transactions": {
             "PAGE_TITLE": "交易记录",
             "PAGE_HEADER": "交易记录",
             "NO_TRANSACTIONS": "没有交易"

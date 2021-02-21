@@ -1,7 +1,7 @@
 {
     "configuration": {
         "primary_language": "en",
-        "debugging_mode": true,
+        "debugging_mode": false,
         "enable_ppm": true,
         "buffer_output": true,
         "compression": {
@@ -50,10 +50,10 @@
 		{"method": ["GET", "POST"], "path": "/applications", "page": "manage_applications", "params": []},
 		{"method": ["GET", "POST"], "path": "/applications/manage", "page": "manage_application", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/finance/balance", "page": "finance_balance", "params": []},
-        {"method": ["GET", "POST"], "path": "/finance/view_invoice", "page": "finance_invoice", "params": []},
-        {"method": ["GET", "POST"], "path": "/finance/transactions", "page": "finance_transactions", "params": []},
-        {"method": ["GET", "POST"], "path": "/finance/subscriptions", "page": "finance_subscriptions", "params": []},
+        {"method": ["GET", "POST"], "path": "/finance/balance", "page": "finance/balance", "params": []},
+        {"method": ["GET", "POST"], "path": "/finance/view_invoice", "page": "finance/invoice", "params": []},
+        {"method": ["GET", "POST"], "path": "/finance/transactions", "page": "finance/transactions", "params": []},
+        {"method": ["GET", "POST"], "path": "/finance/subscriptions", "page": "finance/subscriptions", "params": []},
 
         {"method": ["GET", "POST"], "path": "/settings/user", "page": "settings/user", "params": []},
         {"method": ["GET", "POST"], "path": "/settings/password", "page": "settings/password", "params": []},
