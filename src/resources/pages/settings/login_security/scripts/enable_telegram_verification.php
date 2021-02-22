@@ -4,10 +4,10 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\AuditEventType;
-    use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
-    use IntellivoidAccounts\Exceptions\TelegramClientNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
+    use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
+    use TelegramClientManager\Exceptions\TelegramClientNotFoundException;
 
     if(isset($_GET['auth']))
     {
@@ -20,7 +20,6 @@
         }
     }
 
-
     function setupTelegramAuth()
     {
         /** @var Account $Account */
@@ -28,9 +27,7 @@
 
         if($Account->Configuration->VerificationMethods->TelegramClientLinked == true)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
-                'callback' => '108'
-            )));
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security'));
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -48,19 +45,40 @@
                 'callback' => '109'
             )));
         }
-        catch(Exception $exception)
+        catch(Exception $e)
         {
             Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '110'
             )));
         }
 
-
         /** @noinspection PhpUndefinedVariableInspection */
         if($TelegramClient->AccountID !== null)
         {
             Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '111'
+            )));
+        }
+
+        if(isset($_GET["hash"]) == false)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+                'callback' => '109', 'clause' => 'missing_hash'
+            )));
+        }
+
+        if(isset($_GET["verification_sign"]) == false)
+        {
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+                'callback' => '109', 'clause' => 'missing_verification'
+            )));
+        }
+
+        $VerificationSign = hash("sha256", $_GET["hash"] . $TelegramClient->ID);
+        if($VerificationSign !== $_GET["verification_sign"])
+        {
+            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+                'callback' => '109', 'clause' => 'bad_verification'
             )));
         }
 

@@ -5,6 +5,7 @@
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
 
+
     HTML::importScript('check_sudo');
     HTML::importScript('check');
     HTML::importScript('enable_telegram_verification');

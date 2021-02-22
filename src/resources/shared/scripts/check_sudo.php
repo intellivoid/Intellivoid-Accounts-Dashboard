@@ -21,9 +21,8 @@
             $Cookie->Data["sudo_expires"] = 0;
 
             $sws->CookieManager()->updateCookie($Cookie);
-            Actions::redirect(DynamicalWeb::getRoute('authentication/sudo', array(
-                'redirect' => urlencode(APP_CURRENT_PAGE)
-            )));
+            $_GET['redirect'] = APP_CURRENT_PAGE;
+            Actions::redirect(DynamicalWeb::getRoute('authentication/sudo', $_GET));
         }
         else
         {
