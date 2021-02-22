@@ -3,10 +3,10 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\AuditEventType;
-    use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
-    use IntellivoidAccounts\Exceptions\TelegramClientNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
+    use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
+    use TelegramClientManager\Exceptions\TelegramClientNotFoundException;
 
     if(isset($_GET['action']))
     {
