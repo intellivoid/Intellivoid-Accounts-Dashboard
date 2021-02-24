@@ -29,7 +29,7 @@
     try
     {
         $IntellivoidAccounts->getTelegramService()->promptAuth(
-            $TelegramClient, $Account->Username, CLIENT_USER_AGENT, get_host()->ID
+            $TelegramClient, $Account->Username, CLIENT_USER_AGENT, get_host()->ID, $Account
         );
     }
     catch (TooManyPromptRequestsException $e)
