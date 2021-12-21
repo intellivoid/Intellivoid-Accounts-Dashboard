@@ -1,0 +1,923 @@
+{
+    "package": {
+        "package_name": "net.intellivoid.accounts_dashboard",
+        "name": "Intellivoid Accounts Dashboard",
+        "version": "3.0.0.0",
+        "author": "Zi Xing Narrakas",
+        "organization": "Intellivoid Technologies",
+        "description": "The front-end dashboard for managing your Intellivoid Account",
+        "url": "https://github.com/intellivoid/Intellivoid-Accounts-Dashboard",
+        "dependencies": [],
+        "configuration": {
+            "autoload_method": "generated_spl",
+            "main": null,
+            "post_installation": [],
+            "pre_installation": []
+        }
+    },
+    "components": [
+        {
+            "required": true,
+            "file": "css/generic.css.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/coa_auth.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/telegram_auth.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/expanded.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/auth.register.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/render_auth_alert.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/get_account.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/auth.login.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/sp_validate_parameters.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/require_close.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/check_sudo.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/redirect_url_function.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/submit_report.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/json_response.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/request_parser.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/render_alert.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/loader.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/sync_avatar.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/validate_coa.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/update_password.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/sp_validate_access.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/resolve_coa_error.php"
+        },
+        {
+            "required": true,
+            "file": "shared/scripts/direct_auth.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_js.php"
+        },
+        {
+            "required": true,
+            "file": "sections/change_language_modal.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_ehelper.php"
+        },
+        {
+            "required": true,
+            "file": "sections/headers.php"
+        },
+        {
+            "required": true,
+            "file": "sections/authentication_headers.php"
+        },
+        {
+            "required": true,
+            "file": "sections/settings_sidebar.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_bhelper.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_footer.php"
+        },
+        {
+            "required": true,
+            "file": "sections/generic_footer.php"
+        },
+        {
+            "required": true,
+            "file": "sections/background_animations.php"
+        },
+        {
+            "required": true,
+            "file": "sections/authentication_footer.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_headers.php"
+        },
+        {
+            "required": true,
+            "file": "sections/generic_bhelper.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_nav.php"
+        },
+        {
+            "required": true,
+            "file": "sections/reset_password_modal.php"
+        },
+        {
+            "required": true,
+            "file": "sections/change_avatar_modal.php"
+        },
+        {
+            "required": true,
+            "file": "sections/generic_js.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_chelper.php"
+        },
+        {
+            "required": true,
+            "file": "sections/landing_navbar.php"
+        },
+        {
+            "required": true,
+            "file": "sections/generic_headers.php"
+        },
+        {
+            "required": true,
+            "file": "sections/generic_ehelper.php"
+        },
+        {
+            "required": true,
+            "file": "sections/authentication_js.php"
+        },
+        {
+            "required": true,
+            "file": "sections/feedback_modal.php"
+        },
+        {
+            "required": true,
+            "file": "sections/authentication_bhelper.php"
+        },
+        {
+            "required": true,
+            "file": "sections/main_horizontal_menu.php"
+        },
+        {
+            "required": true,
+            "file": "sections/landing_footer.php"
+        },
+        {
+            "required": true,
+            "file": "sections/generic_nav.php"
+        },
+        {
+            "required": true,
+            "file": "sections/landing_headers.php"
+        },
+        {
+            "required": true,
+            "file": "sections/js_scripts.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/login.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/recoverpswd.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/telegramauth.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/sudo.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/verifyrecoverycode.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/landingquotes.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/mbsetup.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/autoenable.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/verifymobile.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/register.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/mobver.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/verify.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/pautoenable.js.php"
+        },
+        {
+            "required": true,
+            "file": "javascript/authenticate.js.php"
+        },
+        {
+            "required": true,
+            "file": "pages/gba_mode/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/tos/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/purchase_success/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/avatar/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/privacy/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/applications/scripts/ren.no_contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/applications/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/applications/scripts/ren.contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/applications/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/purchase_failure/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/invoice/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/balance/scripts/redirect_paypal.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/balance/scripts/add_balance_dialog.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/balance/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/subscriptions/scripts/cancel_subscription.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/subscriptions/scripts/ren.no_contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/subscriptions/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/subscriptions/scripts/ren.contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/subscriptions/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/finance/transactions/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_applications/scripts/register_application.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_applications/scripts/ren.no_contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_applications/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_applications/scripts/ren.contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_applications/scripts/create_application_dialog.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_applications/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/404/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/application_icon/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/index/scripts/recent_transactions.php"
+        },
+        {
+            "required": true,
+            "file": "pages/index/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/index/scripts/list_audit_logs.php"
+        },
+        {
+            "required": true,
+            "file": "pages/index/scripts/change_avatar.php"
+        },
+        {
+            "required": true,
+            "file": "pages/index/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/confirm_subscription_purchase/scripts/process_purchase.php"
+        },
+        {
+            "required": true,
+            "file": "pages/confirm_subscription_purchase/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/confirm_subscription_purchase/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/confirm_subscription_purchase/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/transaction_success/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/landing_page/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/audit_log/scripts/list_audit_logs.php"
+        },
+        {
+            "required": true,
+            "file": "pages/audit_log/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/500/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/disable_application.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/update_permissions.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/dialog.delete_application.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/update_authentication_mode.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/enable_application.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/delete_application.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/update_secret_key.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/change_logo.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/scripts/check_application.php"
+        },
+        {
+            "required": true,
+            "file": "pages/manage_application/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/authorized_apps/scripts/ren.no_contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/authorized_apps/scripts/revoke_access.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/authorized_apps/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/authorized_apps/scripts/ren.contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/authorized_apps/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/user/scripts/clear.birthday.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/user/scripts/define.information.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/user/scripts/clear.name.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/user/scripts/update.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/user/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/user/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_recovery_codes/scripts/check.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_recovery_codes/scripts/setup.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_recovery_codes/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_recovery_codes/scripts/confirmation_dialog.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_recovery_codes/scripts/confirm.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_recovery_codes/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/password/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/password/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/dialog.disable-mv.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/check.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/unlink_telegram.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/dialog.disable-rc.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/disable_recovery_codes.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/disable_mobile_verification.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/dialog.disable-tg.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/dialog.disable-rc-mv.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/scripts/enable_telegram_verification.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_security/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/otl_generator/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_mobile_verification/scripts/check.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_mobile_verification/scripts/setup.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_mobile_verification/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_mobile_verification/scripts/verify.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/setup_mobile_verification/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_history/scripts/render_table.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_history/scripts/get_records.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_history/scripts/no_items_msg.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_history/scripts/render_table_items.php"
+        },
+        {
+            "required": true,
+            "file": "pages/settings/login_history/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/khm/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/check_permissions.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/async.check_access.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/process_subscription_billing.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/get_access.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/create_subscription.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/get_access_token.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/request_authentication.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/get_user.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/scripts/create_authentication_request.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/coa/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/api/otl/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/logout/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/recover_password/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/recover_password/scripts/update_password.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/recover_password/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/recover_password/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_recovery_code/scripts/verify_code.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_recovery_code/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_recovery_code/scripts/check_method.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_recovery_code/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_recovery_code/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_telegram/scripts/send_prompt.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_telegram/scripts/check_method.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_telegram/scripts/verify.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_telegram/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_telegram/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_mobile/scripts/verify_code.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_mobile/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_mobile/scripts/check_method.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_mobile/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/verification/verify_mobile/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/sudo/scripts/check.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/sudo/scripts/enter_sudo_mode.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/sudo/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/sudo/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/sudo/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/login/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/login/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/login/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/register/scripts/callbacks.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/register/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/register/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/application_authenticate/scripts/process_authentication.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/application_authenticate/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/application_authenticate/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/authentication_code/scripts/validate_access_token.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/authentication_code/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/authentication_code/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/authentication_success/scripts/validate_access_token.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/authentication_success/scripts/card.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/authentication_success/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/application_error/scripts/resolve_error_code.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/coa/application_error/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/telegram/telegram_api/contents.php"
+        },
+        {
+            "required": true,
+            "file": "pages/authentication/telegram/telegram_poll/contents.php"
+        },
+        {
+            "required": true,
+            "file": "runtime_scripts/auth.check.php"
+        },
+        {
+            "required": true,
+            "file": "runtime_scripts/async_notifications.php"
+        },
+        {
+            "required": true,
+            "file": "runtime_scripts/check.host.php"
+        },
+        {
+            "required": true,
+            "file": "runtime_scripts/maintenance.php"
+        }
+    ],
+    "files": [
+        "markdown/tos/en.md",
+        "markdown/privacy_policy/en.md",
+        "shared/coasniffle.json",
+        "shared/quick_access.json",
+        "languages/tr.json",
+        "languages/es.json",
+        "languages/en.json",
+        "languages/zh.json",
+        "configuration.json"
+    ]
+}
