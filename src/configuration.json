@@ -1,16 +1,33 @@
 {
+    "name": "Intellivoid Accounts",
+    "version": "3.0.0.0",
+    "author": "Zi Xing Narrakas",
+    "organization": "Intellivoid Technologies",
     "configuration": {
-        "primary_language": "en",
-        "debugging_mode": false,
-        "enable_ppm": true,
-        "buffer_output": true,
-        "compression": {
-            "compress_html": false,
-            "compress_javascript": false,
-            "compress_css": false
+        "root_path": "/",
+        "localization": {
+            "enabled": true,
+            "primary_localization": "en",
+            "auto_detect_preference": true,
+            "localizations": {
+                "en": "localization/en.json"
+            }
         },
-        "favicon": "/assets/favicon/favicon.ico"
+        "favicon": null,
+        "localization_enabled": true,
+        "debugging_mode": true,
+        "framework_signature": true,
+        "application_signature": true,
+        "security_headers": true,
+        "headers": {}
     },
+    "runtime_scripts": [
+        {"event": "pre_request", "script": "runtime_scripts/auth.check.php"},
+        {"event": "pre_request", "script": "runtime_scripts/check.host.php"}
+    ],
+    "web_assets": [
+        {"type": "ppm", "name": "primary_assets", "source": "net.intellivoid.accounts_template==latest", "path": "assets"}
+    ],
     "router": [
         {"method": ["GET", "POST"], "path": "/", "page": "index", "params": []},
         {"method": ["GET", "POST"], "path": "/audit", "page": "audit_log", "params": []},
@@ -47,8 +64,8 @@
         {"method": ["GET", "POST"], "path": "/transaction/purchase/failure", "page": "purchase_failure", "params": []},
         {"method": ["GET", "POST"], "path": "/transaction/subscription/confirm", "page": "confirm_subscription_purchase", "params": []},
 
-		{"method": ["GET", "POST"], "path": "/applications", "page": "manage_applications", "params": []},
-		{"method": ["GET", "POST"], "path": "/applications/manage", "page": "manage_application", "params": []},
+        {"method": ["GET", "POST"], "path": "/applications", "page": "manage_applications", "params": []},
+        {"method": ["GET", "POST"], "path": "/applications/manage", "page": "manage_application", "params": []},
 
         {"method": ["GET", "POST"], "path": "/finance/balance", "page": "finance/balance", "params": []},
         {"method": ["GET", "POST"], "path": "/finance/view_invoice", "page": "finance/invoice", "params": []},
@@ -63,46 +80,5 @@
         {"method": ["GET", "POST"], "path": "/settings/security", "page": "settings/login_security", "params": []},
         {"method": ["GET", "POST"], "path": "/settings/security/recovery", "page": "settings/setup_recovery_codes", "params": []},
         {"method": ["GET", "POST"], "path": "/settings/security/mobile", "page": "settings/setup_mobile_verification", "params": []}
-    ],
-    "libraries": {
-        "SecuredWebSessions": {
-            "directory_name": "sws",
-            "autoloader": "sws.php",
-            "check_class_exists": true,
-            "namespace": "sws",
-            "main_class": "sws"
-        },
-        "IntellivoidAccounts": {
-            "package_name": "net.intellivoid.accounts",
-            "version": "latest",
-            "import_dependencies": true,
-            "throw_error": true
-        },
-        "Support": {
-            "package_name": "net.intellivoid.support",
-            "version": "latest",
-            "import_dependencies": true,
-            "throw_error": true
-        },
-        "PwCompromission": {
-            "package_name": "net.intellivoid.pwc",
-            "version": "latest",
-            "import_dependencies": true,
-            "throw_error": true
-        },
-        "SubscriptionManager": {
-            "package_name": "net.intellivoid.subscriptions",
-            "version": "latest",
-            "import_dependencies": true,
-            "throw_error": true
-        }
-    },
-    "runtime_scripts": {
-        "initialize": [],
-        "on_page_load": ["auth.check.php", "check.host.php"],
-        "page_loaded": [],
-        "after_request": ["async_notifications.php"],
-        "on_request": ["maintenance.php"],
-        "on_import": []
-    }
+    ]
 }
