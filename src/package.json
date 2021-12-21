@@ -7,7 +7,38 @@
         "organization": "Intellivoid Technologies",
         "description": "The front-end dashboard for managing your Intellivoid Account",
         "url": "https://github.com/intellivoid/Intellivoid-Accounts-Dashboard",
-        "dependencies": [],
+        "dependencies": [
+            {
+                "package": "net.intellivoid.dynamical_web",
+                "version": "latest",
+                "source": "default@github/intellivoid/DynamicalWeb",
+                "required": true
+            },
+            {
+                "package": "net.intellivoid.accounts",
+                "version": "latest",
+                "source": "default@github/intellivoid/Intellivoid-Accounts",
+                "required": true
+            },
+            {
+                "package": "net.intellivoid.support",
+                "version": "latest",
+                "source": "default@github/intellivoid/Support",
+                "required": true
+            },
+            {
+                "package": "net.intellivoid.pwc",
+                "version": "latest",
+                "source": "default@github/intellivoid/PwCompromission",
+                "required": true
+            },
+            {
+                "package": "net.intellivoid.subscriptions",
+                "version": "latest",
+                "source": "default@github/intellivoid/Intellivoid-Subscription-Manager",
+                "required": true
+            }
+        ],
         "configuration": {
             "autoload_method": "generated_spl",
             "main": null,
