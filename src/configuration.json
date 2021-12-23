@@ -27,6 +27,8 @@
         "framework_signature": true,
         "application_signature": true,
         "security_headers": true,
+        "enable_khm": true,
+        "firewall_deny": [],
         "headers": {}
     },
     "runtime_scripts": [

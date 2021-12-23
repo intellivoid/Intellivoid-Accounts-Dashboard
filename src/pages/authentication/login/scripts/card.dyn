@@ -18,7 +18,7 @@
 <div class="card rounded-0 mb-0"<?php HTML::print($CardStyle, false); ?>>
     <div class="card-header pt-50 pb-0 mb-0 mx-2 mt-2">
         <div class="card-title">
-            <img src="/assets/images/logo_2.svg" alt="Intellivoid Accounts Brand" style="width: 130px; height: 30px;" class="img-fluid mb-2">
+            <img src="<?PHP Html::print(DynamicalWeb::getAssetRoute('primary_assets', '/images/logo_2.svg')); ?>" alt="Intellivoid Accounts Brand" style="width: 130px; height: 30px;" class="img-fluid mb-2">
             <h4 class="mb-0 auth-header"><?PHP HTML::print(TEXT_AUTHENTICATION_HEADER); ?></h4>
             <div id="callback_alert">
                 <?PHP HTML::importScript('callbacks'); ?>
@@ -51,7 +51,7 @@
                     <span id="submit_preloader" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 </button>
                 <span id="ca_label" class="text-muted"> <?PHP HTML::print(TEXT_HINT_NO_ACCOUNT); ?>
-                    <a id="ca_link" class="text-muted" href="<?PHP DynamicalWeb::getRoute('authentication/register', $GetParameters, true); ?>"><?PHP HTML::print(TEXT_CREATE_ACCOUNT_LINK); ?></a>
+                    <a id="ca_link" class="text-muted" href="<?PHP HTML::print(DynamicalWeb::getRoute('authentication/register', $GetParameters)); ?>"><?PHP HTML::print(TEXT_CREATE_ACCOUNT_LINK); ?></a>
                 </span>
             </form>
         </div>
