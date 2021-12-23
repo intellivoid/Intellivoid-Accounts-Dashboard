@@ -10,7 +10,11 @@
             "primary_localization": "en",
             "auto_detect_preference": true,
             "localizations": {
-                "en": "localization/en.json"
+                "en": "localization/en.json",
+                "zh": "localization/zh.json",
+                "zh-cn": "localization/zh.json",
+                "tr": "localization/tr.json",
+                "es": "localization/es.json"
             }
         },
         "sessions": {
