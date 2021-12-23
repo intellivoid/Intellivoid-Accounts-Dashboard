@@ -18,12 +18,11 @@
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
                 'error_type' => 'missing_parameter',
                 'parameter' => $parameter_name
             ]);
-
-            DynamicalWeb::activeRequestHandler($RequestHandler);
+            $RequestHandler->execute();
         }
     }
 
@@ -84,22 +83,22 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
             'error_type' => 'parameter_error',
             'error' => 'invalid_app_tag'
         ]);
-        return;
+        $RequestHandler->execute();
     }
     catch(Exception $e)
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
             'error_type' => 'parameter_error',
             'error' => 'internal_server_error',
             'step' => '1'
         ]);
-        return;
+        $RequestHandler->execute();
     }
 
     try
@@ -116,47 +115,47 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
             'error_type' => 'parameter_error',
             'error' => 'invalid_plan_name',
             'step' => '1'
         ]);
-        return;
+        $RequestHandler->execute();
     }
     catch(Exception $e)
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
             'error_type' => 'parameter_error',
             'error' => 'internal_server_error',
             'step' => '2'
         ]);
-        return;
+        $RequestHandler->execute();
     }
 
     if($SubscriptionPlan->PublicID !== $SubscriptionPlanAlt->PublicID)
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
             'error_type' => 'parameter_error',
             'error' => 'invalid_plan_name',
             'step' => '1'
         ]);
-        return;
+        $RequestHandler->execute();
     }
 
     if($SubscriptionPlan->ApplicationID !== $Application->ID)
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
             'error_type' => 'parameter_error',
             'error' => 'invalid_plan_name',
             'step' => '2'
         ]);
-        return;
+        $RequestHandler->execute();
     }
 
     if(isset($_GET['promotion_code']))
@@ -175,35 +174,35 @@
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
                 'error_type' => 'parameter_error',
                 'error' => 'invalid_promotion_name',
                 'step' => '2'
             ]);
-            return;
+            $RequestHandler->execute();
         }
         catch(Exception $e)
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
                 'error_type' => 'parameter_error',
                 'error' => 'internal_server_error',
                 'step' => '3'
             ]);
-            return;
+            $RequestHandler->execute();
         }
 
         if($SubscriptionPromotion->SubscriptionPlanID !== $SubscriptionPlan->ID)
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('purchase_failure', [
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', [
                 'error_type' => 'parameter_error',
                 'error' => 'invalid_promotion_name',
                 'step' => '3'
             ]);
-            return;
+            $RequestHandler->execute();
         }
 
         DynamicalWeb::setMemoryObject('subscription_promotion_set', true);

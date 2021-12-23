@@ -14,7 +14,7 @@
                 </div>
                 <ul class="nav navbar-nav float-right mr-2">
                     <li class="nav-item d-block">
-                        <a class="nav-link" href="<?PHP Html::print(DynamicalWeb::getRoute('index')); ?>">
+                        <a class="nav-link" href="<?PHP Html::print(DynamicalWeb::getRoute('landing_page')); ?>">
                             <i class="ficon feather icon-home"></i>
                         </a>
                     </li>

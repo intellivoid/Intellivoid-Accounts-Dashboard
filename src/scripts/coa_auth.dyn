@@ -9,7 +9,7 @@
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_authenticate', $_GET);
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_authenticate', $_GET);
             return;
         }
     }

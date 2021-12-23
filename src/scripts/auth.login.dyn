@@ -59,7 +59,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
 
         if(isset($_POST['password']) == false)
@@ -68,7 +68,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
 
         try
@@ -81,7 +81,7 @@
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                return;
+                $RequestHandler->execute();
             }
 
             $Host = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data["host_id"]);
@@ -109,7 +109,7 @@
                         $RequestHandler = DynamicalWeb::activeRequestHandler();
                         $RequestHandler->Redirect = true;
                         $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                        return;
+                        $RequestHandler->execute();
                 }
             }
             catch(Exception $exception)
@@ -119,7 +119,7 @@
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                return;
+                $RequestHandler->execute();
             }
 
             if(Validate::verifyHashedPassword($_POST['password'], $Account->Password) == false)
@@ -139,14 +139,14 @@
                     $RequestHandler = DynamicalWeb::activeRequestHandler();
                     $RequestHandler->Redirect = true;
                     $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                    return;
+                    $RequestHandler->execute();
                 }
 
                 $GetParameters['callback'] = '103';
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                return;
+                $RequestHandler->execute();
             }
 
             if($Account->Status == AccountStatus::BlockedDueToGovernmentBackedAttack)
@@ -154,7 +154,7 @@
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('gba_mode');
-                return;
+                $RequestHandler->execute();
             }
 
             if($Account->Status == AccountStatus::Suspended)
@@ -163,7 +163,7 @@
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                return;
+                $RequestHandler->execute();
             }
 
             $Cookie->Data["session_active"] = true;
@@ -216,7 +216,7 @@
                     $RequestHandler = DynamicalWeb::activeRequestHandler();
                     $RequestHandler->Redirect = true;
                     $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                    return;
+                    $RequestHandler->execute();
                 }
 
                 if($Account->Configuration->KnownHosts->addHostId($Host->ID) == true)
@@ -250,7 +250,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(AccountNotFoundException $accountNotFoundException)
         {
@@ -258,7 +258,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(Exception $exception)
         {
@@ -266,7 +266,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
 
     }
@@ -412,7 +412,7 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
         /** @var CookieStorage $Cookie */
-        $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+        $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
         return $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
     }

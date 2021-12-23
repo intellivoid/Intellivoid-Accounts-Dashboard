@@ -42,7 +42,7 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
         /** @var Cookie $Cookie */
-        $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+        $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
         return $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
     }

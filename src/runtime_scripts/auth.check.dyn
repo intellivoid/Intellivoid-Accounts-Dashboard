@@ -3,6 +3,7 @@
     use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\RequestHandlerException;
     use DynamicalWeb\Exceptions\RouterException;
     use DynamicalWeb\Exceptions\StorageDriverException;
     use DynamicalWeb\Exceptions\WebApplicationException;
@@ -68,6 +69,7 @@
      * @throws RouterException
      * @throws StorageDriverException
      * @throws WebApplicationException
+     * @throws RequestHandlerException
      */
     function execute_authentication_check(array $unauthorized_pages, array $verification_pages, array $password_recovery_pages)
     {
@@ -124,10 +126,10 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute($Location, $_GET);
-            return;
+            $RequestHandler->execute();
         }
 
-        DynamicalWeb::setMemoryObject('(cookie)web_session', $CookieStorage);
+        Cookies::updateCookieStorage($CookieStorage);
 
         define('WEB_SESSION_ACTIVE', $CookieStorage->Data['session_active']);
         define('WEB_ACCOUNT_PUBID', $CookieStorage->Data['account_pubid']);
@@ -147,7 +149,7 @@
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('landing_page');
-                return;
+                $RequestHandler->execute();
             }
 
             $redirect = true;
@@ -165,7 +167,7 @@
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
                 $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login');
-                return;
+                $RequestHandler->execute();
             }
         }
         else
@@ -186,7 +188,7 @@
                         $RequestHandler = DynamicalWeb::activeRequestHandler();
                         $RequestHandler->Redirect = true;
                         $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                        return;
+                        $RequestHandler->execute();
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
@@ -195,7 +197,7 @@
                         $RequestHandler = DynamicalWeb::activeRequestHandler();
                         $RequestHandler->Redirect = true;
                         $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-                        return;
+                        $RequestHandler->execute();
                     }
                 }
 
@@ -234,7 +236,7 @@
                             $RequestHandler = DynamicalWeb::activeRequestHandler();
                             $RequestHandler->Redirect = true;
                             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/recover_password', $GetParameters);
-                            return;
+                            $RequestHandler->execute();
                         }
                     }
                     else
@@ -242,7 +244,7 @@
                         $RequestHandler = DynamicalWeb::activeRequestHandler();
                         $RequestHandler->Redirect = true;
                         $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters);
-                        return;
+                        $RequestHandler->execute();
                     }
                 }
             }
@@ -263,7 +265,7 @@
                     $RequestHandler = DynamicalWeb::activeRequestHandler();
                     $RequestHandler->Redirect = true;
                     $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', $GetParameters);
-                    return;
+                    $RequestHandler->execute();
                 }
             }
 

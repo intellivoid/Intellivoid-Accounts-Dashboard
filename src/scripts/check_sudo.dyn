@@ -8,7 +8,7 @@
         $_GET['redirect'] = DYNAMICAL_CURRENT_PAGE;
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/sudo', $_GET);
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', $_GET);
         return;
     }
     else
@@ -23,7 +23,7 @@
             $_GET['redirect'] = DYNAMICAL_CURRENT_PAGE;
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/sudo', $_GET);
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', $_GET);
             return;
         }
         else

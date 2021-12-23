@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
@@ -16,7 +15,11 @@
     {
         if($_GET['pwc_mcache'] == '1')
         {
-            Actions::redirect(DynamicalWeb::printRoute('index', array('callback'=>'114')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '114']);
+            $RequestHandler->execute();
+            return;
         }
     }
     

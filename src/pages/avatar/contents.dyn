@@ -1,13 +1,10 @@
 <?PHP
 
+    use DynamicalWeb\Abstracts\ResourceSource;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
-
-    Runtime::import('IntellivoidAccounts');
-
 
     if(isset($_GET['user_id']) == false)
     {
@@ -47,9 +44,12 @@
             "response_code" => 404,
             "message" => "Resource not found"
         );
-        header('Content-Type: application/json');
-        http_response_code(404);
-        print(json_encode($Response));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->ResponseContentType = 'application/json';
+        $RequestHandler->ResponseCode = 404;
+        $RequestHandler->ResourceSource = ResourceSource::Memory;
+        $RequestHandler->Source = json_encode($Response);
+        $RequestHandler->execute();
         exit();
     }
     catch(Exception $exception)
@@ -59,9 +59,12 @@
             "response_code" => 500,
             "message" => "Internal Server Error"
         );
-        header('Content-Type: application/json');
-        http_response_code(500);
-        print(json_encode($Response));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->ResponseContentType = 'application/json';
+        $RequestHandler->ResponseCode = 500;
+        $RequestHandler->ResourceSource = ResourceSource::Memory;
+        $RequestHandler->Source = json_encode($Response);
+        $RequestHandler->execute();
         exit();
     }
 
@@ -84,9 +87,12 @@
             "response_code" => 404,
             "message" => "Resource not found"
         );
-        header('Content-Type: application/json');
-        http_response_code(404);
-        print(json_encode($Response));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->ResponseContentType = 'application/json';
+        $RequestHandler->ResponseCode = 404;
+        $RequestHandler->ResourceSource = ResourceSource::Memory;
+        $RequestHandler->Source = json_encode($Response);
+        $RequestHandler->execute();
         exit();
     }
     else
@@ -94,14 +100,15 @@
         upload_image($Avatar['normal']);
     }
 
-
     function upload_image($file)
     {
-        $ImageContents = file_get_contents($file);
-
-        header('Cache-control: max-age=60');
-        header('Content-type: image/jpeg');
-        http_response_code(200);
-        print($ImageContents);
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->ResponseContentType = 'image/jpeg';
+        $RequestHandler->ResponseHeaders['Cache-Control'] = 'max-age=60';
+        $RequestHandler->ResponseCode = 200;
+        $RequestHandler->ResourceSource = ResourceSource::Memory;
+        $RequestHandler->AsAttachment = false;
+        $RequestHandler->Source = file_get_contents($file);
+        $RequestHandler->execute();
         exit();
     }

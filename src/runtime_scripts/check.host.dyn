@@ -9,8 +9,7 @@
     {
         if(AUTHENTICATION_SKIPPED == false)
         {
-            /** @var CookieStorage $Cookie */
-            $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+            $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
             if(isset($Cookie->Data['host_id']))
             {
@@ -47,15 +46,13 @@
             exit();
         }
 
-        /** @var CookieStorage $Cookie */
-        $Cookie = DynamicalWeb::getMemoryObject('(cookie)web_session');
+        $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
         $Cookie->Data["host_id"] = $KnownHost->ID;
         $Cookie->Data["host_cache_ip"] = $KnownHost->IpAddress;
         $Cookie->Data["host_cache_ua"] = DYNAMICAL_CLIENT_USER_AGENT;
 
         Cookies::updateCookieStorage($Cookie);
-        DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);
     }
 
 

@@ -2,7 +2,6 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Page;
 
     $UsernameSafe = ucfirst(WEB_ACCOUNT_USERNAME);
     if(strlen($UsernameSafe) > 16)
@@ -20,7 +19,8 @@
      */
     function quick_access_enabled(string $name): bool
     {
-        $Configuration = DynamicalWeb::getConfiguration("quick_access");
+        $Configuration = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'shared' . DIRECTORY_SEPARATOR . 'quick_access.json';
+        $Configuration = json_decode($Configuration, true);
 
         if(isset($Configuration[$name]) == false)
         {
@@ -36,7 +36,7 @@
     }
 
     /**
-     * Determines the quick access location depending if it's localhost mode or not
+     * Determines the quick access location depending on if it's localhost mode or not
      *
      * @param string $name
      * @return string
@@ -44,14 +44,12 @@
      */
     function quick_access_location(string $name): string
     {
-        $Configuration = DynamicalWeb::getConfiguration("quick_access");
+        $Configuration = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'shared' . DIRECTORY_SEPARATOR . 'quick_access.json';
+        $Configuration = json_decode($Configuration, true);
 
         if(isset($Configuration[$name]) == false)
         {
-            Page::staticResponse(
-                "Intellivoid Accounts Error", "Quick Access Configuration",
-                "The quick access '$name' is not configured properly, see quick_access.json"
-            );
+            print("The quick access '$name' is not configured properly, see quick_access.json");
             exit(0);
         }
 
@@ -90,6 +88,7 @@
                             <a class="nav-link disabled" href="#" data-toggle="tooltip" data-placement="top" title="Accounts">
                                 <i class="ficon feather icon-user"></i>
                             </a>
+                        </li>
                         </li>
                         <?PHP
                             if(quick_access_enabled("TODO"))
@@ -130,11 +129,11 @@
                                 <span class="user-status"><?PHP HTML::print(WEB_ACCOUNT_EMAIL); ?></span>
                             </div>
                             <span>
-                                <img class="round" src="<?PHP Html::print(DynamicalWeb::getRoute('avatar', $img_parameters)); ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="40" width="40">
+                                <img class="round" src="<?PHP DynamicalWeb::printRoute('avatar', $img_parameters); ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="40" width="40">
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="<?PHP Html::print(DynamicalWeb::getRoute('manage_applications')); ?>">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::printRoute('manage_applications'); ?>">
                                 <i class="feather icon-layers"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_MANAGE_APPLICATIONS); ?>
                             </a>
                             <a class="dropdown-item" data-toggle="modal" data-target="#password-reset-dialog" href="#">
@@ -144,7 +143,7 @@
                                 <i class="feather icon-image"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_CHANGE_AVATAR); ?>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?PHP Html::print(DynamicalWeb::getRoute('authentication/logout')); ?>">
+                            <a class="dropdown-item" href="<?PHP DynamicalWeb::printRoute('authentication/logout'); ?>">
                                 <i class="feather icon-power"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_LOGOUT); ?>
                             </a>
                         </div>

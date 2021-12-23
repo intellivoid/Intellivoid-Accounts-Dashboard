@@ -6,6 +6,6 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('settings/login_security', $_GET);
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', $_GET);
         return;
     }
