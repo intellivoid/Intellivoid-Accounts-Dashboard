@@ -31,7 +31,7 @@
     unset($GetParameters['anim']);
 ?>
 <!DOCTYPE html>
-<html class="loading" lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
+<html class="loading" lang="<?PHP HTML::print(DYNAMICAL_SELECTED_LOCALIZATION_ISO_CODE); ?>" data-textdirection="ltr">
     <head>
         <?PHP HTML::importSection('authentication_headers'); ?>
         <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>

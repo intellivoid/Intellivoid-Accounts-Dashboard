@@ -3,7 +3,7 @@
     HTML::importScript('auth.register');
 ?>
 <!DOCTYPE html>
-<html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>" data-textdirection="ltr">
+<html lang="<?PHP HTML::print(DYNAMICAL_SELECTED_LOCALIZATION_ISO_CODE); ?>" data-textdirection="ltr">
     <head>
         <?PHP HTML::importSection('authentication_headers'); ?>
         <title>Intellivoid Accounts</title>

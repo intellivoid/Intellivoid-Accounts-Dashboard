@@ -26,7 +26,7 @@
     }
 ?>
 <!doctype html>
-<html lang="<?PHP HTML::print(APP_LANGUAGE_ISO_639); ?>">
+<html lang="<?PHP HTML::print(DYNAMICAL_SELECTED_LOCALIZATION_ISO_CODE); ?>">
     <head>
         <?PHP HTML::importSection('dashboard_headers'); ?>
         <title><?PHP HTML::print(TEXT_PAGE_TITLE); ?></title>
