@@ -7,9 +7,9 @@
      */
     function directAuthGetApps(): array
     {
-        return array(
-            "todo"
-        );
+        return [
+            'todo'
+        ];
     }
 
     /**

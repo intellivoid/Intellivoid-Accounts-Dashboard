@@ -2,16 +2,23 @@
 
     if(isset($_GET['expanded']))
     {
-        if($_GET['expanded'] == "1")
+        if($_GET['expanded'] == '1')
         {
-            define("UI_EXPANDED", true);
+            define('UI_EXPANDED', true);
         }
         else
         {
-            define("UI_EXPANDED", false);
+            define('UI_EXPANDED', false);
         }
     }
     else
     {
-        define("UI_EXPANDED", false);
+        if(DYNAMICAL_CLIENT_IS_MOBILE)
+        {
+            define('UI_EXPANDED', true);
+        }
+        else
+        {
+            define('UI_EXPANDED', false);
+        }
     }

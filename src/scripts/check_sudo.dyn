@@ -1,37 +1,36 @@
 <?php
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
-    use sws\sws;
 
     if(WEB_SUDO_MODE == false)
     {
         $_GET['redirect'] = DYNAMICAL_CURRENT_PAGE;
-        Actions::redirect(DynamicalWeb::getRoute('authentication/sudo', $_GET));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', $_GET);
+        return;
     }
     else
     {
         if(time() > WEB_SUDO_EXPIRES)
         {
-            /** @var sws $sws */
-            $sws = DynamicalWeb::getMemoryObject('sws');
-
-            $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+            $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
             $Cookie->Data["sudo_mode"] = false;
             $Cookie->Data["sudo_expires"] = 0;
+            Cookies::updateCookieStorage($Cookie);
 
-            $sws->CookieManager()->updateCookie($Cookie);
             $_GET['redirect'] = DYNAMICAL_CURRENT_PAGE;
-            Actions::redirect(DynamicalWeb::getRoute('authentication/sudo', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', $_GET);
+            return;
         }
         else
         {
-            /** @var sws $sws */
-            $sws = DynamicalWeb::getMemoryObject('sws');
-
-            $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+            $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
             $Cookie->Data["sudo_mode"] = true;
             $Cookie->Data["sudo_expires"] = time() + 900;
-            $sws->CookieManager()->updateCookie($Cookie);
+            Cookies::updateCookieStorage($Cookie);
         }
     }

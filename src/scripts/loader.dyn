@@ -1,5 +1,7 @@
 <?PHP
-    use DynamicalWeb\HTML;
+
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
     HTML::importScript('auth.register');
 ?>
 <!DOCTYPE html>
@@ -39,7 +41,7 @@
                                                 <div class="row h-100">
                                                     <div class="col-sm-12 my-auto align-self-center">
                                                         <h1 class="text-center pt-2">
-                                                            <img src="/assets/images/iv_logo.svg" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
+                                                            <img src="<?PHP Html::print(DynamicalWeb::getAssetRoute('primary_assets', '/images/iv_logo.svg'));?>" alt="Intellivoid Blue Logo" class="img-sm rounded-circle"/>
                                                             Intellivoid
                                                         </h1>
                                                     </div>

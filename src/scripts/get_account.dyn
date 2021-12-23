@@ -1,11 +1,8 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
-
-    Runtime::import('IntellivoidAccounts');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {

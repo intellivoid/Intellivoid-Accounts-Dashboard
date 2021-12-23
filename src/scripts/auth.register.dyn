@@ -1,9 +1,12 @@
 <?php
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\RouterException;
+    use DynamicalWeb\Exceptions\StorageDriverException;
+    use DynamicalWeb\Exceptions\WebApplicationException;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\KnownHostViolationStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
@@ -18,12 +21,6 @@
     use IntellivoidAccounts\Exceptions\UsernameAlreadyExistsException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use pwc\pwc;
-    use sws\sws;
-
-    /** @noinspection PhpUnhandledExceptionInspection */
-    Runtime::import("IntellivoidAccounts");
-    /** @noinspection PhpUnhandledExceptionInspection */
-    Runtime::import("PwCompromission");
 
     $GetParameters = $_GET;
     unset($GetParameters["callback"]);
@@ -35,37 +32,58 @@
             register_account();
             HTML::importScript("sync_avatar");
             $GetParameters["callback"] = "106";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/login", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
+            return;
         }
         catch(InvalidUsernameException $invalidUsernameException)
         {
             $GetParameters["callback"] = "102";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return;
         }
         catch(InvalidEmailException $invalidEmailException)
         {
             $GetParameters["callback"] = "103";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return;
         }
         catch(InvalidPasswordException $invalidPasswordException)
         {
             $GetParameters["callback"] = "104";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return;
         }
         catch(UsernameAlreadyExistsException $usernameAlreadyExistsException)
         {
             $GetParameters["callback"] = "105";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return;
         }
         catch(EmailAlreadyExistsException $emailAlreadyExistsException)
         {
             $GetParameters["callback"] = "106";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return;
         }
         catch(Exception $exception)
         {
             $GetParameters["callback"] = "101";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return;
         }
     }
 
@@ -101,38 +119,54 @@
      * @throws AccountNotFoundException
      * @throws DatabaseException
      * @throws EmailAlreadyExistsException
+     * @throws HostNotKnownException
      * @throws InvalidEmailException
+     * @throws InvalidIpException
      * @throws InvalidPasswordException
      * @throws InvalidSearchMethodException
      * @throws InvalidUsernameException 0
+     * @throws RouterException
      * @throws UsernameAlreadyExistsException
-     * @throws HostNotKnownException
-     * @throws InvalidIpException
+     * @throws WebApplicationException
+     * @throws CookieStorageNotFoundException
+     * @throws StorageDriverException
      */
     function register_account(): bool
     {
         if(isset($_POST["email"]) == false)
         {
             $GetParameters["callback"] = "100";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return false;
         }
 
         if(isset($_POST["password"]) == false)
         {
             $GetParameters["callback"] = "100";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return false;
         }
 
         if(isset($_POST["password"]) == false)
         {
             $GetParameters["callback"] = "100";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return false;
         }
 
         if(get_checkbox_input("tos_agree") == false)
         {
             $GetParameters["callback"] = "107";
-            Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+            return false;
         }
 
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -149,9 +183,7 @@
         }
 
         // Known host limitation
-        /** @var sws $sws */
-        $sws = DynamicalWeb::getMemoryObject("sws");
-        $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+        $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
         $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data["host_id"]);
         $ViolationCheckStatus = $KnownHost->checkViolationStatus();
         $IntellivoidAccounts->getKnownHostsManager()->updateKnownHost($KnownHost);
@@ -160,8 +192,10 @@
         {
             case KnownHostViolationStatus::HostBlockedAccountCreationLimit:
                 $GetParameters["callback"] = "109";
-                Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
-                break;
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+                return false;
 
             case KnownHostViolationStatus::NoViolation:
                 break;
@@ -169,8 +203,10 @@
             case KnownHostViolationStatus::HostBlockedByAdministrator:
             default:
                 $GetParameters["callback"] = "110";
-                Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
-                break;
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+                return false;
         }
 
         $pwc = new pwc();
@@ -182,7 +218,10 @@
             if($PasswordCache->Compromised)
             {
                 $GetParameters["callback"] = "108";
-                Actions::redirect(DynamicalWeb::getRoute("authentication/register", $GetParameters));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
+                return false;
             }
         }
         catch(Exception $exception)

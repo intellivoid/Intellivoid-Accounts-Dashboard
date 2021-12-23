@@ -1,5 +1,7 @@
 <?php
 
+    use DynamicalWeb\DynamicalWeb;
+
     function returnJsonResponse(array $payload)
     {
         $response = json_encode($payload);
@@ -7,8 +9,9 @@
         {
             http_response_code($payload['response_code']);
         }
-        header('Content-Type: application/json');
-        header('Content-Length: ' . strlen($response));
+
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->ResponseContentType = 'application/json';
+        DynamicalWeb::activeRequestHandler($RequestHandler);
         print($response);
-        exit();
     }

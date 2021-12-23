@@ -1,13 +1,10 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\IntellivoidAccounts;
     use udp\Exceptions\ImageTooSmallException;
     use udp\Exceptions\InvalidImageException;
     use udp\Exceptions\UnsupportedFileTypeException;
-
-    Runtime::import('IntellivoidAccounts');
 
     if(defined('WEB_ACCOUNT_PUBID'))
     {

@@ -1,12 +1,11 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
 
-    if(isset($_GET['auth']))
+    if(isset($_GET['auth']) && $_GET['auth'] == 'telegram')
     {
-        if($_GET['auth'] == 'telegram')
-        {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', $_GET));
-        }
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', $_GET);
+        return;
     }

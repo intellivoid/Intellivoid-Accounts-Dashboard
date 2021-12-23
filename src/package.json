@@ -55,8 +55,6 @@
     "components": [],
     "files": [
         "css/generic.css.php.dyn",
-        "markdown/tos/en.md",
-        "markdown/privacy_policy/en.md",
         "markdown/tos.md.dyn",
         "markdown/privacy_policy.md.dyn",
         "shared/coasniffle.json",

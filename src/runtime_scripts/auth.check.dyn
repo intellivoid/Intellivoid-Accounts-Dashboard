@@ -19,7 +19,8 @@
         'privacy',
         'tos',
         'documentation',
-        'gba_mode'
+        'gba_mode',
+        'dynamical'
     ];
 
     $password_recovery_pages = [

@@ -12,22 +12,34 @@
 
     if(isset($_GET['auth']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '7')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '7']);
+        return;
     }
 
     if($_GET['auth'] !== 'application')
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '15')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '15']);
+        return;
     }
 
     if(isset($_GET['application_id']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '8')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '8']);
+        return;
     }
 
     if(isset($_GET['request_token']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '9')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '9']);
+        return;
     }
 
     // Define the important parts
@@ -52,11 +64,17 @@
     }
     catch (ApplicationNotFoundException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '10')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '10']);
+        return;
     }
     catch(Exception $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '11')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '11']);
+        return;
     }
 
     try
@@ -67,31 +85,46 @@
     }
     catch (AuthenticationRequestNotFoundException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '12')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '12']);
+        return;
     }
     catch(Exception $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '13')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '13']);
+        return;
     }
 
     if($Application->AuthenticationMode == AuthenticationMode::Redirect)
     {
         if(isset($_GET['redirect']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '14')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '14']);
+            return;
         }
 
         // Validate the URL
         if (filter_var($_GET['redirect'], FILTER_VALIDATE_URL) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '17')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '17']);
+            return;
         }
 
     }
 
     if((int)time() > $AuthenticationRequest->ExpiresTimestamp)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/coa/application_error', array('error_code' => '34')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '34']);
+        return;
     }
 
     DynamicalWeb::setMemoryObject('application', $Application);

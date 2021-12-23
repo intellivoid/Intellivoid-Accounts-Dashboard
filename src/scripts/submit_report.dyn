@@ -1,28 +1,24 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
     use Support\Support;
     use Support\Utilities\Validation;
 
-    Runtime::import('Support');
-
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        if(isset($_GET['action']))
+        if(isset($_GET['action']) && $_GET['action'] == 'submit_feedback')
         {
-            if($_GET['action'] == 'submit_feedback')
+            if(isset($_POST['feedback_message']) == false)
             {
-                if(isset($_POST['feedback_message']) == false)
-                {
-                    Actions::redirect(DynamicalWeb::getRoute(
-                        'index', array('callback' => '111')
-                    ));
-                }
-
-                submit_report();
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', [
+                    'callback' => '111'
+                ]);
+                return;
             }
+
+            submit_report();
         }
     }
 
@@ -30,9 +26,13 @@
     {
         if(Validation::message($_POST['feedback_message']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'index', array('callback' => '112')
-            ));
+
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', [
+                'callback' => '112'
+            ]);
+            return;
         }
 
         $IntellivoidSupport = new Support();
@@ -45,12 +45,21 @@
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'index', array('callback' => '111', 'type' => 'internal')
-            ));
+
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', [
+                'callback' => '111',
+                'type' => 'internal'
+            ]);
+            return;
         }
 
-        Actions::redirect(DynamicalWeb::getRoute(
-            'index', array('callback' => '113')
-        ));
+
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', [
+            'callback' => '113'
+        ]);
+        return;
     }
