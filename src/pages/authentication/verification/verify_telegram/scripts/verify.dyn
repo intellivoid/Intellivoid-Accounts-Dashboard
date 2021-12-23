@@ -77,7 +77,7 @@
             $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
                 $Account->ID, $Host->ID,
                 LoginStatus::Successful, 'Intellivoid Accounts',
-                CLIENT_USER_AGENT
+                DYNAMICAL_CLIENT_USER_AGENT
             );
 
             HTML::importScript('sync_avatar');

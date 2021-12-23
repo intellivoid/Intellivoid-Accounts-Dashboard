@@ -91,7 +91,7 @@
             $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
                 $Account->ID, $Host->ID,
                 LoginStatus::VerificationFailed, 'Intellivoid Accounts',
-                CLIENT_USER_AGENT
+                DYNAMICAL_CLIENT_USER_AGENT
             );
 
             $Cookie->Data["verification_attempts"] += 1;
@@ -111,7 +111,7 @@
         $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
             $Account->ID, $Host->ID,
             LoginStatus::Successful, 'Intellivoid Accounts',
-            CLIENT_USER_AGENT
+            DYNAMICAL_CLIENT_USER_AGENT
         );
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 

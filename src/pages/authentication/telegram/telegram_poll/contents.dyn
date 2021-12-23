@@ -157,7 +157,7 @@
         $intellivoidAccounts->getLoginRecordManager()->createLoginRecord(
             $account->ID, $Host->ID,
             LoginStatus::VerificationFailed, 'Intellivoid Accounts',
-            CLIENT_USER_AGENT
+            DYNAMICAL_CLIENT_USER_AGENT
         );
 
         $intellivoidAccounts->getTelegramService()->closePrompt($telegramClient);

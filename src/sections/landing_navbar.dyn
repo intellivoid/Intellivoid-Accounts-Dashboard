@@ -7,7 +7,7 @@ use DynamicalWeb\HTML;
     <div class="row flex-grow">
         <div class="col-md-8 d-lg-flex flex-row mx-auto">
             <a class="navbar-brand" href="<?PHP DynamicalWeb::getRoute('landing_page', array(), true); ?>">
-                <img src="/assets/images/logo_2_white.svg" alt="logo">
+                <img src="<?PHP Html::print(DynamicalWeb::getAssetRoute('primary_assets', '/images/logo_2_white.svg')); ?>" alt="logo">
             </a>
             <button class="navbar-toggler collapsed float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon mdi mdi-menu text-white"></span>
@@ -20,10 +20,10 @@ use DynamicalWeb\HTML;
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-link" href="<?PHP DynamicalWeb::getRoute('authentication/login', array(), true); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_LOGIN); ?></a>
+                        <a class="nav-link btn btn-link" href="<?PHP Html::print(DynamicalWeb::getRoute('authentication/login')); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_LOGIN); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger" href="<?PHP DynamicalWeb::getRoute('authentication/register', array('redirect' => 'authentication/register'), true); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_CREATE_ACCOUNT); ?></a>
+                        <a class="nav-link btn btn-danger" href="<?PHP Html::print(DynamicalWeb::getRoute('authentication/register', array('redirect' => 'authentication/register'))); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_CREATE_ACCOUNT); ?></a>
                     </li>
                 </ul>
             </div>

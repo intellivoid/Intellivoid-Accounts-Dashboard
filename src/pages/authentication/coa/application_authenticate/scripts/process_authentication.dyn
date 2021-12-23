@@ -256,7 +256,7 @@
         $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
             WEB_ACCOUNT_ID, $Host->ID,
             LoginStatus::Successful, $Application->Name,
-            CLIENT_USER_AGENT
+            DYNAMICAL_CLIENT_USER_AGENT
         );
 
         switch($Application->AuthenticationMode)

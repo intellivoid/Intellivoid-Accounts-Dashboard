@@ -97,7 +97,7 @@
                         $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
                             $Account->ID, $Host->ID,
                             LoginStatus::UntrustedIpBlocked, 'Intellivoid Accounts',
-                            CLIENT_USER_AGENT
+                            DYNAMICAL_CLIENT_USER_AGENT
                         );
 
                         $GetParameters["callback"] = "105";
@@ -119,7 +119,7 @@
                     $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
                         $Account->ID, $Host->ID,
                         LoginStatus::IncorrectCredentials, 'Intellivoid Accounts',
-                        CLIENT_USER_AGENT
+                        DYNAMICAL_CLIENT_USER_AGENT
                     );
                 }
                 catch(Exception $exception)
@@ -184,7 +184,7 @@
                     $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
                         $Account->ID, $Host->ID,
                         LoginStatus::Successful, 'Intellivoid Accounts',
-                        CLIENT_USER_AGENT
+                        DYNAMICAL_CLIENT_USER_AGENT
                     );
                 }
                 catch(Exception $exception)

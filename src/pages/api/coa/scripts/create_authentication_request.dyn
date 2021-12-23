@@ -105,7 +105,7 @@
 
     try
     {
-        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->syncHost(CLIENT_REMOTE_HOST, CLIENT_USER_AGENT);
+        $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->syncHost(DYNAMICAL_CLIENT_IP_ADDRESS, DYNAMICAL_CLIENT_USER_AGENT);
     }
     catch(Exception $exception)
     {

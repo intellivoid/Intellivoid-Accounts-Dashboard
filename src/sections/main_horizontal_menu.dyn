@@ -22,7 +22,7 @@
         </div>
         <div class="navbar-container main-menu-content" data-menu="menu-container">
             <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item<?PHP if(APP_CURRENT_PAGE == 'index'){ HTML::print(" active"); } ?>">
+                <li class="nav-item<?PHP if(DYNAMICAL_CURRENT_PAGE == 'index'){ HTML::print(" active"); } ?>">
                     <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('index', [], true); ?>">
                         <i class="feather icon-home"></i>
                         <span><?PHP HTML::print(TEXT_NAV_MENU_LINK_OVERVIEW); ?></span>
@@ -31,7 +31,7 @@
                 <?PHP
                     $SettingsActive = "";
 
-                    switch(APP_CURRENT_PAGE)
+                    switch(DYNAMICAL_CURRENT_PAGE)
                     {
                         case "settings/user":
                         case "settings/password":
@@ -53,7 +53,7 @@
                 <?PHP
                     $FinanceActive = "";
 
-                    switch(APP_CURRENT_PAGE)
+                    switch(DYNAMICAL_CURRENT_PAGE)
                     {
                         case "finance/balance":
                         case "finance/invoice":

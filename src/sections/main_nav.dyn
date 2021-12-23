@@ -130,11 +130,11 @@
                                 <span class="user-status"><?PHP HTML::print(WEB_ACCOUNT_EMAIL); ?></span>
                             </div>
                             <span>
-                                <img class="round" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="40" width="40">
+                                <img class="round" src="<?PHP Html::print(DynamicalWeb::getRoute('avatar', $img_parameters)); ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="40" width="40">
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('manage_applications', [], true); ?>">
+                            <a class="dropdown-item" href="<?PHP Html::print(DynamicalWeb::getRoute('manage_applications')); ?>">
                                 <i class="feather icon-layers"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_MANAGE_APPLICATIONS); ?>
                             </a>
                             <a class="dropdown-item" data-toggle="modal" data-target="#password-reset-dialog" href="#">
@@ -144,7 +144,7 @@
                                 <i class="feather icon-image"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_CHANGE_AVATAR); ?>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?PHP DynamicalWeb::getRoute('authentication/logout', [], true); ?>">
+                            <a class="dropdown-item" href="<?PHP Html::print(DynamicalWeb::getRoute('authentication/logout')); ?>">
                                 <i class="feather icon-power"></i> <?PHP HTML::print(TEXT_USER_DROPDOWN_LOGOUT); ?>
                             </a>
                         </div>

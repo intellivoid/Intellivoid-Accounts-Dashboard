@@ -5,7 +5,7 @@
 <div class="modal fade text-left" id="feedback_dialog" tabindex="-1" role="dialog" aria-labelledby="fdl" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
-            <form action="<?PHP DynamicalWeb::getRoute('index', array('action' => 'submit_feedback'), true) ?>" method="POST">
+            <form action="<?PHP Html::print(DynamicalWeb::getRoute('index', array('action' => 'submit_feedback'))); ?>" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title" id="fdl"><?PHP HTML::print(TEXT_FEEDBACK_DIALOG_TITLE); ?></h4>
                 </div>

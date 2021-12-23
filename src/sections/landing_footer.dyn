@@ -9,10 +9,10 @@
                 <div class="mt-auto mb-4 ml-5">
                     <ul class="nav mt-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('privacy', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_PRIVACY); ?></a>
+                            <a class="nav-link" href="<?PHP Html::print(DynamicalWeb::getRoute('privacy')); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_PRIVACY); ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?PHP DynamicalWeb::getRoute('tos', array(), true); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_TOS); ?></a>
+                            <a class="nav-link" href="<?PHP Html::print(DynamicalWeb::getRoute('tos')); ?>"><?PHP HTML::print(TEXT_FOOTER_MENU_LINK_TOS); ?></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://intellivoid.net/">Intellivoid</a>

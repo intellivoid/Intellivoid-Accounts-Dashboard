@@ -1,13 +1,12 @@
 <?php
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\HTML;
-    use DynamicalWeb\Page;
-    use DynamicalWeb\Runtime;
-    use sws\sws;
-
-    Runtime::import('SecuredWebSessions');
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\RouterException;
+    use DynamicalWeb\Exceptions\StorageDriverException;
+    use DynamicalWeb\Exceptions\WebApplicationException;
+    use DynamicalWeb\Objects\Cookie;
 
     $public_pages = [
         'avatar',
@@ -44,36 +43,47 @@
     $skip_authentication = false;
     foreach($public_pages as $page)
     {
-        if(APP_CURRENT_PAGE == $page)
+        if(DYNAMICAL_CURRENT_PAGE == $page)
         {
             $skip_authentication = true;
         }
     }
-    define('AUTHENTICATION_SKIPPED', $skip_authentication, false);
+
+    define('AUTHENTICATION_SKIPPED', $skip_authentication);
 
     if(AUTHENTICATION_SKIPPED == false)
     {
+        /** @noinspection PhpUnhandledExceptionInspection */
         execute_authentication_check($unauthorized_pages, $verification_pages, $password_recovery_pages);
     }
 
+    /**
+     * Checks if the user is allowed to check the authenticated page, if not; prompt the user for authentication.
+     *
+     * @param array $unauthorized_pages
+     * @param array $verification_pages
+     * @param array $password_recovery_pages
+     * @return void
+     * @throws RouterException
+     * @throws StorageDriverException
+     * @throws WebApplicationException
+     */
     function execute_authentication_check(array $unauthorized_pages, array $verification_pages, array $password_recovery_pages)
     {
         $GetParameters = $_GET;
         unset($GetParameters['callback']);
 
-        /** @var sws $sws */
-        $sws = DynamicalWeb::setMemoryObject('sws', new sws());
-
-        if($sws->WebManager()->isCookieValid('intellivoid_secured_web_session') == false)
+        try
         {
-            if(APP_CURRENT_PAGE == 'index')
-            {
-                Actions::redirect(DynamicalWeb::getRoute('landing_page'));
-            }
-
-            $Cookie = $sws->CookieManager()->newCookie('intellivoid_secured_web_session', 5656005, false);
-
-            $Cookie->Data = array(
+            // Get the cookie storage
+            $CookieStorage = Cookies::getCookieStorage('intellivoid_secured_web_session');
+        }
+        catch(CookieStorageNotFoundException $e)
+        {
+            // If not found, create it.
+            $Cookie = new Cookie('intellivoid_secured_web_session');
+            $CookieStorage = Cookies::createCookieStorage($Cookie, false);
+            $CookieStorage->Data = array(
                 'session_active' => false,
                 'account_pubid' => null,
                 'account_id' => null,
@@ -90,82 +100,60 @@
                 'cache' => array(),
                 'cache_refresh' => 0
             );
+            Cookies::updateCookieStorage($CookieStorage);
+        }
 
-            $sws->CookieManager()->updateCookie($Cookie);
-            $sws->WebManager()->setCookie($Cookie);
-
-            if($Cookie->Name == null)
-            {
-                print('There was an issue with the security check, Please refresh the page');
-                exit();
-            }
-
+        if(isset($_GET['redirect']))
+        {
             $Location =  null;
 
-            if(isset($_GET['redirect']))
+            switch(strtolower($_GET['redirect']))
             {
-                switch(strtolower($_GET['redirect']))
-                {
 
-                    case 'authentication/register':
-                        $Location = DynamicalWeb::getRoute('authentication/register', $_GET);
-                        break;
+                case 'authentication/register':
+                    $Location = DynamicalWeb::getRoute('authentication/register', $_GET);
+                    break;
 
-                    case 'authentication/login':
-                    default:
-                        $Location = DynamicalWeb::getRoute('authentication/login', $_GET);
-                        break;
-                }
-            }
-            else
-            {
-                $Location = DynamicalWeb::getRoute('authentication/login', $_GET);
+                case 'authentication/login':
+                default:
+                    $Location = DynamicalWeb::getRoute('authentication/login', $_GET);
+                    break;
             }
 
-            header('Refresh: 2; URL=' . $Location);
-            HTML::importScript('loader');
-            exit();
-        }
-
-        try
-        {
-            $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
-        }
-        catch(Exception $exception)
-        {
-            Page::staticResponse(
-                'Intellivoid Error',
-                'Web Sessions Issue',
-                'There was an issue with your Web Session, try clearing your cookies and try again'
-            );
-            exit();
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute($Location, $_GET);
+            return;
         }
 
         DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);
 
-        define('WEB_SESSION_ACTIVE', $Cookie->Data['session_active'], false);
-        define('WEB_ACCOUNT_PUBID', $Cookie->Data['account_pubid'], false);
-        define('WEB_ACCOUNT_ID', $Cookie->Data['account_id'], false);
-        define('WEB_ACCOUNT_EMAIL', $Cookie->Data['account_email'], false);
-        define('WEB_ACCOUNT_USERNAME', $Cookie->Data['account_username'], false);
-        define('WEB_SUDO_MODE', $Cookie->Data['sudo_mode'], false);
-        define('WEB_SUDO_EXPIRES', $Cookie->Data['sudo_expires'], false);
-        define('WEB_VERIFICATION_REQUIRED', $Cookie->Data['verification_required'], false);
-        define('WEB_AUTO_LOGOUT', $Cookie->Data['auto_logout'], false);
-        define('WEB_VERIFICATION_ATTEMPTS', $Cookie->Data['verification_attempts'], false);
+        define('WEB_SESSION_ACTIVE', $CookieStorage->Data['session_active']);
+        define('WEB_ACCOUNT_PUBID', $CookieStorage->Data['account_pubid']);
+        define('WEB_ACCOUNT_ID', $CookieStorage->Data['account_id']);
+        define('WEB_ACCOUNT_EMAIL', $CookieStorage->Data['account_email']);
+        define('WEB_ACCOUNT_USERNAME', $CookieStorage->Data['account_username']);
+        define('WEB_SUDO_MODE', $CookieStorage->Data['sudo_mode']);
+        define('WEB_SUDO_EXPIRES', $CookieStorage->Data['sudo_expires']);
+        define('WEB_VERIFICATION_REQUIRED', $CookieStorage->Data['verification_required']);
+        define('WEB_AUTO_LOGOUT', $CookieStorage->Data['auto_logout']);
+        define('WEB_VERIFICATION_ATTEMPTS', $CookieStorage->Data['verification_attempts']);
 
         if(WEB_SESSION_ACTIVE == false)
         {
-            if(APP_CURRENT_PAGE == 'index')
+            if(DYNAMICAL_CURRENT_PAGE == 'index')
             {
-                Actions::redirect(DynamicalWeb::getRoute('landing_page'));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('landing_page');
+                return;
             }
 
             $redirect = true;
 
             foreach($unauthorized_pages as $page)
             {
-                if(APP_CURRENT_PAGE == $page)
+                if(DYNAMICAL_CURRENT_PAGE == $page)
                 {
                     $redirect = false;
                 }
@@ -173,7 +161,10 @@
 
             if($redirect == true)
             {
-                Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login');
+                return;
             }
         }
         else
@@ -182,23 +173,28 @@
             {
                 if(time() > WEB_AUTO_LOGOUT || WEB_VERIFICATION_ATTEMPTS > 3)
                 {
-                    $Cookie->Data['session_active'] = false;
-                    $Cookie->Data['verification_required'] = false;
-                    $Cookie->Data['auto_logout'] = 0;
-                    $Cookie->Data['verification_attempts'] = 0;
-                    $sws->CookieManager()->updateCookie($Cookie);
-                    $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
+                    $CookieStorage->Data['session_active'] = false;
+                    $CookieStorage->Data['verification_required'] = false;
+                    $CookieStorage->Data['auto_logout'] = 0;
+                    $CookieStorage->Data['verification_attempts'] = 0;
+                    Cookies::updateCookieStorage($CookieStorage);
 
                     if(time() > WEB_AUTO_LOGOUT)
                     {
                         $GetParameters['callback'] = '107';
-                        Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
+                        return;
                     }
 
                     if(WEB_VERIFICATION_ATTEMPTS > 3)
                     {
                         $GetParameters['callback'] = '108';
-                        Actions::redirect(DynamicalWeb::getRoute('authentication/login', $GetParameters));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
+                        return;
                     }
                 }
 
@@ -210,7 +206,7 @@
                     {
                         foreach($password_recovery_pages as $page)
                         {
-                            if(APP_CURRENT_PAGE == $page)
+                            if(DYNAMICAL_CURRENT_PAGE == $page)
                             {
                                 $redirect = false;
                             }
@@ -221,7 +217,7 @@
                 {
                     foreach($verification_pages as $page)
                     {
-                        if(APP_CURRENT_PAGE == $page)
+                        if(DYNAMICAL_CURRENT_PAGE == $page)
                         {
                             $redirect = false;
                         }
@@ -234,12 +230,18 @@
                     {
                         if ($Cookie->Data['verification_type'] == 'PASSWORD_RESET')
                         {
-                            Actions::redirect(DynamicalWeb::getRoute('authentication/recover_password', $GetParameters));
+                            $RequestHandler = DynamicalWeb::activeRequestHandler();
+                            $RequestHandler->Redirect = true;
+                            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/recover_password', $GetParameters);
+                            return;
                         }
                     }
                     else
                     {
-                        Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters);
+                        return;
                     }
                 }
             }
@@ -249,7 +251,7 @@
 
                 foreach($unauthorized_pages as $page)
                 {
-                    if(APP_CURRENT_PAGE == $page)
+                    if(DYNAMICAL_CURRENT_PAGE == $page)
                     {
                         $redirect = true;
                     }
@@ -257,7 +259,10 @@
 
                 if($redirect == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
+                    $RequestHandler = DynamicalWeb::activeRequestHandler();
+                    $RequestHandler->Redirect = true;
+                    $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', $GetParameters);
+                    return;
                 }
             }
 

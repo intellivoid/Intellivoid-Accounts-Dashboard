@@ -6,7 +6,7 @@
 
     if(WEB_SUDO_MODE == false)
     {
-        $_GET['redirect'] = APP_CURRENT_PAGE;
+        $_GET['redirect'] = DYNAMICAL_CURRENT_PAGE;
         Actions::redirect(DynamicalWeb::getRoute('authentication/sudo', $_GET));
     }
     else
@@ -21,7 +21,7 @@
             $Cookie->Data["sudo_expires"] = 0;
 
             $sws->CookieManager()->updateCookie($Cookie);
-            $_GET['redirect'] = APP_CURRENT_PAGE;
+            $_GET['redirect'] = DYNAMICAL_CURRENT_PAGE;
             Actions::redirect(DynamicalWeb::getRoute('authentication/sudo', $_GET));
         }
         else

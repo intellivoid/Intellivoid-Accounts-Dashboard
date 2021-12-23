@@ -1,13 +1,8 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Page;
-    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\IntellivoidAccounts;
-    use sws\Objects\Cookie;
-    use sws\sws;
 
-    Runtime::import('IntellivoidAccounts');
 
     if(defined('AUTHENTICATION_SKIPPED'))
     {
@@ -46,7 +41,7 @@
 
         try
         {
-            $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->syncHost(CLIENT_REMOTE_HOST, CLIENT_USER_AGENT);
+            $KnownHost = $IntellivoidAccounts->getKnownHostsManager()->syncHost(DYNAMICAL_CLIENT_IP_ADDRESS, DYNAMICAL_CLIENT_USER_AGENT);
         }
         catch(Exception $exception)
         {
@@ -63,7 +58,7 @@
         $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
         $Cookie->Data["host_id"] = $KnownHost->ID;
         $Cookie->Data["host_cache_ip"] = $KnownHost->IpAddress;
-        $Cookie->Data["host_cache_ua"] = CLIENT_USER_AGENT;
+        $Cookie->Data["host_cache_ua"] = DYNAMICAL_CLIENT_USER_AGENT;
 
         $sws->CookieManager()->updateCookie($Cookie);
         DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);

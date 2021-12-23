@@ -13,6 +13,10 @@
                 "en": "localization/en.json"
             }
         },
+        "sessions": {
+            "enabled": true,
+            "configuration_name": "Intellivoid Accounts"
+        },
         "favicon": null,
         "localization_enabled": true,
         "debugging_mode": true,
@@ -22,63 +26,62 @@
         "headers": {}
     },
     "runtime_scripts": [
-        {"event": "pre_request", "script": "runtime_scripts/auth.check.php"},
-        {"event": "pre_request", "script": "runtime_scripts/check.host.php"}
+        {"event": "pre_page_load", "script": "runtime_scripts/auth.check.dyn"},
+        {"event": "pre_page_load", "script": "runtime_scripts/check.host.dyn"}
     ],
     "web_assets": [
-        {"type": "ppm", "name": "primary_assets", "source": "net.intellivoid.accounts_template==latest", "path": "assets"}
+        {"type": "ppm", "name": "primary_assets", "source": "net.intellivoid.accounts_template==latest", "path": "assets_src"}
     ],
     "router": [
-        {"method": ["GET", "POST"], "path": "/", "page": "index", "params": []},
-        {"method": ["GET", "POST"], "path": "/audit", "page": "audit_log", "params": []},
-        {"method": ["GET", "POST"], "path": "/loading_auth", "page": "loading_auth", "params": []},
-        {"method": ["GET", "POST"], "path": "/landing", "page": "landing_page", "params": []},
-        {"method": ["GET", "POST"], "path": "/privacy", "page": "privacy", "params": []},
-        {"method": ["GET", "POST"], "path": "/tos", "page": "tos", "params": []},
-        {"method": ["GET", "POST"], "path": "/security/gba", "page": "gba_mode", "params": []},
+        {"method": ["GET", "POST"], "path": "", "page": "index", "params": []},
+        {"method": ["GET", "POST"], "path": "audit", "page": "audit_log", "params": []},
+        {"method": ["GET", "POST"], "path": "landing", "page": "landing_page", "params": []},
+        {"method": ["GET", "POST"], "path": "privacy", "page": "privacy", "params": []},
+        {"method": ["GET", "POST"], "path": "tos", "page": "tos", "params": []},
+        {"method": ["GET", "POST"], "path": "security/gba", "page": "gba_mode", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/auth/otl", "page": "api/otl", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/khm", "page": "api/khm", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa", "page": "api/coa", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/otl", "page": "api/otl", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/khm", "page": "api/khm", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/coa", "page": "api/coa", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/auth/telegram", "page": "authentication/telegram/telegram_api", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/telegram/poll", "page": "authentication/telegram/telegram_poll", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/register", "page": "authentication/register", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/logout", "page": "authentication/logout", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/sudo", "page": "authentication/sudo", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify", "page": "authentication/verification/verify", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/recovery", "page": "authentication/recover_password", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify/mobile", "page": "authentication/verification/verify_mobile", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify/recovery_codes", "page": "authentication/verification/verify_recovery_code", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/verify/telegram", "page": "authentication/verification/verify_telegram", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/error", "page": "authentication/coa/application_error", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/request", "page": "authentication/coa/application_authenticate", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/access", "page": "authentication/coa/authentication_code", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/coa/success", "page": "authentication/coa/authentication_success", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/telegram", "page": "authentication/telegram/telegram_api", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/telegram/poll", "page": "authentication/telegram/telegram_poll", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/login", "page": "authentication/login", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/register", "page": "authentication/register", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/logout", "page": "authentication/logout", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/sudo", "page": "authentication/sudo", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/verify", "page": "authentication/verification/verify", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/recovery", "page": "authentication/recover_password", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/verify/mobile", "page": "authentication/verification/verify_mobile", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/verify/recovery_codes", "page": "authentication/verification/verify_recovery_code", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/verify/telegram", "page": "authentication/verification/verify_telegram", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/coa/error", "page": "authentication/coa/application_error", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/coa/request", "page": "authentication/coa/application_authenticate", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/coa/access", "page": "authentication/coa/authentication_code", "params": []},
+        {"method": ["GET", "POST"], "path": "auth/coa/success", "page": "authentication/coa/authentication_success", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/user/contents/public/avatar", "page": "avatar", "params": []},
-        {"method": ["GET", "POST"], "path": "/user/contents/public/application", "page": "application_icon", "params": []},
-        {"method": ["GET", "POST"], "path": "/transaction/success", "page": "transaction_success", "params": []},
-        {"method": ["GET", "POST"], "path": "/transaction/purchase/success", "page": "purchase_success", "params": []},
-        {"method": ["GET", "POST"], "path": "/transaction/purchase/failure", "page": "purchase_failure", "params": []},
-        {"method": ["GET", "POST"], "path": "/transaction/subscription/confirm", "page": "confirm_subscription_purchase", "params": []},
+        {"method": ["GET", "POST"], "path": "user/contents/public/avatar", "page": "avatar", "params": []},
+        {"method": ["GET", "POST"], "path": "user/contents/public/application", "page": "application_icon", "params": []},
+        {"method": ["GET", "POST"], "path": "transaction/success", "page": "transaction_success", "params": []},
+        {"method": ["GET", "POST"], "path": "transaction/purchase/success", "page": "purchase_success", "params": []},
+        {"method": ["GET", "POST"], "path": "transaction/purchase/failure", "page": "purchase_failure", "params": []},
+        {"method": ["GET", "POST"], "path": "transaction/subscription/confirm", "page": "confirm_subscription_purchase", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/applications", "page": "manage_applications", "params": []},
-        {"method": ["GET", "POST"], "path": "/applications/manage", "page": "manage_application", "params": []},
+        {"method": ["GET", "POST"], "path": "applications", "page": "manage_applications", "params": []},
+        {"method": ["GET", "POST"], "path": "applications/manage", "page": "manage_application", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/finance/balance", "page": "finance/balance", "params": []},
-        {"method": ["GET", "POST"], "path": "/finance/view_invoice", "page": "finance/invoice", "params": []},
-        {"method": ["GET", "POST"], "path": "/finance/transactions", "page": "finance/transactions", "params": []},
-        {"method": ["GET", "POST"], "path": "/finance/subscriptions", "page": "finance/subscriptions", "params": []},
+        {"method": ["GET", "POST"], "path": "finance/balance", "page": "finance/balance", "params": []},
+        {"method": ["GET", "POST"], "path": "finance/view_invoice", "page": "finance/invoice", "params": []},
+        {"method": ["GET", "POST"], "path": "finance/transactions", "page": "finance/transactions", "params": []},
+        {"method": ["GET", "POST"], "path": "finance/subscriptions", "page": "finance/subscriptions", "params": []},
 
-        {"method": ["GET", "POST"], "path": "/settings/user", "page": "settings/user", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/password", "page": "settings/password", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/login_history", "page": "settings/login_history", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/otl", "page": "settings/otl_generator", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/applications", "page": "settings/authorized_apps", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/security", "page": "settings/login_security", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/security/recovery", "page": "settings/setup_recovery_codes", "params": []},
-        {"method": ["GET", "POST"], "path": "/settings/security/mobile", "page": "settings/setup_mobile_verification", "params": []}
+        {"method": ["GET", "POST"], "path": "settings/user", "page": "settings/user", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/password", "page": "settings/password", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/login_history", "page": "settings/login_history", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/otl", "page": "settings/otl_generator", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/applications", "page": "settings/authorized_apps", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/security", "page": "settings/login_security", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/security/recovery", "page": "settings/setup_recovery_codes", "params": []},
+        {"method": ["GET", "POST"], "path": "settings/security/mobile", "page": "settings/setup_mobile_verification", "params": []}
     ]
 }
