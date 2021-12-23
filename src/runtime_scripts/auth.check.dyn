@@ -126,7 +126,7 @@
             return;
         }
 
-        DynamicalWeb::setMemoryObject('(cookie)web_session', $Cookie);
+        DynamicalWeb::setMemoryObject('(cookie)web_session', $CookieStorage);
 
         define('WEB_SESSION_ACTIVE', $CookieStorage->Data['session_active']);
         define('WEB_ACCOUNT_PUBID', $CookieStorage->Data['account_pubid']);
