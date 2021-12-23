@@ -45,6 +45,6 @@
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('register', $GetParameters); ?>
+        <?PHP HTML::importJavascript('register'); ?>
     </body>
 </html>

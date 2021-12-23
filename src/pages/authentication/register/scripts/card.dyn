@@ -75,7 +75,7 @@
                     <span id="submit_preloader" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 </button>
                 <span id="ca_label" class="text-muted"> <?PHP HTML::print(TEXT_EXISTING_ACCOUNT_HINT); ?>
-                    <a id="ca_link" class="text-muted" href="<?PHP DynamicalWeb::getRoute('authentication/login', $GetParameters, true); ?>"><?PHP HTML::print(TEXT_LOGIN_LINK); ?></a>
+                    <a id="ca_link" class="text-muted" href="<?PHP DynamicalWeb::printRoute('authentication/login', $GetParameters); ?>"><?PHP HTML::print(TEXT_LOGIN_LINK); ?></a>
                 </span>
             </form>
         </div>

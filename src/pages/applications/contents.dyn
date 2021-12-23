@@ -90,7 +90,7 @@
                         </div>
                         <div class="modal fade" id="create-application" tabindex="-1" role="dialog" aria-labelledby="create-application-label" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
-                                <form class="modal-content" method="POST" action="<?PHP DynamicalWeb::getRoute('manage_applications', array('action' => 'create-application'), true); ?>">
+                                <form class="modal-content" method="POST" action="<?PHP DynamicalWeb::getRoute('manage_applications', array('action' => 'create-application')); ?>">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="create-application-label"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_TITLE); ?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

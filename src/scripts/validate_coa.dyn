@@ -14,7 +14,7 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '7']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '7']);
         return;
     }
 
@@ -22,7 +22,7 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '15']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '15']);
         return;
     }
 
@@ -30,7 +30,7 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '8']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '8']);
         return;
     }
 
@@ -38,7 +38,7 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '9']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '9']);
         return;
     }
 
@@ -66,14 +66,14 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '10']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '10']);
         return;
     }
     catch(Exception $e)
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '11']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '11']);
         return;
     }
 
@@ -87,14 +87,14 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '12']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '12']);
         return;
     }
     catch(Exception $e)
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '13']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '13']);
         return;
     }
 
@@ -104,7 +104,7 @@
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '14']);
+            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '14']);
             return;
         }
 
@@ -113,7 +113,7 @@
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '17']);
+            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '17']);
             return;
         }
 
@@ -123,7 +123,7 @@
     {
         $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->Redirect = true;
-        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', ['error_code' => '34']);
+        $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('authentication/coa/application_error', ['error_code' => '34']);
         return;
     }
 

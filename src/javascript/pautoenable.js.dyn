@@ -53,7 +53,7 @@ $('#purchase_form').on('submit', function () {
             unset($_GET['callback']);
         }
     ?>
-    $.redirectPost("<?PHP DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET, true); ?>",
+    $.redirectPost("<?PHP DynamicalWeb::printRoute('confirm_subscription_purchase', $_GET); ?>",
         {
             "confirm_password": $("#confirm_password").val()
         }

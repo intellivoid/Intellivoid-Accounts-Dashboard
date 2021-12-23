@@ -29,7 +29,7 @@ $("#mobile_verification_setup_wizard").steps({
         finish: 'Verify'
     },
     onFinished: function (event, currentIndex) {
-        $.redirectPost("<?PHP DynamicalWeb::getRoute('settings/setup_mobile_verification', array('action'=>'authentication/verification/verify'), true); ?>",
+        $.redirectPost("<?PHP DynamicalWeb::printRoute('settings/setup_mobile_verification', array('action'=>'authentication/verification/verify')); ?>",
             {
                 "verification_code": $("#verification_code").val()
             }

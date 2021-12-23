@@ -12,7 +12,7 @@
         {
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+            $RequestHandler->RedirectLocation = DynamicalWeb::printRoute('index');
             return;
         }
     }
