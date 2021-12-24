@@ -1,7 +1,7 @@
 {
   "LOCAL_MODE": false,
   "TODO": {
-    "ENABLED": true,
+    "ENABLED": false,
     "PRODUCTION_URI": "https://todo.intellivoid.net/",
     "LOCAL_URI": "http://127.0.0.1:5001/"
   }
