@@ -1,9 +1,6 @@
 <?php
 
-    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
-    use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('get_account');
     HTML::importScript('check_method');
@@ -58,6 +55,6 @@
                 </div>
             </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('verifymobile', $GetParameters); ?>
+        <?PHP HTML::importJavascript('verifymobile'); ?>
     </body>
 </html>

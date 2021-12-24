@@ -1,15 +1,10 @@
 <?php
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
-    
-    use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
-    use IntellivoidAccounts\Abstracts\ApplicationFlags;
     use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Objects\COA\AuthenticationRequest;
 
-    
     HTML::importScript('validate_coa');
     HTML::importScript('render_alert');
 
@@ -36,7 +31,7 @@
 
     $AuthenticateRoute = DynamicalWeb::getRoute('authentication/coa/application_authenticate', $ReqParameters);
 
-    DynamicalWeb::setString('authenticate_route', $AuthenticateRoute);
+    DynamicalWeb::setMemoryObject('authenticate_route', $AuthenticateRoute);
     DynamicalWeb::setMemoryObject('request_parameters', $ReqParameters);
     HTML::importScript('process_authentication');
 
@@ -77,6 +72,6 @@
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('autoenable'); ?>
+        <?PHP HTML::importJavascript('autoenable'); ?>
     </body>
 </html>

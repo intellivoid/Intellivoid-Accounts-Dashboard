@@ -1,8 +1,6 @@
 <?php
 
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
-    
 
     HTML::importScript('get_account');
     HTML::importScript('update_password');
@@ -57,6 +55,6 @@
             </div>
         </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('recoverpswd', $_GET, false); ?>
+        <?PHP HTML::importJavascript('recoverpswd'); ?>
     </body>
 </html>

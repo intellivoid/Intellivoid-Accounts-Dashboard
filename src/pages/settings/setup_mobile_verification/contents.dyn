@@ -2,7 +2,6 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
 
     HTML::importScript('check');
     HTML::importScript('verify');
@@ -145,6 +144,6 @@
         <?PHP HTML::importSection('main_js'); ?>
         <script src="/assets/vendors/js/ui/jquery.sticky.js"></script>
         <script src="/assets/vendors/js/extensions/jquery.steps.min.js"></script>
-        <?PHP Javascript::importScript('mbsetup', $_GET, false); ?>
+        <?PHP HTML::importJavascript('mbsetup'); ?>
     </body>
 </html>

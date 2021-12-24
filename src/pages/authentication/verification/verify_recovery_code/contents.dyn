@@ -1,9 +1,6 @@
 <?php
 
-    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
-    use IntellivoidAccounts\Objects\Account;
 
     HTML::importScript('get_account');
     HTML::importScript('check_method');
@@ -20,10 +17,6 @@
         return " animated fadeInRight";
     }
 
-    $GetParameters = $_GET;
-    unset($GetParameters['callback']);
-    unset($GetParameters['incorrect_auth']);
-    unset($GetParameters['anim']);
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(DYNAMICAL_SELECTED_LOCALIZATION_ISO_CODE); ?>" data-textdirection="ltr">
@@ -58,6 +51,6 @@
                 </div>
             </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('verifyrecoverycode', $GetParameters); ?>
+        <?PHP HTML::importJavascript('verifyrecoverycode'); ?>
     </body>
 </html>

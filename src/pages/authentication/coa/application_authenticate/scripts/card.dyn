@@ -82,7 +82,7 @@ use IntellivoidAccounts\Abstracts\ApplicationFlags;
                 ?>
             </div>
 
-            <form class="mt-4" id="authentication_form" action="<?PHP HTML::print(DynamicalWeb::getString('authenticate_route'), false); ?>" method="POST" name="authentication_form">
+            <form class="mt-4" id="authentication_form" action="<?PHP HTML::print(DynamicalWeb::getMemoryObject('authenticate_route'), false); ?>" method="POST" name="authentication_form">
                 <h6 class="mb-2"><?PHP HTML::print(str_ireplace("%s", $Application->Name, TEXT_PERMISSIONS_REQUEST_HEADER)); ?></h6>
                 <div class="form-group" data-toggle="tooltip" data-placement="bottom" title="<?PHP HTML::print(TEXT_PERMISSIONS_USERNAME_AVATAR_TOOLTIP); ?>">
                     <div class="d-flex align-items-center py-0 text-black" >

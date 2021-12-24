@@ -29,11 +29,6 @@
         return " animated fadeInRight";
     }
 
-    $GetParameters = $_GET;
-    unset($GetParameters['callback']);
-    unset($GetParameters['incorrect_auth']);
-    unset($GetParameters['anim']);
-
     /**
      * Returns the Known Host associated with this client
      *
@@ -87,6 +82,6 @@
                 </div>
             </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('telegramauth', $GetParameters); ?>
+        <?PHP HTML::importJavascript('telegramauth'); ?>
     </body>
 </html>

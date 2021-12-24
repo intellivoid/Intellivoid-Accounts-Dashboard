@@ -1,7 +1,6 @@
 <?php
 
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
 
     HTML::importScript('get_account');
     HTML::importScript("expanded");
@@ -24,11 +23,6 @@
 
         return " animated fadeInUp";
     }
-
-    $GetParameters = $_GET;
-    unset($GetParameters['callback']);
-    unset($GetParameters['incorrect_auth']);
-    unset($GetParameters['anim']);
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="<?PHP HTML::print(DYNAMICAL_SELECTED_LOCALIZATION_ISO_CODE); ?>" data-textdirection="ltr">
@@ -65,6 +59,6 @@
             <?PHP HTML::importSection('change_language_modal'); ?>
         </div>
         <?PHP HTML::importSection('authentication_js'); ?>
-        <?PHP Javascript::importScript('verify', $GetParameters); ?>
+        <?PHP HTML::importJavascript('verify'); ?>
     </body>
 </html>
