@@ -1,8 +1,11 @@
 <?PHP
 
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\StorageDriverException;
+    use DynamicalWeb\Exceptions\WebApplicationException;
     use DynamicalWeb\HTML;
-    
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
@@ -17,8 +20,6 @@
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\KnownHost;
-    use sws\Objects\Cookie;
-    use sws\sws;
     use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
     use TelegramClientManager\Exceptions\InvalidSearchMethod;
     use TelegramClientManager\Exceptions\TelegramClientNotFoundException;
@@ -27,11 +28,11 @@
     HTML::importScript('json_response');
     HTML::importScript('request_parser');
 
-
-    /** @var sws $sws */
-    $sws = DynamicalWeb::setMemoryObject('sws', new sws());
-
-    if($sws->WebManager()->isCookieValid('intellivoid_secured_web_session') == false)
+    try
+    {
+        $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
+    }
+    catch(CookieStorageNotFoundException $e)
     {
         returnJsonResponse(array(
             'status' => false,
@@ -39,11 +40,6 @@
             'error_code' => 200,
             'message' => "Unauthorized Request"
         ));
-    }
-
-    try
-    {
-        $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
     }
     catch(Exception $exception)
     {
@@ -116,16 +112,17 @@
      * Returns the Known Host associated with this client
      *
      * @return KnownHost
+     * @throws CookieStorageNotFoundException
      * @throws DatabaseException
      * @throws HostNotKnownException
      * @throws InvalidIpException
+     * @throws StorageDriverException
+     * @throws WebApplicationException
      */
     function get_host(): KnownHost
     {
         /** @var IntellivoidAccounts $IntellivoidAccounts */
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-
-        /** @var Cookie $Cookie */
         $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
         return $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
@@ -136,16 +133,19 @@
      *
      * @param IntellivoidAccounts $intellivoidAccounts
      * @param Account $account
-     * @param $telegramClient
+     * @param TelegramClient $telegramClient
      * @throws AccountNotFoundException
+     * @throws CookieStorageNotFoundException
      * @throws DatabaseException
      * @throws HostNotKnownException
      * @throws InvalidIpException
      * @throws InvalidLoginStatusException
-     * @throws InvalidSearchMethodException
-     * @throws \TelegramClientManager\Exceptions\DatabaseException
      * @throws InvalidSearchMethod
+     * @throws InvalidSearchMethodException
      * @throws TelegramClientNotFoundException
+     * @throws StorageDriverException
+     * @throws WebApplicationException
+     * @throws \TelegramClientManager\Exceptions\DatabaseException
      */
     function process_denial(IntellivoidAccounts $intellivoidAccounts, Account $account, TelegramClient $telegramClient)
     {
@@ -271,8 +271,7 @@
         $Cookie->Data['verification_required'] = false;
         $Cookie->Data['auto_logout'] = 0;
         $Cookie->Data['verification_attempts'] = 0;
-        $sws->CookieManager()->updateCookie($Cookie);
-        $sws->WebManager()->disposeCookie('intellivoid_secured_web_session');
+        Cookies::updateCookieStorage($Cookie);
 
         returnJsonResponse(array(
             'status' => false,

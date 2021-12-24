@@ -1,15 +1,17 @@
 <?php
 
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\StorageDriverException;
+    use DynamicalWeb\Exceptions\WebApplicationException;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Javascript;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
     use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\Exceptions\HostNotKnownException;
     use IntellivoidAccounts\Exceptions\InvalidIpException;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\KnownHost;
-    use sws\Objects\Cookie;
 
     HTML::importScript('get_account');
     HTML::importScript('check_method');
@@ -39,13 +41,14 @@
      * @throws DatabaseException
      * @throws HostNotKnownException
      * @throws InvalidIpException
+     * @throws CookieStorageNotFoundException
+     * @throws StorageDriverException
+     * @throws WebApplicationException
      */
     function get_host(): KnownHost
     {
         /** @var IntellivoidAccounts $IntellivoidAccounts */
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-
-        /** @var Cookie $Cookie */
         $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
         return $IntellivoidAccounts->getKnownHostsManager()->getHost(KnownHostsSearchMethod::byId, $Cookie->Data['host_id']);
