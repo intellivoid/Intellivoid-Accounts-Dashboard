@@ -2,7 +2,7 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
@@ -23,9 +23,6 @@
     use TelegramClientManager\Exceptions\InvalidSearchMethod;
     use TelegramClientManager\Exceptions\TelegramClientNotFoundException;
     use TelegramClientManager\Objects\TelegramClient;
-
-    Runtime::import('IntellivoidAccounts');
-    Runtime::import('SecuredWebSessions');
 
     HTML::importScript('json_response');
     HTML::importScript('request_parser');

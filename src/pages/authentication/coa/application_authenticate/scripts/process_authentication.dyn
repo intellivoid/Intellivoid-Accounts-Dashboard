@@ -39,7 +39,7 @@
     // If this application supports direct auth, authenticate the user.
     if(directAuthVerify($Application->NameSafe))
     {
-        $ReqParameters = DynamicalWeb::getArray("request_parameters");
+        $ReqParameters = DynamicalWeb::getMemoryObject("request_parameters");
 
         $_GET["auth"] = $ReqParameters["auth"];
         $_GET["action"] = $ReqParameters["action"];

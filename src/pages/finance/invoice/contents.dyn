@@ -5,13 +5,13 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\TransactionLogSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     $TransactionPublicID = $_GET['transaction_id'];
 

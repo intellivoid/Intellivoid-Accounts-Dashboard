@@ -3,11 +3,11 @@
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\IntellivoidAccounts;
     use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     HTML::importScript('json_response');
     HTML::importScript('request_parser');

@@ -2,7 +2,7 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionSearchMethod;
     use IntellivoidSubscriptionManager\Exceptions\SubscriptionNotFoundException;
     use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
@@ -28,7 +28,6 @@
     function cancel_subscription(string $access_id)
     {
         /** @noinspection PhpUnhandledExceptionInspection */
-        Runtime::import("SubscriptionManager");
         if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
         {
             /** @var IntellivoidSubscriptionManager $SubscriptionManager */

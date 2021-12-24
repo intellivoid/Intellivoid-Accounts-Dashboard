@@ -3,7 +3,7 @@
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use DynamicalWeb\Request;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\AccountStatus;
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\OtlStatus;
@@ -16,7 +16,7 @@
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Utilities\Validate;
 
-    Runtime::import('IntellivoidAccounts');
+    
     HTML::importScript('json_response');
 
     if(isset($_POST['auth_code']) == false)

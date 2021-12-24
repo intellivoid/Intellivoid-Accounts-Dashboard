@@ -23,7 +23,7 @@
     }
 
     /** @var array $loginRecord */
-    foreach(DynamicalWeb::getArray('search_results') as $loginRecord)
+    foreach(DynamicalWeb::getMemoryObject('search_results') as $loginRecord)
     {
         /** @var UserLoginRecord $loginRecord */
         $loginRecord = UserLoginRecord::fromArray($loginRecord);

@@ -2,12 +2,12 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     if(isset($_GET['pub_id']) == false)
     {

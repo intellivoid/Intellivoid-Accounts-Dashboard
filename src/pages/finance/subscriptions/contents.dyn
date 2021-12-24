@@ -4,11 +4,9 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
 
-    Runtime::import("SubscriptionManager");
-    Runtime::import("IntellivoidAccounts");
     HTML::importScript('cancel_subscription');
     HTML::importScript('ren.contents');
 

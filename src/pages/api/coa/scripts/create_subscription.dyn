@@ -3,7 +3,7 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
@@ -37,7 +37,6 @@
     $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
 
     /** @noinspection PhpUnhandledExceptionInspection */
-    Runtime::import("SubscriptionManager");
     if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
     {
         /** @var IntellivoidSubscriptionManager $SubscriptionManager */

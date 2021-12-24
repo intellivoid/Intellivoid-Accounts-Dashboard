@@ -2,11 +2,11 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Objects\COA\Application;
     use IntellivoidAccounts\Objects\COA\AuthenticationAccess;
 
-    Runtime::import('IntellivoidAccounts');
+    
     HTML::importScript('validate_coa');
     HTML::importScript('validate_access_token');
 

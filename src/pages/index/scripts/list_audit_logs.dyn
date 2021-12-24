@@ -3,12 +3,9 @@
     // Define the important parts
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
     use IntellivoidAccounts\Abstracts\AuditEventType;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\AuditRecord;
-
-    Runtime::import('IntellivoidAccounts');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
@@ -136,7 +133,7 @@
         ?>
         <div class="d-flex flex-column justify-content-center align-items-center"  style="height:50vh;">
             <div class="my-flex-item">
-                <img src="/assets/images/sadboi.svg" class="img-fluid img-md" alt="No items icon" width="48" height="48"/>
+                <img src="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/images/sadboi.svg'); ?>" class="img-fluid img-md" alt="No items icon" width="48" height="48"/>
             </div>
             <div class="pt-2 my-flex-item">
                 <h6 class="text-muted"><?PHP HTML::print(TEXT_AUDIT_NO_ITEMS); ?></h6>

@@ -2,9 +2,9 @@
 
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
-    use DynamicalWeb\Runtime;
+    
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     HTML::importScript('check');
     HTML::importScript('enter_sudo_mode');

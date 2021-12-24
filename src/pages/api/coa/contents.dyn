@@ -1,9 +1,7 @@
 <?PHP
 
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
-
-    Runtime::import('IntellivoidAccounts');
+    
 
     HTML::importScript('resolve_coa_error');
     HTML::importScript('json_response');

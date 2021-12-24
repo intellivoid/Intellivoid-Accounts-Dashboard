@@ -2,9 +2,9 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
 
-    Runtime::import('IntellivoidAccounts');
+    
 
 ?>
 <!DOCTYPE html>

@@ -18,7 +18,7 @@
     $Application = DynamicalWeb::getMemoryObject('application');
 
     /** @var array $SubscriptionDetails */
-    $SubscriptionDetails = DynamicalWeb::getArray('subscription_details');
+    $SubscriptionDetails = DynamicalWeb::getMemoryObject('subscription_details');
 
     /** @var SubscriptionPlan $SubscriptionPlan */
     $SubscriptionPlan = DynamicalWeb::getMemoryObject('subscription_plan');

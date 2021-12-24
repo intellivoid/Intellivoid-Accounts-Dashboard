@@ -3,12 +3,12 @@
     // Define the important parts
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\AuditEventType;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\AuditRecord;
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {

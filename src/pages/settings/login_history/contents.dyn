@@ -34,7 +34,7 @@
                                     <div class="card-content">
                                         <div class="card-body">
                                             <?PHP
-                                                if(count(DynamicalWeb::getArray('search_results')) == 0)
+                                                if(count(DynamicalWeb::getMemoryObject('search_results')) == 0)
                                                 {
                                                     HTML::importScript('no_items_msg');
                                                 }

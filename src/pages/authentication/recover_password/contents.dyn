@@ -2,7 +2,7 @@
 
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
-    use DynamicalWeb\Runtime;
+    
 
     HTML::importScript('get_account');
     HTML::importScript('update_password');

@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\IntellivoidAccounts;
     use udp\Exceptions\FileUploadException;
@@ -9,15 +8,9 @@
     use udp\Exceptions\SystemException;
     use udp\Exceptions\UnsupportedFileTypeException;
 
-    if(isset($_GET['action']))
+    if(isset($_GET['action']) && $_GET['action'] == 'change_avatar' && $_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        if($_GET['action'] == 'change_avatar')
-        {
-            if($_SERVER['REQUEST_METHOD'] == 'POST')
-            {
-                change_avatar();
-            }
-        }
+        change_avatar();
     }
 
     function change_avatar()
@@ -53,56 +46,62 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                    array('callback' => '110'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '110']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('index',
-                array('callback' => '105'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '105']);
+            $RequestHandler->execute();
         }
         catch (SystemException $e)
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                    array('callback' => '111'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '111']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('index',
-                array('callback' => '106'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '106']);
+            $RequestHandler->execute();
         }
         catch (UnsupportedFileTypeException $e)
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                    array('callback' => '112'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '112']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('index',
-                array('callback' => '107'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '107']);
+            $RequestHandler->execute();
         }
         catch(Exception $exception)
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                    array('callback' => '100'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '100']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('index',
-                array('callback' => '100'))
-            );
-
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '100']);
+            $RequestHandler->execute();
         }
-
 
         try
         {
@@ -112,51 +111,58 @@
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                    array('callback' => '113'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '113']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('index',
-                array('callback' => '108'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '108']);
+            $RequestHandler->execute();
         }
         catch (InvalidImageException $e)
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                    array('callback' => '114'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '114']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('manage_application',
-                array('callback' => '109'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application', ['callback' => '109']);
+            $RequestHandler->execute();
         }
         catch (UnsupportedFileTypeException $e)
         {
             if($RedirectToSettings)
             {
-                Actions::redirect(DynamicalWeb::getRoute('personal',
-                    array('callback' => '112'))
-                );
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('personal', ['callback' => '112']);
+                $RequestHandler->execute();
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('manage_application',
-                array('callback' => '107'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application', ['callback' => '107']);
+            $RequestHandler->execute();
         }
 
         if($RedirectToSettings)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/user',
-                array('callback' => '115', 'cache_refresh' => 'true'))
-            );
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user', ['callback' => '115']);
+            $RequestHandler->execute();
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('index', array(
-            'callback' => '110',
-            'cache_refresh' => 'true'
-        )));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => '110', 'cache_refresh' => true]);
+        $RequestHandler->execute();
     }

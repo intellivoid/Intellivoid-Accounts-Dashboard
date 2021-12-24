@@ -2,7 +2,7 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionPlanSearchMethod;
@@ -12,7 +12,6 @@
     function list_subscribed_services(array $Subscriptions)
     {
         /** @noinspection PhpUnhandledExceptionInspection */
-        Runtime::import("SubscriptionManager");
         if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
         {
             /** @var IntellivoidSubscriptionManager $SubscriptionManager */
@@ -26,7 +25,6 @@
             $SubscriptionManager = DynamicalWeb::getMemoryObject("subscription_manager");
         }
 
-        Runtime::import("IntellivoidAccounts");
         if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
         {
             /** @var IntellivoidAccounts $IntellivoidAccounts */

@@ -2,10 +2,10 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {

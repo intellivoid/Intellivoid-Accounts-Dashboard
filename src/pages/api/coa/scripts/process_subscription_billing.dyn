@@ -1,7 +1,7 @@
 <?php
 
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\Exceptions\InsufficientFundsException;
@@ -22,7 +22,6 @@
     }
 
     /** @noinspection PhpUnhandledExceptionInspection */
-    Runtime::import("SubscriptionManager");
     if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
     {
         /** @var IntellivoidSubscriptionManager $SubscriptionManager */
@@ -37,7 +36,6 @@
     }
 
     /** @noinspection PhpUnhandledExceptionInspection */
-    Runtime::import("IntellivoidAccounts");
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {
         /** @var IntellivoidAccounts $IntellivoidAccounts */

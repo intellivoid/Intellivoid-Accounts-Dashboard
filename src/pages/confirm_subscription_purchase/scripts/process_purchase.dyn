@@ -2,7 +2,7 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Exceptions\AccountLimitedException;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
@@ -48,7 +48,6 @@
         $SubscriptionPlan = DynamicalWeb::getMemoryObject('subscription_plan');
 
         /** @noinspection PhpUnhandledExceptionInspection */
-        Runtime::import("SubscriptionManager");
         if(isset(DynamicalWeb::$globalObjects["subscription_manager"]) == false)
         {
             /** @var IntellivoidSubscriptionManager $SubscriptionManager */

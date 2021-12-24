@@ -2,9 +2,9 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     HTML::importScript('clear.name');
     HTML::importScript('clear.birthday');

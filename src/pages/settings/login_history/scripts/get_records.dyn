@@ -17,11 +17,11 @@
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
     }
 
-    DynamicalWeb::setInt32('total_items', $IntellivoidAccounts->getLoginRecordManager()->getTotalRecords(
+    DynamicalWeb::setMemoryObject('total_items', $IntellivoidAccounts->getLoginRecordManager()->getTotalRecords(
         LoginRecordMultiSearchMethod::byAccountId, WEB_ACCOUNT_ID
     ));
 
-    DynamicalWeb::setInt32('total_pages', ceil(DynamicalWeb::getInt32('total_items') / 50));
+    DynamicalWeb::setMemoryObject('total_pages', ceil(DynamicalWeb::getMemoryObject('total_items') / 50));
 
 
     $CurrentPage = 1;
@@ -36,12 +36,12 @@
     }
 
 
-    if($CurrentPage > DynamicalWeb::getInt32('total_pages'))
+    if($CurrentPage > DynamicalWeb::getMemoryObject('total_pages'))
     {
-        $CurrentPage = DynamicalWeb::getInt32('total_pages') + 1;
+        $CurrentPage = DynamicalWeb::getMemoryObject('total_pages') + 1;
     }
 
-    DynamicalWeb::setInt32('current_page', $CurrentPage);
+    DynamicalWeb::setMemoryObject('current_page', $CurrentPage);
 
     $StartingItem = 0;
 
@@ -63,6 +63,6 @@
         $Results = [];
     }
 
-    $IntellivoidAccounts = DynamicalWeb::setArray(
+    $IntellivoidAccounts = DynamicalWeb::setMemoryObject(
         "search_results", $Results
     );

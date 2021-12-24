@@ -1,9 +1,7 @@
 <?php
     use DynamicalWeb\HTML;
     use DynamicalWeb\Javascript;
-    use DynamicalWeb\Runtime;
-
-    Runtime::import('IntellivoidAccounts');
+    
 
     HTML::importScript('render_alert');
     HTML::importScript('request_parser');

@@ -4,13 +4,13 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\TransactionRecord;
 
-    Runtime::import('IntellivoidAccounts');
+    
     HTML::importScript('redirect_paypal');
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)

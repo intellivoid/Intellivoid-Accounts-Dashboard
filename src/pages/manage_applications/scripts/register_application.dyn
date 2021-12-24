@@ -2,7 +2,7 @@
 
     use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\Runtime;
+    
     use IntellivoidAccounts\Abstracts\AccountRequestPermissions;
     use IntellivoidAccounts\Abstracts\AuditEventType;
     use IntellivoidAccounts\Abstracts\AuthenticationMode;
@@ -11,7 +11,7 @@
     use IntellivoidAccounts\Exceptions\InvalidRequestPermissionException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    Runtime::import('IntellivoidAccounts');
+    
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
     {

@@ -35,7 +35,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(InvalidUsernameException $invalidUsernameException)
         {
@@ -43,7 +43,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(InvalidEmailException $invalidEmailException)
         {
@@ -51,7 +51,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(InvalidPasswordException $invalidPasswordException)
         {
@@ -59,7 +59,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(UsernameAlreadyExistsException $usernameAlreadyExistsException)
         {
@@ -67,7 +67,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(EmailAlreadyExistsException $emailAlreadyExistsException)
         {
@@ -75,7 +75,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
         catch(Exception $exception)
         {
@@ -83,7 +83,7 @@
             $RequestHandler = DynamicalWeb::activeRequestHandler();
             $RequestHandler->Redirect = true;
             $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/register', $GetParameters);
-            return;
+            $RequestHandler->execute();
         }
     }
 
