@@ -1,11 +1,9 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\ApplicationStatus;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\ApplicationStatus;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
-    use IntellivoidAccounts\Utilities\Hashing;
 
     /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
@@ -15,20 +13,28 @@ use IntellivoidAccounts\IntellivoidAccounts;
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115')
         );
+        $RequestHandler->execute();
     }
 
     try
     {
         $IntellivoidAccounts->getApplicationManager()->deleteApplication($Application);
-
-        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '108')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_applications', array('callback' => '108'));
+        $RequestHandler->execute();
     }
     catch(Exception $exception)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_applications',
             array('pub_id' => $_GET['pub_id'], 'callback' => '100')
-        ));
+        );
+        $RequestHandler->execute();
     }

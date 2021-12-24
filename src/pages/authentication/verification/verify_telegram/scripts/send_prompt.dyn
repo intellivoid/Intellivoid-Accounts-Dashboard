@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Exceptions\TooManyPromptRequestsException;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -23,7 +22,10 @@
     catch(Exception $exception)
     {
         $_GET['callback'] = '101';
-        Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify', $_GET));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify', $_GET);
+        $RequestHandler->execute();
     }
 
     try
@@ -35,10 +37,16 @@
     catch (TooManyPromptRequestsException $e)
     {
         $_GET['callback'] = '102';
-        Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify', $_GET));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify', $_GET);
+        $RequestHandler->execute();
     }
     catch(Exception $e)
     {
         $_GET['callback'] = '103';
-        Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify', $_GET));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify', $_GET);
+        $RequestHandler->execute();
     }

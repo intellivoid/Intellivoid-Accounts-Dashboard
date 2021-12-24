@@ -1,17 +1,18 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    
-
     if(isset($_GET['pub_id']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '107')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_applications',
+            array('callback' => '107')
+        );
+        $RequestHandler->execute();
     }
 
     if(isset(DynamicalWeb::$globalObjects["intellivoid_accounts"]) == false)
@@ -33,16 +34,31 @@
     }
     catch (ApplicationNotFoundException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '107')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_applications',
+            array('callback' => '107')
+        );
+        $RequestHandler->execute();
     }
     catch(Exception $exception)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '100')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_applications',
+            array('callback' => '100')
+        );
+        $RequestHandler->execute();
     }
 
     if($Application->AccountID !== WEB_ACCOUNT_ID)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_applications', array('callback' => '107')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_applications',
+            array('callback' => '107')
+        );
+        $RequestHandler->execute();
     }
 
     DynamicalWeb::setMemoryObject('application', $Application);

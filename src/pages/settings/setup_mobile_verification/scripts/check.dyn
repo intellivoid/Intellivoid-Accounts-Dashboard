@@ -1,21 +1,19 @@
 <?php
 
-
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    
     $IntellivoidAccounts = new IntellivoidAccounts();
     $Account = $IntellivoidAccounts->getAccountManager()->getAccount(AccountSearchMethod::byId, WEB_ACCOUNT_ID);
 
     if($Account->Configuration->VerificationMethods->TwoFactorAuthenticationEnabled == true)
     {
-        Actions::redirect(DynamicalWeb::getRoute('settings/setup_mobile_verification', array(
-            'callback' => '101'
-        )));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/setup_mobile_verification', ['callback' => '101']);
+        $RequestHandler->execute();
+        return;
     }
 
     DynamicalWeb::setMemoryObject('intellivoid_accounts', $IntellivoidAccounts);

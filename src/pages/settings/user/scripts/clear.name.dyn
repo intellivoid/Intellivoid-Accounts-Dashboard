@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\AuditEventType;
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
@@ -16,9 +15,12 @@
             }
             catch(Exception $exception)
             {
-                Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
-                    'callback' => '107'
-                )));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user',
+                    array('callback' => '107')
+                );
+                $RequestHandler->execute();
             }
         }
     }
@@ -44,7 +46,10 @@
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
         $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::PersonalInformationUpdated);
 
-        Actions::redirect(DynamicalWeb::getRoute('settings/user', array(
-            'callback' => '109'
-        )));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/user',
+            array('callback' => '109')
+        );
+        $RequestHandler->execute();
     }

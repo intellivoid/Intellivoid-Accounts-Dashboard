@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\ApplicationAccessStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationAccessSearchMethod;
@@ -39,11 +38,17 @@
         }
         catch (ApplicationAccessNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '100')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/authorized_apps', ['callback' => '100']);
+            $RequestHandler->execute();
         }
         catch(Exception $exception)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '101')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/authorized_apps', ['callback' => '101']);
+            $RequestHandler->execute();
         }
 
         /** @noinspection PhpUndefinedVariableInspection */
@@ -51,8 +56,14 @@
         {
             $ApplicationAccess->Status = ApplicationAccessStatus::Unauthorized;
             $IntellivoidAccounts->getCrossOverAuthenticationManager()->getApplicationAccessManager()->updateApplicationAccess($ApplicationAccess);
-            Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '102')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/authorized_apps', ['callback' => '102']);
+            $RequestHandler->execute();
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('settings/authorized_apps', array('callback' => '103')));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/authorized_apps', ['callback' => '103']);
+        $RequestHandler->execute();
     }

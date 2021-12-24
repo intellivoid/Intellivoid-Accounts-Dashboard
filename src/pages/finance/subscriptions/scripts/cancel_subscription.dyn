@@ -1,8 +1,6 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    
     use IntellivoidSubscriptionManager\Abstracts\SearchMethods\SubscriptionSearchMethod;
     use IntellivoidSubscriptionManager\Exceptions\SubscriptionNotFoundException;
     use IntellivoidSubscriptionManager\IntellivoidSubscriptionManager;
@@ -49,11 +47,21 @@
         }
         catch (SubscriptionNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '100')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('finance/subscriptions',
+                array('callback' => '100')
+            );
+            $RequestHandler->execute();
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '101')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('finance/subscriptions',
+                array('callback' => '101')
+            );
+            $RequestHandler->execute();
         }
 
         try
@@ -63,9 +71,18 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '101')));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('finance/subscriptions',
+                array('callback' => '101')
+            );
+            $RequestHandler->execute();
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('finance/subscriptions', array('callback' => '102')));
-
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('finance/subscriptions',
+            array('callback' => '102')
+        );
+        $RequestHandler->execute();
     }

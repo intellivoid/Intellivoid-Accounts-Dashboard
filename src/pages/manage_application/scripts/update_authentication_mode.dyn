@@ -1,10 +1,9 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\ApplicationStatus;
-use IntellivoidAccounts\Abstracts\AuthenticationMode;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\ApplicationStatus;
+    use IntellivoidAccounts\Abstracts\AuthenticationMode;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
 
     /** @var Application $Application */
@@ -15,22 +14,28 @@ use IntellivoidAccounts\IntellivoidAccounts;
     
     if($Application->Status == ApplicationStatus::Suspended)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115')
         );
+        $RequestHandler->execute();
     }
 
     if(isset($_POST['authentication_type']) == false)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
             array('pub_id' => $Application->PublicAppId, 'callback' => '106')
-        ));
+        );
+        $RequestHandler->execute();
     }
 
     switch($_POST['authentication_type'])
     {
         case 'redirect':
-            $Application->AuthenticationMode = AuthenticationMode::Redirect;
+            $Application->AuthenticationFMode = AuthenticationMode::Redirect;
             break;
 
         case 'placeholder':
@@ -42,12 +47,18 @@ use IntellivoidAccounts\IntellivoidAccounts;
             break;
 
         default:
-            Actions::redirect(DynamicalWeb::getRoute('manage_application',
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
                 array('pub_id' => $Application->PublicAppId, 'callback' => '107')
-            ));
+            );
+            $RequestHandler->execute();
     }
 
     $IntellivoidAccounts->getApplicationManager()->updateApplication($Application);
-    Actions::redirect(DynamicalWeb::getRoute('manage_application',
+    $RequestHandler = DynamicalWeb::activeRequestHandler();
+    $RequestHandler->Redirect = true;
+    $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
         array('pub_id' => $Application->PublicAppId, 'callback' => '108')
-    ));
+    );
+    $RequestHandler->execute();

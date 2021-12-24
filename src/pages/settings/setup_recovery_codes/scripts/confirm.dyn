@@ -1,9 +1,8 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\AuditEventType;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\AuditEventType;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
 
     if(isset($_GET['action']))
@@ -35,7 +34,10 @@ use IntellivoidAccounts\IntellivoidAccounts;
         $IntellivoidAccounts->getAuditLogManager()->logEvent($Account->ID, AuditEventType::RecoveryCodesEnabled);
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
-        Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', [
             'callback' => '107'
-        )));
+        ]);
+        $RequestHandler->execute();
     }

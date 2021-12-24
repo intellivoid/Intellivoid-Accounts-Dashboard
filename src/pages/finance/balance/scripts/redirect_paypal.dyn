@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
 
     if(isset($_GET['action']))
@@ -18,7 +17,10 @@
     {
         if(isset($_POST['amount']) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('index'));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+            $RequestHandler->execute();
         }
 
         switch($_POST['amount'])
@@ -29,10 +31,16 @@
             case '7C7KBDN8QUAR2':
             case 'FZJGN4HRS4D6E':
             case 'YLUR4PWD88FJ8':
-                Actions::redirect('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=' . $_POST['amount']);
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=' . $_POST['amount'];
+                $RequestHandler->execute();
                 break;
 
             default:
-                Actions::redirect(DynamicalWeb::getRoute('index'));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+                $RequestHandler->execute();
         }
     }

@@ -1,19 +1,20 @@
 <?php
 
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\ApplicationStatus;
     use IntellivoidAccounts\Abstracts\AuthenticationMode;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Exceptions\ApplicationNotFoundException;
-    use IntellivoidAccounts\Exceptions\DatabaseException;
     use IntellivoidAccounts\IntellivoidAccounts;
 
     if(get_parameter("application_id") == null)
     {
-        header("X-COA-Error: 1");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "1")));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '1';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "1"));
+        $RequestHandler->execute();
     }
 
     // Define the important parts
@@ -38,34 +39,49 @@
     }
     catch (ApplicationNotFoundException $e)
     {
-        header("X-COA-Error: 2");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "2")));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '2';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "2"));
+        $RequestHandler->execute();
     }
     catch(Exception $exception)
     {
-        header("X-COA-Error: -1");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "-1", "internal_reason" => "application_exception")));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '-2';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "-1", "internal_reason" => "application_exception"));
+        $RequestHandler->execute();
     }
 
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
-        header("X-COA-Error: 3");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "3")));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '3';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "3"));
+        $RequestHandler->execute();
     }
 
     if($Application->Status == ApplicationStatus::Disabled)
     {
-        header("X-COA-Error: 4");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "4")));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '4';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "4"));
+        $RequestHandler->execute();
     }
 
     if($Application->AuthenticationMode == AuthenticationMode::Redirect)
     {
         if(get_parameter("redirect") == null)
         {
-            header("X-COA-Error: 6");
-            Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "6")));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->ResponseHeaders['X-COA-Error'] = '6';
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "6"));
+            $RequestHandler->execute();
         }
     }
 
@@ -76,8 +92,11 @@
     catch(Exception $exception)
     {
         $ExceptionID = $IntellivoidAccounts->getLogHandler()->logException($exception, "Web Application");
-        header("X-COA-Error: 5");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "5", "error_id" => $ExceptionID)));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '5';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "5", "error_id" => $ExceptionID));
+        $RequestHandler->execute();
     }
 
     try
@@ -88,19 +107,28 @@
     }
     catch (Exception $e)
     {
-        header("X-COA-Error: -1");
-        Actions::redirect(DynamicalWeb::getRoute("authentication/coa/application_error", array("error_code" => "-1", "internal_reason" => "auth_request_exception")));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->ResponseHeaders['X-COA-Error'] = '-1';
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/coa/application_error', array("error_code" => "-1", "internal_reason" => "auth_request_exception"));
+        $RequestHandler->execute();
     }
 
     if($Application->AuthenticationMode == AuthenticationMode::Redirect)
     {
-        Actions::redirect(DynamicalWeb::getRoute("authentication/login",
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login',
             array("auth" => "application", "redirect" => get_parameter("redirect"), "application_id" => $Application->PublicAppId, "request_token" => $AuthRequestToken->RequestToken)
-        ));
+        );
+        $RequestHandler->execute();
     }
     else
     {
-        Actions::redirect(DynamicalWeb::getRoute("authentication/login",
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login',
             array("auth" => "application", "application_id" => $Application->PublicAppId, "request_token" => $AuthRequestToken->RequestToken)
-        ));
+        );
+        $RequestHandler->execute();
     }

@@ -1,9 +1,11 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
 
     if(WEB_SUDO_MODE == true)
     {
-        Actions::redirect(DynamicalWeb::getRoute('index'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+        $RequestHandler->execute();
     }

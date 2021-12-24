@@ -2,16 +2,20 @@
 
     /** @noinspection PhpUndefinedConstantInspection */
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    
     use IntellivoidAccounts\Abstracts\SearchMethods\AccountSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\ApplicationSearchMethod;
     use IntellivoidAccounts\Abstracts\SearchMethods\TransactionLogSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
 
-    
+    if(isset($_GET['transaction_id']) == false)
+    {
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+        $RequestHandler->execute();
+    }
 
     $TransactionPublicID = $_GET['transaction_id'];
 
@@ -36,13 +40,18 @@
     }
     catch(Exception $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('index'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+        $RequestHandler->execute();
     }
-
 
     if($TransactionRecord->AccountID !== WEB_ACCOUNT_ID)
     {
-        Actions::redirect(DynamicalWeb::getRoute('index'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+        $RequestHandler->execute();
     }
 
     if($TransactionRecord->Amount == 0)

@@ -27,7 +27,10 @@
 
         if($Account->Configuration->VerificationMethods->TelegramClientLinked == true)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security'));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security');
+            $RequestHandler->execute();
         }
 
         /** @var IntellivoidAccounts $IntellivoidAccounts */
@@ -41,45 +44,63 @@
         }
         catch (TelegramClientNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '109'
-            )));
+            ));
+            $RequestHandler->execute();
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '110'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
         /** @noinspection PhpUndefinedVariableInspection */
         if($TelegramClient->AccountID !== null)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '111'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
         if(isset($_GET["hash"]) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '109', 'clause' => 'missing_hash'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
         if(isset($_GET["verification_sign"]) == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '109', 'clause' => 'missing_verification'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
         $VerificationSign = hash("sha256", $_GET["hash"] . $TelegramClient->ID);
         if($VerificationSign !== $_GET["verification_sign"])
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '109', 'clause' => 'bad_verification'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
         $Account->Configuration->VerificationMethods->TelegramClientLinked = true;
@@ -92,9 +113,12 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '110'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
         try
@@ -105,12 +129,18 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
                 'callback' => '110'
-            )));
+            ));
+            $RequestHandler->execute();
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', array(
             'callback' => '112'
-        )));
+        ));
+        $RequestHandler->execute();
     }

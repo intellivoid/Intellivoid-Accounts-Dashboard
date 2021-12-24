@@ -1,14 +1,12 @@
 <?php
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\TelegramClientSearchMethod;
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
-    use sws\sws;
-
 
     if(isset($_GET['action']))
     {
@@ -41,7 +39,10 @@
         catch(Exception $exception)
         {
             $_GET['callback'] = '101';
-            Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify', $GetParameters);
+            $RequestHandler->execute();
         }
 
         $authenticated = false;
@@ -64,15 +65,11 @@
         {
             $Host = get_host();
 
-            /** @var sws $sws */
-            $sws = DynamicalWeb::getMemoryObject('sws');
-            $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
-
+            $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
             $Cookie->Data["verification_required"] = false;
             $Cookie->Data["auto_logout"] = 0;
             $Cookie->Data["verification_attempts"] = 0;
-
-            $sws->CookieManager()->updateCookie($Cookie);
+            Cookies::updateCookieStorage($Cookie);
 
             $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
                 $Account->ID, $Host->ID,
@@ -81,7 +78,9 @@
             );
 
             HTML::importScript('sync_avatar');
-            Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
-            exit();
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', $GetParameters);
+            $RequestHandler->execute();
         }
     }

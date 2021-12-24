@@ -1,7 +1,13 @@
 <?php
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\LocalizationException;
+    use DynamicalWeb\Exceptions\RequestHandlerException;
+    use DynamicalWeb\Exceptions\RouterException;
+    use DynamicalWeb\Exceptions\StorageDriverException;
+    use DynamicalWeb\Exceptions\WebApplicationException;
     use DynamicalWeb\HTML;
     use IntellivoidAccounts\Abstracts\LoginStatus;
     use IntellivoidAccounts\Abstracts\SearchMethods\KnownHostsSearchMethod;
@@ -17,8 +23,6 @@
     use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\Account;
     use IntellivoidAccounts\Objects\KnownHost;
-    use sws\Objects\Cookie;
-    use sws\sws;
 
     if(isset($_GET['action']))
     {
@@ -35,9 +39,12 @@
      * Get's the known host associated with this client
      *
      * @return KnownHost
+     * @throws CookieStorageNotFoundException
      * @throws DatabaseException
      * @throws HostNotKnownException
      * @throws InvalidIpException
+     * @throws StorageDriverException
+     * @throws WebApplicationException
      */
     function get_host(): KnownHost
     {
@@ -57,12 +64,18 @@
      * @throws AccountNotFoundException
      * @throws DatabaseException
      * @throws HostNotKnownException
+     * @throws InvalidAccountStatusException
+     * @throws InvalidEmailException
      * @throws InvalidIpException
      * @throws InvalidLoginStatusException
      * @throws InvalidSearchMethodException
-     * @throws InvalidAccountStatusException
-     * @throws InvalidEmailException
      * @throws InvalidUsernameException
+     * @throws CookieStorageNotFoundException
+     * @throws LocalizationException
+     * @throws RequestHandlerException
+     * @throws RouterException
+     * @throws StorageDriverException
+     * @throws WebApplicationException
      */
     function execute_verification()
     {
@@ -74,7 +87,10 @@
         if(isset($_POST['code']) == false)
         {
             $GetParameters['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify_recovery_code', $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify_recovery_code', $GetParameters);
+            $RequestHandler->execute();
         }
 
         /** @var Account $Account */
@@ -82,9 +98,7 @@
         $Host = get_host();
         /** @var IntellivoidAccounts $IntellivoidAccounts */
         $IntellivoidAccounts = DynamicalWeb::getMemoryObject("intellivoid_accounts");
-        /** @var sws $sws */
-        $sws = DynamicalWeb::getMemoryObject('sws');
-        $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+        $Cookie = Cookies::getCookieStorage('intellivoid_secured_web_session');
 
         if($Account->Configuration->VerificationMethods->RecoveryCodes->verifyCode($_POST['code'], true) == false)
         {
@@ -95,18 +109,21 @@
             );
 
             $Cookie->Data["verification_attempts"] += 1;
-            $sws->CookieManager()->updateCookie($Cookie);
+            Cookies::updateCookieStorage($Cookie);
 
             $GetParameters['callback'] = '101';
             $GetParameters['incorrect_auth'] = '1';
-            Actions::redirect(DynamicalWeb::getRoute('authentication/verification/verify_recovery_code',  $GetParameters));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/verification/verify_recovery_code', $GetParameters);
+            $RequestHandler->execute();
         }
 
         $Cookie->Data["verification_required"] = false;
         $Cookie->Data["auto_logout"] = 0;
         $Cookie->Data["verification_attempts"] = 0;
 
-        $sws->CookieManager()->updateCookie($Cookie);
+        Cookies::updateCookieStorage($Cookie);
 
         $IntellivoidAccounts->getLoginRecordManager()->createLoginRecord(
             $Account->ID, $Host->ID,
@@ -116,6 +133,8 @@
         $IntellivoidAccounts->getAccountManager()->updateAccount($Account);
 
         HTML::importScript('sync_avatar');
-        Actions::redirect(DynamicalWeb::getRoute('index', $GetParameters));
-        exit();
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', $GetParameters);
+        $RequestHandler->execute();
     }

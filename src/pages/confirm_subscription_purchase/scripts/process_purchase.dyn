@@ -1,8 +1,6 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-    
     use IntellivoidAccounts\Exceptions\AccountLimitedException;
     use IntellivoidAccounts\Exceptions\AccountNotFoundException;
     use IntellivoidAccounts\Exceptions\AccountSuspendedException;
@@ -65,7 +63,11 @@
         {
             $_GET['action'] = 'exec_callback';
             $_GET['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+            $RequestHandler->execute();
+            return;
         }
 
         // Validate the password
@@ -75,33 +77,45 @@
         }
         catch (AccountNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'account_not_found'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'account_not_found'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (AccountSuspendedException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'account_suspended'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'account_suspended'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (IncorrectLoginDetailsException $e)
         {
             $_GET['action'] = 'exec_callback';
             $_GET['callback'] = '101';
-            Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', $_GET);
+            $RequestHandler->execute();
+            return;
         }
         catch(Exception $e)
         {
             $_GET['action'] = 'exec_callback';
             $_GET['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+            $RequestHandler->execute();
+            return;
         }
 
         // Check if the user already has a subscription with the Application
@@ -113,11 +127,14 @@
         {
             $_GET['action'] = 'exec_callback';
             $_GET['callback'] = '100';
-            Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+            $RequestHandler->execute();
+            return;
         }
 
         /** @var SubscriptionPlan $subscriptionPlanIlt */
-        /** @noinspection PhpUndefinedVariableInspection */
         foreach($ApplicationSubscriptionPlans as $subscriptionPlanIlt)
         {
             try
@@ -130,20 +147,28 @@
                 {
                     $_GET['action'] = 'exec_callback';
                     $_GET['callback'] = '102';
-                    Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+                    $RequestHandler = DynamicalWeb::activeRequestHandler();
+                    $RequestHandler->Redirect = true;
+                    $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+                    $RequestHandler->execute();
+                    return;
                 }
             }
             catch (Exception $e)
             {
                 $_GET['action'] = 'exec_callback';
                 $_GET['callback'] = '100';
-                Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+                $RequestHandler->execute();
+                return;
             }
         }
 
         $PromotionCode = "NONE";
         /** @noinspection PhpUnhandledExceptionInspection */
-        if(DynamicalWeb::getBoolean('subscription_promotion_set') == true)
+        if(DynamicalWeb::getMemoryObject('subscription_promotion_set') == true)
         {
             /** @var SubscriptionPromotion $Promotion */
             $Promotion = DynamicalWeb::getMemoryObject('subscription_promotion');
@@ -160,93 +185,126 @@
             {
                 if (filter_var($_GET['redirect'], FILTER_VALIDATE_URL) == true)
                 {
-                    Actions::redirect(DynamicalWeb::getRoute('purchase_success', array('redirect' => $_GET['redirect'])));
+                    $RequestHandler = DynamicalWeb::activeRequestHandler();
+                    $RequestHandler->Redirect = true;
+                    $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_success', array('redirect' => $_GET['redirect']));
+                    $RequestHandler->execute();
+                    return;
                 }
             }
 
-            Actions::redirect(DynamicalWeb::getRoute('purchase_success'));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_success');
+            $RequestHandler->execute();
+            return;
         }
         catch (AccountLimitedException $e)
         {
             $_GET['action'] = 'exec_callback';
             $_GET['callback'] = '103';
-            Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+            $RequestHandler->execute();
+            return;
         }
         catch (AccountNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'account_not_found'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'account_not_found'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (ApplicationNotFoundException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'appliation_not_found'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'application_not_found'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (InsufficientFundsException $e)
         {
             $_GET['action'] = 'exec_callback';
             $_GET['callback'] = '104';
-            Actions::redirect(DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET));
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('confirm_subscription_purchase', $_GET);
+            $RequestHandler->execute();
+            return;
         }
         catch (InvalidAccountStatusException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'invalid_account_status'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'invalid_account_status'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (InvalidEmailException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'invalid_email'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'invalid_email'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (InvalidFundsValueException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'invalid_funds'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'invalid_funds'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (InvalidUsernameException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'invalid_username'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'invalid_username'
             ));
+            $RequestHandler->execute();
+            return;
         }
         catch (InvalidVendorException $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'invalid_vendor'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'invalid_vendor'
             ));
-        } catch(Exception $e)
+            $RequestHandler->execute();
+            return;
+        }
+        catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute(
-                'purchase_failure', array(
-                    'error_type' => 'system_error',
-                    'error' => 'unknown_exception'
-                )
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('purchase_failure', array(
+                'error_type' => 'system_error',
+                'error' => 'unknown_exception'
             ));
+            $RequestHandler->execute();
+            return;
         }
     }

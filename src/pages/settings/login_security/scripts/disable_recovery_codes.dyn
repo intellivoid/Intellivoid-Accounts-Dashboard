@@ -1,6 +1,5 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Abstracts\AuditEventType;
     use IntellivoidAccounts\IntellivoidAccounts;
@@ -14,7 +13,6 @@
         }
     }
 
-
     function disable_recovery_codes()
     {
         /** @var Account $Account */
@@ -22,9 +20,12 @@
 
         if($Account->Configuration->VerificationMethods->RecoveryCodesEnabled == false)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', [
                 'callback' => '104'
-            )));
+            ]);
+            $RequestHandler->execute();
         }
 
         $Account->Configuration->VerificationMethods->RecoveryCodes->disable();
@@ -39,12 +40,18 @@
         }
         catch(Exception $e)
         {
-            Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+            $RequestHandler = DynamicalWeb::activeRequestHandler();
+            $RequestHandler->Redirect = true;
+            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', [
                 'callback' => '110'
-            )));
+            ]);
+            $RequestHandler->execute();
         }
 
-        Actions::redirect(DynamicalWeb::getRoute('settings/login_security', array(
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', [
             'callback' => '105'
-        )));
+        ]);
+        $RequestHandler->execute();
     }

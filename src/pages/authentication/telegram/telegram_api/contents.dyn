@@ -1,20 +1,19 @@
 <?PHP
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-    
     use IntellivoidAccounts\IntellivoidAccounts;
     use TelegramClientManager\Abstracts\SearchMethods\TelegramClientSearchMethod;
-
-    
 
     HTML::importScript('json_response');
     HTML::importScript('request_parser');
 
     if(get_parameter("client_id") == null)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/login'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login');
+        $RequestHandler->execute();
     }
 
     // Define the important parts
@@ -39,7 +38,10 @@
     }
     catch(Exception $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/login'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login');
+        $RequestHandler->execute();
     }
 
 
@@ -72,15 +74,23 @@
 
     if(hash_hmac('sha256', sortQuery(), $secret_key) !== $_GET["hash"])
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/login'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login');
+        $RequestHandler->execute();
     }
 
     if($_GET["auth_date"] > time() + 86400)
     {
-        Actions::redirect(DynamicalWeb::getRoute('authentication/login'));
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login');
+        $RequestHandler->execute();
     }
 
-    /** @noinspection PhpUndefinedVariableInspection */
-    Actions::redirect(DynamicalWeb::getRoute('authentication/login',
+    $RequestHandler = DynamicalWeb::activeRequestHandler();
+    $RequestHandler->Redirect = true;
+    $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/login',
         array_merge(['auth' => 'telegram', "verification_sign" => hash("sha256", $_GET["hash"] . $Client->ID)], $_GET)
-    ));
+    );
+    $RequestHandler->execute();

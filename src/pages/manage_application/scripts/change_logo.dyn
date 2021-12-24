@@ -1,15 +1,14 @@
 <?php
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
-use IntellivoidAccounts\Abstracts\ApplicationStatus;
-use IntellivoidAccounts\IntellivoidAccounts;
+    use IntellivoidAccounts\Abstracts\ApplicationStatus;
+    use IntellivoidAccounts\IntellivoidAccounts;
     use IntellivoidAccounts\Objects\COA\Application;
-use udp\Exceptions\FileUploadException;
-use udp\Exceptions\ImageTooSmallException;
-use udp\Exceptions\InvalidImageException;
-use udp\Exceptions\SystemException;
-use udp\Exceptions\UnsupportedFileTypeException;
+    use udp\Exceptions\FileUploadException;
+    use udp\Exceptions\ImageTooSmallException;
+    use udp\Exceptions\InvalidImageException;
+    use udp\Exceptions\SystemException;
+    use udp\Exceptions\UnsupportedFileTypeException;
 
     /** @var Application $Application */
     $Application = DynamicalWeb::getMemoryObject('application');
@@ -19,9 +18,12 @@ use udp\Exceptions\UnsupportedFileTypeException;
 
     if($Application->Status == ApplicationStatus::Suspended)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '115'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '115')
         );
+        $RequestHandler->execute();
     }
 
     try
@@ -30,28 +32,39 @@ use udp\Exceptions\UnsupportedFileTypeException;
     }
     catch (FileUploadException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '101'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '101')
         );
+        $RequestHandler->execute();
     }
     catch (SystemException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '102'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '102')
         );
+        $RequestHandler->execute();
     }
     catch (UnsupportedFileTypeException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '103'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '103')
         );
+        $RequestHandler->execute();
     }
     catch(Exception $exception)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '100'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '100')
         );
-
+        $RequestHandler->execute();
     }
 
 
@@ -61,26 +74,35 @@ use udp\Exceptions\UnsupportedFileTypeException;
     }
     catch (ImageTooSmallException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '104'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '104')
         );
+        $RequestHandler->execute();
     }
     catch (InvalidImageException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '105'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '105')
         );
+        $RequestHandler->execute();
     }
     catch (UnsupportedFileTypeException $e)
     {
-        Actions::redirect(DynamicalWeb::getRoute('manage_application',
-            array('pub_id' => $Application->PublicAppId, 'callback' => '103'))
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+        $RequestHandler->Redirect = true;
+        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+            array('pub_id' => $Application->PublicAppId, 'callback' => '103')
         );
+        $RequestHandler->execute();
     }
 
-
-    Actions::redirect(DynamicalWeb::getRoute('manage_application', array(
-        'pub_id' => $Application->PublicAppId,
-        'callback' => '112',
-        'cache_refresh' => 'true'
-    )));
+    $RequestHandler = DynamicalWeb::activeRequestHandler();
+    $RequestHandler->Redirect = true;
+    $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('manage_application',
+        array('pub_id' => $Application->PublicAppId, 'callback' => '112', 'cache_refresh' => true)
+    );
+    $RequestHandler->execute();
