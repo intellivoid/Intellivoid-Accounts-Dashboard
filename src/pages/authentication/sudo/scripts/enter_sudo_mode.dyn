@@ -1,11 +1,9 @@
 <?php
 
 
-    use DynamicalWeb\Actions;
     use DynamicalWeb\DynamicalWeb;
     use IntellivoidAccounts\Exceptions\IncorrectLoginDetailsException;
     use IntellivoidAccounts\IntellivoidAccounts;
-    use sws\sws;
 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -34,13 +32,10 @@
         {
             $IntellivoidAccounts->getAccountManager()->checkLogin(WEB_ACCOUNT_USERNAME, $_POST['password']);
 
-            /** @var sws $sws */
-            $sws = DynamicalWeb::getMemoryObject('sws');
-
-            $Cookie = $sws->WebManager()->getCookie('intellivoid_secured_web_session');
+            $Cookie = \DynamicalWeb\Cookies::getCookieStorage('intellivoid_secured_web_session');
             $Cookie->Data["sudo_mode"] = true;
             $Cookie->Data["sudo_expires"] = time() + 900;
-            $sws->CookieManager()->updateCookie($Cookie);
+            \DynamicalWeb\Cookies::updateCookieStorage($Cookie);
 
             if(isset($_GET['callback']))
             {
@@ -53,57 +48,76 @@
                 {
                     case 'settings/login_security':
                     case 'login_security':
-                        Actions::redirect(DynamicalWeb::getRoute('settings/login_security', $_GET));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/login_security', $_GET);
+                        $RequestHandler->execute();
                         break;
 
                     case 'settings/setup_mobile_verification':
                     case 'setup_mobile_verification':
-                        Actions::redirect(DynamicalWeb::getRoute('settings/setup_mobile_verification', $_GET));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/setup_mobile_verification', $_GET);
+                        $RequestHandler->execute();
                         break;
 
                     case 'settings/setup_recovery_codes':
                     case 'setup_recovery_codes':
-                        Actions::redirect(DynamicalWeb::getRoute('settings/setup_recovery_codes', $_GET));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('settings/setup_recovery_codes', $_GET);
+                        $RequestHandler->execute();
                         break;
 
                     default:
-                        Actions::redirect(DynamicalWeb::getRoute('index', $_GET));
+                        $RequestHandler = DynamicalWeb::activeRequestHandler();
+                        $RequestHandler->Redirect = true;
+                        $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index', $_GET);
+                        $RequestHandler->execute();
                         break;
                 }
             }
             else
             {
-                Actions::redirect(DynamicalWeb::getRoute('index'));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('index');
+                $RequestHandler->execute();
             }
         }
         catch(IncorrectLoginDetailsException $incorrectLoginDetailsException )
         {
             if(isset($_POST['redirect']))
             {
-                Actions::redirect(DynamicalWeb::getRoute('authentication/sudo',
-                    array('callback' => '101', 'redirect' => urlencode($_POST['redirect']))
-                ));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', ['callback' => '101', 'redirect' => urlencode($_POST['redirect'])]);
+                $RequestHandler->execute();
             }
             else
             {
-                Actions::redirect(DynamicalWeb::getRoute('authentication/sudo',
-                    array('callback' => '101')
-                ));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', ['callback' => '101']);
+                $RequestHandler->execute();
             }
         }
         catch(Exception $exception)
         {
             if(isset($_POST['redirect']))
             {
-                Actions::redirect(DynamicalWeb::getRoute('authentication/sudo',
-                    array('callback' => '100', 'redirect' => urlencode($_POST['redirect']))
-                ));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', ['callback' => '100', 'redirect' => urlencode($_POST['redirect'])]);
+                $RequestHandler->execute();
             }
             else
             {
-                Actions::redirect(DynamicalWeb::getRoute('authentication/sudo',
-                    array('callback' => '100')
-                ));
+                $RequestHandler = DynamicalWeb::activeRequestHandler();
+                $RequestHandler->Redirect = true;
+                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute('authentication/sudo', ['callback' => '100']);
+                $RequestHandler->execute();
             }
         }
     }

@@ -106,29 +106,6 @@
             Cookies::updateCookieStorage($CookieStorage);
         }
 
-        if(isset($_GET['redirect']))
-        {
-            $Location =  null;
-
-            switch(strtolower($_GET['redirect']))
-            {
-
-                case 'authentication/register':
-                    $Location = DynamicalWeb::getRoute('authentication/register', $_GET);
-                    break;
-
-                case 'authentication/login':
-                default:
-                    $Location = DynamicalWeb::getRoute('authentication/login', $_GET);
-                    break;
-            }
-
-            $RequestHandler = DynamicalWeb::activeRequestHandler();
-            $RequestHandler->Redirect = true;
-            $RequestHandler->RedirectLocation = DynamicalWeb::getRoute($Location, $_GET);
-            $RequestHandler->execute();
-        }
-
         Cookies::updateCookieStorage($CookieStorage);
 
         define('WEB_SESSION_ACTIVE', $CookieStorage->Data['session_active']);
