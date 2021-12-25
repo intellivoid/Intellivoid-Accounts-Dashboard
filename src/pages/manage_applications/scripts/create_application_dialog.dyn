@@ -5,7 +5,7 @@
 <div class="modal fade text-left" id="create-application" tabindex="-1" role="dialog" aria-labelledby="create-application-label" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
-            <form class="modal-content" method="POST" action="<?PHP DynamicalWeb::getRoute('manage_applications', array('action' => 'register_application'), true); ?>">
+            <form class="modal-content" method="POST" action="<?PHP DynamicalWeb::printRoute('manage_applications', array('action' => 'register_application'), true); ?>">
                 <div class="modal-header">
                     <h4 class="modal-title" id="create-application-label"><?PHP HTML::print(TEXT_CREATE_APPLICATION_DIALOG_TITLE); ?></h4>
                 </div>

@@ -53,10 +53,10 @@
                 <div class="image-grouped mx-auto d-block">
                     <ul class="list-unstyled users-list d-flex">
                         <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="<?PHP HTML::print($UsernameSafe); ?>" class="avatar ml-0">
-                            <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::getRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="64" width="64">
+                            <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::printRoute('avatar', array('user_id' => WEB_ACCOUNT_PUBID, 'resource' => 'normal'), true) ?>" alt="<?PHP HTML::print($UsernameSafe); ?>" height="64" width="64">
                         </li>
                         <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="<?PHP HTML::print($ApplicationNameSafe); ?>" class="avatar">
-                            <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'normal'), true) ?>" alt="<?PHP HTML::print($ApplicationNameSafe); ?>" height="64" width="64">
+                            <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::printRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'normal'), true) ?>" alt="<?PHP HTML::print($ApplicationNameSafe); ?>" height="64" width="64">
                         </li>
                     </ul>
                 </div>

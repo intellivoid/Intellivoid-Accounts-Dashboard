@@ -91,7 +91,7 @@ use IntellivoidAccounts\Objects\Account;
 
                     <div class="text-block text-center mt-3">
                         <span class="text-small font-weight-semibold"><?PHP HTML::print(str_ireplace('%s', $UsernameSafe, TEXT_FOOTER_NOT_USER_TEXT)); ?></span>
-                        <a href="<?PHP DynamicalWeb::getRoute('authentication/logout', array(), true); ?>" class="text-black text-small"><?PHP HTML::print(TEXT_FOOTER_NOT_USER_LOGOUT_LINK); ?></a>
+                        <a href="<?PHP DynamicalWeb::printRoute('authentication/logout', array(), true); ?>" class="text-black text-small"><?PHP HTML::print(TEXT_FOOTER_NOT_USER_LOGOUT_LINK); ?></a>
                     </div>
                 </form>
             </div>

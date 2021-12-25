@@ -31,7 +31,7 @@
                         <div class="collapse-margin">
                             <div class="card-header" style="justify-content: normal;;" id="heading-<?PHP HTML::print($Application->PublicAppId); ?>" data-toggle="collapse" role="button" data-target="#collapse-<?PHP HTML::print($Application->PublicAppId); ?>" aria-expanded="false" aria-controls="collapse-<?PHP HTML::print($Application->PublicAppId); ?>">
                                 <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="<?PHP HTML::print($Application->Name); ?>" class="avatar pull-up">
-                                    <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::getRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="<?PHP HTML::print($Application->Name); ?>" height="30" width="30">
+                                    <img class="media-object rounded-circle" src="<?PHP DynamicalWeb::printRoute('application_icon', array('app_id' => $Application->PublicAppId, 'resource' => 'small'), true); ?>" alt="<?PHP HTML::print($Application->Name); ?>" height="30" width="30">
                                 </div>
                                 <div class="ml-1">
                                     <h6 class="mb-0">
@@ -185,7 +185,7 @@
                                         <div class="col-lg-3 mt-auto mb-1">
                                             <!-- <button class="btn btn-block btn-square btn-outline-success" onclick="location.href='<?PHP #DynamicalWeb::getRoute('settings/authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Export Data</button> -->
                                             <!-- <button class="btn btn-block btn-square btn-outline-light" onclick="location.href='<?PHP #DynamicalWeb::getRoute('settings/authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';">Clear Data</button> -->
-                                            <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::getRoute('settings/authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';"><?PHP HTML::print(TEXT_REVOKE_ACCESS_BUTTON); ?></button>
+                                            <button class="btn btn-block btn-square btn-outline-danger" onclick="location.href='<?PHP DynamicalWeb::printRoute('settings/authorized_apps', array('action' => 'revoke_access', 'access_id' => $ApplicationAccess->PublicID), true); ?>';"><?PHP HTML::print(TEXT_REVOKE_ACCESS_BUTTON); ?></button>
                                         </div>
                                     </div>
                                 </div>

@@ -5,7 +5,7 @@
 <div class="modal fade text-left" id="add-balance-dialog" tabindex="-1" role="dialog" aria-labelledby="abd" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
-            <form action="<?PHP DynamicalWeb::getRoute('finance/balance', array('action' => 'process_payment'), true); ?>" method="POST">
+            <form action="<?PHP DynamicalWeb::printRoute('finance/balance', array('action' => 'process_payment'), true); ?>" method="POST">
                 <div class="modal-header">
                     <h4 class="modal-title" id="abd"><?PHP HTML::print(TEXT_ADD_BALANCE_DIALOG_TITLE); ?></h4>
                 </div>

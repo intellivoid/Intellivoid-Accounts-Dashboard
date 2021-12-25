@@ -109,7 +109,7 @@
                                             }
                                             ?>
                                             <div class="avatar mr-75">
-                                                <img src="<?PHP DynamicalWeb::getRoute('application_icon', $img_parameters, true); ?>" alt="<?PHP HTML::print($Application->Name); ?>" height="64" width="64">
+                                                <img src="<?PHP DynamicalWeb::printRoute('application_icon', $img_parameters, true); ?>" alt="<?PHP HTML::print($Application->Name); ?>" height="64" width="64">
                                             </div>
                                             <div class="wrapper ml-1 my-auto">
                                                 <h3 class="mb-0"><?PHP HTML::print($Application->Name); ?></h3>
@@ -124,13 +124,13 @@
                                     {
                                         case ApplicationStatus::Active:
                                             ?>
-                                            <button class="btn btn-block bg-gradient-danger mt-1" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'disable_application'), true); ?>'"><?PHP HTML::print(TEXT_DISABLE_APPLICATION_BUTTON); ?></button>
+                                            <button class="btn btn-block bg-gradient-danger mt-1" onclick="location.href='<?PHP DynamicalWeb::printRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'disable_application'), true); ?>'"><?PHP HTML::print(TEXT_DISABLE_APPLICATION_BUTTON); ?></button>
                                             <?PHP
                                             break;
 
                                         case ApplicationStatus::Disabled:
                                             ?>
-                                            <button class="btn btn-block bg-gradient-success mt-1" onclick="location.href='<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'enable_application'), true); ?>'"><?PHP HTML::print(TEXT_ENABLE_APPLICATION_BUTTON); ?></button>
+                                            <button class="btn btn-block bg-gradient-success mt-1" onclick="location.href='<?PHP DynamicalWeb::printRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'enable_application'), true); ?>'"><?PHP HTML::print(TEXT_ENABLE_APPLICATION_BUTTON); ?></button>
                                             <?PHP
                                             break;
 
@@ -148,7 +148,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title pb-2"><?PHP HTML::print(TEXT_APPLICATION_KEYS_HEADER); ?></h4>
-                                    <form class="border-bottom" method="POST" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_secret_key'), true) ?>">
+                                    <form class="border-bottom" method="POST" action="<?PHP DynamicalWeb::printRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_secret_key'), true) ?>">
 
                                         <label for="public_app_id"><?PHP HTML::print(TEXT_APPLICATION_KEYS_PUBLIC_APPLICATION_ID_LABEL); ?></label>
                                         <fieldset class="form-group position-relative has-icon-left">
@@ -174,7 +174,7 @@
 
                                 <div class="card-body">
                                     <h4 class="card-title pb-2"><?PHP HTML::print(TEXT_SETTINGS_HEADER); ?></h4>
-                                    <form action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_auth_mode'), true); ?>" method="POST">
+                                    <form action="<?PHP DynamicalWeb::printRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_auth_mode'), true); ?>" method="POST">
                                         <div class="form-group">
                                             <label for="authentication_type"><?PHP HTML::print(TEXT_AUTHENTICATION_TYPE_LABEL); ?></label>
                                             <select class="form-control" name="authentication_type" id="authentication_type" onchange="this.form.submit();"<?PHP if($Suspended == true){ HTML::print(" disabled"); } ?>>
@@ -184,7 +184,7 @@
                                             </select>
                                         </div>
                                     </form>
-                                    <form class="form-group pt-2 mb-0" id="permissions-form" action="<?PHP DynamicalWeb::getRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_permissions'), true); ?>" method="POST">
+                                    <form class="form-group pt-2 mb-0" id="permissions-form" action="<?PHP DynamicalWeb::printRoute('manage_application', array('pub_id' => $Application->PublicAppId, 'action' => 'update_permissions'), true); ?>" method="POST">
                                         <h4 class="card-title pb-2"><?PHP HTML::print(TEXT_PERMISSIONS_HEADER); ?></h4>
                                         <div class="row">
 

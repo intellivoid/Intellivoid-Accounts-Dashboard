@@ -128,7 +128,7 @@
                         <p class="font-medium-1 mr-1 mb-0"><?PHP HTML::print($TransactionRecord->Vendor); ?></p>
                         <div class="ml-auto">
                             <span class="text-muted font-small-3 d-none d-xl-inline"><?PHP HTML::print(gmdate("j/m/y g:i a", $TransactionRecord->Timestamp)); ?></span>
-                            <a href="<?PHP DynamicalWeb::getRoute('finance/invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">
+                            <a href="<?PHP DynamicalWeb::printRoute('finance/invoice', array('transaction_id' => $TransactionRecord->PublicID), true); ?>">
                                 <i class="feather icon-file-text"></i>
                             </a>
                         </div>
@@ -160,7 +160,7 @@
             <?PHP
         }
         ?>
-        <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::getRoute('finance/transactions', [], true); ?>';">
+        <button class="btn btn-block bg-gradient-danger mt-2 mx-2" onclick="location.href='<?PHP DynamicalWeb::printRoute('finance/transactions', [], true); ?>';">
             <?PHP HTML::print(TEXT_VIEW_TRANSACTION_HISTORY); ?>
         </button>
         <?php
