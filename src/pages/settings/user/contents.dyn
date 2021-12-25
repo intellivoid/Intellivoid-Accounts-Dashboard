@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-8 col-lg-9" id="settings_viewer">
                                 <div class="card">
-                                    <form method="POST" action="<?PHP DynamicalWeb::getRoute('settings/user', array('action' => 'update'), true); ?>">
+                                    <form method="POST" action="<?PHP DynamicalWeb::printRoute('settings/user', array('action' => 'update'), true); ?>">
                                         <div class="card-header">
                                             <h4 class="card-title"><?PHP HTML::print(TEXT_PAGE_HEADER); ?></h4>
                                         </div>
@@ -56,7 +56,7 @@
                                                                 }
                                                             }
                                                         ?>
-                                                        <img class="rounded mr-75" height="64" width="64" data-toggle="modal" data-target="#change-avatar-dialog" src="<?PHP DynamicalWeb::getRoute('avatar', $img_parameters, true) ?>" alt="profile image">
+                                                        <img class="rounded mr-75" height="64" width="64" data-toggle="modal" data-target="#change-avatar-dialog" src="<?PHP DynamicalWeb::printRoute('avatar', $img_parameters, true) ?>" alt="profile image">
                                                     </a>
                                                     <div class="media-body mt-75">
                                                         <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">

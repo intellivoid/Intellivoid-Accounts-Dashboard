@@ -7,7 +7,7 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto">
-                    <a class="navbar-brand" href="<?PHP DynamicalWeb::getRoute('index', []);; ?>">
+                    <a class="navbar-brand" href="<?PHP DynamicalWeb::printRoute('index', []);; ?>">
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0"><?PHP HTML::print(TEXT_NAV_MENU_BRAND_TEXT); ?></h2>
                     </a>
