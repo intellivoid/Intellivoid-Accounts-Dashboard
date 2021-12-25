@@ -20,10 +20,10 @@ use DynamicalWeb\HTML;
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-link" href="<?PHP Html::print(DynamicalWeb::getRoute('authentication/login')); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_LOGIN); ?></a>
+                        <a class="nav-link btn btn-link" href="<?PHP DynamicalWeb::printRoute('authentication/login'); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_LOGIN); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger" href="<?PHP Html::print(DynamicalWeb::getRoute('authentication/register', array('redirect' => 'authentication/register'))); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_CREATE_ACCOUNT); ?></a>
+                        <a class="nav-link btn btn-danger" href="<?PHP DynamicalWeb::printRoute('authentication/register', array('redirect' => 'authentication/register')); ?>"><?PHP HTML::print(TEXT_NAV_MENU_LINK_CREATE_ACCOUNT); ?></a>
                     </li>
                 </ul>
             </div>
