@@ -60,7 +60,7 @@
             }
         }
 
-        $ApplicationBrand = "/assets/images/vendor.svg";
+        $ApplicationBrand = DynamicalWeb::getAssetRoute('primary_assets', '/images/vendor.svg');
 
         if(isset(DynamicalWeb::$globalObjects[$loginRecord->Origin]))
         {
@@ -162,7 +162,8 @@
                         case 'Macintosh':
                         case 'Linux':
                         case 'Windows':
-                            HTML::print("<img alt=\"laptop\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"/assets/images/devices/laptop.svg\"/>", false);
+                            $src = DynamicalWeb::getAssetRoute('primary_assets', '/images/devices/laptop.svg');
+                            HTML::print("<img alt=\"laptop\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"$src\"/>", false);
                             break;
 
                         case 'iPad':
@@ -176,11 +177,13 @@
                         case 'Tizen':
                         case 'iPhone':
                         case 'Android':
-                            HTML::print("<img alt=\"smartphone\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"/assets/images/devices/smartphone.svg\"/>", false);
+                            $src = DynamicalWeb::getAssetRoute('primary_assets', '/images/devices/smartphone.svg');
+                            HTML::print("<img alt=\"smartphone\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"$src\"/>", false);
                             break;
 
                         default:
-                            HTML::print("<img alt=\"desktop\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"/assets/images/devices/desktop.svg\"/>", false);
+                            $src = DynamicalWeb::getAssetRoute('primary_assets', '/images/devices/desktop.svg');
+                            HTML::print("<img alt=\"desktop\" class=\"d-none d-lg-inline\" height=\"30\" width=\"30\" src=\"$src\"/>", false);
                             break;
                     }
                 ?>

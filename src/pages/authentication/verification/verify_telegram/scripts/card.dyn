@@ -2,7 +2,7 @@
 
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
-use IntellivoidAccounts\Objects\Account;
+    use IntellivoidAccounts\Objects\Account;
 
     $CardStyle = "";
     if(UI_EXPANDED)
@@ -51,7 +51,7 @@ use IntellivoidAccounts\Objects\Account;
         <div class="card-content p-2 pt-0">
             <div class="card-body pt-0">
                 <span class="text-small"><?PHP HTML::print(TEXT_SUB_HEADER); ?></span>
-                <img src="/assets/images/verification.svg" class="img-fluid" alt="telegram-auth-image">
+                <img src="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/images/verification.svg'); ?>" class="img-fluid" alt="telegram-auth-image">
             </div>
         </div>
         <div class="card-footer<?PHP if(UI_EXPANDED){ HTML::print(" mt-auto"); } ?>">

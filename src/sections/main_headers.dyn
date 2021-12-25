@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://accounts.intellivoid.net/">
 <meta property="og:title" content="Intellivoid Accounts">
 <meta property="og:description" content="Secured second-generation authentication solution, a one-account for all by Intellivoid Technologies">
-<meta property="og:image" content="/assets/images/preview.png">
+<meta property="og:image" content="<?PHP Html::print(DynamicalWeb::getAssetRoute('primary_assets', '/images/preview.png')); ?>">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://accounts.intellivoid.net/">
 <meta property="twitter:title" content="Intellivoid Accounts">

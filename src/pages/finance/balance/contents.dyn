@@ -103,7 +103,7 @@
                                             foreach($RecentTransactions as $transaction)
                                             {
                                                 $TransactionRecord = TransactionRecord::fromArray($transaction);
-                                                $ImageSource = "/assets/images/vendor.svg";
+                                                $ImageSource = DynamicalWeb::getAssetRoute('primary_assets', '/images/vendor.svg');
                                                 $VendorFound = false;
 
                                                 if(isset($CachedApplications[$TransactionRecord->Vendor]))

@@ -11,7 +11,7 @@
 <html class="loading" lang="<?PHP HTML::print(DYNAMICAL_SELECTED_LOCALIZATION_ISO_CODE); ?>" data-textdirection="ltr">
     <head>
         <?PHP HTML::importSection('main_headers'); ?>
-        <link rel="stylesheet" type="text/css" href="/assets/css/plugins/forms/wizard.css">
+        <link rel="stylesheet" type="text/css" href="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/css/plugins/forms/wizard.css'); ?>">
         <title><?PHP HTML::print(TEXT_PAGE_TITLE) ?></title>
     </head>
     <body class="horizontal-layout horizontal-menu 2-columns navbar-sticky fixed-footer" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
@@ -56,7 +56,7 @@
                                                                             <div class="card-content d-flex">
                                                                                 <div class="card-body">
                                                                                     <div class="d-inline">
-                                                                                        <img src="/assets/images/undraw/android.svg" alt="Android" width="150" class="float-left px-1 d-none d-lg-inline">
+                                                                                        <img src="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/images/undraw/android.svg'); ?>" alt="Android" width="150" class="float-left px-1 d-none d-lg-inline">
                                                                                         <h4 class="card-title text-white mb-2">Android</h4>
                                                                                     </div>
 
@@ -80,7 +80,7 @@
                                                                             <div class="card-content d-flex">
                                                                                 <div class="card-body">
                                                                                     <div class="d-inline">
-                                                                                        <img src="/assets/images/undraw/ios.svg" alt="iOS" width="150" class="float-left px-1 d-none d-lg-inline">
+                                                                                        <img src="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/images/undraw/ios.svg'); ?>" alt="iOS" width="150" class="float-left px-1 d-none d-lg-inline">
                                                                                         <h4 class="card-title text-white mb-2">iOS</h4>
                                                                                     </div>
 
@@ -142,8 +142,8 @@
         <?PHP HTML::importSection('main_ehelper'); ?>
         <?PHP HTML::importSection('main_footer'); ?>
         <?PHP HTML::importSection('main_js'); ?>
-        <script src="/assets/vendors/js/ui/jquery.sticky.js"></script>
-        <script src="/assets/vendors/js/extensions/jquery.steps.min.js"></script>
+        <script src="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/vendors/js/ui/jquery.sticky.js'); ?>"></script>
+        <script src="<?PHP DynamicalWeb::printAssetRoute('primary_assets', '/vendors/js/extensions/jquery.steps.min.js'); ?>"></script>
         <?PHP HTML::importJavascript('mbsetup'); ?>
     </body>
 </html>
