@@ -5,13 +5,16 @@
     function returnJsonResponse(array $payload)
     {
         $response = json_encode($payload);
+        $RequestHandler = DynamicalWeb::activeRequestHandler();
+
         if(isset($payload['response_code']))
         {
-            http_response_code($payload['response_code']);
+            $RequestHandler->ResponseCode = (int)$payload['response_code'];
         }
 
-        $RequestHandler = DynamicalWeb::activeRequestHandler();
         $RequestHandler->ResponseContentType = 'application/json';
+        $RequestHandler->ResourceSource = \DynamicalWeb\Abstracts\ResourceSource::Memory;
+        $RequestHandler->Source = $response;
         DynamicalWeb::activeRequestHandler($RequestHandler);
-        print($response);
+        $RequestHandler->execute();
     }

@@ -21,7 +21,8 @@
         'tos',
         'documentation',
         'gba_mode',
-        'dynamical'
+        'dynamical',
+        'favicon.ico'
     ];
 
     $password_recovery_pages = [

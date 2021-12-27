@@ -281,6 +281,7 @@
         "scripts/update_password.dyn",
         "scripts/direct_auth.dyn",
         "scripts/sync_avatar.dyn",
+        "favicon.ico",
         "runtime_scripts/check.host.dyn",
         "runtime_scripts/auth.check.dyn",
         "configuration.json"

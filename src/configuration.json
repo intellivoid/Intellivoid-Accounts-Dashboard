@@ -21,12 +21,12 @@
             "enabled": true,
             "configuration_name": "Intellivoid Accounts"
         },
-        "favicon": null,
+        "favicon": "favicon.ico",
         "localization_enabled": true,
         "debugging_mode": false,
         "framework_signature": true,
-        "application_signature": true,
-        "security_headers": true,
+        "application_signature": false,
+        "security_headers": false,
         "enable_khm": true,
         "firewall_deny": [],
         "headers": {}
