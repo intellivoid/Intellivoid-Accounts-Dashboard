@@ -310,9 +310,9 @@
                 /** @noinspection PhpUndefinedVariableInspection */
                 $RequestHandler = DynamicalWeb::activeRequestHandler();
                 $RequestHandler->Redirect = true;
-                $RequestHandler->RedirectLocation = DynamicalWeb::getRoute(create_redirect_location($_GET['redirect'], array(
+                $RequestHandler->RedirectLocation = create_redirect_location($_GET['redirect'], array(
                     'access_token' => $Access->AccessToken
-                )));
+                ));
                 break;
 
             case AuthenticationMode::Code:
